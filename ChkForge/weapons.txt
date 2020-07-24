@@ -1,0 +1,140 @@
+#Terran
+	0 Gauss Rifle (Terran Marine)
+	1 Gauss Rifle (Jim Raynor Marine)
+	2 C-10 Canister Rifle (Terran Ghost)
+	3 C-10 Canister Rifle (Sarah Kerrigan Ghost)
+	4 Fragmentation Grenade (Terran Vulture)
+	5 Fragmentation Grenade (Jim Raynor Vulture)
+	6 Spider Mines
+	7 Twin Autocannons (Terran Goliath - Ground)
+	8 Hellfire Missle Pack (Terran Goliath - Air)
+	9 Twin Autocannons (Alan Schezar Goliath - Ground)
+	10 Hellfire Missle Pack (Alan Schezar Goliath - Air)
+	11 Arclite Cannon (Terran Seige Tank - Tank Mode)
+	12 Arclite Cannon (Edmund Duke Seige Tank - Tank Mode)
+	13 Fusion Cutter (Terran SCV)
+	14 Fusion Cutter Harvester (Terran SCV)
+	15 Gemini Missiles (Terran Wraith - Air)
+	16 Burst Lasers (Terran Wraith - Ground)
+	17 Gemini Missiles (Tom Kazansky Wraith - Air)
+	18 Burst Lasers (Tom Kazansky Wraith - Ground)
+	19 ATS Laser Battery (Terran BattleCruiser - Ground)
+	20 ATA Laser Battery (Terran BattleCruiser - Air)
+	21 ATS Laser Battery (Hyperion BattleCruiser - Ground)
+	22 ATA Laser Battery (Hyperion BattleCruiser - Air)
+	23 ATS Laser Battery (Norad II BattleCruiser - Ground)
+	24 ATA Laser Battery (Norad II BattleCruiser - Air)
+	25 Flame Thrower (Terran Firebat)
+	26 Flame Thrower (Gui Montag)
+	27 Arclite Shock Cannon (Terran Seige Tank - Seige Mode)
+	28 Arclite Shock Cannon (Edmund Duke Seige Tank - Seige Mode)
+	29 Longbolt Missile (Terran Missile Tower)
+	30 Yamato Gun (Terran Battlecruiser Ability)
+	31 Terran Nuclear Missile Strike
+	32 Lockdown (Terran Ghost Ability)
+	33 Irradiate (Terran Science Vessel Ability)
+	34 EMP Shockwave (Terran Science Vessel Ability)
+	102 Restoration (Terran Medic Ability)
+	103 Halo Rockets (Terran Valkyrie)
+	107 Optical Flare (Terran Medic Ability)
+	112 C-10 Canister Rifle (Samir Duran Ghost)
+	113 C-10 Canister Rifle (Infested Duran Ghost)
+	116 C-10 Canister Rifle (Alexi Stukov Ghost)
+##
+#Zerg
+	35 Claws (Zerg Zergling)
+	36 Claws (Devouring One Zergling)
+	37 Claws (Infested Kerrigan)
+	38 Needle Spines (Zerg Hydralisk)
+	39 Needle Spines (Hunter Killer Hydralisk)
+	40 Kaiser Blades (Zerg Ultralisk)
+	41 Kaiser Blades (Torrasque Ultralisk)
+	42 Toxic Spores (Zerg Broodling)
+	43 Spines (Zerg Drone)
+	44 Spines Harvester (Zerg Drone)
+	45 Acid Spray (Zerg Queen) (Beta57 Only)
+	46 Acid Spore (Zerg Guardian)
+	47 Acid Spore (Kukulza Guardian)
+	48 Glave Wurm (Zerg Mutalisk)
+	49 Glave Wurm (Kukulza Mutalisk)
+	50 Venom (Zerg Defiler) (Beta57 Only)
+	51 Venom (Unclean One) (Beta57 Only)
+	52 Seeker Spores (Zerg Spore Colony)
+	53 Subterranian Tentacle (Zerg Sunken Colony)
+	54 Suicide (Infested Terran)
+	55 Suicide (Zerg Scourge)
+	56 Parasite (Zerg Queen Ability)
+	57 Broodling (Zerg Queen Ability)
+	58 Ensnare (Zerg Queen Ability)
+	59 Dark Swarm (Zerg Defiler Ability)
+	60 Plague (Zerg Defiler Ability)
+	61 Consume (Zerg Defiler Ability)
+	104 Corrosive Acid (Zerg Devourer)
+	109 Subterranean Spines (Zerg Lurker)
+##
+#Protoss
+	62 Particle Beam (Protoss Probe)
+	63 Particle Beam Harvest (Protoss Probe)
+	64 Psi Blades (Protoss Zealot)
+	65 Psi Blades (Fenix Zealot)
+	66 Phase Disruptor (Protoss Dragoon)
+	67 Phase Disruptor (Fenix Dragoon)
+	68 Psi Assault (Protoss High Templar) (Beta57 Only)
+	69 Psi Assault (Tassadar Templar)
+	70 Psionic Shockwave (Protoss Archon)
+	71 Psionic Shockwave (Tassadar/Zeratul Archon)
+	73 Dual Photon Blasters (Protoss Scout - Ground)
+	74 Anti-Matter Missiles (Protoss Scout - Air)
+	75 Dual Photon Blasters (Mojo Scout - Ground)
+	76 Anti-Matter Missiles (Mojo Scout - Air)
+	77 Phase Disruptor Cannon (Protoss Arbiter)
+	78 Phase Disruptor Cannon (Danimoth Arbitor)
+	79 Pulse Cannon (Protoss Interceptor)
+	80 STS Photon Cannon (Photon Cannon - Ground)
+	81 STA Photon Cannon (Photon Cannon - Air)
+	82 Scarab (Protoss Reaver)
+	83 Stasis Field (Protoss Arbiter Ability)
+	85 Warp Blades (Zeratul Dark Templar)
+	86 Warp Blades (Dark Templar Hero)
+	100 Neutron Flare (Protoss Corsair)
+	101 Disruption Web (Protoss Corsair Ability)
+	105 Mind Control (Protoss Dark Archon Ability)
+	106 Feedback (Protoss Dark Archon Ability)
+	108 Maelstrom (Protoss Dark Archon Ability)
+	111 Warp Blades (Dark Templar Unit)
+	114 Dual Photon Blasters (Artanis Scout - Ground)
+	115 Anti-Matter Missiles (Artanis Scout - Air)
+##
+#Traps
+	96 Trap Bullet
+	97 Trap Missile
+	98 Trap Flamer
+	99 Hellfire Missile Pack (Floor Missile Trap)
+##
+#Unused
+	72 72 (Radioactive)
+	84 84 (Psi Storm)
+	87 Missiles (Unused)
+	88 Laser Battery (Unused)
+	89 Tormentor Missiles (Unused)
+	90 Bombs (Unused)
+	91 Raider Gun (Unused)
+	92 92
+	93 93
+	94 94
+	95 Flechette Missile (Unused)
+	110 110
+	117 117
+	118 118
+	119 119
+	120 120
+	121 121
+	122 122
+	123 123
+	124 124
+	125 125
+	126 126
+	127 127
+	128 128
+	129 129
+##

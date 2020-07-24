@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/Trees" lang="English">
+        <file>units.txt</file>
+        <file>sprites.txt</file>
+        <file>techs.txt</file>
+        <file>terrain.txt</file>
+        <file>upgrades.txt</file>
+        <file>weapons.txt</file>
+    </qresource>
+</RCC>

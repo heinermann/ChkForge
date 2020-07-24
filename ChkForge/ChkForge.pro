@@ -16,14 +16,69 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    doodadpalette.cpp \
+    exportimage.cpp \
+    exportsections.cpp \
+    filemanager.cpp \
+    importsections.cpp \
+    itempalette.cpp \
+    itemtree.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    mapview.cpp \
+    minimap.cpp \
+    newmap.cpp \
+    outputwindow.cpp \
+    previewpainter.cpp \
+    recenttiles.cpp \
+    savemap.cpp \
+    scenariosettings.cpp \
+    stringmanager.cpp \
+    terrainbrush.cpp \
+    tilepalette.cpp
 
 HEADERS += \
-    mainwindow.h
+    dockwidgetwrapper.h \
+    doodadpalette.h \
+    exportimage.h \
+    exportsections.h \
+    filemanager.h \
+    importsections.h \
+    itempalette.h \
+    itemtree.h \
+    mainwindow.h \
+    mapview.h \
+    minimap.h \
+    newmap.h \
+    outputwindow.h \
+    previewpainter.h \
+    recenttiles.h \
+    savemap.h \
+    scenariosettings.h \
+    stringmanager.h \
+    terrainbrush.h \
+    tilepalette.h
 
 FORMS += \
-    mainwindow.ui
+    doodadpalette.ui \
+    exportimage.ui \
+    exportsections.ui \
+    filemanager.ui \
+    importsections.ui \
+    itempalette.ui \
+    itemtree.ui \
+    mainwindow.ui \
+    mapview.ui \
+    minimap.ui \
+    newmap.ui \
+    outputwindow.ui \
+    previewpainter.ui \
+    recenttiles.ui \
+    savemap.ui \
+    scenariosettings.ui \
+    stringmanager.ui \
+    terrainbrush.ui \
+    tilepalette.ui
 
 TRANSLATIONS += \
     ChkForge_en_CA.ts
@@ -32,3 +87,16 @@ TRANSLATIONS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../ads/lib/ -lqtadvanceddocking
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../ads/lib/ -lqtadvanceddockingd
+else:unix: LIBS += -L$$OUT_PWD/../ads/lib/ -lqtadvanceddocking
+
+INCLUDEPATH += $$PWD/../ads/src
+DEPENDPATH += $$PWD/../ads/src
+
+DISTFILES +=
+
+RESOURCES += \
+    ChkForge.qrc \
+    Icons.qrc

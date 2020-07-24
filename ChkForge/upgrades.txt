@@ -1,0 +1,69 @@
+#Terran
+	0	Infantry Armor
+	1	Vehicle Plating
+	2	Ship Plating
+	7	Infantry Weapons
+	8	Vehicle Weapons
+	9	Ship Weapons
+	16	U-238 Shells
+	17	Ion Thrusters
+	18	Burst Laser Upgrade
+	19	Titan Reactor
+	20	Ocular Implants
+	21	Moebius Reactor
+	22	Apollo Reactor
+	23	Colossus Reactor
+	51	Caduceus Reactor
+	54	Charon Boosters
+##
+#Zerg
+	3	Carapace
+	4	Flyer Carapace
+	10	Melee Attacks
+	11	Missile Attacks
+	12	Flyer Attacks
+	24	Ventral Sacs
+	25	Antennae
+	26	Pneumatized Carapace
+	27	Metabolic Boost
+	28	Adrenal Glands
+	29	Muscular Augments
+	30	Grooved Spines
+	31	Gamete Meiosis
+	32	Metasynaptic Node
+	52	Chitinous Plating
+	53	Anabolic Synthesis
+##
+#Protoss
+	5	Armor
+	6	Plating
+	13	Ground Weapons
+	14	Air Weapons
+	15	Plasma Shields
+	33	Singularity Charge
+	34	Leg Enhancements
+	35	Scarab Damage
+	36	Reaver Capacity
+	37	Gravitic Drive
+	38	Sensor Array
+	39	Gravitic Boosters
+	40	Khaydarin Amulet
+	41	Apial Sensors
+	42	Gravitic Thrusters
+	43	Carrier Capacity
+	44	Khaydarin Core
+	47	Argus Jewel
+	49	Argus Talisman
+##
+#Unused
+	45	Unused 45
+	46	Unused 46
+	48	Unused 48
+	50	Unused 50
+	55	Unused 55
+	56	Unused 56
+	57	Unused 57
+	58	Unused 58
+	59	Unused 59
+	60	Unused 60
+##

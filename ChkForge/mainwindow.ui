@@ -14,9 +14,605 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget"/>
-  <widget class="QMenuBar" name="menubar"/>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu_File">
+    <property name="title">
+     <string>&amp;File</string>
+    </property>
+    <widget class="QMenu" name="menuRecent_Files">
+     <property name="title">
+      <string>Recent Files</string>
+     </property>
+    </widget>
+    <addaction name="action_New"/>
+    <addaction name="action_Open"/>
+    <addaction name="menuRecent_Files"/>
+    <addaction name="separator"/>
+    <addaction name="action_Save"/>
+    <addaction name="actionSave_As"/>
+    <addaction name="actionSave_Map_Image"/>
+    <addaction name="separator"/>
+    <addaction name="action_Import_Sections"/>
+    <addaction name="action_Export_Sections"/>
+    <addaction name="separator"/>
+    <addaction name="actionE_xit"/>
+   </widget>
+   <widget class="QMenu" name="menu_Edit">
+    <property name="title">
+     <string>&amp;Edit</string>
+    </property>
+    <addaction name="action_Undo"/>
+    <addaction name="action_Redo"/>
+    <addaction name="separator"/>
+    <addaction name="actionCu_t"/>
+    <addaction name="action_Copy"/>
+    <addaction name="action_Paste"/>
+    <addaction name="action_Delete"/>
+    <addaction name="separator"/>
+    <addaction name="actionSelect_All"/>
+    <addaction name="action_Properties"/>
+   </widget>
+   <widget class="QMenu" name="menu_View">
+    <property name="title">
+     <string>&amp;View</string>
+    </property>
+    <widget class="QMenu" name="menu_Tool_Windows">
+     <property name="title">
+      <string>&amp;Tool Windows</string>
+     </property>
+     <addaction name="action_Show_All"/>
+     <addaction name="action_Close_All"/>
+     <addaction name="separator"/>
+    </widget>
+    <widget class="QMenu" name="menuShow_Unit_Data">
+     <property name="title">
+      <string>Show &amp;Unit Data</string>
+     </property>
+     <addaction name="actionUnit_Size"/>
+     <addaction name="actionBuilding_Size"/>
+     <addaction name="actionSight_Range"/>
+     <addaction name="actionSeek_Attack_Range"/>
+     <addaction name="actionCreep"/>
+     <addaction name="actionPylon_Aura"/>
+     <addaction name="actionAddon_Nydus_Linkage"/>
+     <addaction name="actionCollisions"/>
+    </widget>
+    <addaction name="actionGrid_Se_ttings"/>
+    <addaction name="action_Snap_to_Grid"/>
+    <addaction name="actionShow_Grid"/>
+    <addaction name="actionShow_Locations"/>
+    <addaction name="menuShow_Unit_Data"/>
+    <addaction name="separator"/>
+    <addaction name="actionClean_Map"/>
+    <addaction name="separator"/>
+    <addaction name="menu_Tool_Windows"/>
+   </widget>
+   <widget class="QMenu" name="menu_Layer">
+    <property name="title">
+     <string>&amp;Layer</string>
+    </property>
+    <addaction name="action_Terrain"/>
+    <addaction name="action_Doodads"/>
+    <addaction name="action_Sprites"/>
+    <addaction name="action_Units"/>
+    <addaction name="action_Locations"/>
+    <addaction name="action_Custom_Brush"/>
+    <addaction name="action_Fog_of_War"/>
+    <addaction name="separator"/>
+    <addaction name="actionLayer_Options"/>
+   </widget>
+   <widget class="QMenu" name="menu_Scenario">
+    <property name="title">
+     <string>&amp;Scenario</string>
+    </property>
+    <addaction name="actionPlayers"/>
+    <addaction name="actionForces"/>
+    <addaction name="actionSounds"/>
+    <addaction name="actionTriggers"/>
+    <addaction name="actionBriefings"/>
+    <addaction name="actionStrings"/>
+    <addaction name="separator"/>
+    <addaction name="actionUnit_and_Hero_Settings"/>
+    <addaction name="actionUpgrade_Settings"/>
+    <addaction name="actionAbility_Tech_Settings"/>
+    <addaction name="separator"/>
+    <addaction name="actionScenario_Description"/>
+   </widget>
+   <widget class="QMenu" name="menu_Tools">
+    <property name="title">
+     <string>&amp;Tools</string>
+    </property>
+    <addaction name="actionMap_Revealers"/>
+    <addaction name="separator"/>
+    <addaction name="actionPreferences"/>
+   </widget>
+   <widget class="QMenu" name="menu_Window">
+    <property name="title">
+     <string>&amp;Window</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menu_Help">
+    <property name="title">
+     <string>&amp;Help</string>
+    </property>
+    <addaction name="action_About"/>
+   </widget>
+   <addaction name="menu_File"/>
+   <addaction name="menu_Edit"/>
+   <addaction name="menu_View"/>
+   <addaction name="menu_Layer"/>
+   <addaction name="menu_Scenario"/>
+   <addaction name="menu_Tools"/>
+   <addaction name="menu_Window"/>
+   <addaction name="menu_Help"/>
+  </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="action_New">
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/icons/new.png</normaloff>:/icons/new.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;New</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
+  </action>
+  <action name="action_Open">
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/icons/open.png</normaloff>:/icons/open.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Open</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="action_Save">
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/icons/save.png</normaloff>:/icons/save.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Save</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="actionSave_As">
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/icons/save_as.png</normaloff>:/icons/save_as.png</iconset>
+   </property>
+   <property name="text">
+    <string>Save &amp;As...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+S</string>
+   </property>
+  </action>
+  <action name="actionSave_Map_Image">
+   <property name="text">
+    <string>Save Map Image...</string>
+   </property>
+  </action>
+  <action name="action_Import_Sections">
+   <property name="text">
+    <string>&amp;Import Sections...</string>
+   </property>
+  </action>
+  <action name="action_Export_Sections">
+   <property name="text">
+    <string>&amp;Export Sections...</string>
+   </property>
+  </action>
+  <action name="actionE_xit">
+   <property name="text">
+    <string>E&amp;xit</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::QuitRole</enum>
+   </property>
+  </action>
+  <action name="action_Undo">
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/icons/undo.png</normaloff>:/icons/undo.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Undo</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Z</string>
+   </property>
+  </action>
+  <action name="action_Redo">
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/icons/redo.png</normaloff>:/icons/redo.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Redo</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Y, Ctrl+Shift+Z</string>
+   </property>
+  </action>
+  <action name="actionCu_t">
+   <property name="text">
+    <string>Cu&amp;t</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+X</string>
+   </property>
+  </action>
+  <action name="action_Copy">
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/icons/copy.png</normaloff>:/icons/copy.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Copy</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+C</string>
+   </property>
+  </action>
+  <action name="action_Paste">
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/icons/paste.png</normaloff>:/icons/paste.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Paste</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+V</string>
+   </property>
+  </action>
+  <action name="action_Delete">
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/icons/delete.png</normaloff>:/icons/delete.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Delete</string>
+   </property>
+   <property name="shortcut">
+    <string>Del</string>
+   </property>
+  </action>
+  <action name="actionSelect_All">
+   <property name="text">
+    <string>Select &amp;All</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+A</string>
+   </property>
+  </action>
+  <action name="action_Properties">
+   <property name="text">
+    <string>P&amp;roperties</string>
+   </property>
+   <property name="shortcut">
+    <string>Return</string>
+   </property>
+  </action>
+  <action name="actionGrid_Se_ttings">
+   <property name="text">
+    <string>Grid Se&amp;ttings</string>
+   </property>
+  </action>
+  <action name="action_Snap_to_Grid">
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/icons/snap.png</normaloff>:/icons/snap.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Snap to Grid</string>
+   </property>
+  </action>
+  <action name="actionShow_Grid">
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/icons/grid.png</normaloff>:/icons/grid.png</iconset>
+   </property>
+   <property name="text">
+    <string>Show &amp;Grid</string>
+   </property>
+  </action>
+  <action name="actionShow_Locations">
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/icons/location.png</normaloff>:/icons/location.png</iconset>
+   </property>
+   <property name="text">
+    <string>Show &amp;Locations</string>
+   </property>
+  </action>
+  <action name="actionClean_Map">
+   <property name="text">
+    <string>Clean Map</string>
+   </property>
+  </action>
+  <action name="actionUnit_Size">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Unit Size</string>
+   </property>
+  </action>
+  <action name="actionBuilding_Size">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Building Size</string>
+   </property>
+  </action>
+  <action name="actionSight_Range">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Sight Range</string>
+   </property>
+  </action>
+  <action name="actionSeek_Attack_Range">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Seek &amp;&amp; Attack Range</string>
+   </property>
+  </action>
+  <action name="actionCreep">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Creep</string>
+   </property>
+  </action>
+  <action name="actionPylon_Aura">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Pylon Aura</string>
+   </property>
+  </action>
+  <action name="actionAddon_Nydus_Linkage">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Addon/Nydus Linkage</string>
+   </property>
+  </action>
+  <action name="actionCollisions">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Collisions</string>
+   </property>
+  </action>
+  <action name="action_Show_All">
+   <property name="text">
+    <string>&amp;Show All</string>
+   </property>
+  </action>
+  <action name="action_Close_All">
+   <property name="text">
+    <string>&amp;Close All</string>
+   </property>
+  </action>
+  <action name="actionMap_Revealers">
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/icons/revealer.png</normaloff>:/icons/revealer.png</iconset>
+   </property>
+   <property name="text">
+    <string>Map Revealers</string>
+   </property>
+  </action>
+  <action name="actionPreferences">
+   <property name="text">
+    <string>Preferences</string>
+   </property>
+  </action>
+  <action name="actionPlayers">
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/icons/player.png</normaloff>:/icons/player.png</iconset>
+   </property>
+   <property name="text">
+    <string>Players</string>
+   </property>
+  </action>
+  <action name="actionForces">
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/icons/forces.png</normaloff>:/icons/forces.png</iconset>
+   </property>
+   <property name="text">
+    <string>Forces</string>
+   </property>
+  </action>
+  <action name="actionSounds">
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/icons/sounds.png</normaloff>:/icons/sounds.png</iconset>
+   </property>
+   <property name="text">
+    <string>Sounds</string>
+   </property>
+  </action>
+  <action name="actionTriggers">
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/icons/triggers.png</normaloff>:/icons/triggers.png</iconset>
+   </property>
+   <property name="text">
+    <string>Triggers</string>
+   </property>
+  </action>
+  <action name="actionBriefings">
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/icons/briefing.png</normaloff>:/icons/briefing.png</iconset>
+   </property>
+   <property name="text">
+    <string>Briefings</string>
+   </property>
+  </action>
+  <action name="actionStrings">
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/icons/strings.png</normaloff>:/icons/strings.png</iconset>
+   </property>
+   <property name="text">
+    <string>Strings</string>
+   </property>
+  </action>
+  <action name="actionUnit_and_Hero_Settings">
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/icons/unit.png</normaloff>:/icons/unit.png</iconset>
+   </property>
+   <property name="text">
+    <string>Unit and Hero Settings...</string>
+   </property>
+  </action>
+  <action name="actionUpgrade_Settings">
+   <property name="text">
+    <string>Upgrade Settings...</string>
+   </property>
+  </action>
+  <action name="actionAbility_Tech_Settings">
+   <property name="text">
+    <string>Ability (Tech) Settings...</string>
+   </property>
+  </action>
+  <action name="actionScenario_Description">
+   <property name="text">
+    <string>Scenario Description...</string>
+   </property>
+  </action>
+  <action name="action_Terrain">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/icons/terrain.png</normaloff>:/icons/terrain.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Terrain</string>
+   </property>
+  </action>
+  <action name="action_Doodads">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/icons/doodad.png</normaloff>:/icons/doodad.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Doodads</string>
+   </property>
+  </action>
+  <action name="action_Sprites">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/icons/sprite.png</normaloff>:/icons/sprite.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Sprites</string>
+   </property>
+  </action>
+  <action name="action_Units">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/icons/unit.png</normaloff>:/icons/unit.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Units</string>
+   </property>
+  </action>
+  <action name="action_Locations">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/icons/location.png</normaloff>:/icons/location.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Locations</string>
+   </property>
+  </action>
+  <action name="action_Custom_Brush">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/icons/brush.png</normaloff>:/icons/brush.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Custom Brush</string>
+   </property>
+  </action>
+  <action name="action_Fog_of_War">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/icons/revealer.png</normaloff>:/icons/revealer.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Fog of War</string>
+   </property>
+  </action>
+  <action name="actionLayer_Options">
+   <property name="text">
+    <string>Layer &amp;Options...</string>
+   </property>
+  </action>
+  <action name="action_About">
+   <property name="text">
+    <string>&amp;About</string>
+   </property>
+  </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="Icons.qrc"/>
+ </resources>
  <connections/>
 </ui>

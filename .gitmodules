@@ -1,3 +1,4 @@
-[submodule "Qt-Advanced-Docking-System"]
-	path = Qt-Advanced-Docking-System
+[submodule "ads"]
+	path = ads
 	url = git@github.com:githubuser0xFFFF/Qt-Advanced-Docking-System.git
+

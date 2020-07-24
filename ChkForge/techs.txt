@@ -1,0 +1,52 @@
+#Terran
+	0	Stim Pack
+	1	Lockdown
+	2	EMP Shockwave
+	3	Spider Mine
+	4	Scanner Sweep
+	5	Siege Mode
+	6	Defensive Matrix
+	7	Irradiate
+	8	Yamato Gun
+	9	Cloaking Field
+	10	Personnel Cloaking
+	24	Restoration
+	30	Optical Flare
+	34	Healing
+##
+#Zerg
+	11	Burrowing
+	12	Infestation
+	13	Spawn Broodling
+	14	Dark Swarm
+	15	Plague
+	16	Consume
+	17	Ensnare
+	18	Parasite
+	32	Lurker Aspect
+##
+#Protoss
+	19	Psionic Storm
+	20	Hallucination
+	21	Recall
+	22	Stasis Field
+	23	Archon Warp
+	25	Disruption Web
+	27	Mind Control
+	28	Dark Archon Meld
+	29	Feedback
+	31	Maelstrom
+##
+#Unused
+	26	Unused 26
+	33	Unused 33
+	35	Unused 35
+	36	Unused 36
+	37	Unused 37
+	38	Unused 38
+	39	Unused 39
+	40	Unused 40
+	41	Unused 41
+	42	Unused 42
+	43	Unused 43
+##

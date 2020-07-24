@@ -1,0 +1,310 @@
+214	Start Location
+101	Map Revealer
+
+#Terran
+
+        #Ground
+                0	Marine
+                32	Firebat
+                1	Ghost
+                34	Medic
+                2	Vulture
+                3	Goliath
+                5	Siege Tank (Tank Mode)
+                30	Siege Tank (Siege Mode)
+                7	SCV
+                13	Vulture Spider Mine
+                14	Nuclear Missile
+        ##
+
+        #Air
+                8	Wraith
+                9	Science Vessel
+                11	Dropship
+                12	Battlecruiser
+                58	Valkyrie
+        ##
+
+        #Heroes
+                10	Gui Montag (Firebat)
+                15	Civilian
+                16	Sarah Kerrigan (Ghost)
+                17	Alan Schezar (Goliath)
+                19	Jim Raynor (Vulture)
+                20	Jim Raynor (Marine)
+                21	Tom Kazansky (Wraith)
+                22	Magellan (Science Vessel)
+                23	Edmund Duke (Siege Tank - Tank Mode)
+                25	Edmund Duke (Siege Tank - Siege Mode)
+                27	Arcturus Mengsk (Battlecruiser)
+                28	Hyperion (Battlecruiser)
+                29	Norad II (Battlecruiser)
+                99	Samir Duran (Ghost)
+                100	Alexei Stukov (Ghost)
+                102	Gerard Dugalle (Battlecruiser)
+        ##
+
+        #Buildings
+                106	Command Center
+                109	Supply Depot
+                110	Refinery
+                111	Barracks
+                112	Academy
+                113	Factory
+                114	Starport
+                116	Science Facility
+                122	Engineering Bay
+                123	Armory
+                124	Missile Turret
+                125	Bunker
+        ##
+
+        #Add-ons
+                107	Comsat Station
+                108	Nuclear Silo
+                115	Control Tower
+                117	Covert Ops
+                118	Physics Lab
+                120	Machine Shop
+        ##
+
+        #Special Buildings
+                126	Norad II (Crashed)
+                127	Ion Cannon
+                190	Psi Disruptor
+                200	Power Generator
+        ##
+
+##
+
+#Protoss
+
+        #Ground
+                61	Dark Templar
+                63	Dark Archon
+                64	Probe
+                65	Zealot
+                66	Dragoon
+                67	High Templar
+                68	Archon
+                83	Reaver
+                85	Scarab
+        ##
+
+        #Air
+                60	Corsair
+                69	Shuttle
+                70	Scout
+                71	Arbiter
+                72	Carrier
+                73	Interceptor
+                84	Observer
+        ##
+
+        #Heroes
+                74	Dark Templar (Hero)
+                75	Zeratul (Dark Templar)
+                76	Tassadar/Zeratul (Archon)
+                77	Fenix (Zealot)
+                78	Fenix (Dragoon)
+                79	Tassadar (Templar)
+                80	Mojo (Scout)
+                81	Warbringer (Reaver)
+                82	Gantrithor (Carrier)
+                86	Danimoth (Arbiter)
+                87	Aldaris (Templar)
+                88	Artanis (Scout)
+                98	Raszagal (Corsair)
+        ##
+
+        #Buildings
+                154	Nexus
+                155	Robotics Facility
+                156	Pylon
+                157	Assimilator
+                159	Observatory
+                160	Gateway
+                162	Photon Cannon
+                163	Citadel of Adun
+                164	Cybernetics Core
+                165	Templar Archives
+                166	Forge
+                167	Stargate
+                169	Fleet Beacon
+                170	Arbiter Tribunal
+                171	Robotics Support Bay
+                172	Shield Battery
+        ##
+
+        #Special Buildings
+                173	Khaydarin Crystal Formation
+                174	Protoss Temple
+                175	Xel'Naga Temple
+                189	Warp Gate
+                168	Stasis Cell
+        ##
+##
+
+#Zerg
+
+        #Ground
+                35	Larva
+                36	Egg
+                97	Lurker Egg
+                37	Zergling
+                38	Hydralisk
+                39	Ultralisk
+                40	Broodling
+                41	Drone
+                46	Defiler
+                50	Infested Terran
+                103	Lurker
+        ##
+
+        #Air
+                42	Overlord
+                43	Mutalisk
+                44	Guardian
+                62	Devourer
+                45	Queen
+                47	Scourge
+                59	Devourer/Guardian Cocoon
+        ##
+
+        #Heroes
+                48	Torrasque (Ultralisk)
+                49	Matriarch (Queen)
+                51	Infested Kerrigan
+                52	Unclean One (Defiler)
+                53	Hunter Killer (Hydralisk)
+                54	Devouring One (Zergling)
+                55	Kukulza (Mutalisk)
+                56	Kukulza (Guardian)
+                57	Yggdrasill (Overlord)
+                104	Infested Duran
+        ##
+
+        #Buildings
+                130	Infested Command Center
+                131	Hatchery
+                132	Lair
+                133	Hive
+                134	Nydus Canal
+                135	Hydralisk Den
+                136	Defiler Mound
+                137	Greater Spire
+                138	Queen's Nest
+                139	Evolution Chamber
+                140	Ultralisk Cavern
+                141	Spire
+                142	Spawning Pool
+                143	Creep Colony
+                144	Spore Colony
+                146	Sunken Colony
+                149	Extractor
+        ##
+
+        #Special Buildings
+                150	Mature Chrysalis
+                151	Cerebrate
+                152	Cerebrate Daggoth
+                201	Overmind Cocoon
+                147	Overmind (With Shell)
+                148	Overmind
+        ##
+##
+
+#Beacons
+        194	Zerg Beacon
+        195	Terran Beacon
+        196	Protoss Beacon
+        197	Zerg Flag Beacon
+        198	Terran Flag Beacon
+        199	Protoss Flag Beacon
+##
+
+#Doors
+        204	Floor Hatch
+        205	Left Upper Level Door
+        206	Right Upper Level Door
+        207	Left Pit Door
+        208	Right Pit Door
+##
+
+#Traps
+        203	Floor Missile Trap
+        209	Floor Gun Trap
+        210	Left Wall Missile Trap
+        212	Right Wall Missile Trap
+        211	Left Wall Flame Trap
+        213	Right Wall Flame Trap
+##
+
+#Powerups
+        128	Uraj Crystal
+        129	Khalis Crystal
+        215	Flag
+        216	Young Chrysalis
+        217	Psi Emitter
+        218	Data Disc
+        219	Khaydarin Crystal
+        220	Mineral Chunk 1
+        221	Mineral Chunk 2
+        222	Vespene Gas Orb 1
+        223	Vespene Gas Orb 2
+        224	Vespene Gas Sac 1
+        225	Vespene Gas Sac 2
+        226	Vespene Gas Tank 1
+        227	Vespene Gas Tank 2
+##
+
+#Resources
+        176	Mineral Field 1
+        177	Mineral Field 2
+        178	Mineral Field 3
+        188	Vespene Geyser
+##
+
+#Critters
+        89	Rhynadon
+        90	Bengalaas
+        93	Scantid
+        94	Kakaru
+        95	Ragnasaur
+        96	Ursadon
+##
+
+#Spells
+        33	Scanner Sweep
+        105	Disruption Web
+        202	Dark Swarm
+##
+
+#Unused
+        191	Zerg Marker
+        192	Terran Marker
+        193	Protoss Marker
+        4	Goliath Turret
+        18	Alan Schezar Turret
+        6	Tank Turret (Tank Mode)
+        31	Tank Turret (Siege Mode)
+        24	Edmund Duke Turret (Tank Mode)
+        26	Edmund Duke Turret (Siege Mode)
+        91	Cargo Ship
+        92	Mercenary Gunship
+        119	Starbase
+        121	Repair Bay
+        145	Zerg Building 1
+        153	Zerg Building 2
+        158	Protoss Building 1
+        161	Protoss Building 2
+        179	Cave
+        180	Cave-In
+        181	Cantina
+        182	Mining Platform
+        183	Independent Command Center
+        184	Independent Starport
+        185	Independent Jump Gate
+        186	Ruins
+        187	Khaydarin Crystal Formation
+##

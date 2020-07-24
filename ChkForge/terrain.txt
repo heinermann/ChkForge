@@ -1,0 +1,119 @@
+#Badlands
+	0	Null
+	1	Creep
+	2	Dirt
+	20	Mud
+	4	High Dirt
+	6	Water
+	8	Grass
+	10	High Grass
+	18	Structure
+	16	Asphalt
+	12	Rocky Ground
+##
+#Space Platform
+	0	Null
+	1	Creep
+	2	Space
+	14	Low Platform
+	18	Rusty Pit
+	4	Platform
+	16	Dark Platform
+	6	Plating
+	12	Solar Array
+	8	High Platform
+	10	High Plating
+	20	Elevated Catwalk
+
+##
+#Installation
+	0	Null
+	2	Substructure
+	4	Substructure Plating
+	6	Floor
+	8	Roof
+	10	Plating
+	12	Bottomless Pit
+	14	Substructure Panels
+	16	Buildable Substructure
+##
+#Ashworld
+	0	Null
+	1	Creep
+	14	Magma
+	2	Dirt
+	4	Lava
+	10	Shale
+	16	Brocken Rock
+	6	High Dirt
+	8	High Lava
+	12	High Shale
+##
+#Jungle
+	0	Null
+	1	Creep
+	6	Water
+	2	Dirt
+	26	Mud
+	8	Jungle
+	10	Rocky Ground
+	14	Ruins
+	12	Raised Jungle
+	16	Temple
+	4	High Dirt
+	18	High Jungle
+	20	High Ruins
+	22	High Raised Jungle
+	24	High Temple
+##
+#Desert
+	0	Null
+	1	Creep
+	6	Tar
+	2	Dirt
+	26	Dried Mud
+	8	Sand Dunes
+	10	Rocky Ground
+	14	Crags
+	12	Sandy Sunken Pit
+	16	Compound
+	4	High Dirt
+	18	High Sand Dunes
+	20	High Crags
+	22	High Sandy Sunken Pit
+	24	High Compound
+##
+#Ice
+	0	Null
+	1	Creep
+	6	Ice
+	2	Snow
+	26	Moguls
+	8	Dirt
+	10	Rocky Snow
+	14	Grass
+	12	Water
+	16	Outpost
+	4	High Snow
+	18	High Dirt
+	20	High Grass
+	22	High Water
+	24	High Outpost
+##
+#Twilight
+	0	Null
+	1	Creep
+	6	Water
+	2	Dirt
+	26	Mud
+	8	Crushed Rock
+	10	Crevices
+	14	Flagstones
+	12	Sunken Ground
+	16	Basilica
+	4	High Dirt
+	18	High Crushed Rock
+	20	High Flagstones
+	22	High Sunken Ground
+	24	High Basilica
+##

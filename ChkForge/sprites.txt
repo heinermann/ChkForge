@@ -1,0 +1,641 @@
+#Doodads
+#Ashworld Doodads
+#Dirt
+	0	Rock Arch 1
+	1	Rock Arch 2
+	3	Rock Bush 1
+	2	Rock Bush 2
+	4	Rock Bush 3
+	5	Magma Rocks 1
+	6	Magma Rocks 2
+	7	Rock 1
+	8	Rock 4
+	9	Rock 5
+	11	Rock Formation 2
+	12	Rock Formation 3
+	10	Rock Formation 4
+##
+#Shale
+	13	Lava Rocks 1
+	14	Lava Rocks 2
+	15	Lava Rocks 3
+##
+##
+#Jungle Doodads
+#Dirt
+	16	Rock Pillar 1
+	17	Rock Pillar 2
+	18	Rock Pillar 3
+	19	Rock Pillar 4
+	23	Tree 1
+	24	Tree 2
+	25	Tree 4
+	26	Tree 3
+	31	Silo
+	32	Fan
+	33	Moss Rocks 1
+	35	Moss Rocks 2
+	34	Moss Rocks 3
+	37	Pillar - Right
+	36	Pillar - Left
+	38	Single Strange Rock
+	39	Dual Strange Rock
+	45	Wierd Rocks
+	46	Small Rock Pillar
+	47	Large Sponge
+##
+#Jungle
+	20	Bush 1
+	21	Bush 2
+	22	Bush 3
+	27	Tree 1
+	28	Tree 2
+	29	Tree 3
+	30	Tree 4
+##Jungle
+#High Dirt
+	40	Moss Rocks 1
+	41	Moss Rocks 2
+	42	Moss Rocks 3
+	44	Pillar - Right
+	43	Pillar - Left
+##
+#Ruins
+	48	Pillar - Right
+	49	Strange Pillar
+	50	Small Temple 1
+	51	Small Temple 2
+	52	Small Temple 3
+	53	Ancient Temple
+	55	Statue - Right
+	54	Statue - Left
+##
+##
+#Space Doodads
+#Platform
+	56	Radar Dish 1
+	57	Radar Dish 2
+	58	Radar Dish 3
+	59	Globe 1
+	60	Globe 2
+	61	Globe Stand
+	62	Weird Stand 1
+	63	Weird Stand 2
+	65	Solar Fan 1
+	64	Solar Fan 2
+	67	New Gettysburg Sign - Right
+	70	New Gettysburg Sign - Left
+	66	Destroyed NG Sign - Right
+	69	Destroyed NG Sign - Left
+	68	Sons of Korhal Sign - Right
+	71	Sons of Korhal Sign - Left
+	72	Blizzard Sign - Right
+	73	Blizzard Sign - Left
+##
+	74	Solar Array - Mysterious Pillar
+	75	Plating - Hideout
+##
+#Badlands Doodads
+#Dirt
+	76	Rock Pile 1
+	77	Rock Pile 2
+	78	Rock Pile 3
+	79	Rock Pile 4
+	84	Silo
+	85	Tree 1
+	86	Tree 3
+	87	Tree 4
+	88	Tree 2
+##Dirt
+#Grass
+	80	Rock Pile 1
+	81	Rock Pile 2
+	82	Rock Pile 3
+	83	Rock Pile 4
+	89	Tree 3
+##
+#Structure Wall
+	90	HoverWorld - BRight
+	91	HoverWorld - BLeft
+	92	Store - Left
+	93	Store - Right
+	94	Store - BLeft
+	95	Store - BRight
+	96	Tracey's - Left
+	97	Tracey's - Right
+	98	Tracey's - BRight
+	99	Tracey's - BLeft
+##
+#Asphalt
+	100	Destroyed NG Sign - Right
+	103	Destroyed NG Sign - Left
+	101	New Gettysburg Sign - Right
+	104	New Gettysburg Sign - Left
+	102	Sons of Korhal Sign - Right
+	105	Sons of Korhal Sign - Left
+	106	Blizzard Sign - Right
+	109	Blizzard Sign - Left
+	107	Mar Sara Sign - Right
+	110	Mar Sara Sign - Left
+	108	Destroyed MS Sign - Right
+	111	Destroyed MS Sign - Left
+	112	Destroyed MS Sign - Left
+	113	Destroyed MS Sign - Left
+	114	Destroyed MS Sign - Left
+	115	Destroyed MS Sign - Left
+	116	Destroyed MS Sign - Left
+	117	Destroyed MS Sign - Left
+	118	Destroyed MS Sign - Left
+	125	Destroyed MS Sign - Left
+	126	Destroyed MS Sign - Left
+	129	Destroyed MS Sign - Left
+##
+##
+#Installation Doodads
+#Substructure Wall
+	119	Fans - Left
+	120	Fans - Right
+##
+#Substructure
+	121	Mechanical Arm 1
+	122	Mechanical Arm 2
+	123	Mechanical Arm 3
+	124	Mechanical Arm 4
+	127	Cog - Left
+	128	Cog - Right
+##
+##
+#Twilight Doodads
+#Dirt
+	386	Strange Building 1
+	387	Strange Building 2
+	389	Oddity 1
+	388	Oddity 2
+	394	Oddity 3
+	390	Oddity 5
+	391	Oddity 6
+	392	Arch 1
+##
+	393	Mystery Doodad
+#Crushed Rock
+	395	Rock Tree 1
+	396	Rock Tree 2
+	397	Rock Tree 3
+	398	Rock Spire 1
+	399	Rock Spire 2
+##
+#Flagstones
+	400	Statue - Left
+	401	Statue - Right
+##
+##
+#Ice Doodads
+#High Snow
+	402	Weird Building 2
+	403	Weird Building 1
+	404	Dome 2
+	405	Dome 1
+	407	Satellite Dish - Right
+	432	Buried Radar Dome
+	408	Large Rocks 3
+	409	Large Rocks 4
+	414	Strange Obelisk
+	415	Radar Dome - Left
+	416	Radar Dome - Right
+##
+#Snow
+	406	Satellite Dish - Left
+	412	Unused Tree 1
+	413	Unused Tree 2
+	417	Tree 1
+	418	Tree 2
+	419	Tree 3
+	420	Tree 4
+	421	Odd Building
+	422	Sunken Building
+	423	Sunken Command Center
+	424	Bare Tree 1
+	425	Bare Tree 2
+	426	Satellite Dish 2
+	427	Satellite Dish - Front
+	428	Satellite Dish - Left
+	429	Buried Radar Dome
+	430	Large Rock 1
+	431	Large Rock 2
+	433	Cylinder
+	434	Rocks 2
+	435	Large Rock 1
+	436	Large Rock 2
+	437	Cylinders - Left
+	438	Cylinders - Right
+	439	Buried Radar Dome
+##
+#Dirt
+	440	Antenna - Left
+	441	Antenna - Right
+##
+#Grass
+	442	Tree 1
+	443	Tree 2
+	444	Tree 3
+	445	Tree 4
+##
+	410	Unused Tree 1
+	411	Unused Tree 2
+##
+#Desert Doodads
+#Sand Dunes
+	446	Shack - Right
+	447	Destroyed Shack
+	476	Rubble - Left
+	477	Rubble - Right
+	478	Cactus 5
+	454	Shack - Back Right
+##
+#High Dirt
+	448	Oil Shack
+	449	Medic Shack
+	450	Overgrown Shack
+	451	Destroyed Building
+	453	Destroyed Shack
+	470	Pumping Station - Right
+	471	Pumping Station - Left
+	472	Rubble
+##
+#Dirt
+	455	Shack - Right
+	463	Shack - Back Left
+	464	Building
+	465	Destroyed Shack
+	466	Joe's Shack
+	467	Shack - Back Right
+	468	Destroyed Building
+	469	Blinking Light Shack
+	473	Rubble
+	474	Pumping Station - Left
+	475	Pumping Station - Right
+##
+#High Sand Dunes
+	456	Destroyed Shack
+	457	Destroyed Building
+	458	Sunken Command Center
+	459	Sunken Factory
+	460	Outhouse 1
+	461	Cactus 6
+	462	Cactus 7
+##
+	479	Tar - Gas Spout
+	480	Sunken Pit - Sand Worm
+	452	Unused Cactus
+##
+##
+#Zerg Units
+#Ground Units
+	140	Drone
+	141	Drone Death
+	159	Zergling
+	160	Zergling Death
+	147	Hydralisk Death
+	485	Lurker
+	484	Lurker Death
+	138	Defiler
+	139	Defiler Death
+	157	Ultralisk
+	158	Ultralisk Death
+	133	Broodling
+	134	Broodling Death
+	135	Infested Terran
+	136	Infested Terran Explosion
+##
+#Air Units
+	153	Overlord
+	154	Overlord Death
+	130	Scourge
+	131	Scourge Death
+	132	Scourge Explosion
+	151	Mutalisk
+	152	Mutalisk Death
+	144	Guardian
+	145	Guardian Death
+	482	Devourer
+	483	Devourer Death
+	155	Queen
+	156	Queen Death
+##
+#Buildings
+	167	Hatchery
+	169	Lair
+	168	Hive
+	166	Creep Colony
+	170	Sunken Colony
+	181	Spore Colony
+	178	Extractor
+	165	Evolution Chamber
+	163	Spawning Pool
+	179	Hydralisk Den
+	173	Queen's Nest
+	180	Spire
+	171	Greater Spire
+	172	Defiler Mound
+	177	Ultralisk Cavern
+	174	Nydus Canal
+	162	Infested Command Center
+##
+#Special Buildings
+	161	Cerebrate
+	164	Mature Chrysalis
+	175	Overmind (with shell)
+	176	Overmind (without shell)
+	495	Overmind Cocoon
+##
+#Extra
+	149	Larva
+	150	Larva Death
+	142	Zerg Egg
+	143	Zerg Egg Death
+	319	Egg Spawn
+	481	Lurker Egg
+	137	Guardian Coccoon
+	182	Zerg Building Spawn (small)
+	183	Zerg Building Spawn (medium)
+	184	Zerg Building Spawn (large)
+	185	Zerg Building Death
+	186	Zerg Building Rubble (small)
+	187	Zerg Building Rubble (large)
+##
+##
+#Protoss Units
+#Ground Units
+	194	Probe
+	201	Zealot
+	191	Dragoon
+	192	Dragoon Death
+	197	High Templar
+	320	Templar Glow
+	488	Dark Templar (unit)
+	198	Dark Templar (hero)
+	199	Reaver
+	200	Scarab
+##
+#Air Units
+	195	Scout
+	487	Corsair
+	188	Arbiter
+	190	Carrier
+	196	Shuttle
+	202	Observer
+	193	Interceptor
+##
+#Buildings
+	211	Nexus
+	214	Pylon
+	204	Assimilator
+	207	Forge
+	212	Photon Cannon
+	208	Gateway
+	216	Shield Battery
+	209	Cybernetics Core
+	206	Citadel of Adun
+	203	Templar Archives
+	215	Robotics Facility
+	205	Observatory
+	219	Robotics Support Bay
+	217	Stargate
+	221	Fleet Beacon
+	213	Arbiter Tribunal
+##
+#Special Buildings
+	210	Khaydarin Crystal
+	218	Stasis Cell
+	220	Protoss Temple
+	497	Xel'Naga Temple
+	499	Warp Gate
+##
+#Extra
+	321	Psi Field
+	222	Protoss Building Explosion
+	223	Protoss Building Rubble (small)
+	224	Protoss Building Rubble (large)
+##
+##
+#Terran Units
+#Ground Units
+	239	SCV
+	236	Marine Death
+	490	Medic Remnants
+	230	Ghost Death
+	244	Vulture
+	232	Goliath Base
+	233	Goliath Turret
+##
+#Air Units
+	238	Wraith
+	227	Dropship
+	246	Science Vessel
+	247	Science Vessel Turret
+	491	Valkyrie
+	225	Battlecruiser
+##
+#Buildings
+	252	Command Center
+	253	Supply Depot
+	269	Engineering Bay
+	259	Missile Turret Base
+	249	Barracks
+	262	Bunker
+	248	Academy
+	255	Factory
+	250	Armory
+	268	Starport
+	264	Science Facility
+##
+#Addons
+	251	Comsat Station
+	265	Nuke Silo
+	258	Machine Shop
+	254	Control Tower
+	256	Covert Ops
+	261	Physics Lab
+##
+#Special Buildings
+	257	Ion Cannon
+	260	Crashed Norad II
+	496	Power Generator
+	498	Psi Disruptor
+##
+#Extra
+	270	Terran Building Construction
+	271	Terran Addon Construction
+	272	Terran Building Explosion
+	273	Terran Building Rubble (small)
+	274	Terran Building Rubble (large)
+	245	Spider Mine
+	267	Nuclear Missile Explosion
+	231	Nuke Target
+##
+##
+#Resources
+	279	Mineral Field 1
+	280	Mineral Field 2
+	281	Mineral Field 3
+##
+#Critters
+	276	Ragnasaur
+	277	Rynadon
+	278	Bengalaas
+	492	Scantid
+	493	Kakaru
+	494	Ursadon
+##
+#Beacons
+	283	Zerg Beacon
+	284	Terran Beacon
+	285	Protoss Beacon
+##
+#Spells
+	286	Dark Swarm
+	503	Disruption Web
+	379	Recall
+	380	Scanner Sweep Chunk
+	500	Feedback Hit (small)
+	501	Feedback Hit (medium)
+	502	Feedback Hit (large)
+	361	Stasis Field
+	514	Maelstrom Hit
+	364	Ensnare
+##
+#Powerups
+	287	Flag
+	288	Chrysalis
+	289	Psi Emitter
+	290	Data Disc
+	291	Khaydarin Crystal
+	515	Uraj Crystal
+	516	Khalis Crystal
+	292	Mineral Chunk 1
+	293	Mineral Chunk 2
+	294	Vespene Gas Orb 1
+	295	Vespene Gas Orb 2
+	296	Vespene Gas Sac 1
+	297	Vespene Gas Sac 2
+	298	Vespene Gas Tank 1
+	299	Vespene Gas Tank 2
+##
+#Traps
+	303	Floor Gun Trap
+	308	Floor Missile Trap
+##
+#Doors
+	381	Left Upper Level Door
+	382	Right Upper Level Door
+	383	Left Pit Door
+	384	Right Pit Door
+	385	Floor Hatch
+##
+#Animations
+	311	Geyser Smoke 1
+	312	Geyser Smoke 2
+	313	Geyser Smoke 3
+	314	Geyser Smoke 4
+	315	Geyser Smoke 5
+	322	Burrowing Dust
+	323	Landing Dust 1
+	324	Landing Dust 2
+	325	Landing Dust 3
+	326	Landing Dust 4
+	327	Landing Dust 5
+	328	Lifting Dust 1
+	329	Lifting Dust 2
+	330	Lifting Dust 3
+	331	Lifting Dust 4
+	310	Grenade Smoke
+	309	Missile Trail
+	505	Halo Rocket Trail
+	373	Scarab Overlay
+##
+#Bullets
+	332	Needle Spines
+	344	eldFire.grp
+	351	Yamato Gun Trail
+	365	Glave Wurm Hit
+	367	Glave Wurm Trail
+	368	Seeker Spores Overlay
+	371	Plasma.grp
+	372	plasdrip.grp
+	378	Flamethrower
+	507	elbFireC.grp
+	511	Subterranean Spines
+##
+#Other
+	282	Scout (unused)
+	374	Hallucination Death
+	375	Hallucination Death
+	376	Hallucination Death
+	377	Bunker Overlay
+	301	Start Location
+	302	Map Revealer
+	316	explo2.grp
+	317	dbl_exp.grp
+	318	Cursor Marker
+##
+#Crashes StarCraft
+	146	Hydralisk
+	148	Infested Kerrigan
+	189	Archon
+	486	Dark Archon
+	226	Civilian
+	235	Marine
+	228	Firebat
+	489	Medic
+	229	Ghost
+	234	Kerrigan (Ghost)
+	240	Siege Tank Base (Tank)
+	241	Siege Tank Turret (Tank)
+	242	Siege Tank Base (Siege)
+	243	Siege Tank Turret (Siege)
+	263	Refinery
+	237	Scanner Sweep
+	275	Vespene Geyser
+	300	White Circle 1
+	370	White Circle 2
+	504	White Circle 3
+	510	zmarker.grp
+	304	Wall Missile Trap 1
+	305	Wall Missile Trap 2
+	306	Wall Flame Trap 1
+	307	Wall Flame Trap 2
+	333	Dual Photon Blaster Hit
+	334	Particle beam hit
+	335	Anti-Matter Missile
+	336	Phase Disruptor
+	337	Pulse Cannon
+	338	STS/STA Photon Cannon
+	339	Psionic Storm
+	340	Fusion Cutter Hit
+	341	Gauss Rifle Hit
+	342	Gemini Missiles
+	343	Fragmentation Grenade
+	346	C-10 Rifle Hit
+	347	ATS/ATA Laser
+	348	Burst Lasers
+	349	Arclite Shock Cannon Hit
+	350	Yamato Gun
+	345	Lockdown missile
+	352	Emp shockwave missile
+	353	Needle Spine Hit
+	354	pdriphit.grp
+	355	Sunken Colony Tentacle
+	356	Lethal Ejector??
+	357	Acid Spore
+	358	Glave Wurm
+	359	Seeker Spores
+	360	Parasite
+	362	Plague
+	363	Consume
+	366	Psionic Shockwave Hit
+	369	Phase Disruptor
+	506	Neutron Flare
+	508	Optical Flare Grenade
+	509	Halo Rockets
+	512	Corrosive Acid Shot
+##
