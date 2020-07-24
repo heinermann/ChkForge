@@ -2,3 +2,7 @@
 	path = ads
 	url = git@github.com:githubuser0xFFFF/Qt-Advanced-Docking-System.git
 
+[submodule "openbw/openbw"]
+	path = openbw/openbw
+	url = git@github.com:heinermann/openbw.git
+	branch = mapedit
