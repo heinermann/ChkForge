@@ -36,7 +36,6 @@ namespace bwgame {
 struct saved_state {
   bwgame::state st;
   bwgame::action_state action_st;
-  std::array<bwgame::apm_t, 12> apm;
 };
 
 struct main_t {
@@ -80,7 +79,6 @@ void main_t::update() {
 		auto v = std::make_unique<saved_state>();
 		v->st = copy_state(ui.st);
 		v->action_st = copy_state(ui.action_st, ui.st, v->st);
-		v->apm = ui.apm;
 
 		bwgame::a_map<int, std::unique_ptr<saved_state>> new_saved_states;
 		new_saved_states[ui.st.current_frame] = std::move(v);
@@ -94,7 +92,6 @@ void main_t::update() {
 	  }
 	}
 	ui.replay_functions::next_frame();
-	for (auto& v : ui.apm) v.update(ui.st.current_frame);
   };
 
   if (!ui.is_done() || ui.st.current_frame != ui.replay_frame) {
@@ -106,7 +103,6 @@ void main_t::update() {
 		if (ui.st.current_frame > ui.replay_frame || v->st.current_frame > ui.st.current_frame) {
 		  ui.st = copy_state(v->st);
 		  ui.action_st = copy_state(v->action_st, v->st, ui.st);
-		  ui.apm = v->apm;
 		}
 	  }
 	  if (ui.st.current_frame < ui.replay_frame) {
