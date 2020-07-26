@@ -1,22 +1,39 @@
 #ifndef MAPVIEW_H
 #define MAPVIEW_H
 
-#include <QFrame>
+#include "DockWidgetWrapper.h"
+#include "ui_mapview.h"
+#include <QImage>
+#include <QTimer>
+#include <QGraphicsScene>
+#include <memory>
 
-namespace Ui {
-  class MapView;
-}
+#include <SDL.h>
 
-class MapView : public QFrame
+struct main_t;
+
+class MapView : public DockWidgetWrapper<Ui::MapView>
 {
   Q_OBJECT
 
 public:
   explicit MapView(QWidget *parent = nullptr);
-  ~MapView();
+  virtual ~MapView();
+
+  void SDLInit();
 
 private:
-  Ui::MapView *ui;
+  std::unique_ptr<QImage> buffer;
+  main_t* bw;
+  std::unique_ptr<QTimer> timer;
+
+  SDL_Window* WindowRef;
+  SDL_Renderer* RendererRef;
+
+private slots:
+  void onCloseRequested();
+  void update();
+
 };
 
 #endif // MAPVIEW_H

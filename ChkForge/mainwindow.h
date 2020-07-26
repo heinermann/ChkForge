@@ -35,6 +35,8 @@ private:
     this->connect(action, &QAction::triggered, this, method);
   }
 
+  void createMapView();
+
   void toggleToolWindows(bool isOpen);
 };
 #endif // MAINWINDOW_H
