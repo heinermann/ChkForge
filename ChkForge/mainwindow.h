@@ -6,6 +6,8 @@
 
 #include "ui_mainwindow.h"
 
+class MapView;
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -17,6 +19,8 @@ class MainWindow : public QMainWindow
 public:
   MainWindow(QWidget *parent = nullptr);
   ~MainWindow();
+
+  void afterCreated();
 
 private:
   Ui::MainWindow *ui;
@@ -35,8 +39,10 @@ private:
     this->connect(action, &QAction::triggered, this, method);
   }
 
-  void createMapView();
+  MapView* createMapView();
 
   void toggleToolWindows(bool isOpen);
+
+
 };
 #endif // MAINWINDOW_H

@@ -11,6 +11,7 @@ int main(int argc, char *argv[])
 
   MainWindow w;
   w.show();
+  w.afterCreated();
   int result = a.exec();
 
   SDL_Quit();

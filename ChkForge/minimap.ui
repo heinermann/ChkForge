@@ -11,11 +11,29 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Frame</string>
+   <string>Minimap</string>
+  </property>
+  <property name="frameShape">
+   <enum>QFrame::Panel</enum>
+  </property>
+  <property name="frameShadow">
+   <enum>QFrame::Sunken</enum>
   </property>
   <layout class="QGridLayout" name="gridLayout">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
    <item row="0" column="0">
-    <widget class="QOpenGLWidget" name="openGLWidget"/>
+    <widget class="QWidget" name="sdl_widget" native="true"/>
    </item>
   </layout>
  </widget>

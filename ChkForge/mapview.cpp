@@ -6,7 +6,10 @@
 #include <QSize>
 #include <QWindow>
 
+#include "minimap.h"
+
 #include "../openbw/openbw/ui/ui.h"
+#include "../openbw/openbw/ui/native_window_drawing.h"
 #include "../openbw/openbw/ui/common.h"
 #include "../openbw/openbw/bwgame.h"
 #include "../openbw/openbw/replay.h"
@@ -66,7 +69,6 @@ void main_t::update() {
   auto tick_speed = std::chrono::milliseconds((bwgame::fp8::integer(42) / ui.game_speed).integer_part());
 
   if (now - last_fps >= std::chrono::seconds(1)) {
-	//log("game fps: %g\n", fps_counter / std::chrono::duration_cast<std::chrono::duration<double, std::ratio<1, 1>>>(now - last_fps).count());
 	last_fps = now;
 	fps_counter = 0;
   }
@@ -183,7 +185,6 @@ void MapView::SDLInit()
 
   bw = new main_t(std::move(player));
   bw->ui.create_window = false;
-  bw->ui.exit_on_close = false;
 
   bw->ui.load_all_image_data(load_data_file);
 
@@ -200,10 +201,34 @@ void MapView::SDLInit()
   bw->ui.set_image_data();
   bw->ui.global_volume = 0;
 
-  timer->start(30);
+  timer->start(33);
 }
 
 void MapView::update()
 {
   bw->update();
+}
+
+void MapView::minimap_update()
+{
+  bw->ui.update_minimap();
+}
+
+void MapView::process_minimap_event(const native_window::event_t& e)
+{
+  bw->ui.process_minimap_event(e);
+}
+
+void MapView::blit_minimap_to_surface(native_window_drawing::surface* dst)
+{
+  bw->ui.minimap_blit_to(dst);
+}
+
+void MapView::changeEvent(QEvent* event)
+{
+  switch (event->type()) {
+  case QEvent::FocusIn:
+    Minimap::g_minimap->setActiveMapView(this);
+    break;
+  }
 }

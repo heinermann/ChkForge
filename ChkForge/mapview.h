@@ -12,6 +12,16 @@
 
 struct main_t;
 
+namespace native_window
+{
+  struct event_t;
+}
+
+namespace native_window_drawing
+{
+  struct surface;
+}
+
 class MapView : public DockWidgetWrapper<Ui::MapView>
 {
   Q_OBJECT
@@ -22,13 +32,19 @@ public:
 
   void SDLInit();
 
+  void minimap_update();
+  void process_minimap_event(const native_window::event_t& e);
+  void blit_minimap_to_surface(native_window_drawing::surface* dst);
+
 private:
   std::unique_ptr<QImage> buffer;
-  main_t* bw;
+  main_t* bw = nullptr;
   std::unique_ptr<QTimer> timer;
 
-  SDL_Window* WindowRef;
-  SDL_Renderer* RendererRef;
+  SDL_Window* WindowRef = nullptr;
+  SDL_Renderer* RendererRef = nullptr;
+
+  virtual void changeEvent(QEvent* event) override;
 
 private slots:
   void onCloseRequested();
