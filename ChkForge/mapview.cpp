@@ -155,11 +155,13 @@ MapView::MapView(QWidget *parent) :
   connect(qobject_cast<ads::CDockWidget*>(this), SIGNAL(closeRequested()), SLOT(onCloseRequested()));
 
   timer = std::make_unique<QTimer>(this);
-  connect(timer.get(), SIGNAL(timeout()), this, SLOT(update()));
+  connect(timer.get(), SIGNAL(timeout()), this, SLOT(updateLogic()));
 }
 
 MapView::~MapView()
 {
+  Minimap::g_minimap->removeMyMapView(this);
+
   SDL_DestroyRenderer(this->RendererRef);
   SDL_DestroyWindow(this->WindowRef);
   delete bw;
@@ -175,6 +177,13 @@ void MapView::onCloseRequested()
 
 void MapView::SDLInit()
 {
+  ui->sdl_view->setAttribute(Qt::WA_PaintOnScreen);
+  ui->sdl_view->setAttribute(Qt::WA_OpaquePaintEvent);
+  ui->sdl_view->setAttribute(Qt::WA_NoSystemBackground);
+
+  // Set strong focus to enable keyboard events to be received
+  ui->sdl_view->setFocusPolicy(Qt::StrongFocus);
+
   WindowRef = SDL_CreateWindowFrom((void*)ui->sdl_view->winId());
   RendererRef = SDL_CreateRenderer(WindowRef, -1, SDL_RENDERER_ACCELERATED);
 
@@ -204,24 +213,33 @@ void MapView::SDLInit()
   timer->start(33);
 }
 
-void MapView::update()
+int MapView::map_width()
+{
+  return bw->ui.game_st.map_tile_width;
+}
+
+int MapView::map_height()
+{
+  return bw->ui.game_st.map_tile_height;
+}
+
+void MapView::updateLogic()
 {
   bw->update();
 }
 
-void MapView::minimap_update()
+void MapView::draw_minimap(uint8_t* data, size_t data_pitch, size_t surface_width, size_t surface_height)
 {
-  bw->ui.update_minimap();
+  bw->ui.draw_minimap(data, data_pitch, surface_width, surface_height);
 }
 
-void MapView::process_minimap_event(const native_window::event_t& e)
+void MapView::move_minimap(int x, int y)
 {
-  bw->ui.process_minimap_event(e);
+  bw->ui.move_minimap(x, y);
 }
 
-void MapView::blit_minimap_to_surface(native_window_drawing::surface* dst)
-{
-  bw->ui.minimap_blit_to(dst);
+uint32_t* MapView::get_minimap_palette() {
+  return bw->ui.get_minimap_palette();
 }
 
 void MapView::changeEvent(QEvent* event)

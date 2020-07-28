@@ -5,14 +5,9 @@
 #include "ui_minimap.h"
 
 #include <QTimer>
-
-#include <SDL.h>
+#include <QImage>
 
 class MapView;
-
-namespace native_window {
-  struct window;
-};
 
 class Minimap : public DockWidgetWrapper<Ui::Minimap>
 {
@@ -22,23 +17,25 @@ public:
   explicit Minimap(QWidget *parent = nullptr);
   virtual ~Minimap();
 
-  void SDLInit();
-
   void setActiveMapView(MapView* view);
+  void removeMyMapView(MapView* view);
+  void resetMapBuffer();
+  void resetPalette();
+
+  void SDLInit();
 
   static Minimap* g_minimap;
 private:
+  QImage minimap_buffer{ 256, 256, QImage::Format::Format_Indexed8 };
+
   std::unique_ptr<QTimer> timer;
-
-  SDL_Window* WindowRef = nullptr;
-  SDL_Renderer* RendererRef = nullptr;
-
   MapView* activeMapView = nullptr;
 
-  std::unique_ptr<native_window::window> sdl_minimap_wnd;
+  virtual bool eventFilter(QObject* obj, QEvent* event) override;
+  void paint_minimap(QWidget* obj, QPaintEvent* paintEvent);
 
 private slots:
-  void update();
+  void updateLogic();
 };
 
 #endif // MINIMAP_H

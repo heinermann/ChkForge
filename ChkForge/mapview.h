@@ -32,9 +32,12 @@ public:
 
   void SDLInit();
 
-  void minimap_update();
-  void process_minimap_event(const native_window::event_t& e);
-  void blit_minimap_to_surface(native_window_drawing::surface* dst);
+  void move_minimap(int x, int y);
+  void draw_minimap(uint8_t* data, size_t data_pitch, size_t surface_width, size_t surface_height);
+  uint32_t* get_minimap_palette();
+
+  int map_width();
+  int map_height();
 
 private:
   std::unique_ptr<QImage> buffer;
@@ -48,7 +51,7 @@ private:
 
 private slots:
   void onCloseRequested();
-  void update();
+  void updateLogic();
 
 };
 

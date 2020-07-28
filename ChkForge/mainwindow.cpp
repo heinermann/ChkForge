@@ -14,10 +14,10 @@ MainWindow::MainWindow(QWidget *parent)
   , ui(new Ui::MainWindow)
 {
   ui->setupUi(this);
+  this->setStyleSheet("QMainWindow::separator{ width: 0px; height: 0px; }");
 
   // Create tool panels
   m_DockManager = new ads::CDockManager(this);
-  m_DockManager->setStyleSheet("QMainWindow::separator{ width: 2px }");
 
   Minimap* minimap = new Minimap();
   ui->menu_Tool_Windows->addAction(minimap->toggleViewAction());

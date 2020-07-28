@@ -13,6 +13,24 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QSplitter::handle:horizontal {
+    width: 3px;
+}
+
+QSplitter::handle:vertical {
+    height: 3px;
+}
+
+QSplitter::handle {
+    background-color: palette(window);
+}
+
+#centralwidget {
+    background-color: palette(window);
+}
+</string>
+  </property>
   <property name="dockOptions">
    <set>QMainWindow::AllowTabbedDocks</set>
   </property>
@@ -148,16 +166,83 @@
     </property>
     <addaction name="action_About"/>
    </widget>
+   <widget class="QMenu" name="menu_Debug">
+    <property name="title">
+     <string>&amp;Test</string>
+    </property>
+    <addaction name="action_Play"/>
+    <addaction name="action_Reset"/>
+    <addaction name="separator"/>
+    <addaction name="action_Duplicate_State"/>
+   </widget>
    <addaction name="menu_File"/>
    <addaction name="menu_Edit"/>
    <addaction name="menu_View"/>
    <addaction name="menu_Layer"/>
    <addaction name="menu_Scenario"/>
+   <addaction name="menu_Debug"/>
    <addaction name="menu_Tools"/>
    <addaction name="menu_Window"/>
    <addaction name="menu_Help"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QToolBar" name="file_toolbar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="action_New"/>
+   <addaction name="action_Open"/>
+   <addaction name="action_Save"/>
+   <addaction name="actionSave_As"/>
+   <addaction name="separator"/>
+   <addaction name="action_Undo"/>
+   <addaction name="action_Redo"/>
+   <addaction name="action_Properties"/>
+   <addaction name="action_Delete"/>
+   <addaction name="separator"/>
+  </widget>
+  <widget class="QToolBar" name="layer_toolbar">
+   <property name="windowTitle">
+    <string>toolBar_2</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QToolBar" name="test_toolbar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="action_Play"/>
+   <addaction name="action_Reset"/>
+   <addaction name="action_Duplicate_State"/>
+  </widget>
+  <widget class="QToolBar" name="zoom_toolbar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
   <action name="action_New">
    <property name="icon">
     <iconset resource="Icons.qrc">
@@ -306,6 +391,10 @@
    </property>
   </action>
   <action name="action_Properties">
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/icons/properties.png</normaloff>:/icons/properties.png</iconset>
+   </property>
    <property name="text">
     <string>P&amp;roperties</string>
    </property>
@@ -611,6 +700,30 @@
   <action name="action_About">
    <property name="text">
     <string>&amp;About</string>
+   </property>
+  </action>
+  <action name="action_Play">
+   <property name="text">
+    <string>&amp;Play/Pause</string>
+   </property>
+   <property name="shortcut">
+    <string>F5</string>
+   </property>
+  </action>
+  <action name="action_Reset">
+   <property name="text">
+    <string>&amp;Reset</string>
+   </property>
+   <property name="shortcut">
+    <string>Shift+F5</string>
+   </property>
+  </action>
+  <action name="action_Duplicate_State">
+   <property name="text">
+    <string>Duplicate State</string>
+   </property>
+   <property name="toolTip">
+    <string>Copy the current state to a new map</string>
    </property>
   </action>
  </widget>

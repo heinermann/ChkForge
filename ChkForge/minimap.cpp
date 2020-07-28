@@ -6,56 +6,137 @@
 #include "../openbw/openbw/ui/native_window_drawing.h"
 
 #include <QMessageBox>
+#include <QEvent>
+#include <QMouseEvent>
+#include <QResizeEvent>
+#include <QPaintEvent>
+#include <QPainter>
+#include <QVector>
 
 Minimap* Minimap::g_minimap = nullptr;
 
 Minimap::Minimap(QWidget *parent) :
-  DockWidgetWrapper<Ui::Minimap>("Minimap", parent),
-  sdl_minimap_wnd(new native_window::window)
+  DockWidgetWrapper<Ui::Minimap>("Minimap", parent)
 {
+  // Setup some states to allow direct rendering into the widget
+  //ui->sdl_widget->setAttribute(Qt::WA_PaintOnScreen);
+  //ui->sdl_widget->setAttribute(Qt::WA_OpaquePaintEvent);
+  //ui->sdl_widget->setAttribute(Qt::WA_NoSystemBackground);
+
+  // Set strong focus to enable keyboard events to be received
+  //ui->sdl_widget->setFocusPolicy(Qt::StrongFocus);
+
   timer = std::make_unique<QTimer>(this);
-  connect(timer.get(), SIGNAL(timeout()), this, SLOT(update()));
+  connect(timer.get(), SIGNAL(timeout()), this, SLOT(updateLogic()));
+
+  ui->surface->installEventFilter(this);
 }
 
 Minimap::~Minimap()
 {
-  SDL_DestroyRenderer(this->RendererRef);
-  SDL_DestroyWindow(this->WindowRef);
 }
 
 void Minimap::SDLInit()
 {
   g_minimap = this;
 
-  WindowRef = SDL_CreateWindowFrom((void*)ui->sdl_widget->winId());
-  RendererRef = SDL_CreateRenderer(WindowRef, -1, SDL_RENDERER_ACCELERATED);
-
-  this->sdl_minimap_wnd->set(WindowRef);
-
   timer->start(33);
 }
 
-void Minimap::update()
+void Minimap::updateLogic()
 {
   if (!activeMapView) return;
 
-  native_window::event_t e;
-  while (this->sdl_minimap_wnd->peek_message(e)) {
-    activeMapView->process_minimap_event(e);
-  }
+  activeMapView->draw_minimap(this->minimap_buffer.bits(), this->minimap_buffer.bytesPerLine(), this->minimap_buffer.width(), this->minimap_buffer.height());
 
-  activeMapView->minimap_update();
-
-  std::unique_ptr<native_window_drawing::surface> wnd_surface = native_window_drawing::get_window_surface(this->sdl_minimap_wnd.get());
-  wnd_surface->set_blend_mode(native_window_drawing::blend_mode::none);
-  wnd_surface->set_alpha(0);
-
-  activeMapView->blit_minimap_to_surface(&*wnd_surface);
-  sdl_minimap_wnd->update_surface();
+  resetPalette();
+  ui->surface->update();
 }
 
 void Minimap::setActiveMapView(MapView* view)
 {
   this->activeMapView = view;
-  update();
+  resetMapBuffer();
+  updateLogic();
+}
+
+void Minimap::removeMyMapView(MapView* view)
+{
+  if (this->activeMapView == view) setActiveMapView(nullptr);
+}
+
+void Minimap::resetMapBuffer()
+{
+  if (!this->activeMapView) return;
+
+  this->minimap_buffer = QImage{
+    this->activeMapView->map_width(), this->activeMapView->map_height(),
+    QImage::Format::Format_Indexed8
+  };
+  resetPalette();
+}
+
+void Minimap::resetPalette()
+{
+  if (!this->activeMapView) return;
+
+  native_window_drawing::color* raw_colorTable = reinterpret_cast<native_window_drawing::color*>(this->activeMapView->get_minimap_palette());
+  QVector<QRgb> colors(256);
+  for (int i = 0; i < 256; ++i) {
+    native_window_drawing::color src_color = raw_colorTable[i];
+    colors[i] = qRgb(src_color.r, src_color.g, src_color.b);
+  }
+  this->minimap_buffer.setColorTable(colors);
+}
+
+bool Minimap::eventFilter(QObject* obj, QEvent* e)
+{
+  if (obj != ui->surface || !activeMapView) return false;
+  
+  switch (e->type()) {
+  case QEvent::MouseButtonPress:
+  {
+    QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(e);
+    if (mouseEvent->button() == Qt::MouseButton::LeftButton) {
+      activeMapView->move_minimap(mouseEvent->x(), mouseEvent->y());
+    }
+    return true;
+  }
+  case QEvent::MouseButtonRelease:
+  {
+    QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(e);
+    //if (mouseEvent->button() == Qt::MouseButton::LeftButton) {
+    //  activeMapView->move_minimap(mouseEvent->x(), mouseEvent->y());
+    //}
+    return false;
+  }
+  case QEvent::MouseMove:
+  {
+    QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(e);
+    if (mouseEvent->buttons() & Qt::MouseButton::LeftButton) {
+      activeMapView->move_minimap(mouseEvent->x(), mouseEvent->y());
+    }
+    return true;
+  }
+  case QEvent::Resize:
+  {
+    QResizeEvent* resizeEvent = static_cast<QResizeEvent*>(e);
+
+    return false;
+  }
+  case QEvent::Paint:
+  {
+    paint_minimap(static_cast<QWidget*>(obj), static_cast<QPaintEvent*>(e));
+  }
+  }
+  return false;
+}
+
+void Minimap::paint_minimap(QWidget* obj, QPaintEvent* paintEvent)
+{
+  QPainter painter;
+  painter.begin(obj);
+  painter.fillRect(obj->rect(), QColorConstants::Black);
+  painter.drawImage(0, 0, this->minimap_buffer);
+  painter.end();
 }

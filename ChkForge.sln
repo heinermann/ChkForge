@@ -1,0 +1,41 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29806.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ChkForge", "ChkForge\ChkForge.vcxproj", "{39040AC0-2C27-3D5C-B223-4F20AB8EB5B2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7C4A3D3D-88E1-38B2-8608-89EFC920852D} = {7C4A3D3D-88E1-38B2-8608-89EFC920852D}
+		{0CDB9D85-290F-4658-8240-6DF99435D1EF} = {0CDB9D85-290F-4658-8240-6DF99435D1EF}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qtadvanceddocking", "ads\src\qtadvanceddocking.vcxproj", "{7C4A3D3D-88E1-38B2-8608-89EFC920852D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "openbw", "openbw\openbw.vcxproj", "{0CDB9D85-290F-4658-8240-6DF99435D1EF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{39040AC0-2C27-3D5C-B223-4F20AB8EB5B2}.Debug|x64.ActiveCfg = Debug|x64
+		{39040AC0-2C27-3D5C-B223-4F20AB8EB5B2}.Debug|x64.Build.0 = Debug|x64
+		{39040AC0-2C27-3D5C-B223-4F20AB8EB5B2}.Release|x64.ActiveCfg = Release|x64
+		{39040AC0-2C27-3D5C-B223-4F20AB8EB5B2}.Release|x64.Build.0 = Release|x64
+		{7C4A3D3D-88E1-38B2-8608-89EFC920852D}.Debug|x64.ActiveCfg = Debug|x64
+		{7C4A3D3D-88E1-38B2-8608-89EFC920852D}.Debug|x64.Build.0 = Debug|x64
+		{7C4A3D3D-88E1-38B2-8608-89EFC920852D}.Release|x64.ActiveCfg = Release|x64
+		{7C4A3D3D-88E1-38B2-8608-89EFC920852D}.Release|x64.Build.0 = Release|x64
+		{0CDB9D85-290F-4658-8240-6DF99435D1EF}.Debug|x64.ActiveCfg = Debug|x64
+		{0CDB9D85-290F-4658-8240-6DF99435D1EF}.Debug|x64.Build.0 = Debug|x64
+		{0CDB9D85-290F-4658-8240-6DF99435D1EF}.Release|x64.ActiveCfg = Release|x64
+		{0CDB9D85-290F-4658-8240-6DF99435D1EF}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		Qt5Version = 5.15.msvc2019_64
+		SolutionGuid = {9FAD7F4E-431D-4F1E-BA35-2C77B2E4A068}
+	EndGlobalSection
+EndGlobal

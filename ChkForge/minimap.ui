@@ -33,7 +33,7 @@
     <number>0</number>
    </property>
    <item row="0" column="0">
-    <widget class="QWidget" name="sdl_widget" native="true"/>
+    <widget class="QWidget" name="surface" native="true"/>
    </item>
   </layout>
  </widget>
