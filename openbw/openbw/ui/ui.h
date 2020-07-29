@@ -2,7 +2,6 @@
 #include "../bwgame.h"
 #include "../replay.h"
 
-#include "native_window.h"
 #include "native_window_drawing.h"
 #include "native_sound.h"
 

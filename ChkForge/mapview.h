@@ -8,22 +8,10 @@
 #include <QGraphicsScene>
 #include <memory>
 
-//#include <SDL.h>
-
 #include <QVector>
 #include <Qrgb>
 
 struct main_t;
-
-namespace native_window
-{
-  struct event_t;
-}
-
-namespace native_window_drawing
-{
-  struct surface;
-}
 
 class MapView : public DockWidgetWrapper<Ui::MapView>
 {
@@ -46,9 +34,6 @@ private:
   QImage buffer;
   main_t* bw = nullptr;
   std::unique_ptr<QTimer> timer;
-
-  //SDL_Window* WindowRef = nullptr;
-  //SDL_Renderer* RendererRef = nullptr;
 
   virtual void changeEvent(QEvent* event) override;
 

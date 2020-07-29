@@ -2,8 +2,6 @@
 #include "ui_minimap.h"
 
 #include "mapview.h"
-#include "../openbw/openbw/ui/native_window.h"
-#include "../openbw/openbw/ui/native_window_drawing.h"
 
 #include <QMessageBox>
 #include <QEvent>

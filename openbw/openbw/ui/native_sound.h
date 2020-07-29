@@ -1,6 +1,8 @@
 #ifndef NATIVE_SOUND_H
 #define NATIVE_SOUND_H
 
+#include <memory>
+
 namespace native_sound {
 	struct sound {
 		virtual ~sound() {}

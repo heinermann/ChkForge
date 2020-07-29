@@ -104,9 +104,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="openbw\ui\sdl2.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="openbw\actions.h" />
     <ClInclude Include="openbw\bwenums.h" />
     <ClInclude Include="openbw\bwgame.h" />
@@ -128,7 +125,6 @@
     <ClInclude Include="openbw\sync_server_asio_tcp.h" />
     <ClInclude Include="openbw\ui\common.h" />
     <ClInclude Include="openbw\ui\native_sound.h" />
-    <ClInclude Include="openbw\ui\native_window.h" />
     <ClInclude Include="openbw\ui\native_window_drawing.h" />
     <ClInclude Include="openbw\ui\ui.h" />
     <ClInclude Include="openbw\util.h" />
