@@ -21,7 +21,7 @@ MainWindow::MainWindow(QWidget *parent)
 
   Minimap* minimap = new Minimap();
   ui->menu_Tool_Windows->addAction(minimap->toggleViewAction());
-  minimap->SDLInit();
+  minimap->init();
 
   createMapView();
 
@@ -51,7 +51,7 @@ MapView* MainWindow::createMapView()
 
   m_DockManager->addDockWidget(ads::CenterDockWidgetArea, widget);
 
-  widget->SDLInit();
+  widget->init();
 
   Minimap::g_minimap->setActiveMapView(widget);
   return widget;

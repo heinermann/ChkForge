@@ -8,7 +8,6 @@
 #include <QMessageBox>
 #include <QEvent>
 #include <QMouseEvent>
-#include <QResizeEvent>
 #include <QPaintEvent>
 #include <QPainter>
 #include <QVector>
@@ -38,7 +37,7 @@ Minimap::~Minimap()
   g_minimap = nullptr;
 }
 
-void Minimap::SDLInit()
+void Minimap::init()
 {
   g_minimap = this;
 
@@ -108,15 +107,13 @@ bool Minimap::eventFilter(QObject* obj, QEvent* e)
     return true;
   }
   case QEvent::Paint:
-  {
-    paint_minimap(static_cast<QWidget*>(obj), static_cast<QPaintEvent*>(e));
+    paint_surface(static_cast<QWidget*>(obj), static_cast<QPaintEvent*>(e));
     return true;
-  }
   }
   return false;
 }
 
-void Minimap::paint_minimap(QWidget* obj, QPaintEvent* paintEvent)
+void Minimap::paint_surface(QWidget* obj, QPaintEvent* paintEvent)
 {
   QPainter painter;
   painter.begin(obj);

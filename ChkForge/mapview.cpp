@@ -5,6 +5,9 @@
 #include <QMessageBox>
 #include <QSize>
 #include <QWindow>
+#include <QPainter>
+#include <QImage>
+#include <QResizeEvent>
 
 #include "minimap.h"
 
@@ -36,11 +39,6 @@ namespace bwgame {
   }
 }
 
-struct saved_state {
-  bwgame::state st;
-  bwgame::action_state action_st;
-};
-
 struct main_t {
   bwgame::ui_functions ui;
 
@@ -52,14 +50,11 @@ struct main_t {
   std::chrono::high_resolution_clock::time_point last_fps;
   int fps_counter = 0;
 
-  bwgame::a_map<int, std::unique_ptr<saved_state>> saved_states;
-
   void reset();
   void update();
 };
 
 void main_t::reset() {
-  saved_states.clear();
   ui.reset();
 }
 
@@ -74,39 +69,11 @@ void main_t::update() {
   }
 
   auto next = [&]() {
-	int save_interval = 10 * 1000 / 42;
-	if (ui.st.current_frame == 0 || ui.st.current_frame % save_interval == 0) {
-	  auto i = saved_states.find(ui.st.current_frame);
-	  if (i == saved_states.end()) {
-		auto v = std::make_unique<saved_state>();
-		v->st = copy_state(ui.st);
-		v->action_st = copy_state(ui.action_st, ui.st, v->st);
-
-		bwgame::a_map<int, std::unique_ptr<saved_state>> new_saved_states;
-		new_saved_states[ui.st.current_frame] = std::move(v);
-		while (!saved_states.empty()) {
-		  auto i = saved_states.begin();
-		  auto v = std::move(*i);
-		  saved_states.erase(i);
-		  new_saved_states[v.first] = std::move(v.second);
-		}
-		std::swap(saved_states, new_saved_states);
-	  }
-	}
 	ui.replay_functions::next_frame();
   };
 
   if (!ui.is_done() || ui.st.current_frame != ui.replay_frame) {
 	if (ui.st.current_frame != ui.replay_frame) {
-	  if (ui.st.current_frame != ui.replay_frame) {
-		auto i = saved_states.lower_bound(ui.replay_frame);
-		if (i != saved_states.begin()) --i;
-		auto& v = i->second;
-		if (ui.st.current_frame > ui.replay_frame || v->st.current_frame > ui.st.current_frame) {
-		  ui.st = copy_state(v->st);
-		  ui.action_st = copy_state(v->action_st, v->st, ui.st);
-		}
-	  }
 	  if (ui.st.current_frame < ui.replay_frame) {
 		for (size_t i = 0; i != 32 && ui.st.current_frame != ui.replay_frame; ++i) {
 		  for (size_t i2 = 0; i2 != 4 && ui.st.current_frame != ui.replay_frame; ++i2) {
@@ -141,8 +108,6 @@ void main_t::update() {
 	  }
 	}
   }
-
-  ui.update();
 }
 
 MapView::MapView(QWidget *parent) :
@@ -156,6 +121,8 @@ MapView::MapView(QWidget *parent) :
 
   timer = std::make_unique<QTimer>(this);
   connect(timer.get(), SIGNAL(timeout()), this, SLOT(updateLogic()));
+
+  ui->surface->installEventFilter(this);
 }
 
 MapView::~MapView()
@@ -163,9 +130,6 @@ MapView::~MapView()
   if (Minimap::g_minimap) {
     Minimap::g_minimap->removeMyMapView(this);
   }
-
-  SDL_DestroyRenderer(this->RendererRef);
-  SDL_DestroyWindow(this->WindowRef);
   delete bw;
 }
 
@@ -177,20 +141,8 @@ void MapView::onCloseRequested()
     widget->closeDockWidget();
 }
 
-void MapView::SDLInit()
+void MapView::init()
 {
-  ui->surface->setAttribute(Qt::WA_PaintOnScreen);
-  ui->surface->setAttribute(Qt::WA_OpaquePaintEvent);
-  ui->surface->setAttribute(Qt::WA_NoSystemBackground);
-
-  // Set strong focus to enable keyboard events to be received
-  ui->surface->setFocusPolicy(Qt::StrongFocus);
-
-  WindowRef = SDL_CreateWindowFrom((void*)ui->surface->winId());
-  RendererRef = SDL_CreateRenderer(WindowRef, -1, SDL_RENDERER_ACCELERATED);
-
-  QSize gfxSize = ui->surface->size();
-
   auto load_data_file = bwgame::data_loading::data_files_directory("C:/Program Files (x86)/StarCraft 1.16.1");
   bwgame::game_player player(load_data_file);
 
@@ -206,13 +158,12 @@ void MapView::SDLInit()
   bw->ui.init();
   bw->ui.load_replay_file("C:/Users/Adam Heinermann/Downloads/394928-Locu_kras-PvT.rep");
 
-  bw->ui.wnd.set(WindowRef);
-  bw->ui.resize(gfxSize.width(), gfxSize.height());
-  bw->ui.screen_pos = { (int)bw->ui.game_st.map_width / 2 - gfxSize.width() / 2, (int)bw->ui.game_st.map_height / 2 - gfxSize.height() / 2 };
+  bw->ui.screen_pos = { 0, 0 };
   bw->ui.set_image_data();
   bw->ui.global_volume = 0;
 
   timer->start(33);
+  resizeSurface(ui->surface->size());
 }
 
 int MapView::map_width()
@@ -228,6 +179,8 @@ int MapView::map_height()
 void MapView::updateLogic()
 {
   bw->update();
+  bw->ui.draw_game(this->buffer.bits(), this->buffer.bytesPerLine(), this->buffer.width(), this->buffer.height());
+  this->ui->surface->update();
 }
 
 void MapView::draw_minimap(uint8_t* data, size_t data_pitch, size_t surface_width, size_t surface_height)
@@ -257,4 +210,41 @@ void MapView::changeEvent(QEvent* event)
     Minimap::g_minimap->setActiveMapView(this);
     break;
   }
+}
+
+bool MapView::eventFilter(QObject* obj, QEvent* e)
+{
+  if (obj != ui->surface) return false;
+
+  switch (e->type())
+  {
+  case QEvent::Resize:
+  {
+    QResizeEvent* resizeEvent = reinterpret_cast<QResizeEvent*>(e);
+    this->resizeSurface(resizeEvent->size());
+    return false;
+  }
+  case QEvent::Paint:
+    paint_surface(static_cast<QWidget*>(obj), static_cast<QPaintEvent*>(e));
+    return true;
+  }
+  return false;
+}
+
+void MapView::paint_surface(QWidget* obj, QPaintEvent* paintEvent)
+{
+  QPainter painter;
+  painter.begin(obj);
+  painter.fillRect(obj->rect(), QColorConstants::Black);
+  painter.drawImage(0, 0, this->buffer);
+  painter.end();
+}
+
+void MapView::resizeSurface(const QSize& newSize)
+{
+  this->buffer = QImage(newSize, QImage::Format::Format_Indexed8);
+  this->buffer.setColorTable(this->get_palette());
+
+  bw->ui.resize(newSize.width(), newSize.height());
+  this->ui->surface->update();
 }

@@ -8,7 +8,7 @@
 #include <QGraphicsScene>
 #include <memory>
 
-#include <SDL.h>
+//#include <SDL.h>
 
 #include <QVector>
 #include <Qrgb>
@@ -33,7 +33,7 @@ public:
   explicit MapView(QWidget *parent = nullptr);
   virtual ~MapView();
 
-  void SDLInit();
+  void init();
 
   void move_minimap(int x, int y);
   void draw_minimap(uint8_t* data, size_t data_pitch, size_t surface_width, size_t surface_height);
@@ -43,14 +43,19 @@ public:
   int map_height();
 
 private:
-  std::unique_ptr<QImage> buffer;
+  QImage buffer;
   main_t* bw = nullptr;
   std::unique_ptr<QTimer> timer;
 
-  SDL_Window* WindowRef = nullptr;
-  SDL_Renderer* RendererRef = nullptr;
+  //SDL_Window* WindowRef = nullptr;
+  //SDL_Renderer* RendererRef = nullptr;
 
   virtual void changeEvent(QEvent* event) override;
+
+  virtual bool eventFilter(QObject* obj, QEvent* event) override;
+  void paint_surface(QWidget* obj, QPaintEvent* paintEvent);
+
+  void resizeSurface(const QSize& newSize);
 
 private slots:
   void onCloseRequested();

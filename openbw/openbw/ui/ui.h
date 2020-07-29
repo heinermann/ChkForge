@@ -522,7 +522,6 @@ struct ui_util_functions: replay_functions {
 struct ui_functions: ui_util_functions {
 	image_data img;
 	tileset_image_data tileset_img;
-	native_window::window wnd;
 	bool create_window = true;
 	bool draw_ui_elements = true;
 
@@ -1369,10 +1368,6 @@ struct ui_functions: ui_util_functions {
 
 	fp8 game_speed = fp8::integer(1);
 
-	std::unique_ptr<native_window_drawing::surface> window_surface;
-	std::unique_ptr<native_window_drawing::surface> indexed_surface;
-	std::unique_ptr<native_window_drawing::surface> rgba_surface;
-	native_window_drawing::palette* palette = nullptr;
 	bool want_new_palette = true;
 	native_window_drawing::color palette_colors[256];
 	std::chrono::high_resolution_clock clock;
@@ -1390,9 +1385,6 @@ struct ui_functions: ui_util_functions {
 		view_width = (fp16::integer(screen_width) / view_scale).integer_part();
 		view_height = (fp16::integer(screen_height) / view_scale).integer_part();
 		view_scale = (ufp16::integer(screen_width) / view_width).as_signed();
-		window_surface.reset();
-		indexed_surface.reset();
-		rgba_surface.reset();
 	}
 
 	a_vector<unit_id> current_selection;
@@ -1427,7 +1419,7 @@ struct ui_functions: ui_util_functions {
 	int drag_select_to_y = 0;
 	xy drag_screen_pos;
 	
-	void update() {
+	void draw_game(uint8_t* data, size_t data_pitch, size_t surface_width, size_t surface_height) {
 		auto now = clock.now();
 
 		if (now - last_fps >= std::chrono::seconds(1)) {
@@ -1491,14 +1483,13 @@ struct ui_functions: ui_util_functions {
 			is_drag_selecting = false;
 		};
 		*/
-		if (wnd) {
+		/*if (wnd) {
 			native_window::event_t e;
 			while (wnd.peek_message(e)) {
 				switch (e.type) {
 				case native_window::event_t::type_resize:
 					resize(e.width, e.height);
 					break;
-					/*
 				case native_window::event_t::type_mouse_button_down:
 					if (e.button == 1) {
 					  is_drag_selecting = true;
@@ -1556,29 +1547,12 @@ struct ui_functions: ui_util_functions {
 						if (replay_frame < t) replay_frame = 0;
 						else replay_frame -= t;
 					}
-					break;*/
+					break;
 				}
 			}
-		}
+		}*/
 
-		if (!indexed_surface) {
-			if (wnd) {
-				window_surface = native_window_drawing::get_window_surface(&wnd);
-				rgba_surface = native_window_drawing::create_rgba_surface(window_surface->w, window_surface->h);
-			} else {
-				rgba_surface = native_window_drawing::create_rgba_surface(screen_width, screen_height);
-			}
-			indexed_surface = native_window_drawing::convert_to_8_bit_indexed(&*rgba_surface);
-			if (want_new_palette) set_image_data();
-			indexed_surface->set_palette(palette);
-
-			indexed_surface->set_blend_mode(native_window_drawing::blend_mode::none);
-
-			if (window_surface) {
-				window_surface->set_blend_mode(native_window_drawing::blend_mode::none);
-				window_surface->set_alpha(0);
-			}
-		}
+		if (want_new_palette) set_image_data();
 
 		/*
 		if (wnd) {
@@ -1611,14 +1585,10 @@ struct ui_functions: ui_util_functions {
 		if (screen_pos.x + view_width > game_st.map_width) screen_pos.x = game_st.map_width - view_width;
 		if (screen_pos.x < 0) screen_pos.x = 0;
 
-		// TODO: Replace with Qt
-		uint8_t* data = (uint8_t*)indexed_surface->lock();
-		draw_tiles(data, indexed_surface->pitch);
-		draw_sprites(data, indexed_surface->pitch);
+		draw_tiles(data, data_pitch);
+		draw_sprites(data, data_pitch);
 
-		draw_callback(data, indexed_surface->pitch);
-
-		indexed_surface->unlock();
+		draw_callback(data, data_pitch);
 
 
 		/*
@@ -1634,10 +1604,6 @@ struct ui_functions: ui_util_functions {
 			rgba_surface->unlock();
 		}
 		*/
-		if (wnd) {
-			indexed_surface->blit(&*window_surface, 0, 0);
-			wnd.update_surface();
-		}
 	}
 
 	void move_minimap(int mouse_x, int mouse_y) {
@@ -1692,7 +1658,6 @@ struct ui_functions: ui_util_functions {
 	void set_image_data() {
 		tileset_img = all_tileset_img.at(game_st.tileset_index);
 
-		if (!palette) palette = native_window_drawing::new_palette();
 		want_new_palette = false;
 
 		if (tileset_img.wpe.size() != 256 * 4) error("wpe size invalid (%d)", tileset_img.wpe.size());
@@ -1702,7 +1667,6 @@ struct ui_functions: ui_util_functions {
 			palette_colors[i].b = tileset_img.wpe[4 * i + 2];
 			palette_colors[i].a = tileset_img.wpe[4 * i + 3];
 		}
-		palette->set_colors(palette_colors);
 	}
 
 	void reset() {

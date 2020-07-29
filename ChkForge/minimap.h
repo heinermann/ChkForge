@@ -22,7 +22,7 @@ public:
   void resetMapBuffer();
   void resetPalette();
 
-  void SDLInit();
+  void init();
 
   static Minimap* g_minimap;
 private:
@@ -33,7 +33,7 @@ private:
   MapView* activeMapView = nullptr;
 
   virtual bool eventFilter(QObject* obj, QEvent* event) override;
-  void paint_minimap(QWidget* obj, QPaintEvent* paintEvent);
+  void paint_surface(QWidget* obj, QPaintEvent* paintEvent);
 
 private slots:
   void updateLogic();
