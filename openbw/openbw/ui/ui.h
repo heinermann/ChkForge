@@ -102,21 +102,6 @@ pcx_image load_pcx_data(const data_T& data) {
 	return pcx;
 }
 
-static inline std::unique_ptr<native_window_drawing::surface> flip_image(native_window_drawing::surface* src) {
-	auto tmp = native_window_drawing::create_rgba_surface(src->w, src->h);
-	src->blit(&*tmp, 0, 0);
-	void* ptr = tmp->lock();
-	uint32_t* pixels = (uint32_t*)ptr;
-	for (size_t y = 0; y != (size_t)tmp->h; ++y) {
-		for (size_t x = 0; x != (size_t)tmp->w / 2; ++x) {
-			std::swap(pixels[x], pixels[tmp->w - 1 - x]);
-		}
-		pixels += tmp->pitch / 4;
-	}
-	tmp->unlock();
-	return tmp;
-}
-
 template<typename load_data_file_F>
 void load_image_data(image_data& img, load_data_file_F&& load_data_file) {
 
@@ -1370,9 +1355,9 @@ struct ui_functions: ui_util_functions {
 		line_rectangle(data, data_pitch, view_rect, 255);
 	}
 
-	uint32_t* get_minimap_palette() {
-	  if (!palette) set_image_data();
-	  return reinterpret_cast<uint32_t*>(palette_colors);
+	native_window_drawing::color* get_palette() {
+	  if (want_new_palette) set_image_data();
+	  return palette_colors;
 	}
 
 	int replay_frame = 0;
@@ -1388,6 +1373,7 @@ struct ui_functions: ui_util_functions {
 	std::unique_ptr<native_window_drawing::surface> indexed_surface;
 	std::unique_ptr<native_window_drawing::surface> rgba_surface;
 	native_window_drawing::palette* palette = nullptr;
+	bool want_new_palette = true;
 	native_window_drawing::color palette_colors[256];
 	std::chrono::high_resolution_clock clock;
 	std::chrono::high_resolution_clock::time_point last_draw;
@@ -1504,17 +1490,15 @@ struct ui_functions: ui_util_functions {
 			}
 			is_drag_selecting = false;
 		};
-
+		*/
 		if (wnd) {
 			native_window::event_t e;
 			while (wnd.peek_message(e)) {
 				switch (e.type) {
-				case native_window::event_t::type_quit:
-					window_closed = true;
-					break;
 				case native_window::event_t::type_resize:
 					resize(e.width, e.height);
 					break;
+					/*
 				case native_window::event_t::type_mouse_button_down:
 					if (e.button == 1) {
 					  is_drag_selecting = true;
@@ -1572,10 +1556,10 @@ struct ui_functions: ui_util_functions {
 						if (replay_frame < t) replay_frame = 0;
 						else replay_frame -= t;
 					}
-					break;
+					break;*/
 				}
 			}
-		}*/
+		}
 
 		if (!indexed_surface) {
 			if (wnd) {
@@ -1585,12 +1569,10 @@ struct ui_functions: ui_util_functions {
 				rgba_surface = native_window_drawing::create_rgba_surface(screen_width, screen_height);
 			}
 			indexed_surface = native_window_drawing::convert_to_8_bit_indexed(&*rgba_surface);
-			if (!palette) set_image_data();
+			if (want_new_palette) set_image_data();
 			indexed_surface->set_palette(palette);
 
 			indexed_surface->set_blend_mode(native_window_drawing::blend_mode::none);
-			rgba_surface->set_blend_mode(native_window_drawing::blend_mode::none);
-			rgba_surface->set_alpha(0);
 
 			if (window_surface) {
 				window_surface->set_blend_mode(native_window_drawing::blend_mode::none);
@@ -1598,6 +1580,7 @@ struct ui_functions: ui_util_functions {
 			}
 		}
 
+		/*
 		if (wnd) {
 			auto input_poll_speed = std::chrono::milliseconds(12);
 		
@@ -1621,13 +1604,14 @@ struct ui_functions: ui_util_functions {
 		
 				input_poll_t = now - last_input_poll;
 			}
-		}
+		}*/
 
 		if (screen_pos.y + view_height > game_st.map_height) screen_pos.y = game_st.map_height - view_height;
 		if (screen_pos.y < 0) screen_pos.y = 0;
 		if (screen_pos.x + view_width > game_st.map_width) screen_pos.x = game_st.map_width - view_width;
 		if (screen_pos.x < 0) screen_pos.x = 0;
 
+		// TODO: Replace with Qt
 		uint8_t* data = (uint8_t*)indexed_surface->lock();
 		draw_tiles(data, indexed_surface->pitch);
 		draw_sprites(data, indexed_surface->pitch);
@@ -1636,9 +1620,8 @@ struct ui_functions: ui_util_functions {
 
 		indexed_surface->unlock();
 
-		rgba_surface->fill(0, 0, 0, 255);
-		indexed_surface->blit(&*rgba_surface, 0, 0);
 
+		/*
 		if (is_drag_selecting) {
 			uint32_t* data = (uint32_t*)rgba_surface->lock();
 
@@ -1650,9 +1633,9 @@ struct ui_functions: ui_util_functions {
 
 			rgba_surface->unlock();
 		}
-
+		*/
 		if (wnd) {
-			rgba_surface->blit(&*window_surface, 0, 0);
+			indexed_surface->blit(&*window_surface, 0, 0);
 			wnd.update_surface();
 		}
 	}
@@ -1677,12 +1660,6 @@ struct ui_functions: ui_util_functions {
 	  if (screen_pos.y < 0) screen_pos.y = 0;
 	  if (screen_pos.x + view_width > game_st.map_width) screen_pos.x = game_st.map_width - view_width;
 	  if (screen_pos.x < 0) screen_pos.x = 0;
-	}
-
-	std::tuple<int, int, uint32_t*> get_rgba_buffer() {
-		void* r = rgba_surface->lock();
-		rgba_surface->unlock();
-		return std::make_tuple(rgba_surface->pitch / 4, rgba_surface->h, (uint32_t*)r);
 	}
 
 	template<typename cb_F>
@@ -1716,6 +1693,7 @@ struct ui_functions: ui_util_functions {
 		tileset_img = all_tileset_img.at(game_st.tileset_index);
 
 		if (!palette) palette = native_window_drawing::new_palette();
+		want_new_palette = false;
 
 		if (tileset_img.wpe.size() != 256 * 4) error("wpe size invalid (%d)", tileset_img.wpe.size());
 		for (size_t i = 0; i != 256; ++i) {

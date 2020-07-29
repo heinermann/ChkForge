@@ -10,6 +10,9 @@
 
 #include <SDL.h>
 
+#include <QVector>
+#include <Qrgb>
+
 struct main_t;
 
 namespace native_window
@@ -34,7 +37,7 @@ public:
 
   void move_minimap(int x, int y);
   void draw_minimap(uint8_t* data, size_t data_pitch, size_t surface_width, size_t surface_height);
-  uint32_t* get_minimap_palette();
+  QVector<QRgb> get_palette();
 
   int map_width();
   int map_height();

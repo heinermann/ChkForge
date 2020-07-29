@@ -81,14 +81,7 @@ void Minimap::resetMapBuffer()
 void Minimap::resetPalette()
 {
   if (!this->activeMapView) return;
-
-  native_window_drawing::color* raw_colorTable = reinterpret_cast<native_window_drawing::color*>(this->activeMapView->get_minimap_palette());
-  QVector<QRgb> colors(256);
-  for (int i = 0; i < 256; ++i) {
-    native_window_drawing::color src_color = raw_colorTable[i];
-    colors[i] = qRgb(src_color.r, src_color.g, src_color.b);
-  }
-  this->minimap_buffer.setColorTable(colors);
+  this->minimap_buffer.setColorTable(this->activeMapView->get_palette());
 }
 
 bool Minimap::eventFilter(QObject* obj, QEvent* e)

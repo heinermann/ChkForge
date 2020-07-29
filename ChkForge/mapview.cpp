@@ -179,17 +179,17 @@ void MapView::onCloseRequested()
 
 void MapView::SDLInit()
 {
-  ui->sdl_view->setAttribute(Qt::WA_PaintOnScreen);
-  ui->sdl_view->setAttribute(Qt::WA_OpaquePaintEvent);
-  ui->sdl_view->setAttribute(Qt::WA_NoSystemBackground);
+  ui->surface->setAttribute(Qt::WA_PaintOnScreen);
+  ui->surface->setAttribute(Qt::WA_OpaquePaintEvent);
+  ui->surface->setAttribute(Qt::WA_NoSystemBackground);
 
   // Set strong focus to enable keyboard events to be received
-  ui->sdl_view->setFocusPolicy(Qt::StrongFocus);
+  ui->surface->setFocusPolicy(Qt::StrongFocus);
 
-  WindowRef = SDL_CreateWindowFrom((void*)ui->sdl_view->winId());
+  WindowRef = SDL_CreateWindowFrom((void*)ui->surface->winId());
   RendererRef = SDL_CreateRenderer(WindowRef, -1, SDL_RENDERER_ACCELERATED);
 
-  QSize gfxSize = ui->sdl_view->size();
+  QSize gfxSize = ui->surface->size();
 
   auto load_data_file = bwgame::data_loading::data_files_directory("C:/Program Files (x86)/StarCraft 1.16.1");
   bwgame::game_player player(load_data_file);
@@ -240,8 +240,14 @@ void MapView::move_minimap(int x, int y)
   bw->ui.move_minimap(x, y);
 }
 
-uint32_t* MapView::get_minimap_palette() {
-  return bw->ui.get_minimap_palette();
+QVector<QRgb> MapView::get_palette() {
+  native_window_drawing::color* raw_colorTable = bw->ui.get_palette();
+  QVector<QRgb> colors(256);
+  for (int i = 0; i < 256; ++i) {
+    native_window_drawing::color src_color = raw_colorTable[i];
+    colors[i] = qRgb(src_color.r, src_color.g, src_color.b);
+  }
+  return colors;
 }
 
 void MapView::changeEvent(QEvent* event)
