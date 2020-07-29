@@ -12,6 +12,7 @@
 #include <QPaintEvent>
 #include <QPainter>
 #include <QVector>
+#include <QSize>
 
 Minimap* Minimap::g_minimap = nullptr;
 
@@ -34,6 +35,7 @@ Minimap::Minimap(QWidget *parent) :
 
 Minimap::~Minimap()
 {
+  g_minimap = nullptr;
 }
 
 void Minimap::SDLInit()
@@ -91,42 +93,31 @@ void Minimap::resetPalette()
 
 bool Minimap::eventFilter(QObject* obj, QEvent* e)
 {
-  if (obj != ui->surface || !activeMapView) return false;
+  if (obj != ui->surface || !activeMapView ) return false;
   
+  double scale = std::min(1.0 * this->width() / minimap_buffer.width(), 1.0 * this->height() / minimap_buffer.height());
+
   switch (e->type()) {
   case QEvent::MouseButtonPress:
   {
     QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(e);
     if (mouseEvent->button() == Qt::MouseButton::LeftButton) {
-      activeMapView->move_minimap(mouseEvent->x(), mouseEvent->y());
+      activeMapView->move_minimap(mouseEvent->x() / scale, mouseEvent->y() / scale);
     }
     return true;
-  }
-  case QEvent::MouseButtonRelease:
-  {
-    QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(e);
-    //if (mouseEvent->button() == Qt::MouseButton::LeftButton) {
-    //  activeMapView->move_minimap(mouseEvent->x(), mouseEvent->y());
-    //}
-    return false;
   }
   case QEvent::MouseMove:
   {
     QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(e);
     if (mouseEvent->buttons() & Qt::MouseButton::LeftButton) {
-      activeMapView->move_minimap(mouseEvent->x(), mouseEvent->y());
+      activeMapView->move_minimap(mouseEvent->x() / scale, mouseEvent->y() / scale);
     }
     return true;
-  }
-  case QEvent::Resize:
-  {
-    QResizeEvent* resizeEvent = static_cast<QResizeEvent*>(e);
-
-    return false;
   }
   case QEvent::Paint:
   {
     paint_minimap(static_cast<QWidget*>(obj), static_cast<QPaintEvent*>(e));
+    return true;
   }
   }
   return false;
@@ -137,6 +128,7 @@ void Minimap::paint_minimap(QWidget* obj, QPaintEvent* paintEvent)
   QPainter painter;
   painter.begin(obj);
   painter.fillRect(obj->rect(), QColorConstants::Black);
-  painter.drawImage(0, 0, this->minimap_buffer);
+  QImage toDraw = this->minimap_buffer.scaled(size(), Qt::KeepAspectRatio);
+  painter.drawImage(0, 0, toDraw);
   painter.end();
 }

@@ -73,4 +73,5 @@ debug/
 release/
 
 log.txt
+enc_temp_folder/
 

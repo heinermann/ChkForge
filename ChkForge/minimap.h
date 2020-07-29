@@ -26,6 +26,7 @@ public:
 
   static Minimap* g_minimap;
 private:
+  // TODO figure out what's wrong with this image and heap corruption
   QImage minimap_buffer{ 256, 256, QImage::Format::Format_Indexed8 };
 
   std::unique_ptr<QTimer> timer;

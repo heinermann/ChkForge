@@ -160,7 +160,9 @@ MapView::MapView(QWidget *parent) :
 
 MapView::~MapView()
 {
-  Minimap::g_minimap->removeMyMapView(this);
+  if (Minimap::g_minimap) {
+    Minimap::g_minimap->removeMyMapView(this);
+  }
 
   SDL_DestroyRenderer(this->RendererRef);
   SDL_DestroyWindow(this->WindowRef);
