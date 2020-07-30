@@ -24,6 +24,8 @@ public:
 
   void init();
 
+  void setScreenPos(const QPoint& pos);
+
   void move_minimap(int x, int y);
   void draw_minimap(uint8_t* data, size_t data_pitch, size_t surface_width, size_t surface_height);
   QVector<QRgb> get_palette();
@@ -44,6 +46,8 @@ private:
   QPoint drag_screen_pos{};
 
   double view_scale = 1.0;
+
+  void updateScrollbarPositions();
 
   virtual void changeEvent(QEvent* event) override;
 

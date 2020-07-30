@@ -46,6 +46,9 @@
      <property name="maximum">
       <number>0</number>
      </property>
+     <property name="singleStep">
+      <number>16</number>
+     </property>
      <property name="orientation">
       <enum>Qt::Vertical</enum>
      </property>
@@ -55,6 +58,9 @@
     <widget class="QScrollBar" name="hScroll">
      <property name="maximum">
       <number>0</number>
+     </property>
+     <property name="singleStep">
+      <number>16</number>
      </property>
      <property name="orientation">
       <enum>Qt::Horizontal</enum>

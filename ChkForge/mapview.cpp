@@ -193,6 +193,7 @@ void MapView::draw_minimap(uint8_t* data, size_t data_pitch, size_t surface_widt
 void MapView::move_minimap(int x, int y)
 {
   bw->ui.move_minimap(x, y);
+  updateScrollbarPositions();
 }
 
 QVector<QRgb> MapView::get_palette() {
@@ -280,8 +281,7 @@ bool MapView::eventFilter(QObject* obj, QEvent* e)
 
     if (mouseEvent->buttons() & Qt::MiddleButton) {
       if (is_dragging_screen) {
-        QPoint new_screen_pos = this->drag_screen_pos - mouseEvent->pos() / this->view_scale;
-        bw->ui.set_screen_pos(new_screen_pos.x(), new_screen_pos.y());
+        this->setScreenPos(this->drag_screen_pos - mouseEvent->pos() / this->view_scale);
       }
     }
     return true;
@@ -318,6 +318,18 @@ void MapView::paint_surface(QWidget* obj, QPaintEvent* paintEvent)
   painter.end();
 }
 
+void MapView::setScreenPos(const QPoint& pos)
+{
+  bw->ui.set_screen_pos(pos.x(), pos.y());
+  updateScrollbarPositions();
+}
+
+void MapView::updateScrollbarPositions()
+{
+  this->ui->hScroll->setValue(bw->ui.screen_pos.x);
+  this->ui->vScroll->setValue(bw->ui.screen_pos.y);
+}
+
 void MapView::resizeSurface(const QSize& newSize)
 {
   this->buffer = QImage(newSize, QImage::Format::Format_Indexed8);
@@ -325,4 +337,13 @@ void MapView::resizeSurface(const QSize& newSize)
 
   bw->ui.resize(newSize.width(), newSize.height());
   this->ui->surface->update();
+
+  int hPageStep = newSize.width();
+  this->ui->hScroll->setPageStep(hPageStep);
+  this->ui->hScroll->setMaximum(bw->ui.game_st.map_width - hPageStep);
+  
+  int vPageStep = newSize.height();
+  this->ui->vScroll->setPageStep(vPageStep);
+  this->ui->vScroll->setMaximum(bw->ui.game_st.map_height - vPageStep);
+  updateScrollbarPositions();
 }
