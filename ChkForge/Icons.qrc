@@ -34,5 +34,7 @@
         <file>icons/undo.png</file>
         <file>icons/undo_all.png</file>
         <file>icons/unit.png</file>
+        <file>icons/GitHub-Mark-32px.png</file>
+        <file>icons/Discord-Logo-Black-32px.png</file>
     </qresource>
 </RCC>

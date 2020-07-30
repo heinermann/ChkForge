@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>669</width>
+    <height>502</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -40,7 +40,7 @@ QSplitter::handle {
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>669</width>
      <height>22</height>
     </rect>
    </property>
@@ -698,8 +698,15 @@ QSplitter::handle {
    </property>
   </action>
   <action name="action_About">
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/icons/help.png</normaloff>:/icons/help.png</iconset>
+   </property>
    <property name="text">
     <string>&amp;About</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::AboutRole</enum>
    </property>
   </action>
   <action name="action_Play">
@@ -724,6 +731,11 @@ QSplitter::handle {
    </property>
    <property name="toolTip">
     <string>Copy the current state to a new map</string>
+   </property>
+  </action>
+  <action name="actionGithub">
+   <property name="text">
+    <string>Github</string>
    </property>
   </action>
  </widget>

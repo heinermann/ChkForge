@@ -286,6 +286,7 @@
     <None Include="ChkForge_en_CA.ts" />
   </ItemGroup>
   <ItemGroup>
+    <QtUic Include="aboutdlg.ui" />
     <QtUic Include="doodadpalette.ui">
     </QtUic>
     <QtUic Include="exportimage.ui">
@@ -376,6 +377,10 @@
     <None Include="units.txt" />
     <None Include="upgrades.txt" />
     <None Include="weapons.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="icons\Discord-Logo-Black-32px.png" />
+    <Image Include="icons\GitHub-Mark-32px.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
