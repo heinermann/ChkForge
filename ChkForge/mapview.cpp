@@ -7,7 +7,9 @@
 #include <QWindow>
 #include <QPainter>
 #include <QImage>
+#include <QColor>
 #include <QResizeEvent>
+#include <QPoint>
 
 #include "minimap.h"
 
@@ -218,6 +220,72 @@ bool MapView::eventFilter(QObject* obj, QEvent* e)
 
   switch (e->type())
   {
+  case QEvent::MouseButtonPress:
+  {
+    QMouseEvent* mouseEvent = reinterpret_cast<QMouseEvent*>(e);
+    bool double_clicked = mouseEvent->flags() & Qt::MouseEventCreatedDoubleClick;
+
+    if (mouseEvent->button() == Qt::LeftButton && !double_clicked) {
+      this->is_drag_selecting = true;
+      this->drag_select_from = this->drag_select_to = mouseEvent->pos();
+    }
+    else if (mouseEvent->button() == Qt::MiddleButton) {
+      this->is_dragging_screen = true;
+      this->drag_screen_pos = QPoint{
+        int(bw->ui.screen_pos.x + mouseEvent->pos().x() / view_scale),
+        int(bw->ui.screen_pos.y + mouseEvent->pos().y() / view_scale)
+      };
+    }
+    return true;
+  }
+  case QEvent::MouseButtonDblClick:
+  {
+    QMouseEvent* mouseEvent = reinterpret_cast<QMouseEvent*>(e);
+    if (mouseEvent->button() == Qt::LeftButton) {
+      bool shift_pressed = mouseEvent->modifiers() & Qt::ShiftModifier;
+      bool ctrl_pressed = mouseEvent->modifiers() & Qt::ControlModifier;
+      bw->ui.select_units(true, shift_pressed, ctrl_pressed,
+        mouseEvent->pos().x(), mouseEvent->pos().y(),
+        mouseEvent->pos().x(), mouseEvent->pos().y());
+      this->is_drag_selecting = false;
+    }
+    return true;
+  }
+  case QEvent::MouseButtonRelease:
+  {
+    QMouseEvent* mouseEvent = reinterpret_cast<QMouseEvent*>(e);
+    if (mouseEvent->button() == Qt::LeftButton && this->is_drag_selecting) {
+      bool shift_pressed = mouseEvent->modifiers() & Qt::ShiftModifier;
+      bool ctrl_pressed = mouseEvent->modifiers() & Qt::ControlModifier;
+      bw->ui.select_units(false, shift_pressed, ctrl_pressed,
+        this->drag_select_from.x(), this->drag_select_from.y(),
+        mouseEvent->pos().x(), mouseEvent->pos().y());
+      this->is_drag_selecting = false;
+    }
+    else if (mouseEvent->button() == Qt::MiddleButton) {
+      this->is_dragging_screen = false;
+    }
+    return true;
+  }
+  case QEvent::MouseMove:
+  {
+    QMouseEvent* mouseEvent = reinterpret_cast<QMouseEvent*>(e);
+    if (mouseEvent->buttons() & Qt::LeftButton) {
+      if (!this->is_drag_selecting) {
+        this->is_drag_selecting = true;
+        this->drag_select_from = mouseEvent->pos();
+      }
+      this->drag_select_to = mouseEvent->pos();
+    }
+
+    if (mouseEvent->buttons() & Qt::MiddleButton) {
+      if (is_dragging_screen) {
+        QPoint new_screen_pos = this->drag_screen_pos - mouseEvent->pos() / this->view_scale;
+        bw->ui.set_screen_pos(new_screen_pos.x(), new_screen_pos.y());
+      }
+    }
+    return true;
+  }
   case QEvent::Resize:
   {
     QResizeEvent* resizeEvent = reinterpret_cast<QResizeEvent*>(e);
@@ -237,6 +305,16 @@ void MapView::paint_surface(QWidget* obj, QPaintEvent* paintEvent)
   painter.begin(obj);
   painter.fillRect(obj->rect(), QColorConstants::Black);
   painter.drawImage(0, 0, this->buffer);
+  
+  // Selection box
+  if (is_drag_selecting) {
+    painter.setPen(QColor(16, 252, 24));
+    painter.drawLine(drag_select_from.x(), drag_select_from.y(), drag_select_from.x(), drag_select_to.y());
+    painter.drawLine(drag_select_from.x(), drag_select_from.y(), drag_select_to.x(), drag_select_from.y());
+    painter.drawLine(drag_select_to.x(), drag_select_from.y(), drag_select_to.x(), drag_select_to.y());
+    painter.drawLine(drag_select_from.x(), drag_select_to.y(), drag_select_to.x(), drag_select_to.y());
+  }
+
   painter.end();
 }
 

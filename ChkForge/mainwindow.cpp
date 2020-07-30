@@ -57,11 +57,6 @@ MapView* MainWindow::createMapView()
   return widget;
 }
 
-void MainWindow::afterCreated()
-{
-  //createMapView();
-}
-
 MainWindow::~MainWindow()
 {
   delete ui;

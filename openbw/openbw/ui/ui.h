@@ -1410,13 +1410,68 @@ struct ui_functions: ui_util_functions {
 	}
 
 	bool is_paused = false;
-	bool is_drag_selecting = false;
-	bool is_dragging_screen = false;
-	int drag_select_from_x = 0;
-	int drag_select_from_y = 0;
-	int drag_select_to_x = 0;
-	int drag_select_to_y = 0;
-	xy drag_screen_pos;
+
+	void select_units(bool double_clicked, bool shift, bool ctrl, int from_x, int from_y, int to_x, int to_y) {
+	  if (from_x > to_x) std::swap(from_x, to_x);
+	  if (from_y > to_y) std::swap(from_y, to_y);
+	  if (to_x - from_x <= 4 || to_y - from_y <= 4) {
+		unit_t* u = select_get_unit_at(screen_pos + xy(from_x, from_y));
+		if (u) {
+		  if (double_clicked || ctrl) {
+			if (!shift) current_selection_clear();
+			auto is_tank = [&](unit_t* a) {
+			  return unit_is(a, UnitTypes::Terran_Siege_Tank_Siege_Mode) || unit_is(a, UnitTypes::Terran_Siege_Tank_Tank_Mode);
+			};
+			auto is_same_type = [&](unit_t* a, unit_t* b) {
+			  if (unit_is_mineral_field(a) && unit_is_mineral_field(b)) return true;
+			  if (is_tank(a) && is_tank(b)) return true;
+			  return a->unit_type == b->unit_type;
+			};
+			for (unit_t* u2 : find_units({ screen_pos, screen_pos + xy(view_width, view_height) })) {
+			  if (u2->owner != u->owner) continue;
+			  if (!is_same_type(u, u2)) continue;
+			  current_selection_add(u2);
+			}
+		  }
+		  else {
+			if (shift) {
+			  if (current_selection_is_selected(u)) current_selection_remove(u);
+			  else current_selection_add(u);
+			}
+			else {
+			  current_selection_clear();
+			  current_selection_add(u);
+			}
+		  }
+		}
+	  }
+	  else {
+		if (!shift) current_selection_clear();
+		auto r = rect{ {from_x, from_y}, {to_x, to_y} };
+		if (r.from.x > r.to.x) std::swap(r.from.x, r.to.x);
+		if (r.from.y > r.to.y) std::swap(r.from.y, r.to.y);
+		a_vector<unit_t*> new_units;
+		bool any_non_neutrals = false;
+		for (unit_t* u : find_units(translate_rect(r, screen_pos))) {
+		  if (!unit_can_be_selected(u)) continue;
+		  new_units.push_back(u);
+		  if (u->owner != 11) any_non_neutrals = true;
+		}
+		for (unit_t* u : new_units) {
+		  if (u->owner == 11 && any_non_neutrals) continue;
+		  current_selection_add(u);
+		}
+	  }
+	}
+
+	void set_screen_pos(int x, int y) {
+	  screen_pos.x = x;
+	  screen_pos.y = y;
+	  if (screen_pos.y + view_height > game_st.map_height) screen_pos.y = game_st.map_height - view_height;
+	  if (screen_pos.y < 0) screen_pos.y = 0;
+	  if (screen_pos.x + view_width > game_st.map_width) screen_pos.x = game_st.map_width - view_width;
+	  if (screen_pos.x < 0) screen_pos.x = 0;
+	}
 	
 	void draw_game(uint8_t* data, size_t data_pitch, size_t surface_width, size_t surface_height) {
 		auto now = clock.now();
@@ -1427,129 +1482,6 @@ struct ui_functions: ui_util_functions {
 			fps_counter = 0;
 		}
 		++fps_counter;
-
-		/*
-		auto end_drag_select = [&](bool double_clicked) {
-			bool shift = wnd.get_key_state(225) || wnd.get_key_state(229);
-			if (drag_select_from_x > drag_select_to_x) std::swap(drag_select_from_x, drag_select_to_x);
-			if (drag_select_from_y > drag_select_to_y) std::swap(drag_select_from_y, drag_select_to_y);
-			if (drag_select_to_x - drag_select_from_x <= 4 || drag_select_to_y - drag_select_from_y <= 4) {
-				unit_t* u = select_get_unit_at(screen_pos + xy(drag_select_from_x, drag_select_from_y));
-				if (u) {
-					bool ctrl = wnd.get_key_state(224) || wnd.get_key_state(228);
-					if (double_clicked || ctrl) {
-						if (!shift) current_selection_clear();
-						auto is_tank = [&](unit_t* a) {
-							return unit_is(a, UnitTypes::Terran_Siege_Tank_Siege_Mode) || unit_is(a, UnitTypes::Terran_Siege_Tank_Tank_Mode);
-						};
-						auto is_same_type = [&](unit_t* a, unit_t* b) {
-							if (unit_is_mineral_field(a) && unit_is_mineral_field(b)) return true;
-							if (is_tank(a) && is_tank(b)) return true;
-							return a->unit_type == b->unit_type;
-						};
-						for (unit_t* u2 : find_units({screen_pos, screen_pos + xy(view_width, view_height)})) {
-							if (u2->owner != u->owner) continue;
-							if (!is_same_type(u, u2)) continue;
-							current_selection_add(u2);
-						}
-					} else {
-						if (shift) {
-							if (current_selection_is_selected(u)) current_selection_remove(u);
-							else current_selection_add(u);
-						} else {
-							current_selection_clear();
-							current_selection_add(u);
-						}
-					}
-				}
-			} else {
-				if (!shift) current_selection_clear();
-				auto r = rect{{drag_select_from_x, drag_select_from_y}, {drag_select_to_x, drag_select_to_y}};
-				if (r.from.x > r.to.x) std::swap(r.from.x, r.to.x);
-				if (r.from.y > r.to.y) std::swap(r.from.y, r.to.y);
-				a_vector<unit_t*> new_units;
-				bool any_non_neutrals = false;
-				for (unit_t* u : find_units(translate_rect(r, screen_pos))) {
-					if (!unit_can_be_selected(u)) continue;
-					new_units.push_back(u);
-					if (u->owner != 11) any_non_neutrals = true;
-				}
-				for (unit_t* u : new_units) {
-					if (u->owner == 11 && any_non_neutrals) continue;
-					current_selection_add(u);
-				}
-			}
-			is_drag_selecting = false;
-		};
-		*/
-		/*if (wnd) {
-			native_window::event_t e;
-			while (wnd.peek_message(e)) {
-				switch (e.type) {
-				case native_window::event_t::type_resize:
-					resize(e.width, e.height);
-					break;
-				case native_window::event_t::type_mouse_button_down:
-					if (e.button == 1) {
-					  is_drag_selecting = true;
-					  drag_select_from_x = e.mouse_x;
-					  drag_select_from_y = e.mouse_y;
-					  drag_select_to_x = e.mouse_x;
-					  drag_select_to_y = e.mouse_y;
-					} else if (e.button == 2) {
-					  is_dragging_screen = true;
-					  drag_screen_pos = screen_pos + xy((fp16::integer(e.mouse_x) / view_scale).integer_part(), (fp16::integer(e.mouse_y) / view_scale).integer_part());
-					}
-					break;
-				case native_window::event_t::type_mouse_motion:
-					if (e.button_state & 2) {
-						if (is_dragging_screen) {
-							screen_pos = drag_screen_pos - xy((fp16::integer(e.mouse_x) / view_scale).integer_part(), (fp16::integer(e.mouse_y) / view_scale).integer_part());
-							//screen_pos -= xy((fp16::integer(e.mouse_x - drag_screen_x) / view_scale).integer_part(), (fp16::integer(e.mouse_y - drag_screen_y) / view_scale).integer_part());
-						}
-					}
-
-					if (e.button_state & 1) {
-					  if (!is_drag_selecting) {
-						is_drag_selecting = true;
-						drag_select_from_x = e.mouse_x;
-						drag_select_from_y = e.mouse_y;
-					  }
-					  drag_select_to_x = e.mouse_x;
-					  drag_select_to_y = e.mouse_y;
-					}
-					else {
-					  if (is_drag_selecting) end_drag_select(false);
-					}
-					break;
-				case native_window::event_t::type_mouse_button_up:
-					if (e.button == 1) {
-						if (is_drag_selecting) {
-							end_drag_select(e.clicks >= 2 && e.clicks % 2 == 0);
-						}
-					} else if (e.button == 2) {
-						is_dragging_screen = false;
-					}
-					break;
-				case native_window::event_t::type_key_down:
-					if (e.sym == ' ' || e.sym == 'p') {
-						is_paused = !is_paused;
-					}
-					if (e.sym == 'a' || e.sym == 'u') {
-						if (game_speed < fp8::integer(128)) game_speed *= 2;
-					}
-					if (e.sym == 'z' || e.sym == 'd') {
-						if (game_speed > 2_fp8) game_speed /= 2;
-					}
-					if (e.sym == '\b') {
-						int t = 5 * 42 / 1000;
-						if (replay_frame < t) replay_frame = 0;
-						else replay_frame -= t;
-					}
-					break;
-				}
-			}
-		}*/
 
 		if (want_new_palette) set_image_data();
 
@@ -1579,30 +1511,10 @@ struct ui_functions: ui_util_functions {
 			}
 		}*/
 
-		if (screen_pos.y + view_height > game_st.map_height) screen_pos.y = game_st.map_height - view_height;
-		if (screen_pos.y < 0) screen_pos.y = 0;
-		if (screen_pos.x + view_width > game_st.map_width) screen_pos.x = game_st.map_width - view_width;
-		if (screen_pos.x < 0) screen_pos.x = 0;
-
 		draw_tiles(data, data_pitch);
 		draw_sprites(data, data_pitch);
 
 		draw_callback(data, data_pitch);
-
-
-		/*
-		if (is_drag_selecting) {
-			uint32_t* data = (uint32_t*)rgba_surface->lock();
-
-			auto r = rect{{drag_select_from_x, drag_select_from_y}, {drag_select_to_x, drag_select_to_y}};
-			if (r.from.x > r.to.x) std::swap(r.from.x, r.to.x);
-			if (r.from.y > r.to.y) std::swap(r.from.y, r.to.y);
-
-			line_rectangle_rgba(data, rgba_surface->pitch / 4, r, 0xff18fc10);
-
-			rgba_surface->unlock();
-		}
-		*/
 	}
 
 	void move_minimap(int mouse_x, int mouse_y) {
@@ -1619,12 +1531,7 @@ struct ui_functions: ui_util_functions {
 	  int y = mouse_y - minimap_area.from.y;
 	  x = x * game_st.map_tile_width / (minimap_area.to.x - minimap_area.from.x);
 	  y = y * game_st.map_tile_height / (minimap_area.to.y - minimap_area.from.y);
-	  screen_pos = xy(32 * x - view_width / 2, 32 * y - view_height / 2);
-
-	  if (screen_pos.y + view_height > game_st.map_height) screen_pos.y = game_st.map_height - view_height;
-	  if (screen_pos.y < 0) screen_pos.y = 0;
-	  if (screen_pos.x + view_width > game_st.map_width) screen_pos.x = game_st.map_width - view_width;
-	  if (screen_pos.x < 0) screen_pos.x = 0;
+	  set_screen_pos(32 * x - view_width / 2, 32 * y - view_height / 2);
 	}
 
 	template<typename cb_F>

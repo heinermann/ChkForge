@@ -20,8 +20,6 @@ public:
   MainWindow(QWidget *parent = nullptr);
   ~MainWindow();
 
-  void afterCreated();
-
 private:
   Ui::MainWindow *ui;
 

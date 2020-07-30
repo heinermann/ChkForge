@@ -10,6 +10,7 @@
 
 #include <QVector>
 #include <Qrgb>
+#include <QPoint>
 
 struct main_t;
 
@@ -34,6 +35,15 @@ private:
   QImage buffer;
   main_t* bw = nullptr;
   std::unique_ptr<QTimer> timer;
+
+  bool is_paused = false;
+  bool is_drag_selecting = false;
+  bool is_dragging_screen = false;
+  QPoint drag_select_from{};
+  QPoint drag_select_to{};
+  QPoint drag_screen_pos{};
+
+  double view_scale = 1.0;
 
   virtual void changeEvent(QEvent* event) override;
 
