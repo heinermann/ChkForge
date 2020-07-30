@@ -113,6 +113,7 @@ bool Minimap::eventFilter(QObject* obj, QEvent* e)
 
 void Minimap::paint_surface(QWidget* obj, QPaintEvent* paintEvent)
 {
+  // TODO: Move drawing of white minimap view box here
   QPainter painter;
   painter.begin(obj);
   painter.fillRect(obj->rect(), QColorConstants::Black);

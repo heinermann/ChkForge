@@ -124,6 +124,9 @@ MapView::MapView(QWidget *parent) :
   timer = std::make_unique<QTimer>(this);
   connect(timer.get(), SIGNAL(timeout()), this, SLOT(updateLogic()));
 
+  connect(ui->hScroll, SIGNAL(valueChanged(int)), this, SLOT(hScrollMoved()));
+  connect(ui->vScroll, SIGNAL(valueChanged(int)), this, SLOT(vScrollMoved()));
+
   ui->surface->installEventFilter(this);
 }
 
@@ -215,49 +218,35 @@ void MapView::changeEvent(QEvent* event)
   }
 }
 
-bool MapView::eventFilter(QObject* obj, QEvent* e)
+bool MapView::mouseEventFilter(QObject* obj, QEvent* e)
 {
-  if (obj != ui->surface) return false;
+  QMouseEvent* mouseEvent = reinterpret_cast<QMouseEvent*>(e);
+  bool double_clicked = mouseEvent->flags() & Qt::MouseEventCreatedDoubleClick;
+  bool shift_pressed = mouseEvent->modifiers() & Qt::ShiftModifier;
+  bool ctrl_pressed = mouseEvent->modifiers() & Qt::ControlModifier;
 
   switch (e->type())
   {
   case QEvent::MouseButtonPress:
-  {
-    QMouseEvent* mouseEvent = reinterpret_cast<QMouseEvent*>(e);
-    bool double_clicked = mouseEvent->flags() & Qt::MouseEventCreatedDoubleClick;
-
     if (mouseEvent->button() == Qt::LeftButton && !double_clicked) {
       this->is_drag_selecting = true;
       this->drag_select_from = this->drag_select_to = mouseEvent->pos();
     }
     else if (mouseEvent->button() == Qt::MiddleButton) {
       this->is_dragging_screen = true;
-      this->drag_screen_pos = QPoint{
-        int(bw->ui.screen_pos.x + mouseEvent->pos().x() / view_scale),
-        int(bw->ui.screen_pos.y + mouseEvent->pos().y() / view_scale)
-      };
+      this->drag_screen_pos = getScreenPos() + mouseEvent->pos() / view_scale;
     }
     return true;
-  }
   case QEvent::MouseButtonDblClick:
-  {
-    QMouseEvent* mouseEvent = reinterpret_cast<QMouseEvent*>(e);
     if (mouseEvent->button() == Qt::LeftButton) {
-      bool shift_pressed = mouseEvent->modifiers() & Qt::ShiftModifier;
-      bool ctrl_pressed = mouseEvent->modifiers() & Qt::ControlModifier;
       bw->ui.select_units(true, shift_pressed, ctrl_pressed,
         mouseEvent->pos().x(), mouseEvent->pos().y(),
         mouseEvent->pos().x(), mouseEvent->pos().y());
       this->is_drag_selecting = false;
     }
     return true;
-  }
   case QEvent::MouseButtonRelease:
-  {
-    QMouseEvent* mouseEvent = reinterpret_cast<QMouseEvent*>(e);
     if (mouseEvent->button() == Qt::LeftButton && this->is_drag_selecting) {
-      bool shift_pressed = mouseEvent->modifiers() & Qt::ShiftModifier;
-      bool ctrl_pressed = mouseEvent->modifiers() & Qt::ControlModifier;
       bw->ui.select_units(false, shift_pressed, ctrl_pressed,
         this->drag_select_from.x(), this->drag_select_from.y(),
         mouseEvent->pos().x(), mouseEvent->pos().y());
@@ -267,10 +256,7 @@ bool MapView::eventFilter(QObject* obj, QEvent* e)
       this->is_dragging_screen = false;
     }
     return true;
-  }
   case QEvent::MouseMove:
-  {
-    QMouseEvent* mouseEvent = reinterpret_cast<QMouseEvent*>(e);
     if (mouseEvent->buttons() & Qt::LeftButton) {
       if (!this->is_drag_selecting) {
         this->is_drag_selecting = true;
@@ -286,6 +272,17 @@ bool MapView::eventFilter(QObject* obj, QEvent* e)
     }
     return true;
   }
+}
+
+bool MapView::surfaceEventFilter(QObject* obj, QEvent* e)
+{
+  switch (e->type())
+  {
+  case QEvent::MouseButtonPress:
+  case QEvent::MouseButtonDblClick:
+  case QEvent::MouseButtonRelease:
+  case QEvent::MouseMove:
+    return mouseEventFilter(obj, e);
   case QEvent::Resize:
   {
     QResizeEvent* resizeEvent = reinterpret_cast<QResizeEvent*>(e);
@@ -297,6 +294,24 @@ bool MapView::eventFilter(QObject* obj, QEvent* e)
     return true;
   }
   return false;
+}
+
+bool MapView::eventFilter(QObject* obj, QEvent* e)
+{
+  if (obj == ui->surface) {
+    return surfaceEventFilter(obj, e);
+  }
+  return false;
+}
+
+void MapView::hScrollMoved()
+{
+  bw->ui.screen_pos.x = ui->hScroll->value();
+}
+
+void MapView::vScrollMoved()
+{
+  bw->ui.screen_pos.y = ui->vScroll->value();
 }
 
 void MapView::paint_surface(QWidget* obj, QPaintEvent* paintEvent)
@@ -316,6 +331,11 @@ void MapView::paint_surface(QWidget* obj, QPaintEvent* paintEvent)
   }
 
   painter.end();
+}
+
+QPoint MapView::getScreenPos()
+{
+  return QPoint{ bw->ui.screen_pos.x, bw->ui.screen_pos.y };
 }
 
 void MapView::setScreenPos(const QPoint& pos)

@@ -25,6 +25,7 @@ public:
   void init();
 
   void setScreenPos(const QPoint& pos);
+  QPoint getScreenPos();
 
   void move_minimap(int x, int y);
   void draw_minimap(uint8_t* data, size_t data_pitch, size_t surface_width, size_t surface_height);
@@ -51,7 +52,9 @@ private:
 
   virtual void changeEvent(QEvent* event) override;
 
-  virtual bool eventFilter(QObject* obj, QEvent* event) override;
+  virtual bool eventFilter(QObject* obj, QEvent* e) override;
+  bool surfaceEventFilter(QObject* obj, QEvent* e);
+  bool mouseEventFilter(QObject* obj, QEvent* e);
   void paint_surface(QWidget* obj, QPaintEvent* paintEvent);
 
   void resizeSurface(const QSize& newSize);
@@ -59,6 +62,8 @@ private:
 private slots:
   void onCloseRequested();
   void updateLogic();
+  void hScrollMoved();
+  void vScrollMoved();
 
 };
 

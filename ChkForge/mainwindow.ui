@@ -733,11 +733,6 @@ QSplitter::handle {
     <string>Copy the current state to a new map</string>
    </property>
   </action>
-  <action name="actionGithub">
-   <property name="text">
-    <string>Github</string>
-   </property>
-  </action>
  </widget>
  <resources>
   <include location="Icons.qrc"/>
