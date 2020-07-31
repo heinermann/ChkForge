@@ -4,6 +4,7 @@
 #include <cstddef>
 #include <iterator>
 #include <array>
+#include <stdexcept>
 
 namespace bwgame {
 
