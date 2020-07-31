@@ -2,3 +2,12 @@
 	path = ads
 	url = git@github.com:githubuser0xFFFF/Qt-Advanced-Docking-System.git
 
+[submodule "StormLib/StormLib"]
+	path = StormLib/StormLib
+	url = git@github.com:ladislav-zezula/StormLib.git
+[submodule "Chkdraft/Chkdraft"]
+	path = Chkdraft/Chkdraft
+	url = git@github.com:jjf28/Chkdraft.git
+[submodule "CascLib/CascLib"]
+	path = CascLib/CascLib
+	url = git@github.com:ladislav-zezula/CascLib.git
