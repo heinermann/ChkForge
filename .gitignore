@@ -75,3 +75,6 @@ release/
 log.txt
 enc_temp_folder/
 
+x64/
+Chkdraft/include
+

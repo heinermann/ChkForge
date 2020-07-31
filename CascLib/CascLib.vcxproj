@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CascLib\src\CascCommon.h" />
+    <ClInclude Include="CascLib\src\CascLib.h" />
+    <ClInclude Include="CascLib\src\CascPort.h" />
+    <ClInclude Include="CascLib\src\CascStructs.h" />
+    <ClInclude Include="CascLib\src\common\Common.h" />
+    <ClInclude Include="CascLib\src\common\Csv.h" />
+    <ClInclude Include="CascLib\src\common\Directory.h" />
+    <ClInclude Include="CascLib\src\common\FileStream.h" />
+    <ClInclude Include="CascLib\src\common\FileTree.h" />
+    <ClInclude Include="CascLib\src\common\ListFile.h" />
+    <ClInclude Include="CascLib\src\common\Map.h" />
+    <ClInclude Include="CascLib\src\common\RootHandler.h" />
+    <ClInclude Include="CascLib\src\md5\md5.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CascLib\src\CascDecompress.cpp" />
+    <ClCompile Include="CascLib\src\CascDecrypt.cpp" />
+    <ClCompile Include="CascLib\src\CascDumpData.cpp" />
+    <ClCompile Include="CascLib\src\CascFiles.cpp" />
+    <ClCompile Include="CascLib\src\CascFindFile.cpp" />
+    <ClCompile Include="CascLib\src\CascIndexFiles.cpp" />
+    <ClCompile Include="CascLib\src\CascOpenFile.cpp" />
+    <ClCompile Include="CascLib\src\CascOpenStorage.cpp" />
+    <ClCompile Include="CascLib\src\CascReadFile.cpp" />
+    <ClCompile Include="CascLib\src\CascRootFile_Diablo3.cpp" />
+    <ClCompile Include="CascLib\src\CascRootFile_Install.cpp" />
+    <ClCompile Include="CascLib\src\CascRootFile_MNDX.cpp" />
+    <ClCompile Include="CascLib\src\CascRootFile_OW.cpp" />
+    <ClCompile Include="CascLib\src\CascRootFile_Text.cpp" />
+    <ClCompile Include="CascLib\src\CascRootFile_TVFS.cpp" />
+    <ClCompile Include="CascLib\src\CascRootFile_WoW.cpp" />
+    <ClCompile Include="CascLib\src\common\Common.cpp" />
+    <ClCompile Include="CascLib\src\common\Csv.cpp" />
+    <ClCompile Include="CascLib\src\common\Directory.cpp" />
+    <ClCompile Include="CascLib\src\common\FileStream.cpp" />
+    <ClCompile Include="CascLib\src\common\FileTree.cpp" />
+    <ClCompile Include="CascLib\src\common\ListFile.cpp" />
+    <ClCompile Include="CascLib\src\common\RootHandler.cpp" />
+    <ClCompile Include="CascLib\src\jenkins\lookup3.c" />
+    <ClCompile Include="CascLib\src\md5\md5.cpp" />
+    <ClCompile Include="CascLib\src\zlib\adler32.c" />
+    <ClCompile Include="CascLib\src\zlib\crc32.c" />
+    <ClCompile Include="CascLib\src\zlib\inffast.c" />
+    <ClCompile Include="CascLib\src\zlib\inflate.c" />
+    <ClCompile Include="CascLib\src\zlib\inftrees.c" />
+    <ClCompile Include="CascLib\src\zlib\zutil.c" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{bf354402-4cdf-4c67-8ce7-d3dbf9d7434a}</ProjectGuid>
+    <RootNamespace>CascLib</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level1</WarningLevel>
+      <PreprocessorDefinitions>WIN32;WIN32_LEAN_AND_MEAN;NOMINMAX;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level1</WarningLevel>
+      <PreprocessorDefinitions>WIN32;WIN32_LEAN_AND_MEAN;NOMINMAX;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

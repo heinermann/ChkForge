@@ -88,7 +88,7 @@
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ObjectFileName>release\</ObjectFileName>
       <Optimization>MaxSpeed</Optimization>
-      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;OPENBW_NO_SDL_MIXER;QT_DEPRECATED_WARNINGS;WIN32_LEAN_AND_MEAN;NDEBUG;QT_NO_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;OPENBW_NO_SDL_MIXER;QT_DEPRECATED_WARNINGS;WIN32_LEAN_AND_MEAN;NOMINMAX;NDEBUG;QT_NO_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ProgramDataBaseFileName>
       </ProgramDataBaseFileName>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -150,7 +150,7 @@
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ObjectFileName>debug\</ObjectFileName>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;OPENBW_NO_SDL_MIXER;QT_DEPRECATED_WARNINGS;WIN32_LEAN_AND_MEAN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;OPENBW_NO_SDL_MIXER;QT_DEPRECATED_WARNINGS;WIN32_LEAN_AND_MEAN;NOMINMAX;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
@@ -381,6 +381,18 @@
   <ItemGroup>
     <ProjectReference Include="..\ads\QtAdvancedDockingSystem.vcxproj">
       <Project>{8b117e69-f854-4faf-b6b1-e4430a2b1ed6}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\CascLib\CascLib.vcxproj">
+      <Project>{bf354402-4cdf-4c67-8ce7-d3dbf9d7434a}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Chkdraft\Chkdraft\IcuLib\common.vcxproj">
+      <Project>{73c0a65b-d1f2-4de1-b3a6-15dad2c23f3d}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Chkdraft\MappingCoreLib.vcxproj">
+      <Project>{7dd62df7-4190-4119-85e4-67a8b176b05d}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\StormLib\StormLib.vcxproj">
+      <Project>{53c83421-dacf-4980-bb71-16d9ffd20318}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
