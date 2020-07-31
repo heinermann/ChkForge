@@ -21,7 +21,6 @@ MainWindow::MainWindow(QWidget *parent)
 
   Minimap* minimap = new Minimap();
   ui->menu_Tool_Windows->addAction(minimap->toggleViewAction());
-  minimap->init();
 
   createMapView();
 
@@ -59,5 +58,6 @@ MapView* MainWindow::createMapView()
 
 MainWindow::~MainWindow()
 {
+  delete m_DockManager;
   delete ui;
 }

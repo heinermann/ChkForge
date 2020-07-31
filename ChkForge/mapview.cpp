@@ -70,8 +70,11 @@ void main_t::update() {
 	fps_counter = 0;
   }
 
+  ui.player.next_frame();
+  /*
   auto next = [&]() {
-	ui.replay_functions::next_frame();
+	//ui.replay_functions::next_frame();
+    ui.player.next_frame();
   };
 
   if (!ui.is_done() || ui.st.current_frame != ui.replay_frame) {
@@ -109,7 +112,7 @@ void main_t::update() {
 		ui.replay_frame = ui.st.current_frame;
 	  }
 	}
-  }
+  }*/
 }
 
 MapView::MapView(QWidget *parent) :
@@ -161,7 +164,9 @@ void MapView::init()
   };
 
   bw->ui.init();
-  bw->ui.load_replay_file("C:/Users/Adam Heinermann/Downloads/394928-Locu_kras-PvT.rep");
+  bw->ui.load_map_file("C:/Program Files (x86)/StarCraft/Maps/(2)Bottleneck.scm");
+
+  //bw->ui.load_replay_file("C:/Users/Adam Heinermann/Downloads/394928-Locu_kras-PvT.rep");
 
   bw->ui.screen_pos = { 0, 0 };
   bw->ui.set_image_data();
@@ -171,12 +176,12 @@ void MapView::init()
   resizeSurface(ui->surface->size());
 }
 
-int MapView::map_width()
+int MapView::map_tile_width()
 {
   return bw->ui.game_st.map_tile_width;
 }
 
-int MapView::map_height()
+int MapView::map_tile_height()
 {
   return bw->ui.game_st.map_tile_height;
 }
@@ -319,7 +324,9 @@ void MapView::paint_surface(QWidget* obj, QPaintEvent* paintEvent)
   QPainter painter;
   painter.begin(obj);
   painter.fillRect(obj->rect(), QColorConstants::Black);
-  painter.drawImage(0, 0, this->buffer);
+
+  pix_buffer.convertFromImage(buffer);
+  painter.drawPixmap(0, 0, pix_buffer);
   
   // Selection box
   if (is_drag_selecting) {
@@ -338,6 +345,11 @@ QPoint MapView::getScreenPos()
   return QPoint{ bw->ui.screen_pos.x, bw->ui.screen_pos.y };
 }
 
+QSize MapView::getViewSize()
+{
+  return ui->surface->size();
+}
+
 void MapView::setScreenPos(const QPoint& pos)
 {
   bw->ui.set_screen_pos(pos.x(), pos.y());
@@ -354,6 +366,8 @@ void MapView::resizeSurface(const QSize& newSize)
 {
   this->buffer = QImage(newSize, QImage::Format::Format_Indexed8);
   this->buffer.setColorTable(this->get_palette());
+
+  this->pix_buffer = QPixmap(newSize);
 
   bw->ui.resize(newSize.width(), newSize.height());
   this->ui->surface->update();

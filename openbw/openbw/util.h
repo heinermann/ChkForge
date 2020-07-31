@@ -6,6 +6,7 @@
 #include <limits>
 #include <array>
 #include <type_traits>
+#include <stdexcept>
 
 #include "containers.h"
 #include "strf.h"

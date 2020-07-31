@@ -14,7 +14,7 @@ class Minimap : public DockWidgetWrapper<Ui::Minimap>
   Q_OBJECT
 
 public:
-  explicit Minimap(QWidget *parent = nullptr);
+  explicit Minimap(QWidget* parent = nullptr);
   virtual ~Minimap();
 
   void setActiveMapView(MapView* view);
@@ -22,12 +22,9 @@ public:
   void resetMapBuffer();
   void resetPalette();
 
-  void init();
-
   static Minimap* g_minimap;
 private:
-  // TODO figure out what's wrong with this image and heap corruption
-  QImage minimap_buffer{ 256, 256, QImage::Format::Format_Indexed8 };
+  QImage minimap_buffer;
 
   std::unique_ptr<QTimer> timer;
   MapView* activeMapView = nullptr;

@@ -93,6 +93,12 @@ struct replay_functions: action_functions {
 	replay_state& replay_st;
 	explicit replay_functions(state& st, action_state& action_st, replay_state& replay_st) : action_functions(st, action_st), replay_st(replay_st) {}
 	
+	void load_map_file(a_string filename) {
+	  game_load_functions game_load_funcs(st);
+	  game_load_funcs.use_map_settings = true;
+	  game_load_funcs.load_map_file(filename, nullptr, false);
+	}
+
 	void load_replay_file(a_string filename, bool initial_processing = true, std::vector<uint8_t>* get_map_data = nullptr) {
 		auto file_r = data_loading::file_reader<>(std::move(filename));
 		load_replay(data_loading::make_replay_file_reader(file_r), initial_processing, get_map_data);

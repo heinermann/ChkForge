@@ -11,6 +11,7 @@
 #include <QVector>
 #include <Qrgb>
 #include <QPoint>
+#include <QPixmap>
 
 struct main_t;
 
@@ -26,16 +27,18 @@ public:
 
   void setScreenPos(const QPoint& pos);
   QPoint getScreenPos();
+  QSize getViewSize();
 
   void move_minimap(int x, int y);
   void draw_minimap(uint8_t* data, size_t data_pitch, size_t surface_width, size_t surface_height);
   QVector<QRgb> get_palette();
 
-  int map_width();
-  int map_height();
+  int map_tile_width();
+  int map_tile_height();
 
 private:
   QImage buffer;
+  QPixmap pix_buffer;
   main_t* bw = nullptr;
   std::unique_ptr<QTimer> timer;
 

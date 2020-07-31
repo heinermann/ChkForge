@@ -10,24 +10,21 @@
 #include <QPainter>
 #include <QVector>
 #include <QSize>
+#include <QRect>
+#include <QColor>
 
 Minimap* Minimap::g_minimap = nullptr;
 
 Minimap::Minimap(QWidget *parent) :
   DockWidgetWrapper<Ui::Minimap>("Minimap", parent)
 {
-  // Setup some states to allow direct rendering into the widget
-  //ui->sdl_widget->setAttribute(Qt::WA_PaintOnScreen);
-  //ui->sdl_widget->setAttribute(Qt::WA_OpaquePaintEvent);
-  //ui->sdl_widget->setAttribute(Qt::WA_NoSystemBackground);
-
-  // Set strong focus to enable keyboard events to be received
-  //ui->sdl_widget->setFocusPolicy(Qt::StrongFocus);
-
   timer = std::make_unique<QTimer>(this);
   connect(timer.get(), SIGNAL(timeout()), this, SLOT(updateLogic()));
 
   ui->surface->installEventFilter(this);
+
+  timer->start(33);
+  g_minimap = this;
 }
 
 Minimap::~Minimap()
@@ -35,18 +32,11 @@ Minimap::~Minimap()
   g_minimap = nullptr;
 }
 
-void Minimap::init()
-{
-  g_minimap = this;
-
-  timer->start(33);
-}
-
 void Minimap::updateLogic()
 {
   if (!activeMapView) return;
 
-  activeMapView->draw_minimap(this->minimap_buffer.bits(), this->minimap_buffer.bytesPerLine(), this->minimap_buffer.width(), this->minimap_buffer.height());
+  activeMapView->draw_minimap(minimap_buffer.bits(), minimap_buffer.bytesPerLine(), minimap_buffer.width(), minimap_buffer.height());
 
   resetPalette();
   ui->surface->update();
@@ -69,7 +59,7 @@ void Minimap::resetMapBuffer()
   if (!this->activeMapView) return;
 
   this->minimap_buffer = QImage{
-    this->activeMapView->map_width(), this->activeMapView->map_height(),
+    this->activeMapView->map_tile_width(), this->activeMapView->map_tile_height(),
     QImage::Format::Format_Indexed8
   };
   resetPalette();
@@ -113,11 +103,28 @@ bool Minimap::eventFilter(QObject* obj, QEvent* e)
 
 void Minimap::paint_surface(QWidget* obj, QPaintEvent* paintEvent)
 {
-  // TODO: Move drawing of white minimap view box here
   QPainter painter;
   painter.begin(obj);
   painter.fillRect(obj->rect(), QColorConstants::Black);
-  QImage toDraw = this->minimap_buffer.scaled(size(), Qt::KeepAspectRatio);
-  painter.drawImage(0, 0, toDraw);
+  
+  QSize target_size = minimap_buffer.size();
+  target_size.scale(obj->size(), Qt::AspectRatioMode::KeepAspectRatio);
+  painter.drawImage(QRect(QPoint{ 0, 0 }, target_size), minimap_buffer);
+  
+  if (activeMapView) {
+    double scale = 1.0 * target_size.width() / minimap_buffer.size().width();
+
+    QPoint box_start = activeMapView->getScreenPos() / 32 * scale;
+    QPoint box_end = box_start + QPoint{ 
+      (activeMapView->getViewSize().width() + 31) / 32 - 1,
+      (activeMapView->getViewSize().height() + 31) / 32 - 1 } * scale;
+
+    painter.setPen(QColor(255, 255, 255));
+    painter.drawLine(box_start.x(), box_start.y(), box_start.x(), box_end.y());
+    painter.drawLine(box_start.x(), box_start.y(), box_end.x(), box_start.y());
+    painter.drawLine(box_end.x(), box_start.y(), box_end.x(), box_end.y());
+    painter.drawLine(box_start.x(), box_end.y(), box_end.x(), box_end.y());
+  }
+
   painter.end();
 }

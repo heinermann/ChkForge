@@ -1277,7 +1277,7 @@ struct ui_functions: ui_util_functions {
 		return true;
 	}
 
-	rect get_minimap_area() {
+	xy get_minimap_size() {
 		size_t minimap_width = std::max(game_st.map_tile_width, game_st.map_tile_height);
 		size_t minimap_height = std::max(game_st.map_tile_width, game_st.map_tile_height);
 
@@ -1288,69 +1288,59 @@ struct ui_functions: ui_util_functions {
 		}
 		if (screen_width < minimap_width || screen_height < minimap_height) return {};
 		
-		rect area;
-		area.from = { 0, 0 };
-		area.to = area.from + xy{(int)minimap_width, (int)minimap_height};
-		return area;
+		return xy{ (int)minimap_width, (int)minimap_height };
 	}
 
 	void draw_minimap(uint8_t* data, size_t data_pitch, size_t surface_width, size_t surface_height) {
-		auto area = get_minimap_area();
-		if (area.to.x > surface_width) return;
-		if (area.to.y > surface_height) return;
+	  xy minimap_size = get_minimap_size();
 
-		size_t minimap_width = area.to.x - area.from.x;
-		size_t minimap_height = area.to.y - area.from.y;
-		if (minimap_width != game_st.map_tile_width) return;
-		if (minimap_height != game_st.map_tile_height) return;
-		fill_rectangle(data, data_pitch, area, 0);
-		line_rectangle(data, data_pitch, {area.from - xy(1, 1), area.to + xy(1, 1)}, 0);
+	  if (minimap_size.x > surface_width) return;
+	  if (minimap_size.y > surface_height) return;
 
-		uint8_t* p = data + data_pitch * (size_t)area.from.y + (size_t)area.from.x;
+	  if (minimap_size.x != game_st.map_tile_width) return;
+	  if (minimap_size.y != game_st.map_tile_height) return;
+	  fill_rectangle(data, data_pitch, rect{ xy{ 0, 0 }, minimap_size }, 0);
 
-		size_t pitch = data_pitch - game_st.map_tile_width;
-		for (size_t y = 0; y != game_st.map_tile_height; ++y) {
-			for (size_t x = 0; x != game_st.map_tile_width; ++x) {
-				size_t index;
-				if (~st.tiles[y * game_st.map_tile_width + x].flags & tile_t::flag_has_creep) index = st.tiles_mega_tile_index[y * game_st.map_tile_width + x];
-				else index = game_st.cv5.at(1).mega_tile_index[creep_random_tile_indices[y * game_st.map_tile_width + x]];
-				auto* images = &tileset_img.vx4.at(index).images[0];
-				auto* bitmap = &tileset_img.vr4.at(*images / 2).bitmap[0];
-				auto val = bitmap[55 / sizeof(vr4_entry::bitmap_t)];
-				size_t shift = 8 * (55 % sizeof(vr4_entry::bitmap_t));
-				val >>= shift;
-				*p++ = (uint8_t)val;
-			}
-			p += pitch;
-		}
+	  uint8_t* p = data;
 
-		for (size_t i = 12; i != 0;) {
-			--i;
-			for (unit_t* u : ptr(st.player_units[i])) {
-				if (!unit_visble_on_minimap(u)) continue;
-				int color = img.player_minimap_colors.at(st.players[u->owner].color);
-				size_t w = u->unit_type->placement_size.x / 32u;
-				size_t h = u->unit_type->placement_size.y / 32u;
-				if (unit_is_mineral_field(u) || unit_is(u, UnitTypes::Resource_Vespene_Geyser)) {
-					color = tileset_img.resource_minimap_color;
-				}
-				if (ut_building(u)) {
-					if (w > 4) w = 4;
-					if (h > 4) h = 4;
-				}
-				if (w < 2) w = 2;
-				if (h < 2) h = 2;
-				rect unit_area;
-				unit_area.from = area.from + (u->sprite->position - u->unit_type->placement_size / 2) / 32u;
-				unit_area.to = unit_area.from + xy(w, h);
-				fill_rectangle(data, data_pitch, unit_area, color);
-			}
-		}
+	  size_t pitch = data_pitch - game_st.map_tile_width;
+	  for (size_t y = 0; y != game_st.map_tile_height; ++y) {
+		  for (size_t x = 0; x != game_st.map_tile_width; ++x) {
+			  size_t index;
+			  if (~st.tiles[y * game_st.map_tile_width + x].flags & tile_t::flag_has_creep) index = st.tiles_mega_tile_index[y * game_st.map_tile_width + x];
+			  else index = game_st.cv5.at(1).mega_tile_index[creep_random_tile_indices[y * game_st.map_tile_width + x]];
+			  auto* images = &tileset_img.vx4.at(index).images[0];
+			  auto* bitmap = &tileset_img.vr4.at(*images / 2).bitmap[0];
+			  auto val = bitmap[55 / sizeof(vr4_entry::bitmap_t)];
+			  size_t shift = 8 * (55 % sizeof(vr4_entry::bitmap_t));
+			  val >>= shift;
+			  *p++ = (uint8_t)val;
+		  }
+		  p += pitch;
+	  }
 
-		rect view_rect;
-		view_rect.from = area.from + xy(screen_pos.x / 32u, screen_pos.y / 32u);
-		view_rect.to = view_rect.from + xy((view_width + 31) / 32u - 1, (view_height + 31) / 32u - 1);
-		line_rectangle(data, data_pitch, view_rect, 255);
+	  for (size_t i = 12; i != 0;) {
+		  --i;
+		  for (unit_t* u : ptr(st.player_units[i])) {
+			  if (!unit_visble_on_minimap(u)) continue;
+			  int color = img.player_minimap_colors.at(st.players[u->owner].color);
+			  size_t w = u->unit_type->placement_size.x / 32u;
+			  size_t h = u->unit_type->placement_size.y / 32u;
+			  if (unit_is_mineral_field(u) || unit_is(u, UnitTypes::Resource_Vespene_Geyser)) {
+				  color = tileset_img.resource_minimap_color;
+			  }
+			  if (ut_building(u)) {
+				  if (w > 4) w = 4;
+				  if (h > 4) h = 4;
+			  }
+			  if (w < 2) w = 2;
+			  if (h < 2) h = 2;
+			  rect unit_area;
+			  unit_area.from = (u->sprite->position - u->unit_type->placement_size / 2) / 32u;
+			  unit_area.to = unit_area.from + xy(w, h);
+			  fill_rectangle(data, data_pitch, unit_area, color);
+		  }
+	  }
 	}
 
 	native_window_drawing::color* get_palette() {
@@ -1518,19 +1508,17 @@ struct ui_functions: ui_util_functions {
 	}
 
 	void move_minimap(int mouse_x, int mouse_y) {
-	  auto minimap_area = get_minimap_area();
-	  if (minimap_area.to.x == 0 || minimap_area.to.y == 0) return;
+	  auto minimap_size = get_minimap_size();
+	  if (minimap_size.x == 0 || minimap_size.y == 0) return;
 	  
-	  if (mouse_x < minimap_area.from.x) mouse_x = minimap_area.from.x;
-	  else if (mouse_x >= minimap_area.to.x) mouse_x = minimap_area.to.x - 1;
+	  if (mouse_x < 0) mouse_x = 0;
+	  else if (mouse_x >= minimap_size.x) mouse_x = minimap_size.x - 1;
 	  
-	  if (mouse_y < minimap_area.from.y) mouse_y = minimap_area.from.y;
-	  else if (mouse_y >= minimap_area.to.y) mouse_y = minimap_area.to.y - 1;
+	  if (mouse_y < 0) mouse_y = 0;
+	  else if (mouse_y >= minimap_size.y) mouse_y = minimap_size.y - 1;
 	  
-	  int x = mouse_x - minimap_area.from.x;
-	  int y = mouse_y - minimap_area.from.y;
-	  x = x * game_st.map_tile_width / (minimap_area.to.x - minimap_area.from.x);
-	  y = y * game_st.map_tile_height / (minimap_area.to.y - minimap_area.from.y);
+	  int x = mouse_x * game_st.map_tile_width / minimap_size.x;
+	  int y = mouse_y * game_st.map_tile_height / minimap_size.y;
 	  set_screen_pos(32 * x - view_width / 2, 32 * y - view_height / 2);
 	}
 

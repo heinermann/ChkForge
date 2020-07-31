@@ -19753,6 +19753,8 @@ struct game_load_functions : state_functions {
 
 	game_state& game_st = *st.game;
 
+	bool use_map_settings = false;
+
 	struct setup_info_t {
 		std::array<bool, 12> create_melee_units_for_player{};
 		int victory_condition = 0;
@@ -21356,8 +21358,6 @@ struct game_load_functions : state_functions {
 			regions_create();
 		};
 
-		bool use_map_settings = false;
-
 		tag_funcs["THG2"] = [&](data_reader_le r) {
 			while (r.left()) {
 				int id = r.get<uint16_t>();
@@ -21581,7 +21581,7 @@ struct game_load_functions : state_functions {
 				if (unit_type->id == UnitTypes::Special_Start_Location) {
 					game_st.start_locations[owner] = { x, y };
 					// todo: some callback to set initial screen position?
-					continue;
+					//continue;
 				}
 				auto should_create_units_for_this_player = [&]() {
 					if (setup_info.create_no_units) return false;
@@ -22350,7 +22350,7 @@ public:
 	void load_map_file(const a_string& filename, bool initial_processing = true) {
 		if (!opt_funcs) error("game_player: not initialized");
 		game_load_functions game_load_funcs(st());
-		game_load_funcs.load_map_file(std::move(filename), {}, initial_processing);
+		game_load_funcs.load_map_file(filename, {}, initial_processing);
 	}
 	void next_frame() {
 		if (!opt_funcs) error("game_player: not initialized");
