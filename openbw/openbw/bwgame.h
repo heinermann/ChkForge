@@ -9317,6 +9317,7 @@ struct state_functions {
 			find(pf.source_region, pf.destination_region);
 			path_is_reversed = false;
 		} else {
+		  /*
 			find(pf.destination_region, pf.source_region);
 			path_is_reversed = true;
 			if (goal_node->region != pf.source_region) {
@@ -9330,6 +9331,29 @@ struct state_functions {
 					find(goal_node->region, pf.source_region);
 				}
 			}
+			*/
+		  find(pf.destination_region, pf.source_region);
+		  path_is_reversed = true;
+		  if (goal_node->region != pf.source_region) {
+			for (auto& v : all_nodes) {
+			  v.region->pathfinder_node = nullptr;
+			}
+
+			// SI EDIT
+			auto goal_node_region = goal_node->region;
+			all_nodes.clear();
+			open.clear();
+			goal_node = nullptr;
+			// END SI EDIT
+
+			if (pf.source_region->group_index == goal_node_region->group_index) {
+			  find(pf.source_region, goal_node_region);
+			  path_is_reversed = false;
+			}
+			else {
+			  find(goal_node_region, pf.source_region);
+			}
+		  }
 		}
 
 		pf.long_all_nodes_size = all_nodes.size();
