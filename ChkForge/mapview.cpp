@@ -172,7 +172,7 @@ void MapView::init()
   bw->ui.set_image_data();
   bw->ui.global_volume = 0;
 
-  timer->start(33);
+  timer->start(40);
   resizeSurface(ui->surface->size());
 }
 
@@ -189,7 +189,11 @@ int MapView::map_tile_height()
 void MapView::updateLogic()
 {
   bw->update();
-  bw->ui.draw_game(this->buffer.bits(), this->buffer.bytesPerLine(), this->buffer.width(), this->buffer.height());
+  updateSurface();
+}
+
+void MapView::updateSurface()
+{
   this->ui->surface->update();
 }
 
@@ -202,6 +206,7 @@ void MapView::move_minimap(int x, int y)
 {
   bw->ui.move_minimap(x, y);
   updateScrollbarPositions();
+  updateSurface();
 }
 
 QVector<QRgb> MapView::get_palette() {
@@ -312,11 +317,13 @@ bool MapView::eventFilter(QObject* obj, QEvent* e)
 void MapView::hScrollMoved()
 {
   bw->ui.screen_pos.x = ui->hScroll->value();
+  updateSurface();
 }
 
 void MapView::vScrollMoved()
 {
   bw->ui.screen_pos.y = ui->vScroll->value();
+  updateSurface();
 }
 
 void MapView::paint_surface(QWidget* obj, QPaintEvent* paintEvent)
@@ -324,8 +331,10 @@ void MapView::paint_surface(QWidget* obj, QPaintEvent* paintEvent)
   QPainter painter;
   painter.begin(obj);
   painter.fillRect(obj->rect(), QColorConstants::Black);
-
-  pix_buffer.convertFromImage(buffer);
+  
+  bw->ui.draw_game(this->buffer.bits(), this->buffer.bytesPerLine(), this->buffer.width(), this->buffer.height());
+  
+  pix_buffer.convertFromImage(this->buffer);
   painter.drawPixmap(0, 0, pix_buffer);
   
   // Selection box
@@ -380,4 +389,5 @@ void MapView::resizeSurface(const QSize& newSize)
   this->ui->vScroll->setPageStep(vPageStep);
   this->ui->vScroll->setMaximum(bw->ui.game_st.map_height - vPageStep);
   updateScrollbarPositions();
+  updateSurface();
 }

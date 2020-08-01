@@ -62,6 +62,8 @@ private:
 
   void resizeSurface(const QSize& newSize);
 
+  void updateSurface();
+
 private slots:
   void onCloseRequested();
   void updateLogic();
