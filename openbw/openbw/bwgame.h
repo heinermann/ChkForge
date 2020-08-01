@@ -21205,13 +21205,13 @@ struct game_load_functions : state_functions {
 	};
 
 	void load_map_file(a_string filename, std::function<void()> setup_f = {}, bool initial_processing = true) {
-		load_map(data_loading::mpq_file<>(std::move(filename)), std::move(setup_f), initial_processing);
+		load_map(data_loading::mpq_file(std::move(filename)), std::move(setup_f), initial_processing);
 	}
 
 	template<typename load_data_file_F>
 	void load_map(load_data_file_F&& load_data_file, std::function<void()> setup_f = {}, bool initial_processing = true) {
 		a_vector<uint8_t> data;
-		load_data_file(data, "staredit/scenario.chk");
+		load_data_file(data, "staredit\\scenario.chk");
 		load_map_data(data.data(), data.size(), std::move(setup_f), initial_processing);
 	}
 
@@ -22056,7 +22056,7 @@ void global_init(global_state& st, load_data_file_F&& load_data_file) {
 		using data_loading::data_reader_le;
 
 		a_vector<uint8_t> data;
-		load_data_file(data, "scripts/iscript.bin");
+		load_data_file(data, "scripts\\iscript.bin");
 		data_reader_le base_r(data.data(), data.data() + data.size());
 		auto r = base_r;
 		size_t id_list_offset = r.get<uint32_t>();
@@ -22176,7 +22176,7 @@ void global_init(global_state& st, load_data_file_F&& load_data_file) {
 		using data_loading::data_reader_le;
 
 		a_vector<uint8_t> data;
-		load_data_file(data, "arr/images.tbl");
+		load_data_file(data, "arr\\images.tbl");
 		data_reader_le base_r(data.data(), data.data() + data.size());
 
 		auto r = base_r;
@@ -22229,7 +22229,7 @@ void global_init(global_state& st, load_data_file_F&& load_data_file) {
 			while (char c = r.get<char>()) fn += c;
 
 			a_vector<uint8_t> data;
-			load_data_file(data, format("unit/%s", fn));
+			load_data_file(data, format("unit\\%s", fn));
 			data_reader_le data_r(data.data(), data.data() + data.size());
 			size_t loaded_index = f(data_r);
 			in.first->second = loaded_index;
@@ -22268,21 +22268,21 @@ void global_init(global_state& st, load_data_file_F&& load_data_file) {
 
 	};
 
-	load_data_file(st.units_dat, "arr/units.dat");
-	load_data_file(st.weapons_dat, "arr/weapons.dat");
-	load_data_file(st.upgrades_dat, "arr/upgrades.dat");
-	load_data_file(st.techdata_dat, "arr/techdata.dat");
+	load_data_file(st.units_dat, "arr\\units.dat");
+	load_data_file(st.weapons_dat, "arr\\weapons.dat");
+	load_data_file(st.upgrades_dat, "arr\\upgrades.dat");
+	load_data_file(st.techdata_dat, "arr\\techdata.dat");
 
-	load_data_file(st.melee_trg, "triggers/Melee.trg");
+	load_data_file(st.melee_trg, "triggers\\Melee.trg");
 
 	a_vector<uint8_t> buf;
-	load_data_file(buf, "arr/flingy.dat");
+	load_data_file(buf, "arr\\flingy.dat");
 	st.flingy_types = data_loading::load_flingy_dat(buf);
-	load_data_file(buf, "arr/sprites.dat");
+	load_data_file(buf, "arr\\sprites.dat");
 	st.sprite_types = data_loading::load_sprites_dat(buf);
-	load_data_file(buf, "arr/images.dat");
+	load_data_file(buf, "arr\\images.dat");
 	st.image_types = data_loading::load_images_dat(buf);
-	load_data_file(buf, "arr/orders.dat");
+	load_data_file(buf, "arr\\orders.dat");
 	st.order_types = data_loading::load_orders_dat(buf);
 
 	auto fixup_sprite_type = [&](auto& ptr) {
@@ -22311,8 +22311,8 @@ void global_init(global_state& st, load_data_file_F&& load_data_file) {
 	};
 
 	for (size_t i = 0; i != 8; ++i) {
-		load_data_file(st.tileset_vf4[i], format("Tileset/%s.vf4", tileset_names.at(i)));
-		load_data_file(st.tileset_cv5[i], format("Tileset/%s.cv5", tileset_names.at(i)));
+		load_data_file(st.tileset_vf4[i], format("Tileset\\%s.vf4", tileset_names.at(i)));
+		load_data_file(st.tileset_cv5[i], format("Tileset\\%s.cv5", tileset_names.at(i)));
 	}
 
 }

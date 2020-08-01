@@ -43,33 +43,29 @@
     <Import Project="$(QtMsBuild)\qt_defaults.props" />
   </ImportGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <IncludePath>$(SolutionDir)/StormLib/StormLib/src;$(SolutionDir)/Chkdraft/Chkdraft;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <IncludePath>$(SolutionDir)/StormLib/StormLib/src;$(SolutionDir)/Chkdraft/Chkdraft;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <AdditionalIncludeDirectories>openbw\deps\SDL2-2.0.12\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
-    <Lib>
-      <AdditionalLibraryDirectories>openbw\deps\SDL2-2.0.12\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-    </Lib>
+    <Lib />
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <AdditionalIncludeDirectories>openbw\deps\SDL2-2.0.12\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
-    <Lib>
-      <AdditionalLibraryDirectories>openbw\deps\SDL2-2.0.12\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-    </Lib>
+    <Lib />
   </ItemDefinitionGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
     <QtInstall>5.15.msvc2019_64</QtInstall>
-    <QtModules>core;gui;multimedia;widgets</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
     <QtInstall>5.15.msvc2019_64</QtInstall>
-    <QtModules>core;gui;multimedia;widgets</QtModules>
     <QtBuildConfig>release</QtBuildConfig>
   </PropertyGroup>
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.props')">
@@ -119,10 +115,6 @@
     <ClInclude Include="openbw\static_vector.h" />
     <ClInclude Include="openbw\strf.h" />
     <ClInclude Include="openbw\sync.h" />
-    <ClInclude Include="openbw\sync_server_asio_local.h" />
-    <ClInclude Include="openbw\sync_server_asio_posix_stream.h" />
-    <ClInclude Include="openbw\sync_server_asio_socket.h" />
-    <ClInclude Include="openbw\sync_server_asio_tcp.h" />
     <ClInclude Include="openbw\ui\common.h" />
     <ClInclude Include="openbw\ui\native_sound.h" />
     <ClInclude Include="openbw\ui\native_window_drawing.h" />

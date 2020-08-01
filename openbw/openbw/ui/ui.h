@@ -140,24 +140,24 @@ void load_image_data(image_data& img, load_data_file_F&& load_data_file) {
 		return load_pcx_data(tmp_data);
 	};
 
-	auto tunit_pcx = load_pcx_file("game/tunit.pcx");
+	auto tunit_pcx = load_pcx_file("game\\tunit.pcx");
 	if (tunit_pcx.width != 128 || tunit_pcx.height != 1) error("tunit.pcx dimensions are %dx%d (128x1 required)", tunit_pcx.width, tunit_pcx.height);
 	for (size_t i = 0; i != 16; ++i) {
 		for (size_t i2 = 0; i2 != 8; ++i2) {
 			img.player_unit_colors[i][i2] = tunit_pcx.data[i * 8 + i2];
 		}
 	}
-	auto tminimap_pcx = load_pcx_file("game/tminimap.pcx");
+	auto tminimap_pcx = load_pcx_file("game\\tminimap.pcx");
 	if (tminimap_pcx.width != 16 || tminimap_pcx.height != 1) error("tminimap.pcx dimensions are %dx%d (16x1 required)", tminimap_pcx.width, tminimap_pcx.height);
 	for (size_t i = 0; i != 16; ++i) {
 		img.player_minimap_colors[i] = tminimap_pcx.data[i];
 	}
-	auto tselect_pcx = load_pcx_file("game/tselect.pcx");
+	auto tselect_pcx = load_pcx_file("game\\tselect.pcx");
 	if (tselect_pcx.width != 24 || tselect_pcx.height != 1) error("tselect.pcx dimensions are %dx%d (24x1 required)", tselect_pcx.width, tselect_pcx.height);
 	for (size_t i = 0; i != 24; ++i) {
 		img.selection_colors[i] = tselect_pcx.data[i];
 	}
-	auto thpbar_pcx = load_pcx_file("game/thpbar.pcx");
+	auto thpbar_pcx = load_pcx_file("game\\thpbar.pcx");
 	if (thpbar_pcx.width != 19 || thpbar_pcx.height != 1) error("thpbar.pcx dimensions are %dx%d (19x1 required)", thpbar_pcx.width, thpbar_pcx.height);
 	for (size_t i = 0; i != 19; ++i) {
 		img.hp_bar_colors[i] = thpbar_pcx.data[i];
@@ -170,7 +170,7 @@ grp_t cmdicons;
 template<typename load_data_file_F>
 void load_cmdicons(load_data_file_F&& load_data_file) {
   a_vector<uint8_t> grp_data;
-  load_data_file(grp_data, "unit/cmdbtns/cmdicons.grp");
+  load_data_file(grp_data, "unit\\cmdbtns\\cmdicons.grp");
   cmdicons = read_grp(data_loading::data_reader_le(grp_data.data(), grp_data.data() + grp_data.size()));
 }
 
@@ -187,12 +187,12 @@ void load_tileset_image_data(tileset_image_data& img, size_t tileset_index, load
 
 	const char* tileset_name = tileset_names.at(tileset_index);
 
-	load_data_file(vr4_data, format("Tileset/%s.vr4", tileset_name));
-	load_data_file(vx4_data, format("Tileset/%s.vx4", tileset_name));
-	load_data_file(img.wpe, format("Tileset/%s.wpe", tileset_name));
+	load_data_file(vr4_data, format("Tileset\\%s.vr4", tileset_name));
+	load_data_file(vx4_data, format("Tileset\\%s.vx4", tileset_name));
+	load_data_file(img.wpe, format("Tileset\\%s.wpe", tileset_name));
 
 	a_vector<uint8_t> grp_data;
-	load_data_file(grp_data, format("Tileset/%s.grp", tileset_name));
+	load_data_file(grp_data, format("Tileset\\%s.grp", tileset_name));
 	img.creep_grp = read_grp(data_loading::data_reader_le(grp_data.data(), grp_data.data() + grp_data.size()));
 
 	data_reader<true, false> vr4_r(vr4_data.data(), nullptr);
@@ -225,7 +225,7 @@ void load_tileset_image_data(tileset_image_data& img, size_t tileset_index, load
 		return load_pcx_data(tmp_data);
 	};
 
-	img.dark_pcx = load_pcx_file(format("Tileset/%s/dark.pcx", tileset_name));
+	img.dark_pcx = load_pcx_file(format("Tileset\\%s\\dark.pcx", tileset_name));
 	if (img.dark_pcx.width != 256 || img.dark_pcx.height != 32) error("invalid dark.pcx");
 	for (size_t x = 0; x != 256; ++x) {
 		img.dark_pcx.data[256 * 31 + x] = (uint8_t)x;
@@ -233,7 +233,7 @@ void load_tileset_image_data(tileset_image_data& img, size_t tileset_index, load
 
 	std::array<const char*, 7> light_names = {"ofire", "gfire", "bfire", "bexpl", "trans50", "red", "green"};
 	for (size_t i = 0; i != 7; ++i) {
-		img.light_pcx[i] = load_pcx_file(format("Tileset/%s/%s.pcx", tileset_name, light_names[i]));
+		img.light_pcx[i] = load_pcx_file(format("Tileset\\%s\\%s.pcx", tileset_name, light_names[i]));
 	}
 
 	if (img.wpe.size() != 256 * 4) error("wpe size invalid (%d)", img.wpe.size());
@@ -603,7 +603,7 @@ struct ui_functions: ui_util_functions {
 		if (!has_loaded_sound[id]) {
 			has_loaded_sound[id] = true;
 			a_vector<uint8_t> data;
-			load_data_file(data, "sound/" + sound_filenames[id]);
+			load_data_file(data, "sound\\" + sound_filenames[id]);
 			loaded_sounds[id] = native_sound::load_wav(data.data(), data.size());
 		}
 		auto& s = loaded_sounds[id];
@@ -688,7 +688,7 @@ struct ui_functions: ui_util_functions {
 		}
 
 		a_vector<uint8_t> data;
-		load_data_file(data, "arr/sfxdata.dat");
+		load_data_file(data, "arr\\sfxdata.dat");
 		sound_types = data_loading::load_sfxdata_dat(data);
 
 		sound_filenames.resize(sound_types.vec.size());
@@ -697,7 +697,7 @@ struct ui_functions: ui_util_functions {
 		last_played_sound.resize(loaded_sounds.size());
 
 		string_table_data tbl;
-		load_data_file(tbl.data, "arr/sfxdata.tbl");
+		load_data_file(tbl.data, "arr\\sfxdata.tbl");
 		for (size_t i = 0; i != sound_types.vec.size(); ++i) {
 			size_t index = sound_types.vec[i].filename_index;
 			sound_filenames[i] = tbl[index];
@@ -708,7 +708,7 @@ struct ui_functions: ui_util_functions {
 
 		sound_channels.resize(8);
 
-		load_data_file(images_tbl.data, "arr/images.tbl");
+		load_data_file(images_tbl.data, "arr\\images.tbl");
 
 		load_all_image_data(load_data_file);
 	}
@@ -1524,7 +1524,7 @@ struct ui_functions: ui_util_functions {
 
 	template<typename cb_F>
 	void async_read_file(a_string filename, cb_F cb) {
-		filename = "data/" + filename;
+		filename = "data\\" + filename;
 		FILE* f = fopen(filename.c_str(), "rb");
 		if (!f) {
 			cb(nullptr, 0);

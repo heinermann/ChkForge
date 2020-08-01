@@ -48,6 +48,9 @@
     <ProjectReference Include="Chkdraft\IcuLib\common.vcxproj">
       <Project>{73c0a65b-d1f2-4de1-b3a6-15dad2c23f3d}</Project>
     </ProjectReference>
+    <ProjectReference Include="Chkdraft\StormLib\StormLib_vs15.vcxproj">
+      <Project>{78424708-1f6e-4d4b-920c-fb6d26847055}</Project>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -92,10 +95,11 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NOMINMAX;STORMLIB_NO_AUTO_LINK;_CRT_SECURE_NO_WARNINGS;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NOMINMAX;STORMLIB_NO_AUTO_LINK;_CRT_SECURE_NO_WARNINGS;UNICODE;_UNICODE;U_STATIC_IMPLEMENTATION;WIN64;WIN32;CHKD_DEBUG;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalIncludeDirectories>Chkdraft/IcuLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -109,10 +113,11 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NOMINMAX;STORMLIB_NO_AUTO_LINK;_CRT_SECURE_NO_WARNINGS;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NOMINMAX;STORMLIB_NO_AUTO_LINK;_CRT_SECURE_NO_WARNINGS;UNICODE;_UNICODE;U_STATIC_IMPLEMENTATION;WIN64;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalIncludeDirectories>Chkdraft/IcuLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>
