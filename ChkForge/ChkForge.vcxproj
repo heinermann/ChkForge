@@ -208,11 +208,14 @@
     <ClCompile Include="savemap.cpp" />
     <ClCompile Include="scenariosettings.cpp" />
     <ClCompile Include="stringmanager.cpp" />
+    <ClCompile Include="terrain.cpp" />
     <ClCompile Include="terrainbrush.cpp" />
     <ClCompile Include="tilepalette.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dockwidgetwrapper.h" />
+    <ClInclude Include="layers.h" />
+    <ClInclude Include="terrain.h" />
     <QtMoc Include="doodadpalette.h">
     </QtMoc>
     <QtMoc Include="exportimage.h">
