@@ -21985,6 +21985,7 @@ struct string_table_data {
 	}
 };
 
+//TODO: async
 template<typename load_data_file_F>
 void global_init(global_state& st, load_data_file_F&& load_data_file) {
 
@@ -22360,6 +22361,7 @@ public:
 	void init(a_string data_path) {
 		init(data_loading::data_files_directory(std::move(data_path)));
 	}
+	// TODO: Move global init to main.cpp
 	template<typename load_data_file_F>
 	void init(load_data_file_F&& load_data_file) {
 		uptr_global_st = std::make_unique<global_state>();

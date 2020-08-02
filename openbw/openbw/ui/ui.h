@@ -521,10 +521,6 @@ struct ui_util_functions: replay_functions {
 struct ui_functions: ui_util_functions {
 	image_data img;
 	tileset_image_data tileset_img;
-	bool create_window = true;
-	bool draw_ui_elements = true;
-
-	bool window_closed = false;
 
 	xy screen_pos;
 
@@ -534,6 +530,7 @@ struct ui_functions: ui_util_functions {
 	game_player player;
 	replay_state current_replay_state;
 	action_state current_action_state;
+
 	ui_functions(game_player player) : ui_util_functions(player.st(), current_action_state, current_replay_state), player(std::move(player)) {
 	}
 
@@ -1232,42 +1229,6 @@ struct ui_functions: ui_util_functions {
 		}
 	}
 
-	void line_rectangle(uint8_t* data, size_t data_pitch, rect area, uint8_t index) {
-		if (area.from.x < 0) area.from.x = 0;
-		if (area.from.y < 0) area.from.y = 0;
-		if (area.to.x > (int)screen_width) area.to.x = screen_width;
-		if (area.to.y > (int)screen_height) area.to.y = screen_height;
-		if (area.from.x >= area.to.x || area.from.y >= area.to.y) return;
-		size_t width = area.to.x - area.from.x;
-		size_t height = area.to.y - area.from.y;
-		uint8_t* p = data + data_pitch * (size_t)area.from.y + (size_t)area.from.x;
-		memset(p, index, width);
-		memset(p + data_pitch * height, index, width);
-		for (size_t y = 0; y != height; ++y) {
-			p[data_pitch * y] = index;
-			p[data_pitch * y + width - 1] = index;
-		}
-	}
-
-	void line_rectangle_rgba(uint32_t* data, size_t data_pitch, rect area, uint32_t color) {
-		if (area.from.x < 0) area.from.x = 0;
-		if (area.from.y < 0) area.from.y = 0;
-		if (area.to.x > (int)screen_width) area.to.x = screen_width;
-		if (area.to.y > (int)screen_height) area.to.y = screen_height;
-		if (area.from.x >= area.to.x || area.from.y >= area.to.y) return;
-		size_t width = area.to.x - area.from.x;
-		size_t height = area.to.y - area.from.y;
-		uint32_t* p = data + data_pitch * (size_t)area.from.y + (size_t)area.from.x;
-		for (size_t x = 0; x != width; ++x) {
-			p[x] = color;
-			p[height * data_pitch + x] = color;
-		}
-		for (size_t y = 0; y != height; ++y) {
-			p[data_pitch * y] = color;
-			p[data_pitch * y + width - 1] = color;
-		}
-	}
-
 	bool unit_visble_on_minimap(unit_t* u) {
 		if (u->owner < 8 && u->sprite->visibility_flags == 0) return false;
 		if (ut_turret(u)) return false;
@@ -1399,8 +1360,6 @@ struct ui_functions: ui_util_functions {
 		if (i != current_selection.end()) current_selection.erase(i);
 	}
 
-	bool is_paused = false;
-
 	void select_units(bool double_clicked, bool shift, bool ctrl, int from_x, int from_y, int to_x, int to_y) {
 	  if (from_x > to_x) std::swap(from_x, to_x);
 	  if (from_y > to_y) std::swap(from_y, to_y);
@@ -1520,23 +1479,6 @@ struct ui_functions: ui_util_functions {
 	  int x = mouse_x * game_st.map_tile_width / minimap_size.x;
 	  int y = mouse_y * game_st.map_tile_height / minimap_size.y;
 	  set_screen_pos(32 * x - view_width / 2, 32 * y - view_height / 2);
-	}
-
-	template<typename cb_F>
-	void async_read_file(a_string filename, cb_F cb) {
-		filename = "data\\" + filename;
-		FILE* f = fopen(filename.c_str(), "rb");
-		if (!f) {
-			cb(nullptr, 0);
-		} else {
-			a_vector<uint8_t> data;
-			fseek(f, 0, SEEK_END);
-			data.resize(ftell(f));
-			fseek(f, 0, SEEK_SET);
-			data.resize(fread(data.data(), 1, data.size(), f));
-			fclose(f);
-			cb(data.data(), data.size());
-		}
 	}
 
 	std::array<tileset_image_data, 8> all_tileset_img;

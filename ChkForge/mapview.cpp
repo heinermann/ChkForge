@@ -36,7 +36,7 @@ namespace bwgame {
 
     void fatal_error_str(a_string str) {
       log("fatal error: %s\n", str);
-      std::terminate();
+      //std::terminate();
     }
   }
 }
@@ -155,7 +155,6 @@ void MapView::init()
   bwgame::game_player player(load_data_file);
 
   bw = new main_t(std::move(player));
-  bw->ui.create_window = false;
 
   bw->ui.load_all_image_data(load_data_file);
 
