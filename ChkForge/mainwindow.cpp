@@ -6,6 +6,7 @@
 #include "terrainbrush.h"
 #include "mapview.h"
 
+#include "about.h"
 #include "newmap.h"
 
 #include <DockAreaWidget.h>
@@ -87,16 +88,35 @@ void MainWindow::on_action_file_new_triggered()
   // TODO: Create new map (note: Need to pull data from ui-> in NewMap
 }
 
+namespace {
+  static const QString file_filter =
+    QObject::tr("All Starcraft Maps") + " (*.scm *.scx *.rep);;" +
+    QObject::tr("Vanilla Maps") + " (*.scm);;" +
+    QObject::tr("Expansion Maps") + " (*.scx);;" +
+    QObject::tr("Replays") + " (*.rep);;" +
+    QObject::tr("All files") + " (*)";
+}
+
 void MainWindow::on_action_file_open_triggered()
 {
+  QString result = QFileDialog::getOpenFileName(this, QString(), QString(), file_filter);
+  if (result.isEmpty()) return;
+
+  // TODO: Actually open the map
 }
 
 void MainWindow::on_action_file_save_triggered()
 {
+  // if (map was not saved before)
+  on_action_file_saveAs_triggered();
 }
 
 void MainWindow::on_action_file_saveAs_triggered()
 {
+  QString result = QFileDialog::getSaveFileName(this, QString(), QString(), file_filter);
+  if (result.isEmpty()) return;
+
+  // TODO: Actual map save stuff
 }
 
 void MainWindow::on_action_file_saveMapImage_triggered()
@@ -108,10 +128,6 @@ void MainWindow::on_action_file_importSections_triggered()
 }
 
 void MainWindow::on_action_file_exportSections_triggered()
-{
-}
-
-void MainWindow::on_action_file_exit_triggered()
 {
 }
 
@@ -151,15 +167,15 @@ void MainWindow::on_action_view_gridSettings_triggered()
 {
 }
 
-void MainWindow::on_action_view_toggle_snapToGrid_triggered()
+void MainWindow::on_action_view_toggle_snapToGrid_triggered(bool checked)
 {
 }
 
-void MainWindow::on_action_view_toggle_showGrid_triggered()
+void MainWindow::on_action_view_toggle_showGrid_triggered(bool checked)
 {
 }
 
-void MainWindow::on_action_view_toggle_showLocations_triggered()
+void MainWindow::on_action_view_toggle_showLocations_triggered(bool checked)
 {
 }
 
@@ -167,35 +183,35 @@ void MainWindow::on_action_view_cleanMap_triggered()
 {
 }
 
-void MainWindow::on_action_view_toggle_showUnitSize_triggered()
+void MainWindow::on_action_view_toggle_showUnitSize_triggered(bool checked)
 {
 }
 
-void MainWindow::on_action_view_toggle_showBuildingSize_triggered()
+void MainWindow::on_action_view_toggle_showBuildingSize_triggered(bool checked)
 {
 }
 
-void MainWindow::on_action_view_toggle_showSightRange_triggered()
+void MainWindow::on_action_view_toggle_showSightRange_triggered(bool checked)
 {
 }
 
-void MainWindow::on_action_view_toggle_showSeekAttackRange_triggered()
+void MainWindow::on_action_view_toggle_showSeekAttackRange_triggered(bool checked)
 {
 }
 
-void MainWindow::on_action_view_toggle_showCreep_triggered()
+void MainWindow::on_action_view_toggle_showCreep_triggered(bool checked)
 {
 }
 
-void MainWindow::on_action_view_toggle_showPylonAura_triggered()
+void MainWindow::on_action_view_toggle_showPylonAura_triggered(bool checked)
 {
 }
 
-void MainWindow::on_action_view_toggle_showAddonNydusLinkage_triggered()
+void MainWindow::on_action_view_toggle_showAddonNydusLinkage_triggered(bool checked)
 {
 }
 
-void MainWindow::on_action_view_toggle_showCollisions_triggered()
+void MainWindow::on_action_view_toggle_showCollisions_triggered(bool checked)
 {
 }
 
@@ -261,6 +277,7 @@ void MainWindow::on_action_layer_options_triggered()
 
 void MainWindow::on_action_help_about_triggered()
 {
+  About(this).exec();
 }
 
 void MainWindow::on_action_test_play_triggered()

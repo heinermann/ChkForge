@@ -190,6 +190,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\openbw\openbw\ui\openbw_native_sound.cpp" />
+    <ClCompile Include="about.cpp" />
     <ClCompile Include="doodadpalette.cpp" />
     <ClCompile Include="exportimage.cpp" />
     <ClCompile Include="exportsections.cpp" />
@@ -213,6 +214,7 @@
     <ClCompile Include="tilepalette.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="about.h" />
     <ClInclude Include="dockwidgetwrapper.h" />
     <ClInclude Include="layers.h" />
     <ClInclude Include="MapContext.h" />

@@ -150,6 +150,9 @@
     <ClCompile Include="stringmanager.cpp">
       <Filter>Source Files\ui\Dialogs</Filter>
     </ClCompile>
+    <ClCompile Include="about.cpp">
+      <Filter>Source Files\ui\Dialogs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="layers.h">
@@ -441,6 +444,9 @@
       <Filter>Header Files\ui\Dialogs</Filter>
     </QtMoc>
     <QtMoc Include="previewpainter.h">
+      <Filter>Header Files\ui\Dialogs</Filter>
+    </QtMoc>
+    <QtMoc Include="about.h">
       <Filter>Header Files\ui\Dialogs</Filter>
     </QtMoc>
   </ItemGroup>
