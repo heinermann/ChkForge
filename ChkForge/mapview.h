@@ -45,6 +45,7 @@ private:
   bool is_paused = false;
   bool is_drag_selecting = false;
   bool is_dragging_screen = false;
+  QPoint last_drag_position{};
   QPoint drag_select_from{};
   QPoint drag_select_to{};
   QPoint drag_screen_pos{};

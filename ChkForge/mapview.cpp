@@ -243,6 +243,7 @@ bool MapView::mouseEventFilter(QObject* obj, QEvent* e)
     }
     else if (mouseEvent->button() == Qt::MiddleButton) {
       this->is_dragging_screen = true;
+      this->last_drag_position = mouseEvent->pos();
       this->drag_screen_pos = getScreenPos() + mouseEvent->pos() / view_scale;
     }
     return true;
@@ -276,7 +277,37 @@ bool MapView::mouseEventFilter(QObject* obj, QEvent* e)
 
     if (mouseEvent->buttons() & Qt::MiddleButton) {
       if (is_dragging_screen) {
-        this->setScreenPos(this->drag_screen_pos - mouseEvent->pos() / this->view_scale);
+        QPoint diff = mouseEvent->pos() - this->last_drag_position;
+        this->last_drag_position = mouseEvent->pos();
+
+        // TODO: Investigate how to wrap without this line (without bugs)
+        if (diff.manhattanLength() > ui->surface->width() / 4) return true;
+
+        this->setScreenPos(getScreenPos() - diff / this->view_scale);
+        updateSurface();
+
+        // Do mouse wrapping
+        auto x_view_offset = QPoint{ ui->surface->width() - 8, 0 };
+        auto y_view_offset = QPoint{ 0, ui->surface->height() - 8 };
+
+        if (mouseEvent->pos().x() < 0) {
+          this->last_drag_position += x_view_offset;
+          QCursor::setPos(mouseEvent->globalPos() + x_view_offset);
+        }
+        else if (mouseEvent->pos().x() >= ui->surface->width()) {
+          this->last_drag_position -= x_view_offset;
+          QCursor::setPos(mouseEvent->globalPos() - x_view_offset);
+        }
+
+        if (mouseEvent->pos().y() < 0) {
+          this->last_drag_position += y_view_offset;
+          QCursor::setPos(mouseEvent->globalPos() + y_view_offset);
+        }
+        else if (mouseEvent->pos().y() >= ui->surface->height()) {
+          this->last_drag_position -= y_view_offset;
+          QCursor::setPos(mouseEvent->globalPos() - y_view_offset);
+        }
+
       }
     }
     return true;
