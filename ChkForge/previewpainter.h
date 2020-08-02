@@ -7,6 +7,7 @@ namespace Ui {
   class PreviewPainter;
 }
 
+// TODO: Rename to MinimapPreviewPainter
 class PreviewPainter : public QDialog
 {
   Q_OBJECT

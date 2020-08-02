@@ -215,6 +215,7 @@
   <ItemGroup>
     <ClInclude Include="dockwidgetwrapper.h" />
     <ClInclude Include="layers.h" />
+    <ClInclude Include="MapContext.h" />
     <ClInclude Include="terrain.h" />
     <QtMoc Include="doodadpalette.h">
     </QtMoc>

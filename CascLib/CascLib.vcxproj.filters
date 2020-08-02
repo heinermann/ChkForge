@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\common">
+      <UniqueIdentifier>{79dbf904-f51b-4e09-bed4-4c117ec2067e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\jenkins">
+      <UniqueIdentifier>{71aff740-5462-40d2-a9fb-27314ad58590}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\md5">
+      <UniqueIdentifier>{5486e0f7-b992-4e6f-a52f-e401d1653fa7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\zlib">
+      <UniqueIdentifier>{10f8f750-c764-4c13-aa33-3e9315a73678}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CascLib\src\CascCommon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CascLib\src\CascLib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CascLib\src\CascPort.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CascLib\src\CascStructs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CascLib\src\common\Common.h">
+      <Filter>Source Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="CascLib\src\common\Csv.h">
+      <Filter>Source Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="CascLib\src\common\Directory.h">
+      <Filter>Source Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="CascLib\src\common\FileStream.h">
+      <Filter>Source Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="CascLib\src\common\FileTree.h">
+      <Filter>Source Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="CascLib\src\common\ListFile.h">
+      <Filter>Source Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="CascLib\src\common\Map.h">
+      <Filter>Source Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="CascLib\src\common\RootHandler.h">
+      <Filter>Source Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="CascLib\src\md5\md5.h">
+      <Filter>Source Files\md5</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CascLib\src\CascDecompress.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CascLib\src\CascDecrypt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CascLib\src\CascDumpData.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CascLib\src\CascFiles.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CascLib\src\CascFindFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CascLib\src\CascIndexFiles.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CascLib\src\CascOpenFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CascLib\src\CascOpenStorage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CascLib\src\CascReadFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CascLib\src\CascRootFile_Diablo3.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CascLib\src\CascRootFile_Install.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CascLib\src\CascRootFile_MNDX.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CascLib\src\CascRootFile_OW.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CascLib\src\CascRootFile_Text.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CascLib\src\CascRootFile_TVFS.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CascLib\src\CascRootFile_WoW.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CascLib\src\common\Common.cpp">
+      <Filter>Source Files\common</Filter>
+    </ClCompile>
+    <ClCompile Include="CascLib\src\common\Csv.cpp">
+      <Filter>Source Files\common</Filter>
+    </ClCompile>
+    <ClCompile Include="CascLib\src\common\Directory.cpp">
+      <Filter>Source Files\common</Filter>
+    </ClCompile>
+    <ClCompile Include="CascLib\src\common\FileStream.cpp">
+      <Filter>Source Files\common</Filter>
+    </ClCompile>
+    <ClCompile Include="CascLib\src\common\FileTree.cpp">
+      <Filter>Source Files\common</Filter>
+    </ClCompile>
+    <ClCompile Include="CascLib\src\common\ListFile.cpp">
+      <Filter>Source Files\common</Filter>
+    </ClCompile>
+    <ClCompile Include="CascLib\src\common\RootHandler.cpp">
+      <Filter>Source Files\common</Filter>
+    </ClCompile>
+    <ClCompile Include="CascLib\src\jenkins\lookup3.c">
+      <Filter>Source Files\jenkins</Filter>
+    </ClCompile>
+    <ClCompile Include="CascLib\src\md5\md5.cpp">
+      <Filter>Source Files\md5</Filter>
+    </ClCompile>
+    <ClCompile Include="CascLib\src\zlib\adler32.c">
+      <Filter>Source Files\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="CascLib\src\zlib\crc32.c">
+      <Filter>Source Files\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="CascLib\src\zlib\inffast.c">
+      <Filter>Source Files\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="CascLib\src\zlib\inflate.c">
+      <Filter>Source Files\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="CascLib\src\zlib\inftrees.c">
+      <Filter>Source Files\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="CascLib\src\zlib\zutil.c">
+      <Filter>Source Files\zlib</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

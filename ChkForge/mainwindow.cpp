@@ -11,6 +11,7 @@
 #include <DockAreaWidget.h>
 #include <QLabel>
 #include <QMessageBox>
+#include <QFileDialog>
 
 MainWindow::MainWindow(QWidget *parent)
   : QMainWindow(parent)

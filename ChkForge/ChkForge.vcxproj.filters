@@ -1,0 +1,447 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;moc;h;def;odl;idl;res;</Extensions>
+    </Filter>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;moc;h;def;odl;idl;res;</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Translation Files">
+      <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
+      <Extensions>ts;xlf</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Translation Files">
+      <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
+      <Extensions>ts;xlf</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Form Files\Tool Windows">
+      <UniqueIdentifier>{138430b3-3333-45fe-acbd-b6c9ae59080a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Form Files\Property Dialogs">
+      <UniqueIdentifier>{f2913d4b-7eec-4d0a-ba08-83ab0a51f95e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\ui">
+      <UniqueIdentifier>{47c1e8f4-ea16-42de-82a7-0b82fb021b8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\ui\Tool Windows">
+      <UniqueIdentifier>{89175809-3287-4a99-81f8-554b0958f7c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\ui\Dialogs">
+      <UniqueIdentifier>{48ebd746-21b3-41ae-9ed3-04511b9e6a19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Form Files\Dialogs">
+      <UniqueIdentifier>{89f4cd9c-4769-4988-8e0f-f1abac709cc3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ui">
+      <UniqueIdentifier>{894bbf8a-9c61-421f-834a-b5f67bd99d5b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ui\Dialogs">
+      <UniqueIdentifier>{0fa14f28-8f84-49a2-896b-edb659451c54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ui\Tool Windows">
+      <UniqueIdentifier>{ca6f3541-00b3-4f73-9d9c-fb02591316ab}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\openbw\openbw\ui\openbw_native_sound.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="terrain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="doodadpalette.cpp">
+      <Filter>Source Files\ui\Tool Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="itempalette.cpp">
+      <Filter>Source Files\ui\Tool Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="minimap.cpp">
+      <Filter>Source Files\ui\Tool Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="outputwindow.cpp">
+      <Filter>Source Files\ui\Tool Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="recenttiles.cpp">
+      <Filter>Source Files\ui\Tool Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="terrainbrush.cpp">
+      <Filter>Source Files\ui\Tool Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="tilepalette.cpp">
+      <Filter>Source Files\ui\Tool Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="exportimage.cpp">
+      <Filter>Source Files\ui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="exportsections.cpp">
+      <Filter>Source Files\ui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="filemanager.cpp">
+      <Filter>Source Files\ui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="importsections.cpp">
+      <Filter>Source Files\ui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="itemtree.cpp">
+      <Filter>Source Files\ui\Tool Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="mainwindow.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="mapview.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="newmap.cpp">
+      <Filter>Source Files\ui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="previewpainter.cpp">
+      <Filter>Source Files\ui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="savemap.cpp">
+      <Filter>Source Files\ui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="scenariosettings.cpp">
+      <Filter>Source Files\ui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="stringmanager.cpp">
+      <Filter>Source Files\ui\Dialogs</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="layers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="terrain.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <QtMoc Include="mainwindow.h">
+      <Filter>Header Files\ui</Filter>
+    </QtMoc>
+    <QtMoc Include="mapview.h">
+      <Filter>Header Files\ui</Filter>
+    </QtMoc>
+    <ClInclude Include="dockwidgetwrapper.h">
+      <Filter>Header Files\ui\Tool Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="MapContext.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="debug\moc_predefs.h.cbt">
+      <Filter>Generated Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="release\moc_predefs.h.cbt">
+      <Filter>Generated Files</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ChkForge_en_CA.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="mainwindow.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="mapview.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="doodadpalette.ui">
+      <Filter>Form Files\Tool Windows</Filter>
+    </QtUic>
+    <QtUic Include="itempalette.ui">
+      <Filter>Form Files\Tool Windows</Filter>
+    </QtUic>
+    <QtUic Include="itemtree.ui">
+      <Filter>Form Files\Tool Windows</Filter>
+    </QtUic>
+    <QtUic Include="locationproperties.ui">
+      <Filter>Form Files\Property Dialogs</Filter>
+    </QtUic>
+    <QtUic Include="minimap.ui">
+      <Filter>Form Files\Tool Windows</Filter>
+    </QtUic>
+    <QtUic Include="outputwindow.ui">
+      <Filter>Form Files\Tool Windows</Filter>
+    </QtUic>
+    <QtUic Include="recenttiles.ui">
+      <Filter>Form Files\Tool Windows</Filter>
+    </QtUic>
+    <QtUic Include="spriteproperties.ui">
+      <Filter>Form Files\Property Dialogs</Filter>
+    </QtUic>
+    <QtUic Include="unitproperties.ui">
+      <Filter>Form Files\Property Dialogs</Filter>
+    </QtUic>
+    <QtUic Include="terrainbrush.ui">
+      <Filter>Form Files\Tool Windows</Filter>
+    </QtUic>
+    <QtUic Include="tilepalette.ui">
+      <Filter>Form Files\Tool Windows</Filter>
+    </QtUic>
+    <QtUic Include="aboutdlg.ui">
+      <Filter>Form Files\Dialogs</Filter>
+    </QtUic>
+    <QtUic Include="exportimage.ui">
+      <Filter>Form Files\Dialogs</Filter>
+    </QtUic>
+    <QtUic Include="exportsections.ui">
+      <Filter>Form Files\Dialogs</Filter>
+    </QtUic>
+    <QtUic Include="filemanager.ui">
+      <Filter>Form Files\Dialogs</Filter>
+    </QtUic>
+    <QtUic Include="importsections.ui">
+      <Filter>Form Files\Dialogs</Filter>
+    </QtUic>
+    <QtUic Include="newmap.ui">
+      <Filter>Form Files\Dialogs</Filter>
+    </QtUic>
+    <QtUic Include="previewpainter.ui">
+      <Filter>Form Files\Dialogs</Filter>
+    </QtUic>
+    <QtUic Include="savemap.ui">
+      <Filter>Form Files\Dialogs</Filter>
+    </QtUic>
+    <QtUic Include="scenariosettings.ui">
+      <Filter>Form Files\Dialogs</Filter>
+    </QtUic>
+    <QtUic Include="stringmanager.ui">
+      <Filter>Form Files\Dialogs</Filter>
+    </QtUic>
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="ChkForge.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
+    <None Include="icons\Folder.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\Folder_o.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <QtRcc Include="Icons.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
+    <None Include="icons\briefing.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\brush.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\circlefog.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\copy.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\delete.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\doodad.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\forces.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\grid.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\help.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\location.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\new.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\open.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\paintbucket.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\paste.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\player.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\properties.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\redo.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\revealer.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\save.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\save_as.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\scm.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\scx.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\snap.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\sounds.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\sprite.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="sprites.txt">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\squarefog.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\strings.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="techs.txt">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\terrain.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="terrain.txt">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\triggers.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\undo.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\undo_all.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="icons\unit.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="units.txt">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="upgrades.txt">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="weapons.txt">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="icons\GitHub-Mark-32px.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="icons\Discord-Logo-Black-32px.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="doodadpalette.h">
+      <Filter>Header Files\ui\Tool Windows</Filter>
+    </QtMoc>
+    <QtMoc Include="itempalette.h">
+      <Filter>Header Files\ui\Tool Windows</Filter>
+    </QtMoc>
+    <QtMoc Include="itemtree.h">
+      <Filter>Header Files\ui\Tool Windows</Filter>
+    </QtMoc>
+    <QtMoc Include="minimap.h">
+      <Filter>Header Files\ui\Tool Windows</Filter>
+    </QtMoc>
+    <QtMoc Include="outputwindow.h">
+      <Filter>Header Files\ui\Tool Windows</Filter>
+    </QtMoc>
+    <QtMoc Include="recenttiles.h">
+      <Filter>Header Files\ui\Tool Windows</Filter>
+    </QtMoc>
+    <QtMoc Include="terrainbrush.h">
+      <Filter>Header Files\ui\Tool Windows</Filter>
+    </QtMoc>
+    <QtMoc Include="tilepalette.h">
+      <Filter>Header Files\ui\Tool Windows</Filter>
+    </QtMoc>
+    <QtMoc Include="newmap.h">
+      <Filter>Header Files\ui\Dialogs</Filter>
+    </QtMoc>
+    <QtMoc Include="filemanager.h">
+      <Filter>Header Files\ui\Dialogs</Filter>
+    </QtMoc>
+    <QtMoc Include="exportsections.h">
+      <Filter>Header Files\ui\Dialogs</Filter>
+    </QtMoc>
+    <QtMoc Include="exportimage.h">
+      <Filter>Header Files\ui\Dialogs</Filter>
+    </QtMoc>
+    <QtMoc Include="importsections.h">
+      <Filter>Header Files\ui\Dialogs</Filter>
+    </QtMoc>
+    <QtMoc Include="savemap.h">
+      <Filter>Header Files\ui\Dialogs</Filter>
+    </QtMoc>
+    <QtMoc Include="scenariosettings.h">
+      <Filter>Header Files\ui\Dialogs</Filter>
+    </QtMoc>
+    <QtMoc Include="stringmanager.h">
+      <Filter>Header Files\ui\Dialogs</Filter>
+    </QtMoc>
+    <QtMoc Include="previewpainter.h">
+      <Filter>Header Files\ui\Dialogs</Filter>
+    </QtMoc>
+  </ItemGroup>
+</Project>

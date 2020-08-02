@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Header Files\ui">
+      <UniqueIdentifier>{b33a5227-3cfa-4f81-a7f5-a5b5e7eb911f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="openbw\actions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="openbw\bwenums.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="openbw\bwgame.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="openbw\circular_vector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="openbw\containers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="openbw\data_loading.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="openbw\data_types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="openbw\game_types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="openbw\intrusive_list.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="openbw\korean.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="openbw\replay.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="openbw\replay_saver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="openbw\static_vector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="openbw\strf.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="openbw\sync.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="openbw\util.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="openbw\ui\common.h">
+      <Filter>Header Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="openbw\ui\native_sound.h">
+      <Filter>Header Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="openbw\ui\native_window_drawing.h">
+      <Filter>Header Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="openbw\ui\ui.h">
+      <Filter>Header Files\ui</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
