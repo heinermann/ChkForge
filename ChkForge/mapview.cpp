@@ -46,12 +46,6 @@ struct main_t {
 
   main_t(bwgame::game_player player) : ui(std::move(player)) {}
 
-  std::chrono::high_resolution_clock clock;
-  std::chrono::high_resolution_clock::time_point last_tick;
-
-  std::chrono::high_resolution_clock::time_point last_fps;
-  int fps_counter = 0;
-
   void reset();
   void update();
 };
@@ -61,15 +55,6 @@ void main_t::reset() {
 }
 
 void main_t::update() {
-  auto now = clock.now();
-
-  auto tick_speed = std::chrono::milliseconds((bwgame::fp8::integer(42) / ui.game_speed).integer_part());
-
-  if (now - last_fps >= std::chrono::seconds(1)) {
-	last_fps = now;
-	fps_counter = 0;
-  }
-
   ui.player.next_frame();
   /*
   auto next = [&]() {
@@ -171,7 +156,7 @@ void MapView::init()
   bw->ui.set_image_data();
   bw->ui.global_volume = 0;
 
-  timer->start(40);
+  timer->start(42);
   resizeSurface(ui->surface->size());
 }
 
