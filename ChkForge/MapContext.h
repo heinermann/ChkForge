@@ -25,8 +25,10 @@ namespace ChkForge
 
     void load_map(const std::string& map_file_str);
 
+    // TODO: Move viewport and screen position stuff out of openbw, to allow for multiple viewports in the same map
     bwgame::ui_functions openbw_ui;
 
+    // TODO: Undo/redo buffer and actions
   private:
     Scenario chk;
 

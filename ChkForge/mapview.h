@@ -7,6 +7,7 @@
 #include <QTimer>
 #include <QGraphicsScene>
 #include <memory>
+#include <optional>
 
 #include <QVector>
 #include <Qrgb>
@@ -45,11 +46,9 @@ private:
   std::unique_ptr<QTimer> timer;
 
   bool is_paused = false;
-  bool is_drag_selecting = false;
   bool is_dragging_screen = false;
   QPoint last_drag_position{};
-  QPoint drag_select_from{};
-  QPoint drag_select_to{};
+  std::optional<QRect> drag_select = std::nullopt;
   QPoint drag_screen_pos{};
 
   double view_scale = 1.0;

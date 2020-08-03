@@ -10,6 +10,7 @@
 #include <QColor>
 #include <QResizeEvent>
 #include <QPoint>
+#include <QRect>
 
 #include "minimap.h"
 
@@ -124,8 +125,7 @@ bool MapView::mouseEventFilter(QObject* obj, QEvent* e)
   {
   case QEvent::MouseButtonPress:
     if (mouseEvent->button() == Qt::LeftButton && !double_clicked) {
-      this->is_drag_selecting = true;
-      this->drag_select_from = this->drag_select_to = mouseEvent->pos();
+      drag_select = QRect(mouseEvent->pos(), mouseEvent->pos());
     }
     else if (mouseEvent->button() == Qt::MiddleButton) {
       this->is_dragging_screen = true;
@@ -138,15 +138,15 @@ bool MapView::mouseEventFilter(QObject* obj, QEvent* e)
       map->openbw_ui.select_units(true, shift_pressed, ctrl_pressed,
         mouseEvent->pos().x(), mouseEvent->pos().y(),
         mouseEvent->pos().x(), mouseEvent->pos().y());
-      this->is_drag_selecting = false;
+      drag_select = std::nullopt;
     }
     return true;
   case QEvent::MouseButtonRelease:
-    if (mouseEvent->button() == Qt::LeftButton && this->is_drag_selecting) {
+    if (mouseEvent->button() == Qt::LeftButton && this->drag_select) {
       map->openbw_ui.select_units(false, shift_pressed, ctrl_pressed,
-        this->drag_select_from.x(), this->drag_select_from.y(),
-        mouseEvent->pos().x(), mouseEvent->pos().y());
-      this->is_drag_selecting = false;
+        drag_select->left(), drag_select->top(),
+        drag_select->right(), drag_select->bottom());
+      drag_select = std::nullopt;
     }
     else if (mouseEvent->button() == Qt::MiddleButton) {
       this->is_dragging_screen = false;
@@ -154,11 +154,10 @@ bool MapView::mouseEventFilter(QObject* obj, QEvent* e)
     return true;
   case QEvent::MouseMove:
     if (mouseEvent->buttons() & Qt::LeftButton) {
-      if (!this->is_drag_selecting) {
-        this->is_drag_selecting = true;
-        this->drag_select_from = mouseEvent->pos();
+      if (!drag_select) {
+        drag_select = QRect{ mouseEvent->pos(), mouseEvent->pos() };
       }
-      this->drag_select_to = mouseEvent->pos();
+      drag_select->setBottomRight(mouseEvent->pos());
     }
 
     if (mouseEvent->buttons() & Qt::MiddleButton) {
@@ -254,12 +253,9 @@ void MapView::paint_surface(QWidget* obj, QPaintEvent* paintEvent)
   painter.drawPixmap(0, 0, pix_buffer);
   
   // Selection box
-  if (is_drag_selecting) {
+  if (drag_select) {
     painter.setPen(QColor(16, 252, 24));
-    painter.drawLine(drag_select_from.x(), drag_select_from.y(), drag_select_from.x(), drag_select_to.y());
-    painter.drawLine(drag_select_from.x(), drag_select_from.y(), drag_select_to.x(), drag_select_from.y());
-    painter.drawLine(drag_select_to.x(), drag_select_from.y(), drag_select_to.x(), drag_select_to.y());
-    painter.drawLine(drag_select_from.x(), drag_select_to.y(), drag_select_to.x(), drag_select_to.y());
+    painter.drawRect(*drag_select);
   }
 
   painter.end();

@@ -114,16 +114,11 @@ void Minimap::paint_surface(QWidget* obj, QPaintEvent* paintEvent)
   if (activeMapView) {
     double scale = 1.0 * target_size.width() / minimap_buffer.size().width();
 
-    QPoint box_start = activeMapView->getScreenPos() / 32 * scale;
-    QPoint box_end = box_start + QPoint{ 
-      (activeMapView->getViewSize().width() + 31) / 32 - 1,
-      (activeMapView->getViewSize().height() + 31) / 32 - 1 } * scale;
-
+    QRect minimap_box = { activeMapView->getScreenPos() / 32 * scale,
+      (activeMapView->getViewSize() - QSize{1, 1}) / 32 * scale };
+    
     painter.setPen(QColor(255, 255, 255));
-    painter.drawLine(box_start.x(), box_start.y(), box_start.x(), box_end.y());
-    painter.drawLine(box_start.x(), box_start.y(), box_end.x(), box_start.y());
-    painter.drawLine(box_end.x(), box_start.y(), box_end.x(), box_end.y());
-    painter.drawLine(box_start.x(), box_end.y(), box_end.x(), box_end.y());
+    painter.drawRect(minimap_box);
   }
 
   painter.end();
