@@ -1,407 +1,12 @@
 #include "common.h"
 #include "../bwgame.h"
 #include "../replay.h"
+#include "../../bwglobal_ui.h"
 
 #include "native_window_drawing.h"
 #include "native_sound.h"
 
 namespace bwgame {
-
-struct vr4_entry {
-	using bitmap_t = std::conditional<is_native_fast_int<uint64_t>::value, uint64_t, uint32_t>::type;
-	std::array<bitmap_t, 64 / sizeof(bitmap_t)> bitmap;
-	std::array<bitmap_t, 64 / sizeof(bitmap_t)> inverted_bitmap;
-};
-struct vx4_entry {
-	std::array<uint16_t, 16> images;
-};
-
-struct pcx_image {
-	size_t width;
-	size_t height;
-	a_vector<uint8_t> data;
-};
-
-struct tileset_image_data {
-	a_vector<uint8_t> wpe;
-	a_vector<vr4_entry> vr4;
-	a_vector<vx4_entry> vx4;
-	pcx_image dark_pcx;
-	std::array<pcx_image, 7> light_pcx;
-	grp_t creep_grp;
-	int resource_minimap_color;
-	std::array<uint8_t, 256> cloak_fade_selector;
-};
-
-struct image_data {
-	std::array<std::array<uint8_t, 8>, 16> player_unit_colors;
-	std::array<uint8_t, 16> player_minimap_colors;
-	std::array<uint8_t, 24> selection_colors;
-	std::array<uint8_t, 24> hp_bar_colors;
-	std::array<int, 0x100> creep_edge_frame_index{};
-};
-
-template<typename data_T>
-pcx_image load_pcx_data(const data_T& data) {
-	data_loading::data_reader_le r(data.data(), data.data() + data.size());
-	auto base_r = r;
-	auto id = r.get<uint8_t>();
-	if (id != 0x0a) error("pcx: invalid identifier %#x", id);
-	r.get<uint8_t>(); // version
-	auto encoding = r.get<uint8_t>(); // encoding
-	auto bpp = r.get<uint8_t>(); // bpp
-	auto offset_x = r.get<uint16_t>();
-	auto offset_y = r.get<uint16_t>();
-	auto last_x = r.get<uint16_t>();
-	auto last_y = r.get<uint16_t>();
-
-	if (encoding != 1) error("pcx: invalid encoding %#x", encoding);
-	if (bpp != 8) error("pcx: bpp is %d, expected 8", bpp);
-
-	if (offset_x != 0 || offset_y != 0) error("pcx: offset %d %d, expected 0 0", offset_x, offset_y);
-
-	r.skip(2 + 2 + 48 + 1);
-
-	auto bit_planes = r.get<uint8_t>();
-	auto bytes_per_line = r.get<uint16_t>();
-
-	size_t width = last_x + 1;
-	size_t height = last_y + 1;
-
-	pcx_image pcx;
-	pcx.width = width;
-	pcx.height = height;
-
-	pcx.data.resize(width * height);
-
-	r = base_r;
-	r.skip(128);
-
-	auto padding = bytes_per_line * bit_planes - width;
-	if (padding != 0) error("pcx: padding not supported");
-
-	uint8_t* dst = pcx.data.data();
-	uint8_t* dst_end = pcx.data.data() + pcx.data.size();
-
-	while (dst != dst_end) {
-		auto v = r.get<uint8_t>();
-		if ((v & 0xc0) == 0xc0) {
-			v &= 0x3f;
-			auto c = r.get<uint8_t>();
-			for (; v; --v) {
-				if (dst == dst_end) error("pcx: failed to decode");
-				*dst++ = c;
-			}
-		} else {
-			*dst = v;
-			++dst;
-		}
-	}
-
-	return pcx;
-}
-
-template<typename load_data_file_F>
-void load_image_data(image_data& img, load_data_file_F&& load_data_file) {
-
-	std::array<int, 0x100> creep_edge_neighbors_index{};
-	std::array<int, 128> creep_edge_neighbors_index_n{};
-
-	for (size_t i = 0; i != 0x100; ++i) {
-		int v = 0;
-		if (i & 2) v |= 0x10;
-		if (i & 8) v |= 0x24;
-		if (i & 0x10) v |= 9;
-		if (i & 0x40) v |= 2;
-		if ((i & 0xc0) == 0xc0) v |= 1;
-		if ((i & 0x60) == 0x60) v |= 4;
-		if ((i & 3) == 3) v |= 0x20;
-		if ((i & 6) == 6) v |= 8;
-		if ((v & 0x21) == 0x21) v |= 0x40;
-		if ((v & 0xc) == 0xc) v |= 0x40;
-		creep_edge_neighbors_index[i] = v;
-	}
-
-	int n = 0;
-	for (int i = 0; i != 128; ++i) {
-		auto it = std::find(creep_edge_neighbors_index.begin(), creep_edge_neighbors_index.end(), i);
-		if (it == creep_edge_neighbors_index.end()) continue;
-		creep_edge_neighbors_index_n[i] = n;
-		++n;
-	}
-
-	for (size_t i = 0; i != 0x100; ++i) {
-		img.creep_edge_frame_index[i] = creep_edge_neighbors_index_n[creep_edge_neighbors_index[i]];
-	}
-
-	a_vector<uint8_t> tmp_data;
-	auto load_pcx_file = [&](a_string filename) {
-		load_data_file(tmp_data, std::move(filename));
-		return load_pcx_data(tmp_data);
-	};
-
-	auto tunit_pcx = load_pcx_file("game\\tunit.pcx");
-	if (tunit_pcx.width != 128 || tunit_pcx.height != 1) error("tunit.pcx dimensions are %dx%d (128x1 required)", tunit_pcx.width, tunit_pcx.height);
-	for (size_t i = 0; i != 16; ++i) {
-		for (size_t i2 = 0; i2 != 8; ++i2) {
-			img.player_unit_colors[i][i2] = tunit_pcx.data[i * 8 + i2];
-		}
-	}
-	auto tminimap_pcx = load_pcx_file("game\\tminimap.pcx");
-	if (tminimap_pcx.width != 16 || tminimap_pcx.height != 1) error("tminimap.pcx dimensions are %dx%d (16x1 required)", tminimap_pcx.width, tminimap_pcx.height);
-	for (size_t i = 0; i != 16; ++i) {
-		img.player_minimap_colors[i] = tminimap_pcx.data[i];
-	}
-	auto tselect_pcx = load_pcx_file("game\\tselect.pcx");
-	if (tselect_pcx.width != 24 || tselect_pcx.height != 1) error("tselect.pcx dimensions are %dx%d (24x1 required)", tselect_pcx.width, tselect_pcx.height);
-	for (size_t i = 0; i != 24; ++i) {
-		img.selection_colors[i] = tselect_pcx.data[i];
-	}
-	auto thpbar_pcx = load_pcx_file("game\\thpbar.pcx");
-	if (thpbar_pcx.width != 19 || thpbar_pcx.height != 1) error("thpbar.pcx dimensions are %dx%d (19x1 required)", thpbar_pcx.width, thpbar_pcx.height);
-	for (size_t i = 0; i != 19; ++i) {
-		img.hp_bar_colors[i] = thpbar_pcx.data[i];
-	}
-
-}
-
-grp_t cmdicons;
-
-template<typename load_data_file_F>
-void load_cmdicons(load_data_file_F&& load_data_file) {
-  a_vector<uint8_t> grp_data;
-  load_data_file(grp_data, "unit\\cmdbtns\\cmdicons.grp");
-  cmdicons = read_grp(data_loading::data_reader_le(grp_data.data(), grp_data.data() + grp_data.size()));
-}
-
-template<typename load_data_file_F>
-void load_tileset_image_data(tileset_image_data& img, size_t tileset_index, load_data_file_F&& load_data_file) {
-	using namespace data_loading;
-
-	std::array<const char*, 8> tileset_names = {
-		"badlands", "platform", "install", "AshWorld", "Jungle", "Desert", "Ice", "Twilight"
-	};
-
-	a_vector<uint8_t> vr4_data;
-	a_vector<uint8_t> vx4_data;
-
-	const char* tileset_name = tileset_names.at(tileset_index);
-
-	load_data_file(vr4_data, format("Tileset\\%s.vr4", tileset_name));
-	load_data_file(vx4_data, format("Tileset\\%s.vx4", tileset_name));
-	load_data_file(img.wpe, format("Tileset\\%s.wpe", tileset_name));
-
-	a_vector<uint8_t> grp_data;
-	load_data_file(grp_data, format("Tileset\\%s.grp", tileset_name));
-	img.creep_grp = read_grp(data_loading::data_reader_le(grp_data.data(), grp_data.data() + grp_data.size()));
-
-	data_reader<true, false> vr4_r(vr4_data.data(), nullptr);
-	img.vr4.resize(vr4_data.size() / 64);
-	for (size_t i = 0; i != img.vr4.size(); ++i) {
-		for (size_t i2 = 0; i2 != 8; ++i2) {
-			auto r2 = vr4_r;
-			auto v = vr4_r.get<uint64_t, true>();
-			auto iv = r2.get<uint64_t, false>();
-			size_t n = 8 / sizeof(vr4_entry::bitmap_t);
-			for (size_t i3 = 0; i3 != n; ++i3) {
-				img.vr4[i].bitmap[i2 * n + i3] = (vr4_entry::bitmap_t)v;
-				img.vr4[i].inverted_bitmap[i2 * n + i3] = (vr4_entry::bitmap_t)iv;
-				v >>= n == 1 ? 0 : 8 * sizeof(vr4_entry::bitmap_t);
-				iv >>= n == 1 ? 0 : 8 * sizeof(vr4_entry::bitmap_t);
-			}
-		}
-	}
-	data_reader<true, false> vx4_r(vx4_data.data(), vx4_data.data() + vx4_data.size());
-	img.vx4.resize(vx4_data.size() / 32);
-	for (size_t i = 0; i != img.vx4.size(); ++i) {
-		for (size_t i2 = 0; i2 != 16; ++i2) {
-			img.vx4[i].images[i2] = vx4_r.get<uint16_t>();
-		}
-	}
-
-	a_vector<uint8_t> tmp_data;
-	auto load_pcx_file = [&](a_string filename) {
-		load_data_file(tmp_data, std::move(filename));
-		return load_pcx_data(tmp_data);
-	};
-
-	img.dark_pcx = load_pcx_file(format("Tileset\\%s\\dark.pcx", tileset_name));
-	if (img.dark_pcx.width != 256 || img.dark_pcx.height != 32) error("invalid dark.pcx");
-	for (size_t x = 0; x != 256; ++x) {
-		img.dark_pcx.data[256 * 31 + x] = (uint8_t)x;
-	}
-
-	std::array<const char*, 7> light_names = {"ofire", "gfire", "bfire", "bexpl", "trans50", "red", "green"};
-	for (size_t i = 0; i != 7; ++i) {
-		img.light_pcx[i] = load_pcx_file(format("Tileset\\%s\\%s.pcx", tileset_name, light_names[i]));
-	}
-
-	if (img.wpe.size() != 256 * 4) error("wpe size invalid (%d)", img.wpe.size());
-
-	auto get_nearest_color = [&](int r, int g, int b) {
-		size_t best_index = -1;
-		int best_score{};
-		for (size_t i = 0; i != 256; ++i) {
-			int dr = r - img.wpe[4 * i + 0];
-			int dg = g - img.wpe[4 * i + 1];
-			int db = b - img.wpe[4 * i + 2];
-			int score = dr * dr + dg * dg + db * db;
-			if (best_index == (size_t)-1 || score < best_score) {
-				best_index = i;
-				best_score = score;
-			}
-		}
-		return best_index;
-	};
-	img.resource_minimap_color = get_nearest_color(0, 255, 255);
-
-	for (size_t i = 0; i != 256; ++i) {
-		int r = img.wpe[4 * i + 0];
-		int g = img.wpe[4 * i + 1];
-		int b = img.wpe[4 * i + 2];
-		int strength = (r * 28 + g * 77 + b * 151 + 4096) / 8192;
-		img.cloak_fade_selector[i] = strength;
-	}
-
-}
-
-template<bool bounds_check>
-void draw_tile(tileset_image_data& img, size_t megatile_index, uint8_t* dst, size_t pitch, size_t offset_x, size_t offset_y, size_t width, size_t height) {
-	auto* images = &img.vx4.at(megatile_index).images[0];
-	size_t x = 0;
-	size_t y = 0;
-	for (size_t image_iy = 0; image_iy != 4; ++image_iy) {
-		for (size_t image_ix = 0; image_ix != 4; ++image_ix) {
-			auto image_index = *images;
-			bool inverted = (image_index & 1) == 1;
-			auto* bitmap = inverted ? &img.vr4.at(image_index / 2).inverted_bitmap[0] : &img.vr4.at(image_index / 2).bitmap[0];
-
-			for (size_t iy = 0; iy != 8; ++iy) {
-				for (size_t iv = 0; iv != 8 / sizeof(vr4_entry::bitmap_t); ++iv) {
-					for (size_t b = 0; b != sizeof(vr4_entry::bitmap_t); ++b) {
-						if (!bounds_check || (x >= offset_x && y >= offset_y && x < width && y < height)) {
-							*dst = (uint8_t)(*bitmap >> (8 * b));
-						}
-						++dst;
-						++x;
-					}
-					++bitmap;
-				}
-				x -= 8;
-				++y;
-				dst -= 8;
-				dst += pitch;
-			}
-			x += 8;
-			y -= 8;
-			dst -= pitch * 8;
-			dst += 8;
-			++images;
-		}
-		x -= 32;
-		y += 8;
-		dst += pitch * 8;
-		dst -= 32;
-	}
-}
-
-static inline void draw_tile(tileset_image_data& img, size_t megatile_index, uint8_t* dst, size_t pitch, size_t offset_x, size_t offset_y, size_t width, size_t height) {
-	if (offset_x == 0 && offset_y == 0 && width == 32 && height == 32) {
-		draw_tile<false>(img, megatile_index, dst, pitch, offset_x, offset_y, width, height);
-	} else {
-		draw_tile<true>(img, megatile_index, dst, pitch, offset_x, offset_y, width, height);
-	}
-}
-
-template<bool bounds_check, bool flipped, bool textured, typename remap_F>
-void draw_frame(const grp_t::frame_t& frame, const uint8_t* texture, uint8_t* dst, size_t pitch, size_t offset_x, size_t offset_y, size_t width, size_t height, remap_F&& remap_f) {
-	for (size_t y = 0; y != offset_y; ++y) {
-		dst += pitch;
-		if (textured) texture += frame.size.x;
-	}
-
-	for (size_t y = offset_y; y != height; ++y) {
-
-		if (flipped) dst += frame.size.x - 1;
-		if (textured && flipped) texture += frame.size.x - 1;
-
-		const uint8_t* d = frame.data_container.data() + frame.line_data_offset.at(y);
-		for (size_t x = flipped ? frame.size.x - 1 : 0; x != (flipped ? (size_t)0 - 1 : frame.size.x);) {
-			int v = *d++;
-			if (v & 0x80) {
-				v &= 0x7f;
-				x += flipped ? -v : v;
-				dst += flipped ? -v : v;
-				if (textured) texture += flipped ? -v : v;
-			} else if (v & 0x40) {
-				v &= 0x3f;
-				int c = *d++;
-				for (;v; --v) {
-					if (!bounds_check || (x >= offset_x && x < width)) {
-						*dst = remap_f(textured ? *texture : c, *dst);
-					}
-					dst += flipped ? -1 : 1;
-					x += flipped ? -1 : 1;
-					if (textured) texture += flipped ? -1 : 1;
-				}
-			} else {
-				for (;v; --v) {
-					int c = *d++;
-					if (!bounds_check || (x >= offset_x && x < width)) {
-						*dst = remap_f(textured ? *texture : c, *dst);
-					}
-					dst += flipped ? -1 : 1;
-					x += flipped ? -1 : 1;
-					if (textured) texture += flipped ? -1 : 1;
-				}
-			}
-		}
-
-		if (!flipped) dst -= frame.size.x;
-		else ++dst;
-		dst += pitch;
-		if (textured) {
-			if (!flipped) texture -= frame.size.x;
-			else ++texture;
-			texture += frame.size.x;
-		}
-
-	}
-}
-
-struct no_remap {
-	uint8_t operator()(uint8_t new_value, uint8_t old_value) const {
-		return new_value;
-	}
-};
-
-template<typename remap_F = no_remap>
-void draw_frame(const grp_t::frame_t& frame, bool flipped, uint8_t* dst, size_t pitch, size_t offset_x, size_t offset_y, size_t width, size_t height, remap_F&& remap_f = remap_F()) {
-	if (offset_x == 0 && offset_y == 0 && width == frame.size.x && height == frame.size.y) {
-		if (flipped) draw_frame<false, true, false>(frame, nullptr, dst, pitch, offset_x, offset_y, width, height, std::forward<remap_F>(remap_f));
-		else draw_frame<false, false, false>(frame, nullptr, dst, pitch, offset_x, offset_y, width, height, std::forward<remap_F>(remap_f));
-	} else {
-		if (flipped) draw_frame<true, true, false>(frame, nullptr, dst, pitch, offset_x, offset_y, width, height, std::forward<remap_F>(remap_f));
-		else draw_frame<true, false, false>(frame, nullptr, dst, pitch, offset_x, offset_y, width, height, std::forward<remap_F>(remap_f));
-	}
-}
-
-template<typename remap_F = no_remap>
-void draw_frame_textured(const grp_t::frame_t& frame, const uint8_t* texture, bool flipped, uint8_t* dst, size_t pitch, size_t offset_x, size_t offset_y, size_t width, size_t height, remap_F&& remap_f = remap_F()) {
-	if (offset_x == 0 && offset_y == 0 && width == frame.size.x && height == frame.size.y) {
-		if (flipped) draw_frame<false, true, true>(frame, texture, dst, pitch, offset_x, offset_y, width, height, std::forward<remap_F>(remap_f));
-		else draw_frame<false, false, true>(frame, texture, dst, pitch, offset_x, offset_y, width, height, std::forward<remap_F>(remap_f));
-	} else {
-		if (flipped) draw_frame<true, true, true>(frame, texture, dst, pitch, offset_x, offset_y, width, height, std::forward<remap_F>(remap_f));
-		else draw_frame<true, false, true>(frame, texture, dst, pitch, offset_x, offset_y, width, height, std::forward<remap_F>(remap_f));
-	}
-}
-
-void draw_icon(int icon_id, uint8_t* dst, size_t pitch, size_t offset_x, size_t offset_y, size_t width, size_t height) {
-  if (icon_id >= cmdicons.frames.size()) return;
-
-  draw_frame(cmdicons.frames[icon_id], false, dst, pitch, offset_x, offset_y, width, height);
-}
 
 struct ui_util_functions: replay_functions {
 
@@ -519,8 +124,7 @@ struct ui_util_functions: replay_functions {
 };
 
 struct ui_functions: ui_util_functions {
-	image_data img;
-	tileset_image_data tileset_img;
+	global_ui_state glob_ui;
 
 	xy screen_pos;
 
@@ -534,180 +138,84 @@ struct ui_functions: ui_util_functions {
 	ui_functions(game_player player) : ui_util_functions(player.st(), current_action_state, current_replay_state), player(std::move(player)) {
 	}
 
-	std::function<void(a_vector<uint8_t>&, a_string)> load_data_file;
-
-	sound_types_t sound_types;
-	a_vector<a_string> sound_filenames;
-
-	const sound_type_t* get_sound_type(Sounds id) const {
-		if ((size_t)id >= (size_t)Sounds::None) error("invalid sound id %d", (size_t)id);
-		return &sound_types.vec[(size_t)id];
-	}
-
-	a_vector<bool> has_loaded_sound;
-	a_vector<std::unique_ptr<native_sound::sound>> loaded_sounds;
-	a_vector<std::chrono::high_resolution_clock::time_point> last_played_sound;
-
-	int global_volume = 50;
-
-	struct sound_channel {
-		bool playing = false;
-		const sound_type_t* sound_type = nullptr;
-		int priority = 0;
-		int flags = 0;
-		const unit_type_t* unit_type = nullptr;
-		int volume = 0;
-	};
-	a_vector<sound_channel> sound_channels;
-
-	void set_volume(int volume) {
-		if (volume < 0) volume = 0;
-		else if (volume > 100) volume = 100;
-		global_volume = volume;
-		for (auto& c : sound_channels) {
-			if (c.playing) {
-				native_sound::set_volume(&c - sound_channels.data(), (128 - 4) * (c.volume * global_volume / 100) / 100);
-			}
-		}
-	}
-
-	sound_channel* get_sound_channel(int priority) {
-		sound_channel* r = nullptr;
-		for (auto& c : sound_channels) {
-			if (c.playing) {
-				if (!native_sound::is_playing(&c - sound_channels.data())) {
-					c.playing = false;
-					r = &c;
-				}
-			} else r = &c;
-		}
-		if (r) return r;
-		int best_prio = priority;
-		for (auto& c : sound_channels) {
-			if (c.flags & 0x20) continue;
-			if (c.priority < best_prio) {
-				best_prio = c.priority;
-				r = &c;
-			}
-		}
-		return r;
-	}
-
 	virtual void play_sound(int id, xy position, const unit_t* source_unit, bool add_race_index) override {
-		if (global_volume == 0) return;
-		if (add_race_index) id += 1;
-		if ((size_t)id >= has_loaded_sound.size()) return;
-		if (!has_loaded_sound[id]) {
-			has_loaded_sound[id] = true;
-			a_vector<uint8_t> data;
-			load_data_file(data, "sound\\" + sound_filenames[id]);
-			loaded_sounds[id] = native_sound::load_wav(data.data(), data.size());
-		}
-		auto& s = loaded_sounds[id];
-		if (!s) return;
-
-		auto now = clock.now();
-		if (now - last_played_sound[id] <= std::chrono::milliseconds(80)) return;
-		last_played_sound[id] = now;
-
-		const sound_type_t* sound_type = get_sound_type((Sounds)id);
-
-		int volume = sound_type->min_volume;
-
-		if (position != xy()) {
-			int distance = 0;
-			if (position.x < screen_pos.x) distance += screen_pos.x - position.x;
-			else if (position.x > screen_pos.x + (int)screen_width) distance += position.x - (screen_pos.x + (int)screen_width);
-			if (position.y < screen_pos.y) distance += screen_pos.y - position.y;
-			else if (position.y > screen_pos.y + (int)screen_height) distance += position.y - (screen_pos.y + (int)screen_height);
-
-			int distance_volume = 99 - 99 * distance / 512;
-
-			if (distance_volume > volume) volume = distance_volume;
-		}
-
-		if (volume > 10) {
-			int pan = 0;
-//			if (position != xy()) {
-//				int pan_x = (position.x - (screen_pos.x + (int)screen_width / 2)) / 32;
-//				bool left = pan_x < 0;
-//				if (left) pan_x = -pan_x;
-//				if (pan_x <= 2) pan = 0;
-//				else if (pan_x <= 5) pan = 52;
-//				else if (pan_x <= 10) pan = 127;
-//				else if (pan_x <= 20) pan = 191;
-//				else if (pan_x <= 40) pan = 230;
-//				else pan = 255;
-//				if (left) pan = -pan;
-//			}
-
-			const unit_type_t* unit_type = source_unit ? source_unit->unit_type : nullptr;
-
-			if (sound_type->flags & 0x10) {
-				for (auto& c : sound_channels) {
-					if (c.playing && c.sound_type == sound_type) {
-						if (native_sound::is_playing(&c - sound_channels.data())) return;
-						c.playing = false;
-					}
-				}
-			} else if (sound_type->flags & 2 && unit_type) {
-				for (auto& c : sound_channels) {
-					if (c.playing && c.unit_type == unit_type && c.flags & 2) {
-						if (native_sound::is_playing(&c - sound_channels.data())) return;
-						c.playing = false;
-					}
-				}
-			}
-
-			auto* c = get_sound_channel(sound_type->priority);
-			if (c) {
-				native_sound::play(c - sound_channels.data(), &*s, (128 - 4) * (volume * global_volume / 100) / 100, pan);
-				c->playing = true;
-				c->sound_type = sound_type;
-				c->flags = sound_type->flags;
-				c->priority = sound_type->priority;
-				c->unit_type = unit_type;
-				c->volume = volume;
-			}
-		}
-	}
-
-	a_vector<uint8_t> creep_random_tile_indices = a_vector<uint8_t>(256 * 256);
-	void init() {
-		uint32_t rand_state = (uint32_t)clock.now().time_since_epoch().count();
-		auto rand = [&]() {
-			rand_state = rand_state * 22695477 + 1;
-			return (rand_state >> 16) & 0x7fff;
-		};
-		for (auto& v : creep_random_tile_indices) {
-			if (rand() % 100 < 4) v = 6 + rand() % 7;
-			else v = rand() % 6;
-		}
-
+	  if (glob_ui.global_volume == 0) return;
+	  if (add_race_index) id += 1;
+	  if ((size_t)id >= glob_ui.has_loaded_sound.size()) return;
+	  if (!glob_ui.has_loaded_sound[id]) {
+		glob_ui.has_loaded_sound[id] = true;
 		a_vector<uint8_t> data;
-		load_data_file(data, "arr\\sfxdata.dat");
-		sound_types = data_loading::load_sfxdata_dat(data);
+		glob_ui.load_data_file(data, "sound\\" + glob_ui.sound_filenames[id]);
+		glob_ui.loaded_sounds[id] = native_sound::load_wav(data.data(), data.size());
+	  }
+	  auto& s = glob_ui.loaded_sounds[id];
+	  if (!s) return;
 
-		sound_filenames.resize(sound_types.vec.size());
-		has_loaded_sound.resize(sound_filenames.size());
-		loaded_sounds.resize(has_loaded_sound.size());
-		last_played_sound.resize(loaded_sounds.size());
+	  auto now = clock.now();
+	  if (now - glob_ui.last_played_sound[id] <= std::chrono::milliseconds(80)) return;
+	  glob_ui.last_played_sound[id] = now;
 
-		string_table_data tbl;
-		load_data_file(tbl.data, "arr\\sfxdata.tbl");
-		for (size_t i = 0; i != sound_types.vec.size(); ++i) {
-			size_t index = sound_types.vec[i].filename_index;
-			sound_filenames[i] = tbl[index];
+	  const sound_type_t* sound_type = glob_ui.get_sound_type((Sounds)id);
+
+	  int volume = sound_type->min_volume;
+
+	  if (position != xy()) {
+		int distance = 0;
+		if (position.x < screen_pos.x) distance += screen_pos.x - position.x;
+		else if (position.x > screen_pos.x + (int)screen_width) distance += position.x - (screen_pos.x + (int)screen_width);
+		if (position.y < screen_pos.y) distance += screen_pos.y - position.y;
+		else if (position.y > screen_pos.y + (int)screen_height) distance += position.y - (screen_pos.y + (int)screen_height);
+
+		int distance_volume = 99 - 99 * distance / 512;
+
+		if (distance_volume > volume) volume = distance_volume;
+	  }
+
+	  if (volume > 10) {
+		int pan = 0;
+		//			if (position != xy()) {
+		//				int pan_x = (position.x - (screen_pos.x + (int)screen_width / 2)) / 32;
+		//				bool left = pan_x < 0;
+		//				if (left) pan_x = -pan_x;
+		//				if (pan_x <= 2) pan = 0;
+		//				else if (pan_x <= 5) pan = 52;
+		//				else if (pan_x <= 10) pan = 127;
+		//				else if (pan_x <= 20) pan = 191;
+		//				else if (pan_x <= 40) pan = 230;
+		//				else pan = 255;
+		//				if (left) pan = -pan;
+		//			}
+
+		const unit_type_t* unit_type = source_unit ? source_unit->unit_type : nullptr;
+
+		if (sound_type->flags & 0x10) {
+		  for (auto& c : glob_ui.sound_channels) {
+			if (c.playing && c.sound_type == sound_type) {
+			  if (native_sound::is_playing(&c - glob_ui.sound_channels.data())) return;
+			  c.playing = false;
+			}
+		  }
 		}
-		native_sound::frequency = 44100;
-		native_sound::channels = 8;
-		native_sound::init();
+		else if (sound_type->flags & 2 && unit_type) {
+		  for (auto& c : glob_ui.sound_channels) {
+			if (c.playing && c.unit_type == unit_type && c.flags & 2) {
+			  if (native_sound::is_playing(&c - glob_ui.sound_channels.data())) return;
+			  c.playing = false;
+			}
+		  }
+		}
 
-		sound_channels.resize(8);
-
-		load_data_file(images_tbl.data, "arr\\images.tbl");
-
-		load_all_image_data(load_data_file);
+		auto* c = glob_ui.get_sound_channel(sound_type->priority);
+		if (c) {
+		  native_sound::play(c - glob_ui.sound_channels.data(), &*s, (128 - 4) * (volume * glob_ui.global_volume / 100) / 100, pan);
+		  c->playing = true;
+		  c->sound_type = sound_type;
+		  c->flags = sound_type->flags;
+		  c->priority = sound_type->priority;
+		  c->unit_type = unit_type;
+		  c->volume = volume;
+		}
+	  }
 	}
 
 	virtual void on_action(int owner, int action) override {
@@ -730,6 +238,7 @@ struct ui_functions: ui_util_functions {
 		return {{from_tile_x, from_tile_y}, {to_tile_x, to_tile_y}};
 	}
 
+	tileset_image_data tileset_img;
 
 	void draw_tiles(uint8_t* data, size_t data_pitch) {
 
@@ -767,7 +276,7 @@ struct ui_functions: ui_util_functions {
 
 				size_t index = *megatile_index;
 				if (tile->flags & tile_t::flag_has_creep) {
-					index = game_st.cv5.at(1).mega_tile_index[creep_random_tile_indices[tile_x + tile_y * game_st.map_tile_width]];
+					index = game_st.cv5.at(1).mega_tile_index[glob_ui.creep_random_tile_indices[tile_x + tile_y * game_st.map_tile_width]];
 				}
 				draw_tile(tileset_img, index, dst, data_pitch, offset_x, offset_y, width, height);
 
@@ -780,7 +289,7 @@ struct ui_functions: ui_util_functions {
 						if (tile_y + add_y >= game_st.map_tile_height) continue;
 						if (st.tiles[tile_x + add_x + (tile_y + add_y) * game_st.map_tile_width].flags & tile_t::flag_has_creep) creep_index |= 1 << i;
 					}
-					size_t creep_frame = img.creep_edge_frame_index[creep_index];
+					size_t creep_frame = glob_ui.img.creep_edge_frame_index[creep_index];
 
 					if (creep_frame) {
 
@@ -871,14 +380,14 @@ struct ui_functions: ui_util_functions {
 		};
 
 		if (image->modifier == 0 || image->modifier == 1) {
-			uint8_t* ptr = img.player_unit_colors.at(color_index).data();
+			uint8_t* ptr = glob_ui.img.player_unit_colors.at(color_index).data();
 			auto player_color = [ptr](uint8_t new_value, uint8_t) {
 				if (new_value >= 8 && new_value < 16) return ptr[new_value - 8];
 				return new_value;
 			};
 			draw_frame(frame, i_flag(image, image_t::flag_horizontally_flipped), dst, data_pitch, offset_x, offset_y, width, height, player_color);
 		} else if (image->modifier == 2 || image->modifier == 4) {
-			uint8_t* color_ptr = img.player_unit_colors.at(color_index).data();
+			uint8_t* color_ptr = glob_ui.img.player_unit_colors.at(color_index).data();
 			draw_alpha(4, [color_ptr](uint8_t new_value, uint8_t) {
 				if (new_value >= 8 && new_value < 16) return color_ptr[new_value - 8];
 				return new_value;
@@ -892,7 +401,7 @@ struct ui_functions: ui_util_functions {
 			};
 			draw_frame(frame, i_flag(image, image_t::flag_horizontally_flipped), dst, data_pitch, offset_x, offset_y, width, height, cloaking);
 		} else if (image->modifier == 3) {
-			uint8_t* color_ptr = img.player_unit_colors.at(color_index).data();
+			uint8_t* color_ptr = glob_ui.img.player_unit_colors.at(color_index).data();
 			draw_alpha(4, [color_ptr](uint8_t new_value, uint8_t) {
 				if (new_value >= 8 && new_value < 16) return color_ptr[new_value - 8];
 				return new_value;
@@ -970,7 +479,7 @@ struct ui_functions: ui_util_functions {
 		height = std::min(height, screen_height - screen_y);
 
 		size_t color_index = st.players[sprite->owner].color;
-		uint8_t color = img.player_unit_colors.at(color_index)[0];
+		uint8_t color = glob_ui.img.player_unit_colors.at(color_index)[0];
 		if (unit_is_mineral_field(u) || unit_is(u, UnitTypes::Resource_Vespene_Geyser)) {
 			color = tileset_img.resource_minimap_color;
 		}
@@ -1084,11 +593,11 @@ struct ui_functions: ui_util_functions {
 
 		for (int i = offset_y; i < offset_y + hp_height; ++i) {
 			int ci = hp_percent >= 66 ? colors_66[i] : hp_percent >= 33 ? colors_33[i] : colors_0[i];
-			int c = img.hp_bar_colors.at(ci);
+			int c = glob_ui.img.hp_bar_colors.at(ci);
 
 			if (dw > 0) memset(dst, c, dw);
 			if (width - dw > 0) {
-				c = img.hp_bar_colors.at(colors_bg[i]);
+				c = glob_ui.img.hp_bar_colors.at(colors_bg[i]);
 				memset(dst + dw, c, width - dw);
 			}
 			dst += data_pitch;
@@ -1101,11 +610,11 @@ struct ui_functions: ui_util_functions {
 			dst = data + screen_y * data_pitch + screen_x;
 
 			for (int i = offset_y; i < std::min(4, height); ++i) {
-				int c = img.hp_bar_colors.at(shield_colors[i]);
+				int c = glob_ui.img.hp_bar_colors.at(shield_colors[i]);
 
 				if (shield_dw > 0) memset(dst, c, shield_dw);
 				if (width - shield_dw > 0) {
-					c = img.hp_bar_colors.at(shield_colors_bg[i]);
+					c = glob_ui.img.hp_bar_colors.at(shield_colors_bg[i]);
 					memset(dst + shield_dw, c, width - shield_dw);
 				}
 				dst += data_pitch;
@@ -1120,11 +629,11 @@ struct ui_functions: ui_util_functions {
 			dst = data + (screen_y + energy_offset) * data_pitch + screen_x;
 			const int energy_colors[] = {18, 12, 13, 14, 18};
 			for (int i = energy_begin; i < energy_end; ++i) {
-				int c = img.hp_bar_colors.at(energy_colors[i]);
+				int c = glob_ui.img.hp_bar_colors.at(energy_colors[i]);
 
 				if (energy_dw > 0) memset(dst, c, energy_dw);
 				if (width - energy_dw > 0) {
-					c = img.hp_bar_colors.at(no_shield_colors_bg[i]);
+					c = glob_ui.img.hp_bar_colors.at(no_shield_colors_bg[i]);
 					memset(dst + energy_dw, c, width - energy_dw);
 				}
 				dst += data_pitch;
@@ -1134,7 +643,7 @@ struct ui_functions: ui_util_functions {
 		dst = data + screen_y * data_pitch + screen_x;
 		if (offset_x % 3) dst += 3 - offset_x % 3;
 
-		int c = img.hp_bar_colors.at(18);
+		int c = glob_ui.img.hp_bar_colors.at(18);
 		for (int x = 0; x < orig_width; x += 3) {
 			if (x < offset_x || x >= offset_x + width) continue;
 			for (int y = 0; y != hp_height; ++y) {
@@ -1269,7 +778,7 @@ struct ui_functions: ui_util_functions {
 		  for (size_t x = 0; x != game_st.map_tile_width; ++x) {
 			  size_t index;
 			  if (~st.tiles[y * game_st.map_tile_width + x].flags & tile_t::flag_has_creep) index = st.tiles_mega_tile_index[y * game_st.map_tile_width + x];
-			  else index = game_st.cv5.at(1).mega_tile_index[creep_random_tile_indices[y * game_st.map_tile_width + x]];
+			  else index = game_st.cv5.at(1).mega_tile_index[glob_ui.creep_random_tile_indices[y * game_st.map_tile_width + x]];
 			  auto* images = &tileset_img.vx4.at(index).images[0];
 			  auto* bitmap = &tileset_img.vr4.at(*images / 2).bitmap[0];
 			  auto val = bitmap[55 / sizeof(vr4_entry::bitmap_t)];
@@ -1284,7 +793,7 @@ struct ui_functions: ui_util_functions {
 		  --i;
 		  for (unit_t* u : ptr(st.player_units[i])) {
 			  if (!unit_visble_on_minimap(u)) continue;
-			  int color = img.player_minimap_colors.at(st.players[u->owner].color);
+			  int color = glob_ui.img.player_minimap_colors.at(st.players[u->owner].color);
 			  size_t w = u->unit_type->placement_size.x / 32u;
 			  size_t h = u->unit_type->placement_size.y / 32u;
 			  if (unit_is_mineral_field(u) || unit_is(u, UnitTypes::Resource_Vespene_Geyser)) {
@@ -1313,8 +822,6 @@ struct ui_functions: ui_util_functions {
 
 	virtual void draw_callback(uint8_t* data, size_t data_pitch) {
 	}
-
-	string_table_data images_tbl;
 
 	fp8 game_speed = fp8::integer(1);
 
@@ -1481,18 +988,8 @@ struct ui_functions: ui_util_functions {
 	  set_screen_pos(32 * x - view_width / 2, 32 * y - view_height / 2);
 	}
 
-	std::array<tileset_image_data, 8> all_tileset_img;
-
-	template<typename load_data_file_F>
-	void load_all_image_data(load_data_file_F&& load_data_file) {
-		load_image_data(img, load_data_file);
-		for (size_t i = 0; i != 8; ++i) {
-			load_tileset_image_data(all_tileset_img[i], i, load_data_file);
-		}
-	}
-
 	void set_image_data() {
-		tileset_img = all_tileset_img.at(game_st.tileset_index);
+		tileset_img = glob_ui.all_tileset_img.at(game_st.tileset_index);
 
 		want_new_palette = false;
 

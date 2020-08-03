@@ -100,6 +100,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="bwglobal.h" />
+    <ClInclude Include="bwglobal_ui.h" />
     <ClInclude Include="openbw\actions.h" />
     <ClInclude Include="openbw\bwenums.h" />
     <ClInclude Include="openbw\bwgame.h" />

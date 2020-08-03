@@ -141,20 +141,18 @@ void MapView::init()
 
   bw = new main_t(std::move(player));
 
-  bw->ui.load_all_image_data(load_data_file);
-
-  bw->ui.load_data_file = [&](bwgame::a_vector<uint8_t>& data, bwgame::a_string filename) {
+  bw->ui.glob_ui.global_volume = 0;
+  bw->ui.glob_ui.load_data_file = [&](bwgame::a_vector<uint8_t>& data, bwgame::a_string filename) {
     load_data_file(data, std::move(filename));
   };
+  bw->ui.glob_ui.init(load_data_file);
 
-  bw->ui.init();
   bw->ui.load_map_file("C:/Program Files (x86)/StarCraft/Maps/(2)Bottleneck.scm");
 
   //bw->ui.load_replay_file("C:/Users/Adam Heinermann/Downloads/394928-Locu_kras-PvT.rep");
 
   bw->ui.screen_pos = { 0, 0 };
   bw->ui.set_image_data();
-  bw->ui.global_volume = 0;
 
   timer->start(42);
   resizeSurface(ui->surface->size());

@@ -83,5 +83,11 @@
     <ClInclude Include="openbw\ui\ui.h">
       <Filter>Header Files\ui</Filter>
     </ClInclude>
+    <ClInclude Include="bwglobal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bwglobal_ui.h">
+      <Filter>Header Files\ui</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
