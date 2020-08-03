@@ -239,12 +239,15 @@ bool MapView::surfaceEventFilter(QObject* obj, QEvent* e)
     return mouseEventFilter(obj, e);
   case QEvent::Resize:
   {
-    QResizeEvent* resizeEvent = reinterpret_cast<QResizeEvent*>(e);
+    QResizeEvent* resizeEvent = static_cast<QResizeEvent*>(e);
     this->resizeSurface(resizeEvent->size());
     return false;
   }
   case QEvent::Paint:
     paint_surface(static_cast<QWidget*>(obj), static_cast<QPaintEvent*>(e));
+    return true;
+  case QEvent::KeyPress:
+    keyPressEvent(static_cast<QKeyEvent*>(e));
     return true;
   }
 
@@ -253,18 +256,22 @@ bool MapView::surfaceEventFilter(QObject* obj, QEvent* e)
 
 void MapView::keyPressEvent(QKeyEvent* event)
 {
-  if (event->modifiers() == Qt::KeyboardModifier::NoModifier) {
+  //if (event->modifiers() == Qt::KeyboardModifier::NoModifier) {
     switch (event->key()) {
     case Qt::Key::Key_Left:
+      setScreenPos(screen_position.topLeft() - QPoint{4, 0});
       break;
     case Qt::Key::Key_Right:
+      setScreenPos(screen_position.topLeft() + QPoint{ 4, 0 });
       break;
     case Qt::Key::Key_Up:
+      setScreenPos(screen_position.topLeft() - QPoint{ 0, 4 });
       break;
     case Qt::Key::Key_Down:
+      setScreenPos(screen_position.topLeft() + QPoint{ 0, 4 });
       break;
     }
-  }
+  //}
 }
 
 bool MapView::eventFilter(QObject* obj, QEvent* e)
