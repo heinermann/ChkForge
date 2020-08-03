@@ -21889,6 +21889,7 @@ struct game_load_functions : state_functions {
 	}
 };
 
+// TODO: Remove (merge with replay, remove for normal game)
 struct game_player {
 private:
 	std::unique_ptr<game_state> uptr_game_st = std::make_unique<game_state>();

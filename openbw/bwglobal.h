@@ -2,6 +2,8 @@
 #ifndef OPENBW_GLOBALS_H
 #define OPENBW_GLOBALS_H
 
+#include <functional>
+
 #include "openbw/data_types.h"
 #include "openbw/data_loading.h"
 

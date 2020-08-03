@@ -14,26 +14,9 @@
 #include "minimap.h"
 
 #include "../openbw/openbw/ui/ui.h"
-#include "../openbw/openbw/ui/common.h"
 #include "../openbw/openbw/bwgame.h"
-#include "../openbw/openbw/replay.h"
 
-struct main_t {
-  bwgame::ui_functions ui;
-
-  main_t(bwgame::game_player player) : ui(std::move(player)) {}
-
-  void reset();
-  void update();
-};
-
-void main_t::reset() {
-  ui.reset();
-}
-
-void main_t::update() {
-  ui.player.next_frame();
-}
+#include "MapContext.h"
 
 MapView::MapView(QWidget *parent) :
   DockWidgetWrapper<Ui::MapView>("Map", parent)
@@ -58,7 +41,7 @@ MapView::~MapView()
   if (Minimap::g_minimap) {
     Minimap::g_minimap->removeMyMapView(this);
   }
-  delete bw;
+  delete map;
 }
 
 void MapView::onCloseRequested()
@@ -71,14 +54,8 @@ void MapView::onCloseRequested()
 
 void MapView::init()
 {
-  bwgame::game_player player{};
-  bw = new main_t(std::move(player));
-
-  bw->ui.load_map_file("C:/Program Files (x86)/StarCraft/Maps/(2)Bottleneck.scm");
-  //bw->ui.load_replay_file("C:/Users/Adam Heinermann/Downloads/394928-Locu_kras-PvT.rep");
-
-  bw->ui.screen_pos = { 0, 0 };
-  bw->ui.set_image_data();
+  map = new ChkForge::MapContext();
+  map->load_map("C:/Program Files (x86)/StarCraft/Maps/(2)Bottleneck.scm");
 
   timer->start(42);
   resizeSurface(ui->surface->size());
@@ -86,17 +63,17 @@ void MapView::init()
 
 int MapView::map_tile_width()
 {
-  return bw->ui.game_st.map_tile_width;
+  return map->openbw_ui.game_st.map_tile_width;
 }
 
 int MapView::map_tile_height()
 {
-  return bw->ui.game_st.map_tile_height;
+  return map->openbw_ui.game_st.map_tile_height;
 }
 
 void MapView::updateLogic()
 {
-  bw->update();
+  map->update();
   updateSurface();
 }
 
@@ -107,18 +84,18 @@ void MapView::updateSurface()
 
 void MapView::draw_minimap(uint8_t* data, size_t data_pitch, size_t surface_width, size_t surface_height)
 {
-  bw->ui.draw_minimap(data, data_pitch, surface_width, surface_height);
+  map->openbw_ui.draw_minimap(data, data_pitch, surface_width, surface_height);
 }
 
 void MapView::move_minimap(int x, int y)
 {
-  bw->ui.move_minimap(x, y);
+  map->openbw_ui.move_minimap(x, y);
   updateScrollbarPositions();
   updateSurface();
 }
 
 QVector<QRgb> MapView::get_palette() {
-  native_window_drawing::color* raw_colorTable = bw->ui.get_palette();
+  native_window_drawing::color* raw_colorTable = map->openbw_ui.get_palette();
   QVector<QRgb> colors(256);
   for (int i = 0; i < 256; ++i) {
     native_window_drawing::color src_color = raw_colorTable[i];
@@ -158,7 +135,7 @@ bool MapView::mouseEventFilter(QObject* obj, QEvent* e)
     return true;
   case QEvent::MouseButtonDblClick:
     if (mouseEvent->button() == Qt::LeftButton) {
-      bw->ui.select_units(true, shift_pressed, ctrl_pressed,
+      map->openbw_ui.select_units(true, shift_pressed, ctrl_pressed,
         mouseEvent->pos().x(), mouseEvent->pos().y(),
         mouseEvent->pos().x(), mouseEvent->pos().y());
       this->is_drag_selecting = false;
@@ -166,7 +143,7 @@ bool MapView::mouseEventFilter(QObject* obj, QEvent* e)
     return true;
   case QEvent::MouseButtonRelease:
     if (mouseEvent->button() == Qt::LeftButton && this->is_drag_selecting) {
-      bw->ui.select_units(false, shift_pressed, ctrl_pressed,
+      map->openbw_ui.select_units(false, shift_pressed, ctrl_pressed,
         this->drag_select_from.x(), this->drag_select_from.y(),
         mouseEvent->pos().x(), mouseEvent->pos().y());
       this->is_drag_selecting = false;
@@ -255,13 +232,13 @@ bool MapView::eventFilter(QObject* obj, QEvent* e)
 
 void MapView::hScrollMoved()
 {
-  bw->ui.screen_pos.x = ui->hScroll->value();
+  map->openbw_ui.screen_pos.x = ui->hScroll->value();
   updateSurface();
 }
 
 void MapView::vScrollMoved()
 {
-  bw->ui.screen_pos.y = ui->vScroll->value();
+  map->openbw_ui.screen_pos.y = ui->vScroll->value();
   updateSurface();
 }
 
@@ -271,7 +248,7 @@ void MapView::paint_surface(QWidget* obj, QPaintEvent* paintEvent)
   painter.begin(obj);
   painter.fillRect(obj->rect(), QColorConstants::Black);
   
-  bw->ui.draw_game(this->buffer.bits(), this->buffer.bytesPerLine(), this->buffer.width(), this->buffer.height());
+  map->openbw_ui.draw_game(this->buffer.bits(), this->buffer.bytesPerLine(), this->buffer.width(), this->buffer.height());
   
   pix_buffer.convertFromImage(this->buffer);
   painter.drawPixmap(0, 0, pix_buffer);
@@ -290,7 +267,7 @@ void MapView::paint_surface(QWidget* obj, QPaintEvent* paintEvent)
 
 QPoint MapView::getScreenPos()
 {
-  return QPoint{ bw->ui.screen_pos.x, bw->ui.screen_pos.y };
+  return QPoint{ map->openbw_ui.screen_pos.x, map->openbw_ui.screen_pos.y };
 }
 
 QSize MapView::getViewSize()
@@ -300,14 +277,14 @@ QSize MapView::getViewSize()
 
 void MapView::setScreenPos(const QPoint& pos)
 {
-  bw->ui.set_screen_pos(pos.x(), pos.y());
+  map->openbw_ui.set_screen_pos(pos.x(), pos.y());
   updateScrollbarPositions();
 }
 
 void MapView::updateScrollbarPositions()
 {
-  this->ui->hScroll->setValue(bw->ui.screen_pos.x);
-  this->ui->vScroll->setValue(bw->ui.screen_pos.y);
+  this->ui->hScroll->setValue(map->openbw_ui.screen_pos.x);
+  this->ui->vScroll->setValue(map->openbw_ui.screen_pos.y);
 }
 
 void MapView::resizeSurface(const QSize& newSize)
@@ -317,16 +294,16 @@ void MapView::resizeSurface(const QSize& newSize)
 
   this->pix_buffer = QPixmap(newSize);
 
-  bw->ui.resize(newSize.width(), newSize.height());
+  map->openbw_ui.resize(newSize.width(), newSize.height());
   this->ui->surface->update();
 
   int hPageStep = newSize.width();
   this->ui->hScroll->setPageStep(hPageStep);
-  this->ui->hScroll->setMaximum(bw->ui.game_st.map_width - hPageStep);
+  this->ui->hScroll->setMaximum(map->openbw_ui.game_st.map_width - hPageStep);
   
   int vPageStep = newSize.height();
   this->ui->vScroll->setPageStep(vPageStep);
-  this->ui->vScroll->setMaximum(bw->ui.game_st.map_height - vPageStep);
+  this->ui->vScroll->setMaximum(map->openbw_ui.game_st.map_height - vPageStep);
   updateScrollbarPositions();
   updateSurface();
 }

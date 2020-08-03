@@ -9,6 +9,10 @@
 #include "../openbw/bwglobal_ui.h"
 #include "../openbw/openbw/ui/common.h"
 
+#include <CommanderLib/Logger.h>
+
+Logger logger;
+
 namespace bwgame {
   global_state global_st;
   global_ui_state global_ui_st;

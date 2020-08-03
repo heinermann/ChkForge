@@ -13,7 +13,9 @@
 #include <QPoint>
 #include <QPixmap>
 
-struct main_t;
+namespace ChkForge {
+  class MapContext;
+}
 
 class MapView : public DockWidgetWrapper<Ui::MapView>
 {
@@ -39,7 +41,7 @@ public:
 private:
   QImage buffer;
   QPixmap pix_buffer;
-  main_t* bw = nullptr;
+  ChkForge::MapContext* map = nullptr;
   std::unique_ptr<QTimer> timer;
 
   bool is_paused = false;

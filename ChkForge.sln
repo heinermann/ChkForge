@@ -21,6 +21,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "IcuLib", "Chkdraft\Chkdraft
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "StormLib", "Chkdraft\Chkdraft\StormLib\StormLib_vs15.vcxproj", "{78424708-1F6E-4D4B-920C-FB6D26847055}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CommanderLib", "Chkdraft\Chkdraft\CommanderLib\CommanderLib.vcxproj", "{E56CB8F1-772D-4266-8239-14322A96F274}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -59,12 +61,16 @@ Global
 		{78424708-1F6E-4D4B-920C-FB6D26847055}.Debug|x64.Build.0 = DebugUS|x64
 		{78424708-1F6E-4D4B-920C-FB6D26847055}.Release|x64.ActiveCfg = ReleaseUS|x64
 		{78424708-1F6E-4D4B-920C-FB6D26847055}.Release|x64.Build.0 = ReleaseUS|x64
+		{E56CB8F1-772D-4266-8239-14322A96F274}.Debug|x64.ActiveCfg = DebugUS|x64
+		{E56CB8F1-772D-4266-8239-14322A96F274}.Debug|x64.Build.0 = DebugUS|x64
+		{E56CB8F1-772D-4266-8239-14322A96F274}.Release|x64.ActiveCfg = ReleaseUS|x64
+		{E56CB8F1-772D-4266-8239-14322A96F274}.Release|x64.Build.0 = ReleaseUS|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		Qt5Version = 5.15.msvc2019_64
 		SolutionGuid = {9FAD7F4E-431D-4F1E-BA35-2C77B2E4A068}
+		Qt5Version = 5.15.msvc2019_64
 	EndGlobalSection
 EndGlobal

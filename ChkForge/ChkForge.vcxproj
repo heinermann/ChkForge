@@ -203,6 +203,7 @@
     <ClCompile Include="itemtree.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mainwindow.cpp" />
+    <ClCompile Include="MapContext.cpp" />
     <ClCompile Include="mapview.cpp" />
     <ClCompile Include="minimap.cpp" />
     <ClCompile Include="newmap.cpp" />
@@ -386,6 +387,9 @@
     <ProjectReference Include="..\CascLib\CascLib.vcxproj">
       <Project>{bf354402-4cdf-4c67-8ce7-d3dbf9d7434a}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\Chkdraft\Chkdraft\CommanderLib\CommanderLib.vcxproj">
+      <Project>{e56cb8f1-772d-4266-8239-14322a96f274}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\Chkdraft\Chkdraft\IcuLib\common.vcxproj">
       <Project>{73c0a65b-d1f2-4de1-b3a6-15dad2c23f3d}</Project>
     </ProjectReference>
@@ -394,6 +398,9 @@
     </ProjectReference>
     <ProjectReference Include="..\Chkdraft\MappingCoreLib.vcxproj">
       <Project>{7dd62df7-4190-4119-85e4-67a8b176b05d}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\openbw\openbw.vcxproj">
+      <Project>{0cdb9d85-290f-4658-8240-6df99435d1ef}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

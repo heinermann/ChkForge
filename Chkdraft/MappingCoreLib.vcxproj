@@ -45,6 +45,9 @@
     <ClCompile Include="Chkdraft\MappingCoreLib\TextTrigGenerator.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Chkdraft\CommanderLib\CommanderLib.vcxproj">
+      <Project>{e56cb8f1-772d-4266-8239-14322a96f274}</Project>
+    </ProjectReference>
     <ProjectReference Include="Chkdraft\IcuLib\common.vcxproj">
       <Project>{73c0a65b-d1f2-4de1-b3a6-15dad2c23f3d}</Project>
     </ProjectReference>

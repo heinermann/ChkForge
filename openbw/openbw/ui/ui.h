@@ -1,3 +1,6 @@
+#ifndef OPENBW_UI_MAIN_H
+#define OPENBW_UI_MAIN_H
+
 #include "common.h"
 #include "../bwgame.h"
 #include "../replay.h"
@@ -1014,3 +1017,4 @@ struct ui_functions: ui_util_functions {
 
 }
 
+#endif
