@@ -18,6 +18,5 @@ void MapContext::update() {
 void MapContext::load_map(const std::string& map_file_str) {
   openbw_ui.load_map_file(map_file_str);
 
-  openbw_ui.screen_pos = { 0, 0 };
   openbw_ui.set_image_data();
 }

@@ -82,7 +82,7 @@ bool Minimap::eventFilter(QObject* obj, QEvent* e)
   {
     QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(e);
     if (mouseEvent->button() == Qt::MouseButton::LeftButton) {
-      activeMapView->move_minimap(mouseEvent->x() / scale, mouseEvent->y() / scale);
+      activeMapView->move_minimap(mouseEvent->pos() / scale);
     }
     return true;
   }
@@ -90,7 +90,7 @@ bool Minimap::eventFilter(QObject* obj, QEvent* e)
   {
     QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(e);
     if (mouseEvent->buttons() & Qt::MouseButton::LeftButton) {
-      activeMapView->move_minimap(mouseEvent->x() / scale, mouseEvent->y() / scale);
+      activeMapView->move_minimap(mouseEvent->pos() / scale);
     }
     return true;
   }

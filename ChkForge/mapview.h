@@ -32,12 +32,17 @@ public:
   QPoint getScreenPos();
   QSize getViewSize();
 
-  void move_minimap(int x, int y);
+  void move_minimap(const QPoint& pos);
   void draw_minimap(uint8_t* data, size_t data_pitch, size_t surface_width, size_t surface_height);
   QVector<QRgb> get_palette();
 
-  int map_tile_width();
-  int map_tile_height();
+  QSize map_tile_size() const;
+  int map_tile_width() const;
+  int map_tile_height() const;
+
+  QSize minimap_size() const;
+
+  void select_units(bool double_clicked, bool shift, bool ctrl, const QRect& selection);
 
 private:
   QImage buffer;
@@ -50,6 +55,8 @@ private:
   QPoint last_drag_position{};
   std::optional<QRect> drag_select = std::nullopt;
   QPoint drag_screen_pos{};
+
+  QRect screen_position{0, 0, 640, 480};
 
   double view_scale = 1.0;
 
@@ -65,6 +72,8 @@ private:
   void resizeSurface(const QSize& newSize);
 
   void updateSurface();
+
+  virtual void keyPressEvent(QKeyEvent* event) override;
 
 private slots:
   void onCloseRequested();

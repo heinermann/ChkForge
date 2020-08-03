@@ -62,12 +62,17 @@ void MapView::init()
   resizeSurface(ui->surface->size());
 }
 
-int MapView::map_tile_width()
+QSize MapView::map_tile_size() const
+{
+  return QSize{ map_tile_width(), map_tile_height() };
+}
+
+int MapView::map_tile_width() const
 {
   return map->openbw_ui.game_st.map_tile_width;
 }
 
-int MapView::map_tile_height()
+int MapView::map_tile_height() const
 {
   return map->openbw_ui.game_st.map_tile_height;
 }
@@ -83,14 +88,42 @@ void MapView::updateSurface()
   this->ui->surface->update();
 }
 
+QSize MapView::minimap_size() const
+{
+  int tile_width = map_tile_width();
+  int tile_height = map_tile_height();
+
+  int minimap_width = std::max(tile_width, tile_height);
+  int minimap_height = minimap_width;
+
+  if (tile_width < tile_height) {
+    minimap_width = minimap_width * minimap_width * tile_width / (minimap_height * tile_height);
+  }
+  else if (tile_height < tile_width) {
+    minimap_height = minimap_height * minimap_height * tile_height / (minimap_width * tile_width);
+  }
+
+  return QSize{ minimap_width, minimap_height };
+}
+
 void MapView::draw_minimap(uint8_t* data, size_t data_pitch, size_t surface_width, size_t surface_height)
 {
   map->openbw_ui.draw_minimap(data, data_pitch, surface_width, surface_height);
 }
 
-void MapView::move_minimap(int x, int y)
+void MapView::move_minimap(const QPoint& pos)
 {
-  map->openbw_ui.move_minimap(x, y);
+  auto mm_size = minimap_size();
+
+  auto clamped_pos = QPoint{ std::clamp(pos.x(), 0, mm_size.width() - 1), std::clamp(pos.y(), 0, mm_size.height() - 1) };
+
+  int x = clamped_pos.x() * map_tile_size().width() / mm_size.width();
+  int y = clamped_pos.y() * map_tile_size().height() / mm_size.height();
+
+  QPoint{ screen_position.width(), screen_position.height() };
+
+  setScreenPos(QPoint{ x, y } * 32 - QPoint{ screen_position.width(), screen_position.height() } / 2);
+
   updateScrollbarPositions();
   updateSurface();
 }
@@ -135,17 +168,13 @@ bool MapView::mouseEventFilter(QObject* obj, QEvent* e)
     return true;
   case QEvent::MouseButtonDblClick:
     if (mouseEvent->button() == Qt::LeftButton) {
-      map->openbw_ui.select_units(true, shift_pressed, ctrl_pressed,
-        mouseEvent->pos().x(), mouseEvent->pos().y(),
-        mouseEvent->pos().x(), mouseEvent->pos().y());
+      select_units(true, shift_pressed, ctrl_pressed, QRect{ mouseEvent->pos(), mouseEvent->pos() });
       drag_select = std::nullopt;
     }
     return true;
   case QEvent::MouseButtonRelease:
     if (mouseEvent->button() == Qt::LeftButton && this->drag_select) {
-      map->openbw_ui.select_units(false, shift_pressed, ctrl_pressed,
-        drag_select->left(), drag_select->top(),
-        drag_select->right(), drag_select->bottom());
+      select_units(false, shift_pressed, ctrl_pressed, *drag_select);
       drag_select = std::nullopt;
     }
     else if (mouseEvent->button() == Qt::MiddleButton) {
@@ -218,7 +247,24 @@ bool MapView::surfaceEventFilter(QObject* obj, QEvent* e)
     paint_surface(static_cast<QWidget*>(obj), static_cast<QPaintEvent*>(e));
     return true;
   }
+
   return false;
+}
+
+void MapView::keyPressEvent(QKeyEvent* event)
+{
+  if (event->modifiers() == Qt::KeyboardModifier::NoModifier) {
+    switch (event->key()) {
+    case Qt::Key::Key_Left:
+      break;
+    case Qt::Key::Key_Right:
+      break;
+    case Qt::Key::Key_Up:
+      break;
+    case Qt::Key::Key_Down:
+      break;
+    }
+  }
 }
 
 bool MapView::eventFilter(QObject* obj, QEvent* e)
@@ -231,13 +277,13 @@ bool MapView::eventFilter(QObject* obj, QEvent* e)
 
 void MapView::hScrollMoved()
 {
-  map->openbw_ui.screen_pos.x = ui->hScroll->value();
+  setScreenPos(QPoint{ ui->hScroll->value(), screen_position.y() });
   updateSurface();
 }
 
 void MapView::vScrollMoved()
 {
-  map->openbw_ui.screen_pos.y = ui->vScroll->value();
+  setScreenPos(QPoint{ screen_position.x(), ui->vScroll->value() });
   updateSurface();
 }
 
@@ -247,7 +293,8 @@ void MapView::paint_surface(QWidget* obj, QPaintEvent* paintEvent)
   painter.begin(obj);
   painter.fillRect(obj->rect(), QColorConstants::Black);
   
-  map->openbw_ui.draw_game(this->buffer.bits(), this->buffer.bytesPerLine(), this->buffer.width(), this->buffer.height());
+  map->openbw_ui.draw_game(this->buffer.bits(), this->buffer.bytesPerLine(),
+    bwgame::rect{ {screen_position.left(), screen_position.top()}, {screen_position.right(), screen_position.bottom()} });
   
   pix_buffer.convertFromImage(this->buffer);
   painter.drawPixmap(0, 0, pix_buffer);
@@ -263,7 +310,7 @@ void MapView::paint_surface(QWidget* obj, QPaintEvent* paintEvent)
 
 QPoint MapView::getScreenPos()
 {
-  return QPoint{ map->openbw_ui.screen_pos.x, map->openbw_ui.screen_pos.y };
+  return screen_position.topLeft();
 }
 
 QSize MapView::getViewSize()
@@ -273,14 +320,18 @@ QSize MapView::getViewSize()
 
 void MapView::setScreenPos(const QPoint& pos)
 {
-  map->openbw_ui.set_screen_pos(pos.x(), pos.y());
+  screen_position.moveTopLeft(pos);
+  if (screen_position.right() > map->openbw_ui.game_st.map_width) screen_position.moveRight(map->openbw_ui.game_st.map_width);
+  if (screen_position.left() < 0) screen_position.moveLeft(0);
+  if (screen_position.bottom() > map->openbw_ui.game_st.map_height) screen_position.moveBottom(map->openbw_ui.game_st.map_height);
+  if (screen_position.top() < 0) screen_position.moveTop(0);
   updateScrollbarPositions();
 }
 
 void MapView::updateScrollbarPositions()
 {
-  this->ui->hScroll->setValue(map->openbw_ui.screen_pos.x);
-  this->ui->vScroll->setValue(map->openbw_ui.screen_pos.y);
+  this->ui->hScroll->setValue(screen_position.x());
+  this->ui->vScroll->setValue(screen_position.y());
 }
 
 void MapView::resizeSurface(const QSize& newSize)
@@ -290,7 +341,7 @@ void MapView::resizeSurface(const QSize& newSize)
 
   this->pix_buffer = QPixmap(newSize);
 
-  map->openbw_ui.resize(newSize.width(), newSize.height());
+  screen_position.setSize(newSize);
   this->ui->surface->update();
 
   int hPageStep = newSize.width();
@@ -302,4 +353,11 @@ void MapView::resizeSurface(const QSize& newSize)
   this->ui->vScroll->setMaximum(map->openbw_ui.game_st.map_height - vPageStep);
   updateScrollbarPositions();
   updateSurface();
+}
+
+void MapView::select_units(bool double_clicked, bool shift, bool ctrl, const QRect& selection)
+{
+  map->openbw_ui.select_units(double_clicked, shift, ctrl,
+    selection.left(), selection.top(), selection.right(), selection.bottom(),
+    bwgame::rect{ {screen_position.left(), screen_position.top()}, {screen_position.right(), screen_position.bottom()} });
 }

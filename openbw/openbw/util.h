@@ -115,6 +115,22 @@ struct rect_t {
 	rect_t operator+(const rect_t& n) const {
 		return { from + n.from, to + n.to };
 	}
+
+	int x() {
+	  return std::min(from.x, to.x);
+	}
+
+	int y() {
+	  return std::min(from.y, to.y);
+	}
+
+	int width() {
+	  return std::abs(to.x - from.x);
+	}
+
+	int height() {
+	  return std::abs(to.y - from.y);
+	}
 };
 
 template<typename iter_T>

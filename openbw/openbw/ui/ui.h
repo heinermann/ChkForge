@@ -127,11 +127,6 @@ struct ui_util_functions: replay_functions {
 };
 
 struct ui_functions: ui_util_functions {
-	xy screen_pos;
-
-	size_t screen_width;
-	size_t screen_height;
-
 	game_player player;
 	replay_state current_replay_state;
 	action_state current_action_state;
@@ -160,6 +155,7 @@ struct ui_functions: ui_util_functions {
 
 	  int volume = sound_type->min_volume;
 
+	  /* // Panning stuff
 	  if (position != xy()) {
 		int distance = 0;
 		if (position.x < screen_pos.x) distance += screen_pos.x - position.x;
@@ -171,6 +167,7 @@ struct ui_functions: ui_util_functions {
 
 		if (distance_volume > volume) volume = distance_volume;
 	  }
+	  */
 
 	  if (volume > 10) {
 		int pan = 0;
@@ -222,18 +219,14 @@ struct ui_functions: ui_util_functions {
 	virtual void on_action(int owner, int action) override {
 	}
 
-	size_t view_width;
-	size_t view_height;
-	fp16 view_scale;
-
-	rect_t<xy_t<size_t>> screen_tile_bounds() {
-		size_t from_tile_y = screen_pos.y / 32u;
+	rect_t<xy_t<size_t>> screen_tile_bounds(rect screen_rect) {
+		size_t from_tile_y = screen_rect.from.y / 32u;
 		if (from_tile_y >= game_st.map_tile_height) from_tile_y = 0;
-		size_t to_tile_y = (screen_pos.y + view_height + 31) / 32u;
+		size_t to_tile_y = (screen_rect.to.y + 31) / 32u;
 		if (to_tile_y > game_st.map_tile_height) to_tile_y = game_st.map_tile_height;
-		size_t from_tile_x = screen_pos.x / 32u;
+		size_t from_tile_x = screen_rect.from.x / 32u;
 		if (from_tile_x >= game_st.map_tile_width) from_tile_x = 0;
-		size_t to_tile_x = (screen_pos.x + view_width + 31) / 32u;
+		size_t to_tile_x = (screen_rect.to.x + 31) / 32u;
 		if (to_tile_x > game_st.map_tile_width) to_tile_x = game_st.map_tile_width;
 
 		return {{from_tile_x, from_tile_y}, {to_tile_x, to_tile_y}};
@@ -241,9 +234,9 @@ struct ui_functions: ui_util_functions {
 
 	tileset_image_data tileset_img;
 
-	void draw_tiles(uint8_t* data, size_t data_pitch) {
+	void draw_tiles(uint8_t* data, size_t data_pitch, rect screen_rect) {
 
-		auto screen_tile = screen_tile_bounds();
+		auto screen_tile = screen_tile_bounds(screen_rect);
 
 		size_t tile_index = screen_tile.from.y * game_st.map_tile_width + screen_tile.from.x;
 		auto* megatile_index = &st.tiles_mega_tile_index[tile_index];
@@ -255,8 +248,8 @@ struct ui_functions: ui_util_functions {
 		for (size_t tile_y = screen_tile.from.y; tile_y != screen_tile.to.y; ++tile_y) {
 			for (size_t tile_x = screen_tile.from.x; tile_x != screen_tile.to.x; ++tile_x) {
 
-				int screen_x = tile_x * 32 - screen_pos.x;
-				int screen_y = tile_y * 32 - screen_pos.y;
+				int screen_x = tile_x * 32 - screen_rect.from.x;
+				int screen_y = tile_y * 32 - screen_rect.from.y;
 
 				size_t offset_x = 0;
 				size_t offset_y = 0;
@@ -269,11 +262,11 @@ struct ui_functions: ui_util_functions {
 
 				uint8_t* dst = data + screen_y * data_pitch + screen_x;
 
-				size_t width = 32;
-				size_t height = 32;
+				int width = 32;
+				int height = 32;
 
-				width = std::min(width, screen_width - screen_x);
-				height = std::min(height, screen_height - screen_y);
+				width = std::min(width, screen_rect.width() - screen_x);
+				height = std::min(height, screen_rect.height() - screen_y);
 
 				size_t index = *megatile_index;
 				if (tile->flags & tile_t::flag_has_creep) {
@@ -299,10 +292,10 @@ struct ui_functions: ui_util_functions {
 						screen_x += frame.offset.x;
 						screen_y += frame.offset.y;
 
-						size_t width = frame.size.x;
-						size_t height = frame.size.y;
+						int width = frame.size.x;
+						int height = frame.size.y;
 
-						if (screen_x < (int)screen_width && screen_y < (int)screen_height) {
+						if (screen_x < screen_rect.width() && screen_y < screen_rect.height()) {
 							if (screen_x + (int)width > 0 && screen_y + (int)height > 0) {
 
 								size_t offset_x = 0;
@@ -316,8 +309,8 @@ struct ui_functions: ui_util_functions {
 
 								uint8_t* dst = data + screen_y * data_pitch + screen_x;
 
-								width = std::min(width, screen_width - screen_x);
-								height = std::min(height, screen_height - screen_y);
+								width = std::min(width, screen_rect.width() - screen_x);
+								height = std::min(height, screen_rect.height() - screen_y);
 
 								draw_frame(frame, false, dst, data_pitch, offset_x, offset_y, width, height);
 							}
@@ -337,19 +330,19 @@ struct ui_functions: ui_util_functions {
 
 	a_vector<uint8_t> temporary_warp_texture_buffer;
 
-	void draw_image(const image_t* image, uint8_t* data, size_t data_pitch, size_t color_index) {
+	void draw_image(const image_t* image, uint8_t* data, size_t data_pitch, size_t color_index, rect screen_rect) {
 
 		xy map_pos = get_image_map_position(image);
 
-		int screen_x = map_pos.x - screen_pos.x;
-		int screen_y = map_pos.y - screen_pos.y;
+		int screen_x = map_pos.x - screen_rect.from.x;
+		int screen_y = map_pos.y - screen_rect.from.y;
 
-		if (screen_x >= (int)screen_width || screen_y >= (int)screen_height) return;
+		if (screen_x >= screen_rect.width() || screen_y >= screen_rect.height()) return;
 
 		auto& frame = image->grp->frames.at(image->frame_index);
 
-		size_t width = frame.size.x;
-		size_t height = frame.size.y;
+		int width = frame.size.x;
+		int height = frame.size.y;
 
 		if (screen_x + (int)width <= 0 || screen_y + (int)height <= 0) return;
 
@@ -364,8 +357,8 @@ struct ui_functions: ui_util_functions {
 
 		uint8_t* dst = data + screen_y * data_pitch + screen_x;
 
-		width = std::min(width, screen_width - screen_x);
-		height = std::min(height, screen_height - screen_y);
+		width = std::min(width, screen_rect.width() - screen_x);
+		height = std::min(height, screen_rect.height() - screen_y);
 
 		auto draw_alpha = [&](size_t index, auto remap_f) {
 			auto& data = tileset_img.light_pcx.at(index).data;
@@ -408,7 +401,7 @@ struct ui_functions: ui_util_functions {
 				return new_value;
 			});
 		} else if (image->modifier == 8) {
-			size_t data_size = data_pitch * screen_height;
+			size_t data_size = data_pitch * screen_rect.height();
 			auto distortion = [data_size, dst](uint8_t new_value, uint8_t& old_value) {
 				size_t offset = &old_value - dst;
 				if (offset >= new_value && data_size - offset > new_value) return *(&old_value + new_value);
@@ -444,7 +437,7 @@ struct ui_functions: ui_util_functions {
 	a_vector<const unit_t*> current_selection_sprites_set = a_vector<const unit_t*>(2500);
 	a_vector<const sprite_t*> current_selection_sprites;
 
-	void draw_selection_circle(const sprite_t* sprite, const unit_t* u, uint8_t* data, size_t data_pitch) {
+	void draw_selection_circle(const sprite_t* sprite, const unit_t* u, uint8_t* data, size_t data_pitch, rect screen_rect) {
 		auto* image_type = get_image_type((ImageTypes)((int)ImageTypes::IMAGEID_Selection_Circle_22pixels + sprite->sprite_type->selection_circle));
 
 		xy map_pos = sprite->position + xy(0, sprite->sprite_type->selection_circle_vpos);
@@ -455,13 +448,13 @@ struct ui_functions: ui_util_functions {
 		map_pos.x += int(frame.offset.x - grp->width / 2);
 		map_pos.y += int(frame.offset.y - grp->height / 2);
 
-		int screen_x = map_pos.x - screen_pos.x;
-		int screen_y = map_pos.y - screen_pos.y;
+		int screen_x = map_pos.x - screen_rect.from.x;
+		int screen_y = map_pos.y - screen_rect.from.y;
 
-		if (screen_x >= (int)screen_width || screen_y >= (int)screen_height) return;
+		if (screen_x >= screen_rect.width() || screen_y >= screen_rect.height()) return;
 
-		size_t width = frame.size.x;
-		size_t height = frame.size.y;
+		int width = frame.size.x;
+		int height = frame.size.y;
 
 		if (screen_x + (int)width <= 0 || screen_y + (int)height <= 0) return;
 
@@ -476,8 +469,8 @@ struct ui_functions: ui_util_functions {
 
 		uint8_t* dst = data + screen_y * data_pitch + screen_x;
 
-		width = std::min(width, screen_width - screen_x);
-		height = std::min(height, screen_height - screen_y);
+		width = std::min(width, screen_rect.width() - screen_x);
+		height = std::min(height, screen_rect.height() - screen_y);
 
 		size_t color_index = st.players[sprite->owner].color;
 		uint8_t color = global_ui_st.img.player_unit_colors.at(color_index)[0];
@@ -492,7 +485,7 @@ struct ui_functions: ui_util_functions {
 
 	}
 
-	void draw_health_bars(const sprite_t* sprite, const unit_t* u, uint8_t* data, size_t data_pitch) {
+	void draw_health_bars(const sprite_t* sprite, const unit_t* u, uint8_t* data, size_t data_pitch, rect screen_rect) {
 
 		auto* selection_circle_image_type = get_image_type((ImageTypes)((int)ImageTypes::IMAGEID_Selection_Circle_22pixels + sprite->sprite_type->selection_circle));
 
@@ -517,10 +510,10 @@ struct ui_functions: ui_util_functions {
 		map_pos.x += int(0 - width / 2);
 		map_pos.y += int(0 - height / 2);
 
-		int screen_x = map_pos.x - screen_pos.x;
-		int screen_y = map_pos.y - screen_pos.y;
+		int screen_x = map_pos.x - screen_rect.from.x;
+		int screen_y = map_pos.y - screen_rect.from.y;
 
-		if (screen_x >= (int)screen_width || screen_y >= (int)screen_height) return;
+		if (screen_x >= screen_rect.width() || screen_y >= screen_rect.height()) return;
 		if (screen_x + width <= 0 || screen_y + height <= 0) return;
 
 		auto filled_width = [&](int percent) {
@@ -583,8 +576,8 @@ struct ui_functions: ui_util_functions {
 
 		uint8_t* dst = data + screen_y * data_pitch + screen_x;
 
-		width = std::min(width, (int)screen_width - screen_x);
-		height = std::min(height, (int)screen_height - screen_y);
+		width = std::min(width, screen_rect.width() - screen_x);
+		height = std::min(height, screen_rect.height() - screen_y);
 
 		if (dw > width) dw = width;
 		if (shield_dw > width) shield_dw = width;
@@ -666,29 +659,29 @@ struct ui_functions: ui_util_functions {
 
 	}
 
-	void draw_sprite(const sprite_t* sprite, uint8_t* data, size_t data_pitch) {
+	void draw_sprite(const sprite_t* sprite, uint8_t* data, size_t data_pitch, rect screen_rect) {
 		const unit_t* draw_selection_u = current_selection_sprites_set.at(sprite->index);
 		const unit_t* draw_health_bars_u = draw_selection_u;
 		for (auto* image : ptr(reverse(sprite->images))) {
 			if (i_flag(image, image_t::flag_hidden)) continue;
 			if (draw_selection_u && image->modifier != 10) {
-				draw_selection_circle(sprite, draw_selection_u, data, data_pitch);
+				draw_selection_circle(sprite, draw_selection_u, data, data_pitch, screen_rect);
 				draw_selection_u = nullptr;
 			}
-			draw_image(image, data, data_pitch, st.players[sprite->owner].color);
+			draw_image(image, data, data_pitch, st.players[sprite->owner].color, screen_rect);
 		}
 		if (draw_health_bars_u && !u_invincible(draw_health_bars_u)) {
-			draw_health_bars(sprite, draw_health_bars_u, data, data_pitch);
+			draw_health_bars(sprite, draw_health_bars_u, data, data_pitch, screen_rect);
 		}
 	}
 
 	a_vector<std::pair<uint32_t, const sprite_t*>> sorted_sprites;
 
-	void draw_sprites(uint8_t* data, size_t data_pitch) {
+	void draw_sprites(uint8_t* data, size_t data_pitch, rect screen_rect) {
 
 		sorted_sprites.clear();
 
-		auto screen_tile = screen_tile_bounds();
+		auto screen_tile = screen_tile_bounds(screen_rect);
 
 		size_t from_y = screen_tile.from.y;
 		if (from_y < 4) from_y = 0;
@@ -713,7 +706,7 @@ struct ui_functions: ui_util_functions {
 		}
 
 		for (auto& v : sorted_sprites) {
-			draw_sprite(v.second, data, data_pitch);
+			draw_sprite(v.second, data, data_pitch, screen_rect);
 		}
 
 		for (auto* s : current_selection_sprites) {
@@ -722,11 +715,11 @@ struct ui_functions: ui_util_functions {
 		current_selection_sprites.clear();
 	}
 
-	void fill_rectangle(uint8_t* data, size_t data_pitch, rect area, uint8_t index) {
+	void fill_rectangle(uint8_t* data, size_t data_pitch, rect area, uint8_t index, rect screen_rect) {
 		if (area.from.x < 0) area.from.x = 0;
 		if (area.from.y < 0) area.from.y = 0;
-		if (area.to.x > (int)screen_width) area.to.x = screen_width;
-		if (area.to.y > (int)screen_height) area.to.y = screen_height;
+		if (area.to.x > screen_rect.width()) area.to.x = screen_rect.width();
+		if (area.to.y > screen_rect.height()) area.to.y = screen_rect.height();
 		if (area.from.x >= area.to.x || area.from.y >= area.to.y) return;
 		size_t width = area.to.x - area.from.x;
 		size_t pitch = data_pitch;
@@ -748,29 +741,9 @@ struct ui_functions: ui_util_functions {
 		return true;
 	}
 
-	xy get_minimap_size() {
-		size_t minimap_width = std::max(game_st.map_tile_width, game_st.map_tile_height);
-		size_t minimap_height = std::max(game_st.map_tile_width, game_st.map_tile_height);
-
-		if (game_st.map_width < game_st.map_height) {
-			minimap_width = minimap_width * minimap_width * game_st.map_tile_width / (minimap_height * game_st.map_tile_height);
-		} else if (game_st.map_height < game_st.map_width) {
-			minimap_height = minimap_height * minimap_height * game_st.map_tile_height / (minimap_width* game_st.map_tile_width);
-		}
-		if (screen_width < minimap_width || screen_height < minimap_height) return {};
-		
-		return xy{ (int)minimap_width, (int)minimap_height };
-	}
-
 	void draw_minimap(uint8_t* data, size_t data_pitch, size_t surface_width, size_t surface_height) {
-	  xy minimap_size = get_minimap_size();
-
-	  if (minimap_size.x > surface_width) return;
-	  if (minimap_size.y > surface_height) return;
-
-	  if (minimap_size.x != game_st.map_tile_width) return;
-	  if (minimap_size.y != game_st.map_tile_height) return;
-	  fill_rectangle(data, data_pitch, rect{ xy{ 0, 0 }, minimap_size }, 0);
+	  auto surface_rect = rect{ xy{ 0, 0 }, xy{ (int)surface_width, (int)surface_height } };
+	  fill_rectangle(data, data_pitch, surface_rect, 0, surface_rect);
 
 	  uint8_t* p = data;
 
@@ -809,7 +782,7 @@ struct ui_functions: ui_util_functions {
 			  rect unit_area;
 			  unit_area.from = (u->sprite->position - u->unit_type->placement_size / 2) / 32u;
 			  unit_area.to = unit_area.from + xy(w, h);
-			  fill_rectangle(data, data_pitch, unit_area, color);
+			  fill_rectangle(data, data_pitch, unit_area, color, surface_rect);
 		  }
 	  }
 	}
@@ -821,29 +794,11 @@ struct ui_functions: ui_util_functions {
 
 	int replay_frame = 0;
 
-	virtual void draw_callback(uint8_t* data, size_t data_pitch) {
-	}
-
 	fp8 game_speed = fp8::integer(1);
 
 	bool want_new_palette = true;
 	native_window_drawing::color palette_colors[256];
 	std::chrono::high_resolution_clock clock;
-	std::chrono::high_resolution_clock::time_point last_draw;
-	std::chrono::high_resolution_clock::time_point last_input_poll;
-	std::chrono::high_resolution_clock::time_point last_fps;
-	int fps_counter = 0;
-	size_t scroll_speed_n = 0;
-
-	void resize(int width, int height) {
-		screen_width = width;
-		screen_height = height;
-		//view_scale = fp16::integer(1) - (fp16::integer(1) / 4);
-		view_scale = fp16::integer(1);
-		view_width = (fp16::integer(screen_width) / view_scale).integer_part();
-		view_height = (fp16::integer(screen_height) / view_scale).integer_part();
-		view_scale = (ufp16::integer(screen_width) / view_width).as_signed();
-	}
 
 	a_vector<unit_id> current_selection;
 
@@ -868,11 +823,11 @@ struct ui_functions: ui_util_functions {
 		if (i != current_selection.end()) current_selection.erase(i);
 	}
 
-	void select_units(bool double_clicked, bool shift, bool ctrl, int from_x, int from_y, int to_x, int to_y) {
+	void select_units(bool double_clicked, bool shift, bool ctrl, int from_x, int from_y, int to_x, int to_y, rect screen_rect) {
 	  if (from_x > to_x) std::swap(from_x, to_x);
 	  if (from_y > to_y) std::swap(from_y, to_y);
 	  if (to_x - from_x <= 4 || to_y - from_y <= 4) {
-		unit_t* u = select_get_unit_at(screen_pos + xy(from_x, from_y));
+		unit_t* u = select_get_unit_at(screen_rect.from + xy(from_x, from_y));
 		if (u) {
 		  if (double_clicked || ctrl) {
 			if (!shift) current_selection_clear();
@@ -884,7 +839,7 @@ struct ui_functions: ui_util_functions {
 			  if (is_tank(a) && is_tank(b)) return true;
 			  return a->unit_type == b->unit_type;
 			};
-			for (unit_t* u2 : find_units({ screen_pos, screen_pos + xy(view_width, view_height) })) {
+			for (unit_t* u2 : find_units(screen_rect)) {
 			  if (u2->owner != u->owner) continue;
 			  if (!is_same_type(u, u2)) continue;
 			  current_selection_add(u2);
@@ -909,7 +864,7 @@ struct ui_functions: ui_util_functions {
 		if (r.from.y > r.to.y) std::swap(r.from.y, r.to.y);
 		a_vector<unit_t*> new_units;
 		bool any_non_neutrals = false;
-		for (unit_t* u : find_units(translate_rect(r, screen_pos))) {
+		for (unit_t* u : find_units(translate_rect(r, screen_rect.from))) {
 		  if (!unit_can_be_selected(u)) continue;
 		  new_units.push_back(u);
 		  if (u->owner != 11) any_non_neutrals = true;
@@ -920,73 +875,12 @@ struct ui_functions: ui_util_functions {
 		}
 	  }
 	}
-
-	void set_screen_pos(int x, int y) {
-	  screen_pos.x = x;
-	  screen_pos.y = y;
-	  if (screen_pos.y + view_height > game_st.map_height) screen_pos.y = game_st.map_height - view_height;
-	  if (screen_pos.y < 0) screen_pos.y = 0;
-	  if (screen_pos.x + view_width > game_st.map_width) screen_pos.x = game_st.map_width - view_width;
-	  if (screen_pos.x < 0) screen_pos.x = 0;
-	}
 	
-	void draw_game(uint8_t* data, size_t data_pitch, size_t surface_width, size_t surface_height) {
-		auto now = clock.now();
-
-		if (now - last_fps >= std::chrono::seconds(1)) {
-			//ui::log("draw fps: %g\n", fps_counter / std::chrono::duration_cast<std::chrono::duration<double, std::ratio<1, 1>>>(now - last_fps).count());
-			last_fps = now;
-			fps_counter = 0;
-		}
-		++fps_counter;
-
+	void draw_game(uint8_t* data, size_t data_pitch, rect screen_rect) {
 		if (want_new_palette) set_image_data();
 
-		/*
-		if (wnd) {
-			auto input_poll_speed = std::chrono::milliseconds(12);
-		
-			auto input_poll_t = now - last_input_poll;
-			while (input_poll_t >= input_poll_speed) {
-				if (input_poll_t >= input_poll_speed * 20) last_input_poll = now - input_poll_speed;
-				else last_input_poll += input_poll_speed;
-				std::array<int, 6> scroll_speeds = {2, 2, 4, 6, 6, 8};
-		
-				if (!is_drag_selecting) {
-					int scroll_speed = scroll_speeds[scroll_speed_n];
-					auto prev_screen_pos = screen_pos;
-					if (wnd.get_key_state(81)) screen_pos.y += scroll_speed;
-					else if (wnd.get_key_state(82)) screen_pos.y -= scroll_speed;
-					if (wnd.get_key_state(79)) screen_pos.x += scroll_speed;
-					else if (wnd.get_key_state(80)) screen_pos.x -= scroll_speed;
-					if (screen_pos != prev_screen_pos) {
-						if (scroll_speed_n != scroll_speeds.size() - 1) ++scroll_speed_n;
-					} else scroll_speed_n = 0;
-				}
-		
-				input_poll_t = now - last_input_poll;
-			}
-		}*/
-
-		draw_tiles(data, data_pitch);
-		draw_sprites(data, data_pitch);
-
-		draw_callback(data, data_pitch);
-	}
-
-	void move_minimap(int mouse_x, int mouse_y) {
-	  auto minimap_size = get_minimap_size();
-	  if (minimap_size.x == 0 || minimap_size.y == 0) return;
-	  
-	  if (mouse_x < 0) mouse_x = 0;
-	  else if (mouse_x >= minimap_size.x) mouse_x = minimap_size.x - 1;
-	  
-	  if (mouse_y < 0) mouse_y = 0;
-	  else if (mouse_y >= minimap_size.y) mouse_y = minimap_size.y - 1;
-	  
-	  int x = mouse_x * game_st.map_tile_width / minimap_size.x;
-	  int y = mouse_y * game_st.map_tile_height / minimap_size.y;
-	  set_screen_pos(32 * x - view_width / 2, 32 * y - view_height / 2);
+		draw_tiles(data, data_pitch, screen_rect);
+		draw_sprites(data, data_pitch, screen_rect);
 	}
 
 	void set_image_data() {
