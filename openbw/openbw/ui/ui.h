@@ -124,8 +124,6 @@ struct ui_util_functions: replay_functions {
 };
 
 struct ui_functions: ui_util_functions {
-	global_ui_state glob_ui;
-
 	xy screen_pos;
 
 	size_t screen_width;
@@ -139,23 +137,23 @@ struct ui_functions: ui_util_functions {
 	}
 
 	virtual void play_sound(int id, xy position, const unit_t* source_unit, bool add_race_index) override {
-	  if (glob_ui.global_volume == 0) return;
+	  if (global_ui_st.global_volume == 0) return;
 	  if (add_race_index) id += 1;
-	  if ((size_t)id >= glob_ui.has_loaded_sound.size()) return;
-	  if (!glob_ui.has_loaded_sound[id]) {
-		glob_ui.has_loaded_sound[id] = true;
+	  if ((size_t)id >= global_ui_st.has_loaded_sound.size()) return;
+	  if (!global_ui_st.has_loaded_sound[id]) {
+		global_ui_st.has_loaded_sound[id] = true;
 		a_vector<uint8_t> data;
-		glob_ui.load_data_file(data, "sound\\" + glob_ui.sound_filenames[id]);
-		glob_ui.loaded_sounds[id] = native_sound::load_wav(data.data(), data.size());
+		global_ui_st.load_data_file(data, "sound\\" + global_ui_st.sound_filenames[id]);
+		global_ui_st.loaded_sounds[id] = native_sound::load_wav(data.data(), data.size());
 	  }
-	  auto& s = glob_ui.loaded_sounds[id];
+	  auto& s = global_ui_st.loaded_sounds[id];
 	  if (!s) return;
 
 	  auto now = clock.now();
-	  if (now - glob_ui.last_played_sound[id] <= std::chrono::milliseconds(80)) return;
-	  glob_ui.last_played_sound[id] = now;
+	  if (now - global_ui_st.last_played_sound[id] <= std::chrono::milliseconds(80)) return;
+	  global_ui_st.last_played_sound[id] = now;
 
-	  const sound_type_t* sound_type = glob_ui.get_sound_type((Sounds)id);
+	  const sound_type_t* sound_type = global_ui_st.get_sound_type((Sounds)id);
 
 	  int volume = sound_type->min_volume;
 
@@ -189,25 +187,25 @@ struct ui_functions: ui_util_functions {
 		const unit_type_t* unit_type = source_unit ? source_unit->unit_type : nullptr;
 
 		if (sound_type->flags & 0x10) {
-		  for (auto& c : glob_ui.sound_channels) {
+		  for (auto& c : global_ui_st.sound_channels) {
 			if (c.playing && c.sound_type == sound_type) {
-			  if (native_sound::is_playing(&c - glob_ui.sound_channels.data())) return;
+			  if (native_sound::is_playing(&c - global_ui_st.sound_channels.data())) return;
 			  c.playing = false;
 			}
 		  }
 		}
 		else if (sound_type->flags & 2 && unit_type) {
-		  for (auto& c : glob_ui.sound_channels) {
+		  for (auto& c : global_ui_st.sound_channels) {
 			if (c.playing && c.unit_type == unit_type && c.flags & 2) {
-			  if (native_sound::is_playing(&c - glob_ui.sound_channels.data())) return;
+			  if (native_sound::is_playing(&c - global_ui_st.sound_channels.data())) return;
 			  c.playing = false;
 			}
 		  }
 		}
 
-		auto* c = glob_ui.get_sound_channel(sound_type->priority);
+		auto* c = global_ui_st.get_sound_channel(sound_type->priority);
 		if (c) {
-		  native_sound::play(c - glob_ui.sound_channels.data(), &*s, (128 - 4) * (volume * glob_ui.global_volume / 100) / 100, pan);
+		  native_sound::play(c - global_ui_st.sound_channels.data(), &*s, (128 - 4) * (volume * global_ui_st.global_volume / 100) / 100, pan);
 		  c->playing = true;
 		  c->sound_type = sound_type;
 		  c->flags = sound_type->flags;
@@ -276,7 +274,7 @@ struct ui_functions: ui_util_functions {
 
 				size_t index = *megatile_index;
 				if (tile->flags & tile_t::flag_has_creep) {
-					index = game_st.cv5.at(1).mega_tile_index[glob_ui.creep_random_tile_indices[tile_x + tile_y * game_st.map_tile_width]];
+					index = game_st.cv5.at(1).mega_tile_index[global_ui_st.creep_random_tile_indices[tile_x + tile_y * game_st.map_tile_width]];
 				}
 				draw_tile(tileset_img, index, dst, data_pitch, offset_x, offset_y, width, height);
 
@@ -289,7 +287,7 @@ struct ui_functions: ui_util_functions {
 						if (tile_y + add_y >= game_st.map_tile_height) continue;
 						if (st.tiles[tile_x + add_x + (tile_y + add_y) * game_st.map_tile_width].flags & tile_t::flag_has_creep) creep_index |= 1 << i;
 					}
-					size_t creep_frame = glob_ui.img.creep_edge_frame_index[creep_index];
+					size_t creep_frame = global_ui_st.img.creep_edge_frame_index[creep_index];
 
 					if (creep_frame) {
 
@@ -380,14 +378,14 @@ struct ui_functions: ui_util_functions {
 		};
 
 		if (image->modifier == 0 || image->modifier == 1) {
-			uint8_t* ptr = glob_ui.img.player_unit_colors.at(color_index).data();
+			uint8_t* ptr = global_ui_st.img.player_unit_colors.at(color_index).data();
 			auto player_color = [ptr](uint8_t new_value, uint8_t) {
 				if (new_value >= 8 && new_value < 16) return ptr[new_value - 8];
 				return new_value;
 			};
 			draw_frame(frame, i_flag(image, image_t::flag_horizontally_flipped), dst, data_pitch, offset_x, offset_y, width, height, player_color);
 		} else if (image->modifier == 2 || image->modifier == 4) {
-			uint8_t* color_ptr = glob_ui.img.player_unit_colors.at(color_index).data();
+			uint8_t* color_ptr = global_ui_st.img.player_unit_colors.at(color_index).data();
 			draw_alpha(4, [color_ptr](uint8_t new_value, uint8_t) {
 				if (new_value >= 8 && new_value < 16) return color_ptr[new_value - 8];
 				return new_value;
@@ -401,7 +399,7 @@ struct ui_functions: ui_util_functions {
 			};
 			draw_frame(frame, i_flag(image, image_t::flag_horizontally_flipped), dst, data_pitch, offset_x, offset_y, width, height, cloaking);
 		} else if (image->modifier == 3) {
-			uint8_t* color_ptr = glob_ui.img.player_unit_colors.at(color_index).data();
+			uint8_t* color_ptr = global_ui_st.img.player_unit_colors.at(color_index).data();
 			draw_alpha(4, [color_ptr](uint8_t new_value, uint8_t) {
 				if (new_value >= 8 && new_value < 16) return color_ptr[new_value - 8];
 				return new_value;
@@ -479,7 +477,7 @@ struct ui_functions: ui_util_functions {
 		height = std::min(height, screen_height - screen_y);
 
 		size_t color_index = st.players[sprite->owner].color;
-		uint8_t color = glob_ui.img.player_unit_colors.at(color_index)[0];
+		uint8_t color = global_ui_st.img.player_unit_colors.at(color_index)[0];
 		if (unit_is_mineral_field(u) || unit_is(u, UnitTypes::Resource_Vespene_Geyser)) {
 			color = tileset_img.resource_minimap_color;
 		}
@@ -593,11 +591,11 @@ struct ui_functions: ui_util_functions {
 
 		for (int i = offset_y; i < offset_y + hp_height; ++i) {
 			int ci = hp_percent >= 66 ? colors_66[i] : hp_percent >= 33 ? colors_33[i] : colors_0[i];
-			int c = glob_ui.img.hp_bar_colors.at(ci);
+			int c = global_ui_st.img.hp_bar_colors.at(ci);
 
 			if (dw > 0) memset(dst, c, dw);
 			if (width - dw > 0) {
-				c = glob_ui.img.hp_bar_colors.at(colors_bg[i]);
+				c = global_ui_st.img.hp_bar_colors.at(colors_bg[i]);
 				memset(dst + dw, c, width - dw);
 			}
 			dst += data_pitch;
@@ -610,11 +608,11 @@ struct ui_functions: ui_util_functions {
 			dst = data + screen_y * data_pitch + screen_x;
 
 			for (int i = offset_y; i < std::min(4, height); ++i) {
-				int c = glob_ui.img.hp_bar_colors.at(shield_colors[i]);
+				int c = global_ui_st.img.hp_bar_colors.at(shield_colors[i]);
 
 				if (shield_dw > 0) memset(dst, c, shield_dw);
 				if (width - shield_dw > 0) {
-					c = glob_ui.img.hp_bar_colors.at(shield_colors_bg[i]);
+					c = global_ui_st.img.hp_bar_colors.at(shield_colors_bg[i]);
 					memset(dst + shield_dw, c, width - shield_dw);
 				}
 				dst += data_pitch;
@@ -629,11 +627,11 @@ struct ui_functions: ui_util_functions {
 			dst = data + (screen_y + energy_offset) * data_pitch + screen_x;
 			const int energy_colors[] = {18, 12, 13, 14, 18};
 			for (int i = energy_begin; i < energy_end; ++i) {
-				int c = glob_ui.img.hp_bar_colors.at(energy_colors[i]);
+				int c = global_ui_st.img.hp_bar_colors.at(energy_colors[i]);
 
 				if (energy_dw > 0) memset(dst, c, energy_dw);
 				if (width - energy_dw > 0) {
-					c = glob_ui.img.hp_bar_colors.at(no_shield_colors_bg[i]);
+					c = global_ui_st.img.hp_bar_colors.at(no_shield_colors_bg[i]);
 					memset(dst + energy_dw, c, width - energy_dw);
 				}
 				dst += data_pitch;
@@ -643,7 +641,7 @@ struct ui_functions: ui_util_functions {
 		dst = data + screen_y * data_pitch + screen_x;
 		if (offset_x % 3) dst += 3 - offset_x % 3;
 
-		int c = glob_ui.img.hp_bar_colors.at(18);
+		int c = global_ui_st.img.hp_bar_colors.at(18);
 		for (int x = 0; x < orig_width; x += 3) {
 			if (x < offset_x || x >= offset_x + width) continue;
 			for (int y = 0; y != hp_height; ++y) {
@@ -778,7 +776,7 @@ struct ui_functions: ui_util_functions {
 		  for (size_t x = 0; x != game_st.map_tile_width; ++x) {
 			  size_t index;
 			  if (~st.tiles[y * game_st.map_tile_width + x].flags & tile_t::flag_has_creep) index = st.tiles_mega_tile_index[y * game_st.map_tile_width + x];
-			  else index = game_st.cv5.at(1).mega_tile_index[glob_ui.creep_random_tile_indices[y * game_st.map_tile_width + x]];
+			  else index = game_st.cv5.at(1).mega_tile_index[global_ui_st.creep_random_tile_indices[y * game_st.map_tile_width + x]];
 			  auto* images = &tileset_img.vx4.at(index).images[0];
 			  auto* bitmap = &tileset_img.vr4.at(*images / 2).bitmap[0];
 			  auto val = bitmap[55 / sizeof(vr4_entry::bitmap_t)];
@@ -793,7 +791,7 @@ struct ui_functions: ui_util_functions {
 		  --i;
 		  for (unit_t* u : ptr(st.player_units[i])) {
 			  if (!unit_visble_on_minimap(u)) continue;
-			  int color = glob_ui.img.player_minimap_colors.at(st.players[u->owner].color);
+			  int color = global_ui_st.img.player_minimap_colors.at(st.players[u->owner].color);
 			  size_t w = u->unit_type->placement_size.x / 32u;
 			  size_t h = u->unit_type->placement_size.y / 32u;
 			  if (unit_is_mineral_field(u) || unit_is(u, UnitTypes::Resource_Vespene_Geyser)) {
@@ -989,7 +987,7 @@ struct ui_functions: ui_util_functions {
 	}
 
 	void set_image_data() {
-		tileset_img = glob_ui.all_tileset_img.at(game_st.tileset_index);
+		tileset_img = global_ui_st.all_tileset_img.at(game_st.tileset_index);
 
 		want_new_palette = false;
 
@@ -1010,7 +1008,6 @@ struct ui_functions: ui_util_functions {
 		replay_st = replay_state();
 		action_st = action_state();
 
-		st.global = &global_st;
 		st.game = &game;
 	}
 };

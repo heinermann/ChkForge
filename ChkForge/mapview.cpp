@@ -14,32 +14,9 @@
 #include "minimap.h"
 
 #include "../openbw/openbw/ui/ui.h"
-#include "../openbw/openbw/ui/native_window_drawing.h"
 #include "../openbw/openbw/ui/common.h"
 #include "../openbw/openbw/bwgame.h"
 #include "../openbw/openbw/replay.h"
-
-namespace bwgame {
-
-  namespace ui {
-    void log_str(a_string str) {
-      static FILE* log_file = nullptr;
-
-      fwrite(str.data(), str.size(), 1, stdout);
-      fflush(stdout);
-      if (!log_file) log_file = fopen("log.txt", "wb");
-      if (log_file) {
-        fwrite(str.data(), str.size(), 1, log_file);
-        fflush(log_file);
-      }
-    }
-
-    void fatal_error_str(a_string str) {
-      log("fatal error: %s\n", str);
-      //std::terminate();
-    }
-  }
-}
 
 struct main_t {
   bwgame::ui_functions ui;
@@ -56,48 +33,6 @@ void main_t::reset() {
 
 void main_t::update() {
   ui.player.next_frame();
-  /*
-  auto next = [&]() {
-	//ui.replay_functions::next_frame();
-    ui.player.next_frame();
-  };
-
-  if (!ui.is_done() || ui.st.current_frame != ui.replay_frame) {
-	if (ui.st.current_frame != ui.replay_frame) {
-	  if (ui.st.current_frame < ui.replay_frame) {
-		for (size_t i = 0; i != 32 && ui.st.current_frame != ui.replay_frame; ++i) {
-		  for (size_t i2 = 0; i2 != 4 && ui.st.current_frame != ui.replay_frame; ++i2) {
-			next();
-		  }
-		  if (clock.now() - now >= std::chrono::milliseconds(50)) break;
-		}
-	  }
-	  last_tick = now;
-	}
-	else {
-	  if (ui.is_paused) {
-		last_tick = now;
-	  }
-	  else {
-		auto tick_t = now - last_tick;
-		if (tick_t >= tick_speed * 16) {
-		  last_tick = now - tick_speed * 16;
-		  tick_t = tick_speed * 16;
-		}
-		auto tick_n = tick_speed.count() == 0 ? 128 : tick_t / tick_speed;
-		for (auto i = tick_n; i;) {
-		  --i;
-		  ++fps_counter;
-		  last_tick += tick_speed;
-
-		  if (!ui.is_done()) next();
-		  else break;
-		  if (i % 4 == 3 && clock.now() - now >= std::chrono::milliseconds(50)) break;
-		}
-		ui.replay_frame = ui.st.current_frame;
-	  }
-	}
-  }*/
 }
 
 MapView::MapView(QWidget *parent) :
@@ -136,19 +71,10 @@ void MapView::onCloseRequested()
 
 void MapView::init()
 {
-  auto load_data_file = bwgame::data_loading::data_files_directory("C:/Program Files (x86)/StarCraft 1.16.1");
-  bwgame::game_player player(load_data_file);
-
+  bwgame::game_player player{};
   bw = new main_t(std::move(player));
 
-  bw->ui.glob_ui.global_volume = 0;
-  bw->ui.glob_ui.load_data_file = [&](bwgame::a_vector<uint8_t>& data, bwgame::a_string filename) {
-    load_data_file(data, std::move(filename));
-  };
-  bw->ui.glob_ui.init(load_data_file);
-
   bw->ui.load_map_file("C:/Program Files (x86)/StarCraft/Maps/(2)Bottleneck.scm");
-
   //bw->ui.load_replay_file("C:/Users/Adam Heinermann/Downloads/394928-Locu_kras-PvT.rep");
 
   bw->ui.screen_pos = { 0, 0 };

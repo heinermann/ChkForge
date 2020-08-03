@@ -163,7 +163,6 @@ struct game_state {
 
 struct state_base_copyable {
 
-	const global_state* global;
 	game_state* game;
 
 	int update_tiles_countdown;
@@ -315,7 +314,6 @@ struct state_functions {
 	virtual ~state_functions() {}
 
 	state& st;
-	const global_state& global_st = *st.global;
 	const game_state& game_st = *st.game;
 
 	explicit state_functions(state& st) : st(st) {}
@@ -21891,53 +21889,18 @@ struct game_load_functions : state_functions {
 	}
 };
 
-struct string_table_data {
-	a_vector<uint8_t> data;
-	a_string operator[](size_t index) const {
-		data_loading::data_reader_le r(data.data(), data.data() + data.size());
-		r.seek(2 + (index - 1) * 2);
-		size_t offset = r.get<uint16_t>();
-		r.seek(offset);
-		a_string str;
-		while (char c = r.get<char>()) str += c;
-		return str;
-	}
-	a_string at(size_t index) const {
-		return (*this)[index];
-	}
-};
-
 struct game_player {
 private:
-	std::unique_ptr<global_state> uptr_global_st;
-	std::unique_ptr<game_state> uptr_game_st;
-	std::unique_ptr<state> uptr_st;
+	std::unique_ptr<game_state> uptr_game_st = std::make_unique<game_state>();
+	std::unique_ptr<state> uptr_st = std::make_unique<state>();
 	optional<state_functions> opt_funcs;
 public:
-	game_player() = default;
+	game_player() {
+	  state& st = *uptr_st;
+	  st.game = uptr_game_st.get();
+	  set_st(st);
+	}
 
-	template<typename T>
-	explicit game_player(T&& init_arg) {
-		init(std::forward<T>(init_arg));
-	}
-	void init(const char* data_path) {
-		init(data_loading::data_files_directory(data_path));
-	}
-	void init(a_string data_path) {
-		init(data_loading::data_files_directory(std::move(data_path)));
-	}
-	// TODO: Move global init to main.cpp
-	template<typename load_data_file_F>
-	void init(load_data_file_F&& load_data_file) {
-		uptr_global_st = std::make_unique<global_state>();
-		uptr_game_st = std::make_unique<game_state>();
-		uptr_st = std::make_unique<state>();
-		state& st = *uptr_st;
-		st.global = uptr_global_st.get();
-		st.game = uptr_game_st.get();
-		global_init(*uptr_global_st, std::forward<load_data_file_F>(load_data_file));
-		set_st(st);
-	}
 	void load_map_file(const a_string& filename, bool initial_processing = true) {
 		if (!opt_funcs) error("game_player: not initialized");
 		game_load_functions game_load_funcs(st());

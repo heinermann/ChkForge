@@ -3,11 +3,26 @@
 
 #include "bwglobal.h"
 #include "openbw/ui/native_sound.h"
+#include "openbw/data_loading.h"
 
 #include <chrono>
 
 namespace bwgame {
-
+  struct string_table_data {
+	a_vector<uint8_t> data;
+	a_string operator[](size_t index) const {
+	  data_loading::data_reader_le r(data.data(), data.data() + data.size());
+	  r.seek(2 + (index - 1) * 2);
+	  size_t offset = r.get<uint16_t>();
+	  r.seek(offset);
+	  a_string str;
+	  while (char c = r.get<char>()) str += c;
+	  return str;
+	}
+	a_string at(size_t index) const {
+	  return (*this)[index];
+	}
+  };
 
   struct vr4_entry {
 	using bitmap_t = std::conditional<is_native_fast_int<uint64_t>::value, uint64_t, uint32_t>::type;
@@ -397,6 +412,13 @@ namespace bwgame {
   }
 
   struct global_ui_state {
+
+	global_ui_state() = default;
+	global_ui_state(global_ui_state&) = delete;
+	global_ui_state(global_ui_state&&) = delete;
+	global_ui_state& operator=(global_ui_state&) = delete;
+	global_ui_state& operator=(global_ui_state&&) = delete;
+
 	grp_t cmdicons;
 	image_data img;
 	std::array<tileset_image_data, 8> all_tileset_img;
@@ -519,6 +541,7 @@ namespace bwgame {
 
   };
 
+  extern global_ui_state global_ui_st;
 }
 
 #endif
