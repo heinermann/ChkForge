@@ -165,6 +165,10 @@ bool MapView::mouseEventFilter(QObject* obj, QEvent* e)
       this->last_drag_position = mouseEvent->pos();
       this->drag_screen_pos = getScreenPos() + mouseEvent->pos() / view_scale;
     }
+    else if (mouseEvent->button() == Qt::RightButton) {
+      auto place_pos = screen_position.topLeft() + mouseEvent->pos();
+      map->place_unit(Sc::Unit::Type::TerranMarine, 0, place_pos.x(), place_pos.y());
+    }
     return true;
   case QEvent::MouseButtonDblClick:
     if (mouseEvent->button() == Qt::LeftButton) {
