@@ -19030,6 +19030,8 @@ struct state_functions {
 
 	bool execute_trigger_action(execute_trigger_struct& ets, int owner, running_trigger& rt, running_trigger::action& ra, const trigger::action& a) {
 		switch (a.type) {
+		case 0:
+		  return false;
 		case 1: // victory
 			if (st.players[owner].controller == player_t::controller_occupied || st.players[owner].controller == player_t::controller_computer_game) {
 				ets.victory_state[owner] = 3;
@@ -19054,6 +19056,17 @@ struct state_functions {
 			st.trigger_wait_timers[owner] = a.time_n;
 			ra.flags |= 1;
 			return false;
+		case 5:
+		case 6:
+		case 7:
+		case 8:
+		case 9:
+		case 10:
+		case 11:
+		case 12:
+		case 13:
+		case 14:
+		  break; // TODO
 		case 15: // ai script
 			switch (a.group2_n) {
 			case 0x3069562b:
@@ -19081,9 +19094,18 @@ struct state_functions {
 				st.shared_vision[7] |= 1 << owner;
 				break;
 			default:
-				error("unknown ai script");
+				//error("unknown ai script");
+			  // TODO
+			  break;
 			}
 			return true;
+		case 16:
+		case 17:
+		case 18:
+		case 19:
+		case 20:
+		case 21:
+		  break; // TODO
 		case 22: // kill unit
 			for (int p : trigger_players(owner, a.group_n)) {
 				int uid = a.extra_n;
@@ -19106,6 +19128,8 @@ struct state_functions {
 				}
 			}
 			return true;
+		case 23:
+		  break; // TODO
 		case 24: // remove unit
 			for (int p : trigger_players(owner, a.group_n)) {
 				int uid = a.extra_n;
@@ -19206,6 +19230,18 @@ struct state_functions {
 				}
 			}
 			return true;
+		case 27:
+		case 28:
+		case 29:
+		case 30:
+		case 31:
+		case 32:
+		case 33:
+		case 34:
+		case 35:
+		case 36:
+		case 37:
+		  break; // TODO
 		case 38: // move location
 			if (true) {
 				auto& loc = st.locations.at(a.location - 1);
@@ -19236,6 +19272,12 @@ struct state_functions {
 				target_loc.area.to = to;
 			}
 			return true;
+		case 39:
+		case 40:
+		case 41:
+		case 42:
+		case 43:
+		  break; // TODO
 		case 44: // create unit
 			for (int p : trigger_players(owner, a.group_n)) {
 				const unit_type_t* ut = get_unit_type((UnitTypes)a.extra_n);
@@ -19247,6 +19289,8 @@ struct state_functions {
 				}
 			}
 			return true;
+		case 45:
+		  break; // TODO
 		case 46: // order
 			for (unit_t* u : find_units(st.locations.at(a.location - 1).area)) {
 				if (!trigger_players_pred(owner, a.group_n, u->owner)) continue;
@@ -19281,6 +19325,12 @@ struct state_functions {
 				}
 			}
 			return true;
+		case 47:
+		case 48:
+		case 49:
+		case 50:
+		case 51:
+		  break; // TODO
 		case 52: // set unit resources
 			for (unit_t* u : find_units(st.locations.at(a.location - 1).area)) {
 				if (!trigger_players_pred(owner, a.group_n, u->owner)) continue;
@@ -19288,10 +19338,19 @@ struct state_functions {
 				set_unit_resources(u, a.group2_n);
 			}
 			return true;
+		case 53:
+		case 54:
+		case 55:
+		case 56:
+		case 57:
+		case 58:
+		case 59:
+		  break;
 		default:
-			error("unknown trigger action %d", a.type);
+			//error("unknown trigger action %d", a.type);
 			return false;
 		}
+		return true;
 	}
 
 	void execute_trigger(execute_trigger_struct& ets, int owner, running_trigger& rt, const trigger& t) {

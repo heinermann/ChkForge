@@ -51,6 +51,11 @@ void MainWindow::createTestMap()
   auto map = ChkForge::MapContext::create();
   map->load_map("C:/Program Files (x86)/StarCraft/Maps/(2)Bottleneck.scm");
 
+  createMapView(map);
+}
+
+void MainWindow::createMapView(std::shared_ptr<ChkForge::MapContext> map)
+{
   auto mapView = new MapView(map);
   auto subWindow = mdi->addSubWindow(mapView);
   subWindow->resize(QSize{ 640, 480 });
@@ -113,12 +118,7 @@ void MainWindow::on_action_file_new_triggered()
   auto map = ChkForge::MapContext::create();
   map->new_map(newMap.tile_width, newMap.tile_height, static_cast<Sc::Terrain::Tileset>(newMap.tileset->getTilesetId()), newMap.brush, newMap.clutter);
 
-  auto mapView = new MapView(map);
-  auto subWindow = mdi->addSubWindow(mapView);
-  subWindow->resize(QSize{ 640, 480 });
-  mapView->showMaximized();
-
-  connect(mapView, &MapView::aboutToClose, minimap, &Minimap::onCloseMapView);
+  createMapView(map);
 }
 
 namespace {
@@ -135,7 +135,11 @@ void MainWindow::on_action_file_open_triggered()
   QString result = QFileDialog::getOpenFileName(this, QString(), QString(), file_filter);
   if (result.isEmpty()) return;
 
-  // TODO: Actually open the map
+  auto map = ChkForge::MapContext::create();
+  std::string file_str = result.toStdString();
+  map->load_map(file_str);
+
+  createMapView(map);
 }
 
 void MainWindow::on_action_file_save_triggered()

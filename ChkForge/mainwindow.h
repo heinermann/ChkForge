@@ -9,6 +9,7 @@
 
 #include "layers.h"
 #include "minimap.h"
+#include "MapContext.h"
 
 class MapView;
 
@@ -52,9 +53,11 @@ private:
   void toggleToolWindows(bool isOpen);
 
   void createMdiDockArea();
-  void createTestMap();
   void createToolWindows();
   void mapMenuActions();
+
+  void createTestMap();
+  void createMapView(std::shared_ptr<ChkForge::MapContext> map);
 
 private slots:
   void on_action_file_new_triggered();
