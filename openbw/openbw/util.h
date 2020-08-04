@@ -852,6 +852,15 @@ void error(const char* fmt, T&&... args) {
 	throw exception(format(fmt, std::forward<T>(args)...));
 }
 
+namespace ui {
+  void log_str(a_string str);
+}
+
+template<typename...T>
+void warn(const char* fmt, T&&... args) {
+  ui::log_str(format(fmt, std::forward<T>(args)...));
+}
+
 }
 
 #endif
