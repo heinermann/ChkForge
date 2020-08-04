@@ -366,3 +366,8 @@ void MapView::select_units(bool double_clicked, bool shift, bool ctrl, const QRe
     selection.left(), selection.top(), selection.right(), selection.bottom(),
     bwgame::rect{ {screen_position.left(), screen_position.top()}, {screen_position.right(), screen_position.bottom()} });
 }
+
+std::shared_ptr<ChkForge::MapContext> MapView::getMap()
+{
+  return map;
+}

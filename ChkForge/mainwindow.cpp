@@ -335,6 +335,10 @@ void MainWindow::on_action_test_duplicate_triggered()
 
 void MainWindow::on_action_window_newMapView_triggered()
 {
+  auto* currentView = mdi->currentSubWindow();
+  if (currentView != nullptr) {
+    createMapView(qobject_cast<MapView*>(currentView)->getMap());
+  }
 }
 
 void MainWindow::on_action_window_closeMapView_triggered()

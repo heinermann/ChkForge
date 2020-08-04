@@ -41,6 +41,7 @@ public:
 
   void select_units(bool double_clicked, bool shift, bool ctrl, const QRect& selection);
 
+  std::shared_ptr<ChkForge::MapContext> getMap();
 private:
   Ui::MapView* ui;
 
