@@ -18,11 +18,9 @@ public:
   virtual ~Minimap();
 
   void setActiveMapView(MapView* view);
-  void removeMyMapView(MapView* view);
   void resetMapBuffer();
   void resetPalette();
 
-  static Minimap* g_minimap;
 private:
   QImage minimap_buffer;
 
@@ -31,6 +29,9 @@ private:
 
   virtual bool eventFilter(QObject* obj, QEvent* event) override;
   void paint_surface(QWidget* obj, QPaintEvent* paintEvent);
+
+public slots:
+  void onCloseMapView(MapView* map);
 
 private slots:
   void updateLogic();

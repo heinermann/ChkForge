@@ -8,6 +8,7 @@
 #include "ui_mainwindow.h"
 
 #include "layers.h"
+#include "minimap.h"
 
 class MapView;
 
@@ -26,10 +27,16 @@ public:
 private:
   Ui::MainWindow *ui;
 
-  ads::CDockManager* m_DockManager;
+  Minimap* minimap = new Minimap();
   QMdiArea* mdi = new QMdiArea();
+
+  ads::CDockManager* m_DockManager;
   ads::CDockWidget* mdi_dock = new ads::CDockWidget("");
 
+  std::vector<QAction*> layerOptions;
+  ChkForge::Layer currentLayer = ChkForge::LAYER_SELECT;
+
+private:
   template <class T>
   ads::CDockAreaWidget* createToolWindow(ads::DockWidgetArea dockWidgetArea, ads::CDockAreaWidget* areaWidget = nullptr) {
     T* widget = new T();
@@ -44,8 +51,10 @@ private:
 
   void toggleToolWindows(bool isOpen);
 
-  std::vector<QAction*> layerOptions;
-  ChkForge::Layer currentLayer = ChkForge::LAYER_SELECT;
+  void createMdiDockArea();
+  void createTestMap();
+  void createToolWindows();
+  void mapMenuActions();
 
 private slots:
   void on_action_file_new_triggered();
@@ -96,8 +105,15 @@ private slots:
   void on_action_test_advance1_triggered();
   void on_action_test_reset_triggered();
   void on_action_test_duplicate_triggered();
+  void on_action_window_newMapView_triggered();
+  void on_action_window_closeMapView_triggered();
+  void on_action_window_closeAllMapViews_triggered();
+  void on_action_window_cascade_triggered();
+  void on_action_window_tile_triggered();
 
   void toggleLayer(bool checked);
+
+  void onMdiSubWindowActivated(QMdiSubWindow* window);
 
 };
 #endif // MAINWINDOW_H

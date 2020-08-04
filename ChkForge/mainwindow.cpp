@@ -14,6 +14,7 @@
 #include <QMessageBox>
 #include <QFileDialog>
 #include <QMdiArea>
+#include <QMdiSubwindow>
 
 MainWindow::MainWindow(QWidget *parent)
   : QMainWindow(parent)
@@ -21,39 +22,51 @@ MainWindow::MainWindow(QWidget *parent)
 {
   ui->setupUi(this);
 
-  // Create tool panels
+  createMdiDockArea();
+  createTestMap();
+  createToolWindows();
+}
+
+void MainWindow::createMdiDockArea()
+{
   m_DockManager = new ads::CDockManager(this);
   m_DockManager->setStyleSheet("ads--CDockContainerWidget QSplitter::handle { background: palette(light); }");
 
-  Minimap* minimap = new Minimap();
-  ui->menu_Tool_Windows->addAction(minimap->toggleViewAction());
+  connect(mdi, &QMdiArea::subWindowActivated, this, &MainWindow::onMdiSubWindowActivated);
 
-  //createMapView();
-  mdi_dock->setWidget(mdi, ads::CDockWidget::eInsertMode::ForceNoScrollArea);
+  mdi_dock->setWidget(mdi);
   mdi_dock->setFeature(ads::CDockWidget::DockWidgetFeature::DockWidgetClosable, false);
   mdi_dock->setFeature(ads::CDockWidget::DockWidgetFeature::DockWidgetFloatable, false);
   mdi_dock->setFeature(ads::CDockWidget::DockWidgetFeature::DockWidgetMovable, false);
-  mdi_dock->setToolBarIconSize(QSize{ 0,0 }, ads::CDockWidget::StateDocked);
 
-  m_DockManager->addDockWidget(ads::DockWidgetArea::CenterDockWidgetArea, mdi_dock)->setAllowedAreas(ads::DockWidgetArea::OuterDockAreas);
+  auto center_dock_area = m_DockManager->addDockWidget(ads::DockWidgetArea::CenterDockWidgetArea, mdi_dock);
+  center_dock_area->setAllowedAreas(ads::DockWidgetArea::OuterDockAreas);
+  center_dock_area->setHideSingleWidgetTitleBar(true);
+}
 
-  mdi->setViewMode(QMdiArea::ViewMode::TabbedView);
-  mdi->setTabsClosable(true);
-  mdi->setTabShape(QTabWidget::TabShape::Rounded);
-  mdi->setTabsMovable(true);
-
+void MainWindow::createTestMap()
+{
   auto map = new MapView();
-  mdi->addSubWindow(map);
+  auto subWindow = mdi->addSubWindow(map);
+  subWindow->resize(QSize{ 640, 480 });
   map->showMaximized();
   map->init();
-  Minimap::g_minimap->setActiveMapView(map);
 
-  //---------------------------
+  connect(map, &MapView::aboutToClose, minimap, &Minimap::onCloseMapView);
+}
+
+void MainWindow::createToolWindows()
+{
+  // Create the left panel with minimap and other widgets
+  ui->menu_Tool_Windows->addAction(minimap->toggleViewAction());
   ads::CDockAreaWidget* leftPane = m_DockManager->addDockWidget(ads::LeftDockWidgetArea, minimap);
 
   this->createToolWindow<ItemTree>(ads::BottomDockWidgetArea, leftPane);
   this->createToolWindow<TerrainBrush>(ads::BottomDockWidgetArea, leftPane);
+}
 
+void MainWindow::mapMenuActions()
+{
   // Map menu actions
   connectTrigger(ui->action_view_toolwindows_showAll, std::bind(&MainWindow::toggleToolWindows, this, true));
   connectTrigger(ui->action_view_toolwindows_closeAll, std::bind(&MainWindow::toggleToolWindows, this, false));
@@ -304,6 +317,32 @@ void MainWindow::on_action_test_duplicate_triggered()
 {
 }
 
+void MainWindow::on_action_window_newMapView_triggered()
+{
+}
+
+void MainWindow::on_action_window_closeMapView_triggered()
+{
+  if (mdi->currentSubWindow() != nullptr) {
+    mdi->currentSubWindow()->close();
+  }
+}
+
+void MainWindow::on_action_window_closeAllMapViews_triggered()
+{
+  mdi->closeAllSubWindows();
+}
+
+void MainWindow::on_action_window_cascade_triggered()
+{
+  mdi->cascadeSubWindows();
+}
+
+void MainWindow::on_action_window_tile_triggered()
+{
+  mdi->tileSubWindows();
+}
+
 void MainWindow::toggleLayer(bool checked)
 {
   if (!checked) return;
@@ -317,4 +356,17 @@ void MainWindow::toggleLayer(bool checked)
   }
 
   // TODO: Actual Layer stuff
+}
+
+void MainWindow::onMdiSubWindowActivated(QMdiSubWindow* window)
+{
+  if (window == nullptr) {
+    minimap->setActiveMapView(nullptr);
+    return;
+  }
+
+  MapView* map = qobject_cast<MapView*>(window);
+  minimap->setActiveMapView(map);
+
+  // TODO: set for other tool windows (i.e. treeview)
 }

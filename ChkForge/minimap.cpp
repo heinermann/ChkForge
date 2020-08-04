@@ -13,8 +13,6 @@
 #include <QRect>
 #include <QColor>
 
-Minimap* Minimap::g_minimap = nullptr;
-
 Minimap::Minimap(QWidget *parent) :
   DockWidgetWrapper<Ui::Minimap>("Minimap", parent)
 {
@@ -24,12 +22,10 @@ Minimap::Minimap(QWidget *parent) :
   ui->surface->installEventFilter(this);
 
   timer->start(33);
-  g_minimap = this;
 }
 
 Minimap::~Minimap()
 {
-  g_minimap = nullptr;
 }
 
 void Minimap::updateLogic()
@@ -49,9 +45,9 @@ void Minimap::setActiveMapView(MapView* view)
   updateLogic();
 }
 
-void Minimap::removeMyMapView(MapView* view)
+void Minimap::onCloseMapView(MapView* map)
 {
-  if (this->activeMapView == view) setActiveMapView(nullptr);
+  if (this->activeMapView == map) setActiveMapView(nullptr);
 }
 
 void Minimap::resetMapBuffer()

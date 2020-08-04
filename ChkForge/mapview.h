@@ -11,12 +11,13 @@
 #include <Qrgb>
 #include <QPoint>
 #include <QPixmap>
+#include <QMdiSubwindow>
 
 namespace ChkForge {
   class MapContext;
 }
 
-class MapView : public QFrame
+class MapView : public QMdiSubWindow
 {
   Q_OBJECT
 
@@ -60,9 +61,8 @@ private:
 
   double view_scale = 1.0;
 
+private:
   void updateScrollbarPositions();
-
-  virtual void changeEvent(QEvent* event) override;
 
   virtual bool eventFilter(QObject* obj, QEvent* e) override;
   bool surfaceEventFilter(QObject* obj, QEvent* e);
@@ -75,8 +75,12 @@ private:
 
   virtual void keyPressEvent(QKeyEvent* event) override;
 
+  virtual void closeEvent(QCloseEvent* closeEvent) override;
+
+signals:
+  void aboutToClose(MapView* map);
+
 private slots:
-  void onCloseRequested();
   void updateLogic();
   void hScrollMoved();
   void vScrollMoved();

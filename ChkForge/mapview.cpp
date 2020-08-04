@@ -20,12 +20,14 @@
 #include "MapContext.h"
 
 MapView::MapView(QWidget *parent)
-  : QFrame(parent)
+  : QMdiSubWindow(parent)
   , ui(new Ui::MapView)
 {
-  ui->setupUi(this);
+  QFrame* frame = new QFrame();
+  ui->setupUi(frame);
+  this->setWidget(frame);
 
-  connect(qobject_cast<ads::CDockWidget*>(this), SIGNAL(closeRequested()), SLOT(onCloseRequested()));
+  this->setAttribute(Qt::WA_DeleteOnClose);
 
   timer = std::make_unique<QTimer>(this);
   connect(timer.get(), SIGNAL(timeout()), this, SLOT(updateLogic()));
@@ -38,19 +40,21 @@ MapView::MapView(QWidget *parent)
 
 MapView::~MapView()
 {
-  if (Minimap::g_minimap) {
-    Minimap::g_minimap->removeMyMapView(this);
-  }
   delete map;
   delete ui;
 }
 
-void MapView::onCloseRequested()
+void MapView::closeEvent(QCloseEvent* closeEvent)
 {
   auto widget = qobject_cast<ads::CDockWidget*>(sender());
   auto result = QMessageBox::question(nullptr, "Close?", "Are you sure?");
   if (result == QMessageBox::Yes)
-    widget->closeDockWidget();
+  {
+    emit aboutToClose(this);
+    closeEvent->accept();
+    return;
+  }
+  closeEvent->ignore();
 }
 
 void MapView::init()
@@ -136,15 +140,6 @@ QVector<QRgb> MapView::get_palette() {
     colors[i] = qRgb(src_color.r, src_color.g, src_color.b);
   }
   return colors;
-}
-
-void MapView::changeEvent(QEvent* event)
-{
-  switch (event->type()) {
-  case QEvent::FocusIn:
-    Minimap::g_minimap->setActiveMapView(this);
-    break;
-  }
 }
 
 bool MapView::mouseEventFilter(QObject* obj, QEvent* e)

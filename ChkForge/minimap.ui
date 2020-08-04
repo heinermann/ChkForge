@@ -33,7 +33,14 @@
     <number>0</number>
    </property>
    <item row="0" column="0">
-    <widget class="QWidget" name="surface" native="true"/>
+    <widget class="QWidget" name="surface" native="true">
+     <property name="minimumSize">
+      <size>
+       <width>64</width>
+       <height>64</height>
+      </size>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>

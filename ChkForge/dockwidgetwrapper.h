@@ -18,6 +18,8 @@ public:
     this->setFeature(DockWidgetDeleteOnClose, false);
     this->setFeature(DockWidgetFloatable, false);
 
+    this->setMinimumSizeHintMode(ads::CDockWidget::eMinimumSizeHintMode::MinimumSizeHintFromContent);
+
     this->setWidget(&frame);
   }
 

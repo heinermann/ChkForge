@@ -158,6 +158,13 @@ QSplitter::handle:vertical {
     <property name="title">
      <string>&amp;Window</string>
     </property>
+    <addaction name="action_window_newMapView"/>
+    <addaction name="action_window_closeMapView"/>
+    <addaction name="action_window_closeAllMapViews"/>
+    <addaction name="separator"/>
+    <addaction name="action_window_cascade"/>
+    <addaction name="action_window_tile"/>
+    <addaction name="separator"/>
    </widget>
    <widget class="QMenu" name="menu_Help">
     <property name="title">
@@ -294,6 +301,9 @@ QSplitter::handle:vertical {
   <action name="action_file_saveMapImage">
    <property name="text">
     <string>Save Map Image...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+P</string>
    </property>
   </action>
   <action name="action_file_importSections">
@@ -760,6 +770,42 @@ QSplitter::handle:vertical {
    </property>
    <property name="toolTip">
     <string>Copy the current state to a new map</string>
+   </property>
+  </action>
+  <action name="action_window_newMapView">
+   <property name="text">
+    <string>New Map View</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+T</string>
+   </property>
+  </action>
+  <action name="action_window_closeMapView">
+   <property name="text">
+    <string>Close Map View</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+W</string>
+   </property>
+  </action>
+  <action name="action_window_closeAllMapViews">
+   <property name="text">
+    <string>Close All Map Views</string>
+   </property>
+  </action>
+  <action name="action_window_cascade">
+   <property name="text">
+    <string>Cascade</string>
+   </property>
+  </action>
+  <action name="action_window_tile">
+   <property name="text">
+    <string>Tile</string>
+   </property>
+  </action>
+  <action name="action_window_tileVertically">
+   <property name="text">
+    <string>Tile Vertically</string>
    </property>
   </action>
  </widget>
