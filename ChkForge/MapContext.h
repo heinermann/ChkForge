@@ -9,6 +9,8 @@
 
 #include "../openbw/openbw/ui/ui.h"
 
+#include <QRect>
+
 class MapView;
 
 namespace ChkForge
@@ -25,20 +27,29 @@ namespace ChkForge
   public:
     MapContext();
 
+    static std::shared_ptr<MapContext> create();
+
     void reset();
     void update();
 
+    void new_map(int tileWidth, int tileHeight, Sc::Terrain::Tileset tileset, int brush, int clutter);
     bool load_map(const std::string& map_file_str);
-
-    // TODO: Move viewport and screen position stuff out of openbw, to allow for multiple viewports in the same map
-    bwgame::ui_functions openbw_ui;
 
     void add_view(MapView* view);
     void remove_view(MapView* view);
+    bool has_one_view() const;
 
-    bool has_one_view();
+    QRect map_dimensions();
+    int tile_width();
+    int tile_height();
 
     void place_unit(Sc::Unit::Type unitType, int owner, int x, int y);
+    void apply_brush(const QRect& rect, int tileGroup, int clutter);
+
+
+  public:
+    // TODO: Move viewport and screen position stuff out of openbw, to allow for multiple viewports in the same map
+    bwgame::ui_functions openbw_ui;
 
     // TODO: Undo/redo buffer and actions
   private:
@@ -47,6 +58,9 @@ namespace ChkForge
 
     // Other stuff/info (i.e. list of views that are holding the map)
     std::unordered_set<MapView*> views;
+
+  private:
+
   };
 }
 

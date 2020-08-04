@@ -4,8 +4,8 @@
 #include <memory>
 #include <sstream>
 #include <fstream>
-//#include "mapview.h"
 
+#include "terrain.h"
 
 using namespace ChkForge;
 
@@ -14,12 +14,35 @@ MapContext::MapContext()
 {
 }
 
+std::shared_ptr<MapContext> MapContext::create() {
+  return std::make_shared<MapContext>();
+}
+
 void MapContext::reset() {
   openbw_ui.reset();
 }
 
 void MapContext::update() {
   openbw_ui.player.next_frame();
+}
+
+void MapContext::new_map(int tileWidth, int tileHeight, Sc::Terrain::Tileset tileset, int brush, int clutter) {
+  chk = Scenario(tileset, tileWidth, tileHeight);
+  
+  apply_brush(map_dimensions(), brush, clutter);
+
+  std::stringstream chk_stream(std::ios_base::in | std::ios_base::out | std::ios_base::binary);
+  chk.write(chk_stream);
+  size_t data_size = chk_stream.tellp();
+
+  std::vector<uint8_t> raw_chk(data_size);
+  chk_stream.read(reinterpret_cast<char*>(raw_chk.data()), data_size);
+
+  bwgame::game_load_functions game_load_funcs(openbw_ui.st);
+  game_load_funcs.use_map_settings = true;
+  game_load_funcs.load_map_data(raw_chk.data(), raw_chk.size(), nullptr, false);
+
+  openbw_ui.set_image_data();
 }
 
 bool MapContext::load_map(const std::string& map_file_str) {
@@ -60,6 +83,34 @@ bool MapContext::load_map(const std::string& map_file_str) {
   openbw_ui.set_image_data();
 }
 
+void MapContext::add_view(MapView* view)
+{
+  views.insert(view);
+}
+
+void MapContext::remove_view(MapView* view)
+{
+  views.erase(view);
+}
+
+bool MapContext::has_one_view() const
+{
+  return views.size() == 1;
+}
+
+QRect MapContext::map_dimensions()
+{
+  return QRect{ 0, 0, tile_width(), tile_height() };
+}
+int MapContext::tile_width()
+{
+  return chk.layers.getTileWidth();
+}
+int MapContext::tile_height()
+{
+  return chk.layers.getTileHeight();
+}
+
 void MapContext::place_unit(Sc::Unit::Type unitType, int owner, int x, int y)
 {
   auto unit = std::make_shared<Chk::Unit>();
@@ -85,23 +136,50 @@ void MapContext::place_unit(Sc::Unit::Type unitType, int owner, int x, int y)
 
   unit->unused = 0;
 
+  // TODO: Undo
+
   chk.layers.addUnit(unit);
-  
+
   // see also create_initial_unit
   openbw_ui.create_completed_unit(openbw_ui.get_unit_type(static_cast<bwgame::UnitTypes>(unitType)), bwgame::xy{ x, y }, owner);
 }
 
-void MapContext::add_view(MapView* view)
+void MapContext::apply_brush(const QRect& rect, int tileGroup, int clutter)
 {
-  views.insert(view);
-}
+  // Source: Modified from Starforge: Ultimate
+  QRect clip = rect.intersected(map_dimensions());
 
-void MapContext::remove_view(MapView* view)
-{
-  views.erase(view);
-}
+  Tileset* tileset = Tileset::fromId(chk.layers.getTileset());
 
-bool MapContext::has_one_view()
-{
-  return views.size() == 1;
+  // TODO: undo
+  for (int y = clip.top(); y <= clip.bottom(); ++y) {
+    for (int x = clip.left(); x <= clip.right(); ++x) {
+      if (x % 2 == 0 || tileGroup < 2) {
+
+        if (x == clip.right() - 1 && x < tile_width() - 1 && tileGroup > 1)
+        {
+          int next_tile = chk.layers.getTile(x + 1, y);
+          if (next_tile / 16 == tileGroup + 1) {
+            chk.layers.setTile(x, y, next_tile - 16);
+            continue;
+          }
+        }
+
+        chk.layers.setTile(x, y, tileset->randomTile(tileGroup, clutter));
+      }
+      else {
+        if (x == clip.x() && x > 0) {
+          int prev_tile = chk.layers.getTile(x - 1, y);
+          if (prev_tile / 16 != tileGroup) {
+            chk.layers.setTile(x, y, tileset->randomTile(tileGroup + 1, clutter));
+            continue;
+          }
+        }
+
+        chk.layers.setTile(x, y, chk.layers.getTile(x - 1, y) + 16);
+      }
+
+    }
+  }
+
 }

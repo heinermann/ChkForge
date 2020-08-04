@@ -7,6 +7,7 @@
 
 #include <vector>
 #include <optional>
+#include <random>
 
 namespace ChkForge {
 
@@ -34,8 +35,15 @@ namespace ChkForge {
     const QString& getName() const;
     const QList<TileGroup>& getBrushes() const;
 
+    //--------------
+
+    int randomTile(int tileGroup, int clutter);
+
+    //--------------
+
     static std::vector<Tileset*> getAllTilesets();
     static Tileset* fromId(int id);
+
     static Tileset Badlands;
     static Tileset Space;
     static Tileset Installation;
@@ -50,6 +58,9 @@ namespace ChkForge {
     QString name;
     QList<TileGroup> brushes;
     int defaultBrushIndex;
+
+    std::random_device rnd_d;
+    std::mt19937 random{ rnd_d() };
   };
 
 

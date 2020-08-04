@@ -1,5 +1,7 @@
 #include "terrain.h"
 
+#include <algorithm>
+
 #include <QObject>
 #include <QImage>
 #include <QPixmap>
@@ -267,3 +269,43 @@ int Tileset::getDefaultBrushIndex() const
   return this->defaultBrushIndex;
 }
 
+int Tileset::randomTile(int tileGroup, int clutter)
+{
+  // Source: Starforge Ultimate
+  int numUncluttered = 0;
+  int numCluttered = 0;
+
+  // Creep
+  if (tileGroup == 1) {
+    int r = random() % 100;
+    if (r < clutter) {
+      return random() % 7 + tileGroup * 16 + 6;
+    }
+    else {
+      return random() % 6 + tileGroup * 16;
+    }
+  }
+
+  auto& megatile_index = bwgame::global_st.get_cv5(tilesetId)[tileGroup].mega_tile_index;
+
+  for (numUncluttered = 0; numUncluttered < 16; numUncluttered++) {
+    if (megatile_index[numUncluttered] == 0) break;
+  }
+
+  for (numCluttered = numUncluttered + 1; numCluttered < 16; numCluttered++) {
+    if (megatile_index[numCluttered] == 0) break;
+  }
+  numCluttered -= numUncluttered + 1;
+
+  if (numCluttered == 0 && numUncluttered == 0) {
+    return random() % 16 + tileGroup * 16;
+  }
+
+  int r = random() % 100;
+  if (r < clutter && numCluttered > 0) {
+    return random() % numCluttered + tileGroup * 16 + numUncluttered + 1;
+  }
+  else {
+    return random() % numUncluttered + tileGroup * 16;
+  }
+}

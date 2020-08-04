@@ -48,7 +48,7 @@ void MainWindow::createMdiDockArea()
 
 void MainWindow::createTestMap()
 {
-  auto map = std::make_shared<ChkForge::MapContext>();
+  auto map = ChkForge::MapContext::create();
   map->load_map("C:/Program Files (x86)/StarCraft/Maps/(2)Bottleneck.scm");
 
   auto mapView = new MapView(map);
@@ -110,8 +110,15 @@ void MainWindow::on_action_file_new_triggered()
   int result = newMap.exec();
   if (result != QDialog::Accepted) return;
 
-  // TODO: Create new map (note: Need to pull data from ui-> in NewMap
+  auto map = ChkForge::MapContext::create();
+  map->new_map(newMap.tile_width, newMap.tile_height, static_cast<Sc::Terrain::Tileset>(newMap.tileset->getTilesetId()), newMap.brush, newMap.clutter);
 
+  auto mapView = new MapView(map);
+  auto subWindow = mdi->addSubWindow(mapView);
+  subWindow->resize(QSize{ 640, 480 });
+  mapView->showMaximized();
+
+  connect(mapView, &MapView::aboutToClose, minimap, &Minimap::onCloseMapView);
 }
 
 namespace {
