@@ -60,7 +60,7 @@ int main(int argc, char *argv[])
   //QMessageBox::about(nullptr, "Loaded", QString("Loading took ") + clock.toString("s.zzz") + "s.");
 
   MainWindow w;
-  w.show();
+  w.showMaximized();
 
   return a.exec();
 }

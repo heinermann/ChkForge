@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QMdiArea>
 #include <DockManager.h>
 
 #include "ui_mainwindow.h"
@@ -22,12 +23,12 @@ public:
   MainWindow(QWidget *parent = nullptr);
   ~MainWindow();
 
-  void setLayer(ChkForge::Layer layer);
-
 private:
   Ui::MainWindow *ui;
 
   ads::CDockManager* m_DockManager;
+  QMdiArea* mdi = new QMdiArea();
+  ads::CDockWidget* mdi_dock = new ads::CDockWidget("");
 
   template <class T>
   ads::CDockAreaWidget* createToolWindow(ads::DockWidgetArea dockWidgetArea, ads::CDockAreaWidget* areaWidget = nullptr) {
@@ -40,8 +41,6 @@ private:
   void connectTrigger(QAction* action, const Func& method) {
     this->connect(action, &QAction::triggered, this, method);
   }
-
-  MapView* createMapView();
 
   void toggleToolWindows(bool isOpen);
 

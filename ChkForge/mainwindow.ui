@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>669</width>
-    <height>502</height>
+    <width>1063</width>
+    <height>864</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
@@ -22,13 +28,6 @@ QSplitter::handle:vertical {
     height: 3px;
 }
 
-QSplitter::handle {
-    background-color: palette(window);
-}
-
-#centralwidget {
-    background-color: palette(window);
-}
 </string>
   </property>
   <property name="dockOptions">
@@ -40,7 +39,7 @@ QSplitter::handle {
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>669</width>
+     <width>1063</width>
      <height>22</height>
     </rect>
    </property>

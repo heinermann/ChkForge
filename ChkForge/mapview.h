@@ -1,11 +1,9 @@
 #ifndef MAPVIEW_H
 #define MAPVIEW_H
 
-#include "DockWidgetWrapper.h"
 #include "ui_mapview.h"
 #include <QImage>
 #include <QTimer>
-#include <QGraphicsScene>
 #include <memory>
 #include <optional>
 
@@ -18,7 +16,7 @@ namespace ChkForge {
   class MapContext;
 }
 
-class MapView : public DockWidgetWrapper<Ui::MapView>
+class MapView : public QFrame
 {
   Q_OBJECT
 
@@ -45,6 +43,8 @@ public:
   void select_units(bool double_clicked, bool shift, bool ctrl, const QRect& selection);
 
 private:
+  Ui::MapView* ui;
+
   QImage buffer;
   QPixmap pix_buffer;
   ChkForge::MapContext* map = nullptr;

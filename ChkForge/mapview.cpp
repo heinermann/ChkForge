@@ -19,13 +19,12 @@
 
 #include "MapContext.h"
 
-MapView::MapView(QWidget *parent) :
-  DockWidgetWrapper<Ui::MapView>("Map", parent)
+MapView::MapView(QWidget *parent)
+  : QFrame(parent)
+  , ui(new Ui::MapView)
 {
-  this->setFeature(DockWidgetDeleteOnClose, true);
-  this->setFeature(DockWidgetFloatable, true);
+  ui->setupUi(this);
 
-  this->setFeature(CustomCloseHandling, true);
   connect(qobject_cast<ads::CDockWidget*>(this), SIGNAL(closeRequested()), SLOT(onCloseRequested()));
 
   timer = std::make_unique<QTimer>(this);
@@ -43,6 +42,7 @@ MapView::~MapView()
     Minimap::g_minimap->removeMyMapView(this);
   }
   delete map;
+  delete ui;
 }
 
 void MapView::onCloseRequested()

@@ -13,24 +13,43 @@
 #include <QLabel>
 #include <QMessageBox>
 #include <QFileDialog>
+#include <QMdiArea>
 
 MainWindow::MainWindow(QWidget *parent)
   : QMainWindow(parent)
   , ui(new Ui::MainWindow)
 {
   ui->setupUi(this);
-  this->setStyleSheet("QMainWindow::separator{ width: 0px; height: 0px; }");
 
   // Create tool panels
   m_DockManager = new ads::CDockManager(this);
+  m_DockManager->setStyleSheet("ads--CDockContainerWidget QSplitter::handle { background: palette(light); }");
 
   Minimap* minimap = new Minimap();
   ui->menu_Tool_Windows->addAction(minimap->toggleViewAction());
 
-  createMapView();
+  //createMapView();
+  mdi_dock->setWidget(mdi, ads::CDockWidget::eInsertMode::ForceNoScrollArea);
+  mdi_dock->setFeature(ads::CDockWidget::DockWidgetFeature::DockWidgetClosable, false);
+  mdi_dock->setFeature(ads::CDockWidget::DockWidgetFeature::DockWidgetFloatable, false);
+  mdi_dock->setFeature(ads::CDockWidget::DockWidgetFeature::DockWidgetMovable, false);
+  mdi_dock->setToolBarIconSize(QSize{ 0,0 }, ads::CDockWidget::StateDocked);
 
+  m_DockManager->addDockWidget(ads::DockWidgetArea::CenterDockWidgetArea, mdi_dock)->setAllowedAreas(ads::DockWidgetArea::OuterDockAreas);
+
+  mdi->setViewMode(QMdiArea::ViewMode::TabbedView);
+  mdi->setTabsClosable(true);
+  mdi->setTabShape(QTabWidget::TabShape::Rounded);
+  mdi->setTabsMovable(true);
+
+  auto map = new MapView();
+  mdi->addSubWindow(map);
+  map->showMaximized();
+  map->init();
+  Minimap::g_minimap->setActiveMapView(map);
+
+  //---------------------------
   ads::CDockAreaWidget* leftPane = m_DockManager->addDockWidget(ads::LeftDockWidgetArea, minimap);
-  leftPane->setMaximumWidth(256);
 
   this->createToolWindow<ItemTree>(ads::BottomDockWidgetArea, leftPane);
   this->createToolWindow<TerrainBrush>(ads::BottomDockWidgetArea, leftPane);
@@ -56,21 +75,10 @@ MainWindow::MainWindow(QWidget *parent)
 
 void MainWindow::toggleToolWindows(bool isOpen)
 {
-  for (ads::CDockWidget* dockWidget : m_DockManager->dockWidgetsMap())
+  for (ads::CDockWidget* dockWidget : m_DockManager->dockWidgetsMap()) {
+    if (dockWidget == mdi_dock) continue;
     dockWidget->toggleView(isOpen);
-}
-
-MapView* MainWindow::createMapView()
-{
-  MapView* widget = new MapView();
-  ui->menu_Window->addAction(widget->toggleViewAction());
-
-  m_DockManager->addDockWidget(ads::CenterDockWidgetArea, widget);
-
-  widget->init();
-
-  Minimap::g_minimap->setActiveMapView(widget);
-  return widget;
+  }
 }
 
 MainWindow::~MainWindow()
