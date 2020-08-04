@@ -19,8 +19,9 @@
 
 #include "MapContext.h"
 
-MapView::MapView(QWidget *parent)
+MapView::MapView(std::shared_ptr<ChkForge::MapContext> mapContext, QWidget *parent)
   : QMdiSubWindow(parent)
+  , map(mapContext)
   , ui(new Ui::MapView)
 {
   QFrame* frame = new QFrame();
@@ -36,34 +37,32 @@ MapView::MapView(QWidget *parent)
   connect(ui->vScroll, SIGNAL(valueChanged(int)), this, SLOT(vScrollMoved()));
 
   ui->surface->installEventFilter(this);
+
+  map->add_view(this);
+
+  timer->start(42);
+  resizeSurface(ui->surface->size());
 }
 
 MapView::~MapView()
 {
-  delete map;
+  map->remove_view(this);
   delete ui;
 }
 
 void MapView::closeEvent(QCloseEvent* closeEvent)
 {
-  auto widget = qobject_cast<ads::CDockWidget*>(sender());
-  auto result = QMessageBox::question(nullptr, "Close?", "Are you sure?");
-  if (result == QMessageBox::Yes)
-  {
-    emit aboutToClose(this);
-    closeEvent->accept();
-    return;
+  if (map->has_one_view()) {
+    auto widget = qobject_cast<ads::CDockWidget*>(sender());
+    auto result = QMessageBox::question(nullptr, "Close?", "Are you sure?");
+    if (result != QMessageBox::Yes)
+    {
+      closeEvent->ignore();
+      return;
+    }
   }
-  closeEvent->ignore();
-}
-
-void MapView::init()
-{
-  map = new ChkForge::MapContext();
-  map->load_map("C:/Program Files (x86)/StarCraft/Maps/(2)Bottleneck.scm");
-
-  timer->start(42);
-  resizeSurface(ui->surface->size());
+  emit aboutToClose(this);
+  closeEvent->accept();
 }
 
 QSize MapView::map_tile_size() const

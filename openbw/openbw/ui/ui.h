@@ -270,7 +270,7 @@ struct ui_functions: ui_util_functions {
 
 				size_t index = *megatile_index;
 				if (tile->flags & tile_t::flag_has_creep) {
-					index = game_st.cv5.at(1).mega_tile_index[global_ui_st.creep_random_tile_indices[tile_x + tile_y * game_st.map_tile_width]];
+					index = cv5().at(1).mega_tile_index[global_ui_st.creep_random_tile_indices[tile_x + tile_y * game_st.map_tile_width]];
 				}
 				draw_tile(tileset_img, index, dst, data_pitch, offset_x, offset_y, width, height);
 
@@ -752,7 +752,7 @@ struct ui_functions: ui_util_functions {
 		  for (size_t x = 0; x != game_st.map_tile_width; ++x) {
 			  size_t index;
 			  if (~st.tiles[y * game_st.map_tile_width + x].flags & tile_t::flag_has_creep) index = st.tiles_mega_tile_index[y * game_st.map_tile_width + x];
-			  else index = game_st.cv5.at(1).mega_tile_index[global_ui_st.creep_random_tile_indices[y * game_st.map_tile_width + x]];
+			  else index = cv5().at(1).mega_tile_index[global_ui_st.creep_random_tile_indices[y * game_st.map_tile_width + x]];
 			  auto* images = &tileset_img.vx4.at(index).images[0];
 			  auto* bitmap = &tileset_img.vr4.at(*images / 2).bitmap[0];
 			  auto val = bitmap[55 / sizeof(vr4_entry::bitmap_t)];

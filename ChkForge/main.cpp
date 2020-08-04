@@ -37,13 +37,7 @@ namespace bwgame {
   }
 }
 
-int main(int argc, char *argv[])
-{
-  QApplication a(argc, argv);
-
-  auto clock = QTime();
-  clock.start();
-  //-------------------------------------------------------------------------------------
+void init_bwgame() {
   auto load_data_file = bwgame::data_loading::data_files_directory("C:/Program Files (x86)/StarCraft 1.16.1");
 
   bwgame::global_st.init(load_data_file);
@@ -53,11 +47,18 @@ int main(int argc, char *argv[])
     load_data_file(data, std::move(filename));
   };
   bwgame::global_ui_st.init(load_data_file);
-  //-------------------------------------------------------------------------------------
-  auto elapsed = clock.elapsed();
-  //auto elapsed_str = std::to_string(elapsed.count());
+}
 
-  //QMessageBox::about(nullptr, "Loaded", QString("Loading took ") + clock.toString("s.zzz") + "s.");
+int main(int argc, char *argv[])
+{
+  QApplication a(argc, argv);
+
+  auto clock = QTime();
+  clock.start();
+
+  init_bwgame();
+
+  auto elapsed = clock.elapsed();
 
   MainWindow w;
   w.showMaximized();

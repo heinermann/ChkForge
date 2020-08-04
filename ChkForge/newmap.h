@@ -22,9 +22,7 @@ public:
 
   ChkForge::Tileset* tileset = &ChkForge::Tileset::Badlands;
   int brush = 0;
-  int generator = 0;
   int clutter = 5;
-  int seed = 0;
 
   int tile_width = 128;
   int tile_height = 128;
@@ -37,6 +35,7 @@ private:
 
 private slots:
   void on_cmb_tileset_currentIndexChanged(int index);
+  virtual void accept() override;
 };
 
 #endif // NEWMAP_H

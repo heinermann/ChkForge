@@ -3,19 +3,36 @@
 #include <QString>
 #include <QStringList>
 #include <QList>
+#include <QIcon>
 
 #include <vector>
+#include <optional>
 
 namespace ChkForge {
+
   class Tileset {
   public:
-    Tileset(int id, const QString& name, const QStringList& brushes, QList<int> brushTileValues, int defaultBrushIndex);
+    class TileGroup {
+    public:
+      TileGroup(int tilesetId, int groupId, const QString& name);
 
-    int getId() const;
+      int getGroupId() const;
+      const QString& getName() const;
+      const QIcon& getIcon();
+
+    private:
+      int tilesetId = -1;
+      int groupId = -1;
+      QString name;
+      std::optional<QIcon> icon = std::nullopt;
+    };
+
+    Tileset(int id, const QString& name, const QList<TileGroup>& brushes, int defaultBrushIndex);
+
+    int getTilesetId() const;
     int getDefaultBrushIndex() const;
-    QString getName() const;
-    QStringList getBrushes() const;
-    QList<int> getBrushValues() const;
+    const QString& getName() const;
+    const QList<TileGroup>& getBrushes() const;
 
     static std::vector<Tileset*> getAllTilesets();
     static Tileset* fromId(int id);
@@ -29,10 +46,9 @@ namespace ChkForge {
     static Tileset Twilight;
 
   private:
-    int id = -1;
+    int tilesetId = -1;
     QString name;
-    QStringList brushes;
-    QList<int> brushTileValues;
+    QList<TileGroup> brushes;
     int defaultBrushIndex;
   };
 

@@ -59,7 +59,7 @@ namespace bwgame {
   };
 
   template<bool bounds_check>
-  void draw_tile(tileset_image_data& img, size_t megatile_index, uint8_t* dst, size_t pitch, size_t offset_x, size_t offset_y, size_t width, size_t height) {
+  void draw_tile(const tileset_image_data& img, size_t megatile_index, uint8_t* dst, size_t pitch, size_t offset_x, size_t offset_y, size_t width, size_t height) {
 	auto* images = &img.vx4.at(megatile_index).images[0];
 	size_t x = 0;
 	size_t y = 0;
@@ -98,7 +98,7 @@ namespace bwgame {
 	}
   }
 
-  static inline void draw_tile(tileset_image_data& img, size_t megatile_index, uint8_t* dst, size_t pitch, size_t offset_x, size_t offset_y, size_t width, size_t height) {
+  static inline void draw_tile(const tileset_image_data& img, size_t megatile_index, uint8_t* dst, size_t pitch, size_t offset_x, size_t offset_y, size_t width, size_t height) {
 	if (offset_x == 0 && offset_y == 0 && width == 32 && height == 32) {
 	  draw_tile<false>(img, megatile_index, dst, pitch, offset_x, offset_y, width, height);
 	}

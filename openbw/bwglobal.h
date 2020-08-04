@@ -5,6 +5,7 @@
 #include <functional>
 
 #include "openbw/data_types.h"
+#include "openbw/game_types.h"
 #include "openbw/data_loading.h"
 
 namespace bwgame {
@@ -89,6 +90,83 @@ namespace bwgame {
 
 	std::array<a_vector<uint8_t>, 8> tileset_vf4;
 	std::array<a_vector<uint8_t>, 8> tileset_cv5;
+
+	std::array<a_vector<cv5_entry>, 8> cv5;
+	std::array<a_vector<vf4_entry>, 8> vf4;
+	std::array<a_vector<uint16_t>, 8>  mega_tile_flags;
+
+	a_vector<cv5_entry>& get_cv5(int tileset) {
+	  if (cv5.at(tileset).empty()) {
+		auto& cv5_data = tileset_cv5.at(tileset);
+		data_loading::data_reader_le r(cv5_data.data(), cv5_data.data() + cv5_data.size());
+		cv5[tileset].reserve(cv5_data.size() / 52);
+		while (r.left()) {
+		  cv5[tileset].emplace_back();
+		  auto& e = cv5[tileset].back();
+		  r.get<uint16_t>();
+		  e.flags = r.get<uint16_t>();
+		  r.get<uint16_t>();
+		  r.get<uint16_t>();
+		  r.get<uint16_t>();
+		  r.get<uint16_t>();
+		  r.get<uint16_t>();
+		  r.get<uint16_t>();
+		  r.get<uint16_t>();
+		  r.get<uint16_t>();
+		  for (size_t i = 0; i != 16; ++i) {
+			e.mega_tile_index[i] = r.get<uint16_t>();
+		  }
+		}
+	  }
+	  return cv5[tileset];
+	}
+
+	a_vector<vf4_entry>& get_vf4(int tileset) {
+	  if (vf4.at(tileset).empty()) {
+		auto& vf4_data = tileset_vf4.at(tileset);
+		data_loading::data_reader_le r(vf4_data.data(), vf4_data.data() + vf4_data.size());
+		vf4[tileset].reserve(vf4_data.size() / 32);
+		while (r.left()) {
+		  vf4[tileset].emplace_back();
+		  auto& e = vf4[tileset].back();
+		  for (size_t i = 0; i != 16; ++i) {
+			e.flags[i] = r.get<uint16_t>();
+		  }
+		}
+	  }
+	  return vf4[tileset];
+	}
+
+	a_vector<uint16_t>& get_mega_tile_flags(int tileset) {
+	  if (mega_tile_flags.at(tileset).empty()) {
+		auto& vf4 = get_vf4(tileset);
+		mega_tile_flags[tileset].resize(vf4.size());
+		for (size_t i = 0; i < mega_tile_flags[tileset].size(); ++i) {
+		  int flags = 0;
+		  auto& mt = vf4[i];
+		  int walkable_count = 0;
+		  int middle_count = 0;
+		  int high_count = 0;
+		  int very_high_count = 0;
+		  for (size_t y = 0; y < 4; ++y) {
+			for (size_t x = 0; x < 4; ++x) {
+			  if (mt.flags[y * 4 + x] & vf4_entry::flag_walkable) ++walkable_count;
+			  if (mt.flags[y * 4 + x] & vf4_entry::flag_middle) ++middle_count;
+			  if (mt.flags[y * 4 + x] & vf4_entry::flag_high) ++high_count;
+			  if (mt.flags[y * 4 + x] & vf4_entry::flag_very_high) ++very_high_count;
+			}
+		  }
+		  if (walkable_count > 12) flags |= tile_t::flag_walkable;
+		  else flags |= tile_t::flag_unwalkable;
+		  if (walkable_count && walkable_count != 0x10) flags |= tile_t::flag_partially_walkable;
+		  if (high_count < 12 && middle_count + high_count >= 12) flags |= tile_t::flag_middle;
+		  if (high_count >= 12) flags |= tile_t::flag_high;
+		  if (very_high_count) flags |= tile_t::flag_very_high;
+		  mega_tile_flags[tileset][i] = flags;
+		}
+	  }
+	  return mega_tile_flags[tileset];
+	}
 
 	template<typename load_data_file_F>
 	void init(load_data_file_F&& load_data_file) {

@@ -22,10 +22,8 @@ class MapView : public QMdiSubWindow
   Q_OBJECT
 
 public:
-  explicit MapView(QWidget *parent = nullptr);
+  explicit MapView(std::shared_ptr<ChkForge::MapContext> mapContext, QWidget *parent = nullptr);
   virtual ~MapView();
-
-  void init();
 
   void setScreenPos(const QPoint& pos);
   QPoint getScreenPos();
@@ -48,7 +46,7 @@ private:
 
   QImage buffer;
   QPixmap pix_buffer;
-  ChkForge::MapContext* map = nullptr;
+  std::shared_ptr<ChkForge::MapContext> map;
   std::unique_ptr<QTimer> timer;
 
   bool is_paused = false;

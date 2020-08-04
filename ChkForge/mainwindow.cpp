@@ -16,6 +16,8 @@
 #include <QMdiArea>
 #include <QMdiSubwindow>
 
+#include "MapContext.h"
+
 MainWindow::MainWindow(QWidget *parent)
   : QMainWindow(parent)
   , ui(new Ui::MainWindow)
@@ -46,13 +48,15 @@ void MainWindow::createMdiDockArea()
 
 void MainWindow::createTestMap()
 {
-  auto map = new MapView();
-  auto subWindow = mdi->addSubWindow(map);
-  subWindow->resize(QSize{ 640, 480 });
-  map->showMaximized();
-  map->init();
+  auto map = std::make_shared<ChkForge::MapContext>();
+  map->load_map("C:/Program Files (x86)/StarCraft/Maps/(2)Bottleneck.scm");
 
-  connect(map, &MapView::aboutToClose, minimap, &Minimap::onCloseMapView);
+  auto mapView = new MapView(map);
+  auto subWindow = mdi->addSubWindow(mapView);
+  subWindow->resize(QSize{ 640, 480 });
+  mapView->showMaximized();
+
+  connect(mapView, &MapView::aboutToClose, minimap, &Minimap::onCloseMapView);
 }
 
 void MainWindow::createToolWindows()
@@ -107,6 +111,7 @@ void MainWindow::on_action_file_new_triggered()
   if (result != QDialog::Accepted) return;
 
   // TODO: Create new map (note: Need to pull data from ui-> in NewMap
+
 }
 
 namespace {

@@ -135,9 +135,6 @@ struct game_state {
 	size_t tileset_index;
 
 	a_vector<tile_id> gfx_tiles;
-	a_vector<cv5_entry> cv5;
-	a_vector<vf4_entry> vf4;
-	a_vector<uint16_t> mega_tile_flags;
 
 	unit_types_t unit_types;
 	weapon_types_t weapon_types;
@@ -734,6 +731,18 @@ struct state_functions {
 		return restrict_unit_pos_to_bounds(move_target, ut, map_bounds() + rect { { 0, 0 }, { 0, -32 } });
 	}
 
+	const a_vector<cv5_entry>& cv5() const {
+	  return global_st.get_cv5(game_st.tileset_index);
+	}
+
+	const a_vector<vf4_entry>& vf4() const {
+	  return global_st.get_vf4(game_st.tileset_index);
+	}
+
+	const a_vector<uint16_t>& mega_tile_flags() const {
+	  return global_st.get_mega_tile_flags(game_st.tileset_index);
+	}
+
 	bool is_walkable(xy pos) const {
 		size_t index = tile_index(pos);
 		auto& tile = st.tiles[index];
@@ -742,7 +751,7 @@ struct state_functions {
 			size_t ux = pos.x;
 			size_t uy = pos.y;
 			size_t megatile_index = st.tiles_mega_tile_index[index];
-			int flags = game_st.vf4.at(megatile_index).flags[uy / 8 % 4 * 4 + ux / 8 % 4];
+			int flags = vf4().at(megatile_index).flags[uy / 8 % 4 * 4 + ux / 8 % 4];
 			return flags & vf4_entry::flag_walkable;
 		}
 		if (tile.flags & tile_t::flag_walkable) return true;
@@ -12284,10 +12293,10 @@ struct state_functions {
 	int get_ground_height_at(xy pos) const {
 		size_t index = tile_index(pos);
 		tile_id tile_id = game_st.gfx_tiles.at(index);
-		size_t megatile_index = game_st.cv5.at(tile_id.group_index()).mega_tile_index[tile_id.subtile_index()];
+		size_t megatile_index = cv5().at(tile_id.group_index()).mega_tile_index[tile_id.subtile_index()];
 		size_t ux = pos.x;
 		size_t uy = pos.y;
-		int flags = game_st.vf4.at(megatile_index).flags[uy / 8 % 4 * 4 + ux / 8 % 4];
+		int flags = vf4().at(megatile_index).flags[uy / 8 % 4 * 4 + ux / 8 % 4];
 		if (flags & vf4_entry::flag_high) return 2;
 		if (flags & vf4_entry::flag_middle) return 1;
 		return 0;
@@ -19911,8 +19920,6 @@ struct game_load_functions : state_functions {
 
 		generate_sight_values();
 
-		load_tile_stuff();
-
 		st.tiles.clear();
 		st.tiles.resize(game_st.map_tile_width*game_st.map_tile_height);
 		for (auto& v : st.tiles) {
@@ -20049,7 +20056,7 @@ struct game_load_functions : state_functions {
 				for (size_t x = 0; x != game_st.map_tile_width; ++x) {
 					uint16_t mega_tile_index = st.tiles_mega_tile_index[y * game_st.map_tile_width + x];
 
-					auto& mt = game_st.vf4[mega_tile_index & 0x7fff];
+					auto& mt = vf4()[mega_tile_index & 0x7fff];
 					for (size_t sy = 0; sy < 4; ++sy) {
 						for (size_t sx = 0; sx < 4; ++sx) {
 							if (~mt.flags[sy * 4 + sx] & vf4_entry::flag_walkable) {
@@ -20541,7 +20548,7 @@ struct game_load_functions : state_functions {
 					size_t megatile_index = st.tiles_mega_tile_index[index];
 					for (size_t sy = 0; sy != 4; ++sy) {
 						for (size_t sx = 0; sx != 4; ++sx) {
-							int flags = game_st.vf4.at(megatile_index).flags[sy * 4 + sx];
+							int flags = vf4().at(megatile_index).flags[sy * 4 + sx];
 							mask >>= 1;
 							if (~flags & vf4_entry::flag_walkable) {
 								mask |= 0x8000;
@@ -21059,70 +21066,6 @@ struct game_load_functions : state_functions {
 
 	}
 
-	void load_tile_stuff() {
-
-		auto set_mega_tile_flags = [&]() {
-			game_st.mega_tile_flags.resize(game_st.vf4.size());
-			for (size_t i = 0; i != game_st.mega_tile_flags.size(); ++i) {
-				int flags = 0;
-				auto& mt = game_st.vf4[i];
-				int walkable_count = 0;
-				int middle_count = 0;
-				int high_count = 0;
-				int very_high_count = 0;
-				for (size_t y = 0; y < 4; ++y) {
-					for (size_t x = 0; x < 4; ++x) {
-						if (mt.flags[y * 4 + x] & vf4_entry::flag_walkable) ++walkable_count;
-						if (mt.flags[y * 4 + x] & vf4_entry::flag_middle) ++middle_count;
-						if (mt.flags[y * 4 + x] & vf4_entry::flag_high) ++high_count;
-						if (mt.flags[y * 4 + x] & vf4_entry::flag_very_high) ++very_high_count;
-					}
-				}
-				if (walkable_count > 12) flags |= tile_t::flag_walkable;
-				else flags |= tile_t::flag_unwalkable;
-				if (walkable_count && walkable_count != 0x10) flags |= tile_t::flag_partially_walkable;
-				if (high_count < 12 && middle_count + high_count >= 12) flags |= tile_t::flag_middle;
-				if (high_count >= 12) flags |= tile_t::flag_high;
-				if (very_high_count) flags |= tile_t::flag_very_high;
-				game_st.mega_tile_flags[i] = flags;
-			}
-
-		};
-
-		auto& vf4_data = global_st.tileset_vf4.at(game_st.tileset_index);
-		data_loading::data_reader_le r(vf4_data.data(), vf4_data.data() + vf4_data.size());
-		game_st.vf4.reserve(vf4_data.size() / 32);
-		while (r.left()) {
-			game_st.vf4.emplace_back();
-			auto& e = game_st.vf4.back();
-			for (size_t i = 0; i != 16; ++i) {
-				e.flags[i] = r.get<uint16_t>();
-			}
-		}
-		auto& cv5_data = global_st.tileset_cv5.at(game_st.tileset_index);
-		r = data_loading::data_reader_le(cv5_data.data(), cv5_data.data() + cv5_data.size());
-		game_st.cv5.reserve(cv5_data.size() / 52);
-		while (r.left()) {
-			game_st.cv5.emplace_back();
-			auto& e = game_st.cv5.back();
-			r.get<uint16_t>();
-			e.flags = r.get<uint16_t>();
-			r.get<uint16_t>();
-			r.get<uint16_t>();
-			r.get<uint16_t>();
-			r.get<uint16_t>();
-			r.get<uint16_t>();
-			r.get<uint16_t>();
-			r.get<uint16_t>();
-			r.get<uint16_t>();
-			for (size_t i = 0; i != 16; ++i) {
-				e.mega_tile_index[i] = r.get<uint16_t>();
-			}
-		}
-
-		set_mega_tile_flags();
-	}
-
 	unit_t* create_starting_unit(const unit_type_t* unit_type, xy pos, int owner) {
 		unit_t* u = create_unit(unit_type, pos, owner);
 		if (!u) return nullptr;
@@ -21330,11 +21273,11 @@ struct game_load_functions : state_functions {
 			}
 			for (size_t i = 0; i != game_st.gfx_tiles.size(); ++i) {
 				tile_id tile_id = game_st.gfx_tiles[i];
-				if (tile_id.group_index() >= game_st.cv5.size()) tile_id = {};
-				size_t megatile_index = game_st.cv5.at(tile_id.group_index()).mega_tile_index[tile_id.subtile_index()];
-				int cv5_flags = game_st.cv5.at(tile_id.group_index()).flags & ~(tile_t::flag_walkable | tile_t::flag_unwalkable | tile_t::flag_very_high | tile_t::flag_middle | tile_t::flag_high | tile_t::flag_partially_walkable);
+				if (tile_id.group_index() >= cv5().size()) tile_id = {};
+				size_t megatile_index = cv5().at(tile_id.group_index()).mega_tile_index[tile_id.subtile_index()];
+				int cv5_flags = cv5().at(tile_id.group_index()).flags & ~(tile_t::flag_walkable | tile_t::flag_unwalkable | tile_t::flag_very_high | tile_t::flag_middle | tile_t::flag_high | tile_t::flag_partially_walkable);
 				st.tiles_mega_tile_index[i] = (uint16_t)megatile_index;
-				st.tiles[i].flags = game_st.mega_tile_flags.at(megatile_index) | cv5_flags;
+				st.tiles[i].flags = mega_tile_flags().at(megatile_index) | cv5_flags;
 				if (tile_id.has_creep()) {
 					st.tiles_mega_tile_index[i] |= 0x8000;
 					st.tiles[i].flags |= tile_t::flag_has_creep;

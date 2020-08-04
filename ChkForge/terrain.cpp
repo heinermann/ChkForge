@@ -1,37 +1,78 @@
 #include "terrain.h"
 
 #include <QObject>
+#include <QImage>
+#include <QPixmap>
+#include <QVector>
 
 #include <MappingCoreLib/Sc.h>
 
+#include "../openbw/bwglobal_ui.h"
+
 using namespace ChkForge;
 
-Tileset::Tileset(int id, const QString& name, const QStringList& brushes, QList<int> brushTileValues, int defaultBrushIndex)
-  : id(id)
+Tileset::TileGroup::TileGroup(int tilesetId, int groupId, const QString& name)
+  : tilesetId(tilesetId)
+  , groupId(groupId)
+  , name(name)
+{}
+
+int Tileset::TileGroup::getGroupId() const
+{
+  return groupId;
+}
+
+const QString& Tileset::TileGroup::getName() const
+{
+  return name;
+}
+
+const QIcon& Tileset::TileGroup::getIcon()
+{
+  if (!icon) {
+    const bwgame::tileset_image_data& tileset_img = bwgame::global_ui_st.all_tileset_img[tilesetId];
+
+    QImage tile_img{ 32, 32, QImage::Format::Format_Indexed8 };
+    tile_img.setColorCount(256);
+
+    for (size_t i = 0; i < 256; ++i) {
+      int r = tileset_img.wpe[i * 4 + 0];
+      int g = tileset_img.wpe[i * 4 + 1];
+      int b = tileset_img.wpe[i * 4 + 2];
+
+      tile_img.setColor(i, qRgb(r, g, b));
+    }
+
+    uint16_t draw_tile_index = bwgame::global_st.get_cv5(tilesetId).at(groupId).mega_tile_index[0];
+    bwgame::draw_tile(tileset_img, draw_tile_index, tile_img.bits(), tile_img.bytesPerLine(), 0, 0, tile_img.width(), tile_img.height());
+
+    icon = QIcon(QPixmap::fromImage(tile_img));
+  }
+  return *icon;
+}
+
+Tileset::Tileset(int tilesetId, const QString& name, const QList<TileGroup>& brushes, int defaultBrushIndex)
+  : tilesetId(tilesetId)
   , name(name)
   , brushes(brushes)
-  , brushTileValues(brushTileValues)
   , defaultBrushIndex(defaultBrushIndex)
 {}
 
 Tileset Tileset::Badlands = Tileset{
   Sc::Terrain::Tileset::Badlands,
   QObject::tr("Badlands"),
-  QStringList{
-    QObject::tr("Null"),
-    QObject::tr("Creep"),
-    QObject::tr("Dirt"),
-    QObject::tr("Mud"),
-    QObject::tr("High Dirt"),
-    QObject::tr("Water"),
-    QObject::tr("Grass"),
-    QObject::tr("High Grass"),
-    QObject::tr("Structure"),
-    QObject::tr("Asphalt"),
-    QObject::tr("Rocky Ground")
-  },
-  QList<int>{
-    0, 1, 2, 20, 4, 6, 8, 10, 18, 16, 12
+  QList<TileGroup>{
+    {0, 0, QObject::tr("Null")},
+    {0, 1, QObject::tr("Creep")},
+    {0, 2, QObject::tr("Dirt")},
+    {0, 20, QObject::tr("Mud")},
+    {0, 4, QObject::tr("High Dirt")},
+    {0, 6, QObject::tr("Water")},
+    {0, 8, QObject::tr("Grass")},
+    {0, 10, QObject::tr("High Grass")},
+    {0, 18, QObject::tr("Structure")},
+    {0, 16, QObject::tr("Asphalt")},
+    {0, 12, QObject::tr("Rocky Ground")}
   },
   2
 };
@@ -39,22 +80,19 @@ Tileset Tileset::Badlands = Tileset{
 Tileset Tileset::Space = Tileset{
   Sc::Terrain::Tileset::SpacePlatform,
   QObject::tr("Space Platform"),
-  QStringList{
-    QObject::tr("Null"),
-    QObject::tr("Creep"),
-    QObject::tr("Space"),
-    QObject::tr("Low Platform"),
-    QObject::tr("Rusty Pit"),
-    QObject::tr("Platform"),
-    QObject::tr("Dark Platform"),
-    QObject::tr("Plating"),
-    QObject::tr("Solar Array"),
-    QObject::tr("High Platform"),
-    QObject::tr("High Plating"),
-    QObject::tr("Elevated Catwalk")
-  },
-  QList<int>{
-    0, 1, 2, 14, 18, 4, 16, 6, 12, 8, 10, 20
+  QList<TileGroup>{
+    {1, 0, QObject::tr("Null")},
+    {1, 1, QObject::tr("Creep")},
+    {1, 2, QObject::tr("Space")},
+    {1, 14, QObject::tr("Low Platform")},
+    {1, 18, QObject::tr("Rusty Pit")},
+    {1, 4, QObject::tr("Platform")},
+    {1, 16, QObject::tr("Dark Platform")},
+    {1, 6, QObject::tr("Plating")},
+    {1, 12, QObject::tr("Solar Array")},
+    {1, 8, QObject::tr("High Platform")},
+    {1, 10, QObject::tr("High Plating")},
+    {1, 20, QObject::tr("Elevated Catwalk")}
   },
   5
 };
@@ -62,19 +100,16 @@ Tileset Tileset::Space = Tileset{
 Tileset Tileset::Installation = Tileset{
   Sc::Terrain::Tileset::Installation,
   QObject::tr("Installation"),
-  QStringList{
-    QObject::tr("Null"),
-    QObject::tr("Substructure"),
-    QObject::tr("Substructure Plating"),
-    QObject::tr("Floor"),
-    QObject::tr("Roof"),
-    QObject::tr("Plating"),
-    QObject::tr("Bottomless Pit"),
-    QObject::tr("Substructure Panels"),
-    QObject::tr("Buildable Substructure")
-  },
-  QList<int>{
-    0, 2, 4, 6, 8, 10, 12, 14, 16
+  QList<TileGroup>{
+    {2, 0, QObject::tr("Null")},
+    {2, 2, QObject::tr("Substructure")},
+    {2, 4, QObject::tr("Substructure Plating")},
+    {2, 6, QObject::tr("Floor")},
+    {2, 8, QObject::tr("Roof")},
+    {2, 10, QObject::tr("Plating")},
+    {2, 12, QObject::tr("Bottomless Pit")},
+    {2, 14, QObject::tr("Substructure Panels")},
+    {2, 16, QObject::tr("Buildable Substructure")}
   },
   3
 };
@@ -82,20 +117,17 @@ Tileset Tileset::Installation = Tileset{
 Tileset Tileset::Ashworld = Tileset{
   Sc::Terrain::Tileset::Ashworld,
   QObject::tr("Ash World"),
-  QStringList{
-    QObject::tr("Null"),
-    QObject::tr("Creep"),
-    QObject::tr("Magma"),
-    QObject::tr("Dirt"),
-    QObject::tr("Lava"),
-    QObject::tr("Shale"),
-    QObject::tr("Broken Rock"),
-    QObject::tr("High Dirt"),
-    QObject::tr("High Lava"),
-    QObject::tr("High Shale")
-  },
-  QList<int>{
-    0, 1, 14, 2, 4, 10, 16, 6, 8, 12
+  QList<TileGroup>{
+    {3, 0, QObject::tr("Null")},
+    {3, 1, QObject::tr("Creep")},
+    {3, 14, QObject::tr("Magma")},
+    {3, 2, QObject::tr("Dirt")},
+    {3, 4, QObject::tr("Lava")},
+    {3, 10, QObject::tr("Shale")},
+    {3, 16, QObject::tr("Broken Rock")},
+    {3, 6, QObject::tr("High Dirt")},
+    {3, 8, QObject::tr("High Lava")},
+    {3, 12, QObject::tr("High Shale")}
   },
   3
 };
@@ -103,25 +135,22 @@ Tileset Tileset::Ashworld = Tileset{
 Tileset Tileset::Jungle = Tileset{
   Sc::Terrain::Tileset::Jungle,
   QObject::tr("Jungle World"),
-  QStringList{
-    QObject::tr("Null"),
-    QObject::tr("Creep"),
-    QObject::tr("Water"),
-    QObject::tr("Dirt"),
-    QObject::tr("Mud"),
-    QObject::tr("Jungle"),
-    QObject::tr("Rocky Ground"),
-    QObject::tr("Ruins"),
-    QObject::tr("Raised Jungle"),
-    QObject::tr("Temple"),
-    QObject::tr("High Dirt"),
-    QObject::tr("High Jungle"),
-    QObject::tr("High Ruins"),
-    QObject::tr("High Raised Jungle"),
-    QObject::tr("High Temple")
-  },
-  QList<int>{
-    0, 1, 6, 2, 26, 8, 10, 14, 12, 16, 4, 18, 20, 22, 24
+  QList<TileGroup>{
+    {4, 0, QObject::tr("Null")},
+    {4, 1, QObject::tr("Creep")},
+    {4, 6, QObject::tr("Water")},
+    {4, 2, QObject::tr("Dirt")},
+    {4, 26, QObject::tr("Mud")},
+    {4, 8, QObject::tr("Jungle")},
+    {4, 10, QObject::tr("Rocky Ground")},
+    {4, 14, QObject::tr("Ruins")},
+    {4, 12, QObject::tr("Raised Jungle")},
+    {4, 16, QObject::tr("Temple")},
+    {4, 4, QObject::tr("High Dirt")},
+    {4, 18, QObject::tr("High Jungle")},
+    {4, 20, QObject::tr("High Ruins")},
+    {4, 22, QObject::tr("High Raised Jungle")},
+    {4, 24, QObject::tr("High Temple")}
   },
   5
 };
@@ -129,25 +158,22 @@ Tileset Tileset::Jungle = Tileset{
 Tileset Tileset::Desert = Tileset{
   Sc::Terrain::Tileset::Desert,
   QObject::tr("Desert"),
-  QStringList{
-    QObject::tr("Null"),
-    QObject::tr("Creep"),
-    QObject::tr("Tar"),
-    QObject::tr("Dirt"),
-    QObject::tr("Dried Mud"),
-    QObject::tr("Sand Dunes"),
-    QObject::tr("Rocky Ground"),
-    QObject::tr("Crags"),
-    QObject::tr("Sandy Sunken Pit"),
-    QObject::tr("Compound"),
-    QObject::tr("High Dirt"),
-    QObject::tr("High Sand Dunes"),
-    QObject::tr("High Crags"),
-    QObject::tr("High Sandy Sunken Pit"),
-    QObject::tr("High Compound")
-  },
-  QList<int>{
-    0, 1, 6, 2, 26, 8, 10, 14, 12, 16, 4, 18, 20, 22, 24
+  QList<TileGroup>{
+    {5, 0, QObject::tr("Null")},
+    {5, 1, QObject::tr("Creep")},
+    {5, 6, QObject::tr("Tar")},
+    {5, 2, QObject::tr("Dirt")},
+    {5, 26, QObject::tr("Dried Mud")},
+    {5, 8, QObject::tr("Sand Dunes")},
+    {5, 10, QObject::tr("Rocky Ground")},
+    {5, 14, QObject::tr("Crags")},
+    {5, 12, QObject::tr("Sandy Sunken Pit")},
+    {5, 16, QObject::tr("Compound")},
+    {5, 4, QObject::tr("High Dirt")},
+    {5, 18, QObject::tr("High Sand Dunes")},
+    {5, 20, QObject::tr("High Crags")},
+    {5, 22, QObject::tr("High Sandy Sunken Pit")},
+    {5, 24, QObject::tr("High Compound")}
   },
   5
 };
@@ -155,25 +181,22 @@ Tileset Tileset::Desert = Tileset{
 Tileset Tileset::Ice = Tileset{
   Sc::Terrain::Tileset::Arctic,
   QObject::tr("Ice"),
-  QStringList{
-    QObject::tr("Null"),
-    QObject::tr("Creep"),
-    QObject::tr("Ice"),
-    QObject::tr("Snow"),
-    QObject::tr("Moguls"),
-    QObject::tr("Dirt"),
-    QObject::tr("Rocky Snow"),
-    QObject::tr("Grass"),
-    QObject::tr("Water"),
-    QObject::tr("Outpost"),
-    QObject::tr("High Snow"),
-    QObject::tr("High Dirt"),
-    QObject::tr("High Grass"),
-    QObject::tr("High Water"),
-    QObject::tr("High Outpost")
-  },
-  QList<int>{
-    0, 1, 6, 2, 26, 8, 10, 14, 12, 16, 4, 18, 20, 22, 24
+  QList<TileGroup>{
+    {6, 0, QObject::tr("Null")},
+    {6, 1, QObject::tr("Creep")},
+    {6, 6, QObject::tr("Ice")},
+    {6, 2, QObject::tr("Snow")},
+    {6, 26, QObject::tr("Moguls")},
+    {6, 8, QObject::tr("Dirt")},
+    {6, 10, QObject::tr("Rocky Snow")},
+    {6, 14, QObject::tr("Grass")},
+    {6, 12, QObject::tr("Water")},
+    {6, 16, QObject::tr("Outpost")},
+    {6, 4, QObject::tr("High Snow")},
+    {6, 18, QObject::tr("High Dirt")},
+    {6, 20, QObject::tr("High Grass")},
+    {6, 22, QObject::tr("High Water")},
+    {6, 24, QObject::tr("High Outpost")}
   },
   3
 };
@@ -181,25 +204,22 @@ Tileset Tileset::Ice = Tileset{
 Tileset Tileset::Twilight = Tileset{
   Sc::Terrain::Tileset::Twilight,
   QObject::tr("Twilight"),
-  QStringList{
-    QObject::tr("Null"),
-    QObject::tr("Creep"),
-    QObject::tr("Water"),
-    QObject::tr("Dirt"),
-    QObject::tr("Mud"),
-    QObject::tr("Crushed Rock"),
-    QObject::tr("Crevices"),
-    QObject::tr("Flagstones"),
-    QObject::tr("Sunken Ground"),
-    QObject::tr("Basilica"),
-    QObject::tr("High Dirt"),
-    QObject::tr("High Crushed Rock"),
-    QObject::tr("High Flagstones"),
-    QObject::tr("High Sunken Ground"),
-    QObject::tr("High Basilica")
-  },
-  QList<int>{
-    0, 1, 6, 2, 26, 8, 10, 14, 12, 16, 4, 18, 20, 22, 24
+  QList<TileGroup>{
+    {7, 0, QObject::tr("Null")},
+    {7, 1, QObject::tr("Creep")},
+    {7, 6, QObject::tr("Water")},
+    {7, 2, QObject::tr("Dirt")},
+    {7, 26, QObject::tr("Mud")},
+    {7, 8, QObject::tr("Crushed Rock")},
+    {7, 10, QObject::tr("Crevices")},
+    {7, 14, QObject::tr("Flagstones")},
+    {7, 12, QObject::tr("Sunken Ground")},
+    {7, 16, QObject::tr("Basilica")},
+    {7, 4, QObject::tr("High Dirt")},
+    {7, 18, QObject::tr("High Crushed Rock")},
+    {7, 20, QObject::tr("High Flagstones")},
+    {7, 22, QObject::tr("High Sunken Ground")},
+    {7, 24, QObject::tr("High Basilica")}
   },
   3
 };
@@ -227,24 +247,19 @@ Tileset* Tileset::fromId(int id)
   return allTilesets.at(id);
 }
 
-int Tileset::getId() const
+int Tileset::getTilesetId() const
 {
-  return this->id;
+  return this->tilesetId;
 }
 
-QString Tileset::getName() const
+const QString& Tileset::getName() const
 {
   return this->name;
 }
 
-QStringList Tileset::getBrushes() const
+const QList<Tileset::TileGroup>& Tileset::getBrushes() const
 {
   return this->brushes;
-}
-
-QList<int> Tileset::getBrushValues() const
-{
-  return this->brushTileValues;
 }
 
 int Tileset::getDefaultBrushIndex() const
