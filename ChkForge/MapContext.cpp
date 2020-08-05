@@ -137,17 +137,16 @@ void MapContext::chkdraft_to_openbw(bool is_editor_mode)
   }
 
   // Sync string data
-  /*
   openbw_ui.st.game->map_strings.clear();
   size_t num_strings = chk.strings.getCapacity(Chk::Scope::Game);
   openbw_ui.st.game->map_strings.reserve(num_strings);
   for (size_t i = 0; i < num_strings; ++i) {
-    openbw_ui.st.game->map_strings.emplace_back(*chk.strings.getString<std::string>(i, Chk::Scope::Game));
+    auto str = chk.strings.getString<RawString>(i, Chk::Scope::Game);
+    openbw_ui.st.game->map_strings.emplace_back(*str);
   }
 
-  openbw_ui.st.game->scenario_name = *chk.strings.getScenarioName<std::string>(Chk::Scope::GameOverEditor);
-  openbw_ui.st.game->scenario_description = *chk.strings.getScenarioDescription<std::string>(Chk::Scope::GameOverEditor);
-  */
+  openbw_ui.st.game->scenario_name = *chk.strings.getScenarioName<RawString>(Chk::Scope::GameOverEditor);
+  openbw_ui.st.game->scenario_description = *chk.strings.getScenarioDescription<RawString>(Chk::Scope::GameOverEditor);
 
   //--
   game_load_funcs.reset();

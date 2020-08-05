@@ -15,6 +15,7 @@
 #include <cstdlib>
 #include <cmath>
 #include <functional>
+#include <optional>
 
 namespace bwgame {
 
@@ -21973,7 +21974,7 @@ struct game_player {
 private:
 	std::unique_ptr<game_state> uptr_game_st = std::make_unique<game_state>();
 	std::unique_ptr<state> uptr_st = std::make_unique<state>();
-	optional<state_functions> opt_funcs;
+	std::optional<state_functions> opt_funcs;
 public:
 	game_player() {
 	  state& st = *uptr_st;

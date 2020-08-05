@@ -6,6 +6,8 @@
 #include "korean.h"
 #include "bwgame.h"
 
+#include <optional>
+
 namespace bwgame {
 
 namespace data_loading {
@@ -251,7 +253,7 @@ struct replay_functions: action_functions {
 struct replay_player: game_player {
 	action_state action_st;
 	replay_state replay_st;
-	optional<replay_functions> opt_funcs;
+	std::optional<replay_functions> opt_funcs;
 	replay_player() = default;
 	replay_player(const game_player& n) {
 		set_st(n.st());

@@ -376,14 +376,6 @@ auto get_best_score(cont_T&& cont, score_F&& score) {
 	return get_best_score(cont.begin(), cont.end(), std::forward<score_F>(score));
 }
 
-struct nullopt_t {
-	struct init {
-		constexpr init() {}
-	};
-	constexpr explicit nullopt_t(init) {};
-};
-static constexpr nullopt_t nullopt{nullopt_t::init{}};
-
 struct in_place_tag {
 	struct init {};
 	constexpr explicit in_place_tag(init) {};
@@ -392,123 +384,6 @@ static inline in_place_tag in_place() {
 	std::terminate();
 }
 using in_place_t = in_place_tag(&)();
-
-template<typename T>
-struct optional {
-private:
-	typename std::aligned_storage<sizeof(T), alignof(T)>::type buf;
-	bool has_obj = false;
-	T* ptr() {
-		return (T*)&buf;
-	}
-	T& obj() {
-		return *(T*)&buf;
-	}
-	const T& obj() const {
-		return *(T*)&buf;
-	}
-	void destroy() {
-		obj().~value_type();
-		has_obj = false;
-	}
-public:
-	using value_type = T;
-	optional() = default;
-	optional(nullopt_t) noexcept {}
-	template<typename NT = T, typename std::enable_if<std::is_copy_constructible<NT>::value>::type* = nullptr>
-	optional(const optional& n) {
-		if (n.has_obj) {
-			has_obj = true;
-			new (ptr()) value_type(n.obj());
-		}
-	}
-	optional(optional&& n) noexcept(std::is_nothrow_move_constructible<value_type>::value) {
-		if (n.has_obj) {
-			new (ptr()) value_type(std::move(n.obj()));
-			has_obj = true;
-		}
-	}
-	template<typename... args_T>
-	optional(in_place_t, args_T&&... args) {
-		has_obj = true;
-		new (ptr()) value_type(std::forward<args_T>(args)...);
-	}
-	~optional() {
-		if (has_obj) destroy();
-	}
-
-	optional& operator=(nullopt_t) noexcept {
-		if (has_obj) destroy();
-		return *this;
-	}
-	template<typename NT = T, typename std::enable_if<std::is_copy_assignable<NT>::value>::type* = nullptr>
-	optional& operator=(const optional& n) noexcept(std::is_nothrow_move_assignable<value_type>::value && std::is_nothrow_move_constructible<value_type>::value) {
-		if (!n.has_obj) *this = nullopt;
-		else {
-			if (has_obj) obj() = n.obj();
-			else {
-				has_obj = true;
-				new (ptr()) value_type(n.obj());
-			}
-		}
-		return *this;
-	}
-	optional& operator=(optional&& n) {
-		if (has_obj) {
-			if (n.has_obj) obj() = std::move(n.obj());
-			else destroy();
-		} else {
-			if (n.has_obj) {
-				new (ptr()) value_type(std::move(n.obj()));
-				has_obj = true;
-			}
-		}
-		return *this;
-	}
-	template<typename n_T, typename std::enable_if<std::is_same<std::decay_t<n_T>, value_type>::value>::type* = nullptr>
-	optional& operator=(n_T&& n) {
-		if (has_obj) {
-			obj() = std::forward<n_T>(n);
-		} else {
-			new (ptr()) value_type(std::forward<n_T>(n));
-			has_obj = true;
-		}
-		return *this;
-	}
-	const value_type* operator->() const {
-		return ptr();
-	}
-	value_type* operator->() {
-		return ptr();
-	}
-	const value_type& operator*() const& {
-		return obj();
-	}
-	value_type& operator*() & {
-		return obj();
-	}
-	const value_type&& operator*() const&& {
-		return std::move(obj());
-	}
-	value_type&& operator*() && {
-		return std::move(obj());
-	}
-	explicit operator bool() const {
-		return has_obj;
-	}
-	bool has_value() const {
-		return has_obj;
-	}
-	void reset() {
-		if (has_obj) destroy();
-	}
-	template<typename... args_T>
-	void emplace(args_T&&... args) {
-		if (has_obj) obj().~value_type();
-		else has_obj = true;
-		new (ptr()) value_type(std::forward<args_T>(args)...);
-	}
-};
 
 template<size_t bits>
 using int_fastn_t = typename std::conditional<bits <= 8, std::int_fast8_t,
