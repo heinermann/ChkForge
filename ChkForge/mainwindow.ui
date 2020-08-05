@@ -17,7 +17,7 @@
    </sizepolicy>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>ChkForge</string>
   </property>
   <property name="styleSheet">
    <string notr="true">QSplitter::handle:horizontal {

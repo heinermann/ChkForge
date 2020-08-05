@@ -94,5 +94,8 @@
     <ClCompile Include="korean.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="openbw\ui\openbw_native_sound.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

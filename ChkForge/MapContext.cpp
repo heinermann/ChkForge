@@ -80,7 +80,14 @@ bool MapContext::load_map(const std::string& map_file_str) {
 
   bwgame::game_load_functions game_load_funcs(openbw_ui.st);
   game_load_funcs.use_map_settings = true;
-  game_load_funcs.load_map_data(raw_chk.data(), raw_chk.size(), nullptr, false);
+  try {
+    game_load_funcs.load_map_data(raw_chk.data(), raw_chk.size(), nullptr, false);
+  }
+  catch (bwgame::exception& e)
+  {
+    QMessageBox::critical(nullptr, QString(), QString("OpenBW failure: ") + e.what());
+    return false;
+  }
 
   openbw_ui.set_image_data();
   return true;
@@ -184,5 +191,4 @@ void MapContext::apply_brush(const QRect& rect, int tileGroup, int clutter)
 
     }
   }
-
 }

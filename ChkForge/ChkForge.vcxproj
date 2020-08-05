@@ -192,7 +192,6 @@
     </QtUic>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\openbw\openbw\ui\openbw_native_sound.cpp" />
     <ClCompile Include="about.cpp" />
     <ClCompile Include="doodadpalette.cpp" />
     <ClCompile Include="exportimage.cpp" />
