@@ -4,6 +4,7 @@
 #include <memory>
 #include <sstream>
 #include <fstream>
+#include <QMessageBox>
 
 #include "terrain.h"
 
@@ -51,7 +52,7 @@ bool MapContext::load_map(const std::string& map_file_str) {
   if (mpq.open(map_file_str)) {
     if (!mpq.getFile("staredit\\scenario.chk", raw_chk))
     {
-      // Log Failed state
+      QMessageBox::critical(nullptr, QString(), "Unable to find scenario.chk in MPQ archive.");
       return false;
     }
   }
@@ -63,7 +64,8 @@ bool MapContext::load_map(const std::string& map_file_str) {
 
     std::ifstream chkFile(map_file_str, std::ios_base::binary | std::ios_base::in);
     if (!chkFile.read(reinterpret_cast<char*>(raw_chk.data()), raw_chk.size())) {
-      // read failed
+      QMessageBox::critical(nullptr, QString(), "Failed to read the Chk file (fstream)");
+      return false;
     }
     // otherwise fail
   }
@@ -72,7 +74,7 @@ bool MapContext::load_map(const std::string& map_file_str) {
   std::copy(raw_chk.begin(), raw_chk.end(), std::ostream_iterator<uint8_t>(chk_stream));
 
   if (!chk.read(chk_stream)) {
-    // fail
+    QMessageBox::critical(nullptr, QString(), "Failed to read the Chk file (chk), not a valid map.");
     return false;
   }
 
@@ -81,6 +83,7 @@ bool MapContext::load_map(const std::string& map_file_str) {
   game_load_funcs.load_map_data(raw_chk.data(), raw_chk.size(), nullptr, false);
 
   openbw_ui.set_image_data();
+  return true;
 }
 
 void MapContext::add_view(MapView* view)

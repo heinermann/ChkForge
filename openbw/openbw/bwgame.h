@@ -759,26 +759,42 @@ struct state_functions {
 	}
 
 	void tiles_flags_and(size_t offset_x, size_t offset_y, size_t width, size_t height, int flags) {
-		if (offset_x >= game_st.map_tile_width) error("attempt to mask tile out of bounds");
-		if (offset_y >= game_st.map_tile_height) error("attempt to mask tile out of bounds");
-		if (width > game_st.map_tile_width || offset_x + width > game_st.map_tile_width) error("attempt to mask tile out of bounds");
-		if (height > game_st.map_tile_height || offset_y + height > game_st.map_tile_height) error("attempt to mask tile out of bounds");
-		for (size_t y = offset_y; y != offset_y + height; ++y) {
-			for (size_t x = offset_x; x != offset_x + width; ++x) {
-				st.tiles[x + y * game_st.map_tile_width].flags &= flags;
-			}
-		}
+	  if (offset_x >= game_st.map_tile_width || offset_y >= game_st.map_tile_height) {
+		warn("attempt to mask tile out of bounds");
+		return;
+	  }
+	  if (width > game_st.map_tile_width || offset_x + width > game_st.map_tile_width) {
+		warn("attempt to mask tile out of bounds");
+		return;
+	  }
+	  if (height > game_st.map_tile_height || offset_y + height > game_st.map_tile_height) {
+		warn("attempt to mask tile out of bounds");
+		return;
+	  }
+	  for (size_t y = offset_y; y != offset_y + height; ++y) {
+		  for (size_t x = offset_x; x != offset_x + width; ++x) {
+			  st.tiles[x + y * game_st.map_tile_width].flags &= flags;
+		  }
+	  }
 	}
 	void tiles_flags_or(size_t offset_x, size_t offset_y, size_t width, size_t height, int flags) {
-		if (offset_x >= game_st.map_tile_width) error("attempt to mask tile out of bounds");
-		if (offset_y >= game_st.map_tile_height) error("attempt to mask tile out of bounds");
-		if (width > game_st.map_tile_width || offset_x + width > game_st.map_tile_width) error("attempt to mask tile out of bounds");
-		if (height > game_st.map_tile_height || offset_y + height > game_st.map_tile_height) error("attempt to mask tile out of bounds");
-		for (size_t y = offset_y; y != offset_y + height; ++y) {
-			for (size_t x = offset_x; x != offset_x + width; ++x) {
-				st.tiles[x + y * game_st.map_tile_width].flags |= flags;
-			}
-		}
+	  if (offset_x >= game_st.map_tile_width || offset_y >= game_st.map_tile_height) {
+		warn("attempt to mask tile out of bounds");
+		return;
+	  }
+	  if (width > game_st.map_tile_width || offset_x + width > game_st.map_tile_width) {
+		warn("attempt to mask tile out of bounds");
+		return;
+	  }
+	  if (height > game_st.map_tile_height || offset_y + height > game_st.map_tile_height) {
+		warn("attempt to mask tile out of bounds");
+		return;
+	  }
+	  for (size_t y = offset_y; y != offset_y + height; ++y) {
+		  for (size_t x = offset_x; x != offset_x + width; ++x) {
+			  st.tiles[x + y * game_st.map_tile_width].flags |= flags;
+		  }
+	  }
 	}
 
 	bool unit_type_spreads_creep(unit_type_autocast ut, bool unit_is_completed = true) const {
@@ -1413,8 +1429,22 @@ struct state_functions {
 		return unit_is_sieged_tank(ut) || unit_is_unsieged_tank(ut);
 	}
 
-	bool unit_is_trap(unit_type_autocast ut) const {
+	bool unit_is_trap_or_door(unit_type_autocast ut) const {
 		return ut->id >= UnitTypes::Special_Floor_Missile_Trap && ut->id <= UnitTypes::Special_Right_Wall_Flame_Trap;
+	}
+
+	bool unit_is_door(unit_type_autocast ut) const {
+	  return ut->id == UnitTypes::Special_Upper_Level_Door || ut->id == UnitTypes::Special_Right_Upper_Level_Door ||
+		ut->id == UnitTypes::Special_Pit_Door || ut->id == UnitTypes::Special_Right_Pit_Door;
+	}
+
+	bool unit_is_floor_trap(unit_type_autocast ut) const {
+	  return ut->id == UnitTypes::Special_Floor_Gun_Trap || ut->id == UnitTypes::Special_Floor_Missile_Trap;
+	}
+
+	bool unit_is_wall_trap(unit_type_autocast ut) const {
+	  return ut->id == UnitTypes::Special_Right_Wall_Flame_Trap || ut->id == UnitTypes::Special_Right_Wall_Missile_Trap ||
+		ut->id == UnitTypes::Special_Wall_Flame_Trap || ut->id == UnitTypes::Special_Wall_Missile_Trap;
 	}
 
 	bool unit_is_zerg_building(unit_type_autocast ut) const {
@@ -7604,7 +7634,7 @@ struct state_functions {
 			order_NukeTrack(u);
 			return;
 		case Orders::WarpIn:
-			error("WarpIn");
+			warn("WarpIn");
 			return;
 		default:
 			break;
@@ -7701,7 +7731,7 @@ struct state_functions {
 			order_ResetHarvestCollision(u);
 			break;
 		case Orders::CTFCOP2:
-			error("CTFCOP2");
+			warn("CTFCOP2");
 			break;
 		case Orders::SelfDestructing:
 			order_SelfDestructing(u);
@@ -7743,7 +7773,7 @@ struct state_functions {
 			order_PlayerGuard(u);
 			break;
 		case Orders::BunkerGuard:
-			error("BunkerGuard");
+			warn("BunkerGuard");
 			break;
 		case Orders::Move:
 			order_Move(u);
@@ -7761,7 +7791,7 @@ struct state_functions {
 			order_AttackFixedRange(u);
 			break;
 		case Orders::Hover:
-			error("Hover");
+			warn("Hover");
 			break;
 		case Orders::AttackMove:
 			order_AttackMove(u);
@@ -7770,10 +7800,10 @@ struct state_functions {
 			order_InfestedCommandCenter(u);
 			break;
 		case Orders::UnusedNothing:
-			error("UnusedNothing");
+			warn("UnusedNothing");
 			break;
 		case Orders::UnusedPowerup:
-			error("UnusedPowerup");
+			warn("UnusedPowerup");
 			break;
 		case Orders::TowerGuard:
 			order_TowerGuard(u);
@@ -7818,7 +7848,7 @@ struct state_functions {
 			order_EnterNydusCanal(u);
 			break;
 		case Orders::IncompleteWarping:
-			error("IncompleteWarping");
+			warn("IncompleteWarping");
 			break;
 		case Orders::Follow:
 			order_Follow(u);
@@ -7839,7 +7869,7 @@ struct state_functions {
 			order_MoveToTargetOrder(u);
 			break;
 		case Orders::CarrierIgnore2:
-			error("CarrierIgnore2");
+			warn("CarrierIgnore2");
 			break;
 		case Orders::CarrierFight:
 			order_Carrier(u);
@@ -8007,7 +8037,7 @@ struct state_functions {
 			order_CastRecall(u);
 			break;
 		case Orders::Teleport:
-			error("Teleport");
+			warn("Teleport");
 			break;
 		case Orders::CastScannerSweep:
 			order_CastScannerSweep(u);
@@ -8043,58 +8073,58 @@ struct state_functions {
 			order_Patrol(u);
 			break;
 		case Orders::CTFCOPInit:
-			error("CTFCOPInit");
+			warn("CTFCOPInit");
 			break;
 		case Orders::CTFCOP2:
-			error("CTFCOP2");
+			warn("CTFCOP2");
 			break;
 		case Orders::ComputerAI:
-			error("ComputerAI");
+			warn("ComputerAI");
 			break;
 		case Orders::AtkMoveEP:
-			error("AtkMoveEP");
+			warn("AtkMoveEP");
 			break;
 		case Orders::HarassMove:
-			error("HarassMove");
+			warn("HarassMove");
 			break;
 		case Orders::AIPatrol:
-			error("AIPatrol");
+			warn("AIPatrol");
 			break;
 		case Orders::GuardPost:
-			error("GuardPost");
+			warn("GuardPost");
 			break;
 		case Orders::RescuePassive:
-			error("RescuePassive");
+			warn("RescuePassive");
 			break;
 		case Orders::Neutral:
 			order_Neutral(u);
 			break;
 		case Orders::ComputerReturn:
-			error("ComputerReturn");
+			warn("ComputerReturn");
 			break;
 		case Orders::InitializePsiProvider:
 			order_InitializePsiProvider(u);
 			break;
 		case Orders::HiddenGun:
-			error("HiddenGun");
+			warn("HiddenGun");
 			break;
 		case Orders::OpenDoor:
-			error("OpenDoor");
+			warn("OpenDoor");
 			break;
 		case Orders::CloseDoor:
-			error("CloseDoor");
+			warn("CloseDoor");
 			break;
 		case Orders::HideTrap:
-			error("HideTrap");
+			warn("HideTrap");
 			break;
 		case Orders::RevealTrap:
-			error("RevealTrap");
+			warn("RevealTrap");
 			break;
 		case Orders::EnableDoodad:
-			error("EnableDoodad");
+			warn("EnableDoodad");
 			break;
 		case Orders::WarpIn:
-			error("WarpIn");
+			warn("WarpIn");
 			break;
 		case Orders::MedicIdle:
 			order_MedicIdle(u);
@@ -12617,13 +12647,13 @@ struct state_functions {
 			order_hidden_BunkerGuard(u);
 			break;
 		case Orders::EnterTransport:
-			error("hidden EnterTransport");
+			warn("hidden EnterTransport");
 			break;
 		case Orders::ComputerAI:
-			error("hidden ComputerAI");
+			warn("hidden ComputerAI");
 			break;
 		case Orders::RescuePassive:
-			error("hidden RescuePassive");
+			warn("hidden RescuePassive");
 			break;
 		default:
 			break;
@@ -15146,7 +15176,10 @@ struct state_functions {
 		auto* script = image->iscript_state.current_script;
 		if (!script) error("attempt to start animation without a script");
 		auto& anims_pc = script->animation_pc;
-		if ((size_t)new_anim >= anims_pc.size()) error("script %d does not have animation %d", script->id, new_anim);
+		if ((size_t)new_anim >= anims_pc.size()) {
+		  warn("script %d does not have animation %d", script->id, new_anim);
+		  return true;
+		}
 		image->iscript_state.animation = new_anim;
 		image->iscript_state.program_counter = anims_pc[new_anim];
 		image->iscript_state.return_address = 0;
@@ -16486,7 +16519,7 @@ struct state_functions {
 				if (dir == 32) dir = lcg_rand(36) % 32;
 				set_unit_heading(u, 8_dir * dir);
 			}
-			if (unit_is_trap(u)) {
+			if (unit_is_trap_or_door(u)) {
 				show_unit(u);
 			}
 		}
@@ -17187,21 +17220,22 @@ struct state_functions {
 				}
 			}
 		}
-		if (unit_is_trap(u)) {
+		if (unit_is_trap_or_door(u)) {
 			u_set_status_flag(u, unit_t::status_flag_cloaked);
 			u_set_status_flag(u, unit_t::status_flag_requires_detector);
 			u->detected_flags = 0x80000000;
 			u->secondary_order_timer = 0;
 		}
 		if (st.players[u->owner].controller == player_t::controller_rescue_passive) {
-			error("fixme rescue passive");
+			set_unit_order(u, get_order_type(Orders::RescuePassive));
 		} else {
 			if (st.players[u->owner].controller == player_t::controller_neutral) set_unit_order(u, get_order_type(Orders::Neutral));
 			else if (st.players[u->owner].controller == player_t::controller_computer_game) set_unit_order(u, u->unit_type->computer_ai_idle);
 			else set_unit_order(u, u->unit_type->human_ai_idle);
 		}
-		if (ut_flag(u, (unit_type_t::flags_t)0x800)) {
-			error("fixme unknown flag");
+		if (ut_powerup(u)) {
+		  u->building.powerup.origin = u->sprite->position;
+		  set_unit_order(u, u->unit_type->human_ai_idle);
 		}
 		u->air_strength = get_unit_strength(u, false);
 		u->ground_strength = get_unit_strength(u, true);
@@ -17866,7 +17900,7 @@ struct state_functions {
 			if (u_hallucination(u)) return false;
 			return true;
 		case Orders::TowerAttack:
-			if (!unit_is(u, UnitTypes::Terran_Missile_Turret) && !unit_is(u, UnitTypes::Zerg_Spore_Colony) && !unit_is(u, UnitTypes::Zerg_Sunken_Colony) && !unit_is(u, UnitTypes::Protoss_Photon_Cannon) && !unit_is_trap(u)) return false;
+			if (!unit_is(u, UnitTypes::Terran_Missile_Turret) && !unit_is(u, UnitTypes::Zerg_Spore_Colony) && !unit_is(u, UnitTypes::Zerg_Sunken_Colony) && !unit_is(u, UnitTypes::Protoss_Photon_Cannon) && !unit_is_trap_or_door(u)) return false;
 			if (u_hallucination(u)) return false;
 			return true;
 		case Orders::TurretAttack:
@@ -18121,23 +18155,23 @@ struct state_functions {
 			if (!unit_is_critter(u)) return false;
 			return true;
 		case Orders::HiddenGun:
-			if (!unit_is_trap(u)) return false;
+			if (!unit_is_trap_or_door(u)) return false;
 			if (u_hallucination(u)) return false;
 			return true;
 		case Orders::OpenDoor:
-			if (!unit_is(u, UnitTypes::Special_Upper_Level_Door) && !unit_is(u, UnitTypes::Special_Right_Upper_Level_Door) && !unit_is(u, UnitTypes::Special_Pit_Door) && !unit_is(u, UnitTypes::Special_Right_Pit_Door)) return false;
+			if (!unit_is_door(u)) return false;
 			if (u_hallucination(u)) return false;
 			return true;
 		case Orders::CloseDoor:
-			if (!unit_is(u, UnitTypes::Special_Upper_Level_Door) && !unit_is(u, UnitTypes::Special_Right_Upper_Level_Door) && !unit_is(u, UnitTypes::Special_Pit_Door) && !unit_is(u, UnitTypes::Special_Right_Pit_Door)) return false;
+			if (!unit_is_door(u)) return false;
 			if (u_hallucination(u)) return false;
 			return true;
 		case Orders::HideTrap:
-			if (!unit_is_trap(u)) return false;
+			if (!unit_is_trap_or_door(u)) return false;
 			if (u_hallucination(u)) return false;
 			return true;
 		case Orders::RevealTrap:
-			if (!unit_is_trap(u)) return false;
+			if (!unit_is_trap_or_door(u)) return false;
 			if (u_hallucination(u)) return false;
 			return true;
 		case Orders::MedicIdle:
@@ -18881,18 +18915,43 @@ struct state_functions {
 
 	bool test_trigger_condition(const trigger::condition& c, int owner) const {
 		switch (c.type) {
+		case 0:
+		  return true;
+		case 1:
+		  return true; // TODO
 		case 2: // command
 			return trigger_count_comparison(c, trigger_command_count(st, owner, c.group, c.unit_id, c.num_n != 1));
 		case 3: // bring
 			return trigger_count_comparison(c, trigger_command_count(trigger_bring_count(st.locations.at(c.location - 1)), owner, c.group, c.unit_id, c.num_n != 1));
+		case 4:
+		case 5:
+		case 6:
+		case 7:
+		case 8:
+		case 9:
+		case 10:
+		case 11:
+		  return true; // TODO
 		case 12: // elapsed time
 			return trigger_count_comparison(c, st.current_frame);
+		case 13:
+		  return true; // TODO
 		case 14: // opponents
 			return trigger_count_comparison(c, trigger_opponent_count(owner, c.group));
+		case 15:
+		case 16:
+		case 17:
+		case 18:
+		case 19:
+		case 20:
+		case 21:
+		  return true; // TODO
 		case 22: // always
 			return true;
+		case 23: // never
+		  return false;
 		default:
-			error("unknown trigger condition %d\n", c.type);
+			warn("unknown trigger condition %d\n", c.type);
 			return false;
 		}
 	}
@@ -19142,7 +19201,7 @@ struct state_functions {
 					unit_t* u = &*i++;
 					if (ut_turret(u)) continue;
 					if (unit_dying(u)) continue;
-					if (ut_powerup(u)) error("trigger kill unit fixme: powerup");
+					if (ut_powerup(u)) { warn("trigger kill unit fixme: powerup"); continue; }
 					if (u->owner != p) continue;
 					bool ok = false;
 					if (uid == 229) ok = true;
@@ -19352,7 +19411,7 @@ struct state_functions {
 		case 59:
 		  break;
 		default:
-			//error("unknown trigger action %d", a.type);
+			warn("unknown trigger action %d", a.type);
 			return false;
 		}
 		return true;
@@ -19533,10 +19592,10 @@ struct state_functions {
 
 	void spread_creep_completely(unit_type_autocast unit_type, xy pos) {
 		rect_t<xy_t<size_t>> unit_area;
-		unit_area.from.x = pos.x / 32u - unit_type->placement_size.x / 32u / 2;
-		unit_area.from.y = pos.y / 32u - unit_type->placement_size.y / 32u / 2;
-		unit_area.to.x = unit_area.from.x + unit_type->placement_size.x / 32u;
-		unit_area.to.y = unit_area.from.y + unit_type->placement_size.y / 32u;
+		unit_area.from.x = std::max(pos.x / 32 - unit_type->placement_size.x / 32 / 2, 0);
+		unit_area.from.y = std::max(pos.y / 32 - unit_type->placement_size.y / 32 / 2, 0);
+		unit_area.to.x = std::min(unit_area.from.x + unit_type->placement_size.x / 32, game_st.map_tile_width);
+		unit_area.to.y = std::min(unit_area.from.y + unit_type->placement_size.y / 32, game_st.map_tile_height);
 		st.tiles.at(unit_area.from.y * game_st.map_tile_width + unit_area.from.x);
 		if (unit_area.from != unit_area.to) st.tiles.at((unit_area.to.y - 1) * game_st.map_tile_width + unit_area.to.x - 1);
 		for (size_t y = unit_area.from.y; y != unit_area.to.y; ++y) {
@@ -21216,6 +21275,22 @@ struct game_load_functions : state_functions {
 		load_map_data(data.data(), data.size(), std::move(setup_f), initial_processing);
 	}
 
+	void disable_thg2_unit(unit_t* unit) {
+	  if (unit_is_disabled(unit)) return;
+
+	  set_unit_disabled(unit);
+	  sprite_run_anim(unit->sprite, iscript_anims::AlmostBuilt);
+	  u_set_status_flag(unit, unit_t::status_flag_no_collide);
+
+	  if (unit_is_floor_trap(unit) || unit_is_door(unit)) unit->sprite->elevation_level = 1;
+	  if (unit_is_floor_trap(unit) || unit_is_wall_trap(unit)) {
+		u_set_status_flag(unit, unit_t::status_flag_cloaked);
+		u_set_status_flag(unit, unit_t::status_flag_requires_detector);
+		unit->detected_flags = 0x80000000;
+		unit->secondary_order_timer = 0;
+	  }
+	}
+
 	void load_map_data(uint8_t* data, size_t data_size, std::function<void()> setup_f = {}, bool initial_processing = true) {
 
 		using data_loading::data_reader_le;
@@ -21374,13 +21449,10 @@ struct game_load_functions : state_functions {
 					create_thingy(sprite_type, {x, y}, owner);
 				} else {
 					auto unit_type = (UnitTypes)id;
-					if (unit_type == UnitTypes::Special_Upper_Level_Door) owner = 11;
-					if (unit_type == UnitTypes::Special_Right_Upper_Level_Door) owner = 11;
-					if (unit_type == UnitTypes::Special_Pit_Door) owner = 11;
-					if (unit_type == UnitTypes::Special_Right_Pit_Door) owner = 11;
+					if (unit_is_door(get_unit_type(unit_type))) owner = 11;
 					if (use_map_settings || owner == 11) {
-						create_initial_unit(get_unit_type(unit_type), xy(x, y), owner);
-						if (flags & 0x80) error("disable thingy unit");
+						unit_t* unit = create_initial_unit(get_unit_type(unit_type), xy(x, y), owner);
+						if (flags & 0x80) disable_thg2_unit(unit);
 					}
 				}
 			}

@@ -373,7 +373,9 @@ struct ui_functions: ui_util_functions {
 			draw_frame(frame, i_flag(image, image_t::flag_horizontally_flipped), dst, data_pitch, offset_x, offset_y, width, height, glow);
 		};
 
-		if (image->modifier == 0 || image->modifier == 1) {
+
+		// TODO: Other RLE
+		if (image->modifier == 0 || image->modifier == 1 || image->modifier == 14) {
 			uint8_t* ptr = global_ui_st.img.player_unit_colors.at(color_index).data();
 			auto player_color = [ptr](uint8_t new_value, uint8_t) {
 				if (new_value >= 8 && new_value < 16) return ptr[new_value - 8];
@@ -408,14 +410,15 @@ struct ui_functions: ui_util_functions {
 				return old_value;
 			};
 			draw_frame(frame, i_flag(image, image_t::flag_horizontally_flipped), dst, data_pitch, offset_x, offset_y, width, height, distortion);
+		}
+		else if (image->modifier == 9) {
+		  draw_alpha(image->image_type->color_shift - 1, no_remap());
 		} else if (image->modifier == 10) {
 			uint8_t* ptr = &tileset_img.dark_pcx.data[256 * 18];
 			auto shadow = [ptr](uint8_t, uint8_t old_value) {
 				return ptr[old_value];
 			};
 			draw_frame(frame, i_flag(image, image_t::flag_horizontally_flipped), dst, data_pitch, offset_x, offset_y, width, height, shadow);
-		} else if (image->modifier == 9) {
-			draw_alpha(image->image_type->color_shift - 1, no_remap());
 		} else if (image->modifier == 12) {
 			if (temporary_warp_texture_buffer.size() < frame.size.x * frame.size.y) temporary_warp_texture_buffer.resize(frame.size.x * frame.size.y);
 			auto& texture_frame = global_st.image_grp[(size_t)ImageTypes::IMAGEID_Warp_Texture]->frames.at(image->modifier_data1);
@@ -430,7 +433,11 @@ struct ui_functions: ui_util_functions {
 				return ptr[old_value];
 			};
 			draw_frame(frame, i_flag(image, image_t::flag_horizontally_flipped), dst, data_pitch, offset_x, offset_y, width, height, glow);
-		} else error("don't know how to draw image modifier %d", image->modifier);
+		}
+		else {
+		  warn("don't know how to draw image modifier %d", image->modifier);
+		  draw_frame(frame, i_flag(image, image_t::flag_horizontally_flipped), dst, data_pitch, offset_x, offset_y, width, height, no_remap());
+		}
 
 	}
 
@@ -735,7 +742,7 @@ struct ui_functions: ui_util_functions {
 	bool unit_visble_on_minimap(unit_t* u) {
 		if (u->owner < 8 && u->sprite->visibility_flags == 0) return false;
 		if (ut_turret(u)) return false;
-		if (unit_is_trap(u)) return false;
+		if (unit_is_trap_or_door(u)) return false;
 		if (unit_is(u, UnitTypes::Spell_Dark_Swarm)) return false;
 		if (unit_is(u, UnitTypes::Spell_Disruption_Web)) return false;
 		return true;

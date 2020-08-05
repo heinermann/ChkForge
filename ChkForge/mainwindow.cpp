@@ -15,6 +15,7 @@
 #include <QFileDialog>
 #include <QMdiArea>
 #include <QMdiSubwindow>
+#include <QStandardPaths>
 
 #include "MapContext.h"
 
@@ -132,14 +133,15 @@ namespace {
 
 void MainWindow::on_action_file_open_triggered()
 {
-  QString result = QFileDialog::getOpenFileName(this, QString(), QString(), file_filter);
+  QString documents = QStandardPaths::standardLocations(QStandardPaths::StandardLocation::DocumentsLocation).first();
+  QString result = QFileDialog::getOpenFileName(this, QString(), documents + "/Starcraft/maps", file_filter);
   if (result.isEmpty()) return;
 
   auto map = ChkForge::MapContext::create();
   std::string file_str = result.toStdString();
-  map->load_map(file_str);
-
-  createMapView(map);
+  if (map->load_map(file_str)) {
+    createMapView(map);
+  }
 }
 
 void MainWindow::on_action_file_save_triggered()
