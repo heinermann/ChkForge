@@ -3,6 +3,7 @@
 #define CHKFORGE_MAPCONTEXT_H
 
 #include <unordered_set>
+#include <random>
 
 #include <MappingCoreLib/MpqFile.h>
 #include <MappingCoreLib/Scenario.h>
@@ -46,6 +47,9 @@ namespace ChkForge
     void place_unit(Sc::Unit::Type unitType, int owner, int x, int y);
     void apply_brush(const QRect& rect, int tileGroup, int clutter);
 
+    void chkdraft_to_openbw(bool is_editor_mode = true);
+
+    void select_all();
 
   public:
     // TODO: Move viewport and screen position stuff out of openbw, to allow for multiple viewports in the same map
@@ -59,6 +63,8 @@ namespace ChkForge
     // Other stuff/info (i.e. list of views that are holding the map)
     std::unordered_set<MapView*> views;
 
+    std::random_device rnd_d;
+    std::mt19937 random{ rnd_d() };
   private:
 
   };

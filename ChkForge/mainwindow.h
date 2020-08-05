@@ -58,6 +58,7 @@ private:
 
   void createTestMap();
   void createMapView(std::shared_ptr<ChkForge::MapContext> map);
+  MapView* currentMapView();
 
 private slots:
   void on_action_file_new_triggered();

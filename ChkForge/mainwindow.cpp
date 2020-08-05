@@ -196,6 +196,10 @@ void MainWindow::on_action_edit_delete_triggered()
 
 void MainWindow::on_action_edit_selectAll_triggered()
 {
+  auto* currentView = currentMapView();
+  if (currentView != nullptr) {
+    currentView->getMap()->select_all();
+  }
 }
 
 void MainWindow::on_action_edit_properties_triggered()
@@ -337,9 +341,9 @@ void MainWindow::on_action_test_duplicate_triggered()
 
 void MainWindow::on_action_window_newMapView_triggered()
 {
-  auto* currentView = mdi->currentSubWindow();
+  auto* currentView = currentMapView();
   if (currentView != nullptr) {
-    createMapView(qobject_cast<MapView*>(currentView)->getMap());
+    createMapView(currentView->getMap());
   }
 }
 
@@ -391,4 +395,8 @@ void MainWindow::onMdiSubWindowActivated(QMdiSubWindow* window)
   minimap->setActiveMapView(map);
 
   // TODO: set for other tool windows (i.e. treeview)
+}
+
+MapView* MainWindow::currentMapView() {
+  return qobject_cast<MapView*>(mdi->currentSubWindow());
 }
