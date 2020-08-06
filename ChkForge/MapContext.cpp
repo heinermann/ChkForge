@@ -28,7 +28,7 @@ void MapContext::update() {
 }
 
 void MapContext::new_map(int tileWidth, int tileHeight, Sc::Terrain::Tileset tileset, int brush, int clutter) {
-  chk = Scenario(tileset, tileWidth, tileHeight);
+  chk = MapFile(tileset, tileWidth, tileHeight);
   
   apply_brush(map_dimensions(), brush, clutter);
 
@@ -47,50 +47,15 @@ void MapContext::new_map(int tileWidth, int tileHeight, Sc::Terrain::Tileset til
 }
 
 bool MapContext::load_map(const std::string& map_file_str) {
-  std::vector<uint8_t> raw_chk;
-
-  if (mpq.open(map_file_str)) {
-    if (!mpq.getFile("staredit\\scenario.chk", raw_chk))
-    {
-      QMessageBox::critical(nullptr, QString(), "Unable to find scenario.chk in MPQ archive.");
-      return false;
-    }
-  }
-  else {
-    // TODO Check for chk vs replay...
-
-    auto file_size = std::filesystem::file_size(std::filesystem::path(map_file_str));
-    raw_chk.resize(file_size);
-
-    std::ifstream chkFile(map_file_str, std::ios_base::binary | std::ios_base::in);
-    if (!chkFile.read(reinterpret_cast<char*>(raw_chk.data()), raw_chk.size())) {
-      QMessageBox::critical(nullptr, QString(), "Failed to read the Chk file (fstream)");
-      return false;
-    }
-    // otherwise fail
-  }
-
-  std::stringstream chk_stream(std::ios_base::in | std::ios_base::out | std::ios_base::binary);
-  std::copy(raw_chk.begin(), raw_chk.end(), std::ostream_iterator<uint8_t>(chk_stream));
-
-  if (!chk.read(chk_stream)) {
+  std::string dumb_path_limitation_string = map_file_str;
+  std::replace(std::begin(dumb_path_limitation_string), std::end(dumb_path_limitation_string), '/', '\\');
+  if (!chk.load(dumb_path_limitation_string)) {
     QMessageBox::critical(nullptr, QString(), "Failed to read the Chk file (chk), not a valid map.");
     return false;
   }
 
   chkdraft_to_openbw(true);
-  /*
-  bwgame::game_load_functions game_load_funcs(openbw_ui.st);
-  game_load_funcs.use_map_settings = true;
-  try {
-    game_load_funcs.load_map_data(raw_chk.data(), raw_chk.size(), nullptr, false);
-  }
-  catch (bwgame::exception& e)
-  {
-    QMessageBox::critical(nullptr, QString(), QString("OpenBW failure: ") + e.what());
-    return false;
-  }
-  */
+
   openbw_ui.set_image_data();
   return true;
 }
@@ -546,4 +511,19 @@ void MapContext::select_all() {
     // TODO: Performance improvement on underlying functions
     openbw_ui.current_selection_add(&*u);
   }
+}
+
+bool MapContext::is_unsaved()
+{
+  return this->has_unsaved_changes;
+}
+
+std::string MapContext::filename()
+{
+  return chk.getFileName();
+}
+
+std::string MapContext::mapname()
+{
+  return *chk.strings.getScenarioName<RawString>().get();
 }

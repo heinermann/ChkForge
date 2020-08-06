@@ -27,8 +27,9 @@ MapView::MapView(std::shared_ptr<ChkForge::MapContext> mapContext, QWidget *pare
   QFrame* frame = new QFrame();
   ui->setupUi(frame);
   this->setWidget(frame);
-
   this->setAttribute(Qt::WA_DeleteOnClose);
+
+  updateTitle();
 
   timer = std::make_unique<QTimer>(this);
   connect(timer.get(), SIGNAL(timeout()), this, SLOT(updateLogic()));
@@ -54,9 +55,21 @@ void MapView::closeEvent(QCloseEvent* closeEvent)
 {
   if (map->has_one_view()) {
     auto widget = qobject_cast<ads::CDockWidget*>(sender());
-    auto result = QMessageBox::question(nullptr, "Close?", "Are you sure?");
-    if (result != QMessageBox::Yes)
-    {
+
+    auto qstring_map_name = QString::fromStdString(map->mapname());
+    auto question_str = tr("Do you want to save changes to \"%1\" before closing?").arg(qstring_map_name);
+
+    auto result = QMessageBox::question(this, tr("Unsaved changes..."), question_str,
+      QMessageBox::StandardButton::Save | QMessageBox::StandardButton::Discard | QMessageBox::StandardButton::Cancel);
+
+    switch (result) {
+    case QMessageBox::Save:
+      // TODO
+      break;
+    case QMessageBox::Discard:
+      break;
+    case QMessageBox::Cancel:
+    default:
       closeEvent->ignore();
       return;
     }
@@ -370,4 +383,9 @@ void MapView::select_units(bool double_clicked, bool shift, bool ctrl, const QRe
 std::shared_ptr<ChkForge::MapContext> MapView::getMap()
 {
   return map;
+}
+
+void MapView::updateTitle()
+{
+  setWindowTitle(QString::fromStdString(map->filename()) + (map->is_unsaved() ? "*" : ""));
 }

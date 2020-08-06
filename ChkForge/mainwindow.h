@@ -56,7 +56,6 @@ private:
   void createToolWindows();
   void mapMenuActions();
 
-  void createTestMap();
   void createMapView(std::shared_ptr<ChkForge::MapContext> map);
   MapView* currentMapView();
 

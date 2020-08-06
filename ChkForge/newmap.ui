@@ -246,6 +246,15 @@ Other sizes may crash Starcraft.</string>
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>spn_mapWidth</tabstop>
+  <tabstop>spn_mapHeight</tabstop>
+  <tabstop>cmb_tileset</tabstop>
+  <tabstop>lst_terrain</tabstop>
+  <tabstop>spn_clutter</tabstop>
+  <tabstop>okButton</tabstop>
+  <tabstop>cancelButton</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>
@@ -255,8 +264,8 @@ Other sizes may crash Starcraft.</string>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>278</x>
-     <y>253</y>
+     <x>356</x>
+     <y>496</y>
     </hint>
     <hint type="destinationlabel">
      <x>96</x>
@@ -271,8 +280,8 @@ Other sizes may crash Starcraft.</string>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>369</x>
-     <y>253</y>
+     <x>84</x>
+     <y>496</y>
     </hint>
     <hint type="destinationlabel">
      <x>179</x>

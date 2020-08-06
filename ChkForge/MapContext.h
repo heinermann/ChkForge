@@ -5,8 +5,7 @@
 #include <unordered_set>
 #include <random>
 
-#include <MappingCoreLib/MpqFile.h>
-#include <MappingCoreLib/Scenario.h>
+#include <MappingCoreLib/MapFile.h>
 
 #include "../openbw/openbw/ui/ui.h"
 
@@ -51,22 +50,26 @@ namespace ChkForge
 
     void select_all();
 
+    bool is_unsaved();
+    std::string filename();
+
+    std::string mapname();
+
   public:
     // TODO: Move viewport and screen position stuff out of openbw, to allow for multiple viewports in the same map
     bwgame::ui_functions openbw_ui;
 
     // TODO: Undo/redo buffer and actions
   private:
-    MpqFile mpq;
-    Scenario chk;
+    MapFile chk{ Sc::Terrain::Tileset::Badlands, 64, 64 };
 
     // Other stuff/info (i.e. list of views that are holding the map)
     std::unordered_set<MapView*> views;
 
     std::random_device rnd_d;
     std::mt19937 random{ rnd_d() };
-  private:
 
+    bool has_unsaved_changes = false;
   };
 }
 

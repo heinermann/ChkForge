@@ -26,8 +26,11 @@ MainWindow::MainWindow(QWidget *parent)
   ui->setupUi(this);
 
   createMdiDockArea();
-  createTestMap();
   createToolWindows();
+
+  auto map = ChkForge::MapContext::create();
+  map->new_map(128, 128, Sc::Terrain::Tileset::Badlands, 2, 5);
+  createMapView(map);
 }
 
 void MainWindow::createMdiDockArea()
@@ -47,20 +50,13 @@ void MainWindow::createMdiDockArea()
   center_dock_area->setHideSingleWidgetTitleBar(true);
 }
 
-void MainWindow::createTestMap()
-{
-  auto map = ChkForge::MapContext::create();
-  map->load_map("C:/Program Files (x86)/StarCraft/Maps/(2)Bottleneck.scm");
-
-  createMapView(map);
-}
-
 void MainWindow::createMapView(std::shared_ptr<ChkForge::MapContext> map)
 {
   auto mapView = new MapView(map);
   auto subWindow = mdi->addSubWindow(mapView);
   subWindow->resize(QSize{ 640, 480 });
   mapView->showMaximized();
+  mapView->setWindowTitle(QString::fromStdString(map->filename()));
 
   connect(mapView, &MapView::aboutToClose, minimap, &Minimap::onCloseMapView);
 }
