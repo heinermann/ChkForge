@@ -1,4 +1,5 @@
 #include "MapContext.h"
+#include "mapview.h"
 
 #include <filesystem>
 #include <memory>
@@ -13,6 +14,8 @@ using namespace ChkForge;
 MapContext::MapContext()
   : openbw_ui(bwgame::game_player())
 {
+  connect(&update_timer, &QTimer::timeout, this, &MapContext::update);
+  update_timer.start(42);
 }
 
 std::shared_ptr<MapContext> MapContext::create() {
@@ -408,6 +411,7 @@ void MapContext::chkdraft_to_openbw(bool is_editor_mode)
 void MapContext::add_view(MapView* view)
 {
   views.insert(view);
+  connect(&update_timer, &QTimer::timeout, view, &MapView::updateSurface);
 }
 
 void MapContext::remove_view(MapView* view)

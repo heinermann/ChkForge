@@ -3,7 +3,6 @@
 
 #include "ui_mapview.h"
 #include <QImage>
-#include <QTimer>
 #include <memory>
 #include <optional>
 
@@ -42,6 +41,7 @@ public:
   void select_units(bool double_clicked, bool shift, bool ctrl, const QRect& selection);
 
   void updateTitle();
+  void updateSurface();
 
   std::shared_ptr<ChkForge::MapContext> getMap();
 private:
@@ -50,7 +50,6 @@ private:
   QImage buffer;
   QPixmap pix_buffer;
   std::shared_ptr<ChkForge::MapContext> map;
-  std::unique_ptr<QTimer> timer;
 
   bool is_paused = false;
   bool is_dragging_screen = false;
@@ -72,8 +71,6 @@ private:
 
   void resizeSurface(const QSize& newSize);
 
-  void updateSurface();
-
   virtual void keyPressEvent(QKeyEvent* event) override;
 
   virtual void closeEvent(QCloseEvent* closeEvent) override;
@@ -82,7 +79,6 @@ signals:
   void aboutToClose(MapView* map);
 
 private slots:
-  void updateLogic();
   void hScrollMoved();
   void vScrollMoved();
 

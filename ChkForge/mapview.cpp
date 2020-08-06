@@ -31,9 +31,6 @@ MapView::MapView(std::shared_ptr<ChkForge::MapContext> mapContext, QWidget *pare
 
   updateTitle();
 
-  timer = std::make_unique<QTimer>(this);
-  connect(timer.get(), SIGNAL(timeout()), this, SLOT(updateLogic()));
-
   connect(ui->hScroll, SIGNAL(valueChanged(int)), this, SLOT(hScrollMoved()));
   connect(ui->vScroll, SIGNAL(valueChanged(int)), this, SLOT(vScrollMoved()));
 
@@ -41,7 +38,6 @@ MapView::MapView(std::shared_ptr<ChkForge::MapContext> mapContext, QWidget *pare
 
   map->add_view(this);
 
-  timer->start(42);
   resizeSurface(ui->surface->size());
 }
 
@@ -91,12 +87,6 @@ int MapView::map_tile_width() const
 int MapView::map_tile_height() const
 {
   return map->openbw_ui.game_st.map_tile_height;
-}
-
-void MapView::updateLogic()
-{
-  map->update();
-  updateSurface();
 }
 
 void MapView::updateSurface()

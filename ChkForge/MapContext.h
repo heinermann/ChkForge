@@ -9,7 +9,9 @@
 
 #include "../openbw/openbw/ui/ui.h"
 
+#include <QObject>
 #include <QRect>
+#include <QTimer>
 
 class MapView;
 
@@ -22,7 +24,7 @@ namespace ChkForge
   2. Hold any additional metadata that ChkForge will use.
 
   */
-  class MapContext
+  class MapContext : public QObject
   {
   public:
     MapContext();
@@ -70,6 +72,8 @@ namespace ChkForge
     std::mt19937 random{ rnd_d() };
 
     bool has_unsaved_changes = false;
+
+    QTimer update_timer{};
   };
 }
 
