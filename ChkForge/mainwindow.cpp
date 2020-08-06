@@ -33,7 +33,7 @@ MainWindow::MainWindow(QWidget *parent)
 void MainWindow::createMdiDockArea()
 {
   m_DockManager = new ads::CDockManager(this);
-  m_DockManager->setStyleSheet("ads--CDockContainerWidget QSplitter::handle { background: palette(light); }");
+  m_DockManager->setStyleSheet(m_DockManager->styleSheet() + "\nads--CDockContainerWidget QSplitter::handle { background: palette(light); }");
 
   connect(mdi, &QMdiArea::subWindowActivated, this, &MainWindow::onMdiSubWindowActivated);
 
