@@ -317,6 +317,7 @@
     <QtUic Include="scenariosettings.ui">
     </QtUic>
     <QtUic Include="spriteproperties.ui" />
+    <QtUic Include="statusbar.ui" />
     <QtUic Include="stringmanager.ui">
     </QtUic>
     <QtUic Include="terrainbrush.ui">

@@ -77,6 +77,7 @@ private:
 
 signals:
   void aboutToClose(MapView* map);
+  void mouseMove(const QPoint& pt);
 
 private slots:
   void hScrollMoved();

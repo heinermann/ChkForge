@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "ui_statusbar.h"
 
 #include "itemtree.h"
 #include "minimap.h"
@@ -16,21 +17,31 @@
 #include <QMdiArea>
 #include <QMdiSubwindow>
 #include <QStandardPaths>
+#include <QHBoxLayout>
 
 #include "MapContext.h"
 
 MainWindow::MainWindow(QWidget *parent)
   : QMainWindow(parent)
   , ui(new Ui::MainWindow)
+  , statusBar_ui(new Ui::StatusBar)
 {
   ui->setupUi(this);
 
+  createStatusBar();
   createMdiDockArea();
   createToolWindows();
 
-  auto map = ChkForge::MapContext::create();
-  map->new_map(128, 128, Sc::Terrain::Tileset::Badlands, 2, 5);
-  createMapView(map);
+  createNewMap(128, 128, Sc::Terrain::Tileset::Badlands, 2, 5);
+}
+
+void MainWindow::createStatusBar()
+{
+  statusBar_ui->setupUi(&statusBar_container);
+  ui->statusbar->addPermanentWidget(statusBar_ui->blank);
+  ui->statusbar->addPermanentWidget(statusBar_ui->layer_widget);
+  ui->statusbar->addPermanentWidget(statusBar_ui->player_widget);
+  ui->statusbar->addPermanentWidget(statusBar_ui->lbl_coordinates);
 }
 
 void MainWindow::createMdiDockArea()
@@ -48,6 +59,13 @@ void MainWindow::createMdiDockArea()
   auto center_dock_area = m_DockManager->addDockWidget(ads::DockWidgetArea::CenterDockWidgetArea, mdi_dock);
   center_dock_area->setAllowedAreas(ads::DockWidgetArea::OuterDockAreas);
   center_dock_area->setHideSingleWidgetTitleBar(true);
+}
+
+void MainWindow::createNewMap(int tileWidth, int tileHeight, Sc::Terrain::Tileset tileset, int brush, int clutter)
+{
+  auto map = ChkForge::MapContext::create();
+  map->new_map(tileWidth, tileHeight, tileset, brush, clutter);
+  createMapView(map);
 }
 
 void MainWindow::createMapView(std::shared_ptr<ChkForge::MapContext> map)
@@ -112,10 +130,7 @@ void MainWindow::on_action_file_new_triggered()
   int result = newMap.exec();
   if (result != QDialog::Accepted) return;
 
-  auto map = ChkForge::MapContext::create();
-  map->new_map(newMap.tile_width, newMap.tile_height, static_cast<Sc::Terrain::Tileset>(newMap.tileset->getTilesetId()), newMap.brush, newMap.clutter);
-
-  createMapView(map);
+  createNewMap(newMap.tile_width, newMap.tile_height, Sc::Terrain::Tileset(newMap.tileset->getTilesetId()), newMap.brush, newMap.clutter);
 }
 
 namespace {
@@ -384,13 +399,24 @@ void MainWindow::onMdiSubWindowActivated(QMdiSubWindow* window)
 {
   if (window == nullptr) {
     minimap->setActiveMapView(nullptr);
+    map_mouse_connection = std::nullopt;
+    statusBar_ui->lbl_coordinates->setText("");
     return;
   }
 
   MapView* map = qobject_cast<MapView*>(window);
   minimap->setActiveMapView(map);
 
+  if (map_mouse_connection) disconnect(*map_mouse_connection);
+  map_mouse_connection = connect(map, &MapView::mouseMove, this, &MainWindow::mapMouseMoved);
+
   // TODO: set for other tool windows (i.e. treeview)
+}
+
+void MainWindow::mapMouseMoved(const QPoint& pos)
+{
+  QPoint map_pos = currentMapView()->getScreenPos() + pos;
+  statusBar_ui->lbl_coordinates->setText(QString("%1, %2 (%3, %4)").arg(map_pos.x()).arg(map_pos.y()).arg(map_pos.x() / 32).arg(map_pos.y() / 32));
 }
 
 MapView* MainWindow::currentMapView() {

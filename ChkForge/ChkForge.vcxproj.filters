@@ -257,6 +257,9 @@
     <QtUic Include="stringmanager.ui">
       <Filter>Form Files\Dialogs</Filter>
     </QtUic>
+    <QtUic Include="statusbar.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="ChkForge.qrc">

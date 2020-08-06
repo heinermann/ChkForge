@@ -14,7 +14,7 @@
 class MapView;
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class MainWindow; }
+namespace Ui { class MainWindow; class StatusBar; }
 QT_END_NAMESPACE
 
 class MainWindow : public QMainWindow
@@ -27,6 +27,8 @@ public:
 
 private:
   Ui::MainWindow *ui;
+  Ui::StatusBar* statusBar_ui;
+  QWidget statusBar_container;
 
   Minimap* minimap = new Minimap();
   QMdiArea* mdi = new QMdiArea();
@@ -36,6 +38,8 @@ private:
 
   std::vector<QAction*> layerOptions;
   ChkForge::Layer currentLayer = ChkForge::LAYER_SELECT;
+
+  std::optional<QMetaObject::Connection> map_mouse_connection = std::nullopt;
 
 private:
   template <class T>
@@ -52,12 +56,15 @@ private:
 
   void toggleToolWindows(bool isOpen);
 
+  void createNewMap(int tileWidth, int tileHeight, Sc::Terrain::Tileset tileset, int brush, int clutter);
+  void createStatusBar();
   void createMdiDockArea();
   void createToolWindows();
   void mapMenuActions();
 
   void createMapView(std::shared_ptr<ChkForge::MapContext> map);
   MapView* currentMapView();
+  void mapMouseMoved(const QPoint& pos);
 
 private slots:
   void on_action_file_new_triggered();

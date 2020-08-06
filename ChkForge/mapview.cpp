@@ -183,6 +183,8 @@ bool MapView::mouseEventFilter(QObject* obj, QEvent* e)
     }
     return true;
   case QEvent::MouseMove:
+    emit mouseMove(mouseEvent->pos());
+
     if (mouseEvent->buttons() & Qt::LeftButton) {
       if (!drag_select) {
         drag_select = QRect{ mouseEvent->pos(), mouseEvent->pos() };
