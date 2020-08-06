@@ -773,7 +773,7 @@ struct ui_functions: ui_util_functions {
 	  for (size_t i = 12; i != 0;) {
 		  --i;
 		  for (unit_t* u : ptr(st.player_units[i])) {
-			  if (!unit_visble_on_minimap(u)) continue;
+			  //if (!unit_visble_on_minimap(u)) continue;
 			  int color = global_ui_st.img.player_minimap_colors.at(st.players[u->owner].color);
 			  size_t w = u->unit_type->placement_size.x / 32u;
 			  size_t h = u->unit_type->placement_size.y / 32u;

@@ -203,6 +203,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mainwindow.cpp" />
     <ClCompile Include="MapContext.cpp" />
+    <ClCompile Include="MapContext_OpenBW.cpp" />
     <ClCompile Include="mapview.cpp" />
     <ClCompile Include="minimap.cpp" />
     <ClCompile Include="newmap.cpp" />

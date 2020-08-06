@@ -153,6 +153,9 @@
     <ClCompile Include="MapContext.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MapContext_OpenBW.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="layers.h">
