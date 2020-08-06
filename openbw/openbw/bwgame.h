@@ -21655,7 +21655,7 @@ struct game_load_functions : state_functions {
 				if (unit_type->id == UnitTypes::Special_Start_Location) {
 					game_st.start_locations[owner] = { x, y };
 					// todo: some callback to set initial screen position?
-					//continue;
+					continue;
 				}
 				auto should_create_units_for_this_player = [&]() {
 					if (setup_info.create_no_units) return false;
