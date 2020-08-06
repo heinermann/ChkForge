@@ -18,6 +18,7 @@
 #include <QMdiSubwindow>
 #include <QStandardPaths>
 #include <QHBoxLayout>
+#include <QCloseEvent>
 
 #include "MapContext.h"
 
@@ -421,4 +422,17 @@ void MainWindow::mapMouseMoved(const QPoint& pos)
 
 MapView* MainWindow::currentMapView() {
   return qobject_cast<MapView*>(mdi->currentSubWindow());
+}
+
+void MainWindow::closeEvent(QCloseEvent* event)
+{
+  auto subwindows = mdi->subWindowList(QMdiArea::StackingOrder).toStdList();
+  subwindows.reverse();
+  for (auto* window : subwindows) {
+    if (!window->close()) {
+      event->ignore();
+      return;
+    }
+  }
+  event->accept();
 }

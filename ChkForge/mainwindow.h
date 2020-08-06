@@ -66,6 +66,8 @@ private:
   MapView* currentMapView();
   void mapMouseMoved(const QPoint& pos);
 
+  virtual void closeEvent(QCloseEvent* event) override;
+
 private slots:
   void on_action_file_new_triggered();
   void on_action_file_open_triggered();
