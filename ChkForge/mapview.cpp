@@ -31,8 +31,8 @@ MapView::MapView(std::shared_ptr<ChkForge::MapContext> mapContext, QWidget *pare
 
   updateTitle();
 
-  connect(ui->hScroll, SIGNAL(valueChanged(int)), this, SLOT(hScrollMoved()));
-  connect(ui->vScroll, SIGNAL(valueChanged(int)), this, SLOT(vScrollMoved()));
+  connect(ui->hScroll, &QScrollBar::valueChanged, this, &MapView::hScrollMoved);
+  connect(ui->vScroll, &QScrollBar::valueChanged, this, &MapView::vScrollMoved);
 
   ui->surface->installEventFilter(this);
 
@@ -285,15 +285,15 @@ bool MapView::eventFilter(QObject* obj, QEvent* e)
   return false;
 }
 
-void MapView::hScrollMoved()
+void MapView::hScrollMoved(int value)
 {
-  setScreenPos(QPoint{ ui->hScroll->value(), screen_position.y() });
+  setScreenPos(QPoint{ value, screen_position.y() });
   updateSurface();
 }
 
-void MapView::vScrollMoved()
+void MapView::vScrollMoved(int value)
 {
-  setScreenPos(QPoint{ screen_position.x(), ui->vScroll->value() });
+  setScreenPos(QPoint{ screen_position.x(), value });
   updateSurface();
 }
 

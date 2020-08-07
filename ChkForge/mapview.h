@@ -74,15 +74,13 @@ private:
   virtual void keyPressEvent(QKeyEvent* event) override;
 
   virtual void closeEvent(QCloseEvent* closeEvent) override;
+  
+  void hScrollMoved(int value);
+  void vScrollMoved(int value);
 
 signals:
   void aboutToClose(MapView* map);
   void mouseMove(const QPoint& pt);
-
-private slots:
-  void hScrollMoved();
-  void vScrollMoved();
-
 };
 
 #endif // MAPVIEW_H

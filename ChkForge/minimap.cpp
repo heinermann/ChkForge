@@ -17,7 +17,7 @@ Minimap::Minimap(QWidget *parent) :
   DockWidgetWrapper<Ui::Minimap>("Minimap", parent)
 {
   timer = std::make_unique<QTimer>(this);
-  connect(timer.get(), SIGNAL(timeout()), this, SLOT(updateLogic()));
+  connect(timer.get(), &QTimer::timeout, this, &Minimap::updateLogic);
 
   ui->surface->installEventFilter(this);
 

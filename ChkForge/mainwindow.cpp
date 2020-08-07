@@ -125,7 +125,7 @@ void MainWindow::mapMenuActions()
   connectTrigger(ui->action_view_toolwindows_closeAll, std::bind(&MainWindow::toggleToolWindows, this, false));
 
   for (QAction* layerAction : layerOptions) {
-    connect(layerAction, SIGNAL(triggered(bool)), this, SLOT(toggleLayer(bool)));
+    connect(layerAction, &QAction::triggered, this, &MainWindow::toggleLayer);
   }
 }
 
