@@ -3,36 +3,19 @@
         <file>icons/briefing.png</file>
         <file>icons/brush.png</file>
         <file>icons/circlefog.png</file>
-        <file>icons/copy.png</file>
-        <file>icons/delete.png</file>
         <file>icons/doodad.png</file>
-        <file>icons/Folder.png</file>
-        <file>icons/Folder_o.png</file>
         <file>icons/forces.png</file>
         <file>icons/grid.png</file>
-        <file>icons/help.png</file>
         <file>icons/location.png</file>
-        <file>icons/new.png</file>
-        <file>icons/open.png</file>
-        <file>icons/paintbucket.png</file>
-        <file>icons/paste.png</file>
-        <file>icons/player.png</file>
-        <file>icons/properties.png</file>
-        <file>icons/redo.png</file>
         <file>icons/revealer.png</file>
-        <file>icons/save.png</file>
-        <file>icons/save_as.png</file>
         <file>icons/scm.png</file>
         <file>icons/scx.png</file>
         <file>icons/snap.png</file>
-        <file>icons/sounds.png</file>
         <file>icons/sprite.png</file>
         <file>icons/squarefog.png</file>
         <file>icons/strings.png</file>
         <file>icons/terrain.png</file>
         <file>icons/triggers.png</file>
-        <file>icons/undo.png</file>
-        <file>icons/undo_all.png</file>
         <file>icons/unit.png</file>
         <file>icons/GitHub-Mark-32px.png</file>
         <file>icons/Discord-Logo-Black-32px.png</file>

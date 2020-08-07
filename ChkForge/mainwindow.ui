@@ -51,6 +51,10 @@ QSplitter::handle:vertical {
      <property name="title">
       <string>Recent Files</string>
      </property>
+     <property name="icon">
+      <iconset resource="../oxygen-subset.qrc">
+       <normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/document-open-recent.png</normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/document-open-recent.png</iconset>
+     </property>
     </widget>
     <addaction name="action_file_new"/>
     <addaction name="action_file_open"/>
