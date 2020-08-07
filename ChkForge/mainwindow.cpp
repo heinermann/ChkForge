@@ -113,7 +113,7 @@ void MainWindow::createMapView(std::shared_ptr<ChkForge::MapContext> map)
   QString map_filename = QString::fromStdString(map->filename());
   mapView->setWindowTitle(map_filename);
 
-  QIcon map_icon = icon_provider.icon(QFileInfo(map_filename));
+  QIcon map_icon = map_filename.isEmpty() ? QIcon(":/icons/scx.png") : icon_provider.icon(QFileInfo(map_filename));
   mapView->setWindowIcon(map_icon);
 
   connect(mapView, &MapView::aboutToClose, minimap, &Minimap::onCloseMapView);

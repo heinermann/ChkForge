@@ -271,118 +271,16 @@
     <QtRcc Include="ChkForge.qrc">
       <Filter>Resource Files</Filter>
     </QtRcc>
-    <None Include="icons\Folder.png">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="icons\Folder_o.png">
-      <Filter>Resource Files</Filter>
-    </None>
     <QtRcc Include="Icons.qrc">
       <Filter>Resource Files</Filter>
     </QtRcc>
-    <None Include="icons\briefing.png">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="icons\brush.png">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="icons\circlefog.png">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="icons\copy.png">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="icons\delete.png">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="icons\doodad.png">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="icons\forces.png">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="icons\grid.png">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="icons\help.png">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="icons\location.png">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="icons\new.png">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="icons\open.png">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="icons\paintbucket.png">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="icons\paste.png">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="icons\player.png">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="icons\properties.png">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="icons\redo.png">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="icons\revealer.png">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="icons\save.png">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="icons\save_as.png">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="icons\scm.png">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="icons\scx.png">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="icons\snap.png">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="icons\sounds.png">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="icons\sprite.png">
-      <Filter>Resource Files</Filter>
-    </None>
     <None Include="sprites.txt">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="icons\squarefog.png">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="icons\strings.png">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="techs.txt">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="icons\terrain.png">
-      <Filter>Resource Files</Filter>
-    </None>
     <None Include="terrain.txt">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="icons\triggers.png">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="icons\undo.png">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="icons\undo_all.png">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="icons\unit.png">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="units.txt">
@@ -397,14 +295,6 @@
     <QtRcc Include="..\oxygen-subset.qrc">
       <Filter>Resource Files</Filter>
     </QtRcc>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="icons\GitHub-Mark-32px.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="icons\Discord-Logo-Black-32px.png">
-      <Filter>Resource Files</Filter>
-    </Image>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="doodadpalette.h">

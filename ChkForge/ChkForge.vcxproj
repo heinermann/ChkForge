@@ -334,54 +334,16 @@
       <InitFuncName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ChkForge</InitFuncName>
       <InitFuncName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ChkForge</InitFuncName>
     </QtRcc>
-    <None Include="icons\Folder.png" />
-    <None Include="icons\Folder_o.png" />
     <QtRcc Include="Icons.qrc">
       <InitFuncName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Icons</InitFuncName>
       <InitFuncName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Icons</InitFuncName>
     </QtRcc>
-    <None Include="icons\briefing.png" />
-    <None Include="icons\brush.png" />
-    <None Include="icons\circlefog.png" />
-    <None Include="icons\copy.png" />
-    <None Include="icons\delete.png" />
-    <None Include="icons\doodad.png" />
-    <None Include="icons\forces.png" />
-    <None Include="icons\grid.png" />
-    <None Include="icons\help.png" />
-    <None Include="icons\location.png" />
-    <None Include="icons\new.png" />
-    <None Include="icons\open.png" />
-    <None Include="icons\paintbucket.png" />
-    <None Include="icons\paste.png" />
-    <None Include="icons\player.png" />
-    <None Include="icons\properties.png" />
-    <None Include="icons\redo.png" />
-    <None Include="icons\revealer.png" />
-    <None Include="icons\save.png" />
-    <None Include="icons\save_as.png" />
-    <None Include="icons\scm.png" />
-    <None Include="icons\scx.png" />
-    <None Include="icons\snap.png" />
-    <None Include="icons\sounds.png" />
-    <None Include="icons\sprite.png" />
     <None Include="sprites.txt" />
-    <None Include="icons\squarefog.png" />
-    <None Include="icons\strings.png" />
     <None Include="techs.txt" />
-    <None Include="icons\terrain.png" />
     <None Include="terrain.txt" />
-    <None Include="icons\triggers.png" />
-    <None Include="icons\undo.png" />
-    <None Include="icons\undo_all.png" />
-    <None Include="icons\unit.png" />
     <None Include="units.txt" />
     <None Include="upgrades.txt" />
     <None Include="weapons.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="icons\Discord-Logo-Black-32px.png" />
-    <Image Include="icons\GitHub-Mark-32px.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ads\QtAdvancedDockingSystem.vcxproj">
