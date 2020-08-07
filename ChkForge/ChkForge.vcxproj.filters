@@ -263,6 +263,9 @@
     <QtUic Include="statusbar.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="toolbars.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="ChkForge.qrc">

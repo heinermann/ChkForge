@@ -188,11 +188,23 @@ Other sizes may crash Starcraft.</string>
         <property name="showDropIndicator" stdset="0">
          <bool>false</bool>
         </property>
+        <property name="iconSize">
+         <size>
+          <width>24</width>
+          <height>24</height>
+         </size>
+        </property>
         <property name="rootIsDecorated">
          <bool>false</bool>
         </property>
+        <property name="uniformRowHeights">
+         <bool>true</bool>
+        </property>
         <property name="itemsExpandable">
          <bool>false</bool>
+        </property>
+        <property name="allColumnsShowFocus">
+         <bool>true</bool>
         </property>
         <property name="expandsOnDoubleClick">
          <bool>false</bool>

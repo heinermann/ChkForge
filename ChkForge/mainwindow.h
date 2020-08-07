@@ -14,7 +14,7 @@
 class MapView;
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class MainWindow; class StatusBar; }
+namespace Ui { class MainWindow; class StatusBar; class toolbars; }
 QT_END_NAMESPACE
 
 class MainWindow : public QMainWindow
@@ -28,7 +28,10 @@ public:
 private:
   Ui::MainWindow *ui;
   Ui::StatusBar* statusBar_ui;
+  Ui::toolbars* toolbars_ui;
+
   QWidget statusBar_container;
+  QWidget toolbars_container;
 
   Minimap* minimap = new Minimap();
   QMdiArea* mdi = new QMdiArea();
@@ -41,6 +44,7 @@ private:
 
   std::optional<QMetaObject::Connection> map_mouse_connection = std::nullopt;
 
+  bool is_changing_layer = false;
 private:
   template <class T>
   ads::CDockAreaWidget* createToolWindow(ads::DockWidgetArea dockWidgetArea, ads::CDockAreaWidget* areaWidget = nullptr) {
@@ -57,6 +61,7 @@ private:
   void toggleToolWindows(bool isOpen);
 
   void createNewMap(int tileWidth, int tileHeight, Sc::Terrain::Tileset tileset, int brush, int clutter);
+  void createToolbars();
   void createStatusBar();
   void createMdiDockArea();
   void createToolWindows();
@@ -123,6 +128,7 @@ private slots:
   void on_action_window_cascade_triggered();
   void on_action_window_tile_triggered();
 
+  void selectLayerIndex(int index);
   void toggleLayer(bool checked);
 
   void onMdiSubWindowActivated(QMdiSubWindow* window);

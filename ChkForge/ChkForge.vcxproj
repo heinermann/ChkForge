@@ -325,6 +325,7 @@
     </QtUic>
     <QtUic Include="tilepalette.ui">
     </QtUic>
+    <QtUic Include="toolbars.ui" />
     <QtUic Include="unitproperties.ui" />
   </ItemGroup>
   <ItemGroup>

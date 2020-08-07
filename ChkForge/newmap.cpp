@@ -48,7 +48,6 @@ void NewMap::on_cmb_tileset_currentIndexChanged(int index)
 
   QModelIndex firstBrush = brush_list_model.index(tileset->getDefaultBrushIndex(), 0);
   ui->lst_terrain->setCurrentIndex(firstBrush);
-  ui->lst_terrain->setIconSize(QSize{ 24, 24 });
 }
 
 void NewMap::accept()

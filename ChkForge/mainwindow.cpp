@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "ui_statusbar.h"
+#include "ui_toolbars.h"
 
 #include "itemtree.h"
 #include "minimap.h"
@@ -19,6 +20,7 @@
 #include <QStandardPaths>
 #include <QHBoxLayout>
 #include <QCloseEvent>
+#include <QVariant>
 
 #include "MapContext.h"
 
@@ -26,14 +28,40 @@ MainWindow::MainWindow(QWidget *parent)
   : QMainWindow(parent)
   , ui(new Ui::MainWindow)
   , statusBar_ui(new Ui::StatusBar)
+  , toolbars_ui(new Ui::toolbars)
 {
   ui->setupUi(this);
+
+  layerOptions = std::vector{
+    ui->action_layer_selectBrush,
+    ui->action_layer_terrain,
+    ui->action_layer_doodads,
+    ui->action_layer_sprites,
+    ui->action_layer_units,
+    ui->action_layer_locations,
+    ui->action_layer_fog
+  };
 
   createStatusBar();
   createMdiDockArea();
   createToolWindows();
+  mapMenuActions();
+  createToolbars();
 
   createNewMap(128, 128, Sc::Terrain::Tileset::Badlands, 2, 5);
+}
+
+void MainWindow::createToolbars() {
+  toolbars_ui->setupUi(&toolbars_container);
+
+  ui->layer_toolbar->addWidget(toolbars_ui->layer_toolbar);
+  ui->zoom_toolbar->addWidget(toolbars_ui->zoom_toolbar);
+
+  for (QAction* layer : layerOptions) {
+    toolbars_ui->cmb_layer->addItem(layer->icon(), layer->text().remove('&'), QVariant::fromValue(layer));
+  }
+
+  connect(toolbars_ui->cmb_layer, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &MainWindow::selectLayerIndex);
 }
 
 void MainWindow::createStatusBar()
@@ -95,16 +123,6 @@ void MainWindow::mapMenuActions()
   // Map menu actions
   connectTrigger(ui->action_view_toolwindows_showAll, std::bind(&MainWindow::toggleToolWindows, this, true));
   connectTrigger(ui->action_view_toolwindows_closeAll, std::bind(&MainWindow::toggleToolWindows, this, false));
-
-  layerOptions = std::vector{
-    ui->action_layer_selectBrush,
-    ui->action_layer_terrain,
-    ui->action_layer_doodads,
-    ui->action_layer_sprites,
-    ui->action_layer_units,
-    ui->action_layer_locations,
-    ui->action_layer_fog
-  };
 
   for (QAction* layerAction : layerOptions) {
     connect(layerAction, SIGNAL(triggered(bool)), this, SLOT(toggleLayer(bool)));
@@ -381,19 +399,25 @@ void MainWindow::on_action_window_tile_triggered()
   mdi->tileSubWindows();
 }
 
-void MainWindow::toggleLayer(bool checked)
-{
-  if (!checked) return;
+void MainWindow::selectLayerIndex(int index) {
+  if (is_changing_layer) return;
+  is_changing_layer = true;
 
-  QAction* src = qobject_cast<QAction*>(sender());
-  int layer_id = src->property("layer_id").value<int>();
-  
   for (QAction* layerAction : layerOptions) {
-    if (layerAction == src) continue;
     layerAction->setChecked(false);
   }
+  layerOptions[index]->setChecked(true);
+
+  toolbars_ui->cmb_layer->setCurrentIndex(index);
 
   // TODO: Actual Layer stuff
+
+  is_changing_layer = false;
+}
+
+void MainWindow::toggleLayer(bool checked)
+{
+  selectLayerIndex(sender()->property("layer_id").value<int>());
 }
 
 void MainWindow::onMdiSubWindowActivated(QMdiSubWindow* window)
