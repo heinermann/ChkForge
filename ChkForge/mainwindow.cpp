@@ -62,6 +62,7 @@ void MainWindow::createToolbars() {
   }
 
   connect(toolbars_ui->cmb_layer, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &MainWindow::selectLayerIndex);
+  connect(toolbars_ui->spn_zoom, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), this, &MainWindow::zoomChanged);
 }
 
 void MainWindow::createStatusBar()
@@ -424,7 +425,6 @@ void MainWindow::onMdiSubWindowActivated(QMdiSubWindow* window)
 {
   if (window == nullptr) {
     minimap->setActiveMapView(nullptr);
-    map_mouse_connection = std::nullopt;
     statusBar_ui->lbl_coordinates->setText("");
     return;
   }
@@ -432,15 +432,20 @@ void MainWindow::onMdiSubWindowActivated(QMdiSubWindow* window)
   MapView* map = qobject_cast<MapView*>(window);
   minimap->setActiveMapView(map);
 
-  if (map_mouse_connection) disconnect(*map_mouse_connection);
-  map_mouse_connection = connect(map, &MapView::mouseMove, this, &MainWindow::mapMouseMoved);
+  disconnect(this, SLOT(mapMouseMoved(const QPoint&)));
+  disconnect(toolbars_ui->spn_zoom, SLOT(setValue(int)));
+
+  toolbars_ui->spn_zoom->setValue(map->getViewScale() * 100);
+
+  connect(map, SIGNAL(mouseMove(const QPoint&)), this, SLOT(mapMouseMoved(const QPoint&)));
+  connect(map, SIGNAL(scaleChangedPercent(int)), toolbars_ui->spn_zoom, SLOT(setValue(int)));
 
   // TODO: set for other tool windows (i.e. treeview)
 }
 
 void MainWindow::mapMouseMoved(const QPoint& pos)
 {
-  QPoint map_pos = currentMapView()->getScreenPos() + pos;
+  QPoint map_pos = currentMapView()->pointToMap(pos);
   statusBar_ui->lbl_coordinates->setText(QString("%1, %2 (%3, %4)").arg(map_pos.x()).arg(map_pos.y()).arg(map_pos.x() / 32).arg(map_pos.y() / 32));
 }
 
@@ -459,4 +464,15 @@ void MainWindow::closeEvent(QCloseEvent* event)
     }
   }
   event->accept();
+}
+
+void MainWindow::zoomChanged(int value)
+{
+  if (is_changing_zoom) return;
+  is_changing_zoom = true;
+  MapView* map = currentMapView();
+  if (map) {
+    map->setViewScalePercent(value);
+  }
+  is_changing_zoom = false;
 }

@@ -26,6 +26,7 @@ public:
 
   void setScreenPos(const QPoint& pos);
   QPoint getScreenPos();
+  QRect getScreenRect();
   QSize getViewSize();
 
   void move_minimap(const QPoint& pos);
@@ -43,6 +44,11 @@ public:
   void updateTitle();
   void updateSurface();
 
+  void setViewScalePercent(double value);
+  double getViewScale();
+
+  QPoint pointToMap(QPoint pt);
+
   std::shared_ptr<ChkForge::MapContext> getMap();
 private:
   Ui::MapView* ui;
@@ -59,7 +65,7 @@ private:
 
   QRect screen_position{0, 0, 640, 480};
 
-  double view_scale = 1.0;
+  double view_scale_percent = 100.0;
 
 private:
   void updateScrollbarPositions();
@@ -69,7 +75,7 @@ private:
   bool mouseEventFilter(QObject* obj, QEvent* e);
   void paint_surface(QWidget* obj, QPaintEvent* paintEvent);
 
-  void resizeSurface(const QSize& newSize);
+  void resizeSurface(QSize newSize);
 
   virtual void keyPressEvent(QKeyEvent* event) override;
 
@@ -81,6 +87,7 @@ private:
 signals:
   void aboutToClose(MapView* map);
   void mouseMove(const QPoint& pt);
+  void scaleChangedPercent(int value);
 };
 
 #endif // MAPVIEW_H

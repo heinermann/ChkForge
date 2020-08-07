@@ -144,12 +144,24 @@ QVector<QRgb> MapView::get_palette() {
   return colors;
 }
 
+void MapView::setViewScalePercent(double value)
+{
+  this->view_scale_percent = std::clamp(value, 20.0, 300.0);
+  emit scaleChangedPercent(std::ceil(view_scale_percent));
+  resizeSurface(ui->surface->size());
+}
+
+double MapView::getViewScale() {
+  return this->view_scale_percent / 100.0;
+}
+
 bool MapView::mouseEventFilter(QObject* obj, QEvent* e)
 {
   QMouseEvent* mouseEvent = reinterpret_cast<QMouseEvent*>(e);
   bool double_clicked = mouseEvent->flags() & Qt::MouseEventCreatedDoubleClick;
   bool shift_pressed = mouseEvent->modifiers() & Qt::ShiftModifier;
   bool ctrl_pressed = mouseEvent->modifiers() & Qt::ControlModifier;
+  QPoint map_pos = pointToMap(mouseEvent->pos());
 
   switch (e->type())
   {
@@ -160,22 +172,23 @@ bool MapView::mouseEventFilter(QObject* obj, QEvent* e)
     else if (mouseEvent->button() == Qt::MiddleButton) {
       this->is_dragging_screen = true;
       this->last_drag_position = mouseEvent->pos();
-      this->drag_screen_pos = getScreenPos() + mouseEvent->pos() / view_scale;
+      this->drag_screen_pos = getScreenPos() + mouseEvent->pos();
     }
     else if (mouseEvent->button() == Qt::RightButton) {
-      auto place_pos = screen_position.topLeft() + mouseEvent->pos();
-      map->place_unit(Sc::Unit::Type::TerranMarine, 0, place_pos.x(), place_pos.y());
+      map->place_unit(Sc::Unit::Type::TerranMarine, 0, map_pos.x(), map_pos.y());
     }
     return true;
   case QEvent::MouseButtonDblClick:
     if (mouseEvent->button() == Qt::LeftButton) {
-      select_units(true, shift_pressed, ctrl_pressed, QRect{ mouseEvent->pos(), mouseEvent->pos() });
+      select_units(true, shift_pressed, ctrl_pressed, QRect{ map_pos, map_pos });
       drag_select = std::nullopt;
     }
     return true;
   case QEvent::MouseButtonRelease:
     if (mouseEvent->button() == Qt::LeftButton && this->drag_select) {
-      select_units(false, shift_pressed, ctrl_pressed, *drag_select);
+      select_units(false, shift_pressed, ctrl_pressed,
+        QRect{ pointToMap(drag_select->topLeft()), pointToMap(drag_select->bottomRight()) }
+      );
       drag_select = std::nullopt;
     }
     else if (mouseEvent->button() == Qt::MiddleButton) {
@@ -200,7 +213,7 @@ bool MapView::mouseEventFilter(QObject* obj, QEvent* e)
         // TODO: Investigate how to wrap without this line (without bugs)
         if (diff.manhattanLength() > ui->surface->width() / 4) return true;
 
-        this->setScreenPos(getScreenPos() - diff / this->view_scale);
+        this->setScreenPos(pointToMap(-diff));
         updateSurface();
 
         // Do mouse wrapping
@@ -240,6 +253,19 @@ bool MapView::surfaceEventFilter(QObject* obj, QEvent* e)
   case QEvent::MouseButtonRelease:
   case QEvent::MouseMove:
     return mouseEventFilter(obj, e);
+  case QEvent::Wheel:
+  {
+    QWheelEvent* wheelEvent = static_cast<QWheelEvent*>(e);
+    if (wheelEvent->modifiers() & Qt::KeyboardModifier::ControlModifier) {
+      if (wheelEvent->angleDelta().y() / 8 < 0) {
+        setViewScalePercent(view_scale_percent * 0.9);
+      }
+      else if (wheelEvent->angleDelta().y() / 8 > 0) {
+        setViewScalePercent(view_scale_percent * 1.1);
+      }
+    }
+    return true;
+  }
   case QEvent::Resize:
   {
     QResizeEvent* resizeEvent = static_cast<QResizeEvent*>(e);
@@ -307,7 +333,7 @@ void MapView::paint_surface(QWidget* obj, QPaintEvent* paintEvent)
     bwgame::rect{ {screen_position.left(), screen_position.top()}, {screen_position.right(), screen_position.bottom()} });
   
   pix_buffer.convertFromImage(this->buffer);
-  painter.drawPixmap(0, 0, pix_buffer);
+  painter.drawPixmap(obj->rect(), pix_buffer);
   
   // Selection box
   if (drag_select) {
@@ -321,6 +347,11 @@ void MapView::paint_surface(QWidget* obj, QPaintEvent* paintEvent)
 QPoint MapView::getScreenPos()
 {
   return screen_position.topLeft();
+}
+
+QRect MapView::getScreenRect()
+{
+  return screen_position;
 }
 
 QSize MapView::getViewSize()
@@ -344,8 +375,10 @@ void MapView::updateScrollbarPositions()
   this->ui->vScroll->setValue(screen_position.y());
 }
 
-void MapView::resizeSurface(const QSize& newSize)
+void MapView::resizeSurface(QSize newSize)
 {
+  newSize /= getViewScale();
+
   this->buffer = QImage(newSize, QImage::Format::Format_Indexed8);
   this->buffer.setColorTable(this->get_palette());
 
@@ -380,4 +413,9 @@ std::shared_ptr<ChkForge::MapContext> MapView::getMap()
 void MapView::updateTitle()
 {
   setWindowTitle(QString::fromStdString(map->filename()) + (map->is_unsaved() ? "*" : ""));
+}
+
+QPoint MapView::pointToMap(QPoint pt)
+{
+  return screen_position.topLeft() + pt / getViewScale();
 }

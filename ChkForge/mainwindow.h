@@ -42,9 +42,11 @@ private:
   std::vector<QAction*> layerOptions;
   ChkForge::Layer currentLayer = ChkForge::LAYER_SELECT;
 
-  std::optional<QMetaObject::Connection> map_mouse_connection = std::nullopt;
+  //std::optional<QMetaObject::Connection> map_mouse_connection = std::nullopt;
+  //std::optional<QMetaObject::Connection> zoom_connection = std::nullopt;
 
   bool is_changing_layer = false;
+  bool is_changing_zoom = false;
 private:
   template <class T>
   ads::CDockAreaWidget* createToolWindow(ads::DockWidgetArea dockWidgetArea, ads::CDockAreaWidget* areaWidget = nullptr) {
@@ -69,11 +71,13 @@ private:
 
   void createMapView(std::shared_ptr<ChkForge::MapContext> map);
   MapView* currentMapView();
-  void mapMouseMoved(const QPoint& pos);
 
   virtual void closeEvent(QCloseEvent* event) override;
 
 private slots:
+  void mapMouseMoved(const QPoint& pos);
+  void zoomChanged(int value);
+
   void on_action_file_new_triggered();
   void on_action_file_open_triggered();
   void on_action_file_save_triggered();

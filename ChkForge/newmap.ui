@@ -88,6 +88,9 @@
           <height>0</height>
          </size>
         </property>
+        <property name="accelerated">
+         <bool>true</bool>
+        </property>
         <property name="correctionMode">
          <enum>QAbstractSpinBox::CorrectToNearestValue</enum>
         </property>
@@ -110,6 +113,9 @@
           <height>0</height>
          </size>
         </property>
+        <property name="accelerated">
+         <bool>true</bool>
+        </property>
         <property name="correctionMode">
          <enum>QAbstractSpinBox::CorrectToNearestValue</enum>
         </property>
@@ -127,7 +133,7 @@
       <item row="1" column="1">
        <widget class="QLabel" name="label_5">
         <property name="text">
-         <string>×</string>
+         <string notr="true">×</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -222,8 +228,14 @@ Other sizes may crash Starcraft.</string>
           <height>0</height>
          </size>
         </property>
+        <property name="accelerated">
+         <bool>true</bool>
+        </property>
         <property name="correctionMode">
          <enum>QAbstractSpinBox::CorrectToNearestValue</enum>
+        </property>
+        <property name="suffix">
+         <string notr="true">%</string>
         </property>
         <property name="maximum">
          <number>100</number>
@@ -236,7 +248,7 @@ Other sizes may crash Starcraft.</string>
       <item row="5" column="0">
        <widget class="QLabel" name="label_3">
         <property name="text">
-         <string>Clutter %:</string>
+         <string>Clutter:</string>
         </property>
        </widget>
       </item>
