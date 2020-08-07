@@ -285,22 +285,22 @@ bool MapView::surfaceEventFilter(QObject* obj, QEvent* e)
 
 void MapView::keyPressEvent(QKeyEvent* event)
 {
-  //if (event->modifiers() == Qt::KeyboardModifier::NoModifier) {
+  if (event->modifiers() == Qt::KeyboardModifier::NoModifier) {
     switch (event->key()) {
     case Qt::Key::Key_Left:
-      setScreenPos(screen_position.topLeft() - QPoint{4, 0});
+      setScreenPos(screen_position.topLeft() - QPoint{ 32, 0 });
       break;
     case Qt::Key::Key_Right:
-      setScreenPos(screen_position.topLeft() + QPoint{ 4, 0 });
+      setScreenPos(screen_position.topLeft() + QPoint{ 32, 0 });
       break;
     case Qt::Key::Key_Up:
-      setScreenPos(screen_position.topLeft() - QPoint{ 0, 4 });
+      setScreenPos(screen_position.topLeft() - QPoint{ 0, 32 });
       break;
     case Qt::Key::Key_Down:
-      setScreenPos(screen_position.topLeft() + QPoint{ 0, 4 });
+      setScreenPos(screen_position.topLeft() + QPoint{ 0, 32 });
       break;
     }
-  //}
+  }
 }
 
 bool MapView::eventFilter(QObject* obj, QEvent* e)
