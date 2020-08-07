@@ -193,19 +193,19 @@ namespace bwgame {
 		ins_data[opc_wait] = "1";
 		ins_data[opc_waitrand] = "11";
 		ins_data[opc_goto] = "j";
-		ins_data[opc_imgol] = "211";
-		ins_data[opc_imgul] = "211";
+		ins_data[opc_imgol] = "2s1s1";
+		ins_data[opc_imgul] = "2s1s1";
 		ins_data[opc_imgolorig] = "2";
 		ins_data[opc_switchul] = "2";
 		ins_data[opc___0c] = "";
-		ins_data[opc_imgoluselo] = "211";
-		ins_data[opc_imguluselo] = "211";
+		ins_data[opc_imgoluselo] = "2s1s1";
+		ins_data[opc_imguluselo] = "2s1s1";
 		ins_data[opc_sprol] = "2s1s1";
-		ins_data[opc_highsprol] = "211";
-		ins_data[opc_lowsprul] = "211";
+		ins_data[opc_highsprol] = "2s1s1";
+		ins_data[opc_lowsprul] = "2s1s1";
 		ins_data[opc_uflunstable] = "2";
-		ins_data[opc_spruluselo] = "211";
-		ins_data[opc_sprul] = "211";
+		ins_data[opc_spruluselo] = "2s1s1";
+		ins_data[opc_sprul] = "2s1s1";
 		ins_data[opc_sproluselo] = "21";
 		ins_data[opc_end] = "e";
 		ins_data[opc_setflipstate] = "1";
@@ -251,7 +251,7 @@ namespace bwgame {
 		ins_data[opc_liftoffcondjmp] = "b";
 		ins_data[opc_warpoverlay] = "2";
 		ins_data[opc_orderdone] = "1";
-		ins_data[opc_grdsprol] = "211";
+		ins_data[opc_grdsprol] = "2s1s1";
 		ins_data[opc___43] = "";
 		ins_data[opc_dogrddamage] = "";
 
