@@ -12,6 +12,7 @@
 #include <QObject>
 #include <QRect>
 #include <QTimer>
+#include <QRgb>
 
 class MapView;
 
@@ -56,6 +57,8 @@ namespace ChkForge
     std::string filename();
 
     std::string mapname();
+
+    QRgb player_color(int player_num);
 
   public:
     // TODO: Move viewport and screen position stuff out of openbw, to allow for multiple viewports in the same map

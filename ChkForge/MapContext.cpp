@@ -172,5 +172,18 @@ std::string MapContext::filename()
 
 std::string MapContext::mapname()
 {
-  return *chk.strings.getScenarioName<RawString>().get();
+  auto str = chk.strings.getScenarioName<RawString>();
+  if (str) {
+    return *str.get();
+  }
+  return "";
+}
+
+QRgb MapContext::player_color(int player_num)
+{
+  std::clamp(player_num, 0, 11);
+  int color_index = bwgame::global_ui_st.img.player_minimap_colors.at(openbw_ui.st.players[player_num].color);
+
+  auto color = openbw_ui.palette_colors[color_index];
+  return qRgb(color.r, color.g, color.b);
 }
