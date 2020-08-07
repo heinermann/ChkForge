@@ -65,12 +65,9 @@
        </property>
        <property name="minimumSize">
         <size>
-         <width>64</width>
+         <width>50</width>
          <height>0</height>
         </size>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
        </property>
        <property name="accelerated">
         <bool>true</bool>
@@ -106,12 +103,9 @@
        </property>
        <property name="minimumSize">
         <size>
-         <width>64</width>
+         <width>50</width>
          <height>0</height>
         </size>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
        </property>
        <property name="accelerated">
         <bool>true</bool>
@@ -151,7 +145,7 @@
        </property>
        <property name="minimumSize">
         <size>
-         <width>64</width>
+         <width>48</width>
          <height>0</height>
         </size>
        </property>
@@ -170,7 +164,7 @@
        </property>
        <property name="minimumSize">
         <size>
-         <width>64</width>
+         <width>48</width>
          <height>0</height>
         </size>
        </property>
@@ -203,12 +197,9 @@
        </property>
        <property name="minimumSize">
         <size>
-         <width>64</width>
+         <width>48</width>
          <height>0</height>
         </size>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
        </property>
        <property name="accelerated">
         <bool>true</bool>
