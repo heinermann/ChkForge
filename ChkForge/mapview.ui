@@ -13,9 +13,6 @@
   <property name="focusPolicy">
    <enum>Qt::StrongFocus</enum>
   </property>
-  <property name="windowTitle">
-   <string>untitled.scx</string>
-  </property>
   <property name="frameShape">
    <enum>QFrame::Panel</enum>
   </property>
@@ -76,6 +73,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../oxygen-subset.qrc"/>
+ </resources>
  <connections/>
 </ui>

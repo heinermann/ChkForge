@@ -329,6 +329,7 @@
     <QtUic Include="unitproperties.ui" />
   </ItemGroup>
   <ItemGroup>
+    <QtRcc Include="..\oxygen-subset.qrc" />
     <QtRcc Include="ChkForge.qrc">
       <InitFuncName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ChkForge</InitFuncName>
       <InitFuncName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ChkForge</InitFuncName>

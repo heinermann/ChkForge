@@ -394,6 +394,9 @@
     <None Include="weapons.txt">
       <Filter>Resource Files</Filter>
     </None>
+    <QtRcc Include="..\oxygen-subset.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
   </ItemGroup>
   <ItemGroup>
     <Image Include="icons\GitHub-Mark-32px.png">

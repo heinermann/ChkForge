@@ -21,6 +21,9 @@
 #include <QHBoxLayout>
 #include <QCloseEvent>
 #include <QVariant>
+#include <QDesktopServices>
+#include <QFileIconProvider>
+#include <QFileInfo>
 
 #include "MapContext.h"
 
@@ -100,11 +103,18 @@ void MainWindow::createNewMap(int tileWidth, int tileHeight, Sc::Terrain::Tilese
 
 void MainWindow::createMapView(std::shared_ptr<ChkForge::MapContext> map)
 {
+  static QFileIconProvider icon_provider{};
+
   auto mapView = new MapView(map);
   auto subWindow = mdi->addSubWindow(mapView);
   subWindow->resize(QSize{ 640, 480 });
   mapView->showMaximized();
-  mapView->setWindowTitle(QString::fromStdString(map->filename()));
+
+  QString map_filename = QString::fromStdString(map->filename());
+  mapView->setWindowTitle(map_filename);
+
+  QIcon map_icon = icon_provider.icon(QFileInfo(map_filename));
+  mapView->setWindowIcon(map_icon);
 
   connect(mapView, &MapView::aboutToClose, minimap, &Minimap::onCloseMapView);
 }
@@ -352,6 +362,11 @@ void MainWindow::on_action_layer_options_triggered()
 void MainWindow::on_action_help_about_triggered()
 {
   About(this).exec();
+}
+
+void MainWindow::on_action_help_report_triggered()
+{
+  QDesktopServices::openUrl(QUrl("https://github.com/heinermann/ChkForge/issues"));
 }
 
 void MainWindow::on_action_test_play_triggered()

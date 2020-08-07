@@ -10,6 +10,7 @@ Some code snippets from Starforge are used (i.e. terrain).
 - [OpenBW](https://github.com/OpenBW/openbw) for rendering and simulation.
 - [StormLib](https://github.com/ladislav-zezula/StormLib) for MPQ management.
 - [CascLib](https://github.com/ladislav-zezula/CascLib) for Casc loading.
+- [oxygen-icons-png](https://github.com/pasnox/oxygen-icons-png) for icons.
 
 ## Development
 ### Developer Setup

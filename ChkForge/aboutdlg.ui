@@ -21,7 +21,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normalon>:/icons/help.png</normalon>
+    <normalon>:/themes/oxygen-icons-png/oxygen/16x16/actions/help-about.png</normalon>
    </iconset>
   </property>
   <property name="modal">
@@ -172,6 +172,7 @@ Some select Starforge code snippets and resources.
  </widget>
  <resources>
   <include location="Icons.qrc"/>
+  <include location="../oxygen-subset.qrc"/>
  </resources>
  <connections>
   <connection>

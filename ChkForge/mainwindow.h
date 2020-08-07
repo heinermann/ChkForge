@@ -122,6 +122,7 @@ private slots:
   void on_action_scenario_description_triggered();
   void on_action_layer_options_triggered();
   void on_action_help_about_triggered();
+  void on_action_help_report_triggered();
   void on_action_test_play_triggered();
   void on_action_test_advance1_triggered();
   void on_action_test_reset_triggered();
