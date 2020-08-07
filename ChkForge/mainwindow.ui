@@ -777,7 +777,7 @@ QSplitter::handle:vertical {
      <normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/edit-select.png</normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/edit-select.png</iconset>
    </property>
    <property name="text">
-    <string>&amp;Select</string>
+    <string>S&amp;elect (Cut/Copy/Paste)</string>
    </property>
    <property name="layer_id" stdset="0">
     <number>0</number>
@@ -854,7 +854,7 @@ QSplitter::handle:vertical {
      <normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/window-duplicate.png</normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/window-duplicate.png</iconset>
    </property>
    <property name="text">
-    <string>Duplicate State</string>
+    <string>Copy State to New Map</string>
    </property>
    <property name="toolTip">
     <string>Copy the current state to a new map</string>

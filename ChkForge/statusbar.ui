@@ -67,7 +67,13 @@
        <number>0</number>
       </property>
       <item>
-       <widget class="QWidget" name="layer_icon" native="true">
+       <widget class="QLabel" name="layer_icon">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="minimumSize">
          <size>
           <width>16</width>
@@ -108,7 +114,13 @@
        <number>0</number>
       </property>
       <item>
-       <widget class="QWidget" name="player_color" native="true">
+       <widget class="QLabel" name="player_color">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="minimumSize">
          <size>
           <width>16</width>

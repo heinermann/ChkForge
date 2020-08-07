@@ -51,6 +51,8 @@ MainWindow::MainWindow(QWidget *parent)
   mapMenuActions();
   createToolbars();
 
+  selectLayerIndex(0);
+
   createNewMap(128, 128, Sc::Terrain::Tileset::Badlands, 2, 5);
 }
 
@@ -61,7 +63,7 @@ void MainWindow::createToolbars() {
   ui->zoom_toolbar->addWidget(toolbars_ui->zoom_toolbar);
 
   for (QAction* layer : layerOptions) {
-    toolbars_ui->cmb_layer->addItem(layer->icon(), layer->text().remove('&'), QVariant::fromValue(layer));
+    toolbars_ui->cmb_layer->addItem(layer->icon(), layer->iconText(), QVariant::fromValue(layer));
   }
 
   connect(toolbars_ui->cmb_layer, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &MainWindow::selectLayerIndex);
@@ -425,6 +427,9 @@ void MainWindow::selectLayerIndex(int index) {
   layerOptions[index]->setChecked(true);
 
   toolbars_ui->cmb_layer->setCurrentIndex(index);
+
+  statusBar_ui->layer_icon->setPixmap(layerOptions[index]->icon().pixmap(16, 16));
+  statusBar_ui->lbl_layer->setText(layerOptions[index]->iconText());
 
   // TODO: Actual Layer stuff
 
