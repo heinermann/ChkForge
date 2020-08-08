@@ -238,6 +238,8 @@ struct state_base_copyable {
 	bool cheat_operation_cwal;
 
 	a_vector<location> locations;
+
+	bool is_editor_paused = true;
 };
 
 struct psionic_matrix_link_f {
@@ -8450,17 +8452,17 @@ struct state_functions {
 	}
 
 	void update_unit(unit_t* u) {
+		if (!st.is_editor_paused) {
+		  update_unit_values(u);
 
-		update_unit_values(u);
+		  execute_main_order(u);
+		  execute_secondary_order(u);
 
-		execute_main_order(u);
-		execute_secondary_order(u);
-
-		if (u->subunit && !ut_turret(u)) {
+		  if (u->subunit && !ut_turret(u)) {
 			auto ius = make_thingy_setter(iscript_unit, u->subunit);
 			update_unit(u->subunit);
+		  }
 		}
-
 		if (u->sprite) {
 			if (!iscript_execute_sprite(u->sprite)) u->sprite = nullptr;
 		}
@@ -12683,12 +12685,14 @@ struct state_functions {
 			auto ius = make_thingy_setter(iscript_unit, u->subunit);
 			update_hidden_unit(u->subunit);
 		}
-		execute_movement(u);
-		update_unit_values(u);
 
-		execute_hidden_unit_main_order(u);
-		execute_hidden_unit_secondary_order(u);
+		if (!st.is_editor_paused) {
+		  execute_movement(u);
+		  update_unit_values(u);
 
+		  execute_hidden_unit_main_order(u);
+		  execute_hidden_unit_secondary_order(u);
+		}
 		if (u->sprite) {
 			if (!iscript_execute_sprite(u->sprite)) u->sprite = nullptr;
 		}
@@ -12932,10 +12936,12 @@ struct state_functions {
 			update_dead_unit(u);
 		}
 
-		for (unit_t* u : ptr(st.visible_units)) {
+		if (!st.is_editor_paused) {
+		  for (unit_t* u : ptr(st.visible_units)) {
 			iscript_flingy = u;
 			iscript_unit = u;
 			update_unit_movement(u);
+		  }
 		}
 
 		if (update_tiles) {
@@ -12944,16 +12950,18 @@ struct state_functions {
 			}
 		}
 
-		for (unit_t* u : ptr(st.visible_units)) {
+		if (!st.is_editor_paused) {
+		  for (unit_t* u : ptr(st.visible_units)) {
 			update_unit_sprite(u);
 			if (u_cloaked(u) || u_requires_detector(u)) {
-				u->cloak_counter = 0;
-				if (u->secondary_order_timer) --u->secondary_order_timer;
-				else {
-					update_unit_detected_flags(u);
-					u->secondary_order_timer = 30;
-				}
+			  u->cloak_counter = 0;
+			  if (u->secondary_order_timer) --u->secondary_order_timer;
+			  else {
+				update_unit_detected_flags(u);
+				u->secondary_order_timer = 30;
+			  }
 			}
+		  }
 		}
 
 		for (auto i = st.visible_units.begin(); i != st.visible_units.end();) {

@@ -10,6 +10,7 @@ void MapContext::chkdraft_to_openbw(bool is_editor_mode)
   game_load_funcs.use_map_settings = true;
 
   openbw_ui.is_editor = true;
+  game_load_funcs.st.is_editor_paused = true;
 
   // Sync dimensions
   size_t tile_width = chk.layers.getTileWidth(), tile_height = chk.layers.getTileHeight();
