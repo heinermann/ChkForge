@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QMdiArea>
+#include <QIcon>
 #include <DockManager.h>
 
 #include "ui_mainwindow.h"
@@ -42,11 +43,10 @@ private:
   std::vector<QAction*> layerOptions;
   ChkForge::Layer currentLayer = ChkForge::LAYER_SELECT;
 
-  //std::optional<QMetaObject::Connection> map_mouse_connection = std::nullopt;
-  //std::optional<QMetaObject::Connection> zoom_connection = std::nullopt;
-
   bool is_changing_layer = false;
   bool is_changing_zoom = false;
+
+  QIcon black_ico;
 private:
   template <class T>
   ads::CDockAreaWidget* createToolWindow(ads::DockWidgetArea dockWidgetArea, ads::CDockAreaWidget* areaWidget = nullptr) {
@@ -134,6 +134,7 @@ private slots:
   void on_action_window_tile_triggered();
 
   void selectLayerIndex(int index);
+  void selectPlayerIndex(int index);
   void toggleLayer(bool checked);
 
   void onMdiSubWindowActivated(QMdiSubWindow* window);

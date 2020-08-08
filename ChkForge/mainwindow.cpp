@@ -45,6 +45,10 @@ MainWindow::MainWindow(QWidget *parent)
     ui->action_layer_fog
   };
 
+  QPixmap black_pixmap{ 16,16 };
+  black_pixmap.fill(Qt::GlobalColor::black);
+  black_ico = QIcon(black_pixmap);
+
   createStatusBar();
   createMdiDockArea();
   createToolWindows();
@@ -52,10 +56,31 @@ MainWindow::MainWindow(QWidget *parent)
   createToolbars();
 
   selectLayerIndex(0);
+  selectPlayerIndex(0);
 
   createNewMap(128, 128, Sc::Terrain::Tileset::Badlands, 2, 5);
 }
 
+namespace {
+  QRgb default_player_color[16] = {
+    qRgb(244,4,4), // 111
+    qRgb(12,72,204), // 165
+    qRgb(44,180,148), // 159
+    qRgb(136,64,156), // 164
+    qRgb(248,140,20), // 156
+    qRgb(112,48,20), // 19
+    qRgb(204,224,208), // 84
+    qRgb(252,252,56), // 135
+    qRgb(8,128,8), // 185
+    qRgb(252,252,124), // 136
+    qRgb(236,196,176), // 134
+    qRgb(64,104,212), // 51
+    qRgb(116,164,124), // 77
+    qRgb(144,144,184), // 154
+    qRgb(0,228,252), // 128
+    qRgb(0,0,0) // default
+  };
+}
 void MainWindow::createToolbars() {
   toolbars_ui->setupUi(&toolbars_container);
 
@@ -66,7 +91,14 @@ void MainWindow::createToolbars() {
     toolbars_ui->cmb_layer->addItem(layer->icon(), layer->iconText(), QVariant::fromValue(layer));
   }
 
+  for (int i = 0; i < Sc::Player::Total; ++i) {
+    auto pixmap = QPixmap(16, 16);
+    pixmap.fill(default_player_color[i]);
+    toolbars_ui->cmb_player->addItem(QIcon(pixmap), tr("Player %1").arg(i + 1));
+  }
+
   connect(toolbars_ui->cmb_layer, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &MainWindow::selectLayerIndex);
+  connect(toolbars_ui->cmb_player, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &MainWindow::selectPlayerIndex);
   connect(toolbars_ui->spn_zoom, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), this, &MainWindow::zoomChanged);
 }
 
@@ -440,6 +472,29 @@ void MainWindow::toggleLayer(bool checked)
 {
   selectLayerIndex(sender()->property("layer_id").value<int>());
 }
+
+void MainWindow::selectPlayerIndex(int index) {
+
+  auto cmb_player = toolbars_ui->cmb_player;
+
+  if (cmb_player->count() > 12) {
+    cmb_player->removeItem(12);
+  }
+
+  if (index < cmb_player->count()) {
+    cmb_player->setCurrentIndex(index);
+    statusBar_ui->player_color->setPixmap(cmb_player->itemIcon(index).pixmap(16, 16));
+    statusBar_ui->lbl_player->setText(cmb_player->itemText(index));
+  }
+  else {
+    auto player_text = tr("Player %1").arg(index + 1);
+    cmb_player->addItem(black_ico, player_text);
+    cmb_player->setCurrentIndex(12);
+    statusBar_ui->player_color->setPixmap(black_ico.pixmap(16, 16));
+    statusBar_ui->lbl_player->setText(player_text);
+  }
+}
+
 
 void MainWindow::onMdiSubWindowActivated(QMdiSubWindow* window)
 {
