@@ -7,4 +7,8 @@
         <file>upgrades.txt</file>
         <file>weapons.txt</file>
     </qresource>
+    <qresource prefix="/pal">
+        <file>Icons.pal</file>
+        <file>Wireframe.pal</file>
+    </qresource>
 </RCC>

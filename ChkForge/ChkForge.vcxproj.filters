@@ -156,6 +156,9 @@
     <ClCompile Include="MapContext_OpenBW.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="icons.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="layers.h">
@@ -174,6 +177,9 @@
       <Filter>Header Files\ui\Tool Windows</Filter>
     </ClInclude>
     <ClInclude Include="MapContext.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="icons.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -109,12 +109,12 @@ namespace bwgame {
 
   template<bool bounds_check, bool flipped, bool textured, typename remap_F>
   void draw_frame(const grp_t::frame_t& frame, const uint8_t* texture, uint8_t* dst, size_t pitch, size_t offset_x, size_t offset_y, size_t width, size_t height, remap_F&& remap_f) {
-	for (size_t y = 0; y != offset_y; ++y) {
+	for (size_t y = 0; y < offset_y; ++y) {
 	  dst += pitch;
 	  if (textured) texture += frame.size.x;
 	}
 
-	for (size_t y = offset_y; y != height; ++y) {
+	for (size_t y = offset_y; y < height; ++y) {
 
 	  if (flipped) dst += frame.size.x - 1;
 	  if (textured && flipped) texture += frame.size.x - 1;
@@ -438,10 +438,20 @@ namespace bwgame {
 
 	std::function<void(a_vector<uint8_t>&, a_string)> load_data_file;
 
-	void draw_icon(int icon_id, uint8_t* dst, size_t pitch, size_t offset_x, size_t offset_y, size_t width, size_t height) {
+	void draw_icon(int icon_id, uint8_t* dst, size_t pitch, size_t width, size_t height) {
 	  if (icon_id >= cmdicons.frames.size()) return;
+	  // TODO make this safer
+	  auto& frames = cmdicons.frames[icon_id];
 
-	  draw_frame(cmdicons.frames[icon_id], false, dst, pitch, offset_x, offset_y, width, height);
+	  size_t offset_x = (width - frames.size.x) / 2;
+	  size_t offset_y = (height - frames.size.y) / 2;
+	  if (offset_x >= width) offset_x = 0;
+	  if (offset_y >= height) offset_y = 0;
+
+	  width = std::min(width - offset_x, frames.size.x);
+	  height = std::min(height - offset_y, frames.size.y);
+
+	  draw_frame(frames, false, dst + offset_y * pitch + offset_x, pitch, 0, 0, width, height);
 	}
 
 	template<typename load_data_file_F>

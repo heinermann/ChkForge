@@ -9,6 +9,8 @@
 #include "../openbw/bwglobal_ui.h"
 #include "../openbw/openbw/ui/common.h"
 
+#include "icons.h"
+
 #include <CommanderLib/Logger.h>
 
 Logger logger;
@@ -57,6 +59,7 @@ int main(int argc, char *argv[])
   clock.start();
 
   init_bwgame();
+  ChkForge::Icons::init();
 
   auto elapsed = clock.elapsed();
 

@@ -9,6 +9,8 @@
 #include <QMessageBox>
 #include <QTextStream>
 
+#include "icons.h"
+
 ItemTree::ItemTree(QWidget *parent)
   : DockWidgetWrapper<Ui::ItemTree>("Item Tree", parent)
   , treeModel(this)
@@ -34,58 +36,63 @@ QStandardItem* ItemTree::createTilesetTree()
 
 QStandardItem* ItemTree::createDoodadsTree()
 {
-  QStandardItem* top = createTreeItem("Doodads");
+  QStandardItem* top = createTreeItem(tr("Doodads"));
 
   return top;
 }
 
 QStandardItem* ItemTree::createUnitsTree()
 {
-  QStandardItem* top = createTreeItem("Units");
-  createTreeFromFile(top, "units.txt");
+  QStandardItem* top = createTreeItem(tr("Units"));
+  createTreeFromFile(top, "units.txt", [](QStandardItem* itm) {
+    itm->setIcon(ChkForge::Icons::getUnitIcon(itm->data().toInt()));
+  });
   return top;
 }
 
 QStandardItem* ItemTree::createSpritesTree()
 {
-  QStandardItem* top = createTreeItem("Sprites");
+  QStandardItem* top = createTreeItem(tr("Sprites"));
   createTreeFromFile(top, "sprites.txt");
   return top;
 }
 
 QStandardItem* ItemTree::createUnitSpritesTree()
 {
-  QStandardItem* top = createTreeItem("Unit-Sprites");
-  createTreeFromFile(top, "units.txt");
+  QStandardItem* top = createTreeItem(tr("Unit-Sprites"));
+  createTreeFromFile(top, "units.txt", [](QStandardItem* itm) {
+    itm->setIcon(ChkForge::Icons::getUnitIcon(itm->data().toInt()));
+    });
   return top;
 }
 
 QStandardItem* ItemTree::createLocationsTree()
 {
-  QStandardItem* top = createTreeItem("Locations");
+  QStandardItem* top = createTreeItem(tr("Locations"));
 
   return top;
 }
 
 QStandardItem* ItemTree::createBrushesTree()
 {
-  QStandardItem* top = createTreeItem("Custom Brushes");
-  QStandardItem* clipboard = createTreeItem("Clipboard");
+  QStandardItem* top = createTreeItem(tr("Custom Brushes"));
+  QStandardItem* clipboard = createTreeItem(tr("Clipboard"));
+  clipboard->setIcon(QIcon(":/themes/oxygen-icons-png/oxygen/16x16/actions/edit-paste.png"));
   top->appendRow(clipboard);
   return top;
 }
 
-void ItemTree::createTreeFromFile(QStandardItem* parent, const QString& resourceName)
+void ItemTree::createTreeFromFile(QStandardItem* parent, const QString& resourceName, const std::function<void(QStandardItem*)>& item_cb)
 {
   QFile treeFile(":/Trees/" + resourceName);
   if (!treeFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
     QMessageBox::critical(this, "Error", "Unable to load Trees/" + resourceName + ": " + treeFile.errorString());
   }
   QTextStream contents(treeFile.readAll());
-  txtToTree(parent, contents);
+  txtToTree(parent, contents, item_cb);
 }
 
-void ItemTree::txtToTree(QStandardItem *parent, QTextStream &txt)
+void ItemTree::txtToTree(QStandardItem *parent, QTextStream &txt, const std::function<void(QStandardItem*)>& item_cb)
 {
   static QRegularExpression VALUE_REGEX("\\s*(?<id>\\d+)\\s+(?<name>.*)\\s*");
   static QRegularExpression START_CATEGORY_REGEX("\\s*#(?<group>.*)\\s*");
@@ -100,7 +107,7 @@ void ItemTree::txtToTree(QStandardItem *parent, QTextStream &txt)
     auto startCategoryMatch = START_CATEGORY_REGEX.match(line);
     if (startCategoryMatch.hasMatch()) {
       QStandardItem *newGroup = createTreeItem(startCategoryMatch.captured("group"));
-      txtToTree(newGroup, txt);
+      txtToTree(newGroup, txt, item_cb);
       parent->appendRow(newGroup);
     }
     else
@@ -110,6 +117,7 @@ void ItemTree::txtToTree(QStandardItem *parent, QTextStream &txt)
       {
         QStandardItem* item = createTreeItem(valueMatch.captured("name"));
         item->setData(valueMatch.captured("id").toInt());
+        if (item_cb) item_cb(item);
         parent->appendRow(item);
       }
     }

@@ -197,6 +197,7 @@
     <ClCompile Include="exportimage.cpp" />
     <ClCompile Include="exportsections.cpp" />
     <ClCompile Include="filemanager.cpp" />
+    <ClCompile Include="icons.cpp" />
     <ClCompile Include="importsections.cpp" />
     <ClCompile Include="itempalette.cpp" />
     <ClCompile Include="itemtree.cpp" />
@@ -220,6 +221,7 @@
   <ItemGroup>
     <QtMoc Include="about.h" />
     <ClInclude Include="dockwidgetwrapper.h" />
+    <ClInclude Include="icons.h" />
     <ClInclude Include="layers.h" />
     <ClInclude Include="MapContext.h" />
     <ClInclude Include="terrain.h" />
