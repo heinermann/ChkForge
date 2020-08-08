@@ -130,6 +130,7 @@ struct ui_functions: ui_util_functions {
 	game_player player;
 	replay_state current_replay_state;
 	action_state current_action_state;
+	bool is_editor = false;
 
 	ui_functions(game_player player) : ui_util_functions(player.st(), current_action_state, current_replay_state), player(std::move(player)) {
 	}
@@ -671,7 +672,7 @@ struct ui_functions: ui_util_functions {
 		const unit_t* draw_selection_u = current_selection_sprites_set.at(sprite->index);
 		const unit_t* draw_health_bars_u = draw_selection_u;
 		for (auto* image : ptr(reverse(sprite->images))) {
-			if (i_flag(image, image_t::flag_hidden)) continue;
+			if (!is_editor && i_flag(image, image_t::flag_hidden)) continue;
 			if (draw_selection_u && image->modifier != 10) {
 				draw_selection_circle(sprite, draw_selection_u, data, data_pitch, screen_rect);
 				draw_selection_u = nullptr;
@@ -699,7 +700,7 @@ struct ui_functions: ui_util_functions {
 		else to_y += 4;
 		for (size_t y = from_y; y != to_y; ++y) {
 			for (auto* sprite : ptr(st.sprites_on_tile_line.at(y))) {
-				if (s_hidden(sprite)) continue;
+				if (!is_editor && s_hidden(sprite)) continue;
 				sorted_sprites.emplace_back(sprite_depth_order(sprite), sprite);
 			}
 		}
@@ -749,6 +750,31 @@ struct ui_functions: ui_util_functions {
 		return true;
 	}
 
+	int player_color(int player_id) {
+	  std::clamp(player_id, 0, 11);
+	  return global_ui_st.img.player_minimap_colors.at(st.players[player_id].color);
+	}
+
+	void draw_unit_minimap(unit_t* u, uint8_t* data, size_t data_pitch, rect surface_rect) {
+	  if (!is_editor && !unit_visble_on_minimap(u)) return;
+	  int color = player_color(u->owner);
+	  size_t w = u->unit_type->placement_size.x / 32u;
+	  size_t h = u->unit_type->placement_size.y / 32u;
+	  if (unit_is_mineral_field(u) || unit_is(u, UnitTypes::Resource_Vespene_Geyser)) {
+		color = tileset_img.resource_minimap_color;
+	  }
+	  if (ut_building(u)) {
+		if (w > 4) w = 4;
+		if (h > 4) h = 4;
+	  }
+	  if (w < 2) w = 2;
+	  if (h < 2) h = 2;
+	  rect unit_area;
+	  unit_area.from = (u->sprite->position - u->unit_type->placement_size / 2) / 32u;
+	  unit_area.to = unit_area.from + xy(w, h);
+	  fill_rectangle(data, data_pitch, unit_area, color, surface_rect);
+	}
+
 	void draw_minimap(uint8_t* data, size_t data_pitch, size_t surface_width, size_t surface_height) {
 	  auto surface_rect = rect{ xy{ 0, 0 }, xy{ (int)surface_width, (int)surface_height } };
 	  fill_rectangle(data, data_pitch, surface_rect, 0, surface_rect);
@@ -771,26 +797,19 @@ struct ui_functions: ui_util_functions {
 		  p += pitch;
 	  }
 
+	  if (is_editor) {
+		for (unit_t* u : ptr(st.hidden_units)) {
+		  draw_unit_minimap(u, data, data_pitch, surface_rect);
+		}
+		for (unit_t* u : ptr(st.map_revealer_units)) {
+		  draw_unit_minimap(u, data, data_pitch, surface_rect);
+		}
+	  }
+
 	  for (size_t i = 12; i != 0;) {
 		  --i;
 		  for (unit_t* u : ptr(st.player_units[i])) {
-			  //if (!unit_visble_on_minimap(u)) continue;
-			  int color = global_ui_st.img.player_minimap_colors.at(st.players[u->owner].color);
-			  size_t w = u->unit_type->placement_size.x / 32u;
-			  size_t h = u->unit_type->placement_size.y / 32u;
-			  if (unit_is_mineral_field(u) || unit_is(u, UnitTypes::Resource_Vespene_Geyser)) {
-				  color = tileset_img.resource_minimap_color;
-			  }
-			  if (ut_building(u)) {
-				  if (w > 4) w = 4;
-				  if (h > 4) h = 4;
-			  }
-			  if (w < 2) w = 2;
-			  if (h < 2) h = 2;
-			  rect unit_area;
-			  unit_area.from = (u->sprite->position - u->unit_type->placement_size / 2) / 32u;
-			  unit_area.to = unit_area.from + xy(w, h);
-			  fill_rectangle(data, data_pitch, unit_area, color, surface_rect);
+			draw_unit_minimap(u, data, data_pitch, surface_rect);
 		  }
 	  }
 	}

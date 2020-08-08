@@ -9,6 +9,8 @@ void MapContext::chkdraft_to_openbw(bool is_editor_mode)
   bwgame::game_load_functions game_load_funcs(openbw_ui.st);
   game_load_funcs.use_map_settings = true;
 
+  openbw_ui.is_editor = true;
+
   // Sync dimensions
   size_t tile_width = chk.layers.getTileWidth(), tile_height = chk.layers.getTileHeight();
   game_load_funcs.st.game->map_tile_width = tile_width;
@@ -273,11 +275,15 @@ void MapContext::chkdraft_to_openbw(bool is_editor_mode)
     if (type >= Sc::Unit::TotalTypes) continue;
     if (owner >= Sc::Player::Total) owner = 0;
 
+    const bwgame::unit_type_t* obw_unit_type = game_load_funcs.get_unit_type(bwgame::UnitTypes(type));
+
     if (type == Sc::Unit::Type::StartLocation) {
       game_load_funcs.game_st.start_locations[owner] = { unit->xc, unit->yc };
+      auto* new_unit = game_load_funcs.create_unit(obw_unit_type, { unit->xc, unit->yc }, owner);
+      game_load_funcs.hide_unit(new_unit);
+      continue;
     }
 
-    const bwgame::unit_type_t* obw_unit_type = game_load_funcs.get_unit_type(bwgame::UnitTypes(type));
     bwgame::unit_t* new_unit = game_load_funcs.create_completed_unit(obw_unit_type, { unit->xc, unit->yc }, owner);
     if (!new_unit) continue;
     if (game_load_funcs.unit_type_spreads_creep(obw_unit_type, true) || game_load_funcs.ut_requires_creep(obw_unit_type)) {
