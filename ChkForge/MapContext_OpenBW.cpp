@@ -102,6 +102,23 @@ void MapContext::chkdraft_to_openbw(bool is_editor_mode)
       }
     }
     game_load_funcs.st.tiles[i].visible = game_load_funcs.st.tiles[i].explored = mask;
+
+
+    for (size_t i = 0; i != 12; ++i) {
+      game_load_funcs.st.shared_vision[i] = 1 << i;
+      game_load_funcs.st.players[i].color = (int)i;
+      if (game_load_funcs.st.players[i].controller == bwgame::player_t::controller_rescue_passive || game_load_funcs.st.players[i].controller == bwgame::player_t::controller_neutral) {
+        for (int i2 = 0; i2 < 12; ++i2) {
+          game_load_funcs.st.alliances[i][i2] = 1;
+          game_load_funcs.st.alliances[i2][i] = 1;
+        }
+      }
+    }
+
+    for (size_t i = 0; i != 12; ++i) {
+      if (game_load_funcs.st.players[i].controller == bwgame::player_t::controller_open) game_load_funcs.st.players[i].controller = bwgame::player_t::controller_occupied;
+      if (game_load_funcs.st.players[i].controller == bwgame::player_t::controller_computer) game_load_funcs.st.players[i].controller = bwgame::player_t::controller_computer_game;
+    }
   }
 
   for (size_t i = 0; i != game_load_funcs.st.game->gfx_tiles.size(); ++i) {

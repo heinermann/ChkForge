@@ -243,7 +243,7 @@ struct ui_functions: ui_util_functions {
 		auto* tile = &st.tiles[tile_index];
 		size_t width = screen_tile.to.x - screen_tile.from.x;
 
-		xy dirs[9] = {{1, 1}, {0, 1}, {-1, 1}, {1, 0}, {-1, 0}, {1, -1}, {0, -1}, {-1, -1}, {0, 0}};
+		static const xy dirs[9] = { {1, 1}, {0, 1}, {-1, 1}, {1, 0}, {-1, 0}, {1, -1}, {0, -1}, {-1, -1}, {0, 0} };
 
 		for (size_t tile_y = screen_tile.from.y; tile_y != screen_tile.to.y; ++tile_y) {
 			for (size_t tile_x = screen_tile.from.x; tile_x != screen_tile.to.x; ++tile_x) {
@@ -269,55 +269,56 @@ struct ui_functions: ui_util_functions {
 				height = std::min(height, screen_rect.height() - screen_y);
 
 				size_t index = *megatile_index;
-				if (tile->flags & tile_t::flag_has_creep) {
-					index = cv5().at(1).mega_tile_index[global_ui_st.creep_random_tile_indices[tile_x + tile_y * game_st.map_tile_width]];
+				bool draw_creep_here = st.draw_creep_over[tile_x + tile_y * game_st.map_tile_width];
+				if (draw_creep_here) {
+				  index = cv5().at(1).mega_tile_index[global_ui_st.creep_random_tile_indices[tile_x + tile_y * game_st.map_tile_width]];
 				}
 				draw_tile(tileset_img, index, dst, data_pitch, offset_x, offset_y, width, height);
 
-				if (~tile->flags & tile_t::flag_has_creep) {
-					size_t creep_index = 0;
-					for (size_t i = 0; i != 9; ++i) {
-						int add_x = dirs[i].x;
-						int add_y = dirs[i].y;
-						if (tile_x + add_x >= game_st.map_tile_width) continue;
-						if (tile_y + add_y >= game_st.map_tile_height) continue;
-						if (st.tiles[tile_x + add_x + (tile_y + add_y) * game_st.map_tile_width].flags & tile_t::flag_has_creep) creep_index |= 1 << i;
-					}
-					size_t creep_frame = global_ui_st.img.creep_edge_frame_index[creep_index];
+				// Draw creep edges
+				if (!draw_creep_here) {
+				  size_t creep_index = 0;
+				  for (size_t i = 0; i < 8; ++i) {
+					int add_x = dirs[i].x;
+					int add_y = dirs[i].y;
+					if (tile_x + add_x >= game_st.map_tile_width) continue;
+					if (tile_y + add_y >= game_st.map_tile_height) continue;
+					if (st.draw_creep_over[tile_x + add_x + (tile_y + add_y) * game_st.map_tile_width]) creep_index |= 1 << i;
+				  }
+				  size_t creep_frame = global_ui_st.img.creep_edge_frame_index[creep_index];
 
-					if (creep_frame) {
+				  if (creep_frame) {
 
-						auto& frame = tileset_img.creep_grp.frames.at(creep_frame - 1);
+					auto& frame = tileset_img.creep_grp.frames.at(creep_frame - 1);
 
-						screen_x += frame.offset.x;
-						screen_y += frame.offset.y;
+					screen_x += frame.offset.x;
+					screen_y += frame.offset.y;
 
-						int width = frame.size.x;
-						int height = frame.size.y;
+					int width = frame.size.x;
+					int height = frame.size.y;
 
-						if (screen_x < screen_rect.width() && screen_y < screen_rect.height()) {
-							if (screen_x + (int)width > 0 && screen_y + (int)height > 0) {
+					if (screen_x < screen_rect.width() && screen_y < screen_rect.height()) {
+					  if (screen_x + (int)width > 0 && screen_y + (int)height > 0) {
 
-								size_t offset_x = 0;
-								size_t offset_y = 0;
-								if (screen_x < 0) {
-									offset_x = -screen_x;
-								}
-								if (screen_y < 0) {
-									offset_y = -screen_y;
-								}
-
-								uint8_t* dst = data + screen_y * data_pitch + screen_x;
-
-								width = std::min(width, screen_rect.width() - screen_x);
-								height = std::min(height, screen_rect.height() - screen_y);
-
-								draw_frame(frame, false, dst, data_pitch, offset_x, offset_y, width, height);
-							}
+						size_t offset_x = 0;
+						size_t offset_y = 0;
+						if (screen_x < 0) {
+						  offset_x = -screen_x;
 						}
-					}
-				}
+						if (screen_y < 0) {
+						  offset_y = -screen_y;
+						}
 
+						uint8_t* dst = data + screen_y * data_pitch + screen_x;
+
+						width = std::min(width, screen_rect.width() - screen_x);
+						height = std::min(height, screen_rect.height() - screen_y);
+
+						draw_frame(frame, false, dst, data_pitch, offset_x, offset_y, width, height);
+					  }
+					}
+				  }
+				}
 				++megatile_index;
 				++tile;
 			}

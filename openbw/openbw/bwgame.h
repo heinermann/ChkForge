@@ -202,6 +202,7 @@ struct state_base_copyable {
 
 	a_vector<tile_t> tiles;
 	a_vector<uint16_t> tiles_mega_tile_index;
+	a_vector<bool> draw_creep_over;
 
 	std::array<int, 0x100> random_counts;
 	int total_random_counts;
@@ -19500,6 +19501,7 @@ struct state_functions {
 
 	void set_tile_creep(xy_t<size_t> tile_pos, bool has_creep = true) {
 		size_t index = tile_pos.y * game_st.map_tile_width + tile_pos.x;
+		st.draw_creep_over[index] = has_creep;
 		if (has_creep) st.tiles[index].flags |= tile_t::flag_has_creep;
 		else st.tiles[index].flags &= ~tile_t::flag_has_creep;
 
@@ -19569,12 +19571,12 @@ struct state_functions {
 				if (flags & tile_t::flag_has_creep) continue;
 				if (!tile_can_have_creep({tile_x, tile_y})) continue;
 				if (flags & tile_t::flag_occupied) {
-					if (!any_tiles_occupied) any_tiles_occupied = true;
-					continue;
+				  if (!any_tiles_occupied) any_tiles_occupied = true;
+				  continue;
 				}
 				if (spreads_creep) {
-					int d = dx*dx * 25 + dy*dy * 64;
-					if (d > 320*320 * 25) continue;
+				  int d = dx * dx * 25 + dy * dy * 64;
+				  if (d > 320 * 320 * 25) continue;
 				}
 				size_t n = count_neighboring_creep_tiles({tile_x, tile_y});
 				if (n == 0) continue;
@@ -20052,6 +20054,8 @@ struct game_load_functions : state_functions {
 		}
 		st.tiles_mega_tile_index.clear();
 		st.tiles_mega_tile_index.resize(st.tiles.size());
+		st.draw_creep_over.clear();
+		st.draw_creep_over.resize(st.tiles.size());
 
 		st.update_tiles_countdown = 1;
 

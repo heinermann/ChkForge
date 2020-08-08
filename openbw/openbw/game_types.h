@@ -219,7 +219,7 @@ struct tile_id {
 	explicit tile_id(uint16_t raw_value) : raw_value(raw_value) {}
 	explicit tile_id(size_t group_index, size_t subtile_index) : raw_value((uint16_t)(group_index << 4 | subtile_index)) {}
 	bool has_creep() const {
-		return ((raw_value >> 4) & 0x8000) != 0;
+		return (raw_value & 0x8000) != 0;
 	}
 	size_t group_index() const {
 		return (raw_value >> 4) & 0x7ff;
