@@ -53,7 +53,9 @@ QStandardItem* ItemTree::createUnitsTree()
 QStandardItem* ItemTree::createSpritesTree()
 {
   QStandardItem* top = createTreeItem(tr("Sprites"));
-  createTreeFromFile(top, "sprites.txt");
+  createTreeFromFile(top, "sprites.txt", [](QStandardItem* itm) {
+    itm->setIcon(QIcon(":/icons/sprite.png"));
+    });
   return top;
 }
 

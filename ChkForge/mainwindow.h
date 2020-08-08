@@ -41,7 +41,6 @@ private:
   ads::CDockWidget* mdi_dock = new ads::CDockWidget("");
 
   std::vector<QAction*> layerOptions;
-  ChkForge::Layer currentLayer = ChkForge::LAYER_SELECT;
 
   bool is_changing_layer = false;
   bool is_changing_zoom = false;

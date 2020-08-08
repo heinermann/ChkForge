@@ -84,6 +84,8 @@ private:
   void hScrollMoved(int value);
   void vScrollMoved(int value);
 
+  void showContextMenu(const QPoint& pos);
+
 signals:
   void aboutToClose(MapView* map);
   void mouseMove(const QPoint& pt);

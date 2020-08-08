@@ -11,6 +11,7 @@
 #include <QResizeEvent>
 #include <QPoint>
 #include <QRect>
+#include <QMenu>
 
 #include "minimap.h"
 
@@ -39,6 +40,8 @@ MapView::MapView(std::shared_ptr<ChkForge::MapContext> mapContext, QWidget *pare
   map->add_view(this);
 
   resizeSurface(ui->surface->size());
+
+  connect(ui->surface, &QOpenGLWidget::customContextMenuRequested, this, &MapView::showContextMenu);
 }
 
 MapView::~MapView()
@@ -168,33 +171,35 @@ bool MapView::mouseEventFilter(QObject* obj, QEvent* e)
   case QEvent::MouseButtonPress:
     if (mouseEvent->button() == Qt::LeftButton && !double_clicked) {
       drag_select = QRect(mouseEvent->pos(), mouseEvent->pos());
+      return true;
     }
     else if (mouseEvent->button() == Qt::MiddleButton) {
       this->is_dragging_screen = true;
       this->last_drag_position = mouseEvent->pos();
       this->drag_screen_pos = getScreenPos() + mouseEvent->pos();
+      return true;
     }
-    else if (mouseEvent->button() == Qt::RightButton) {
-      map->place_unit(Sc::Unit::Type::TerranMarine, 0, map_pos.x(), map_pos.y());
-    }
-    return true;
+    break;
   case QEvent::MouseButtonDblClick:
     if (mouseEvent->button() == Qt::LeftButton) {
       select_units(true, shift_pressed, ctrl_pressed, QRect{ map_pos, map_pos });
       drag_select = std::nullopt;
+      return true;
     }
-    return true;
+    break;
   case QEvent::MouseButtonRelease:
     if (mouseEvent->button() == Qt::LeftButton && this->drag_select) {
       select_units(false, shift_pressed, ctrl_pressed,
         QRect{ pointToMap(drag_select->topLeft()), pointToMap(drag_select->bottomRight()) }
       );
       drag_select = std::nullopt;
+      return true;
     }
     else if (mouseEvent->button() == Qt::MiddleButton) {
       this->is_dragging_screen = false;
+      return true;
     }
-    return true;
+    break;
   case QEvent::MouseMove:
     emit mouseMove(mouseEvent->pos());
 
@@ -242,6 +247,7 @@ bool MapView::mouseEventFilter(QObject* obj, QEvent* e)
     }
     return true;
   }
+  return false;
 }
 
 bool MapView::surfaceEventFilter(QObject* obj, QEvent* e)
@@ -418,4 +424,11 @@ void MapView::updateTitle()
 QPoint MapView::pointToMap(QPoint pt)
 {
   return screen_position.topLeft() + pt / getViewScale();
+}
+
+void MapView::showContextMenu(const QPoint& pos)
+{
+  QMenu contextMenu(ui->surface);
+  contextMenu.addAction("TODO");
+  contextMenu.exec(ui->surface->mapToGlobal(pos));
 }
