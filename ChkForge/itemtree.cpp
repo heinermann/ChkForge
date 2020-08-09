@@ -11,6 +11,7 @@
 
 #include "icons.h"
 
+
 ItemTree::ItemTree(QWidget *parent)
   : DockWidgetWrapper<Ui::ItemTree>("Item Tree", parent)
   , treeModel(this)
@@ -24,13 +25,15 @@ ItemTree::ItemTree(QWidget *parent)
   treeModel.invisibleRootItem()->appendRow(createBrushesTree());
 
   ui->treeView->setModel(&treeModel);
+
+  connect(ui->treeView->selectionModel(), &QItemSelectionModel::selectionChanged, this, &ItemTree::selectionChanged);
 }
 
 
 QStandardItem* ItemTree::createTilesetTree()
 {
   QStandardItem* top = createTreeItem("Tileset");
-  createTreeFromFile(top, "terrain.txt");
+  createTreeFromFile(top, "terrain.txt", CAT_TERRAIN);
   return top;
 }
 
@@ -44,8 +47,8 @@ QStandardItem* ItemTree::createDoodadsTree()
 QStandardItem* ItemTree::createUnitsTree()
 {
   QStandardItem* top = createTreeItem(tr("Units"));
-  createTreeFromFile(top, "units.txt", [](QStandardItem* itm) {
-    itm->setIcon(ChkForge::Icons::getUnitIcon(itm->data().toInt()));
+  createTreeFromFile(top, "units.txt", CAT_UNIT, [](QStandardItem* itm) {
+    itm->setIcon(ChkForge::Icons::getUnitIcon(itm->data(ROLE_ID).toInt()));
   });
   return top;
 }
@@ -53,7 +56,7 @@ QStandardItem* ItemTree::createUnitsTree()
 QStandardItem* ItemTree::createSpritesTree()
 {
   QStandardItem* top = createTreeItem(tr("Sprites"));
-  createTreeFromFile(top, "sprites.txt", [](QStandardItem* itm) {
+  createTreeFromFile(top, "sprites.txt", CAT_SPRITE, [](QStandardItem* itm) {
     itm->setIcon(QIcon(":/icons/sprite.png"));
     });
   return top;
@@ -62,8 +65,8 @@ QStandardItem* ItemTree::createSpritesTree()
 QStandardItem* ItemTree::createUnitSpritesTree()
 {
   QStandardItem* top = createTreeItem(tr("Unit-Sprites"));
-  createTreeFromFile(top, "units.txt", [](QStandardItem* itm) {
-    itm->setIcon(ChkForge::Icons::getUnitIcon(itm->data().toInt()));
+  createTreeFromFile(top, "units.txt", CAT_UNITSPRITE, [](QStandardItem* itm) {
+    itm->setIcon(ChkForge::Icons::getUnitIcon(itm->data(ROLE_ID).toInt()));
     });
   return top;
 }
@@ -84,17 +87,17 @@ QStandardItem* ItemTree::createBrushesTree()
   return top;
 }
 
-void ItemTree::createTreeFromFile(QStandardItem* parent, const QString& resourceName, const std::function<void(QStandardItem*)>& item_cb)
+void ItemTree::createTreeFromFile(QStandardItem* parent, const QString& resourceName, int category, const std::function<void(QStandardItem*)>& item_cb)
 {
   QFile treeFile(":/Trees/" + resourceName);
   if (!treeFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
     QMessageBox::critical(this, "Error", "Unable to load Trees/" + resourceName + ": " + treeFile.errorString());
   }
   QTextStream contents(treeFile.readAll());
-  txtToTree(parent, contents, item_cb);
+  txtToTree(parent, contents, category, item_cb);
 }
 
-void ItemTree::txtToTree(QStandardItem *parent, QTextStream &txt, const std::function<void(QStandardItem*)>& item_cb)
+void ItemTree::txtToTree(QStandardItem *parent, QTextStream &txt, int category, const std::function<void(QStandardItem*)>& item_cb)
 {
   static QRegularExpression VALUE_REGEX("\\s*(?<id>\\d+)\\s+(?<name>.*)\\s*");
   static QRegularExpression START_CATEGORY_REGEX("\\s*#(?<group>.*)\\s*");
@@ -109,7 +112,7 @@ void ItemTree::txtToTree(QStandardItem *parent, QTextStream &txt, const std::fun
     auto startCategoryMatch = START_CATEGORY_REGEX.match(line);
     if (startCategoryMatch.hasMatch()) {
       QStandardItem *newGroup = createTreeItem(startCategoryMatch.captured("group"));
-      txtToTree(newGroup, txt, item_cb);
+      txtToTree(newGroup, txt, category, item_cb);
       parent->appendRow(newGroup);
     }
     else
@@ -118,7 +121,12 @@ void ItemTree::txtToTree(QStandardItem *parent, QTextStream &txt, const std::fun
       if (valueMatch.hasMatch())
       {
         QStandardItem* item = createTreeItem(valueMatch.captured("name"));
-        item->setData(valueMatch.captured("id").toInt());
+        
+        int id = valueMatch.captured("id").toInt();
+        item->setData(id, ROLE_ID);
+        item->setData(category, ROLE_CATEGORY);
+        item->setData(category << 16 | id, ROLE_SEARCHKEY);
+
         if (item_cb) item_cb(item);
         parent->appendRow(item);
       }
@@ -131,4 +139,30 @@ QStandardItem* ItemTree::createTreeItem(const QString& text)
   QStandardItem* item = new QStandardItem(text);
   item->setEditable(false);
   return item;
+}
+
+// TODO: find an item to select using `treeModel.match(...)` w/ ROLE_SEARCHKEY
+
+void ItemTree::selectionChanged(const QItemSelection& selected, const QItemSelection& deselected)
+{
+  if (selected.isEmpty()) {
+    emit itemTreeChanged(CAT_NONE, 0);
+    return;
+  }
+  
+  auto* selected_item = treeModel.itemFromIndex(selected.front().topLeft());
+  auto category = selected_item->data(ROLE_CATEGORY);
+  if (category.isValid()) {
+    emit itemTreeChanged(Category(category.toInt()), selected_item->data(ROLE_ID).toInt());
+  }
+  // If it's not valid, then assume it's just a folder item that can be expanded or w/e
+}
+
+void ItemTree::set_item(Category category, int id)
+{
+  auto startIndex = treeModel.indexFromItem(treeModel.invisibleRootItem());
+  auto result = treeModel.match(startIndex, ROLE_SEARCHKEY, category << 16 | id, 1, Qt::MatchExactly | Qt::MatchRecursive);
+  if (!result.empty()) {
+    ui->treeView->selectionModel()->select(result.front(), QItemSelectionModel::Clear | QItemSelectionModel::SelectCurrent);
+  }
 }

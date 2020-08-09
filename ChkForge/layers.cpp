@@ -10,6 +10,10 @@
 using namespace ChkForge;
 
 
+int Layer::getLayerId() {
+  return layer_id;
+}
+
 bool ThingyPlacer::thingyMouseEvent(MapView* map, QMouseEvent* e)
 {
   this->current_view = map;
@@ -145,11 +149,15 @@ void SpriteLayer::layerChanged(bool isEntering)
 {
 }
 bool SpriteLayer::isPlacingThingy() {
-  return placement_type != NoSprite;
+  return placement_type != NoSprite && placement_unit_type != Sc::Unit::Type::NoUnit;
 }
 void SpriteLayer::setPlacementSpriteType(Sc::Sprite::Type type)
 {
   placement_type = type;
+}
+void SpriteLayer::setPlacementUnitType(Sc::Unit::Type type)
+{
+  placement_unit_type = type;
 }
 void SpriteLayer::select_thingy_at(bool double_clicked, bool shift, bool ctrl, const QPoint& position)
 {
@@ -161,20 +169,55 @@ void SpriteLayer::select_thingies(bool double_clicked, bool shift, bool ctrl, co
 
 bool UnitLayer::mouseEvent(MapView* map, QMouseEvent* e)
 {
-  return this->thingyMouseEvent(map, e);
+  if (isPlacingThingy()) {
+    bool shift_pressed = e->modifiers() & Qt::ShiftModifier;
+    bool ctrl_pressed = e->modifiers() & Qt::ControlModifier;
+
+    place_pos = e->pos();
+
+    switch (e->type())
+    {
+    case QEvent::MouseButtonPress:
+      if (e->button() == Qt::LeftButton) {
+        return true;
+      }
+      break;
+    case QEvent::MouseButtonDblClick:
+      break;
+    case QEvent::MouseButtonRelease:
+      if (e->button() == Qt::LeftButton) {
+        return true;
+      }
+      break;
+    case QEvent::MouseMove:
+      if (e->buttons() & Qt::LeftButton) {
+        return true;
+      }
+    }
+  }
+  else {
+    return this->thingyMouseEvent(map, e);
+  }
 }
 void UnitLayer::showContextMenu(QWidget* owner, const QPoint& position)
 {
 }
 void UnitLayer::paintOverlay(QWidget* obj, QPainter& painter)
 {
-  this->paintThingySelectOverlay(obj, painter);
+  if (isPlacingThingy()) {
+
+  }
+  else {
+    this->paintThingySelectOverlay(obj, painter);
+  }
 }
 void UnitLayer::reset()
 {
+  setPlacementUnitType(Sc::Unit::Type::NoUnit);
 }
 void UnitLayer::layerChanged(bool isEntering)
 {
+  reset();
 }
 bool UnitLayer::isPlacingThingy() {
   return placement_type != Sc::Unit::Type::NoUnit;

@@ -82,6 +82,9 @@
     <Filter Include="Source Files\ui\Tool Windows">
       <UniqueIdentifier>{ca6f3541-00b3-4f73-9d9c-fb02591316ab}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\layers">
+      <UniqueIdentifier>{065d1440-43c5-4d2b-98f8-459e29375394}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -160,7 +163,7 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="layers.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\layers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

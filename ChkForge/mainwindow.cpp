@@ -159,8 +159,15 @@ void MainWindow::createToolWindows()
   ui->menu_Tool_Windows->addAction(minimap->toggleViewAction());
   ads::CDockAreaWidget* leftPane = m_DockManager->addDockWidget(ads::LeftDockWidgetArea, minimap);
 
-  this->createToolWindow<ItemTree>(ads::BottomDockWidgetArea, leftPane);
-  this->createToolWindow<TerrainBrush>(ads::BottomDockWidgetArea, leftPane);
+  ItemTree* itemTree = new ItemTree();
+  ui->menu_Tool_Windows->addAction(itemTree->toggleViewAction());
+  m_DockManager->addDockWidget(ads::BottomDockWidgetArea, itemTree, leftPane);
+
+  TerrainBrush* terrainBrush = new TerrainBrush();
+  ui->menu_Tool_Windows->addAction(terrainBrush->toggleViewAction());
+  m_DockManager->addDockWidget(ads::BottomDockWidgetArea, terrainBrush, leftPane);
+
+  connect(itemTree, &ItemTree::itemTreeChanged, this, &MainWindow::onItemTreeChanged);
 }
 
 void MainWindow::mapMenuActions()
@@ -465,7 +472,7 @@ void MainWindow::selectLayerIndex(int index) {
 
   MapView* mapView = currentMapView();
   if (mapView != nullptr) {
-    mapView->getMap()->select_layer(ChkForge::Layer_t(index));
+    mapView->getMap()->set_layer(ChkForge::Layer_t(index));
   }
 
   is_changing_layer = false;
@@ -518,7 +525,18 @@ void MainWindow::onMdiSubWindowActivated(QMdiSubWindow* window)
   connect(map, SIGNAL(mouseMove(const QPoint&)), this, SLOT(mapMouseMoved(const QPoint&)));
   connect(map, SIGNAL(scaleChangedPercent(int)), toolbars_ui->spn_zoom, SLOT(setValue(int)));
 
-  // TODO: set for other tool windows (i.e. treeview)
+  // Update player colours
+  for (int i = 0; i < 8; ++i) {
+    QRgb player_color = map->getMap()->player_color(i);
+    auto pixmap = QPixmap(16, 16);
+    pixmap.fill(player_color);
+
+    toolbars_ui->cmb_player->setItemIcon(i, QIcon(pixmap));
+  }
+  selectPlayerIndex(toolbars_ui->cmb_player->currentIndex());
+
+  // Update layer to whatever the map has selected
+  this->selectLayerIndex(map->getMap()->get_layer()->getLayerId());
 }
 
 void MainWindow::mapMouseMoved(const QPoint& pos)
@@ -553,4 +571,41 @@ void MainWindow::zoomChanged(int value)
     map->setViewScalePercent(value);
   }
   is_changing_zoom = false;
+}
+
+void MainWindow::onItemTreeChanged(ItemTree::Category category, int id)
+{
+  MapView* mapView = currentMapView();
+  if (mapView == nullptr) return;
+
+  auto map = mapView->getMap();
+
+  switch (category) {
+    case ItemTree::CAT_NONE:
+      break;
+    case ItemTree::CAT_TERRAIN:
+      selectLayerIndex(ChkForge::Layer_t::LAYER_TERRAIN);
+      break;
+    case ItemTree::CAT_DOODAD:
+      selectLayerIndex(ChkForge::Layer_t::LAYER_DOODAD);
+      break;
+    case ItemTree::CAT_UNIT:
+      selectLayerIndex(ChkForge::Layer_t::LAYER_UNIT);
+      map->set_layer_unit_type(Sc::Unit::Type(id));
+      break;
+    case ItemTree::CAT_SPRITE:
+      selectLayerIndex(ChkForge::Layer_t::LAYER_SPRITE);
+      map->set_layer_sprite_type(Sc::Sprite::Type(id));
+      break;
+    case ItemTree::CAT_UNITSPRITE:
+      selectLayerIndex(ChkForge::Layer_t::LAYER_SPRITE);
+      map->set_layer_sprite_unit_type(Sc::Unit::Type(id));
+      break;
+    case ItemTree::CAT_LOCATION:
+      selectLayerIndex(ChkForge::Layer_t::LAYER_LOCATION);
+      break;
+    case ItemTree::CAT_BRUSH:
+      selectLayerIndex(ChkForge::Layer_t::LAYER_SELECT);
+      break;
+  }
 }

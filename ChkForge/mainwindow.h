@@ -12,6 +12,8 @@
 #include "minimap.h"
 #include "MapContext.h"
 
+#include "itemtree.h"
+
 class MapView;
 
 QT_BEGIN_NAMESPACE
@@ -47,13 +49,6 @@ private:
 
   QIcon black_ico;
 private:
-  template <class T>
-  ads::CDockAreaWidget* createToolWindow(ads::DockWidgetArea dockWidgetArea, ads::CDockAreaWidget* areaWidget = nullptr) {
-    T* widget = new T();
-    ui->menu_Tool_Windows->addAction(widget->toggleViewAction());
-    return m_DockManager->addDockWidget(dockWidgetArea, widget, areaWidget);
-  }
-
   template <typename Func>
   void connectTrigger(QAction* action, const Func& method) {
     this->connect(action, &QAction::triggered, this, method);
@@ -138,5 +133,6 @@ private slots:
 
   void onMdiSubWindowActivated(QMdiSubWindow* window);
 
+  void onItemTreeChanged(ItemTree::Category category, int id);
 };
 #endif // MAINWINDOW_H

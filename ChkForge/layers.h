@@ -36,6 +36,7 @@ namespace ChkForge {
 
     virtual void layerChanged(bool isEntering) = 0;
 
+    int getLayerId();
   protected:
     int layer_id;
   };
@@ -46,7 +47,6 @@ namespace ChkForge {
     void paintThingySelectOverlay(QWidget* obj, QPainter& painter);
     
     virtual bool isPlacingThingy() = 0;
-    //virtual void select(const QRect& area) = 0;
     virtual void select_thingy_at(bool double_clicked, bool shift, bool ctrl, const QPoint& position) = 0;
     virtual void select_thingies(bool double_clicked, bool shift, bool ctrl, const QRect& rect) = 0;
 
@@ -135,9 +135,11 @@ namespace ChkForge {
     virtual void select_thingies(bool double_clicked, bool shift, bool ctrl, const QRect& rect) override;
 
     void setPlacementSpriteType(Sc::Sprite::Type type);
+    void setPlacementUnitType(Sc::Unit::Type type);
   private:
     static const Sc::Sprite::Type NoSprite{ Sc::Sprite::TotalSprites };
     Sc::Sprite::Type placement_type = NoSprite;
+    Sc::Unit::Type placement_unit_type = Sc::Unit::Type::NoUnit;
   };
 
   class UnitLayer : public Layer, ThingyPlacer {
@@ -160,6 +162,8 @@ namespace ChkForge {
     void setPlacementUnitType(Sc::Unit::Type type);
   private:
     Sc::Unit::Type placement_type = Sc::Unit::Type::NoUnit;
+    QPoint place_pos;
+    int owner = 0;
   };
 
   class LocationLayer : public Layer {

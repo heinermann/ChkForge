@@ -8,6 +8,7 @@
 #include <QMessageBox>
 
 #include "terrain.h"
+#include "layers.h"
 
 using namespace ChkForge;
 
@@ -202,15 +203,32 @@ bwgame::xy MapContext::toBw(const QPoint& pt) {
   return bwgame::xy{ pt.x(), pt.y() };
 }
 
-void MapContext::select_layer(Layer_t layer_index)
+void MapContext::set_layer(Layer_t layer_index)
 {
-  if (current_layer != layers.at(layer_index)) {
-    current_layer->layerChanged(false);
-    current_layer = layers.at(layer_index);
-    current_layer->layerChanged(true);
-  }
+  if (current_layer->getLayerId() == layer_index) return;
+
+  current_layer->layerChanged(false);
+  current_layer = layer_map.at(layer_index);
+  current_layer->layerChanged(true);
 }
 std::shared_ptr<Layer> MapContext::get_layer()
 {
   return current_layer;
+}
+
+void MapContext::set_player(int player_id)
+{
+  current_player = player_id;
+}
+void MapContext::set_layer_unit_type(Sc::Unit::Type type)
+{
+  layer_unit->setPlacementUnitType(type);
+}
+void MapContext::set_layer_sprite_type(Sc::Sprite::Type type)
+{
+  layer_sprite->setPlacementSpriteType(type);
+}
+void MapContext::set_layer_sprite_unit_type(Sc::Unit::Type type)
+{
+  layer_sprite->setPlacementUnitType(type);
 }

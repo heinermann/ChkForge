@@ -70,8 +70,13 @@ namespace ChkForge
     bwgame::rect toBw(const QRect& rect);
     bwgame::xy toBw(const QPoint& pt);
 
-    void select_layer(Layer_t layer_index);
+    void set_layer(Layer_t layer_index);
     std::shared_ptr<Layer> get_layer();
+
+    void set_player(int player_id);
+    void set_layer_unit_type(Sc::Unit::Type type);
+    void set_layer_sprite_type(Sc::Sprite::Type type);
+    void set_layer_sprite_unit_type(Sc::Unit::Type type);
 
   public:
     // TODO: Move viewport and screen position stuff out of openbw, to allow for multiple viewports in the same map
@@ -91,17 +96,27 @@ namespace ChkForge
 
     QTimer update_timer{};
 
-    std::vector<std::shared_ptr<Layer>> layers = {
-      std::shared_ptr<Layer>(new SelectLayer()),
-      std::shared_ptr<Layer>(new TerrainLayer()),
-      std::shared_ptr<Layer>(new DoodadLayer()),
-      std::shared_ptr<Layer>(new SpriteLayer()),
-      std::shared_ptr<Layer>(new UnitLayer()),
-      std::shared_ptr<Layer>(new LocationLayer()),
-      std::shared_ptr<Layer>(new FogLayer())
+    std::shared_ptr<SelectLayer> layer_select = std::make_shared<SelectLayer>();
+    std::shared_ptr<TerrainLayer> layer_terrain = std::make_shared<TerrainLayer>();
+    std::shared_ptr<DoodadLayer> layer_doodad = std::make_shared<DoodadLayer>();
+    std::shared_ptr<SpriteLayer> layer_sprite = std::make_shared<SpriteLayer>();
+    std::shared_ptr<UnitLayer> layer_unit = std::make_shared<UnitLayer>();
+    std::shared_ptr<LocationLayer> layer_location = std::make_shared<LocationLayer>();
+    std::shared_ptr<FogLayer> layer_fog = std::make_shared<FogLayer>();
+
+    std::shared_ptr<Layer> current_layer = layer_select;
+
+    std::map<Layer_t, std::shared_ptr<Layer>> layer_map = {
+      {Layer_t::LAYER_SELECT, layer_select},
+      {Layer_t::LAYER_TERRAIN, layer_terrain},
+      {Layer_t::LAYER_DOODAD, layer_doodad},
+      {Layer_t::LAYER_SPRITE, layer_sprite},
+      {Layer_t::LAYER_UNIT, layer_unit},
+      {Layer_t::LAYER_LOCATION, layer_location},
+      {Layer_t::LAYER_FOG, layer_fog}
     };
 
-    std::shared_ptr<Layer> current_layer = layers[0];
+    int current_player = 0;
   };
 }
 
