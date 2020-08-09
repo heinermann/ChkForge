@@ -208,7 +208,11 @@ void MainWindow::mapMenuActions()
     ui->action_window_closeAllMapViews,
     ui->action_window_closeMapView,
     ui->action_window_newMapView,
-    ui->action_window_tile
+    ui->action_window_tile,
+    ui->action_test_play,
+    ui->action_test_duplicate,
+    ui->action_test_advance1,
+    ui->action_test_reset
   };
 
   contextSensitiveActions = std::vector<QAction*>{
@@ -657,6 +661,11 @@ void MainWindow::updateMenusEnabled(bool enabled)
   for (QAction* action : mapAvailableActions) {
     action->setEnabled(enabled);
   }
+
+  toolbars_ui->cmb_layer->setEnabled(enabled);
+  toolbars_ui->cmb_player->setEnabled(enabled);
+  toolbars_ui->spn_zoom->setEnabled(enabled);
+
   if (!enabled) {
     for (QAction* action : contextSensitiveActions) {
       action->setEnabled(enabled);
@@ -666,4 +675,26 @@ void MainWindow::updateMenusEnabled(bool enabled)
   ui->menu_Layer->menuAction()->setVisible(enabled);
   ui->menu_Scenario->menuAction()->setVisible(enabled);
   ui->menu_Test->menuAction()->setVisible(enabled);
+}
+
+void MainWindow::keyPressEvent(QKeyEvent* event) {
+  static const std::map<int, int> key_player_map = {
+    {Qt::Key::Key_1, 0},
+    {Qt::Key::Key_2, 1},
+    {Qt::Key::Key_3, 2},
+    {Qt::Key::Key_4, 3},
+    {Qt::Key::Key_5, 4},
+    {Qt::Key::Key_6, 5},
+    {Qt::Key::Key_7, 6},
+    {Qt::Key::Key_8, 7},
+    {Qt::Key::Key_9, 8},
+    {Qt::Key::Key_0, 9},
+    {Qt::Key::Key_Minus, 10},
+    {Qt::Key::Key_Equal, 11}
+  };
+
+  if (key_player_map.count(event->key()) > 0) {
+    this->selectPlayerIndex(key_player_map.at(event->key()));
+    event->accept();
+  }
 }

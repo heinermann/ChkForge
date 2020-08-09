@@ -55,6 +55,8 @@ private:
 
   void onSearchTextChanged(const QString& text);
 
+  virtual bool eventFilter(QObject* obj, QEvent* e) override;
+
 signals:
   void itemTreeChanged(Category category, int id);
 

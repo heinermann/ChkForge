@@ -72,6 +72,8 @@ private:
 
   void updateMenusEnabled(bool enabled);
 
+  virtual void keyPressEvent(QKeyEvent* event) override;
+
 private slots:
   void mapMouseMoved(const QPoint& pos);
   void zoomChanged(int value);

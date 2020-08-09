@@ -8,6 +8,8 @@
 #include <QJsonArray>
 #include <QMessageBox>
 #include <QTextStream>
+#include <QEvent>
+#include <QKeyEvent>
 
 #include "icons.h"
 
@@ -29,6 +31,8 @@ ItemTree::ItemTree(QWidget *parent)
   proxyModel.setRecursiveFilteringEnabled(true);
 
   ui->treeView->setModel(&proxyModel);
+
+  ui->treeView->installEventFilter(this);
 
   connect(ui->treeView->selectionModel(), &QItemSelectionModel::selectionChanged, this, &ItemTree::selectionChanged);
   connect(ui->search, &QLineEdit::textChanged, &proxyModel, &QSortFilterProxyModel::setFilterWildcard);
@@ -174,4 +178,28 @@ void ItemTree::set_item(Category category, int id)
 
 void ItemTree::onSearchTextChanged(const QString& text)
 {
+}
+
+bool ItemTree::eventFilter(QObject* obj, QEvent* e) {
+  if (obj == ui->treeView && e->type() == QEvent::Type::KeyPress) {
+    QKeyEvent* keyEvent = static_cast<QKeyEvent*>(e);
+    
+    switch (keyEvent->key()) {
+    case Qt::Key::Key_1:
+    case Qt::Key::Key_2:
+    case Qt::Key::Key_3:
+    case Qt::Key::Key_4:
+    case Qt::Key::Key_5:
+    case Qt::Key::Key_6:
+    case Qt::Key::Key_7:
+    case Qt::Key::Key_8:
+    case Qt::Key::Key_9:
+    case Qt::Key::Key_0:
+    case Qt::Key::Key_Minus:
+    case Qt::Key::Key_Equal:
+      e->ignore();
+      return true;
+    }
+  }
+  return false;
 }
