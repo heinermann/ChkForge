@@ -58,7 +58,9 @@ MainWindow::MainWindow(QWidget *parent)
   selectLayerIndex(0);
   selectPlayerIndex(0);
 
-  createNewMap(128, 128, Sc::Terrain::Tileset::Badlands, 2, 5);
+  updateMenusEnabled(false);
+
+  //createNewMap(128, 128, Sc::Terrain::Tileset::Badlands, 2, 5);
 }
 
 namespace {
@@ -179,6 +181,44 @@ void MainWindow::mapMenuActions()
   for (QAction* layerAction : layerOptions) {
     connect(layerAction, &QAction::triggered, this, &MainWindow::toggleLayer);
   }
+
+  mapAvailableActions = std::vector<QAction*>{
+    ui->action_file_save,
+    ui->action_file_saveAs,
+    ui->action_file_importSections,
+    ui->action_file_exportSections,
+    ui->action_file_saveMapImage,
+    ui->action_edit_selectAll,
+    ui->action_edit_properties,
+    ui->action_view_gridSettings,
+    ui->action_view_cleanMap,
+    ui->action_view_toggle_showAddonNydusLinkage,
+    ui->action_view_toggle_showBuildingSize,
+    ui->action_view_toggle_showCollisions,
+    ui->action_view_toggle_showCreep,
+    ui->action_view_toggle_showGrid,
+    ui->action_view_toggle_showLocations,
+    ui->action_view_toggle_showPylonAura,
+    ui->action_view_toggle_showSeekAttackRange,
+    ui->action_view_toggle_showSightRange,
+    ui->action_view_toggle_showUnitSize,
+    ui->action_view_toggle_snapToGrid,
+    ui->action_tools_mapRevealers,
+    ui->action_window_cascade,
+    ui->action_window_closeAllMapViews,
+    ui->action_window_closeMapView,
+    ui->action_window_newMapView,
+    ui->action_window_tile
+  };
+
+  contextSensitiveActions = std::vector<QAction*>{
+    ui->action_edit_undo,
+    ui->action_edit_redo,
+    ui->action_edit_cut,
+    ui->action_edit_copy,
+    ui->action_edit_paste,
+    ui->action_edit_delete
+  };
 }
 
 void MainWindow::toggleToolWindows(bool isOpen)
@@ -511,6 +551,7 @@ void MainWindow::onMdiSubWindowActivated(QMdiSubWindow* window)
   if (window == nullptr) {
     minimap->setActiveMapView(nullptr);
     statusBar_ui->lbl_coordinates->setText("");
+    updateMenusEnabled(false);
     return;
   }
 
@@ -520,6 +561,7 @@ void MainWindow::onMdiSubWindowActivated(QMdiSubWindow* window)
   disconnect(this, SLOT(mapMouseMoved(const QPoint&)));
   disconnect(toolbars_ui->spn_zoom, SLOT(setValue(int)));
 
+  updateMenusEnabled(true);
   toolbars_ui->spn_zoom->setValue(map->getViewScale() * 100);
 
   connect(map, SIGNAL(mouseMove(const QPoint&)), this, SLOT(mapMouseMoved(const QPoint&)));
@@ -608,4 +650,20 @@ void MainWindow::onItemTreeChanged(ItemTree::Category category, int id)
       selectLayerIndex(ChkForge::Layer_t::LAYER_SELECT);
       break;
   }
+}
+
+void MainWindow::updateMenusEnabled(bool enabled)
+{
+  for (QAction* action : mapAvailableActions) {
+    action->setEnabled(enabled);
+  }
+  if (!enabled) {
+    for (QAction* action : contextSensitiveActions) {
+      action->setEnabled(enabled);
+    }
+  }
+
+  ui->menu_Layer->menuAction()->setVisible(enabled);
+  ui->menu_Scenario->menuAction()->setVisible(enabled);
+  ui->menu_Test->menuAction()->setVisible(enabled);
 }

@@ -43,6 +43,8 @@ private:
   ads::CDockWidget* mdi_dock = new ads::CDockWidget("");
 
   std::vector<QAction*> layerOptions;
+  std::vector<QAction*> mapAvailableActions;
+  std::vector<QAction*> contextSensitiveActions;
 
   bool is_changing_layer = false;
   bool is_changing_zoom = false;
@@ -67,6 +69,8 @@ private:
   MapView* currentMapView();
 
   virtual void closeEvent(QCloseEvent* event) override;
+
+  void updateMenusEnabled(bool enabled);
 
 private slots:
   void mapMouseMoved(const QPoint& pos);

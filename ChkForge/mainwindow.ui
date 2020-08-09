@@ -177,7 +177,7 @@ QSplitter::handle:vertical {
     <addaction name="action_help_about"/>
     <addaction name="action_help_report"/>
    </widget>
-   <widget class="QMenu" name="menu_Debug">
+   <widget class="QMenu" name="menu_Test">
     <property name="title">
      <string>&amp;Test</string>
     </property>
@@ -192,7 +192,7 @@ QSplitter::handle:vertical {
    <addaction name="menu_View"/>
    <addaction name="menu_Layer"/>
    <addaction name="menu_Scenario"/>
-   <addaction name="menu_Debug"/>
+   <addaction name="menu_Test"/>
    <addaction name="menu_Tools"/>
    <addaction name="menu_Window"/>
    <addaction name="menu_Help"/>
