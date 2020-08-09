@@ -24,9 +24,14 @@ ItemTree::ItemTree(QWidget *parent)
   treeModel.invisibleRootItem()->appendRow(createLocationsTree());
   treeModel.invisibleRootItem()->appendRow(createBrushesTree());
 
-  ui->treeView->setModel(&treeModel);
+  proxyModel.setSourceModel(&treeModel);
+  proxyModel.setFilterCaseSensitivity(Qt::CaseSensitivity::CaseInsensitive);
+  proxyModel.setRecursiveFilteringEnabled(true);
+
+  ui->treeView->setModel(&proxyModel);
 
   connect(ui->treeView->selectionModel(), &QItemSelectionModel::selectionChanged, this, &ItemTree::selectionChanged);
+  connect(ui->search, &QLineEdit::textChanged, &proxyModel, &QSortFilterProxyModel::setFilterWildcard);
 }
 
 
@@ -150,7 +155,7 @@ void ItemTree::selectionChanged(const QItemSelection& selected, const QItemSelec
     return;
   }
   
-  auto* selected_item = treeModel.itemFromIndex(selected.front().topLeft());
+  auto* selected_item = treeModel.itemFromIndex(proxyModel.mapToSource(selected.front().topLeft()));
   auto category = selected_item->data(ROLE_CATEGORY);
   if (category.isValid()) {
     emit itemTreeChanged(Category(category.toInt()), selected_item->data(ROLE_ID).toInt());
@@ -163,6 +168,10 @@ void ItemTree::set_item(Category category, int id)
   auto startIndex = treeModel.indexFromItem(treeModel.invisibleRootItem());
   auto result = treeModel.match(startIndex, ROLE_SEARCHKEY, category << 16 | id, 1, Qt::MatchExactly | Qt::MatchRecursive);
   if (!result.empty()) {
-    ui->treeView->selectionModel()->select(result.front(), QItemSelectionModel::Clear | QItemSelectionModel::SelectCurrent);
+    ui->treeView->selectionModel()->select(proxyModel.mapFromSource(result.front()), QItemSelectionModel::Clear | QItemSelectionModel::SelectCurrent);
   }
+}
+
+void ItemTree::onSearchTextChanged(const QString& text)
+{
 }

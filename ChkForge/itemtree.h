@@ -2,6 +2,7 @@
 #define ITEMTREE_H
 
 #include <QStandardItemModel>
+#include <QSortFilterProxyModel>
 
 #include <functional>
 
@@ -33,6 +34,7 @@ private:
   static const int ROLE_SEARCHKEY = Qt::UserRole + 3;
 
   QStandardItemModel treeModel;
+  QSortFilterProxyModel proxyModel;
 
   QStandardItem* createTilesetTree();
   QStandardItem* createDoodadsTree();
@@ -51,8 +53,11 @@ private:
 
   void set_item(Category category, int id);
 
+  void onSearchTextChanged(const QString& text);
+
 signals:
   void itemTreeChanged(Category category, int id);
+
 };
 
 #endif // ITEMTREE_H
