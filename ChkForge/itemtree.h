@@ -36,6 +36,7 @@ private:
   QStandardItemModel treeModel;
   QSortFilterProxyModel proxyModel;
 
+private:
   QStandardItem* createTilesetTree();
   QStandardItem* createDoodadsTree();
   QStandardItem* createUnitsTree();

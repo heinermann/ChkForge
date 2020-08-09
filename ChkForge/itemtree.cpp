@@ -35,7 +35,7 @@ ItemTree::ItemTree(QWidget *parent)
   ui->treeView->installEventFilter(this);
 
   connect(ui->treeView->selectionModel(), &QItemSelectionModel::selectionChanged, this, &ItemTree::selectionChanged);
-  connect(ui->search, &QLineEdit::textChanged, &proxyModel, &QSortFilterProxyModel::setFilterWildcard);
+  connect(ui->search, &QLineEdit::textChanged, this, &ItemTree::onSearchTextChanged);
 }
 
 
@@ -178,6 +178,8 @@ void ItemTree::set_item(Category category, int id)
 
 void ItemTree::onSearchTextChanged(const QString& text)
 {
+  proxyModel.setFilterWildcard(text);
+  ui->treeView->expandAll();
 }
 
 bool ItemTree::eventFilter(QObject* obj, QEvent* e) {
