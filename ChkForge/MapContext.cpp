@@ -187,3 +187,30 @@ QRgb MapContext::player_color(int player_num)
   auto color = openbw_ui.palette_colors[color_index];
   return qRgb(color.r, color.g, color.b);
 }
+
+QRect MapContext::toQt(const bwgame::rect& rect) {
+  return QRect{ toQt(rect.from), toQt(rect.to) };
+}
+QPoint MapContext::toQt(const bwgame::xy& pt) {
+  return QPoint{ pt.x, pt.y };
+}
+
+bwgame::rect MapContext::toBw(const QRect& rect) {
+  return bwgame::rect{ toBw(rect.topLeft()), toBw(rect.bottomRight()) };
+}
+bwgame::xy MapContext::toBw(const QPoint& pt) {
+  return bwgame::xy{ pt.x(), pt.y() };
+}
+
+void MapContext::select_layer(Layer_t layer_index)
+{
+  if (current_layer != layers.at(layer_index)) {
+    current_layer->layerChanged(false);
+    current_layer = layers.at(layer_index);
+    current_layer->layerChanged(true);
+  }
+}
+std::shared_ptr<Layer> MapContext::get_layer()
+{
+  return current_layer;
+}

@@ -201,6 +201,7 @@
     <ClCompile Include="importsections.cpp" />
     <ClCompile Include="itempalette.cpp" />
     <ClCompile Include="itemtree.cpp" />
+    <ClCompile Include="layers.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mainwindow.cpp" />
     <ClCompile Include="MapContext.cpp" />

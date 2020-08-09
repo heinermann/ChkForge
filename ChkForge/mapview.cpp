@@ -161,6 +161,9 @@ double MapView::getViewScale() {
 bool MapView::mouseEventFilter(QObject* obj, QEvent* e)
 {
   QMouseEvent* mouseEvent = reinterpret_cast<QMouseEvent*>(e);
+
+  if (map->get_layer()->mouseEvent(this, mouseEvent)) return true;
+
   bool double_clicked = mouseEvent->flags() & Qt::MouseEventCreatedDoubleClick;
   bool shift_pressed = mouseEvent->modifiers() & Qt::ShiftModifier;
   bool ctrl_pressed = mouseEvent->modifiers() & Qt::ControlModifier;
@@ -169,11 +172,7 @@ bool MapView::mouseEventFilter(QObject* obj, QEvent* e)
   switch (e->type())
   {
   case QEvent::MouseButtonPress:
-    if (mouseEvent->button() == Qt::LeftButton && !double_clicked) {
-      drag_select = QRect(mouseEvent->pos(), mouseEvent->pos());
-      return true;
-    }
-    else if (mouseEvent->button() == Qt::MiddleButton) {
+    if (mouseEvent->button() == Qt::MiddleButton) {
       this->is_dragging_screen = true;
       this->last_drag_position = mouseEvent->pos();
       this->drag_screen_pos = getScreenPos() + mouseEvent->pos();
@@ -181,34 +180,15 @@ bool MapView::mouseEventFilter(QObject* obj, QEvent* e)
     }
     break;
   case QEvent::MouseButtonDblClick:
-    if (mouseEvent->button() == Qt::LeftButton) {
-      select_units(true, shift_pressed, ctrl_pressed, QRect{ map_pos, map_pos });
-      drag_select = std::nullopt;
-      return true;
-    }
     break;
   case QEvent::MouseButtonRelease:
-    if (mouseEvent->button() == Qt::LeftButton && this->drag_select) {
-      select_units(false, shift_pressed, ctrl_pressed,
-        QRect{ pointToMap(drag_select->topLeft()), pointToMap(drag_select->bottomRight()) }
-      );
-      drag_select = std::nullopt;
-      return true;
-    }
-    else if (mouseEvent->button() == Qt::MiddleButton) {
+    if (mouseEvent->button() == Qt::MiddleButton) {
       this->is_dragging_screen = false;
       return true;
     }
     break;
   case QEvent::MouseMove:
     emit mouseMove(mouseEvent->pos());
-
-    if (mouseEvent->buttons() & Qt::LeftButton) {
-      if (!drag_select) {
-        drag_select = QRect{ mouseEvent->pos(), mouseEvent->pos() };
-      }
-      drag_select->setBottomRight(mouseEvent->pos());
-    }
 
     if (mouseEvent->buttons() & Qt::MiddleButton) {
       if (is_dragging_screen) {
@@ -244,8 +224,8 @@ bool MapView::mouseEventFilter(QObject* obj, QEvent* e)
         }
 
       }
+      return true;
     }
-    return true;
   }
   return false;
 }
@@ -335,17 +315,12 @@ void MapView::paint_surface(QWidget* obj, QPaintEvent* paintEvent)
   painter.begin(obj);
   painter.fillRect(obj->rect(), QColorConstants::Black);
   
-  map->openbw_ui.draw_game(this->buffer.bits(), this->buffer.bytesPerLine(),
-    bwgame::rect{ {screen_position.left(), screen_position.top()}, {screen_position.right(), screen_position.bottom()} });
+  map->openbw_ui.draw_game(this->buffer.bits(), this->buffer.bytesPerLine(), map->toBw(screen_position));
   
   pix_buffer.convertFromImage(this->buffer);
   painter.drawPixmap(obj->rect(), pix_buffer);
-  
-  // Selection box
-  if (drag_select) {
-    painter.setPen(QColor(16, 252, 24));
-    painter.drawRect(*drag_select);
-  }
+
+  map->get_layer()->paintOverlay(obj, painter);
 
   painter.end();
 }
@@ -404,12 +379,55 @@ void MapView::resizeSurface(QSize newSize)
   updateSurface();
 }
 
-void MapView::select_units(bool double_clicked, bool shift, bool ctrl, const QRect& selection)
+void MapView::select_units(bool double_clicked, bool shift, bool ctrl, const QRect &selection)
 {
-  map->openbw_ui.select_units(double_clicked, shift, ctrl,
-    selection.left(), selection.top(), selection.right(), selection.bottom(),
-    bwgame::rect{ {screen_position.left(), screen_position.top()}, {screen_position.right(), screen_position.bottom()} });
+  QRect normalized = selection.normalized();
+  QRect translated = QRect{ pointToMap(normalized.topLeft()), pointToMap(normalized.bottomRight()) };
+  
+  if (!shift) map->openbw_ui.current_selection_clear();
+
+  for (bwgame::unit_t* u : map->openbw_ui.find_units(map->toBw(translated))) {
+    map->openbw_ui.current_selection_add(u);
+  }
 }
+
+void MapView::select_unit_at(bool double_clicked, bool shift, bool ctrl, const QPoint& position)
+{
+  QPoint mapPt = pointToMap(position);
+  bwgame::unit_t* u = map->openbw_ui.select_get_unit_at(map->toBw(mapPt));
+  if (u == nullptr) {
+    if (!shift) map->openbw_ui.current_selection_clear();
+    return;
+  }
+
+  if (double_clicked || ctrl) {
+    if (!shift) map->openbw_ui.current_selection_clear();
+
+    auto is_same_type = [&](bwgame::unit_t* a, bwgame::unit_t* b) {
+      if (map->openbw_ui.unit_is_mineral_field(a) && map->openbw_ui.unit_is_mineral_field(b)) return true;
+      if (map->openbw_ui.unit_is_normal_tank(a) && map->openbw_ui.unit_is_normal_tank(b)) return true;
+      if (map->openbw_ui.unit_is_hero_tank(a) && map->openbw_ui.unit_is_hero_tank(b)) return true;
+      return a->unit_type == b->unit_type;
+    };
+
+    for (bwgame::unit_t* u2 : map->openbw_ui.find_units(map->toBw(screen_position))) {
+      if (u2->owner != u->owner) continue;
+      if (!is_same_type(u, u2)) continue;
+      map->openbw_ui.current_selection_add(u2);
+    }
+  }
+  else {
+    if (shift) {
+      map->openbw_ui.current_selection_toggle(u);
+    }
+    else {
+      map->openbw_ui.current_selection_clear();
+      map->openbw_ui.current_selection_add(u);
+    }
+  }
+
+}
+
 
 std::shared_ptr<ChkForge::MapContext> MapView::getMap()
 {
@@ -421,9 +439,19 @@ void MapView::updateTitle()
   setWindowTitle(QString::fromStdString(map->filename()) + (map->is_unsaved() ? "*" : ""));
 }
 
-QPoint MapView::pointToMap(QPoint pt)
+QPoint MapView::pointToMap(const QPoint &pt)
 {
   return screen_position.topLeft() + pt / getViewScale();
+}
+
+QRect MapView::rectToMap(const QRect &pt)
+{
+  return QRect{ pointToMap(pt.topLeft()), pointToMap(pt.bottomRight()) };
+}
+
+QRect MapView::extendToRect(const QPoint& pt)
+{
+  return QRect{ pt, pt };
 }
 
 void MapView::showContextMenu(const QPoint& pos)

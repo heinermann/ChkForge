@@ -463,7 +463,10 @@ void MainWindow::selectLayerIndex(int index) {
   statusBar_ui->layer_icon->setPixmap(layerOptions[index]->icon().pixmap(16, 16));
   statusBar_ui->lbl_layer->setText(layerOptions[index]->iconText());
 
-  // TODO: Actual Layer stuff
+  MapView* mapView = currentMapView();
+  if (mapView != nullptr) {
+    mapView->getMap()->select_layer(ChkForge::Layer_t(index));
+  }
 
   is_changing_layer = false;
 }

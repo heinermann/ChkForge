@@ -39,7 +39,8 @@ public:
 
   QSize minimap_size() const;
 
-  void select_units(bool double_clicked, bool shift, bool ctrl, const QRect& selection);
+  void select_units(bool double_clicked, bool shift, bool ctrl, const QRect &selection);
+  void select_unit_at(bool double_clicked, bool shift, bool ctrl, const QPoint& position);
 
   void updateTitle();
   void updateSurface();
@@ -47,7 +48,10 @@ public:
   void setViewScalePercent(double value);
   double getViewScale();
 
-  QPoint pointToMap(QPoint pt);
+  QPoint pointToMap(const QPoint &pt);
+  QRect rectToMap(const QRect &pt);
+
+  QRect extendToRect(const QPoint &pt);
 
   std::shared_ptr<ChkForge::MapContext> getMap();
 private:

@@ -839,6 +839,11 @@ struct ui_functions: ui_util_functions {
 		if (std::find(current_selection.begin(), current_selection.end(), uid) != current_selection.end()) return;
 		current_selection.push_back(uid);
 	}
+	
+	void current_selection_toggle(unit_t* u) {
+	  if (current_selection_is_selected(u)) current_selection_remove(u);
+	  else current_selection_add(u);
+	}
 
 	void current_selection_clear() {
 		current_selection.clear();

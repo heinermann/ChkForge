@@ -1429,6 +1429,18 @@ struct state_functions {
 		return false;
 	}
 
+	bool unit_is_normal_tank(unit_type_autocast ut) const {
+	  if (unit_is(ut, UnitTypes::Terran_Siege_Tank_Tank_Mode)) return true;
+	  if (unit_is(ut, UnitTypes::Terran_Siege_Tank_Siege_Mode)) return true;
+	  return false;
+	}
+
+	bool unit_is_hero_tank(unit_type_autocast ut) const {
+	  if (unit_is(ut, UnitTypes::Hero_Edmund_Duke_Tank_Mode)) return true;
+	  if (unit_is(ut, UnitTypes::Hero_Edmund_Duke_Siege_Mode)) return true;
+	  return false;
+	}
+
 	bool unit_is_tank(unit_type_autocast ut) const {
 		return unit_is_sieged_tank(ut) || unit_is_unsieged_tank(ut);
 	}

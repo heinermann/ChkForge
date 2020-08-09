@@ -159,6 +159,9 @@
     <ClCompile Include="icons.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="layers.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="layers.h">

@@ -4,6 +4,8 @@
 
 #include <unordered_set>
 #include <random>
+#include <memory>
+#include <vector>
 
 #include <MappingCoreLib/MapFile.h>
 
@@ -13,6 +15,8 @@
 #include <QRect>
 #include <QTimer>
 #include <QRgb>
+
+#include "layers.h"
 
 class MapView;
 
@@ -60,6 +64,15 @@ namespace ChkForge
 
     QRgb player_color(int player_num);
 
+    QRect toQt(const bwgame::rect& rect);
+    QPoint toQt(const bwgame::xy& pt);
+
+    bwgame::rect toBw(const QRect& rect);
+    bwgame::xy toBw(const QPoint& pt);
+
+    void select_layer(Layer_t layer_index);
+    std::shared_ptr<Layer> get_layer();
+
   public:
     // TODO: Move viewport and screen position stuff out of openbw, to allow for multiple viewports in the same map
     bwgame::ui_functions openbw_ui;
@@ -77,6 +90,18 @@ namespace ChkForge
     bool has_unsaved_changes = false;
 
     QTimer update_timer{};
+
+    std::vector<std::shared_ptr<Layer>> layers = {
+      std::shared_ptr<Layer>(new SelectLayer()),
+      std::shared_ptr<Layer>(new TerrainLayer()),
+      std::shared_ptr<Layer>(new DoodadLayer()),
+      std::shared_ptr<Layer>(new SpriteLayer()),
+      std::shared_ptr<Layer>(new UnitLayer()),
+      std::shared_ptr<Layer>(new LocationLayer()),
+      std::shared_ptr<Layer>(new FogLayer())
+    };
+
+    std::shared_ptr<Layer> current_layer = layers[0];
   };
 }
 
