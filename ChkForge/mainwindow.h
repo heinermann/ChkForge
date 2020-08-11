@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QMdiArea>
 #include <QIcon>
+#include <QSettings>
 #include <DockManager.h>
 
 #include "ui_mainwindow.h"
@@ -50,6 +51,10 @@ private:
   bool is_changing_zoom = false;
 
   QIcon black_ico;
+
+  int max_recent_files = 20;
+  QStringList recent_files;
+  QSettings settings;
 private:
   template <typename Func>
   void connectTrigger(QAction* action, const Func& method) {
@@ -64,6 +69,7 @@ private:
   void createMdiDockArea();
   void createToolWindows();
   void mapMenuActions();
+  void initRecentFiles();
 
   void createMapView(std::shared_ptr<ChkForge::MapContext> map);
   MapView* currentMapView();
@@ -73,6 +79,11 @@ private:
   void updateMenusEnabled(bool enabled);
 
   virtual void keyPressEvent(QKeyEvent* event) override;
+
+  bool open_map(const QString& map_filename);
+  void on_recent_file_triggered();
+  void addRecentFile(const QString& filename);
+  void resetRecentFileMenu();
 
 private slots:
   void mapMouseMoved(const QPoint& pos);

@@ -54,6 +54,7 @@ MainWindow::MainWindow(QWidget *parent)
   createToolWindows();
   mapMenuActions();
   createToolbars();
+  initRecentFiles();
 
   selectLayerIndex(0);
   selectPlayerIndex(0);
@@ -225,6 +226,34 @@ void MainWindow::mapMenuActions()
   };
 }
 
+void MainWindow::initRecentFiles() {
+  recent_files = settings.value("recentFiles").toStringList().mid(0, max_recent_files);
+  resetRecentFileMenu();
+}
+
+void MainWindow::resetRecentFileMenu() {
+  ui->menu_recentFiles->clear();
+  for (QString& file : recent_files) {
+    ui->menu_recentFiles->addAction(file, this, &MainWindow::on_recent_file_triggered)->setParent(ui->menu_recentFiles);
+  }
+}
+
+void MainWindow::on_recent_file_triggered() {
+  QAction* action = qobject_cast<QAction*>(sender());
+  open_map(action->text());
+}
+
+void MainWindow::addRecentFile(const QString& filename) {
+  recent_files.removeAll(filename);
+  recent_files.prepend(filename);
+  recent_files.removeDuplicates();
+  recent_files = recent_files.mid(0, max_recent_files);
+
+  settings.setValue("recentFiles", QVariant{ recent_files });
+
+  resetRecentFileMenu();
+}
+
 void MainWindow::toggleToolWindows(bool isOpen)
 {
   for (ads::CDockWidget* dockWidget : m_DockManager->dockWidgetsMap()) {
@@ -248,6 +277,20 @@ void MainWindow::on_action_file_new_triggered()
   createNewMap(newMap.tile_width, newMap.tile_height, Sc::Terrain::Tileset(newMap.tileset->getTilesetId()), newMap.brush, newMap.clutter);
 }
 
+bool MainWindow::open_map(const QString& map_filename)
+{
+  if (map_filename.isEmpty()) return false;
+
+  auto map = ChkForge::MapContext::create();
+  std::string file_str = map_filename.toStdString();
+  if (map->load_map(file_str)) {
+    createMapView(map);
+    addRecentFile(map_filename);
+    return true;
+  }
+  return false;
+}
+
 namespace {
   static const QString file_filter =
     QObject::tr("All Starcraft Maps") + " (*.scm *.scx *.rep);;" +
@@ -261,13 +304,8 @@ void MainWindow::on_action_file_open_triggered()
 {
   QString documents = QStandardPaths::standardLocations(QStandardPaths::StandardLocation::DocumentsLocation).first();
   QString result = QFileDialog::getOpenFileName(this, QString(), documents + "/Starcraft/maps", file_filter);
-  if (result.isEmpty()) return;
 
-  auto map = ChkForge::MapContext::create();
-  std::string file_str = result.toStdString();
-  if (map->load_map(file_str)) {
-    createMapView(map);
-  }
+  open_map(result);
 }
 
 void MainWindow::on_action_file_save_triggered()
@@ -282,6 +320,8 @@ void MainWindow::on_action_file_saveAs_triggered()
   if (result.isEmpty()) return;
 
   // TODO: Actual map save stuff
+
+  addRecentFile(result);
 }
 
 void MainWindow::on_action_file_saveMapImage_triggered()

@@ -47,9 +47,9 @@ QSplitter::handle:vertical {
     <property name="title">
      <string>&amp;File</string>
     </property>
-    <widget class="QMenu" name="menuRecent_Files">
+    <widget class="QMenu" name="menu_recentFiles">
      <property name="title">
-      <string>Recent Files</string>
+      <string>&amp;Recent Files</string>
      </property>
      <property name="icon">
       <iconset resource="../oxygen-subset.qrc">
@@ -58,7 +58,7 @@ QSplitter::handle:vertical {
     </widget>
     <addaction name="action_file_new"/>
     <addaction name="action_file_open"/>
-    <addaction name="menuRecent_Files"/>
+    <addaction name="menu_recentFiles"/>
     <addaction name="separator"/>
     <addaction name="action_file_save"/>
     <addaction name="action_file_saveAs"/>

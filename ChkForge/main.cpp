@@ -53,6 +53,9 @@ void init_bwgame() {
 
 int main(int argc, char *argv[])
 {
+  QCoreApplication::setApplicationName("ChkForge");
+  QCoreApplication::setOrganizationName("StareditMemes");
+
   QApplication a(argc, argv);
 
   auto clock = QTime();
