@@ -179,7 +179,13 @@ void ItemTree::set_item(Category category, int id)
 void ItemTree::onSearchTextChanged(const QString& text)
 {
   proxyModel.setFilterWildcard(text);
-  ui->treeView->expandAll();
+  if (text.isEmpty()) {
+    ui->treeView->resetIndentation();
+  }
+  else {
+    ui->treeView->expandAll();
+    ui->treeView->setIndentation(0);
+  }
 }
 
 bool ItemTree::eventFilter(QObject* obj, QEvent* e) {
