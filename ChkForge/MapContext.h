@@ -10,6 +10,7 @@
 #include <MappingCoreLib/MapFile.h>
 
 #include "../openbw/openbw/ui/ui.h"
+#include "UnitFinder.h"
 
 #include <QObject>
 #include <QRect>
@@ -55,6 +56,7 @@ namespace ChkForge
 
     void chkdraft_to_openbw(bool is_editor_mode = true);
 
+    std::unordered_set<bwgame::unit_t*> find_units(bwgame::rect rect);
     void select_all();
 
     bool is_unsaved();
@@ -117,6 +119,11 @@ namespace ChkForge
     };
 
     int current_player = 0;
+
+    std::unordered_set<bwgame::unit_t*> placed_units;
+    std::unordered_set<bwgame::unit_t*> placed_unit_sprites;
+    UnitFinder unit_finder;
+    UnitFinder unit_sprite_finder;
   };
 }
 

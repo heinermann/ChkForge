@@ -220,6 +220,7 @@
     <ClCompile Include="tilepalette.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="UnitFinder.h" />
     <QtMoc Include="about.h" />
     <ClInclude Include="dockwidgetwrapper.h" />
     <ClInclude Include="icons.h" />

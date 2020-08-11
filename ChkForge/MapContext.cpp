@@ -153,11 +153,14 @@ void MapContext::apply_brush(const QRect& rect, int tileGroup, int clutter)
   }
 }
 
+std::unordered_set<bwgame::unit_t*> MapContext::find_units(bwgame::rect rect) {
+  return unit_finder.find(rect.from.x, rect.from.y, rect.to.x, rect.to.y);
+}
+
 void MapContext::select_all() {
-  openbw_ui.current_selection_clear();
-  for (auto u = openbw_ui.st.visible_units.begin(); u != openbw_ui.st.visible_units.end(); ++u) {
+  for (bwgame::unit_t* u : placed_units) {
     // TODO: Performance improvement on underlying functions
-    openbw_ui.current_selection_add(&*u);
+    openbw_ui.current_selection_add(u);
   }
 }
 

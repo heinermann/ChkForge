@@ -388,7 +388,7 @@ void MapView::select_units(bool double_clicked, bool shift, bool ctrl, const QRe
   
   if (!shift) map->openbw_ui.current_selection_clear();
 
-  for (bwgame::unit_t* u : map->openbw_ui.find_units(map->toBw(translated))) {
+  for (bwgame::unit_t* u : map->find_units(map->toBw(translated))) {
     map->openbw_ui.current_selection_add(u);
   }
 }
@@ -396,7 +396,14 @@ void MapView::select_units(bool double_clicked, bool shift, bool ctrl, const QRe
 void MapView::select_unit_at(bool double_clicked, bool shift, bool ctrl, const QPoint& position)
 {
   QPoint mapPt = pointToMap(position);
-  bwgame::unit_t* u = map->openbw_ui.select_get_unit_at(map->toBw(mapPt));
+  //bwgame::unit_t* u = map->openbw_ui.select_get_unit_at(map->toBw(mapPt));
+  bwgame::xy bwPt = map->toBw(mapPt);
+  bwgame::unit_t* u = nullptr;
+  for (bwgame::unit_t* found : map->find_units({ bwPt, bwPt })) {
+    u = found;
+    break;
+  }
+
   if (u == nullptr) {
     if (!shift) map->openbw_ui.current_selection_clear();
     return;
@@ -412,7 +419,7 @@ void MapView::select_unit_at(bool double_clicked, bool shift, bool ctrl, const Q
       return a->unit_type == b->unit_type;
     };
 
-    for (bwgame::unit_t* u2 : map->openbw_ui.find_units(map->toBw(screen_position))) {
+    for (bwgame::unit_t* u2 : map->find_units(map->toBw(screen_position))) {
       if (u2->owner != u->owner) continue;
       if (!is_same_type(u, u2)) continue;
       map->openbw_ui.current_selection_add(u2);

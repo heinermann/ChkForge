@@ -168,6 +168,9 @@ void MapContext::chkdraft_to_openbw(bool is_editor_mode)
       if (game_load_funcs.unit_is_door(obw_unit_type)) owner = 11;
       bwgame::unit_t* unit = game_load_funcs.create_initial_unit(obw_unit_type, position, owner);
       if (sprite->flags & 0x80) game_load_funcs.disable_thg2_unit(unit);
+
+      placed_unit_sprites.insert(unit);
+      unit_sprite_finder.add(unit);
     }
   }
 
@@ -282,6 +285,8 @@ void MapContext::chkdraft_to_openbw(bool is_editor_mode)
       game_load_funcs.game_st.start_locations[owner] = { unit->xc, unit->yc };
       auto* new_unit = game_load_funcs.create_unit(obw_unit_type, { unit->xc, unit->yc }, owner);
       game_load_funcs.hide_unit(new_unit);
+      placed_units.insert(new_unit);
+      unit_finder.add(new_unit);
       continue;
     }
 
@@ -290,7 +295,6 @@ void MapContext::chkdraft_to_openbw(bool is_editor_mode)
     if (game_load_funcs.unit_type_spreads_creep(obw_unit_type, true) || game_load_funcs.ut_requires_creep(obw_unit_type)) {
       game_load_funcs.spread_creep_completely(new_unit, new_unit->sprite->position);
     }
-
 
     if (unit->validFieldFlags & Chk::Unit::ValidField::Hitpoints) {
       using tmp_t = bwgame::fixed_point<32, 8, true>;
@@ -342,6 +346,9 @@ void MapContext::chkdraft_to_openbw(bool is_editor_mode)
     if (type == Sc::Unit::Type::ZergBroodling) {
       game_load_funcs.set_remove_timer(new_unit);
     }
+
+    placed_units.insert(new_unit);
+    unit_finder.add(new_unit);
   }
 
   for (bwgame::unit_t* u : bwgame::ptr(game_load_funcs.st.visible_units)) {
