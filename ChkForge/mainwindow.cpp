@@ -732,8 +732,12 @@ void MainWindow::keyPressEvent(QKeyEvent* event) {
     {Qt::Key::Key_Equal, 11}
   };
 
-  if (key_player_map.count(event->key()) > 0) {
+  if (event->modifiers() == Qt::NoModifier && key_player_map.count(event->key()) > 0) {
     this->selectPlayerIndex(key_player_map.at(event->key()));
     event->accept();
+  }
+  else if (event->modifiers() == Qt::ControlModifier && event->key() == Qt::Key::Key_0) {
+    MapView* map = currentMapView();
+    if (map) map->setViewScalePercent(100);
   }
 }
