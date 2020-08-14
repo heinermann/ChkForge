@@ -24,6 +24,7 @@
 #include <QDesktopServices>
 #include <QFileIconProvider>
 #include <QFileInfo>
+#include <QMimeData>
 
 #include "MapContext.h"
 
@@ -739,5 +740,40 @@ void MainWindow::keyPressEvent(QKeyEvent* event) {
   else if (event->modifiers() == Qt::ControlModifier && event->key() == Qt::Key::Key_0) {
     MapView* map = currentMapView();
     if (map) map->setViewScalePercent(100);
+  }
+}
+
+bool MainWindow::isValidFormat(QString filename) const
+{
+  static const QStringList valid_formats = { ".chk", ".scm", ".scx", ".rep" };
+  for (auto& fmt : valid_formats) {
+    if (filename.endsWith(fmt))
+      return true;
+  }
+  return false;
+}
+
+void MainWindow::dragEnterEvent(QDragEnterEvent* event)
+{
+  if (!event->mimeData()->hasUrls()) return;
+
+  for (auto& url : event->mimeData()->urls()) {
+    if (isValidFormat(url.toLocalFile())) {
+      event->acceptProposedAction();
+      return;
+    }
+  }
+}
+
+void MainWindow::dropEvent(QDropEvent* event)
+{
+  if (!event->mimeData()->hasUrls()) return;
+
+  for (auto& url : event->mimeData()->urls()) {
+    if (isValidFormat(url.toLocalFile())) {
+      if (open_map(url.toLocalFile())) {
+        event->acceptProposedAction();
+      }
+    }
   }
 }

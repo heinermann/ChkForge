@@ -440,7 +440,6 @@ void MapView::select_unit_at(bool double_clicked, bool shift, bool ctrl, const Q
 
 }
 
-
 std::shared_ptr<ChkForge::MapContext> MapView::getMap()
 {
   return map;
@@ -468,7 +467,8 @@ QRect MapView::extendToRect(const QPoint& pt)
 
 void MapView::showContextMenu(const QPoint& pos)
 {
-  QMenu contextMenu(ui->surface);
+  getMap()->get_layer()->showContextMenu(this, pos);
+  /*QMenu contextMenu(ui->surface);
   contextMenu.addAction("TODO");
-  contextMenu.exec(ui->surface->mapToGlobal(pos));
+  contextMenu.exec(ui->surface->mapToGlobal(pos));*/
 }

@@ -85,6 +85,10 @@ private:
   void addRecentFile(const QString& filename);
   void resetRecentFileMenu();
 
+  virtual void dragEnterEvent(QDragEnterEvent* event) override;
+  virtual void dropEvent(QDropEvent* event) override;
+
+  bool isValidFormat(QString filename) const;
 private slots:
   void mapMouseMoved(const QPoint& pos);
   void zoomChanged(int value);
