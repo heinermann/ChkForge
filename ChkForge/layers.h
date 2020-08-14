@@ -55,6 +55,8 @@ namespace ChkForge {
 
   private:
     std::optional<QRect> drag_select = std::nullopt;
+
+    void clearDragSelect(MapView* map);
   };
 
 

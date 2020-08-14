@@ -14,6 +14,13 @@ int Layer::getLayerId() {
   return layer_id;
 }
 
+void ThingyPlacer::clearDragSelect(MapView* map)
+{
+  drag_select = std::nullopt;
+  map->setCursor(Qt::ArrowCursor);
+}
+
+
 bool ThingyPlacer::thingyMouseEvent(MapView* map, QMouseEvent* e)
 {
   this->current_view = map;
@@ -23,7 +30,7 @@ bool ThingyPlacer::thingyMouseEvent(MapView* map, QMouseEvent* e)
   bool ctrl_pressed = e->modifiers() & Qt::ControlModifier;
 
   if (isPlacingThingy()) {
-    drag_select = std::nullopt;
+    clearDragSelect(map);
   }
   else {
     switch (e->type())
@@ -37,7 +44,7 @@ bool ThingyPlacer::thingyMouseEvent(MapView* map, QMouseEvent* e)
     case QEvent::MouseButtonDblClick:
       if (e->button() == Qt::LeftButton) {
         map->select_unit_at(true, shift_pressed, ctrl_pressed, e->pos());
-        drag_select = std::nullopt;
+        clearDragSelect(map);
         return true;
       }
       break;
@@ -49,7 +56,7 @@ bool ThingyPlacer::thingyMouseEvent(MapView* map, QMouseEvent* e)
         else {
           map->select_units(false, shift_pressed, ctrl_pressed, *drag_select);
         }
-        drag_select = std::nullopt;
+        clearDragSelect(map);
         return true;
       }
       break;
@@ -59,6 +66,7 @@ bool ThingyPlacer::thingyMouseEvent(MapView* map, QMouseEvent* e)
           drag_select = map->extendToRect(e->pos());
         }
         drag_select->setBottomRight(e->pos());
+        map->setCursor(Qt::CrossCursor);
         return true;
       }
     }
