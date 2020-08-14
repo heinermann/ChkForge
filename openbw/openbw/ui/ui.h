@@ -333,6 +333,7 @@ struct ui_functions: ui_util_functions {
 	a_vector<uint8_t> temporary_warp_texture_buffer;
 
 	void draw_image(const image_t* image, uint8_t* data, size_t data_pitch, size_t color_index, rect screen_rect) {
+		if (image->frame_index >= image->grp->frames.size()) return;
 
 		xy map_pos = get_image_map_position(image);
 
@@ -341,7 +342,7 @@ struct ui_functions: ui_util_functions {
 
 		if (screen_x >= screen_rect.width() || screen_y >= screen_rect.height()) return;
 
-		auto& frame = image->grp->frames.at(image->frame_index);
+		auto& frame = image->grp->frames[image->frame_index];
 
 		int width = frame.size.x;
 		int height = frame.size.y;

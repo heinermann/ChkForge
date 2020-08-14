@@ -13378,7 +13378,8 @@ struct state_functions {
 
 	xy get_image_map_position(const image_t* image) const {
 		xy map_pos = image->sprite->position + image->offset;
-		auto& frame = image->grp->frames.at(image->frame_index);
+		if (image->frame_index >= image->grp->frames.size()) return map_pos;
+		auto& frame = image->grp->frames[image->frame_index];
 		if (image->flags & image_t::flag_horizontally_flipped) {
 			map_pos.x += int(image->grp->width / 2 - (frame.offset.x + frame.size.x));
 		} else {
