@@ -322,10 +322,12 @@ void MapView::paint_surface(QWidget* obj, QPaintEvent* paintEvent)
   
   map->openbw_ui.draw_game(this->buffer.bits(), this->buffer.bytesPerLine(), map->toBw(screen_position));
   
+  map->get_layer()->paintGame(this, buffer.bits(), buffer.bytesPerLine(), map->toBw(screen_position));
+
   pix_buffer.convertFromImage(this->buffer);
   painter.drawPixmap(obj->rect(), pix_buffer);
 
-  map->get_layer()->paintOverlay(obj, painter);
+  map->get_layer()->paintOverlay(this, obj, painter);
 
   painter.end();
 }

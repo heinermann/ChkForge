@@ -98,13 +98,13 @@ namespace ChkForge
 
     QTimer update_timer{};
 
-    std::shared_ptr<SelectLayer> layer_select = std::make_shared<SelectLayer>();
-    std::shared_ptr<TerrainLayer> layer_terrain = std::make_shared<TerrainLayer>();
-    std::shared_ptr<DoodadLayer> layer_doodad = std::make_shared<DoodadLayer>();
-    std::shared_ptr<SpriteLayer> layer_sprite = std::make_shared<SpriteLayer>();
-    std::shared_ptr<UnitLayer> layer_unit = std::make_shared<UnitLayer>();
-    std::shared_ptr<LocationLayer> layer_location = std::make_shared<LocationLayer>();
-    std::shared_ptr<FogLayer> layer_fog = std::make_shared<FogLayer>();
+    std::shared_ptr<SelectLayer> layer_select = std::make_shared<SelectLayer>(this);
+    std::shared_ptr<TerrainLayer> layer_terrain = std::make_shared<TerrainLayer>(this);
+    std::shared_ptr<DoodadLayer> layer_doodad = std::make_shared<DoodadLayer>(this);
+    std::shared_ptr<SpriteLayer> layer_sprite = std::make_shared<SpriteLayer>(this);
+    std::shared_ptr<UnitLayer> layer_unit = std::make_shared<UnitLayer>(this);
+    std::shared_ptr<LocationLayer> layer_location = std::make_shared<LocationLayer>(this);
+    std::shared_ptr<FogLayer> layer_fog = std::make_shared<FogLayer>(this);
 
     std::shared_ptr<Layer> current_layer = layer_select;
 

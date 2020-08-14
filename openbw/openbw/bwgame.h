@@ -15357,6 +15357,26 @@ struct state_functions {
 		st.sprites_container.push(sprite);
 	}
 
+	bool initialize_sprite(sprite_t* sprite, const sprite_type_t* sprite_type, xy pos, int owner) {
+	  if ((size_t)pos.x >= game_st.map_width || (size_t)pos.y >= game_st.map_height) return false;
+	  sprite->owner = owner;
+	  sprite->sprite_type = sprite_type;
+	  sprite->flags = 0;
+	  sprite->position = pos;
+	  sprite->visibility_flags = ~0;
+	  sprite->elevation_level = 4;
+	  sprite->selection_timer = 0;
+	  sprite->images.clear();
+	  if (!sprite_type->visible) {
+		sprite->flags |= sprite_t::flag_hidden;
+		set_sprite_visibility(sprite, 0);
+	  }
+	  if (!create_image(sprite_type->image, sprite, { 0, 0 }, image_order_above)) return false;
+	  sprite->width = std::min(sprite->main_image->grp->width, (size_t)0xff);
+	  sprite->height = std::min(sprite->main_image->grp->height, (size_t)0xff);
+	  return true;
+	}
+
 	sprite_t* create_sprite(const sprite_type_t* sprite_type, xy pos, int owner) {
 		if (!sprite_type)  error("attempt to create sprite of null type");
 
@@ -15364,27 +15384,7 @@ struct state_functions {
 		if (!sprite) return nullptr;
 		st.sprites_container.pop();
 
-		auto initialize_sprite = [&]() {
-			if ((size_t)pos.x >= game_st.map_width || (size_t)pos.y >= game_st.map_height) return false;
-			sprite->owner = owner;
-			sprite->sprite_type = sprite_type;
-			sprite->flags = 0;
-			sprite->position = pos;
-			sprite->visibility_flags = ~0;
-			sprite->elevation_level = 4;
-			sprite->selection_timer = 0;
-			sprite->images.clear();
-			if (!sprite_type->visible) {
-				sprite->flags |= sprite_t::flag_hidden;
-				set_sprite_visibility(sprite, 0);
-			}
-			if (!create_image(sprite_type->image, sprite, {0, 0}, image_order_above)) return false;
-			sprite->width = std::min(sprite->main_image->grp->width, (size_t)0xff);
-			sprite->height = std::min(sprite->main_image->grp->height, (size_t)0xff);
-			return true;
-		};
-
-		if (!initialize_sprite()) {
+		if (!initialize_sprite(sprite, sprite_type, pos, owner)) {
 			st.sprites_container.push(sprite);
 			return nullptr;
 		}

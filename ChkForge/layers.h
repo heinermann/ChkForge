@@ -8,8 +8,13 @@
 #include <optional>
 
 #include <MappingCoreLib/Sc.h>
+#include "../openbw/openbw/bwgame.h"
 
 class MapView;
+
+namespace ChkForge {
+  class MapContext;
+}
 
 namespace ChkForge {
   
@@ -25,13 +30,14 @@ namespace ChkForge {
 
   class Layer : public QObject {
   public:
-    Layer(int id) : layer_id(id) {}
+    Layer(MapContext* map, int id) : layer_id(id), map(map) {}
     virtual ~Layer() {}
 
     virtual bool mouseEvent(MapView* map, QMouseEvent* e) = 0;
     virtual void showContextMenu(QWidget* owner, const QPoint& position) = 0;
 
-    virtual void paintOverlay(QWidget* obj, QPainter& painter) = 0;
+    virtual void paintOverlay(MapView* map, QWidget* obj, QPainter& painter) = 0;
+    virtual void paintGame(MapView* map, uint8_t* data, size_t data_pitch, bwgame::rect screen_rect) = 0;
     virtual void reset() = 0;
 
     virtual void layerChanged(bool isEntering) = 0;
@@ -39,6 +45,7 @@ namespace ChkForge {
     int getLayerId();
   protected:
     int layer_id;
+    MapContext* map;
   };
 
   class ThingyPlacer {
@@ -62,13 +69,14 @@ namespace ChkForge {
 
   class SelectLayer : public Layer {
   public:
-    SelectLayer() : Layer(Layer_t::LAYER_SELECT) {}
+    SelectLayer(MapContext* map) : Layer(map, Layer_t::LAYER_SELECT) {}
     virtual ~SelectLayer() {}
 
     virtual bool mouseEvent(MapView* map, QMouseEvent* e) override;
     virtual void showContextMenu(QWidget* owner, const QPoint& position) override;
 
-    virtual void paintOverlay(QWidget* obj, QPainter& painter) override;
+    virtual void paintOverlay(MapView* map, QWidget* obj, QPainter& painter) override;
+    virtual void paintGame(MapView* map, uint8_t* data, size_t data_pitch, bwgame::rect screen_rect) override;
     virtual void reset() override;
 
     virtual void layerChanged(bool isEntering) override;
@@ -77,13 +85,14 @@ namespace ChkForge {
 
   class TerrainLayer : public Layer {
   public:
-    TerrainLayer() : Layer(Layer_t::LAYER_TERRAIN) {}
+    TerrainLayer(MapContext* map) : Layer(map, Layer_t::LAYER_TERRAIN) {}
     virtual ~TerrainLayer() {}
 
     virtual bool mouseEvent(MapView* map, QMouseEvent* e) override;
     virtual void showContextMenu(QWidget* owner, const QPoint& position) override;
 
-    virtual void paintOverlay(QWidget* obj, QPainter& painter) override;
+    virtual void paintOverlay(MapView* map, QWidget* obj, QPainter& painter) override;
+    virtual void paintGame(MapView* map, uint8_t* data, size_t data_pitch, bwgame::rect screen_rect) override;
     virtual void reset() override;
 
     virtual void layerChanged(bool isEntering) override;
@@ -106,13 +115,14 @@ namespace ChkForge {
 
   class DoodadLayer : public Layer {
   public:
-    DoodadLayer() : Layer(Layer_t::LAYER_DOODAD) {}
+    DoodadLayer(MapContext* map) : Layer(map, Layer_t::LAYER_DOODAD) {}
     virtual ~DoodadLayer() {}
 
     virtual bool mouseEvent(MapView* map, QMouseEvent* e) override;
     virtual void showContextMenu(QWidget* owner, const QPoint& position) override;
 
-    virtual void paintOverlay(QWidget* obj, QPainter& painter) override;
+    virtual void paintOverlay(MapView* map, QWidget* obj, QPainter& painter) override;
+    virtual void paintGame(MapView* map, uint8_t* data, size_t data_pitch, bwgame::rect screen_rect) override;
     virtual void reset() override;
 
     virtual void layerChanged(bool isEntering) override;
@@ -121,13 +131,14 @@ namespace ChkForge {
 
   class SpriteLayer : public Layer, ThingyPlacer {
   public:
-    SpriteLayer() : Layer(Layer_t::LAYER_SPRITE) {}
+    SpriteLayer(MapContext* map) : Layer(map, Layer_t::LAYER_SPRITE) {}
     virtual ~SpriteLayer() {}
 
     virtual bool mouseEvent(MapView* map, QMouseEvent* e) override;
     virtual void showContextMenu(QWidget* owner, const QPoint& position) override;
 
-    virtual void paintOverlay(QWidget* obj, QPainter& painter) override;
+    virtual void paintOverlay(MapView* map, QWidget* obj, QPainter& painter) override;
+    virtual void paintGame(MapView* map, uint8_t* data, size_t data_pitch, bwgame::rect screen_rect) override;
     virtual void reset() override;
 
     virtual void layerChanged(bool isEntering) override;
@@ -142,17 +153,19 @@ namespace ChkForge {
     static const Sc::Sprite::Type NoSprite{ Sc::Sprite::TotalSprites };
     Sc::Sprite::Type placement_type = NoSprite;
     Sc::Unit::Type placement_unit_type = Sc::Unit::Type::NoUnit;
+
   };
 
   class UnitLayer : public Layer, ThingyPlacer {
   public:
-    UnitLayer() : Layer(Layer_t::LAYER_UNIT) {}
+    UnitLayer(MapContext* map) : Layer(map, Layer_t::LAYER_UNIT) {}
     virtual ~UnitLayer() {}
 
     virtual bool mouseEvent(MapView* map, QMouseEvent* e) override;
     virtual void showContextMenu(QWidget* owner, const QPoint& position) override;
-
-    virtual void paintOverlay(QWidget* obj, QPainter& painter) override;
+    
+    virtual void paintOverlay(MapView* map, QWidget* obj, QPainter& painter) override;
+    virtual void paintGame(MapView* map, uint8_t* data, size_t data_pitch, bwgame::rect screen_rect) override;
     virtual void reset() override;
 
     virtual void layerChanged(bool isEntering) override;
@@ -164,19 +177,22 @@ namespace ChkForge {
     void setPlacementUnitType(Sc::Unit::Type type);
   private:
     Sc::Unit::Type placement_type = Sc::Unit::Type::NoUnit;
+    std::optional<bwgame::sprite_t> placement_sprite = std::nullopt;
     QPoint place_pos;
+    bwgame::xy place_pos_bw;
     int owner = 0;
   };
 
   class LocationLayer : public Layer {
   public:
-    LocationLayer() : Layer(Layer_t::LAYER_LOCATION) {}
+    LocationLayer(MapContext* map) : Layer(map, Layer_t::LAYER_LOCATION) {}
     virtual ~LocationLayer() {}
 
     virtual bool mouseEvent(MapView* map, QMouseEvent* e) override;
     virtual void showContextMenu(QWidget* owner, const QPoint& position) override;
 
-    virtual void paintOverlay(QWidget* obj, QPainter& painter) override;
+    virtual void paintOverlay(MapView* map, QWidget* obj, QPainter& painter) override;
+    virtual void paintGame(MapView* map, uint8_t* data, size_t data_pitch, bwgame::rect screen_rect) override;
     virtual void reset() override;
 
     virtual void layerChanged(bool isEntering) override;
@@ -185,13 +201,14 @@ namespace ChkForge {
 
   class FogLayer : public Layer {
   public:
-    FogLayer() : Layer(Layer_t::LAYER_FOG) {}
+    FogLayer(MapContext* map) : Layer(map, Layer_t::LAYER_FOG) {}
     virtual ~FogLayer() {}
 
     virtual bool mouseEvent(MapView* map, QMouseEvent* e) override;
     virtual void showContextMenu(QWidget* owner, const QPoint& position) override;
 
-    virtual void paintOverlay(QWidget* obj, QPainter& painter) override;
+    virtual void paintOverlay(MapView* map, QWidget* obj, QPainter& painter) override;
+    virtual void paintGame(MapView* map, uint8_t* data, size_t data_pitch, bwgame::rect screen_rect) override;
     virtual void reset() override;
 
     virtual void layerChanged(bool isEntering) override;
