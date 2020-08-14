@@ -10,14 +10,14 @@
     <height>635</height>
    </rect>
   </property>
-  <property name="focusPolicy">
-   <enum>Qt::StrongFocus</enum>
+  <property name="minimumSize">
+   <size>
+    <width>128</width>
+    <height>128</height>
+   </size>
   </property>
-  <property name="frameShape">
-   <enum>QFrame::Panel</enum>
-  </property>
-  <property name="frameShadow">
-   <enum>QFrame::Sunken</enum>
+  <property name="mouseTracking">
+   <bool>true</bool>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <property name="leftMargin">
@@ -67,7 +67,7 @@
       <bool>true</bool>
      </property>
      <property name="focusPolicy">
-      <enum>Qt::ClickFocus</enum>
+      <enum>Qt::WheelFocus</enum>
      </property>
      <property name="contextMenuPolicy">
       <enum>Qt::CustomContextMenu</enum>

@@ -143,8 +143,7 @@ void MainWindow::createMapView(std::shared_ptr<ChkForge::MapContext> map)
   static QFileIconProvider icon_provider{};
 
   auto mapView = new MapView(map);
-  auto subWindow = mdi->addSubWindow(mapView);
-  subWindow->resize(QSize{ 640, 480 });
+  mdi->addSubWindow(mapView);
   mapView->showMaximized();
 
   QString map_filename = QString::fromStdString(map->filename());

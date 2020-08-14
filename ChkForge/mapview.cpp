@@ -192,6 +192,8 @@ bool MapView::mouseEventFilter(QObject* obj, QEvent* e)
 
     if (mouseEvent->buttons() & Qt::MiddleButton) {
       if (is_dragging_screen) {
+        setCursor(Qt::ClosedHandCursor);
+
         QPoint diff = mouseEvent->pos() - this->last_drag_position;
         this->last_drag_position = mouseEvent->pos();
 
@@ -225,6 +227,9 @@ bool MapView::mouseEventFilter(QObject* obj, QEvent* e)
 
       }
       return true;
+    }
+    else {
+      setCursor(Qt::ArrowCursor);
     }
   }
   return false;
