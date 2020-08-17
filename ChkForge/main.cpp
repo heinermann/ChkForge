@@ -55,8 +55,13 @@ int main(int argc, char *argv[])
 {
   QCoreApplication::setApplicationName("ChkForge");
   QCoreApplication::setOrganizationName("StareditMemes");
+  QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
-  QApplication a(argc, argv);
+  QApplication app(argc, argv);
+
+  QFont appFont = app.font();
+  appFont.setPixelSize(11);
+  app.setFont(appFont);
 
   auto clock = QTime();
   clock.start();
@@ -69,5 +74,5 @@ int main(int argc, char *argv[])
   MainWindow w;
   w.showMaximized();
 
-  return a.exec();
+  return app.exec();
 }
