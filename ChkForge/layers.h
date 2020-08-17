@@ -39,6 +39,7 @@ namespace ChkForge {
     virtual void paintOverlay(MapView* map, QWidget* obj, QPainter& painter) = 0;
     virtual void paintGame(MapView* map, uint8_t* data, size_t data_pitch, bwgame::rect screen_rect) = 0;
     virtual void reset() = 0;
+    virtual void logicUpdate() = 0;
 
     virtual void layerChanged(bool isEntering) = 0;
 
@@ -78,6 +79,7 @@ namespace ChkForge {
     virtual void paintOverlay(MapView* map, QWidget* obj, QPainter& painter) override;
     virtual void paintGame(MapView* map, uint8_t* data, size_t data_pitch, bwgame::rect screen_rect) override;
     virtual void reset() override;
+    virtual void logicUpdate() override;
 
     virtual void layerChanged(bool isEntering) override;
   private:
@@ -94,6 +96,7 @@ namespace ChkForge {
     virtual void paintOverlay(MapView* map, QWidget* obj, QPainter& painter) override;
     virtual void paintGame(MapView* map, uint8_t* data, size_t data_pitch, bwgame::rect screen_rect) override;
     virtual void reset() override;
+    virtual void logicUpdate() override;
 
     virtual void layerChanged(bool isEntering) override;
 
@@ -124,6 +127,7 @@ namespace ChkForge {
     virtual void paintOverlay(MapView* map, QWidget* obj, QPainter& painter) override;
     virtual void paintGame(MapView* map, uint8_t* data, size_t data_pitch, bwgame::rect screen_rect) override;
     virtual void reset() override;
+    virtual void logicUpdate() override;
 
     virtual void layerChanged(bool isEntering) override;
   private:
@@ -140,6 +144,7 @@ namespace ChkForge {
     virtual void paintOverlay(MapView* map, QWidget* obj, QPainter& painter) override;
     virtual void paintGame(MapView* map, uint8_t* data, size_t data_pitch, bwgame::rect screen_rect) override;
     virtual void reset() override;
+    virtual void logicUpdate() override;
 
     virtual void layerChanged(bool isEntering) override;
 
@@ -167,6 +172,7 @@ namespace ChkForge {
     virtual void paintOverlay(MapView* map, QWidget* obj, QPainter& painter) override;
     virtual void paintGame(MapView* map, uint8_t* data, size_t data_pitch, bwgame::rect screen_rect) override;
     virtual void reset() override;
+    virtual void logicUpdate() override;
 
     virtual void layerChanged(bool isEntering) override;
 
@@ -194,6 +200,7 @@ namespace ChkForge {
     virtual void paintOverlay(MapView* map, QWidget* obj, QPainter& painter) override;
     virtual void paintGame(MapView* map, uint8_t* data, size_t data_pitch, bwgame::rect screen_rect) override;
     virtual void reset() override;
+    virtual void logicUpdate() override;
 
     virtual void layerChanged(bool isEntering) override;
   private:
@@ -210,6 +217,7 @@ namespace ChkForge {
     virtual void paintOverlay(MapView* map, QWidget* obj, QPainter& painter) override;
     virtual void paintGame(MapView* map, uint8_t* data, size_t data_pitch, bwgame::rect screen_rect) override;
     virtual void reset() override;
+    virtual void logicUpdate() override;
 
     virtual void layerChanged(bool isEntering) override;
   private:

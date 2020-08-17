@@ -103,6 +103,9 @@ void SelectLayer::paintGame(MapView* map, uint8_t* data, size_t data_pitch, bwga
 void SelectLayer::reset()
 {
 }
+void SelectLayer::logicUpdate()
+{
+}
 void SelectLayer::layerChanged(bool isEntering)
 {
 }
@@ -122,6 +125,9 @@ void TerrainLayer::paintGame(MapView* map, uint8_t* data, size_t data_pitch, bwg
 {
 }
 void TerrainLayer::reset()
+{
+}
+void TerrainLayer::logicUpdate()
 {
 }
 void TerrainLayer::layerChanged(bool isEntering)
@@ -145,6 +151,9 @@ void DoodadLayer::paintGame(MapView* map, uint8_t* data, size_t data_pitch, bwga
 void DoodadLayer::reset()
 {
 }
+void DoodadLayer::logicUpdate()
+{
+}
 void DoodadLayer::layerChanged(bool isEntering)
 {
 }
@@ -165,6 +174,9 @@ void SpriteLayer::paintGame(MapView* map, uint8_t* data, size_t data_pitch, bwga
 {
 }
 void SpriteLayer::reset()
+{
+}
+void SpriteLayer::logicUpdate()
 {
 }
 void SpriteLayer::layerChanged(bool isEntering)
@@ -250,6 +262,12 @@ void UnitLayer::reset()
 {
   setPlacementUnitType(Sc::Unit::Type::NoUnit);
 }
+void UnitLayer::logicUpdate()
+{
+  if (placement_sprite) {
+    map->openbw_ui.iscript_execute_sprite(&*placement_sprite);
+  }
+}
 void UnitLayer::layerChanged(bool isEntering)
 {
   reset();
@@ -261,8 +279,10 @@ void UnitLayer::setPlacementUnitType(Sc::Unit::Type type)
 {
   placement_type = type;
   const bwgame::sprite_type_t* new_sprite_type = nullptr;
+  const bwgame::unit_type_t* new_unit_type = nullptr;
   if (type != Sc::Unit::Type::NoUnit) {
-    new_sprite_type = &*map->openbw_ui.get_unit_type(bwgame::UnitTypes(type))->flingy->sprite;
+    new_unit_type = map->openbw_ui.get_unit_type(bwgame::UnitTypes(type));
+    new_sprite_type = &*new_unit_type->flingy->sprite;
   }
 
   if (placement_sprite && placement_sprite->sprite_type != new_sprite_type) {
@@ -281,6 +301,10 @@ void UnitLayer::setPlacementUnitType(Sc::Unit::Type type)
 
     if (placement_sprite->sprite_type != new_sprite_type) {
       map->openbw_ui.initialize_sprite(&*placement_sprite, new_sprite_type, place_pos_bw, owner);
+
+      if (map->openbw_ui.ut_building(new_unit_type)) {
+        map->openbw_ui.sprite_run_anim(&*placement_sprite, bwgame::iscript_anims::Built);
+      }
     }
   }
 }
@@ -310,6 +334,9 @@ void LocationLayer::paintGame(MapView* map, uint8_t* data, size_t data_pitch, bw
 void LocationLayer::reset()
 {
 }
+void LocationLayer::logicUpdate()
+{
+}
 void LocationLayer::layerChanged(bool isEntering)
 {
 }
@@ -329,6 +356,9 @@ void FogLayer::paintGame(MapView* map, uint8_t* data, size_t data_pitch, bwgame:
 {
 }
 void FogLayer::reset()
+{
+}
+void FogLayer::logicUpdate()
 {
 }
 void FogLayer::layerChanged(bool isEntering)

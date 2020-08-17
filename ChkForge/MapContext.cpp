@@ -29,6 +29,7 @@ void MapContext::reset() {
 
 void MapContext::update() {
   openbw_ui.player.next_frame();
+  current_layer->logicUpdate();
 }
 
 void MapContext::new_map(int tileWidth, int tileHeight, Sc::Terrain::Tileset tileset, int brush, int clutter) {
