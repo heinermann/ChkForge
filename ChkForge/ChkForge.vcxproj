@@ -202,6 +202,13 @@
     <ClCompile Include="itempalette.cpp" />
     <ClCompile Include="itemtree.cpp" />
     <ClCompile Include="layers.cpp" />
+    <ClCompile Include="layer_doodad.cpp" />
+    <ClCompile Include="layer_fog.cpp" />
+    <ClCompile Include="layer_location.cpp" />
+    <ClCompile Include="layer_select.cpp" />
+    <ClCompile Include="layer_sprite.cpp" />
+    <ClCompile Include="layer_terrain.cpp" />
+    <ClCompile Include="layer_unit.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mainwindow.cpp" />
     <ClCompile Include="MapContext.cpp" />
