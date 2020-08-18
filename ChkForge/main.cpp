@@ -4,6 +4,8 @@
 #include <QMessageBox>
 #include <QString>
 #include <QTime>
+#include <QFileDialog>
+#include <QDir>
 
 #include "../openbw/bwglobal.h"
 #include "../openbw/bwglobal_ui.h"
@@ -39,16 +41,37 @@ namespace bwgame {
   }
 }
 
-void init_bwgame() {
-  auto load_data_file = bwgame::data_loading::data_files_directory("C:/Program Files (x86)/StarCraft 1.16.1");
+bool init_bwgame(const QString& starcraft_dir) {
+  try {
+    std::string install_dir = starcraft_dir.toStdString();
+    auto load_data_file = bwgame::data_loading::data_files_directory(install_dir);
 
-  bwgame::global_st.init(load_data_file);
+    bwgame::global_st.init(load_data_file);
 
-  bwgame::global_ui_st.global_volume = 0;
-  bwgame::global_ui_st.load_data_file = [&](bwgame::a_vector<uint8_t>& data, bwgame::a_string filename) {
-    load_data_file(data, std::move(filename));
-  };
-  bwgame::global_ui_st.init(load_data_file);
+    bwgame::global_ui_st.global_volume = 0;
+    bwgame::global_ui_st.load_data_file = [&](bwgame::a_vector<uint8_t>& data, bwgame::a_string filename) {
+      load_data_file(data, std::move(filename));
+    };
+    bwgame::global_ui_st.init(load_data_file);
+    return true;
+  }
+  catch (const std::exception& ex) {
+    QMessageBox::critical(nullptr, QString(), QObject::tr("Failed to initialize OpenBW:\n%1\n\nPlease select a different directory.").arg(ex.what()));
+  }
+  catch (...) {
+    QMessageBox::critical(nullptr, QString(), QObject::tr("Unknown error initializing OpenBW. Please select a different directory."));
+  }
+  return false;
+}
+
+void init_bwgame_with_directory() {
+  QSettings settings;
+
+  QString found_dir = settings.value("ScPath", "").toString();
+  while (found_dir.isEmpty() || !init_bwgame(found_dir)) {
+    found_dir = QFileDialog::getExistingDirectory(nullptr, QObject::tr("Find Starcraft Directory"), QDir::rootPath(), QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
+  }
+  settings.setValue("ScPath", found_dir);
 }
 
 int main(int argc, char *argv[])
@@ -66,7 +89,7 @@ int main(int argc, char *argv[])
   auto clock = QTime();
   clock.start();
 
-  init_bwgame();
+  init_bwgame_with_directory();
   ChkForge::Icons::init();
 
   auto elapsed = clock.elapsed();
