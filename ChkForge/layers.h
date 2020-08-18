@@ -186,7 +186,6 @@ namespace ChkForge {
     std::optional<bwgame::sprite_t> placement_sprite = std::nullopt;
     QPoint place_pos;
     bwgame::xy place_pos_bw;
-    int owner = 0;
   };
 
   class LocationLayer : public Layer {

@@ -61,8 +61,6 @@ MainWindow::MainWindow(QWidget *parent)
   selectPlayerIndex(0);
 
   updateMenusEnabled(false);
-
-  //createNewMap(128, 128, Sc::Terrain::Tileset::Badlands, 2, 5);
 }
 
 namespace {
@@ -586,6 +584,11 @@ void MainWindow::selectPlayerIndex(int index) {
     cmb_player->setCurrentIndex(12);
     statusBar_ui->player_color->setPixmap(black_ico.pixmap(16, 16));
     statusBar_ui->lbl_player->setText(player_text);
+  }
+  
+  MapView* map = currentMapView();
+  if (map != nullptr) {
+    map->getMap()->set_player(index);
   }
 }
 

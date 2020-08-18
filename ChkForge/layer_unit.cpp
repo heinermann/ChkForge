@@ -68,6 +68,7 @@ void UnitLayer::reset()
 void UnitLayer::logicUpdate()
 {
   if (placement_sprite) {
+    placement_sprite->owner = map->get_player();
     map->openbw_ui.iscript_execute_sprite(&*placement_sprite);
   }
 }
@@ -103,7 +104,7 @@ void UnitLayer::setPlacementUnitType(Sc::Unit::Type type)
     }
 
     if (placement_sprite->sprite_type != new_sprite_type) {
-      map->openbw_ui.initialize_sprite(&*placement_sprite, new_sprite_type, place_pos_bw, owner);
+      map->openbw_ui.initialize_sprite(&*placement_sprite, new_sprite_type, place_pos_bw, map->get_player());
 
       if (map->openbw_ui.ut_building(new_unit_type)) {
         map->openbw_ui.sprite_run_anim(&*placement_sprite, bwgame::iscript_anims::Built);

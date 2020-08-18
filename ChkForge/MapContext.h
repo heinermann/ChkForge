@@ -76,6 +76,7 @@ namespace ChkForge
     std::shared_ptr<Layer> get_layer();
 
     void set_player(int player_id);
+    int get_player();
     void set_layer_unit_type(Sc::Unit::Type type);
     void set_layer_sprite_type(Sc::Sprite::Type type);
     void set_layer_sprite_unit_type(Sc::Unit::Type type);

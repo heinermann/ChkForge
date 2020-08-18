@@ -224,6 +224,10 @@ void MapContext::set_player(int player_id)
 {
   current_player = player_id;
 }
+int MapContext::get_player()
+{
+  return current_player;
+}
 void MapContext::set_layer_unit_type(Sc::Unit::Type type)
 {
   layer_unit->setPlacementUnitType(type);
