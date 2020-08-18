@@ -227,6 +227,9 @@
     <ClCompile Include="tilepalette.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Action.h" />
+    <ClInclude Include="CompoundAction.h" />
+    <ClInclude Include="UndoManager.h" />
     <ClInclude Include="UnitFinder.h" />
     <QtMoc Include="about.h" />
     <ClInclude Include="dockwidgetwrapper.h" />

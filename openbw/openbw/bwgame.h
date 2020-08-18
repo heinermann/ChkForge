@@ -14768,12 +14768,7 @@ struct state_functions {
 		while (true) {
 			using namespace iscript_opcodes;
 			size_t pc = p.tell();
-			//if (pc == 0) {
-			//  warn("iscript: program counter is null");
-			//  destroy_image(image);
-			//  return false;
-			//}
-			
+
 			int opc = p.get<uint8_t>();
 			int a, b, c;
 			switch (opc) {
@@ -15184,7 +15179,8 @@ struct state_functions {
 				}
 				break;
 			default:
-				warn("iscript: unhandled opcode %d", opc);
+				//warn("iscript: unhandled opcode %d", opc);
+				break;
 			}
 		}
 

@@ -158,8 +158,7 @@ QSplitter::handle:vertical {
      <string>&amp;Tools</string>
     </property>
     <addaction name="action_tools_mapRevealers"/>
-    <addaction name="separator"/>
-    <addaction name="action_tools_preferences"/>
+    <addaction name="action_tools_stackUnits"/>
    </widget>
    <widget class="QMenu" name="menu_Window">
     <property name="title">
@@ -354,6 +353,9 @@ QSplitter::handle:vertical {
    </property>
   </action>
   <action name="action_file_saveMapImage">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>Save Map Image...</string>
    </property>
@@ -362,6 +364,9 @@ QSplitter::handle:vertical {
    </property>
   </action>
   <action name="action_file_importSections">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="icon">
     <iconset resource="../oxygen-subset.qrc">
      <normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/document-import.png</normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/document-import.png</iconset>
@@ -371,6 +376,9 @@ QSplitter::handle:vertical {
    </property>
   </action>
   <action name="action_file_exportSections">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="icon">
     <iconset resource="../oxygen-subset.qrc">
      <normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/document-export.png</normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/document-export.png</iconset>
@@ -852,6 +860,9 @@ QSplitter::handle:vertical {
    </property>
   </action>
   <action name="action_test_duplicate">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="icon">
     <iconset resource="../oxygen-subset.qrc">
      <normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/window-duplicate.png</normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/window-duplicate.png</iconset>
@@ -913,6 +924,16 @@ QSplitter::handle:vertical {
    </property>
    <property name="text">
     <string>Report an Issue</string>
+   </property>
+  </action>
+  <action name="action_tools_stackUnits">
+   <property name="icon">
+    <iconset>
+     <normalon>:/themes/oxygen-icons-png/oxygen/16x16/emblems/image-stack.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Stack Units</string>
    </property>
   </action>
  </widget>

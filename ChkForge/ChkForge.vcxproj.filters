@@ -85,6 +85,9 @@
     <Filter Include="Source Files\layers">
       <UniqueIdentifier>{065d1440-43c5-4d2b-98f8-459e29375394}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\undo">
+      <UniqueIdentifier>{059e5c57-704a-454c-8904-e9b62dd8173b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -211,6 +214,15 @@
     </ClInclude>
     <ClInclude Include="UnitFinder.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UndoManager.h">
+      <Filter>Header Files\undo</Filter>
+    </ClInclude>
+    <ClInclude Include="Action.h">
+      <Filter>Header Files\undo</Filter>
+    </ClInclude>
+    <ClInclude Include="CompoundAction.h">
+      <Filter>Header Files\undo</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
