@@ -42,8 +42,9 @@ namespace bwgame {
 }
 
 bool init_bwgame(const QString& starcraft_dir) {
+  std::string install_dir = std::string(starcraft_dir.toLatin1()); // Workaround for Qt string bug
+
   try {
-    std::string install_dir = starcraft_dir.toStdString();
     auto load_data_file = bwgame::data_loading::data_files_directory(install_dir);
 
     bwgame::global_st.init(load_data_file);

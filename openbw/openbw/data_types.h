@@ -440,7 +440,8 @@ namespace iscript_opcodes {
 		opc_orderdone,
 		opc_grdsprol,
 		opc___43,
-		opc_dogrddamage
+		opc_dogrddamage,
+		MAX
 	};
 }
 namespace iscript_anims {
@@ -472,17 +473,14 @@ namespace iscript_anims {
 		Disable,
 		Burrow,
 		UnBurrow,
-		Enable
+		Enable,
+		MAX
 	};
 }
 
 struct iscript_t {
-	struct script {
-		int id;
-		a_vector<size_t> animation_pc;
-	};
-	a_unordered_map<int, script> scripts;
-	a_vector<int> program_data;
+  a_vector<uint8_t> data;
+  a_map<int, std::array<uint16_t, iscript_anims::MAX>> script_anim_offsets;
 };
 
 struct grp_t {

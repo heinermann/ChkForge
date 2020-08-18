@@ -181,205 +181,24 @@ namespace bwgame {
 	  };
 
 	  auto load_iscript_bin = [&]() {
-
-		using namespace iscript_opcodes;
-		std::array<const char*, 69> ins_data;
-
-		ins_data[opc_playfram] = "2";
-		ins_data[opc_playframtile] = "2";
-		ins_data[opc_sethorpos] = "s1";
-		ins_data[opc_setvertpos] = "s1";
-		ins_data[opc_setpos] = "s1s1";
-		ins_data[opc_wait] = "1";
-		ins_data[opc_waitrand] = "11";
-		ins_data[opc_goto] = "j";
-		ins_data[opc_imgol] = "2s1s1";
-		ins_data[opc_imgul] = "2s1s1";
-		ins_data[opc_imgolorig] = "2";
-		ins_data[opc_switchul] = "2";
-		ins_data[opc___0c] = "";
-		ins_data[opc_imgoluselo] = "2s1s1";
-		ins_data[opc_imguluselo] = "2s1s1";
-		ins_data[opc_sprol] = "2s1s1";
-		ins_data[opc_highsprol] = "2s1s1";
-		ins_data[opc_lowsprul] = "2s1s1";
-		ins_data[opc_uflunstable] = "2";
-		ins_data[opc_spruluselo] = "2s1s1";
-		ins_data[opc_sprul] = "2s1s1";
-		ins_data[opc_sproluselo] = "21";
-		ins_data[opc_end] = "e";
-		ins_data[opc_setflipstate] = "1";
-		ins_data[opc_playsnd] = "2";
-		ins_data[opc_playsndrand] = "v";
-		ins_data[opc_playsndbtwn] = "22";
-		ins_data[opc_domissiledmg] = "";
-		ins_data[opc_attackmelee] = "v";
-		ins_data[opc_followmaingraphic] = "";
-		ins_data[opc_randcondjmp] = "1b";
-		ins_data[opc_turnccwise] = "1";
-		ins_data[opc_turncwise] = "1";
-		ins_data[opc_turn1cwise] = "";
-		ins_data[opc_turnrand] = "1";
-		ins_data[opc_setspawnframe] = "1";
-		ins_data[opc_sigorder] = "1";
-		ins_data[opc_attackwith] = "1";
-		ins_data[opc_attack] = "";
-		ins_data[opc_castspell] = "";
-		ins_data[opc_useweapon] = "1";
-		ins_data[opc_move] = "1";
-		ins_data[opc_gotorepeatattk] = "";
-		ins_data[opc_engframe] = "1";
-		ins_data[opc_engset] = "1";
-		ins_data[opc___2d] = "";
-		ins_data[opc_nobrkcodestart] = "";
-		ins_data[opc_nobrkcodeend] = "";
-		ins_data[opc_ignorerest] = "";
-		ins_data[opc_attkshiftproj] = "1";
-		ins_data[opc_tmprmgraphicstart] = "";
-		ins_data[opc_tmprmgraphicend] = "";
-		ins_data[opc_setfldirect] = "1";
-		ins_data[opc_call] = "b";
-		ins_data[opc_return] = "";
-		ins_data[opc_setflspeed] = "2";
-		ins_data[opc_creategasoverlays] = "1";
-		ins_data[opc_pwrupcondjmp] = "b";
-		ins_data[opc_trgtrangecondjmp] = "2b";
-		ins_data[opc_trgtarccondjmp] = "22b";
-		ins_data[opc_curdirectcondjmp] = "22b";
-		ins_data[opc_imgulnextid] = "11";
-		ins_data[opc___3e] = "";
-		ins_data[opc_liftoffcondjmp] = "b";
-		ins_data[opc_warpoverlay] = "2";
-		ins_data[opc_orderdone] = "1";
-		ins_data[opc_grdsprol] = "2s1s1";
-		ins_data[opc___43] = "";
-		ins_data[opc_dogrddamage] = "";
-
-		a_unordered_map<int, a_vector<size_t>> animation_pc;
-		a_vector<int> program_data;
-
-		program_data.push_back(0); // invalid/null pc
-
 		using data_loading::data_reader_le;
 
-		a_vector<uint8_t> data;
-		load_data_file(data, "scripts\\iscript.bin");
-		data_reader_le base_r(data.data(), data.data() + data.size());
-		auto r = base_r;
-		size_t id_list_offset = r.get<uint32_t>();
-		r.seek(id_list_offset);
-		while (r.left()) {
-		  int id = r.get<int16_t>();
-		  if (id == -1) break;
-		  size_t script_address = r.get<uint16_t>();
-		  auto script_r = base_r;
-		  script_r.skip(script_address);
-		  auto signature = script_r.get<std::array<char, 4>>();
-		  (void)signature;
+		load_data_file(iscript.data, "scripts\\iscript.bin");
 
-		  a_unordered_map<size_t, size_t> decode_map;
+		data_reader_le base_r(iscript.data.data(), iscript.data.data() + iscript.data.size());
+		data_reader_le r = base_r;
 
-		  auto decode_at = [&](size_t initial_address) {
-			a_circular_vector<std::tuple<size_t, size_t>> branches;
-			std::function<size_t(size_t)> decode = [&](size_t initial_address) {
-			  if (!initial_address) error("iscript load: attempt to decode instruction at null address");
-			  auto in = decode_map.emplace(initial_address, 0);
-			  if (!in.second) {
-				return in.first->second;
-			  }
-			  size_t initial_pc = program_data.size();
-			  in.first->second = initial_pc;
-			  auto r = base_r;
-			  r.skip(initial_address);
-			  bool done = false;
-			  while (!done) {
-				size_t pc = program_data.size();
-				size_t cur_address = r.ptr - base_r.ptr;
-				if ((size_t)(int)pc != pc || (size_t)(int)cur_address != cur_address) error("iscript too big");
-				if (cur_address != initial_address) {
-				  auto in = decode_map.emplace(cur_address, pc);
-				  if (!in.second) {
-					program_data.push_back(opc_goto + 0x808091);
-					program_data.push_back((int)in.first->second);
-					break;
-				  }
-				}
-				int opcode = r.get<uint8_t>();
-				if ((size_t)opcode >= ins_data.size()) error("iscript load: at 0x%04x: invalid instruction %d", cur_address, opcode);
-				program_data.push_back(opcode + 0x808091);
-				const char* c = ins_data[opcode];
-				while (*c) {
-				  if (*c == 's') {
-					++c;
-					if (*c == '1') program_data.push_back(r.get<int8_t>());
-					else if (*c == '2') program_data.push_back(r.get<int16_t>());
-				  }
-				  else if (*c == '1') program_data.push_back(r.get<uint8_t>());
-				  else if (*c == '2') program_data.push_back(r.get<uint16_t>());
-				  else if (*c == 'v') {
-					int n = r.get<uint8_t>();
-					program_data.push_back(n);
-					for (; n; --n) program_data.push_back(r.get<uint16_t>());
-				  }
-				  else if (*c == 'j') {
-					size_t jump_address = r.get<uint16_t>();
-					auto jump_pc_it = decode_map.find(jump_address);
-					if (jump_pc_it == decode_map.end()) {
-					  program_data.pop_back();
-					  r = base_r;
-					  r.skip(jump_address);
-					}
-					else {
-					  program_data.push_back((int)jump_pc_it->second);
-					  done = true;
-					}
-				  }
-				  else if (*c == 'b') {
-					size_t branch_address = r.get<uint16_t>();
-					branches.emplace_back(branch_address, program_data.size());
-					program_data.push_back(0);
-				  }
-				  else if (*c == 'e') {
-					done = true;
-				  }
-				  ++c;
-				}
-			  }
-			  return initial_pc;
-			};
-			size_t initial_pc = decode(initial_address);
-			while (!branches.empty()) {
-			  auto v = branches.front();
-			  branches.pop_front();
-			  size_t pc = decode(std::get<0>(v));
-			  if ((size_t)(int)pc != pc) error("iscript load: 0x%x does not fit in an int", pc);
-			  program_data[std::get<1>(v)] = (int)pc;
-			}
-			return initial_pc;
-		  };
+		uint16_t begin_offset = r.get<uint16_t>();
+		r.seek(begin_offset);
 
-		  auto& anim_funcs = animation_pc[id];
+		uint16_t id, offset;
+		while (id = r.get<uint16_t>(), offset = r.get<uint16_t>(), id != 0xFFFF && offset != 0x0000) {
+		  auto anim_r = base_r;
+		  anim_r.seek(offset + 8);
 
-		  size_t highest_animation = script_r.get<uint32_t>();
-		  size_t animations = (highest_animation + 1 + 1) & -2;
-		  for (size_t i = 0; i != animations; ++i) {
-			size_t anim_address = script_r.get<uint16_t>();
-			if (!anim_address) {
-			  anim_funcs.push_back(0);
-			  continue;
-			}
-			auto anim_r = base_r;
-			anim_r.skip(anim_address);
-			anim_funcs.push_back(decode_at(anim_address));
+		  for (int anim_num = 0; anim_num < iscript_anims::MAX; ++anim_num) {
+			iscript.script_anim_offsets[id][anim_num] = anim_r.get<uint16_t>();
 		  }
-		}
-
-		iscript.program_data = std::move(program_data);
-		iscript.scripts.clear();
-		for (auto& v : animation_pc) {
-		  auto& s = iscript.scripts[v.first];
-		  s.id = v.first;
-		  s.animation_pc = std::move(v.second);
 		}
 	  };
 

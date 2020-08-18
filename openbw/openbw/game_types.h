@@ -390,7 +390,7 @@ struct link_base {
 
 
 struct iscript_state_t {
-	const iscript_t::script* current_script;
+	int current_script;
 	size_t program_counter;
 	size_t return_address;
 	int animation;

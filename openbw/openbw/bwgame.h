@@ -13471,11 +13471,10 @@ struct state_functions {
 	}
 
 	void iscript_set_script(image_t* image, int script_id) {
-		auto i = global_st.iscript.scripts.find(script_id);
-		if (i == global_st.iscript.scripts.end()) {
-			error("script %d does not exist", script_id);
-		}
-		image->iscript_state.current_script = &i->second;
+	  if (global_st.iscript.script_anim_offsets.count(script_id) == 0) {
+		error("script %d does not exist", script_id);
+	  }
+	  image->iscript_state.current_script = script_id;
 	}
 
 	bool is_spell(const weapon_type_t* weapon_type) {
@@ -14747,42 +14746,49 @@ struct state_functions {
 			if (weapon->bullet_count == 2) fire_weapon(iscript_unit, weapon, forward_offset);
 		};
 
-		const int* program_data = global_st.iscript.program_data.data();
-		const int* p = program_data + state.program_counter;
+		auto program_data = data_loading::data_reader_le(global_st.iscript.data.data(), global_st.iscript.data.data() + global_st.iscript.data.size());
+		data_loading::data_reader_le p = program_data;
+		p.seek(state.program_counter);
 
 		auto playsndrand = [&]() {
-			int n = *p++;
-			if (!noop) {
-				int index = lcg_rand(4) % n;
-				play_sound(p[index], image->sprite->position);
+			uint8_t n = p.get<uint8_t>();
+			
+			int index = lcg_rand(4) % n;
+			uint16_t rnd_sfx = 0;
+			for (uint8_t i = 0; i < n; ++i) {
+			  uint16_t cur_sfx = p.get<uint16_t>();
+			  if (i == index) rnd_sfx = cur_sfx;
 			}
-			p += n;
+
+			if (!noop) {
+				play_sound(rnd_sfx, image->sprite->position);
+			}
 		};
 
 		while (true) {
 			using namespace iscript_opcodes;
-			size_t pc = p - program_data;
-			if (pc == 0) {
-			  warn("iscript: program counter is null");
-			  destroy_image(image);
-			  return false;
-			}
+			size_t pc = p.tell();
+			//if (pc == 0) {
+			//  warn("iscript: program counter is null");
+			//  destroy_image(image);
+			//  return false;
+			//}
 			
-			int opc = *p++ - 0x808091;
+			int opc = p.get<uint8_t>();
 			int a, b, c;
 			switch (opc) {
 			case opc_playfram:
-				a = *p++;
+				a = p.get<uint16_t>();
 				if (noop) break;
 				play_frame(a);
 				break;
 			case opc_playframtile:
-				a = *p++;
+				a = p.get<uint16_t>();
 				if (noop) break;
 				if ((size_t)a + game_st.tileset_index < image->grp->frames.size()) play_frame(a + game_st.tileset_index);
 				break;
 			case opc_sethorpos:
-				a = *p++;
+				a = p.get<int8_t>();
 				if (noop) break;
 				if (image->offset.x != a) {
 					image->offset.x = a;
@@ -14790,7 +14796,7 @@ struct state_functions {
 				}
 				break;
 			case opc_setvertpos:
-				a = *p++;
+			    a = p.get<int8_t>();
 				if (noop) break;
 				if (!iscript_unit || (!u_requires_detector(iscript_unit) && !u_cloaked(iscript_unit))) {
 					if (image->offset.y != a) {
@@ -14800,36 +14806,36 @@ struct state_functions {
 				}
 				break;
 			case opc_setpos:
-				a = *p++;
-				b = *p++;
+				a = p.get<int8_t>();
+				b = p.get<int8_t>();
 				if (noop) break;
 				set_image_offset(image, xy(a, b));
 				break;
 			case opc_wait:
-				state.wait = *p++ - 1;
-				state.program_counter = p - program_data;
+				state.wait = p.get<uint8_t>() - 1;
+				state.program_counter = p.tell();
 				return true;
 			case opc_waitrand:
-				a = *p++;
-				b = *p++;
+				a = p.get<uint8_t>();
+				b = p.get<uint8_t>();
 				if (noop) break;
 				state.wait = a + ((lcg_rand(3) & 0xff) % (b - a + 1)) - 1;
-				state.program_counter = p - program_data;
+				state.program_counter = p.tell();
 				return true;
 			case opc_goto:
-				p = program_data + *p;
+				p.seek(p.get<uint16_t>());
 				break;
 			case opc_imgol:
 			case opc_imgul:
-				a = *p++;
-				b = *p++;
-				c = *p++;
+				a = p.get<uint16_t>();
+				b = p.get<int8_t>();
+				c = p.get<int8_t>();
 				if (noop) break;
 				add_image((ImageTypes)a, image->offset + xy(b, c), opc == opc_imgol ? image_order_above : image_order_below);
 				break;
 			case opc_imgolorig:
 			case opc_switchul:
-				a = *p++;
+				a = p.get<uint16_t>();
 				if (noop) break;
 				if (image_t* new_image = add_image((ImageTypes)a, xy(), opc == opc_imgolorig ? image_order_above : image_order_below)) {
 					if (!i_flag(new_image, image_t::flag_uses_special_offset)) {
@@ -14839,17 +14845,17 @@ struct state_functions {
 				}
 				break;
 			case opc_imgoluselo:
-				a = *p++;
-				b = *p++;
-				c = *p++;
+				a = p.get<uint16_t>();
+				b = p.get<int8_t>();
+				c = p.get<int8_t>();
 				if (noop) break;
 				add_image((ImageTypes)a, get_image_lo_offset(image, (size_t)b, (size_t)c), image_order_above);
 				break;
 
 			case opc_sprol:
-				a = *p++;
-				b = *p++;
-				c = *p++;
+				a = p.get<uint16_t>();
+				b = p.get<int8_t>();
+				c = p.get<int8_t>();
 				if (noop) break;
 				if (iscript_bullet && iscript_bullet->bullet_owner_unit && unit_is_goliath(iscript_bullet->bullet_owner_unit) && player_has_upgrade(iscript_bullet->bullet_owner_unit->owner, UpgradeTypes::Charon_Boosters)) {
 					create_thingy_at_image(image, get_sprite_type(SpriteTypes::SPRITEID_Halo_Rockets_Trail), {b, c}, image->sprite->elevation_level + 1);
@@ -14859,17 +14865,17 @@ struct state_functions {
 				break;
 
 			case opc_lowsprul:
-				a = *p++;
-				b = *p++;
-				c = *p++;
+				a = p.get<uint16_t>();
+				b = p.get<int8_t>();
+				c = p.get<int8_t>();
 				if (noop) break;
 				create_thingy_at_image(image, get_sprite_type((SpriteTypes)a), {b, c}, 1);
 				break;
 
 			case opc_spruluselo:
-				a = *p++;
-				b = *p++;
-				c = *p++;
+				a = p.get<uint16_t>();
+				b = p.get<int8_t>();
+				c = p.get<int8_t>();
 				if (noop) break;
 				if (auto* sprite = get_sprite_type((SpriteTypes)a)) {
 					if (iscript_unit && (u_requires_detector(iscript_unit) || u_cloaked(iscript_unit)) && !sprite->image->always_visible) break;
@@ -14878,9 +14884,9 @@ struct state_functions {
 				}
 				break;
 			case opc_sprul:
-				a = *p++;
-				b = *p++;
-				c = *p++;
+				a = p.get<uint16_t>();
+				b = p.get<int8_t>();
+				c = p.get<int8_t>();
 				if (noop) break;
 				if (auto* sprite = get_sprite_type((SpriteTypes)a)) {
 					if (iscript_unit && (u_requires_detector(iscript_unit) || u_cloaked(iscript_unit)) && !sprite->image->always_visible) break;
@@ -14889,8 +14895,8 @@ struct state_functions {
 				}
 				break;
 			case opc_sproluselo:
-				a = *p++;
-				b = *p++;
+				a = p.get<uint16_t>();
+				b = p.get<uint8_t>();
 				if (noop) break;
 				if (auto* sprite = get_sprite_type((SpriteTypes)a)) {
 					auto* t = create_thingy_at_image(image, sprite, get_image_lo_offset(image, (size_t)b, 0), image->sprite->elevation_level + 1);
@@ -14904,7 +14910,7 @@ struct state_functions {
 				destroy_image(image);
 				return false;
 			case opc_setflipstate:
-				a = *p++;
+				a = p.get<uint8_t>();
 				if (noop) break;
 				if (i_flag(image, image_t::flag_horizontally_flipped) != (a != 0)) {
 					i_set_flag(image, image_t::flag_horizontally_flipped, a != 0);
@@ -14913,7 +14919,7 @@ struct state_functions {
 				}
 				break;
 			case opc_playsnd:
-				a = *p++;
+				a = p.get<uint16_t>();
 				if (noop) break;
 				play_sound(a, image->sprite->position);
 				break;
@@ -14921,8 +14927,8 @@ struct state_functions {
 				playsndrand();
 				break;
 			case opc_playsndbtwn:
-				a = *p++;
-				b = *p++;
+				a = p.get<uint16_t>();
+				b = p.get<uint16_t>();
 				if (noop) break;
 				play_sound(a + lcg_rand(5) % (b - a + 1), image->sprite->position);
 				break;
@@ -14948,20 +14954,20 @@ struct state_functions {
 				}
 				break;
 			case opc_randcondjmp:
-				a = *p++;
-				b = *p++;
+				a = p.get<uint8_t>();
+				b = p.get<uint16_t>();
 				if ((lcg_rand(7) & 0xff) <= a) {
-					p = program_data + b;
+				  p.seek(b);
 				}
 				break;
 
 			case opc_turnccwise:
-				a = *p++;
+				a = p.get<uint8_t>();
 				if (noop) break;
 				if (iscript_unit) set_unit_heading(iscript_unit, iscript_unit->heading - 8_dir * a);
 				break;
 			case opc_turncwise:
-				a = *p++;
+				a = p.get<uint8_t>();
 				if (noop) break;
 				if (iscript_unit) set_unit_heading(iscript_unit, iscript_unit->heading + 8_dir * a);
 				break;
@@ -14970,7 +14976,7 @@ struct state_functions {
 				if (iscript_unit && !iscript_unit->order_target.unit) set_unit_heading(iscript_unit, iscript_unit->heading + 8_dir);
 				break;
 			case opc_turnrand:
-				a = *p++;
+				a = p.get<uint8_t>();
 				if (noop) break;
 				if (lcg_rand(6) % 4 == 1) {
 					if (iscript_unit) set_unit_heading(iscript_unit, iscript_unit->heading - 8_dir * a);
@@ -14980,12 +14986,12 @@ struct state_functions {
 				break;
 
 			case opc_sigorder:
-				a = *p++;
+				a = p.get<uint8_t>();
 				if (noop) break;
 				if (iscript_flingy) iscript_flingy->order_signal |= a;
 				break;
 			case opc_attackwith:
-				a = *p++;
+				a = p.get<uint8_t>();
 				if (noop) break;
 				if (iscript_unit) attack_with(a);
 				break;
@@ -15006,12 +15012,12 @@ struct state_functions {
 				}
 				break;
 			case opc_useweapon:
-				a = *p++;
+				a = p.get<uint8_t>();
 				if (noop) break;
 				if (iscript_unit) use_weapon(iscript_unit, (WeaponTypes)a);
 				break;
 			case opc_move:
-				a = *p++;
+				a = p.get<uint8_t>();
 				if (distance_moved) {
 					if (iscript_unit) *distance_moved = get_modified_unit_speed(iscript_unit, fp8::integer(a));
 				}
@@ -15023,13 +15029,13 @@ struct state_functions {
 				if (iscript_unit) u_unset_movement_flag(iscript_unit, 8);
 				break;
 			case opc_engframe:
-				a = *p++;
+				a = p.get<uint8_t>();
 				if (noop) break;
 				image->frame_index_base = a;
 				set_image_frame_index_offset(image, image->sprite->main_image->frame_index_offset, i_flag(image->sprite->main_image, image_t::flag_horizontally_flipped));
 				break;
 			case opc_engset:
-				a = *p++;
+				a = p.get<uint8_t>();
 				if (noop) break;
 				image->frame_index_base = image->sprite->main_image->frame_index_base + (image->sprite->main_image->grp->frames.size() & 0x7fff) * a;
 				set_image_frame_index_offset(image, image->sprite->main_image->frame_index_offset, i_flag(image->sprite->main_image, image_t::flag_horizontally_flipped));
@@ -15060,10 +15066,10 @@ struct state_functions {
 					break;
 				}
 				state.wait = 10;
-				state.program_counter = p - 1 - program_data;
+				state.program_counter = p.tell() - 1;
 				return true;
 			case opc_attkshiftproj:
-				a = *p++;
+				a = p.get<uint8_t>();
 				if (noop) break;
 				if (iscript_unit) attack_with_forward_offset(1, a);
 				break;
@@ -15077,28 +15083,28 @@ struct state_functions {
 				break;
 
 			case opc_setfldirect:
-				a = *p++;
+				a = p.get<uint8_t>();
 				if (noop) break;
 				if (iscript_unit) set_unit_heading(iscript_unit, 8_dir * a);
 				break;
 
 			case opc_setflspeed:
-				a = *p++;
+				a = p.get<uint16_t>();
 				if (noop) break;
 				if (iscript_unit) iscript_unit->flingy_top_speed = fp8::from_raw(a);
 				break;
 
 			case opc_call:
-				a = *p++;
-				state.return_address = p - program_data;
-				p = program_data + a;
+				a = p.get<uint16_t>();
+				state.return_address = p.tell();
+				p.seek(a);
 				break;
 			case opc_return:
-				p = program_data + state.return_address;
+				p.seek(state.return_address);
 				break;
 
 			case opc_creategasoverlays:
-				a = *p++;
+				a = p.get<uint8_t>();
 				if (noop) break;
 				if (iscript_unit && ut_resource(iscript_unit)) {
 					ImageTypes image_id = iscript_unit->building.resource.resource_count ? ImageTypes::IMAGEID_Vespene_Geyser_Smoke1 : ImageTypes::IMAGEID_Vespene_Geyser_Smoke1_Overlay;
@@ -15107,78 +15113,78 @@ struct state_functions {
 				}
 				break;
 			case opc_pwrupcondjmp:
-				a = *p++;
+				a = p.get<uint16_t>();
 				if (image->sprite && image->sprite->main_image != image) {
-					p = program_data + a;
+				  p.seek(a);
 				}
 				break;
 			case opc_trgtrangecondjmp:
-				a = *p++;
-				b = *p++;
+				a = p.get<uint16_t>();
+				b = p.get<uint16_t>();
 				if (noop) continue;
 				if (iscript_unit && iscript_unit->order_target.unit) {
 					xy pos = get_bullet_appear_at_target_pos(iscript_unit, iscript_unit->order_target.unit);
 					if (xy_length(to_xy_fp8(pos) - iscript_unit->exact_position).integer_part() <= a) {
-						p = program_data + b;
+						p.seek(b);
 					}
 				}
 				break;
 			case opc_trgtarccondjmp:
-				a = *p++;
-				b = *p++;
-				c = *p++;
+				a = p.get<uint16_t>();
+				b = p.get<uint16_t>();
+				c = p.get<uint16_t>();
 				if (noop) break;
 				if (iscript_unit && iscript_unit->order_target.unit) {
 					if (fp8::extend(direction_t::from_raw(a) - xy_direction(iscript_unit->order_target.unit->sprite->position - iscript_unit->sprite->position)).abs() < fp8::from_raw(b)) {
-						p = program_data + c;
+						p.seek(c);
 					}
 				}
 				break;
 			case opc_curdirectcondjmp:
-				a = *p++;
-				b = *p++;
-				c = *p++;
+				a = p.get<uint16_t>();
+				b = p.get<uint16_t>();
+				c = p.get<uint16_t>();
 				if (noop) break;
 				if (iscript_unit && fp8::extend(iscript_unit->heading - direction_t::from_raw(a)).abs() < fp8::from_raw(b)) {
-					p = program_data + c;
+				  p.seek(c);
 				}
 				break;
 			case opc_imgulnextid:
-				a = *p++;
-				b = *p++;
+				a = p.get<uint8_t>();
+				b = p.get<uint8_t>();
 				if (noop) break;
 				add_image((ImageTypes)((int)image->image_type->id + 1), image->offset + xy(a, b), image_order_below);
 				break;
 
 			case opc_liftoffcondjmp:
-				a = *p++;
+				a = p.get<uint16_t>();
 				if (noop) break;
 				if (iscript_unit && u_flying(iscript_unit)) {
-					p = program_data + a;
+					p.seek(a);
 				}
 				break;
 			case opc_warpoverlay:
-				a = *p++;
+				a = p.get<uint16_t>();
 				if (noop) break;
 				image->modifier_data1 = a & 0xff;
 				image->modifier_data2 = (a >> 8) & 0xff;
 				break;
 			case opc_orderdone:
-				a = *p++;
+				a = p.get<uint8_t>();
 				if (noop) break;
 				if (iscript_flingy) iscript_flingy->order_signal &= ~a;
 				break;
 			case opc_grdsprol:
-				a = *p++;
-				b = *p++;
-				c = *p++;
+				a = p.get<uint16_t>();
+				b = p.get<int8_t>();
+				c = p.get<int8_t>();
 				if (noop) break;
 				if (unit_type_can_fit_at(get_unit_type(UnitTypes::Terran_Marine), image->sprite->position + image->offset + xy(b, c))) {
 					create_thingy_at_image(image, get_sprite_type((SpriteTypes)a), xy(b, c), image->sprite->elevation_level + 1);
 				}
 				break;
 			default:
-				error("iscript: unhandled opcode %d", opc);
+				warn("iscript: unhandled opcode %d", opc);
 			}
 		}
 
@@ -15196,15 +15202,15 @@ struct state_functions {
 		if (new_anim == AirAttkRpt && old_anim != AirAttkRpt) {
 			if (old_anim != AirAttkInit) new_anim = AirAttkInit;
 		}
-		auto* script = image->iscript_state.current_script;
-		if (!script) error("attempt to start animation without a script");
-		auto& anims_pc = script->animation_pc;
-		if ((size_t)new_anim >= anims_pc.size()) {
-		  warn("script %d does not have animation %d", script->id, new_anim);
-		  return true;
-		}
+		int script = image->iscript_state.current_script;
+		if (script == -1) error("attempt to start animation without a script");
+		//auto& anims_pc = script->animation_pc;
+		//if ((size_t)new_anim >= anims_pc.size()) {
+		//  warn("script %d does not have animation %d", script->id, new_anim);
+		//  return true;
+		//}
 		image->iscript_state.animation = new_anim;
-		image->iscript_state.program_counter = anims_pc[new_anim];
+		image->iscript_state.program_counter = global_st.iscript.script_anim_offsets[script][new_anim];
 		image->iscript_state.return_address = 0;
 		image->iscript_state.wait = 0;
 		return iscript_execute(image, image->iscript_state);
@@ -15293,7 +15299,7 @@ struct state_functions {
 		image->offset = offset;
 		image->modifier_data1 = 0;
 		image->modifier_data2 = 0;
-		image->iscript_state.current_script = nullptr;
+		image->iscript_state.current_script = -1;
 		image->iscript_state.program_counter = 0;
 		image->iscript_state.return_address = 0;
 		image->iscript_state.animation = 0;
@@ -15471,15 +15477,15 @@ struct state_functions {
 		if (u->flingy_movement_type == 2) {
 			image_t* image = u->sprite->main_image;
 			if (!image) error("null image");
-			auto* script = image->iscript_state.current_script;
-			auto& anims_pc = script->animation_pc;
+			int script = image->iscript_state.current_script;
+			//auto& anims_pc = script->animation_pc;
 			int anim = iscript_anims::Walking;
-			if ((size_t)anim < anims_pc.size() && anims_pc[anim] != 0) {
+			if (global_st.iscript.script_anim_offsets[script][anim] != 0) {
 				auto ius = make_thingy_setter(iscript_unit, u);
 				iscript_state_t st;
 				st.current_script = script;
 				st.animation = anim;
-				st.program_counter = anims_pc[anim];
+				st.program_counter = global_st.iscript.script_anim_offsets[script][anim];
 				st.return_address = 0;
 				st.wait = 0;
 				fp8 total_distance_moved {};
