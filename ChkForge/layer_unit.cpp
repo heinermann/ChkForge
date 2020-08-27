@@ -19,6 +19,7 @@ bool UnitLayer::mouseEvent(MapView* map, QMouseEvent* e)
     {
     case QEvent::MouseButtonPress:
       if (e->button() == Qt::LeftButton) {
+        map->getMap()->placeUnit(place_pos_bw.x, place_pos_bw.y, this->placement_type, map->getMap()->get_player());
         return true;
       }
       if (e->button() == Qt::RightButton) {

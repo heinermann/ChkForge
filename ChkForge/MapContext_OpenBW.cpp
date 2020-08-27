@@ -272,83 +272,7 @@ void MapContext::chkdraft_to_openbw(bool is_editor_mode)
   // Sync Unit placement
   for (size_t i = 0; i < chk.layers.numUnits(); ++i) {
     auto unit = chk.layers.getUnit(i);
-
-    int type = unit->type;
-    int owner = unit->owner;
-
-    if (type >= Sc::Unit::TotalTypes) continue;
-    if (owner >= Sc::Player::Total) owner = 0;
-
-    const bwgame::unit_type_t* obw_unit_type = game_load_funcs.get_unit_type(bwgame::UnitTypes(type));
-
-    if (type == Sc::Unit::Type::StartLocation) {
-      game_load_funcs.game_st.start_locations[owner] = { unit->xc, unit->yc };
-      auto* new_unit = game_load_funcs.create_unit(obw_unit_type, { unit->xc, unit->yc }, owner);
-      game_load_funcs.hide_unit(new_unit);
-      placed_units.insert(new_unit);
-      unit_finder.add(new_unit);
-      continue;
-    }
-
-    bwgame::unit_t* new_unit = game_load_funcs.create_completed_unit(obw_unit_type, { unit->xc, unit->yc }, owner);
-    if (!new_unit) continue;
-    if (game_load_funcs.unit_type_spreads_creep(obw_unit_type, true) || game_load_funcs.ut_requires_creep(obw_unit_type)) {
-      game_load_funcs.spread_creep_completely(new_unit, new_unit->sprite->position);
-    }
-
-    if (unit->validFieldFlags & Chk::Unit::ValidField::Hitpoints) {
-      using tmp_t = bwgame::fixed_point<32, 8, true>;
-      tmp_t tmp = tmp_t::extend(new_unit->unit_type->hitpoints);
-      tmp = std::max(tmp * int(unit->hitpointPercent) / 100, tmp_t::from_raw(1));
-      game_load_funcs.set_unit_hp(new_unit, bwgame::fp8::truncate(tmp));
-    }
-    if (unit->validFieldFlags & Chk::Unit::ValidField::Shields) {
-      game_load_funcs.set_unit_shield_points(new_unit, bwgame::fp8::integer(new_unit->unit_type->shield_points * unit->shieldPercent / 100));
-    }
-    if (unit->validFieldFlags & Chk::Unit::ValidField::Energy) {
-      game_load_funcs.set_unit_energy(new_unit, game_load_funcs.unit_max_energy(new_unit) * int(unit->energyPercent) / 100);
-    }
-    if (unit->validFieldFlags & Chk::Unit::ValidField::Resources) {
-      game_load_funcs.set_unit_resources(new_unit, unit->resourceAmount);
-    }
-    if (unit->validFieldFlags & Chk::Unit::ValidField::Hanger) {
-      // TODO
-    }
-
-    if (unit->validStateFlags & unit->stateFlags & Chk::Unit::State::Cloak) {
-      // TODO 
-      //game_load_funcs.cloak_unit(new_unit);
-    }
-
-    if (unit->validStateFlags & unit->stateFlags & Chk::Unit::State::Burrow) {
-      if (game_load_funcs.unit_can_use_tech(new_unit, game_load_funcs.get_tech_type(bwgame::TechTypes::Burrowing))) {
-        for (auto img = new_unit->sprite->images.begin(); img != new_unit->sprite->images.end(); ++img) {
-          game_load_funcs.iscript_run_anim(&*img, 14);
-        }
-        game_load_funcs.set_unit_burrowed(new_unit);
-        game_load_funcs.cloak_unit(new_unit);
-        game_load_funcs.u_set_status_flag(new_unit, bwgame::unit_t::status_flags_t::status_flag_no_collide);
-        // TODO: Finish (missing a function)
-      }
-    }
-    if (unit->validStateFlags & unit->stateFlags & Chk::Unit::State::InTransit) {
-      if (game_load_funcs.unit_can_receive_order(new_unit, game_load_funcs.get_order_type(bwgame::Orders::BuildingLiftoff), new_unit->owner)) {
-        // TODO (unknown)
-      }
-    }
-    if (unit->validStateFlags & unit->stateFlags & Chk::Unit::State::Hallucinated) {
-      game_load_funcs.make_unit_hallucination(new_unit);
-    }
-    if (unit->validStateFlags & unit->stateFlags & Chk::Unit::State::Invincible) {
-      game_load_funcs.u_set_status_flag(new_unit, bwgame::unit_t::status_flags_t::status_flag_invincible);
-    }
-
-    if (type == Sc::Unit::Type::ZergBroodling) {
-      game_load_funcs.set_remove_timer(new_unit);
-    }
-
-    placed_units.insert(new_unit);
-    unit_finder.add(new_unit);
+    placeOpenBwUnit(unit);
   }
 
   for (bwgame::unit_t* u : bwgame::ptr(game_load_funcs.st.visible_units)) {
@@ -376,4 +300,84 @@ void MapContext::chkdraft_to_openbw(bool is_editor_mode)
     // TODO
   }
   // TODO
+}
+
+void MapContext::placeOpenBwUnit(Chk::UnitPtr unit) {
+
+  int type = unit->type;
+  int owner = unit->owner;
+
+  if (type >= Sc::Unit::TotalTypes) return;
+  if (owner >= Sc::Player::Total) owner = 0;
+
+  const bwgame::unit_type_t* obw_unit_type = openbw_ui.get_unit_type(bwgame::UnitTypes(type));
+
+  if (unit->type == Sc::Unit::Type::StartLocation) {
+    openbw_ui.st.game->start_locations[unit->owner] = { unit->xc, unit->yc };
+    auto* new_unit = openbw_ui.create_unit(obw_unit_type, { unit->xc, unit->yc }, unit->owner);
+    openbw_ui.hide_unit(new_unit);
+    placed_units.insert(new_unit);
+    unit_finder.add(new_unit);
+    return;
+  }
+
+  bwgame::unit_t* new_unit = openbw_ui.create_completed_unit(obw_unit_type, { unit->xc, unit->yc }, owner);
+  if (!new_unit) return;
+  if (openbw_ui.unit_type_spreads_creep(obw_unit_type, true) || openbw_ui.ut_requires_creep(obw_unit_type)) {
+    openbw_ui.spread_creep_completely(new_unit, new_unit->sprite->position);
+  }
+
+  if (unit->validFieldFlags & Chk::Unit::ValidField::Hitpoints) {
+    using tmp_t = bwgame::fixed_point<32, 8, true>;
+    tmp_t tmp = tmp_t::extend(new_unit->unit_type->hitpoints);
+    tmp = std::max(tmp * int(unit->hitpointPercent) / 100, tmp_t::from_raw(1));
+    openbw_ui.set_unit_hp(new_unit, bwgame::fp8::truncate(tmp));
+  }
+  if (unit->validFieldFlags & Chk::Unit::ValidField::Shields) {
+    openbw_ui.set_unit_shield_points(new_unit, bwgame::fp8::integer(new_unit->unit_type->shield_points * unit->shieldPercent / 100));
+  }
+  if (unit->validFieldFlags & Chk::Unit::ValidField::Energy) {
+    openbw_ui.set_unit_energy(new_unit, openbw_ui.unit_max_energy(new_unit) * int(unit->energyPercent) / 100);
+  }
+  if (unit->validFieldFlags & Chk::Unit::ValidField::Resources) {
+    openbw_ui.set_unit_resources(new_unit, unit->resourceAmount);
+  }
+  if (unit->validFieldFlags & Chk::Unit::ValidField::Hanger) {
+    // TODO
+  }
+
+  if (unit->validStateFlags & unit->stateFlags & Chk::Unit::State::Cloak) {
+    // TODO 
+    //game_load_funcs.cloak_unit(new_unit);
+  }
+
+  if (unit->validStateFlags & unit->stateFlags & Chk::Unit::State::Burrow) {
+    if (openbw_ui.unit_can_use_tech(new_unit, openbw_ui.get_tech_type(bwgame::TechTypes::Burrowing))) {
+      for (auto img = new_unit->sprite->images.begin(); img != new_unit->sprite->images.end(); ++img) {
+        openbw_ui.iscript_run_anim(&*img, 14);
+      }
+      openbw_ui.set_unit_burrowed(new_unit);
+      openbw_ui.cloak_unit(new_unit);
+      openbw_ui.u_set_status_flag(new_unit, bwgame::unit_t::status_flags_t::status_flag_no_collide);
+      // TODO: Finish (missing a function)
+    }
+  }
+  if (unit->validStateFlags & unit->stateFlags & Chk::Unit::State::InTransit) {
+    if (openbw_ui.unit_can_receive_order(new_unit, openbw_ui.get_order_type(bwgame::Orders::BuildingLiftoff), new_unit->owner)) {
+      // TODO (unknown)
+    }
+  }
+  if (unit->validStateFlags & unit->stateFlags & Chk::Unit::State::Hallucinated) {
+    openbw_ui.make_unit_hallucination(new_unit);
+  }
+  if (unit->validStateFlags & unit->stateFlags & Chk::Unit::State::Invincible) {
+    openbw_ui.u_set_status_flag(new_unit, bwgame::unit_t::status_flags_t::status_flag_invincible);
+  }
+
+  if (type == Sc::Unit::Type::ZergBroodling) {
+    openbw_ui.set_remove_timer(new_unit);
+  }
+
+  placed_units.insert(new_unit);
+  unit_finder.add(new_unit);
 }

@@ -18,6 +18,7 @@
 #include <QRgb>
 
 #include "layers.h"
+#include "UndoManager.h"
 
 class MapView;
 
@@ -81,11 +82,17 @@ namespace ChkForge
     void set_layer_sprite_type(Sc::Sprite::Type type);
     void set_layer_sprite_unit_type(Sc::Unit::Type type);
 
+    void placeUnit(int x, int y, Sc::Unit::Type type, int player);
+
+    int rawPlaceUnit(int x, int y, Sc::Unit::Type type, int player);
+    void placeOpenBwUnit(Chk::UnitPtr unit);
+    void rawRemoveUnit(int index);
+
   public:
     // TODO: Move viewport and screen position stuff out of openbw, to allow for multiple viewports in the same map
     bwgame::ui_functions openbw_ui;
 
-    // TODO: Undo/redo buffer and actions
+    UndoManager actions{ this };
   private:
     MapFile chk{ Sc::Terrain::Tileset::Badlands, 64, 64 };
 

@@ -189,6 +189,9 @@
     <ClCompile Include="layer_location.cpp">
       <Filter>Source Files\layers</Filter>
     </ClCompile>
+    <ClCompile Include="PlaceUnitAction.cpp">
+      <Filter>Header Files\undo</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="layers.h">
@@ -222,6 +225,9 @@
       <Filter>Header Files\undo</Filter>
     </ClInclude>
     <ClInclude Include="CompoundAction.h">
+      <Filter>Header Files\undo</Filter>
+    </ClInclude>
+    <ClInclude Include="PlaceUnitAction.h">
       <Filter>Header Files\undo</Filter>
     </ClInclude>
   </ItemGroup>

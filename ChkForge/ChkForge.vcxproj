@@ -217,6 +217,7 @@
     <ClCompile Include="minimap.cpp" />
     <ClCompile Include="newmap.cpp" />
     <ClCompile Include="outputwindow.cpp" />
+    <ClCompile Include="PlaceUnitAction.cpp" />
     <ClCompile Include="previewpainter.cpp" />
     <ClCompile Include="recenttiles.cpp" />
     <ClCompile Include="savemap.cpp" />
@@ -229,6 +230,7 @@
   <ItemGroup>
     <ClInclude Include="Action.h" />
     <ClInclude Include="CompoundAction.h" />
+    <ClInclude Include="PlaceUnitAction.h" />
     <ClInclude Include="UndoManager.h" />
     <ClInclude Include="UnitFinder.h" />
     <QtMoc Include="about.h" />
