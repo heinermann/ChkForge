@@ -894,9 +894,6 @@ QSplitter::handle:vertical {
    <property name="text">
     <string>Close Map View</string>
    </property>
-   <property name="shortcut">
-    <string>Ctrl+W</string>
-   </property>
   </action>
   <action name="action_window_closeAllMapViews">
    <property name="icon">

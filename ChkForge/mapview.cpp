@@ -271,27 +271,27 @@ bool MapView::surfaceEventFilter(QObject* obj, QEvent* e)
 
 void MapView::keyPressEvent(QKeyEvent* event)
 {
-  event->ignore();
   if (event->modifiers() == Qt::KeyboardModifier::NoModifier) {
     switch (event->key()) {
     case Qt::Key::Key_Left:
       setScreenPos(screen_position.topLeft() - QPoint{ 32, 0 });
       event->accept();
-      break;
+      return;
     case Qt::Key::Key_Right:
       setScreenPos(screen_position.topLeft() + QPoint{ 32, 0 });
       event->accept();
-      break;
+      return;
     case Qt::Key::Key_Up:
       setScreenPos(screen_position.topLeft() - QPoint{ 0, 32 });
       event->accept();
-      break;
+      return;
     case Qt::Key::Key_Down:
       setScreenPos(screen_position.topLeft() + QPoint{ 0, 32 });
       event->accept();
-      break;
+      return;
     }
   }
+  QMdiSubWindow::keyPressEvent(event);
 }
 
 bool MapView::eventFilter(QObject* obj, QEvent* e)
@@ -299,7 +299,7 @@ bool MapView::eventFilter(QObject* obj, QEvent* e)
   if (obj == ui->surface) {
     return surfaceEventFilter(obj, e);
   }
-  return false;
+  return QMdiSubWindow::eventFilter(obj, e);
 }
 
 void MapView::hScrollMoved(int value)
