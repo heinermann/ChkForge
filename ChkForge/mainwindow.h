@@ -155,5 +155,6 @@ private slots:
   void onMdiSubWindowActivated(QMdiSubWindow* window);
 
   void onItemTreeChanged(ItemTree::Category category, int id);
+  void onUndoRedoUpdated();
 };
 #endif // MAINWINDOW_H

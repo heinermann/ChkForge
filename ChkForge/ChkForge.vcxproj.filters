@@ -209,9 +209,6 @@
     <ClInclude Include="dockwidgetwrapper.h">
       <Filter>Header Files\ui\Tool Windows</Filter>
     </ClInclude>
-    <ClInclude Include="MapContext.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="icons.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -404,6 +401,9 @@
     </QtMoc>
     <QtMoc Include="about.h">
       <Filter>Header Files\ui\Dialogs</Filter>
+    </QtMoc>
+    <QtMoc Include="MapContext.h">
+      <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
 </Project>

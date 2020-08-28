@@ -19,6 +19,15 @@ public:
     unitFinderY.insert(UnitCompare(dimensions.to.y, u));
   }
 
+  void remove(bwgame::unit_t* u) {
+    bwgame::rect dim = { u->sprite->position - u->unit_type->dimensions.from, u->sprite->position + u->unit_type->dimensions.to };
+
+    removeFromSet(u, unitFinderX, dim.from.x);
+    removeFromSet(u, unitFinderX, dim.to.x);
+    removeFromSet(u, unitFinderY, dim.from.y);
+    removeFromSet(u, unitFinderY, dim.to.y);
+  }
+
   std::unordered_set<bwgame::unit_t*> find(int left, int top, int right, int bottom) const
   {
     int searchRight = right, searchBottom = bottom;
@@ -68,6 +77,15 @@ private:
       return value < other.value;
     }
   };
+
+  void removeFromSet(bwgame::unit_t* u, std::multiset<UnitCompare>& set, int value) {
+    auto find_unit_fn = [u](const UnitCompare& compare) { return compare.unit == u; };
+
+    auto lowerXIter = set.lower_bound(UnitCompare{ value, 0 });
+    auto upperXIter = set.upper_bound(UnitCompare{ value + 1, 0 });
+    auto deleteIt = std::find_if(lowerXIter, upperXIter, find_unit_fn);
+    if (deleteIt != set.end()) set.erase(deleteIt);
+  }
 
   int maxUnitWidth = 256, maxUnitHeight = 256;
   std::multiset<UnitCompare> unitFinderX;

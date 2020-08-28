@@ -4565,6 +4565,23 @@ struct state_functions {
 		}
 	}
 
+	void remove_unit(unit_t* u) {
+	  hide_unit(u);
+	  if (u->subunit) {
+		image_t* main_image = u->subunit->sprite->main_image;
+		if (main_image) {
+		  u->subunit->sprite->images.remove(*main_image);
+		  u->sprite->images.push_front(*main_image);
+		  main_image->sprite = u->sprite;
+		  i_unset_flag(main_image, image_t::flag_has_directional_frames);
+		}
+		destroy_unit(u->subunit);
+		u->subunit = nullptr;
+	  }
+	  u->order_state = 1;
+	  destroy_unit(u);
+	}
+
 	void order_GatherWaitInterrupted(unit_t* u) {
 		if (u->worker.gather_target) {
 			u->worker.gather_target->building.resource.gather_queue.remove(*u);

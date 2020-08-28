@@ -302,12 +302,12 @@ void MapContext::chkdraft_to_openbw(bool is_editor_mode)
   // TODO
 }
 
-void MapContext::placeOpenBwUnit(Chk::UnitPtr unit) {
+int MapContext::placeOpenBwUnit(Chk::UnitPtr unit) {
 
   int type = unit->type;
   int owner = unit->owner;
 
-  if (type >= Sc::Unit::TotalTypes) return;
+  if (type >= Sc::Unit::TotalTypes) return -1;
   if (owner >= Sc::Player::Total) owner = 0;
 
   const bwgame::unit_type_t* obw_unit_type = openbw_ui.get_unit_type(bwgame::UnitTypes(type));
@@ -318,11 +318,11 @@ void MapContext::placeOpenBwUnit(Chk::UnitPtr unit) {
     openbw_ui.hide_unit(new_unit);
     placed_units.insert(new_unit);
     unit_finder.add(new_unit);
-    return;
+    return new_unit->index;
   }
 
   bwgame::unit_t* new_unit = openbw_ui.create_completed_unit(obw_unit_type, { unit->xc, unit->yc }, owner);
-  if (!new_unit) return;
+  if (!new_unit) return -1;
   if (openbw_ui.unit_type_spreads_creep(obw_unit_type, true) || openbw_ui.ut_requires_creep(obw_unit_type)) {
     openbw_ui.spread_creep_completely(new_unit, new_unit->sprite->position);
   }
@@ -380,4 +380,15 @@ void MapContext::placeOpenBwUnit(Chk::UnitPtr unit) {
 
   placed_units.insert(new_unit);
   unit_finder.add(new_unit);
+
+  return new_unit->index;
+}
+
+void MapContext::removeOpenBwUnit(int index)
+{
+  auto to_remove = openbw_ui.get_unit(index);
+
+  unit_finder.remove(to_remove);
+  placed_units.erase(to_remove);
+  openbw_ui.remove_unit(to_remove);
 }

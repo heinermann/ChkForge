@@ -237,7 +237,7 @@
     <ClInclude Include="dockwidgetwrapper.h" />
     <ClInclude Include="icons.h" />
     <ClInclude Include="layers.h" />
-    <ClInclude Include="MapContext.h" />
+    <QtMoc Include="MapContext.h" />
     <ClInclude Include="terrain.h" />
     <QtMoc Include="doodadpalette.h">
     </QtMoc>

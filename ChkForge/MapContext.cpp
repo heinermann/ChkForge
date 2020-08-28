@@ -242,41 +242,8 @@ void MapContext::set_layer_sprite_unit_type(Sc::Unit::Type type)
   layer_sprite->setPlacementUnitType(type);
 }
 
-int MapContext::rawPlaceUnit(int x, int y, Sc::Unit::Type type, int player)
-{
-  auto unit = std::make_shared<Chk::Unit>();
-  unit->classId = 0;
-  unit->xc = x;
-  unit->yc = y;
-  unit->type = type;
-  unit->relationFlags = 0;
-  unit->validStateFlags = 0xFFFF;
-  unit->validFieldFlags = 0xFFFF;
-  unit->owner = player;
-  unit->hitpointPercent = 100;
-  unit->shieldPercent = 100;
-  unit->energyPercent = 100;
-  unit->resourceAmount = 0;
-  unit->hangerAmount = 0;
-  unit->stateFlags = 0;
-  unit->unused = 0;
-  unit->relationClassId = 0;
-
-  int result = chk.layers.addUnit(unit);
-  placeOpenBwUnit(unit);
-  return result;
-}
-
-void MapContext::rawRemoveUnit(int index)
-{
-  chk.layers.deleteUnit(index);
-
-  auto to_remove = openbw_ui.get_unit(index);
-  openbw_ui.hide_unit(to_remove);
-  openbw_ui.kill_unit(to_remove);
-}
-
 void MapContext::placeUnit(int x, int y, Sc::Unit::Type type, int player)
 {
   actions.applyAction<PlaceUnitAction>(x, y, type, player);
+  emit triggerUndoRedoChanged();
 }

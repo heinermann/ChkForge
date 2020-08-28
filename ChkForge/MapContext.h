@@ -33,6 +33,8 @@ namespace ChkForge
   */
   class MapContext : public QObject
   {
+    Q_OBJECT
+
   public:
     MapContext();
 
@@ -84,18 +86,15 @@ namespace ChkForge
 
     void placeUnit(int x, int y, Sc::Unit::Type type, int player);
 
-    int rawPlaceUnit(int x, int y, Sc::Unit::Type type, int player);
-    void placeOpenBwUnit(Chk::UnitPtr unit);
-    void rawRemoveUnit(int index);
+    int placeOpenBwUnit(Chk::UnitPtr unit);
+    void removeOpenBwUnit(int index);
 
   public:
-    // TODO: Move viewport and screen position stuff out of openbw, to allow for multiple viewports in the same map
+    MapFile chk{ Sc::Terrain::Tileset::Badlands, 64, 64 };
     bwgame::ui_functions openbw_ui;
 
     UndoManager actions{ this };
   private:
-    MapFile chk{ Sc::Terrain::Tileset::Badlands, 64, 64 };
-
     // Other stuff/info (i.e. list of views that are holding the map)
     std::unordered_set<MapView*> views;
 
@@ -132,6 +131,9 @@ namespace ChkForge
     std::unordered_set<bwgame::unit_t*> placed_unit_sprites;
     UnitFinder unit_finder;
     UnitFinder unit_sprite_finder;
+
+  signals:
+    void triggerUndoRedoChanged();
   };
 }
 

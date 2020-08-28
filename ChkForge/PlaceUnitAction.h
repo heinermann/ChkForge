@@ -19,6 +19,7 @@ namespace ChkForge {
     int owner;
     Sc::Unit::Type unitType;
     int x, y;
-    int index = -1;
+    int chkDraftIndex = -1;
+    int openbwIndex = -1;
   };
 }

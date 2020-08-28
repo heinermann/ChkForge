@@ -336,10 +336,18 @@ void MainWindow::on_action_file_exportSections_triggered()
 
 void MainWindow::on_action_edit_undo_triggered()
 {
+  auto map = currentMapView();
+  if (map == nullptr) return;
+  map->getMap()->actions.undo();
+  onUndoRedoUpdated();
 }
 
 void MainWindow::on_action_edit_redo_triggered()
 {
+  auto map = currentMapView();
+  if (map == nullptr) return;
+  map->getMap()->actions.redo();
+  onUndoRedoUpdated();
 }
 
 void MainWindow::on_action_edit_cut_triggered()
@@ -606,12 +614,15 @@ void MainWindow::onMdiSubWindowActivated(QMdiSubWindow* window)
   minimap->setActiveMapView(map);
 
   disconnect(this, SLOT(mapMouseMoved(const QPoint&)));
+  disconnect(this, SLOT(onUndoRedoUpdated));
   disconnect(toolbars_ui->spn_zoom, SLOT(setValue(int)));
 
   updateMenusEnabled(true);
+  onUndoRedoUpdated();
   toolbars_ui->spn_zoom->setValue(map->getViewScale() * 100);
 
   connect(map, SIGNAL(mouseMove(const QPoint&)), this, SLOT(mapMouseMoved(const QPoint&)));
+  connect(&*map->getMap(), SIGNAL(triggerUndoRedoChanged), this, SLOT(onUndoRedoUpdated));
   connect(map, SIGNAL(scaleChangedPercent(int)), toolbars_ui->spn_zoom, SLOT(setValue(int)));
 
   // Update player colours
@@ -779,4 +790,17 @@ void MainWindow::dropEvent(QDropEvent* event)
       }
     }
   }
+}
+
+void MainWindow::onUndoRedoUpdated()
+{
+  MapView* map = currentMapView();
+  if (map == nullptr) {
+    ui->action_edit_undo->setEnabled(false);
+    ui->action_edit_redo->setEnabled(false);
+    return;
+  }
+
+  ui->action_edit_undo->setEnabled(map->getMap()->actions.hasUndo());
+  ui->action_edit_redo->setEnabled(map->getMap()->actions.hasRedo());
 }
