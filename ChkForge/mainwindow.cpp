@@ -181,6 +181,8 @@ void MainWindow::mapMenuActions()
     connect(layerAction, &QAction::triggered, this, &MainWindow::toggleLayer);
   }
 
+  ui->action_edit_redo->setShortcuts({ tr("Ctrl+Shift+Z"), tr("Ctrl+Y") });
+
   mapAvailableActions = std::vector<QAction*>{
     ui->action_file_save,
     ui->action_file_saveAs,
@@ -732,6 +734,8 @@ void MainWindow::updateMenusEnabled(bool enabled)
 }
 
 void MainWindow::keyPressEvent(QKeyEvent* event) {
+  event->ignore();
+
   static const std::map<int, int> key_player_map = {
     {Qt::Key::Key_1, 0},
     {Qt::Key::Key_2, 1},
@@ -754,6 +758,7 @@ void MainWindow::keyPressEvent(QKeyEvent* event) {
   else if (event->modifiers() == Qt::ControlModifier && event->key() == Qt::Key::Key_0) {
     MapView* map = currentMapView();
     if (map) map->setViewScalePercent(100);
+    event->accept();
   }
 }
 
