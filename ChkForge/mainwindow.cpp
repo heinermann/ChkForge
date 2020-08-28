@@ -338,18 +338,20 @@ void MainWindow::on_action_file_exportSections_triggered()
 
 void MainWindow::on_action_edit_undo_triggered()
 {
-  auto map = currentMapView();
-  if (map == nullptr) return;
-  map->getMap()->actions.undo();
-  onUndoRedoUpdated();
+  MapView* map = currentMapView();
+  if (map) {
+    map->getMap()->actions.undo();
+    onUndoRedoUpdated();
+  }
 }
 
 void MainWindow::on_action_edit_redo_triggered()
 {
-  auto map = currentMapView();
-  if (map == nullptr) return;
-  map->getMap()->actions.redo();
-  onUndoRedoUpdated();
+  MapView* map = currentMapView();
+  if (map) {
+    map->getMap()->actions.redo();
+    onUndoRedoUpdated();
+  }
 }
 
 void MainWindow::on_action_edit_cut_triggered()
@@ -371,7 +373,7 @@ void MainWindow::on_action_edit_delete_triggered()
 void MainWindow::on_action_edit_selectAll_triggered()
 {
   auto* currentView = currentMapView();
-  if (currentView != nullptr) {
+  if (currentView) {
     currentView->getMap()->select_all();
   }
 }
@@ -520,17 +522,14 @@ void MainWindow::on_action_test_duplicate_triggered()
 
 void MainWindow::on_action_window_newMapView_triggered()
 {
-  auto* currentView = currentMapView();
-  if (currentView != nullptr) {
-    createMapView(currentView->getMap());
-  }
+  MapView* map = currentMapView();
+  if (map) createMapView(map->getMap());
 }
 
 void MainWindow::on_action_window_closeMapView_triggered()
 {
-  if (mdi->currentSubWindow() != nullptr) {
-    mdi->currentSubWindow()->close();
-  }
+  QMdiSubWindow* map = mdi->currentSubWindow();
+  if (map) map->close();
 }
 
 void MainWindow::on_action_window_closeAllMapViews_triggered()
@@ -624,7 +623,7 @@ void MainWindow::onMdiSubWindowActivated(QMdiSubWindow* window)
   toolbars_ui->spn_zoom->setValue(map->getViewScale() * 100);
 
   connect(map, SIGNAL(mouseMove(const QPoint&)), this, SLOT(mapMouseMoved(const QPoint&)));
-  connect(&*map->getMap(), SIGNAL(triggerUndoRedoChanged), this, SLOT(onUndoRedoUpdated));
+  connect(&*map->getMap(), &ChkForge::MapContext::triggerUndoRedoChanged, this, &MainWindow::onUndoRedoUpdated);
   connect(map, SIGNAL(scaleChangedPercent(int)), toolbars_ui->spn_zoom, SLOT(setValue(int)));
 
   // Update player colours
