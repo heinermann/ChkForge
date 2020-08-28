@@ -181,7 +181,23 @@ void MainWindow::mapMenuActions()
     connect(layerAction, &QAction::triggered, this, &MainWindow::toggleLayer);
   }
 
-  ui->action_edit_redo->setShortcuts({ tr("Ctrl+Shift+Z"), tr("Ctrl+Y") });
+  ui->action_help_about->setShortcuts(QKeySequence::HelpContents);
+
+  ui->action_file_open->setShortcuts(QKeySequence::Open);
+  ui->action_file_save->setShortcuts(QKeySequence::Save);
+  ui->action_file_new->setShortcuts(QKeySequence::New);
+  ui->action_file_exit->setShortcuts(QKeySequence::Quit);
+  ui->action_file_saveMapImage->setShortcuts(QKeySequence::Print);
+
+  ui->action_edit_delete->setShortcuts(QKeySequence::Delete);
+  ui->action_edit_cut->setShortcuts(QKeySequence::Cut);
+  ui->action_edit_copy->setShortcuts(QKeySequence::Copy);
+  ui->action_edit_paste->setShortcuts(QKeySequence::Paste);
+  ui->action_edit_undo->setShortcuts(QKeySequence::Undo);
+  ui->action_edit_redo->setShortcuts(QKeySequence::Redo);
+  ui->action_edit_selectAll->setShortcuts(QKeySequence::SelectAll);
+
+  ui->action_window_newMapView->setShortcuts(QKeySequence::AddTab);
 
   mapAvailableActions = std::vector<QAction*>{
     ui->action_file_save,

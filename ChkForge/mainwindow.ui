@@ -312,9 +312,6 @@ QSplitter::handle:vertical {
    <property name="text">
     <string>&amp;New</string>
    </property>
-   <property name="shortcut">
-    <string>Ctrl+N</string>
-   </property>
   </action>
   <action name="action_file_open">
    <property name="icon">
@@ -324,9 +321,6 @@ QSplitter::handle:vertical {
    <property name="text">
     <string>&amp;Open</string>
    </property>
-   <property name="shortcut">
-    <string>Ctrl+O</string>
-   </property>
   </action>
   <action name="action_file_save">
    <property name="icon">
@@ -335,9 +329,6 @@ QSplitter::handle:vertical {
    </property>
    <property name="text">
     <string>&amp;Save</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+S</string>
    </property>
   </action>
   <action name="action_file_saveAs">
@@ -358,9 +349,6 @@ QSplitter::handle:vertical {
    </property>
    <property name="text">
     <string>Save Map Image...</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+P</string>
    </property>
   </action>
   <action name="action_file_importSections">
@@ -395,9 +383,6 @@ QSplitter::handle:vertical {
    <property name="text">
     <string>E&amp;xit</string>
    </property>
-   <property name="shortcut">
-    <string>Alt+F4</string>
-   </property>
    <property name="menuRole">
     <enum>QAction::QuitRole</enum>
    </property>
@@ -410,9 +395,6 @@ QSplitter::handle:vertical {
    <property name="text">
     <string>&amp;Undo</string>
    </property>
-   <property name="shortcut">
-    <string>Ctrl+Z</string>
-   </property>
   </action>
   <action name="action_edit_redo">
    <property name="icon">
@@ -421,9 +403,6 @@ QSplitter::handle:vertical {
    </property>
    <property name="text">
     <string>&amp;Redo</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+Y, Ctrl+Shift+Z</string>
    </property>
   </action>
   <action name="action_edit_cut">
@@ -434,9 +413,6 @@ QSplitter::handle:vertical {
    <property name="text">
     <string>Cu&amp;t</string>
    </property>
-   <property name="shortcut">
-    <string>Ctrl+X</string>
-   </property>
   </action>
   <action name="action_edit_copy">
    <property name="icon">
@@ -445,9 +421,6 @@ QSplitter::handle:vertical {
    </property>
    <property name="text">
     <string>&amp;Copy</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+C</string>
    </property>
   </action>
   <action name="action_edit_paste">
@@ -458,9 +431,6 @@ QSplitter::handle:vertical {
    <property name="text">
     <string>&amp;Paste</string>
    </property>
-   <property name="shortcut">
-    <string>Ctrl+V</string>
-   </property>
   </action>
   <action name="action_edit_delete">
    <property name="icon">
@@ -470,9 +440,6 @@ QSplitter::handle:vertical {
    <property name="text">
     <string>&amp;Delete</string>
    </property>
-   <property name="shortcut">
-    <string>Del</string>
-   </property>
   </action>
   <action name="action_edit_selectAll">
    <property name="icon">
@@ -481,9 +448,6 @@ QSplitter::handle:vertical {
    </property>
    <property name="text">
     <string>Select &amp;All</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+A</string>
    </property>
   </action>
   <action name="action_edit_properties">
@@ -881,9 +845,6 @@ QSplitter::handle:vertical {
    </property>
    <property name="text">
     <string>New Map View</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+T</string>
    </property>
   </action>
   <action name="action_window_closeMapView">
