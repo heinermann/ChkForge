@@ -32,6 +32,9 @@ namespace bwgame {
   struct vx4_entry {
 	std::array<uint16_t, 16> images;
   };
+  struct vx4ex_entry {
+	std::array<uint32_t, 16> images;
+  };
 
   struct pcx_image {
 	size_t width;
@@ -42,7 +45,7 @@ namespace bwgame {
   struct tileset_image_data {
 	a_vector<uint8_t> wpe;
 	a_vector<vr4_entry> vr4;
-	a_vector<vx4_entry> vx4;
+	a_vector<vx4ex_entry> vx4;
 	pcx_image dark_pcx;
 	std::array<pcx_image, 7> light_pcx;
 	grp_t creep_grp;
@@ -334,7 +337,7 @@ namespace bwgame {
 	const char* tileset_name = tileset_names.at(tileset_index);
 
 	load_data_file(vr4_data, format("Tileset\\%s.vr4", tileset_name));
-	load_data_file(vx4_data, format("Tileset\\%s.vx4", tileset_name));
+	load_data_file(vx4_data, format("Tileset\\%s.vx4ex", tileset_name));
 	load_data_file(img.wpe, format("Tileset\\%s.wpe", tileset_name));
 
 	a_vector<uint8_t> grp_data;
@@ -358,10 +361,10 @@ namespace bwgame {
 	  }
 	}
 	data_reader<true, false> vx4_r(vx4_data.data(), vx4_data.data() + vx4_data.size());
-	img.vx4.resize(vx4_data.size() / 32);
+	img.vx4.resize(vx4_data.size() / sizeof(vx4ex_entry));
 	for (size_t i = 0; i != img.vx4.size(); ++i) {
 	  for (size_t i2 = 0; i2 != 16; ++i2) {
-		img.vx4[i].images[i2] = vx4_r.get<uint16_t>();
+		img.vx4[i].images[i2] = vx4_r.get<uint32_t>();
 	  }
 	}
 
@@ -490,7 +493,7 @@ namespace bwgame {
 	  load_data_file(images_tbl.data, "arr\\images.tbl");
 
 	  a_vector<uint8_t> grp_data;
-	  load_data_file(grp_data, "unit\\cmdbtns\\cmdicons.grp");
+	  load_data_file(grp_data, "unit\\cmdicons\\cmdicons.grp");
 	  cmdicons = read_grp(data_loading::data_reader_le(grp_data.data(), grp_data.data() + grp_data.size()));
 
 	  load_image_data(img, load_data_file);

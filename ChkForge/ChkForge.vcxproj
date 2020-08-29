@@ -78,7 +78,7 @@
   </ImportGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(SolutionDir)/StormLib/StormLib/src;$(SolutionDir)/ads/ads/src;$(SolutionDir)/Chkdraft/Chkdraft;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)/CascLib/CascLib/src;$(SolutionDir)/StormLib/StormLib/src;$(SolutionDir)/ads/ads/src;$(SolutionDir)/Chkdraft/Chkdraft;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -Zc:referenceBinding -Zc:__cplusplus -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 %(AdditionalOptions)</AdditionalOptions>
       <AssemblerListingLocation>release\</AssemblerListingLocation>
       <DebugInformationFormat>None</DebugInformationFormat>
@@ -87,7 +87,7 @@
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ObjectFileName>release\</ObjectFileName>
       <Optimization>MaxSpeed</Optimization>
-      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;OPENBW_NO_SDL_MIXER;QT_DEPRECATED_WARNINGS;WIN32_LEAN_AND_MEAN;NOMINMAX;STORMLIB_NO_AUTO_LINK;NDEBUG;QT_NO_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;OPENBW_NO_SDL_MIXER;QT_DEPRECATED_WARNINGS;WIN32_LEAN_AND_MEAN;NOMINMAX;STORMLIB_NO_AUTO_LINK;CASCLIB_NO_AUTO_LINK_LIBRARY;NDEBUG;QT_NO_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ProgramDataBaseFileName>
       </ProgramDataBaseFileName>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
@@ -139,7 +139,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(SolutionDir)/StormLib/StormLib/src;$(SolutionDir)/ads/ads/src;$(SolutionDir)/Chkdraft/Chkdraft;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)/CascLib/CascLib/src;$(SolutionDir)/StormLib/StormLib/src;$(SolutionDir)/ads/ads/src;$(SolutionDir)/Chkdraft/Chkdraft;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -Zc:referenceBinding -Zc:__cplusplus -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 %(AdditionalOptions)</AdditionalOptions>
       <AssemblerListingLocation>debug\</AssemblerListingLocation>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -148,7 +148,7 @@
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ObjectFileName>debug\</ObjectFileName>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;OPENBW_NO_SDL_MIXER;QT_DEPRECATED_WARNINGS;WIN32_LEAN_AND_MEAN;NOMINMAX;STORMLIB_NO_AUTO_LINK;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;OPENBW_NO_SDL_MIXER;QT_DEPRECATED_WARNINGS;WIN32_LEAN_AND_MEAN;NOMINMAX;STORMLIB_NO_AUTO_LINK;CASCLIB_NO_AUTO_LINK_LIBRARY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <WarningLevel>Level3</WarningLevel>

@@ -11,6 +11,7 @@
 #include <cstdio>
 
 #include <MappingCoreLib/MpqFile.h>
+#include <CascLib.h>
 
 namespace bwgame {
 namespace data_loading {
@@ -502,32 +503,87 @@ struct mpq_file {
 	}
 };
 
-template<typename mpq_file_T = mpq_file>
-struct data_files_loader {
-	a_list<mpq_file_T> mpqs;
+struct casc_archive {
+  HANDLE h_casc = nullptr;
+  a_string filename;
 
-	void add_mpq_file(a_string filename) {
-		mpqs.emplace_back(std::move(filename));
+  casc_archive() = default;
+
+  explicit casc_archive(a_string filename)
+  {
+	open_archive(filename);
+  }
+  casc_archive(const casc_archive& other)
+  {
+	open_archive(other.filename);
+  }
+
+  casc_archive(casc_archive&& other) noexcept
+	: h_casc(other.h_casc)
+	, filename(other.filename)
+  {
+	other.h_casc = nullptr;
+  }
+
+  bool open_archive(a_string filename) {
+	this->filename = filename;
+	std::wstring w_filename{ filename.cbegin(), filename.cend() };
+	if (!CascOpenStorage(w_filename.c_str(), 0, &h_casc) || !h_casc) {
+	  error("Failed to open CASC storage: %s", filename);
+	  return false;
+	}
+	return true;
+  }
+
+  ~casc_archive() {
+	if (h_casc != nullptr) CascCloseStorage(h_casc);
+  }
+  void operator()(a_vector<uint8_t>& dst, a_string filename) {
+	get_file(dst, filename);
+  }
+
+  void get_file(a_vector<uint8_t>& dst, a_string filename) {
+
+	auto raise_error = [&]() { error("Filename: %s\nError: 0x%08x", filename, GetLastError()); };
+
+	HANDLE h_file = nullptr;
+	if (!CascOpenFile(h_casc, filename.c_str(), 0, 0, &h_file) || !h_file) {
+	  raise_error();
+	}
+
+	DWORD filesize = CascGetFileSize(h_file, nullptr);
+	if (filesize == CASC_INVALID_SIZE) {
+	  raise_error();
+	}
+
+	DWORD read_filesize = 0;
+	dst.resize(filesize);
+	if (!CascReadFile(h_file, dst.data(), filesize, &read_filesize)) {
+	  raise_error();
+	}
+	if (filesize != read_filesize) error("Read byte count was not the expected filesize for file: %s", filename);
+
+	CascCloseFile(h_file);
+  }
+};
+
+template<typename mpq_file_T = mpq_file, typename casc_archive_T = casc_archive>
+struct data_files_loader {
+	casc_archive_T casc;
+
+	void open_casc_archive(a_string filename) {
+	  casc.open_archive(filename);
 	}
 
 	void operator()(a_vector<uint8_t>& dst, a_string filename) {
-		for (auto& v : mpqs) {
-			if (v.mpq.getFile(std::move(filename), dst)) {
-			  return;
-			}
-		}
-		int err = GetLastError();
-		error("data_files_loader: %s: file not found %d", filename, err);
+	  casc.get_file(dst, filename);
 	}
 };
 
 template<typename data_files_loader_T = data_files_loader<>>
 data_files_loader_T data_files_directory(a_string path) {
-	if (!path.empty() && path[path.size() - 1] != '/' && path[path.size() - 1] != '\\') path += '/';
 	data_files_loader_T r;
-	r.add_mpq_file(path + "Patch_rt.mpq");
-	r.add_mpq_file(path + "BrooDat.mpq");
-	r.add_mpq_file(path + "StarDat.mpq");
+	r.open_casc_archive(path);
 	return r;
 }
 

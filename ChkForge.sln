@@ -41,10 +41,10 @@ Global
 		{8B117E69-F854-4FAF-B6B1-E4430A2B1ED6}.Debug|x64.Build.0 = Debug|x64
 		{8B117E69-F854-4FAF-B6B1-E4430A2B1ED6}.Release|x64.ActiveCfg = Release|x64
 		{8B117E69-F854-4FAF-B6B1-E4430A2B1ED6}.Release|x64.Build.0 = Release|x64
-		{BF354402-4CDF-4C67-8CE7-D3DBF9D7434A}.Debug|x64.ActiveCfg = Debug|x64
-		{BF354402-4CDF-4C67-8CE7-D3DBF9D7434A}.Debug|x64.Build.0 = Debug|x64
-		{BF354402-4CDF-4C67-8CE7-D3DBF9D7434A}.Release|x64.ActiveCfg = Release|x64
-		{BF354402-4CDF-4C67-8CE7-D3DBF9D7434A}.Release|x64.Build.0 = Release|x64
+		{BF354402-4CDF-4C67-8CE7-D3DBF9D7434A}.Debug|x64.ActiveCfg = DebugUS|x64
+		{BF354402-4CDF-4C67-8CE7-D3DBF9D7434A}.Debug|x64.Build.0 = DebugUS|x64
+		{BF354402-4CDF-4C67-8CE7-D3DBF9D7434A}.Release|x64.ActiveCfg = ReleaseUS|x64
+		{BF354402-4CDF-4C67-8CE7-D3DBF9D7434A}.Release|x64.Build.0 = ReleaseUS|x64
 		{53C83421-DACF-4980-BB71-16D9FFD20318}.Debug|x64.ActiveCfg = Debug|x64
 		{53C83421-DACF-4980-BB71-16D9FFD20318}.Debug|x64.Build.0 = Debug|x64
 		{53C83421-DACF-4980-BB71-16D9FFD20318}.Release|x64.ActiveCfg = Release|x64
@@ -70,7 +70,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {9FAD7F4E-431D-4F1E-BA35-2C77B2E4A068}
 		Qt5Version = 5.15.msvc2019_64
+		SolutionGuid = {9FAD7F4E-431D-4F1E-BA35-2C77B2E4A068}
 	EndGlobalSection
 EndGlobal
