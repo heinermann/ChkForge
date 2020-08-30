@@ -221,6 +221,7 @@
     <ClCompile Include="previewpainter.cpp" />
     <ClCompile Include="recenttiles.cpp" />
     <ClCompile Include="savemap.cpp" />
+    <ClCompile Include="scenariodescription.cpp" />
     <ClCompile Include="scenariosettings.cpp" />
     <ClCompile Include="stringmanager.cpp" />
     <ClCompile Include="terrain.cpp" />
@@ -231,6 +232,7 @@
     <ClInclude Include="Action.h" />
     <ClInclude Include="CompoundAction.h" />
     <ClInclude Include="PlaceUnitAction.h" />
+    <QtMoc Include="scenariodescription.h" />
     <ClInclude Include="UndoManager.h" />
     <ClInclude Include="UnitFinder.h" />
     <QtMoc Include="about.h" />
@@ -331,6 +333,7 @@
     </QtUic>
     <QtUic Include="savemap.ui">
     </QtUic>
+    <QtUic Include="scenariodescription.ui" />
     <QtUic Include="scenariosettings.ui">
     </QtUic>
     <QtUic Include="spriteproperties.ui" />

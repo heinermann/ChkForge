@@ -10,6 +10,7 @@
 
 #include "about.h"
 #include "newmap.h"
+#include "scenariodescription.h"
 
 #include <DockAreaWidget.h>
 #include <QLabel>
@@ -504,6 +505,28 @@ void MainWindow::on_action_scenario_techSettings_triggered()
 
 void MainWindow::on_action_scenario_description_triggered()
 {
+  MapView* mapView = currentMapView();
+  if (!mapView) return;
+  auto map = mapView->getMap();
+
+  ScenarioDescription scenarioDlg(this);
+  RawString name = map->chk.getFileName();
+  RawString desc = map->chk.getFileName();
+  if (map->chk.strings.getScenarioNameStringId() != 0) {
+    name = *map->chk.strings.getScenarioName<RawString>();
+  }
+  if (map->chk.strings.getScenarioDescriptionStringId() != 0) {
+    desc = *map->chk.strings.getScenarioDescription<RawString>();
+  }
+
+  scenarioDlg.name = QString::fromUtf8(name.data(), name.size());
+  scenarioDlg.description = QString::fromUtf8(desc.data(), desc.size());
+
+  int result = scenarioDlg.exec();
+  if (result != QDialog::Accepted) return;
+
+  map->chk.strings.setScenarioName(RawString(scenarioDlg.name.toUtf8()));
+  map->chk.strings.setScenarioDescription(RawString(scenarioDlg.description.toUtf8()));
 }
 
 void MainWindow::on_action_layer_options_triggered()

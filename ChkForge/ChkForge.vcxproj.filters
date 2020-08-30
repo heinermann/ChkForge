@@ -192,6 +192,9 @@
     <ClCompile Include="PlaceUnitAction.cpp">
       <Filter>Header Files\undo</Filter>
     </ClCompile>
+    <ClCompile Include="scenariodescription.cpp">
+      <Filter>Source Files\ui\Dialogs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="layers.h">
@@ -317,6 +320,9 @@
     <QtUic Include="toolbars.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="scenariodescription.ui">
+      <Filter>Form Files\Dialogs</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="ChkForge.qrc">
@@ -404,6 +410,9 @@
     </QtMoc>
     <QtMoc Include="MapContext.h">
       <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="scenariodescription.h">
+      <Filter>Header Files\ui\Dialogs</Filter>
     </QtMoc>
   </ItemGroup>
 </Project>
