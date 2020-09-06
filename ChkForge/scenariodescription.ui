@@ -83,9 +83,11 @@
         <property name="font">
          <font>
           <family>EurostileExtReg</family>
+          <pointsize>10</pointsize>
           <weight>50</weight>
           <italic>false</italic>
           <bold>false</bold>
+          <kerning>false</kerning>
          </font>
         </property>
         <property name="styleSheet">
@@ -113,13 +115,16 @@ color: rgb(255, 255, 255);</string>
          <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'EurostileExtReg'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Untitled Scenario&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'EurostileExtReg'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8.25pt;&quot;&gt;Untitled Scenario&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="acceptRichText">
          <bool>false</bool>
         </property>
        </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QToolButton" name="toolButton"/>
       </item>
      </layout>
     </widget>
@@ -135,6 +140,8 @@ p, li { white-space: pre-wrap; }
         <property name="font">
          <font>
           <family>Eurostile</family>
+          <pointsize>10</pointsize>
+          <kerning>false</kerning>
          </font>
         </property>
         <property name="styleSheet">

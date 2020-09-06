@@ -193,6 +193,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="about.cpp" />
+    <ClCompile Include="CharacterWidget.cpp" />
+    <ClCompile Include="charmap.cpp" />
     <ClCompile Include="doodadpalette.cpp" />
     <ClCompile Include="exportimage.cpp" />
     <ClCompile Include="exportsections.cpp" />
@@ -230,6 +232,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Action.h" />
+    <QtMoc Include="charmap.h" />
+    <QtMoc Include="CharacterWidget.h" />
     <ClInclude Include="CompoundAction.h" />
     <ClInclude Include="PlaceUnitAction.h" />
     <QtMoc Include="scenariodescription.h" />
@@ -303,6 +307,7 @@
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="aboutdlg.ui" />
+    <QtUic Include="charmap.ui" />
     <QtUic Include="doodadpalette.ui">
     </QtUic>
     <QtUic Include="exportimage.ui">

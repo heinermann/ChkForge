@@ -333,10 +333,12 @@ void MainWindow::on_action_file_save_triggered()
 
 void MainWindow::on_action_file_saveAs_triggered()
 {
+  if (currentMapView() == nullptr) return;
+
   QString result = QFileDialog::getSaveFileName(this, QString(), QString(), file_filter);
   if (result.isEmpty()) return;
 
-  // TODO: Actual map save stuff
+  currentMapView()->getMap()->chk.save(std::string(result.toLatin1()));
 
   addRecentFile(result);
 }

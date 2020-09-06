@@ -7,6 +7,7 @@
 #include <QFileDialog>
 #include <QDir>
 #include <QFontDatabase>
+#include <QTemporaryFile>
 
 #include "../openbw/bwglobal.h"
 #include "../openbw/bwglobal_ui.h"
@@ -59,19 +60,17 @@ bool init_bwgame(const QString& starcraft_dir) {
     auto load_font = [&](const char* font_path) {
       std::vector<uint8_t> font_data;
       load_data_file(font_data, font_path);
-      if (QFontDatabase::addApplicationFontFromData(QByteArray(reinterpret_cast<char*>(font_data.data()), font_data.size())) == -1) {
+
+      QByteArray fontData{ reinterpret_cast<char*>(font_data.data()), int(font_data.size()) };
+      if (QFontDatabase::addApplicationFontFromData(fontData) == -1) {
         QMessageBox::critical(nullptr, QString(), QObject::tr("Failed to load font: %1").arg(font_path));
       }
     };
 
-    load_font("font/bl.ttf");
-    load_font("font/arudjingxiheiu20_b.ttf");
-    load_font("font/BLIZZARD-REGULAR.TTF");
-    load_font("font/EUROSTILE-REG.TTF");
-    load_font("font/EUROSTILEEXT-REG.TTF");
-    load_font("font/Kostar.ttf");
-    load_font("font/UDTypos58B_P_H.ttf");
-    load_font("font/UDTypos510B_P_H.ttf");
+    load_font("font/bl.ttf"); // BlizzardGlobal
+    load_font("font/BLIZZARD-REGULAR.TTF"); // Blizzard
+    load_font("font/EUROSTILE-REG.TTF"); // Eurostile
+    load_font("font/EUROSTILEEXT-REG.TTF"); // EurostileExtReg
 
     return true;
   }

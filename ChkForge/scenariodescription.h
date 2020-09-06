@@ -22,10 +22,13 @@ public:
   QString description;
 
   virtual int exec() override;
+  virtual void accept() override;
 
 private:
   Ui::ScenarioDescription* ui;
 
+private slots:
+  void on_toolButton_pressed();
 };
 
 #endif // NEWMAP_H
