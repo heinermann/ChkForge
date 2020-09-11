@@ -27,7 +27,6 @@ CharacterWidget::CharacterWidget(QWidget* parent)
   uniData.open(QIODevice::OpenModeFlag::ReadOnly | QIODevice::OpenModeFlag::Text);
 
   QByteArrayList entries = uniData.readAll().split('\n');
-  std::set<QString> categories;
   for (const QByteArray& line : entries) {
     if (line.isEmpty()) continue;
     QByteArrayList entry = line.split(';');
@@ -37,59 +36,82 @@ CharacterWidget::CharacterWidget(QWidget* parent)
     QString category = entry[2];
     QString desc2 = entry[10];
 
-    categories.insert(category);
-
-    charDescriptions[key] = std::make_pair(desc1, desc2);
+    charDescriptions[key] = UniChrData{ desc1, desc2, categoryForName(category) };
   }
   setFont(QFont());
-  //QMessageBox::about(nullptr, "", QString("%1 categories:\n%2").arg(categories.size()).arg(QStringList(categories.begin(), categories.end()).join(", ")));
 
   calculateSquareSize();
   setMouseTracking(true);
 }
 
-std::optional<std::pair<QFont*, QFontMetrics*>> CharacterWidget::fontForChar(uint key) {
+CharacterWidget::FontInfo* CharacterWidget::fontForChar(uint key) {
   for (auto& fnt : displayFonts) {
-    if (fnt.second.inFontUcs4(key)) return std::make_pair(&fnt.first, &fnt.second);
+    if (fnt.rawFont.supportsCharacter(key)) return &fnt;
+    //if (fnt.metrics.inFontUcs4(key)) return &fnt;
   }
-  return std::nullopt;
+  return nullptr;
 }
 
+QChar::Category CharacterWidget::categoryForName(QString categoryName) {
+  static std::unordered_map<QString, QChar::Category> category_map = {
+    { "Mn", QChar::Mark_NonSpacing },
+    { "Mc", QChar::Mark_SpacingCombining },
+    { "Me", QChar::Mark_Enclosing },
+    { "Nd", QChar::Number_DecimalDigit },
+    { "Nl", QChar::Number_Letter },
+    { "No", QChar::Number_Other },
+    { "Zs", QChar::Separator_Space },
+    { "Zl", QChar::Separator_Line },
+    { "Zp", QChar::Separator_Paragraph },
+    { "Cc", QChar::Other_Control },
+    { "Cf", QChar::Other_Format },
+    { "Cs", QChar::Other_Surrogate },
+    { "Co", QChar::Other_PrivateUse },
+    { "Cn", QChar::Other_NotAssigned },
+    { "Lu", QChar::Letter_Uppercase },
+    { "Ll", QChar::Letter_Lowercase },
+    { "Lt", QChar::Letter_Titlecase },
+    { "Lm", QChar::Letter_Modifier },
+    { "Lo", QChar::Letter_Other },
+    { "Pc", QChar::Punctuation_Connector },
+    { "Pd", QChar::Punctuation_Dash },
+    { "Ps", QChar::Punctuation_Open },
+    { "Pe", QChar::Punctuation_Close },
+    { "Pi", QChar::Punctuation_InitialQuote },
+    { "Pf", QChar::Punctuation_FinalQuote },
+    { "Po", QChar::Punctuation_Other },
+    { "Sm", QChar::Symbol_Math },
+    { "Sc", QChar::Symbol_Currency },
+    { "Sk", QChar::Symbol_Modifier },
+    { "So", QChar::Symbol_Other }
+  };
+
+  if (category_map.count(categoryName) != 0) {
+    return category_map[categoryName];
+  }
+  return QChar::Other_NotAssigned;
+}
 
 void CharacterWidget::setFont(const QFont& font)
 {
+  // Init fontlist
   for (QString family : QList{"Eurostile", "BlizzardGlobal", "Malgun Gothic", "UDTypos58B-P", "DejaVu Serif", "MS Gothic"}) {
     QFont font{ family, 11 };
     font.setHintingPreference(QFont::HintingPreference::PreferNoHinting);
     font.setStyleHint(QFont::SansSerif, QFont::StyleStrategy(QFont::NoAntialias | QFont::NoSubpixelAntialias | QFont::ForceOutline | QFont::NoFontMerging));
-    displayFonts.append({ font, QFontMetrics(font) });
+    displayFonts.append({ font, QFontMetrics(font), QRawFont::fromFont(font) });
   }
 
-  //QRawFont rawFont = QRawFont::fromFont(displayFont, QFontDatabase::WritingSystem::Greek);
-
-  auto clock = QTime();
-  clock.start();
-
+  // Init charlist
   charlist.clear();
   for (uint key = 1; key < 0x110000; ++key) {
-    //if (!rawFont.supportsCharacter(key)) continue;
-
     auto fnt = fontForChar(key);
-    if (!fnt.has_value()) continue;
+    if (fnt == nullptr) continue;
 
-    int category = -1;
-    if (key < 0x10000) {
-      category = QChar(key).category();
-    }
-    else {
-      category = 100;
-    }
-    charlist.emplace_back(CharData{ key, category, QString::fromUcs4(&key, 1), fnt->first, fnt->second });
+    charlist.emplace_back(CharData{ key, QString::fromUcs4(&key, 1), fnt });
   }
 
-  double s = clock.elapsed() / 1000.0;
-  QMessageBox::about(nullptr, "", QString("Took %1s").arg(s));
-
+  // end
   calculateSquareSize();
   adjustSize();
   update();
@@ -111,7 +133,6 @@ void CharacterWidget::paintEvent(QPaintEvent* event)
   int beginColumn = redrawRect.left() / squareSize;
   int endColumn = redrawRect.right() / squareSize;
   
-  //QFontMetrics fontMetrics(displayFont, &virtualRenderer);
   QTextOption textOption;
   textOption.setFlags(QTextOption::SuppressColors);
   textOption.setUseDesignMetrics(true);
@@ -137,9 +158,9 @@ void CharacterWidget::paintEvent(QPaintEvent* event)
       painter.fillRect(rct, QBrush(Qt::red));
     }
 
-    QPoint textPos{ rct.center().x() - chr.metrics->horizontalAdvance(chr.str) / 2, rct.y() + 3 + chr.metrics->ascent() };
+    QPoint textPos{ rct.center().x() - chr.font->metrics.horizontalAdvance(chr.str) / 2, rct.y() + 3 + chr.font->metrics.ascent() };
     painter.setPen(QPen(Qt::black));
-    painter.setFont(*chr.srcFont);
+    painter.setFont(chr.font->font);
     painter.drawText(textPos, chr.str);
   }
 }
@@ -172,22 +193,22 @@ void CharacterWidget::mouseMoveEvent(QMouseEvent* event)
 
   auto& description = charDescriptions[chr.key];
 
-  QString text = QString::fromLatin1("<p><span style=\"font-size: 24pt; font-family: %1\">").arg(chr.srcFont->family())
+  QString text = QString("<p><span style=\"font-size: 24pt; font-family: %1;\">").arg(chr.font->font.family())
     + chr.str
-    + QString("</span><p>Value: 0x") + QString::number(chr.key, 16)
-    + QString("<br>Family: ") + chr.srcFont->family();
+    + QString("</span><br>Value: U+") + QString::number(chr.key, 16)
+    + QString("<br>Family: ") + chr.font->font.family();
 
-  if (!description.first.isEmpty())
-    text += QString("<br>") + description.first;
+  if (!description.desc1.isEmpty())
+    text += QString("<br>") + description.desc1;
 
-  if (!description.second.isEmpty())
-    text += QString("<br>") + description.second;
+  if (!description.desc2.isEmpty())
+    text += QString("<br>") + description.desc2;
 
   QToolTip::showText(event->globalPos(), text, this);
 }
 
 void CharacterWidget::calculateSquareSize()
 {
-  QFontMetrics& metrics = displayFonts.first().second;
+  QFontMetrics& metrics = displayFonts.first().metrics;
   squareSize = qMax(16, qMax(4 + metrics.height(), 4 + metrics.maxWidth()));
 }

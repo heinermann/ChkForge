@@ -6,6 +6,7 @@
 #include <QSize>
 #include <QFont>
 #include <QImage>
+#include <QRawFont>
 
 #include <optional>
 
@@ -13,12 +14,16 @@ class CharacterWidget : public QWidget
 {
   Q_OBJECT
 private:
+  struct FontInfo {
+    QFont font;
+    QFontMetrics metrics;
+    QRawFont rawFont;
+  };
+
   struct CharData {
     uint key;
-    int category;
     QString str;
-    QFont* srcFont;
-    QFontMetrics* metrics;
+    FontInfo* font;
   };
   std::vector<CharData> charlist;
 
@@ -38,13 +43,19 @@ protected:
 
 private:
   void calculateSquareSize();
-  std::optional<std::pair<QFont*, QFontMetrics*>> fontForChar(uint key);
+  FontInfo* fontForChar(uint key);
+  QChar::Category categoryForName(QString categoryName);
 
-  QImage virtualRenderer{64, 64, QImage::Format::Format_Mono};
-
-  QList<std::pair<QFont, QFontMetrics>> displayFonts;
+  QList<FontInfo> displayFonts;
   int columns = 16;
   int lastIndex = -1;
   int squareSize = 0;
-  std::unordered_map<uint32_t, std::pair<QString, QString>> charDescriptions;
+
+  struct UniChrData {
+    QString desc1;
+    QString desc2;
+    QChar::Category category;
+  };
+
+  std::unordered_map<uint32_t, UniChrData> charDescriptions;
 };
