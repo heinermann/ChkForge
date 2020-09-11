@@ -38,6 +38,7 @@ void ScenarioDescription::accept() {
 
 void ScenarioDescription::on_toolButton_pressed() {
   //auto charmap = CharMap(this, ui->txt_name->font());
-  auto charmap = CharMap(this, QFont{"EurostileExtReg"});
+  QFont fnt{ "EurostileExtReg" };
+  auto charmap = CharMap(this, fnt);
   charmap.exec();
 }

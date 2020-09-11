@@ -14,7 +14,8 @@ CharMap::CharMap(QWidget* parent, const QFont& font) :
 
   charWidget = new CharacterWidget;
   ui->scrollArea->setWidget(charWidget);
-  charWidget->setFont(font);
+  charWidget->adjustSize();
+  //charWidget->setFont(font);
 
   initCategories();
 }

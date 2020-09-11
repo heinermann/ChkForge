@@ -1,5 +1,5 @@
 <RCC>
-    <qresource prefix="/Trees" lang="English">
+    <qresource lang="English" prefix="/Trees">
         <file>units.txt</file>
         <file>sprites.txt</file>
         <file>techs.txt</file>
@@ -10,5 +10,8 @@
     <qresource prefix="/pal">
         <file>Icons.pal</file>
         <file>Wireframe.pal</file>
+    </qresource>
+    <qresource prefix="/txt">
+        <file>UnicodeData.txt</file>
     </qresource>
 </RCC>

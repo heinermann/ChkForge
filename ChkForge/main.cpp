@@ -71,6 +71,10 @@ bool init_bwgame(const QString& starcraft_dir) {
     load_font("font/BLIZZARD-REGULAR.TTF"); // Blizzard
     load_font("font/EUROSTILE-REG.TTF"); // Eurostile
     load_font("font/EUROSTILEEXT-REG.TTF"); // EurostileExtReg
+    load_font("font/UDTypos58B_P_H.ttf"); // UDTypos58B-P
+    load_font("font/UDTypos510B_P_H.ttf"); // UDTypos510B-P
+
+    //QMessageBox::about(nullptr, "", QFont::substitutes("EurostileExtReg").join(", "));
 
     return true;
   }
