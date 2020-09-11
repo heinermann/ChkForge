@@ -24,6 +24,7 @@ private:
     uint key;
     QString str;
     FontInfo* font;
+    std::optional<QPixmap> cache;
   };
   std::vector<CharData> charlist;
 

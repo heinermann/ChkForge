@@ -12,6 +12,8 @@
 #include <QGuiApplication>
 #include <QClipboard>
 #include <QFile>
+#include <QPaintEngine>
+#include <QPixmap>
 
 #include <execution>
 #include <algorithm>
@@ -108,7 +110,7 @@ void CharacterWidget::setFont(const QFont& font)
     auto fnt = fontForChar(key);
     if (fnt == nullptr) continue;
 
-    charlist.emplace_back(CharData{ key, QString::fromUcs4(&key, 1), fnt });
+    charlist.emplace_back(CharData{ key, QString::fromUcs4(&key, 1), fnt, std::nullopt });
   }
 
   // end
@@ -133,36 +135,42 @@ void CharacterWidget::paintEvent(QPaintEvent* event)
   int beginColumn = redrawRect.left() / squareSize;
   int endColumn = redrawRect.right() / squareSize;
   
-  QTextOption textOption;
-  textOption.setFlags(QTextOption::SuppressColors);
-  textOption.setUseDesignMetrics(true);
-  textOption.setWrapMode(QTextOption::NoWrap);
-
   for (int i = beginRow * columns + beginColumn; i <= endRow * columns + endColumn; ++i) {
     if (i >= charlist.size()) break;
 
-    const auto& chr = charlist[i];
+    auto& chr = charlist[i];
 
     int row = i / columns;
     int col = i % columns;
     QRect rct{ col * squareSize, row * squareSize, squareSize, squareSize };
 
-    painter.setClipRect(rct);
-    painter.setPen(QPen(Qt::gray));
-    painter.drawRect(rct);
+    if (!chr.cache.has_value()) {
+      chr.cache = QPixmap{ squareSize, squareSize };
+      QPoint textPos{ squareSize / 2 - chr.font->metrics.horizontalAdvance(chr.str) / 2, 3 + chr.font->metrics.ascent() };
 
-    rct.adjust(1, 1, 0, 0);
-    painter.setClipRect(rct);
+      QPainter cachePainter{ &*chr.cache };
+    
+      cachePainter.fillRect(0, 0, squareSize, squareSize, QBrush(Qt::white));
 
-    if (i == lastIndex) {
-      painter.fillRect(rct, QBrush(Qt::red));
+      cachePainter.setPen(QPen(Qt::gray));
+      cachePainter.drawRect(0, 0, squareSize, squareSize);
+
+      cachePainter.setPen(QPen(Qt::black));
+      cachePainter.setFont(chr.font->font);
+      cachePainter.drawText(textPos, chr.str);
     }
 
-    QPoint textPos{ rct.center().x() - chr.font->metrics.horizontalAdvance(chr.str) / 2, rct.y() + 3 + chr.font->metrics.ascent() };
-    painter.setPen(QPen(Qt::black));
-    painter.setFont(chr.font->font);
-    painter.drawText(textPos, chr.str);
+    // TODO: move this out to prevent draw overlap
+    if (i == lastIndex) {
+      painter.drawPixmap(rct.adjusted(-4, -4, 8, 8), *chr.cache);
+    }
+    else {
+      painter.drawPixmap(rct.topLeft(), *chr.cache);
+    }
   }
+
+
+
 }
 
 void CharacterWidget::mousePressEvent(QMouseEvent* event)
