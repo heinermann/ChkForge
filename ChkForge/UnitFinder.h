@@ -45,6 +45,7 @@ public:
     auto upperXIter = unitFinderX.upper_bound(UnitCompare{ searchRight + 1, 0 });
     for (auto it = lowerXIter; it != upperXIter; ++it)
     {
+      if (it->unit->sprite == nullptr) continue;
       if (it->unit->sprite->position.x - it->unit->unit_type->dimensions.from.x <= right)
         foundUnitsX.insert(it->unit);
     }
@@ -58,6 +59,7 @@ public:
       // Ignore if the unit isn't within the X-bound
       if (foundUnitsX.count(it->unit) == 0) continue;
 
+      if (it->unit->sprite == nullptr) continue;
       if (it->unit->sprite->position.y - it->unit->unit_type->dimensions.from.y <= bottom)
         result.insert(it->unit);
     }
