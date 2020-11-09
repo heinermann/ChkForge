@@ -97,7 +97,8 @@ QChar::Category CharacterWidget::categoryForName(QString categoryName) {
 void CharacterWidget::setFont(const QFont& font)
 {
   // Init fontlist
-  for (QString family : QList{"Eurostile", "BlizzardGlobal", "Malgun Gothic", "UDTypos58B-P", "DejaVu Serif", "MS Gothic"}) {
+  // Note: Not all symbols from "Segoe UI Symbol" are usable but it is the only font that matches the symbols that can
+  for (QString family : QList{"Eurostile", "BlizzardGlobal", "Malgun Gothic", "UDTypos58B-P", "DejaVu Serif", "MS Gothic", "Segoe UI Symbol"}) {
     QFont font{ family, 11 };
     font.setHintingPreference(QFont::HintingPreference::PreferNoHinting);
     font.setStyleHint(QFont::SansSerif, QFont::StyleStrategy(QFont::NoAntialias | QFont::NoSubpixelAntialias | QFont::ForceOutline | QFont::NoFontMerging));
