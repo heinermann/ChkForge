@@ -3,6 +3,7 @@
 
 #include <QStandardItemModel>
 #include <QSortFilterProxyModel>
+#include <QTimer>
 
 #include <functional>
 
@@ -37,7 +38,7 @@ private:
 
   QStandardItemModel treeModel;
   QSortFilterProxyModel proxyModel;
-  
+
 private:
   QStandardItem* createTilesetTree();
   QStandardItem* createDoodadsTree();
@@ -57,6 +58,8 @@ private:
   void onSearchTextChanged(const QString& text);
 
   virtual bool eventFilter(QObject* obj, QEvent* e) override;
+
+  void itemClicked(const QModelIndex& index);
 
 signals:
   void itemTreeChanged(Category category, int id);

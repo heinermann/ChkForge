@@ -34,8 +34,11 @@ ItemTree::ItemTree(QWidget *parent)
 
   ui->treeView->installEventFilter(this);
 
+  ui->treeView->setExpandsOnDoubleClick(false);
+
   connect(ui->treeView->selectionModel(), &QItemSelectionModel::selectionChanged, this, &ItemTree::selectionChanged);
   connect(ui->search, &QLineEdit::textChanged, this, &ItemTree::onSearchTextChanged);
+  connect(ui->treeView, &QTreeView::clicked, this, &ItemTree::itemClicked);
 }
 
 
@@ -213,4 +216,12 @@ bool ItemTree::eventFilter(QObject* obj, QEvent* e) {
     }
   }
   return false;
+}
+
+void ItemTree::itemClicked(const QModelIndex& index) {
+  bool isExpanded = ui->treeView->isExpanded(index);
+  if (!isExpanded) {
+    ui->treeView->expand(index);
+  }
+  ui->treeView->setExpandsOnDoubleClick(isExpanded);
 }

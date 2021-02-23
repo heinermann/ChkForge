@@ -40,6 +40,7 @@ bool UnitLayer::mouseEvent(MapView* map, QMouseEvent* e)
         return true;
       }
     }
+    return false;
   }
   else {
     return this->thingyMouseEvent(map, e);
