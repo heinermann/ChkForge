@@ -174,6 +174,9 @@ void ItemTree::set_item(Category category, int id)
   if (!result.empty()) {
     ui->treeView->selectionModel()->select(proxyModel.mapFromSource(result.front()), QItemSelectionModel::Clear | QItemSelectionModel::SelectCurrent);
   }
+  else {
+    ui->treeView->selectionModel()->clearSelection();
+  }
 }
 
 void ItemTree::onSearchTextChanged(const QString& text)

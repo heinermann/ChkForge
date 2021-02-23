@@ -474,3 +474,8 @@ void MapView::showContextMenu(const QPoint& pos)
   contextMenu.addAction("TODO");
   contextMenu.exec(ui->surface->mapToGlobal(pos));*/
 }
+
+void MapView::setItemTreeSelection(ItemTree::Category category, int id)
+{
+  emit setItemTreeSelectionSignal(category, id);
+}

@@ -12,6 +12,8 @@
 #include <QPixmap>
 #include <QMdiSubwindow>
 
+#include "itemtree.h"
+
 namespace ChkForge {
   class MapContext;
 }
@@ -54,6 +56,8 @@ public:
   QRect extendToRect(const QPoint &pt);
 
   std::shared_ptr<ChkForge::MapContext> getMap();
+
+  void setItemTreeSelection(ItemTree::Category category, int id);
 private:
   Ui::MapView* ui;
 
@@ -70,6 +74,8 @@ private:
   QRect screen_position{0, 0, 640, 480};
 
   double view_scale_percent = 100.0;
+
+
 
 private:
   void updateScrollbarPositions();
@@ -94,6 +100,7 @@ signals:
   void aboutToClose(MapView* map);
   void mouseMove(const QPoint& pt);
   void scaleChangedPercent(int value);
+  void setItemTreeSelectionSignal(ItemTree::Category category, int id);
 };
 
 #endif // MAPVIEW_H

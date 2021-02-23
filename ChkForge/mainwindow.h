@@ -39,6 +39,7 @@ private:
 
   Minimap* minimap = new Minimap();
   QMdiArea* mdi = new QMdiArea();
+  ItemTree* itemTree = nullptr;
 
   ads::CDockManager* m_DockManager;
   ads::CDockWidget* mdi_dock = new ads::CDockWidget("");

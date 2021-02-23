@@ -153,6 +153,7 @@ void MainWindow::createMapView(std::shared_ptr<ChkForge::MapContext> map)
   mapView->setWindowIcon(map_icon);
 
   connect(mapView, &MapView::aboutToClose, minimap, &Minimap::onCloseMapView);
+  connect(mapView, &MapView::setItemTreeSelectionSignal, itemTree, &ItemTree::set_item);
 }
 
 void MainWindow::createToolWindows()
@@ -161,7 +162,7 @@ void MainWindow::createToolWindows()
   ui->menu_Tool_Windows->addAction(minimap->toggleViewAction());
   ads::CDockAreaWidget* leftPane = m_DockManager->addDockWidget(ads::LeftDockWidgetArea, minimap);
 
-  ItemTree* itemTree = new ItemTree();
+  itemTree = new ItemTree();
   ui->menu_Tool_Windows->addAction(itemTree->toggleViewAction());
   m_DockManager->addDockWidget(ads::BottomDockWidgetArea, itemTree, leftPane);
 

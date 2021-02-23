@@ -23,7 +23,8 @@ bool UnitLayer::mouseEvent(MapView* map, QMouseEvent* e)
         return true;
       }
       if (e->button() == Qt::RightButton) {
-        setPlacementUnitType(Sc::Unit::Type::NoUnit);
+        reset();
+        map->setItemTreeSelection(ItemTree::CAT_NONE, -1);
         return true;
       }
       break;

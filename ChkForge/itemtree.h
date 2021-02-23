@@ -28,6 +28,8 @@ public:
     CAT_BRUSH
   };
 
+  void set_item(Category category, int id);
+
 private:
   static const int ROLE_CATEGORY = Qt::UserRole + 1;
   static const int ROLE_ID = Qt::UserRole + 2;
@@ -35,7 +37,7 @@ private:
 
   QStandardItemModel treeModel;
   QSortFilterProxyModel proxyModel;
-
+  
 private:
   QStandardItem* createTilesetTree();
   QStandardItem* createDoodadsTree();
@@ -51,8 +53,6 @@ private:
   void createTreeFromFile(QStandardItem* parent, const QString& resourceName, int category, const std::function<void(QStandardItem*)>& item_cb = nullptr);
 
   void selectionChanged(const QItemSelection& selected, const QItemSelection& deselected);
-
-  void set_item(Category category, int id);
 
   void onSearchTextChanged(const QString& text);
 
