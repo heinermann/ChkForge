@@ -19,6 +19,18 @@ ScenarioDescription::~ScenarioDescription() {
 }
 
 int ScenarioDescription::exec() {
+  QFont namefont{};
+  namefont.setFamilies(QStringList{ "EurostileExtReg", "BlizzardGlobal", "Malgun Gothic", "UDTypos510B-P", "DejaVu Serif", "MS Gothic", "Segoe UI Symbol" });
+  namefont.setHintingPreference(QFont::HintingPreference::PreferNoHinting);
+  namefont.setStyleHint(QFont::SansSerif, QFont::StyleStrategy(QFont::ForceOutline));
+  ui->txt_name->setFont(namefont);
+
+  QFont descfont{};
+  descfont.setFamilies(QStringList{ "Eurostile", "BlizzardGlobal", "Malgun Gothic", "UDTypos58B-P", "DejaVu Serif", "MS Gothic", "Segoe UI Symbol" });
+  descfont.setHintingPreference(QFont::HintingPreference::PreferNoHinting);
+  descfont.setStyleHint(QFont::SansSerif, QFont::StyleStrategy(QFont::ForceOutline));
+  ui->txt_description->setFont(descfont);
+
   ui->txt_name->setPlainText(name);
   ui->txt_name->setAlignment(Qt::AlignCenter);
   ui->txt_description->setPlainText(description);
