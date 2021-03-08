@@ -88,6 +88,12 @@
     <Filter Include="Header Files\undo">
       <UniqueIdentifier>{059e5c57-704a-454c-8904-e9b62dd8173b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\ui\Controls">
+      <UniqueIdentifier>{34c6b9d5-07f2-4da3-8a73-fde09c958ec6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ui\Controls">
+      <UniqueIdentifier>{8cd4ced9-20db-415f-b288-086c1c9f4cac}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -200,6 +206,9 @@
     </ClCompile>
     <ClCompile Include="CharacterWidget.cpp">
       <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="tristategroupbox.cpp">
+      <Filter>Source Files\ui\Controls</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -428,6 +437,9 @@
     </QtMoc>
     <QtMoc Include="CharacterWidget.h">
       <Filter>Header Files\ui</Filter>
+    </QtMoc>
+    <QtMoc Include="tristategroupbox.h">
+      <Filter>Header Files\ui\Controls</Filter>
     </QtMoc>
   </ItemGroup>
 </Project>

@@ -12,9 +12,17 @@ class ScenarioSettings : public QDialog
   Q_OBJECT
 
 public:
-  explicit ScenarioSettings(QWidget *parent = nullptr);
-  ~ScenarioSettings();
+  enum Tab {
+    TAB_PLAYERS,
+    TAB_FORCES,
+    TAB_UNITS,
+    TAB_UPGRADES,
+    TAB_ABILITIES
+  };
 
+  explicit ScenarioSettings(QWidget* parent = nullptr);
+  explicit ScenarioSettings(QWidget *parent, int startTab);
+  ~ScenarioSettings();
 private:
   Ui::ScenarioSettings *ui;
 };

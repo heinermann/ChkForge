@@ -229,6 +229,7 @@
     <ClCompile Include="terrain.cpp" />
     <ClCompile Include="terrainbrush.cpp" />
     <ClCompile Include="tilepalette.cpp" />
+    <ClCompile Include="tristategroupbox.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Action.h" />
@@ -237,6 +238,7 @@
     <ClInclude Include="CompoundAction.h" />
     <ClInclude Include="PlaceUnitAction.h" />
     <QtMoc Include="scenariodescription.h" />
+    <QtMoc Include="tristategroupbox.h" />
     <ClInclude Include="UndoManager.h" />
     <ClInclude Include="UnitFinder.h" />
     <QtMoc Include="about.h" />

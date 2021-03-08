@@ -90,6 +90,8 @@ private:
   virtual void dropEvent(QDropEvent* event) override;
 
   bool isValidFormat(QString filename) const;
+
+  void launchScenarioSettings(int startTab);
 private slots:
   void mapMouseMoved(const QPoint& pos);
   void zoomChanged(int value);

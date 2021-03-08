@@ -11,6 +11,7 @@
 #include "about.h"
 #include "newmap.h"
 #include "scenariodescription.h"
+#include "scenariosettings.h"
 
 #include <DockAreaWidget.h>
 #include <QLabel>
@@ -470,12 +471,20 @@ void MainWindow::on_action_tools_preferences_triggered()
 {
 }
 
+void MainWindow::launchScenarioSettings(int startTab) {
+  ScenarioSettings settings(this, startTab);
+
+  int result = settings.exec();
+}
+
 void MainWindow::on_action_scenario_players_triggered()
 {
+  launchScenarioSettings(ScenarioSettings::TAB_PLAYERS);
 }
 
 void MainWindow::on_action_scenario_forces_triggered()
 {
+  launchScenarioSettings(ScenarioSettings::TAB_FORCES);
 }
 
 void MainWindow::on_action_scenario_sounds_triggered()
@@ -496,14 +505,17 @@ void MainWindow::on_action_scenario_strings_triggered()
 
 void MainWindow::on_action_scenario_unitSettings_triggered()
 {
+  launchScenarioSettings(ScenarioSettings::TAB_UNITS);
 }
 
 void MainWindow::on_action_scenario_upgradeSettings_triggered()
 {
+  launchScenarioSettings(ScenarioSettings::TAB_UPGRADES);
 }
 
 void MainWindow::on_action_scenario_techSettings_triggered()
 {
+  launchScenarioSettings(ScenarioSettings::TAB_ABILITIES);
 }
 
 void MainWindow::on_action_scenario_description_triggered()
