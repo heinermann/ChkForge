@@ -63,7 +63,7 @@
    <item row="1" column="0">
     <widget class="QTabWidget" name="tabs">
      <property name="currentIndex">
-      <number>4</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="playersTab">
       <attribute name="title">
@@ -478,6 +478,11 @@
            <string>Force</string>
           </property>
          </column>
+         <column>
+          <property name="text">
+           <string>Start Location</string>
+          </property>
+         </column>
         </widget>
        </item>
       </layout>
@@ -493,10 +498,10 @@
           <string>Force 4</string>
          </property>
          <layout class="QGridLayout" name="gridLayout_7">
-          <item row="2" column="1">
-           <widget class="QCheckBox" name="f4_randomStartLocation">
+          <item row="3" column="0">
+           <widget class="QCheckBox" name="f4_alliedVictory">
             <property name="text">
-             <string>Random Start Location</string>
+             <string>Allied Victory</string>
             </property>
            </widget>
           </item>
@@ -507,10 +512,10 @@
             </property>
            </widget>
           </item>
-          <item row="3" column="0">
-           <widget class="QCheckBox" name="f4_alliedVictory">
+          <item row="2" column="1">
+           <widget class="QCheckBox" name="f4_randomStartLocation">
             <property name="text">
-             <string>Allied Victory</string>
+             <string>Random Start Location</string>
             </property>
            </widget>
           </item>
@@ -520,9 +525,6 @@
              <string>Shared Vision</string>
             </property>
            </widget>
-          </item>
-          <item row="0" column="0" colspan="2">
-           <widget class="QLineEdit" name="f4_name"/>
           </item>
           <item row="1" column="0" colspan="2">
            <widget class="QListWidget" name="f4_playerList">
@@ -549,6 +551,36 @@
             </property>
            </widget>
           </item>
+          <item row="0" column="0" colspan="2">
+           <widget class="QGroupBox" name="f4_useCustomName">
+            <property name="title">
+             <string>Custom Name</string>
+            </property>
+            <property name="flat">
+             <bool>true</bool>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_9">
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>4</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QLineEdit" name="f4_name"/>
+             </item>
+            </layout>
+           </widget>
+          </item>
          </layout>
         </widget>
        </item>
@@ -558,31 +590,10 @@
           <string>Force 3</string>
          </property>
          <layout class="QGridLayout" name="gridLayout_6">
-          <item row="2" column="0">
-           <widget class="QCheckBox" name="f3_allies">
-            <property name="text">
-             <string>Allies</string>
-            </property>
-           </widget>
-          </item>
           <item row="2" column="1">
            <widget class="QCheckBox" name="f3_randomStartLocation">
             <property name="text">
              <string>Random Start Location</string>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="0">
-           <widget class="QCheckBox" name="f3_alliedVictory">
-            <property name="text">
-             <string>Allied Victory</string>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="1">
-           <widget class="QCheckBox" name="f3_sharedVision">
-            <property name="text">
-             <string>Shared Vision</string>
             </property>
            </widget>
           </item>
@@ -611,8 +622,56 @@
             </property>
            </widget>
           </item>
+          <item row="3" column="1">
+           <widget class="QCheckBox" name="f3_sharedVision">
+            <property name="text">
+             <string>Shared Vision</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QCheckBox" name="f3_alliedVictory">
+            <property name="text">
+             <string>Allied Victory</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QCheckBox" name="f3_allies">
+            <property name="text">
+             <string>Allies</string>
+            </property>
+           </widget>
+          </item>
           <item row="0" column="0" colspan="2">
-           <widget class="QLineEdit" name="f3_name"/>
+           <widget class="QGroupBox" name="f3_useCustomName">
+            <property name="title">
+             <string>Custom Name</string>
+            </property>
+            <property name="flat">
+             <bool>true</bool>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_7">
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>4</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QLineEdit" name="f3_name"/>
+             </item>
+            </layout>
+           </widget>
           </item>
          </layout>
         </widget>
@@ -623,37 +682,6 @@
           <string>Force 1</string>
          </property>
          <layout class="QGridLayout" name="gridLayout_4">
-          <item row="2" column="1">
-           <widget class="QCheckBox" name="f1_randomStartLocation">
-            <property name="text">
-             <string>Random Start Location</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="0" colspan="2">
-           <widget class="QLineEdit" name="f1_name"/>
-          </item>
-          <item row="2" column="0">
-           <widget class="QCheckBox" name="f1_allies">
-            <property name="text">
-             <string>Allies</string>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="1">
-           <widget class="QCheckBox" name="f1_sharedVision">
-            <property name="text">
-             <string>Shared Vision</string>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="0">
-           <widget class="QCheckBox" name="f1_alliedVictory">
-            <property name="text">
-             <string>Allied Victory</string>
-            </property>
-           </widget>
-          </item>
           <item row="1" column="0" colspan="2">
            <widget class="QListWidget" name="f1_playerList">
             <property name="editTriggers">
@@ -679,6 +707,64 @@
             </property>
            </widget>
           </item>
+          <item row="2" column="0">
+           <widget class="QCheckBox" name="f1_allies">
+            <property name="text">
+             <string>Allies</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QCheckBox" name="f1_alliedVictory">
+            <property name="text">
+             <string>Allied Victory</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QCheckBox" name="f1_sharedVision">
+            <property name="text">
+             <string>Shared Vision</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QCheckBox" name="f1_randomStartLocation">
+            <property name="text">
+             <string>Random Start Location</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0" colspan="2">
+           <widget class="QGroupBox" name="f1_useCustomName">
+            <property name="title">
+             <string>Custom Name</string>
+            </property>
+            <property name="flat">
+             <bool>true</bool>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_4">
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>4</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QLineEdit" name="f1_name"/>
+             </item>
+            </layout>
+           </widget>
+          </item>
          </layout>
         </widget>
        </item>
@@ -694,30 +780,6 @@
              <string>Random Start Location</string>
             </property>
            </widget>
-          </item>
-          <item row="2" column="0">
-           <widget class="QCheckBox" name="f2_allies">
-            <property name="text">
-             <string>Allies</string>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="0">
-           <widget class="QCheckBox" name="f2_alliedVictory">
-            <property name="text">
-             <string>Allied Victory</string>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="1">
-           <widget class="QCheckBox" name="f2_sharedVision">
-            <property name="text">
-             <string>Shared Vision</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="0" colspan="2">
-           <widget class="QLineEdit" name="f2_name"/>
           </item>
           <item row="1" column="0" colspan="2">
            <widget class="QListWidget" name="f2_playerList">
@@ -742,6 +804,57 @@
             <property name="isWrapping" stdset="0">
              <bool>true</bool>
             </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QCheckBox" name="f2_alliedVictory">
+            <property name="text">
+             <string>Allied Victory</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QCheckBox" name="f2_sharedVision">
+            <property name="text">
+             <string>Shared Vision</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QCheckBox" name="f2_allies">
+            <property name="text">
+             <string>Allies</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0" colspan="2">
+           <widget class="QGroupBox" name="f2_useCustomName">
+            <property name="title">
+             <string>Custom Name</string>
+            </property>
+            <property name="flat">
+             <bool>true</bool>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_6">
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>4</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QLineEdit" name="f2_name"/>
+             </item>
+            </layout>
            </widget>
           </item>
          </layout>
@@ -2230,13 +2343,46 @@
   </customwidget>
  </customwidgets>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>okButton</sender>
+   <signal>clicked()</signal>
+   <receiver>ScenarioSettings</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>545</x>
+     <y>535</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>296</x>
+     <y>280</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cancelButton</sender>
+   <signal>clicked()</signal>
+   <receiver>ScenarioSettings</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>47</x>
+     <y>535</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>296</x>
+     <y>280</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
  <buttongroups>
   <buttongroup name="btnGroupTechDefault"/>
   <buttongroup name="btnGroupColour"/>
-  <buttongroup name="btnGroupRace"/>
   <buttongroup name="btnGroupController"/>
   <buttongroup name="btnGroupTechPlayer"/>
   <buttongroup name="btnGroupPlayerForce"/>
+  <buttongroup name="btnGroupRace"/>
  </buttongroups>
 </ui>

@@ -472,9 +472,17 @@ void MainWindow::on_action_tools_preferences_triggered()
 }
 
 void MainWindow::launchScenarioSettings(int startTab) {
+  if (currentMapView() == nullptr) return;
+  auto map = currentMapView()->getMap();
+
   ScenarioSettings settings(this, startTab);
 
+  settings.readFromMap(map->chk);
+
   int result = settings.exec();
+  if (result == QDialog::Accepted) {
+    settings.writeToMap(map->chk);
+  }
 }
 
 void MainWindow::on_action_scenario_players_triggered()
