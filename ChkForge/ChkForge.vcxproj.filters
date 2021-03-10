@@ -210,6 +210,9 @@
     <ClCompile Include="tristategroupbox.cpp">
       <Filter>Source Files\ui\Controls</Filter>
     </ClCompile>
+    <ClCompile Include="strings.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="layers.h">
@@ -244,6 +247,9 @@
     </ClInclude>
     <ClInclude Include="PlaceUnitAction.h">
       <Filter>Header Files\undo</Filter>
+    </ClInclude>
+    <ClInclude Include="strings.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

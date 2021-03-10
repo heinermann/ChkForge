@@ -226,6 +226,7 @@
     <ClCompile Include="scenariodescription.cpp" />
     <ClCompile Include="scenariosettings.cpp" />
     <ClCompile Include="stringmanager.cpp" />
+    <ClCompile Include="strings.cpp" />
     <ClCompile Include="terrain.cpp" />
     <ClCompile Include="terrainbrush.cpp" />
     <ClCompile Include="tilepalette.cpp" />
@@ -239,6 +240,7 @@
     <ClInclude Include="PlaceUnitAction.h" />
     <QtMoc Include="scenariodescription.h" />
     <QtMoc Include="tristategroupbox.h" />
+    <ClInclude Include="strings.h" />
     <ClInclude Include="UndoManager.h" />
     <ClInclude Include="UnitFinder.h" />
     <QtMoc Include="about.h" />

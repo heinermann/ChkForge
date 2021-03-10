@@ -2,6 +2,7 @@
 #define SCENARIOSETTINGS_H
 
 #include <QDialog>
+#include <QButtonGroup>
 #include <cstdint>
 #include <array>
 
@@ -29,8 +30,15 @@ public:
   explicit ScenarioSettings(QWidget *parent, int startTab);
   ~ScenarioSettings();
 
+  void init();
+
   void readFromMap(const MapFile& map);
   void writeToMap(MapFile& map) const;
+
+  void syncUiWithData();
+  void updatePlayerTree();
+
+  QString getForceName(int force) const;
 
 private:
   Ui::ScenarioSettings *ui;
@@ -62,6 +70,12 @@ private:
   };
 
   Settings settings;
+
+  void setSelectedButtonGroup(QButtonGroup* btnGroup, int id);
+  void clearSelectedButtonGroup(QButtonGroup* btnGroup);
+
+private slots:
+  void on_plyrList_itemSelectionChanged();
 };
 
 #endif // SCENARIOSETTINGS_H
