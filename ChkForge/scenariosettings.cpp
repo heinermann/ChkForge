@@ -36,6 +36,7 @@ void ScenarioSettings::init() {
   ui->btnGroupPlayerForce->setId(ui->radioForce2, 1);
   ui->btnGroupPlayerForce->setId(ui->radioForce3, 2);
   ui->btnGroupPlayerForce->setId(ui->radioForce4, 3);
+  ui->btnGroupPlayerForce->setId(ui->radioForceNone, 4);
 }
 
 ScenarioSettings::~ScenarioSettings()
@@ -43,10 +44,8 @@ ScenarioSettings::~ScenarioSettings()
   delete ui;
 }
 
-QString ScenarioSettings::getForceName(int force) const {
-  if (force >= 4) return "";
-
-  if (settings.useDefaultForceNames[force]) {
+QString ScenarioSettings::getForceName(unsigned force) const {
+  if (force >= 4 || settings.useDefaultForceNames[force]) {
     return getDefaultForceName(force);
   }
   return QString::fromStdString(settings.forceNames[force]);
@@ -67,11 +66,11 @@ void ScenarioSettings::updatePlayerTree() {
     itm->setText(5, getForceName(force));
     itm->setData(0, Qt::ItemDataRole::UserRole, i);
   }
-  ui->plyrList->selectAll();
 }
 
 void ScenarioSettings::syncUiWithData() {
   updatePlayerTree();
+  ui->plyrList->selectAll();
 }
 
 void ScenarioSettings::readFromMap(const MapFile& map) {
@@ -174,11 +173,11 @@ void ScenarioSettings::on_plyrList_itemSelectionChanged() {
   std::set<unsigned> uniqueForces;
   std::set<unsigned> uniqueColors;
   for (QTreeWidgetItem* itm : ui->plyrList->selectedItems()) {
-    int id = itm->data(0, Qt::ItemDataRole::UserRole).toInt();
-    unsigned controller = settings.ownr.slotType[id];
-    unsigned race = settings.side.playerRaces[id];
-    unsigned force = settings.forc.playerForce[id];
-    unsigned color = settings.colr.playerColor[id];
+    int player_id = playerIdFrom(itm);
+    unsigned controller = settings.ownr.slotType[player_id];
+    unsigned race = settings.side.playerRaces[player_id];
+    unsigned force = settings.forc.playerForce[player_id];
+    unsigned color = settings.colr.playerColor[player_id];
 
     uniqueControllers.insert(controller);
     uniqueRaces.insert(race);
@@ -208,3 +207,30 @@ void ScenarioSettings::on_plyrList_itemSelectionChanged() {
   }
 }
 
+int ScenarioSettings::playerIdFrom(QTreeWidgetItem* itm) {
+  return itm->data(0, Qt::ItemDataRole::UserRole).toInt();
+}
+
+void ScenarioSettings::on_btnGroupController_idClicked(int id) {
+  for (QTreeWidgetItem* itm : ui->plyrList->selectedItems()) {
+    int player_id = playerIdFrom(itm);
+    settings.ownr.slotType[player_id] = Sc::Player::SlotType(id);
+  }
+  updatePlayerTree();
+}
+
+void ScenarioSettings::on_btnGroupRace_idClicked(int id) {
+  for (QTreeWidgetItem* itm : ui->plyrList->selectedItems()) {
+    int player_id = playerIdFrom(itm);
+    settings.side.playerRaces[player_id] = Chk::Race(id);
+  }
+  updatePlayerTree();
+}
+
+void ScenarioSettings::on_btnGroupPlayerForce_idClicked(int id) {
+  for (QTreeWidgetItem* itm : ui->plyrList->selectedItems()) {
+    int player_id = playerIdFrom(itm);
+    settings.forc.playerForce[player_id] = Chk::Force(id);
+  }
+  updatePlayerTree();
+}

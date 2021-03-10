@@ -20,7 +20,7 @@ std::array<const QString, 8> raceNames = {
 };
 
 const QString& getRaceName(unsigned race) {
-  if (race >= raceNames.size()) return "";
+  if (race >= raceNames.size()) return QString::number(race);
   return raceNames[race];
 }
 
@@ -40,7 +40,7 @@ std::array<const QString, 12> ownerNames = {
 };
 
 const QString& getPlayerOwnerName(unsigned owner) {
-  if (owner >= ownerNames.size()) return "";
+  if (owner >= ownerNames.size()) return QString::number(owner);
   return ownerNames[owner];
 }
 
@@ -161,14 +161,15 @@ const QString& getColorName(unsigned id) {
   return colorNames[id];
 }
 
-std::array<const QString, 4> defaultForceNames = {
+std::array<const QString, 5> defaultForceNames = {
   QObject::tr("Force 1"),
   QObject::tr("Force 2"),
   QObject::tr("Force 3"),
-  QObject::tr("Force 4")
+  QObject::tr("Force 4"),
+  QObject::tr("None")
 };
 
 const QString& getDefaultForceName(unsigned force) {
-  if (force >= defaultForceNames.size()) return "";
+  if (force >= defaultForceNames.size()) return QString::number(force);
   return defaultForceNames[force];
 }

@@ -2,7 +2,6 @@
 #define SCENARIOSETTINGS_H
 
 #include <QDialog>
-#include <QButtonGroup>
 #include <cstdint>
 #include <array>
 
@@ -13,6 +12,9 @@
 namespace Ui {
   class ScenarioSettings;
 }
+
+class QTreeWidgetItem;
+class QButtonGroup;
 
 class ScenarioSettings : public QDialog
 {
@@ -38,7 +40,7 @@ public:
   void syncUiWithData();
   void updatePlayerTree();
 
-  QString getForceName(int force) const;
+  QString getForceName(unsigned force) const;
 
 private:
   Ui::ScenarioSettings *ui;
@@ -71,11 +73,14 @@ private:
 
   Settings settings;
 
-  void setSelectedButtonGroup(QButtonGroup* btnGroup, int id);
-  void clearSelectedButtonGroup(QButtonGroup* btnGroup);
-
+  static void setSelectedButtonGroup(QButtonGroup* btnGroup, int id);
+  static void clearSelectedButtonGroup(QButtonGroup* btnGroup);
+  static int playerIdFrom(QTreeWidgetItem* itm);
 private slots:
   void on_plyrList_itemSelectionChanged();
+  void on_btnGroupController_idClicked(int id);
+  void on_btnGroupRace_idClicked(int id);
+  void on_btnGroupPlayerForce_idClicked(int id);
 };
 
 #endif // SCENARIOSETTINGS_H
