@@ -3,6 +3,7 @@
 #include "strings.h"
 
 #include <set>
+#include <algorithm>
 
 ScenarioSettings::ScenarioSettings(QWidget* parent, int startTab) :
   QDialog(parent),
@@ -15,7 +16,10 @@ ScenarioSettings::ScenarioSettings(QWidget* parent, int startTab) :
 }
 
 void ScenarioSettings::init() {
+  // Set up Players tab
   ui->plyrList->header()->setSectionResizeMode(QHeaderView::ResizeToContents);
+  ui->plyrList->header()->setSectionResizeMode(1, QHeaderView::Stretch);
+  ui->plyrList->header()->setSectionsMovable(false);
 
   ui->btnGroupRace->setId(ui->radioRaceZerg, Chk::Race::Zerg);
   ui->btnGroupRace->setId(ui->radioRaceTerran, Chk::Race::Terran);
@@ -37,6 +41,20 @@ void ScenarioSettings::init() {
   ui->btnGroupPlayerForce->setId(ui->radioForce3, 2);
   ui->btnGroupPlayerForce->setId(ui->radioForce4, 3);
   ui->btnGroupPlayerForce->setId(ui->radioForceNone, 4);
+
+  // Set up Forces tab
+  for (int i = 0; i < 5; ++i) {
+    QTreeWidgetItem* forceItem = ui->forcesTree->topLevelItem(i);
+    forceItem->setFirstColumnSpanned(true);
+  }
+
+  for (int i = 0; i < Sc::Player::TotalSlots; ++i) {
+    QTreeWidgetItem* playerItem = new QTreeWidgetItem(QStringList{ getGenericPlayerName(i) });
+    playerItem->setData(0, Qt::UserRole, i);
+    playersUnderForces.append(playerItem);
+  }
+  ui->forcesTree->topLevelItem(4)->addChildren(playersUnderForces);
+  ui->forcesTree->expandAll();
 }
 
 ScenarioSettings::~ScenarioSettings()
@@ -64,13 +82,66 @@ void ScenarioSettings::updatePlayerTree() {
     itm->setText(3, getRaceName(race));
     itm->setText(4, getPlayerOwnerName(controller));
     itm->setText(5, getForceName(force));
-    itm->setData(0, Qt::ItemDataRole::UserRole, i);
+    itm->setData(0, Qt::UserRole, i);
+  }
+  updateForcesTree();
+}
+
+void ScenarioSettings::setPlayerSlotEnabled(int slot, bool enabled) {
+  for (int i = 0; i < playersUnderForces[slot]->columnCount(); ++i) {
+    playersUnderForces[slot]->setTextColor(i, enabled ? QColorConstants::Black : QColorConstants::Gray);
   }
 }
 
+void ScenarioSettings::setForceSlotEnabled(int slot, bool enabled) {
+  ui->forcesTree->topLevelItem(slot)->setTextColor(0, enabled ? QColorConstants::Black : QColorConstants::Gray);
+}
+
+void ScenarioSettings::updatePlayerSlotEnabled(int slot) {
+  setPlayerSlotEnabled(slot, isPlayerSlotEnabled(slot));
+}
+
+bool ScenarioSettings::isPlayerSlotEnabled(int slot) {
+  return settings.forc.playerForce[slot] < 4 &&
+    (settings.ownr.slotType[slot] == Sc::Player::SlotType::Computer || settings.ownr.slotType[slot] == Sc::Player::SlotType::Human);
+}
+
+void ScenarioSettings::updateForceSlotEnabled(int slot) {
+  QTreeWidgetItem* forceItem = ui->forcesTree->topLevelItem(slot);
+  bool shouldBeEnabled = false;
+  for (int i = 0; i < forceItem->childCount(); ++i) {
+    if (isPlayerSlotEnabled(playerIdFrom(forceItem->child(i)))) {
+      shouldBeEnabled = true;
+      break;
+    }
+  }
+  setForceSlotEnabled(slot, shouldBeEnabled);
+}
+
+void ScenarioSettings::updateForcesTree() {
+  for (int playerSlot = 0; playerSlot < playersUnderForces.size(); ++playerSlot) {
+    QTreeWidgetItem* itm = playersUnderForces[playerSlot];
+
+    int index = itm->parent()->indexOfChild(itm);
+    itm->parent()->takeChild(index);
+
+    int force = std::clamp(settings.forc.playerForce[playerSlot], Chk::Force(0), Chk::Force(4));
+
+    ui->forcesTree->topLevelItem(force)->addChild(itm);
+    updatePlayerSlotEnabled(playerSlot);
+  }
+
+  for (int forceSlot = 0; forceSlot < 5; ++forceSlot) {
+    updateForceSlotEnabled(forceSlot);
+  }
+  ui->forcesTree->expandAll();
+}
+
 void ScenarioSettings::syncUiWithData() {
+  // Also calls updateForcesTree()
   updatePlayerTree();
-  ui->plyrList->selectAll();
+  ui->plyrList->setItemSelected(ui->plyrList->topLevelItem(0), true);
+  ui->forcesTree->setItemSelected(ui->forcesTree->topLevelItem(0), true);
 }
 
 void ScenarioSettings::readFromMap(const MapFile& map) {
@@ -208,7 +279,7 @@ void ScenarioSettings::on_plyrList_itemSelectionChanged() {
 }
 
 int ScenarioSettings::playerIdFrom(QTreeWidgetItem* itm) {
-  return itm->data(0, Qt::ItemDataRole::UserRole).toInt();
+  return itm->data(0, Qt::UserRole).toInt();
 }
 
 void ScenarioSettings::on_btnGroupController_idClicked(int id) {

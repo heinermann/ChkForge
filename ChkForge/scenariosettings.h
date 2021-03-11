@@ -2,6 +2,7 @@
 #define SCENARIOSETTINGS_H
 
 #include <QDialog>
+#include <QList>
 #include <cstdint>
 #include <array>
 
@@ -39,11 +40,21 @@ public:
 
   void syncUiWithData();
   void updatePlayerTree();
+  void updateForcesTree();
 
   QString getForceName(unsigned force) const;
 
 private:
   Ui::ScenarioSettings *ui;
+
+  QList<QTreeWidgetItem*> playersUnderForces;
+
+  void setPlayerSlotEnabled(int slot, bool enabled);
+  void setForceSlotEnabled(int slot, bool enabled);
+
+  void updatePlayerSlotEnabled(int slot);
+  bool isPlayerSlotEnabled(int slot);
+  void updateForceSlotEnabled(int slot);
 
   struct Settings {
     Chk::SIDE side; // Races
