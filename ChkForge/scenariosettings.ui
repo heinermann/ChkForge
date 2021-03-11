@@ -36,6 +36,9 @@
        <property name="text">
         <string>Cancel</string>
        </property>
+       <property name="autoDefault">
+        <bool>false</bool>
+       </property>
       </widget>
      </item>
      <item>
@@ -56,6 +59,9 @@
        <property name="text">
         <string>OK</string>
        </property>
+       <property name="default">
+        <bool>true</bool>
+       </property>
       </widget>
      </item>
     </layout>
@@ -63,7 +69,7 @@
    <item row="1" column="0">
     <widget class="QTabWidget" name="tabs">
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="playersTab">
       <attribute name="title">
@@ -97,7 +103,7 @@
           <bool>true</bool>
          </property>
          <attribute name="headerMinimumSectionSize">
-          <number>24</number>
+          <number>32</number>
          </attribute>
          <column>
           <property name="text">
@@ -665,7 +671,7 @@
       <attribute name="title">
        <string>Forces</string>
       </attribute>
-      <layout class="QGridLayout" name="gridLayout_2" columnstretch="2,3">
+      <layout class="QGridLayout" name="gridLayout_2" columnstretch="1,1">
        <item row="1" column="1">
         <spacer name="verticalSpacer_10">
          <property name="orientation">
@@ -751,20 +757,14 @@
          <property name="editTriggers">
           <set>QAbstractItemView::NoEditTriggers</set>
          </property>
-         <property name="dragEnabled">
-          <bool>true</bool>
-         </property>
-         <property name="dragDropMode">
-          <enum>QAbstractItemView::InternalMove</enum>
-         </property>
-         <property name="defaultDropAction">
-          <enum>Qt::MoveAction</enum>
-         </property>
-         <property name="alternatingRowColors">
+         <property name="showDropIndicator" stdset="0">
           <bool>false</bool>
          </property>
          <property name="selectionMode">
           <enum>QAbstractItemView::ExtendedSelection</enum>
+         </property>
+         <property name="indentation">
+          <number>8</number>
          </property>
          <property name="rootIsDecorated">
           <bool>false</bool>
@@ -781,6 +781,12 @@
          <attribute name="headerVisible">
           <bool>false</bool>
          </attribute>
+         <attribute name="headerMinimumSectionSize">
+          <number>32</number>
+         </attribute>
+         <attribute name="headerDefaultSectionSize">
+          <number>64</number>
+         </attribute>
          <column>
           <property name="text">
            <string>Slot</string>
@@ -796,24 +802,77 @@
            <string>Colour</string>
           </property>
          </column>
+         <column>
+          <property name="text">
+           <string>id</string>
+          </property>
+         </column>
          <item>
           <property name="text">
            <string>Force 1</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="flags">
+           <set>ItemIsSelectable|ItemIsEnabled</set>
           </property>
          </item>
          <item>
           <property name="text">
            <string>Force 2</string>
           </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="text">
+           <string>1</string>
+          </property>
+          <property name="flags">
+           <set>ItemIsSelectable|ItemIsEnabled</set>
+          </property>
          </item>
          <item>
           <property name="text">
            <string>Force 3</string>
           </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="text">
+           <string>2</string>
+          </property>
+          <property name="flags">
+           <set>ItemIsSelectable|ItemIsEnabled</set>
+          </property>
          </item>
          <item>
           <property name="text">
            <string>Force 4</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="text">
+           <string>3</string>
+          </property>
+          <property name="flags">
+           <set>ItemIsSelectable|ItemIsEnabled</set>
           </property>
          </item>
          <item>
@@ -828,6 +887,18 @@
              <blue>128</blue>
             </color>
            </brush>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="text">
+           <string>4</string>
+          </property>
+          <property name="flags">
+           <set>NoItemFlags</set>
           </property>
          </item>
         </widget>
@@ -2350,11 +2421,11 @@
   </connection>
  </connections>
  <buttongroups>
-  <buttongroup name="btnGroupController"/>
   <buttongroup name="btnGroupRace"/>
+  <buttongroup name="btnGroupTechPlayer"/>
   <buttongroup name="btnGroupColour"/>
   <buttongroup name="btnGroupPlayerForce"/>
+  <buttongroup name="btnGroupController"/>
   <buttongroup name="btnGroupTechDefault"/>
-  <buttongroup name="btnGroupTechPlayer"/>
  </buttongroups>
 </ui>

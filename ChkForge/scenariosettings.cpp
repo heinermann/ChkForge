@@ -1,4 +1,4 @@
-#include "scenariosettings.h"
+﻿#include "scenariosettings.h"
 #include "ui_scenariosettings.h"
 #include "strings.h"
 
@@ -12,6 +12,7 @@ ScenarioSettings::ScenarioSettings(QWidget* parent, int startTab) :
   ui->setupUi(this);
 
   ui->tabs->setCurrentIndex(startTab);
+  on_tabs_currentChanged(startTab);
   init();
 }
 
@@ -43,17 +44,21 @@ void ScenarioSettings::init() {
   ui->btnGroupPlayerForce->setId(ui->radioForceNone, 4);
 
   // Set up Forces tab
+  ui->forcesTree->header()->setSectionResizeMode(QHeaderView::ResizeToContents);
+
   for (int i = 0; i < 5; ++i) {
     QTreeWidgetItem* forceItem = ui->forcesTree->topLevelItem(i);
     forceItem->setFirstColumnSpanned(true);
   }
 
   for (int i = 0; i < Sc::Player::TotalSlots; ++i) {
-    QTreeWidgetItem* playerItem = new QTreeWidgetItem(QStringList{ getGenericPlayerName(i) });
+    QTreeWidgetItem* playerItem = new QTreeWidgetItem(QStringList{ getGenericPlayerName(i), "a", "b", QString::number(i) });
     playerItem->setData(0, Qt::UserRole, i);
+    playerItem->setFlags(Qt::ItemNeverHasChildren);
     playersUnderForces.append(playerItem);
   }
   ui->forcesTree->topLevelItem(4)->addChildren(playersUnderForces);
+  ui->forcesTree->hideColumn(3);
   ui->forcesTree->expandAll();
 }
 
@@ -118,9 +123,22 @@ void ScenarioSettings::updateForceSlotEnabled(int slot) {
   setForceSlotEnabled(slot, shouldBeEnabled);
 }
 
+bool ScenarioSettings::anyRemasteredColor() {
+  for (Chk::PlayerColor color : settings.colr.playerColor) {
+    if (color >= 16) return true;
+  }
+  return false;
+}
+
 void ScenarioSettings::updateForcesTree() {
+  bool useRemasteredColorStr = anyRemasteredColor();
+
   for (int playerSlot = 0; playerSlot < playersUnderForces.size(); ++playerSlot) {
     QTreeWidgetItem* itm = playersUnderForces[playerSlot];
+
+    itm->setText(0, getSlotOwnerName(settings.ownr.slotType[playerSlot]));
+    itm->setText(1, getSlotRaceName(settings.side.playerRaces[playerSlot]));
+    itm->setText(2, useRemasteredColorStr ? getSlotColorName(3, settings.colr.playerColor[playerSlot]) : tr("Map specified"));
 
     int index = itm->parent()->indexOfChild(itm);
     itm->parent()->takeChild(index);
@@ -304,4 +322,26 @@ void ScenarioSettings::on_btnGroupPlayerForce_idClicked(int id) {
     settings.forc.playerForce[player_id] = Chk::Force(id);
   }
   updatePlayerTree();
+}
+
+void ScenarioSettings::on_tabs_currentChanged(int index) {
+  switch (index) {
+  case 0: // players
+    ui->plyrList->setFocus();
+    break;
+  case 1: // forces
+    ui->forcesTree->setFocus();
+    break;
+  case 2: // units
+    ui->unitTree->setFocus();
+    break;
+  case 3: // upgrades
+    ui->upgradeTree->setFocus();
+    break;
+  case 4: // tech
+    ui->techTree->setFocus();
+    break;
+  default:
+    break;
+  }
 }

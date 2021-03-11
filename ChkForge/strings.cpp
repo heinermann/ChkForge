@@ -1,4 +1,4 @@
-#include "strings.h"
+﻿#include "strings.h"
 
 #include <array>
 #include <QString>
@@ -176,3 +176,47 @@ const QString getDefaultForceName(unsigned force) {
   if (force >= defaultForceNames.size()) return QString::number(force);
   return defaultForceNames[force];
 }
+
+const QString getSlotOwnerName(unsigned owner) {
+  if (owner == Sc::Player::SlotType::Computer)
+    return QObject::tr("Computer");
+  else if (owner == Sc::Player::SlotType::Human)
+    return QObject::tr(u8"Open \u25BC");
+  else
+    return emptyStr;
+}
+
+const QString unknownStr = QObject::tr("Unknown");
+const QString randomStr = QObject::tr("Random");
+
+const std::array<const QString, 8> slotRaceNames = {
+  QObject::tr("Zerg"),
+  QObject::tr("Terran"),
+  QObject::tr("Protoss"),
+  unknownStr,
+  unknownStr,
+  QObject::tr(u8"Select Race \u25BC"),
+  QObject::tr("Random"),
+  QObject::tr("Select Race")
+};
+
+const QString getSlotRaceName(unsigned race) {
+  if (race >= slotRaceNames.size()) unknownStr;
+  return slotRaceNames[race];
+}
+
+const std::array<const QString, 3> slotScrColorNames = {
+  QObject::tr("Random"),
+  QObject::tr(u8"Random \u25BC"),
+  QObject::tr("Map specified")
+};
+
+const QString getSlotColorName(unsigned scrColor, unsigned color) {
+  if (scrColor < slotScrColorNames.size())
+    return slotScrColorNames[scrColor];
+  else if (color < colorNames.size())
+    return colorNames[color];
+
+  return randomStr;
+}
+

@@ -87,11 +87,13 @@ private:
   static void setSelectedButtonGroup(QButtonGroup* btnGroup, int id);
   static void clearSelectedButtonGroup(QButtonGroup* btnGroup);
   static int playerIdFrom(QTreeWidgetItem* itm);
+  bool anyRemasteredColor();
 private slots:
   void on_plyrList_itemSelectionChanged();
   void on_btnGroupController_idClicked(int id);
   void on_btnGroupRace_idClicked(int id);
   void on_btnGroupPlayerForce_idClicked(int id);
+  void on_tabs_currentChanged(int index);
 };
 
 #endif // SCENARIOSETTINGS_H
