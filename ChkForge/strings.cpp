@@ -8,7 +8,9 @@
 #include <MappingCoreLib/Sc.h>
 #include <MappingCoreLib/Chk.h>
 
-std::array<const QString, 8> raceNames = {
+const QString emptyStr = "";
+
+const std::array<const QString, 8> raceNames = {
   QObject::tr("Zerg"),
   QObject::tr("Terran"),
   QObject::tr("Protoss"),
@@ -19,12 +21,12 @@ std::array<const QString, 8> raceNames = {
   QObject::tr("None")
 };
 
-const QString& getRaceName(unsigned race) {
+const QString getRaceName(unsigned race) {
   if (race >= raceNames.size()) return QString::number(race);
   return raceNames[race];
 }
 
-std::array<const QString, 12> ownerNames = {
+const std::array<const QString, 12> ownerNames = {
   QObject::tr("None"),
   QObject::tr("Occupied Computer"),
   QObject::tr("Occupied Human"),
@@ -39,12 +41,12 @@ std::array<const QString, 12> ownerNames = {
   QObject::tr("Player Left")
 };
 
-const QString& getPlayerOwnerName(unsigned owner) {
+const QString getPlayerOwnerName(unsigned owner) {
   if (owner >= ownerNames.size()) return QString::number(owner);
   return ownerNames[owner];
 }
 
-std::array<const QString, Sc::Player::Total> genericPlayerNames = {
+const std::array<const QString, Sc::Player::Total> genericPlayerNames = {
   QObject::tr("Player 1"),
   QObject::tr("Player 2"),
   QObject::tr("Player 3"),
@@ -59,12 +61,12 @@ std::array<const QString, Sc::Player::Total> genericPlayerNames = {
   QObject::tr("Neutral")
 };
 
-const QString& getGenericPlayerName(unsigned id) {
-  if (id >= genericPlayerNames.size()) return "";
+const QString getGenericPlayerName(unsigned id) {
+  if (id >= genericPlayerNames.size()) return emptyStr;
   return genericPlayerNames[id];
 }
 
-std::array<std::array<const QString, Sc::Player::TotalSlots>, 3> scComputerNames = {
+const std::array<const std::array<const QString, Sc::Player::TotalSlots>, 3> scComputerNames = {
   std::array<const QString, Sc::Player::TotalSlots> {
     QObject::tr("Tiamat Brood"),
     QObject::tr("Surtur Brood"),
@@ -101,8 +103,11 @@ std::array<std::array<const QString, Sc::Player::TotalSlots>, 3> scComputerNames
 // p6: Atlas Wing
 // p7: Cronus Wing
 
-const QString& getComputerPlayerName(unsigned slot, unsigned race) {
-  if (slot >= 8) return QObject::tr("Computer");
+const QString computerStr = QObject::tr("Computer");
+const QString neutralStr = QObject::tr("Neutral");
+
+const QString getComputerPlayerName(unsigned slot, unsigned race) {
+  if (slot >= 8) return computerStr;
 
   if (race == Chk::Race::Random || race == Chk::Race::UserSelectable) race = std::rand() % 3;
   else if (race >= 3) race = Chk::Race::Terran;
@@ -118,19 +123,17 @@ bool isNamedComputerController(unsigned controller) {
     controller == Sc::Player::SlotType::Neutral;
 }
 
-const QString& getPlayerName(unsigned slot, unsigned race, unsigned controller) {
+const QString getPlayerName(unsigned slot, unsigned race, unsigned controller) {
   if (slot == Sc::Player::Id::Player12_Neutral) {
-    return QObject::tr("Neutral");
+    return neutralStr;
   }
   else if (isNamedComputerController(controller) || slot >= 8) {
     return getComputerPlayerName(slot, race);
   }
-  else {
-    return getGenericPlayerName(slot);
-  }
+  return emptyStr;
 }
 
-std::array<const QString, 23> colorNames = {
+const std::array<const QString, 23> colorNames = {
   QObject::tr("Red"),
   QObject::tr("Blue"),
   QObject::tr("Teal"),
@@ -156,12 +159,12 @@ std::array<const QString, 23> colorNames = {
   QObject::tr("Black")
 };
 
-const QString& getColorName(unsigned id) {
+const QString getColorName(unsigned id) {
   if (id >= colorNames.size()) return QString::number(id);
   return colorNames[id];
 }
 
-std::array<const QString, 5> defaultForceNames = {
+const std::array<const QString, 5> defaultForceNames = {
   QObject::tr("Force 1"),
   QObject::tr("Force 2"),
   QObject::tr("Force 3"),
@@ -169,7 +172,7 @@ std::array<const QString, 5> defaultForceNames = {
   QObject::tr("None")
 };
 
-const QString& getDefaultForceName(unsigned force) {
+const QString getDefaultForceName(unsigned force) {
   if (force >= defaultForceNames.size()) return QString::number(force);
   return defaultForceNames[force];
 }
