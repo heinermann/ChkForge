@@ -274,26 +274,20 @@ void ScenarioSettings::on_plyrList_itemSelectionChanged() {
     uniqueColors.insert(color);
   }
 
-  if (uniqueControllers.size() > 1) {
+  if (uniqueControllers.size() > 1)
     clearSelectedButtonGroup(ui->btnGroupController);
-  }
-  else {
+  else
     setSelectedButtonGroup(ui->btnGroupController, *uniqueControllers.begin());
-  }
 
-  if (uniqueRaces.size() > 1) {
+  if (uniqueRaces.size() > 1)
     clearSelectedButtonGroup(ui->btnGroupRace);
-  }
-  else {
+  else
     setSelectedButtonGroup(ui->btnGroupRace, *uniqueRaces.begin());
-  }
 
-  if (uniqueForces.size() > 1) {
+  if (uniqueForces.size() > 1)
     clearSelectedButtonGroup(ui->btnGroupPlayerForce);
-  }
-  else {
+  else
     setSelectedButtonGroup(ui->btnGroupPlayerForce, *uniqueForces.begin());
-  }
 }
 
 int ScenarioSettings::playerIdFrom(QTreeWidgetItem* itm) {
@@ -343,5 +337,106 @@ void ScenarioSettings::on_tabs_currentChanged(int index) {
     break;
   default:
     break;
+  }
+}
+
+void ScenarioSettings::on_forcesTree_itemSelectionChanged() {
+  std::set<bool> uniqueHasCustomName;
+  std::set<bool> uniqueAllies;
+  std::set<bool> uniqueRandomStartLoc;
+  std::set<bool> uniqueAlliedVictory;
+  std::set<bool> uniqueSharedVision;
+  std::set<std::string> uniqueNames;
+  for (QTreeWidgetItem* itm : ui->forcesTree->selectedItems()) {
+    int force = ui->forcesTree->indexOfTopLevelItem(itm);
+
+    uniqueHasCustomName.insert(!settings.useDefaultForceNames[force]);
+    uniqueNames.insert(settings.forceNames[force]);
+    uniqueAllies.insert(settings.forc.flags[force] & Chk::ForceFlags::RandomAllies);
+    uniqueRandomStartLoc.insert(settings.forc.flags[force] & Chk::ForceFlags::RandomizeStartLocation);
+    uniqueAlliedVictory.insert(settings.forc.flags[force] & Chk::ForceFlags::AlliedVictory);
+    uniqueSharedVision.insert(settings.forc.flags[force] & Chk::ForceFlags::SharedVision);
+  }
+
+  // TODO: normal tri-state groupbox
+  //if (uniqueHasCustomName.size() > 1)
+
+  if (uniqueNames.size() > 1)
+    ui->txtForceName->clear();
+  else
+    ui->txtForceName->setText(QString::fromStdString(*uniqueNames.begin()));
+
+  if (uniqueAllies.size() > 1)
+    ui->chkForceAllies->setCheckState(Qt::PartiallyChecked);
+  else
+    ui->chkForceAllies->setChecked(*uniqueAllies.begin());
+
+  if (uniqueRandomStartLoc.size() > 1)
+    ui->chkForceRandomStartLocation->setCheckState(Qt::PartiallyChecked);
+  else
+    ui->chkForceRandomStartLocation->setChecked(*uniqueRandomStartLoc.begin());
+
+  if (uniqueAlliedVictory.size() > 1)
+    ui->chkForceAlliedVictory->setCheckState(Qt::PartiallyChecked);
+  else
+    ui->chkForceAlliedVictory->setChecked(*uniqueAlliedVictory.begin());
+
+  if (uniqueSharedVision.size() > 1)
+    ui->chkForceSharedVision->setCheckState(Qt::PartiallyChecked);
+  else
+    ui->chkForceSharedVision->setChecked(*uniqueSharedVision.begin());
+}
+
+void ScenarioSettings::on_txtForceName_textEdited(const QString& text) {
+  for (QTreeWidgetItem* itm : ui->forcesTree->selectedItems()) {
+    int force = ui->forcesTree->indexOfTopLevelItem(itm);
+    QByteArray utf8Name = text.toUtf8();
+    settings.forceNames[force] = std::string(utf8Name.data(), utf8Name.size());
+    settings.useDefaultForceNames[force] = false;
+    ui->grpCustomName->setChecked(true);
+  }
+}
+
+void ScenarioSettings::on_chkForceAllies_stateChanged(int state) {
+  for (QTreeWidgetItem* itm : ui->forcesTree->selectedItems()) {
+    int force = ui->forcesTree->indexOfTopLevelItem(itm);
+    
+    if (state == Qt::Checked)
+      settings.forc.flags[force] |= Chk::ForceFlags::RandomAllies;
+    else if (state == Qt::Unchecked)
+      settings.forc.flags[force] &= ~Chk::ForceFlags::RandomAllies;
+  }
+}
+
+void ScenarioSettings::on_chkForceAlliedVictory_stateChanged(int state) {
+  for (QTreeWidgetItem* itm : ui->forcesTree->selectedItems()) {
+    int force = ui->forcesTree->indexOfTopLevelItem(itm);
+
+    if (state == Qt::Checked)
+      settings.forc.flags[force] |= Chk::ForceFlags::AlliedVictory;
+    else if (state == Qt::Unchecked)
+      settings.forc.flags[force] &= ~Chk::ForceFlags::AlliedVictory;
+  }
+}
+
+void ScenarioSettings::on_chkForceRandomStartLocation_stateChanged(int state) {
+  for (QTreeWidgetItem* itm : ui->forcesTree->selectedItems()) {
+    int force = ui->forcesTree->indexOfTopLevelItem(itm);
+
+    if (state == Qt::Checked)
+      settings.forc.flags[force] |= Chk::ForceFlags::RandomizeStartLocation;
+    else if (state == Qt::Unchecked)
+      settings.forc.flags[force] &= ~Chk::ForceFlags::RandomizeStartLocation;
+  }
+}
+
+void ScenarioSettings::on_chkForceSharedVision_stateChanged(int state) {
+  for (QTreeWidgetItem* itm : ui->forcesTree->selectedItems()) {
+    int force = ui->forcesTree->indexOfTopLevelItem(itm);
+
+    if (state == Qt::Checked)
+      settings.forc.flags[force] |= Chk::ForceFlags::SharedVision;
+    else if (state == Qt::Unchecked)
+      settings.forc.flags[force] &= ~Chk::ForceFlags::SharedVision;
   }
 }

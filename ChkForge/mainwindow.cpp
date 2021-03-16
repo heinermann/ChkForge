@@ -301,7 +301,7 @@ bool MainWindow::open_map(const QString& map_filename)
   if (map_filename.isEmpty()) return false;
 
   auto map = ChkForge::MapContext::create();
-  std::string file_str = map_filename.toStdString();
+  std::string file_str = std::string(map_filename.toLatin1());
   if (map->load_map(file_str)) {
     createMapView(map);
     addRecentFile(map_filename);

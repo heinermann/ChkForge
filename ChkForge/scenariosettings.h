@@ -94,6 +94,12 @@ private slots:
   void on_btnGroupRace_idClicked(int id);
   void on_btnGroupPlayerForce_idClicked(int id);
   void on_tabs_currentChanged(int index);
+  void on_forcesTree_itemSelectionChanged();
+  void on_txtForceName_textEdited(const QString& text);
+  void on_chkForceAllies_stateChanged(int state);
+  void on_chkForceAlliedVictory_stateChanged(int state);
+  void on_chkForceRandomStartLocation_stateChanged(int state);
+  void on_chkForceSharedVision_stateChanged(int state);
 };
 
 #endif // SCENARIOSETTINGS_H
