@@ -109,13 +109,8 @@ int main(int argc, char *argv[])
   appFont.setPixelSize(11);
   app.setFont(appFont);
 
-  auto clock = QTime();
-  clock.start();
-
   init_bwgame_with_directory();
   ChkForge::Icons::init();
-
-  auto elapsed = clock.elapsed();
 
   MainWindow w;
   w.showMaximized();

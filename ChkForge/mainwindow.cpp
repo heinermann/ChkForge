@@ -129,7 +129,7 @@ void MainWindow::createMdiDockArea()
 
   auto center_dock_area = m_DockManager->addDockWidget(ads::DockWidgetArea::CenterDockWidgetArea, mdi_dock);
   center_dock_area->setAllowedAreas(ads::DockWidgetArea::OuterDockAreas);
-  center_dock_area->setHideSingleWidgetTitleBar(true);
+  //center_dock_area->setHideSingleWidgetTitleBar(true);
 }
 
 void MainWindow::createNewMap(int tileWidth, int tileHeight, Sc::Terrain::Tileset tileset, int brush, int clutter)
@@ -714,9 +714,10 @@ MapView* MainWindow::currentMapView() {
 
 void MainWindow::closeEvent(QCloseEvent* event)
 {
-  auto subwindows = mdi->subWindowList(QMdiArea::StackingOrder).toStdList();
-  subwindows.reverse();
-  for (auto* window : subwindows) {
+  auto subwindows = mdi->subWindowList(QMdiArea::StackingOrder);
+  std::reverse(subwindows.begin(), subwindows.end());
+
+  for (auto window : subwindows) {
     if (!window->close()) {
       event->ignore();
       return;

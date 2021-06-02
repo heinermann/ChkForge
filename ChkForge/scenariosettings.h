@@ -34,6 +34,7 @@ public:
   ~ScenarioSettings();
 
   void init();
+  void initForcesTab();
 
   void readFromMap(const MapFile& map);
   void writeToMap(MapFile& map) const;

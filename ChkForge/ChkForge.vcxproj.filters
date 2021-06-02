@@ -94,6 +94,21 @@
     <Filter Include="Source Files\ui\Controls">
       <UniqueIdentifier>{8cd4ced9-20db-415f-b288-086c1c9f4cac}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\DataMappers">
+      <UniqueIdentifier>{ff4d843f-e4f7-4d91-88c8-cf0cc930e307}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\DataMappers">
+      <UniqueIdentifier>{c97898bf-817b-4f33-9c6f-173c7c57d4ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\ui\Dialogs\ScenarioSettings">
+      <UniqueIdentifier>{5b736d7e-a8e8-48cf-82f8-b9494b75b1a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ui\Dialogs\ScenarioSettings">
+      <UniqueIdentifier>{6fa4aaa2-5cfb-4dc9-8fb0-b9e1eb2a2027}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Form Files\Dialogs\ScenarioSettings">
+      <UniqueIdentifier>{9c956ad6-59df-458f-ab6b-b643e89ca0f0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -153,9 +168,6 @@
     <ClCompile Include="savemap.cpp">
       <Filter>Source Files\ui\Dialogs</Filter>
     </ClCompile>
-    <ClCompile Include="scenariosettings.cpp">
-      <Filter>Source Files\ui\Dialogs</Filter>
-    </ClCompile>
     <ClCompile Include="stringmanager.cpp">
       <Filter>Source Files\ui\Dialogs</Filter>
     </ClCompile>
@@ -213,6 +225,12 @@
     <ClCompile Include="strings.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="scenariosettings.cpp">
+      <Filter>Source Files\ui\Dialogs\ScenarioSettings</Filter>
+    </ClCompile>
+    <ClCompile Include="abilitiestab.cpp">
+      <Filter>Source Files\ui\Dialogs\ScenarioSettings</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="layers.h">
@@ -250,6 +268,27 @@
     </ClInclude>
     <ClInclude Include="strings.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RadioDataMapper.h">
+      <Filter>Header Files\DataMappers</Filter>
+    </ClInclude>
+    <ClInclude Include="DataMapper.h">
+      <Filter>Header Files\DataMappers</Filter>
+    </ClInclude>
+    <ClInclude Include="CheckboxDataMapper.h">
+      <Filter>Header Files\DataMappers</Filter>
+    </ClInclude>
+    <ClInclude Include="unitstab.h">
+      <Filter>Header Files\ui\Dialogs\ScenarioSettings</Filter>
+    </ClInclude>
+    <ClInclude Include="playerstab.h">
+      <Filter>Header Files\ui\Dialogs\ScenarioSettings</Filter>
+    </ClInclude>
+    <ClInclude Include="forcestab.h">
+      <Filter>Header Files\ui\Dialogs\ScenarioSettings</Filter>
+    </ClInclude>
+    <ClInclude Include="upgradestab.h">
+      <Filter>Header Files\ui\Dialogs\ScenarioSettings</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -329,9 +368,6 @@
     <QtUic Include="savemap.ui">
       <Filter>Form Files\Dialogs</Filter>
     </QtUic>
-    <QtUic Include="scenariosettings.ui">
-      <Filter>Form Files\Dialogs</Filter>
-    </QtUic>
     <QtUic Include="stringmanager.ui">
       <Filter>Form Files\Dialogs</Filter>
     </QtUic>
@@ -346,6 +382,12 @@
     </QtUic>
     <QtUic Include="charmap.ui">
       <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="scenariosettings.ui">
+      <Filter>Form Files\Dialogs\ScenarioSettings</Filter>
+    </QtUic>
+    <QtUic Include="abilitiestab.ui">
+      <Filter>Form Files\Dialogs\ScenarioSettings</Filter>
     </QtUic>
   </ItemGroup>
   <ItemGroup>
@@ -420,9 +462,6 @@
     <QtMoc Include="savemap.h">
       <Filter>Header Files\ui\Dialogs</Filter>
     </QtMoc>
-    <QtMoc Include="scenariosettings.h">
-      <Filter>Header Files\ui\Dialogs</Filter>
-    </QtMoc>
     <QtMoc Include="stringmanager.h">
       <Filter>Header Files\ui\Dialogs</Filter>
     </QtMoc>
@@ -446,6 +485,12 @@
     </QtMoc>
     <QtMoc Include="tristategroupbox.h">
       <Filter>Header Files\ui\Controls</Filter>
+    </QtMoc>
+    <QtMoc Include="scenariosettings.h">
+      <Filter>Header Files\ui\Dialogs\ScenarioSettings</Filter>
+    </QtMoc>
+    <QtMoc Include="abilitiestab.h">
+      <Filter>Header Files\ui\Dialogs\ScenarioSettings</Filter>
     </QtMoc>
   </ItemGroup>
 </Project>

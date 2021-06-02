@@ -48,6 +48,7 @@ void ScenarioSettings::init() {
 
   for (int i = 0; i < 5; ++i) {
     QTreeWidgetItem* forceItem = ui->forcesTree->topLevelItem(i);
+    forceItem->setData(0, Qt::UserRole, i);
     forceItem->setFirstColumnSpanned(true);
   }
 
@@ -60,6 +61,10 @@ void ScenarioSettings::init() {
   ui->forcesTree->topLevelItem(4)->addChildren(playersUnderForces);
   ui->forcesTree->hideColumn(3);
   ui->forcesTree->expandAll();
+}
+
+void ScenarioSettings::initForcesTab() {
+
 }
 
 ScenarioSettings::~ScenarioSettings()
@@ -94,12 +99,12 @@ void ScenarioSettings::updatePlayerTree() {
 
 void ScenarioSettings::setPlayerSlotEnabled(int slot, bool enabled) {
   for (int i = 0; i < playersUnderForces[slot]->columnCount(); ++i) {
-    playersUnderForces[slot]->setTextColor(i, enabled ? QColorConstants::Black : QColorConstants::Gray);
+    playersUnderForces[slot]->setForeground(i, enabled ? QColorConstants::Black : QColorConstants::Gray);
   }
 }
 
 void ScenarioSettings::setForceSlotEnabled(int slot, bool enabled) {
-  ui->forcesTree->topLevelItem(slot)->setTextColor(0, enabled ? QColorConstants::Black : QColorConstants::Gray);
+  ui->forcesTree->topLevelItem(slot)->setForeground(0, enabled ? QColorConstants::Black : QColorConstants::Gray);
 }
 
 void ScenarioSettings::updatePlayerSlotEnabled(int slot) {
@@ -158,8 +163,8 @@ void ScenarioSettings::updateForcesTree() {
 void ScenarioSettings::syncUiWithData() {
   // Also calls updateForcesTree()
   updatePlayerTree();
-  ui->plyrList->setItemSelected(ui->plyrList->topLevelItem(0), true);
-  ui->forcesTree->setItemSelected(ui->forcesTree->topLevelItem(0), true);
+  ui->plyrList->topLevelItem(0)->setSelected(true);
+  ui->forcesTree->topLevelItem(0)->setSelected(true);
 }
 
 void ScenarioSettings::readFromMap(const MapFile& map) {
@@ -333,7 +338,7 @@ void ScenarioSettings::on_tabs_currentChanged(int index) {
     ui->upgradeTree->setFocus();
     break;
   case 4: // tech
-    ui->techTree->setFocus();
+    //ui->techTree->setFocus();
     break;
   default:
     break;

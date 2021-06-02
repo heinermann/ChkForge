@@ -14,7 +14,7 @@
     <ProjectGuid>{39040AC0-2C27-3D5C-B223-4F20AB8EB5B2}</ProjectGuid>
     <RootNamespace>ChkForge</RootNamespace>
     <Keyword>QtVS_v303</Keyword>
-    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     <WindowsTargetPlatformMinVersion>10.0.18362.0</WindowsTargetPlatformMinVersion>
     <QtMsBuild Condition="'$(QtMsBuild)'=='' or !Exists('$(QtMsBuild)\qt.targets')">$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
   </PropertyGroup>
@@ -66,12 +66,12 @@
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <QtInstall>5.15.msvc2019_64</QtInstall>
-    <QtModules>core;gui;widgets</QtModules>
+    <QtInstall>6.1.0_msvc2019_64</QtInstall>
+    <QtModules>core;gui;openglwidgets;widgets</QtModules>
   </PropertyGroup>
   <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <QtInstall>5.15.msvc2019_64</QtInstall>
-    <QtModules>core;gui;widgets</QtModules>
+    <QtInstall>6.1.0_msvc2019_64</QtInstall>
+    <QtModules>core;gui;openglwidgets;widgets</QtModules>
   </PropertyGroup>
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.props')">
     <Import Project="$(QtMsBuild)\qt.props" />
@@ -192,6 +192,7 @@
     </QtUic>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="abilitiestab.cpp" />
     <ClCompile Include="about.cpp" />
     <ClCompile Include="CharacterWidget.cpp" />
     <ClCompile Include="charmap.cpp" />
@@ -233,13 +234,21 @@
     <ClCompile Include="tristategroupbox.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="abilitiestab.h" />
     <ClInclude Include="Action.h" />
+    <ClInclude Include="unitstab.h" />
+    <ClInclude Include="upgradestab.h" />
     <QtMoc Include="charmap.h" />
     <QtMoc Include="CharacterWidget.h" />
+    <ClInclude Include="CheckboxDataMapper.h" />
     <ClInclude Include="CompoundAction.h" />
+    <ClInclude Include="forcestab.h" />
     <ClInclude Include="PlaceUnitAction.h" />
     <QtMoc Include="scenariodescription.h" />
     <QtMoc Include="tristategroupbox.h" />
+    <ClInclude Include="DataMapper.h" />
+    <ClInclude Include="playerstab.h" />
+    <ClInclude Include="RadioDataMapper.h" />
     <ClInclude Include="strings.h" />
     <ClInclude Include="UndoManager.h" />
     <ClInclude Include="UnitFinder.h" />
@@ -310,6 +319,7 @@
     <None Include="ChkForge_en_CA.ts" />
   </ItemGroup>
   <ItemGroup>
+    <QtUic Include="abilitiestab.ui" />
     <QtUic Include="aboutdlg.ui" />
     <QtUic Include="charmap.ui" />
     <QtUic Include="doodadpalette.ui">
