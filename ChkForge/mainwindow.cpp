@@ -122,14 +122,19 @@ void MainWindow::createMdiDockArea()
 
   connect(mdi, &QMdiArea::subWindowActivated, this, &MainWindow::onMdiSubWindowActivated);
 
+  // Do something about tabs since mdi windows are not very visible
+  //mdi->setViewMode(QMdiArea::ViewMode::TabbedView);
+  //mdi->setTabsMovable(true);
+  //mdi->setTabsClosable(true);
+
   mdi_dock->setWidget(mdi);
+  mdi_dock->setFeature(ads::CDockWidget::DockWidgetFeature::NoTab, true);
   mdi_dock->setFeature(ads::CDockWidget::DockWidgetFeature::DockWidgetClosable, false);
   mdi_dock->setFeature(ads::CDockWidget::DockWidgetFeature::DockWidgetFloatable, false);
   mdi_dock->setFeature(ads::CDockWidget::DockWidgetFeature::DockWidgetMovable, false);
 
-  auto center_dock_area = m_DockManager->addDockWidget(ads::DockWidgetArea::CenterDockWidgetArea, mdi_dock);
+  auto center_dock_area = m_DockManager->setCentralWidget(mdi_dock);
   center_dock_area->setAllowedAreas(ads::DockWidgetArea::OuterDockAreas);
-  //center_dock_area->setHideSingleWidgetTitleBar(true);
 }
 
 void MainWindow::createNewMap(int tileWidth, int tileHeight, Sc::Terrain::Tileset tileset, int brush, int clutter)
