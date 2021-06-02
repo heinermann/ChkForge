@@ -1,0 +1,610 @@
+<ui version="4.0">
+ <author></author>
+ <comment></comment>
+ <exportmacro></exportmacro>
+ <class>PlayersTab</class>
+  <widget class="QWidget" name="playersTab">
+    <attribute name="title">
+      <string>Players</string>
+    </attribute>
+    <layout class="QVBoxLayout" name="verticalLayout_13">
+      <item>
+        <widget class="QTreeWidget" name="plyrList">
+          <property name="minimumSize">
+            <size>
+              <width>0</width>
+              <height>128</height>
+            </size>
+          </property>
+          <property name="editTriggers">
+            <set>QAbstractItemView::NoEditTriggers</set>
+          </property>
+          <property name="showDropIndicator" stdset="0">
+            <bool>false</bool>
+          </property>
+          <property name="selectionMode">
+            <enum>QAbstractItemView::ExtendedSelection</enum>
+          </property>
+          <property name="indentation">
+            <number>0</number>
+          </property>
+          <property name="rootIsDecorated">
+            <bool>false</bool>
+          </property>
+          <property name="allColumnsShowFocus">
+            <bool>true</bool>
+          </property>
+          <attribute name="headerMinimumSectionSize">
+            <number>32</number>
+          </attribute>
+          <column>
+            <property name="text">
+              <string>Player</string>
+            </property>
+          </column>
+          <column>
+            <property name="text">
+              <string>Name</string>
+            </property>
+          </column>
+          <column>
+            <property name="text">
+              <string>Colour</string>
+            </property>
+          </column>
+          <column>
+            <property name="text">
+              <string>Race</string>
+            </property>
+          </column>
+          <column>
+            <property name="text">
+              <string>Controller</string>
+            </property>
+          </column>
+          <column>
+            <property name="text">
+              <string>Force</string>
+            </property>
+          </column>
+          <item>
+            <property name="text">
+              <string>Player 1</string>
+            </property>
+            <property name="text">
+              <string>Elite Guard</string>
+            </property>
+            <property name="text">
+              <string>Red</string>
+            </property>
+            <property name="text">
+              <string>Terran</string>
+            </property>
+            <property name="text">
+              <string>Computer</string>
+            </property>
+            <property name="text">
+              <string>Force 1</string>
+            </property>
+          </item>
+          <item>
+            <property name="text">
+              <string>Player 2</string>
+            </property>
+            <property name="text">
+              <string>Mar Sara</string>
+            </property>
+            <property name="text">
+              <string>Blue</string>
+            </property>
+            <property name="text">
+              <string>Terran</string>
+            </property>
+            <property name="text">
+              <string>Computer</string>
+            </property>
+            <property name="text">
+              <string>Force 1</string>
+            </property>
+          </item>
+          <item>
+            <property name="text">
+              <string>Player 3</string>
+            </property>
+            <property name="text">
+              <string>Kel-Morian Combine</string>
+            </property>
+            <property name="text">
+              <string>Teal</string>
+            </property>
+            <property name="text">
+              <string>Terran</string>
+            </property>
+            <property name="text">
+              <string>Computer</string>
+            </property>
+            <property name="text">
+              <string>Force 1</string>
+            </property>
+          </item>
+          <item>
+            <property name="text">
+              <string>Player 4</string>
+            </property>
+            <property name="text">
+              <string>Antiga</string>
+            </property>
+            <property name="text">
+              <string>Purple</string>
+            </property>
+            <property name="text">
+              <string>Terran</string>
+            </property>
+            <property name="text">
+              <string>Computer</string>
+            </property>
+            <property name="text">
+              <string>Force 1</string>
+            </property>
+          </item>
+          <item>
+            <property name="text">
+              <string>Player 5</string>
+            </property>
+            <property name="text">
+              <string>Delta Squadron</string>
+            </property>
+            <property name="text">
+              <string>Orange</string>
+            </property>
+            <property name="text">
+              <string>Terran</string>
+            </property>
+            <property name="text">
+              <string>Computer</string>
+            </property>
+            <property name="text">
+              <string>Force 1</string>
+            </property>
+          </item>
+          <item>
+            <property name="text">
+              <string>Player 6</string>
+            </property>
+            <property name="text">
+              <string>Omega Squadron</string>
+            </property>
+            <property name="text">
+              <string>Brown</string>
+            </property>
+            <property name="text">
+              <string>Terran</string>
+            </property>
+            <property name="text">
+              <string>Computer</string>
+            </property>
+            <property name="text">
+              <string>Force 1</string>
+            </property>
+          </item>
+          <item>
+            <property name="text">
+              <string>Player 7</string>
+            </property>
+            <property name="text">
+              <string>Alpha Squadron</string>
+            </property>
+            <property name="text">
+              <string>White</string>
+            </property>
+            <property name="text">
+              <string>Terran</string>
+            </property>
+            <property name="text">
+              <string>Computer</string>
+            </property>
+            <property name="text">
+              <string>Force 1</string>
+            </property>
+          </item>
+          <item>
+            <property name="text">
+              <string>Player 8</string>
+            </property>
+            <property name="text">
+              <string>Epsilon Squadron</string>
+            </property>
+            <property name="text">
+              <string>Yellow</string>
+            </property>
+            <property name="text">
+              <string>Terran</string>
+            </property>
+            <property name="text">
+              <string>Computer</string>
+            </property>
+            <property name="text">
+              <string>Force 1</string>
+            </property>
+          </item>
+        </widget>
+      </item>
+      <item>
+        <widget class="QWidget" name="playerOptionsWidget" native="true">
+          <property name="enabled">
+            <bool>true</bool>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_6">
+            <property name="leftMargin">
+              <number>0</number>
+            </property>
+            <property name="topMargin">
+              <number>0</number>
+            </property>
+            <property name="rightMargin">
+              <number>0</number>
+            </property>
+            <property name="bottomMargin">
+              <number>0</number>
+            </property>
+            <item>
+              <widget class="QGroupBox" name="grpPlayerColor">
+                <property name="title">
+                  <string>Colour</string>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_8">
+                  <item>
+                    <widget class="QRadioButton" name="radioColrRandom">
+                      <property name="enabled">
+                        <bool>false</bool>
+                      </property>
+                      <property name="text">
+                        <string>Random</string>
+                      </property>
+                      <property name="checked">
+                        <bool>false</bool>
+                      </property>
+                      <attribute name="buttonGroup">
+                        <string notr="true">btnGroupColour</string>
+                      </attribute>
+                    </widget>
+                  </item>
+                  <item>
+                    <widget class="QRadioButton" name="radioColrPlayerChoice">
+                      <property name="enabled">
+                        <bool>false</bool>
+                      </property>
+                      <property name="text">
+                        <string>Player Choice</string>
+                      </property>
+                      <attribute name="buttonGroup">
+                        <string notr="true">btnGroupColour</string>
+                      </attribute>
+                    </widget>
+                  </item>
+                  <item>
+                    <widget class="QRadioButton" name="radioColrRGB">
+                      <property name="enabled">
+                        <bool>false</bool>
+                      </property>
+                      <property name="text">
+                        <string>RGB</string>
+                      </property>
+                      <attribute name="buttonGroup">
+                        <string notr="true">btnGroupColour</string>
+                      </attribute>
+                    </widget>
+                  </item>
+                  <item>
+                    <widget class="QRadioButton" name="radioColrClassic">
+                      <property name="text">
+                        <string>Classic</string>
+                      </property>
+                      <property name="checked">
+                        <bool>true</bool>
+                      </property>
+                      <attribute name="buttonGroup">
+                        <string notr="true">btnGroupColour</string>
+                      </attribute>
+                    </widget>
+                  </item>
+                  <item>
+                    <widget class="QComboBox" name="comboBox"/>
+                  </item>
+                  <item>
+                    <spacer name="verticalSpacer">
+                      <property name="orientation">
+                        <enum>Qt::Vertical</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                        <size>
+                          <width>20</width>
+                          <height>0</height>
+                        </size>
+                      </property>
+                    </spacer>
+                  </item>
+                </layout>
+              </widget>
+            </item>
+            <item>
+              <widget class="QGroupBox" name="grpPlayerRace">
+                <property name="title">
+                  <string>Race</string>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout">
+                  <item>
+                    <widget class="QRadioButton" name="radioRaceZerg">
+                      <property name="text">
+                        <string>Zerg</string>
+                      </property>
+                      <property name="checked">
+                        <bool>true</bool>
+                      </property>
+                      <attribute name="buttonGroup">
+                        <string notr="true">btnGroupRace</string>
+                      </attribute>
+                    </widget>
+                  </item>
+                  <item>
+                    <widget class="QRadioButton" name="radioRaceTerran">
+                      <property name="text">
+                        <string>Terran</string>
+                      </property>
+                      <attribute name="buttonGroup">
+                        <string notr="true">btnGroupRace</string>
+                      </attribute>
+                    </widget>
+                  </item>
+                  <item>
+                    <widget class="QRadioButton" name="radioRaceProtoss">
+                      <property name="text">
+                        <string>Protoss</string>
+                      </property>
+                      <attribute name="buttonGroup">
+                        <string notr="true">btnGroupRace</string>
+                      </attribute>
+                    </widget>
+                  </item>
+                  <item>
+                    <widget class="QRadioButton" name="radioRaceUserSelect">
+                      <property name="text">
+                        <string>User Selectable</string>
+                      </property>
+                      <attribute name="buttonGroup">
+                        <string notr="true">btnGroupRace</string>
+                      </attribute>
+                    </widget>
+                  </item>
+                  <item>
+                    <widget class="QRadioButton" name="radioRaceRandom">
+                      <property name="text">
+                        <string>Random</string>
+                      </property>
+                      <attribute name="buttonGroup">
+                        <string notr="true">btnGroupRace</string>
+                      </attribute>
+                    </widget>
+                  </item>
+                  <item>
+                    <spacer name="verticalSpacer_2">
+                      <property name="orientation">
+                        <enum>Qt::Vertical</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                        <size>
+                          <width>20</width>
+                          <height>0</height>
+                        </size>
+                      </property>
+                    </spacer>
+                  </item>
+                </layout>
+              </widget>
+            </item>
+            <item>
+              <widget class="QGroupBox" name="grpPlayerController">
+                <property name="title">
+                  <string>Controller</string>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_2">
+                  <item>
+                    <widget class="QRadioButton" name="radioControlInactive">
+                      <property name="text">
+                        <string>Inactive</string>
+                      </property>
+                      <property name="checked">
+                        <bool>true</bool>
+                      </property>
+                      <attribute name="buttonGroup">
+                        <string notr="true">btnGroupController</string>
+                      </attribute>
+                    </widget>
+                  </item>
+                  <item>
+                    <widget class="QRadioButton" name="radioControlOccupiedComputer">
+                      <property name="toolTip">
+                        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:9pt; font-weight:600;&quot;&gt;In Use Map Settings&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Does not show up in lobby but acts as a normal computer slot.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:9pt; font-weight:600;&quot;&gt;In Melee&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Prefills a computer slot.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                      </property>
+                      <property name="text">
+                        <string>Occupied Computer</string>
+                      </property>
+                      <attribute name="buttonGroup">
+                        <string notr="true">btnGroupController</string>
+                      </attribute>
+                    </widget>
+                  </item>
+                  <item>
+                    <widget class="QRadioButton" name="radioControlRescuable">
+                      <property name="text">
+                        <string>Rescuable</string>
+                      </property>
+                      <attribute name="buttonGroup">
+                        <string notr="true">btnGroupController</string>
+                      </attribute>
+                    </widget>
+                  </item>
+                  <item>
+                    <widget class="QRadioButton" name="radioControlDummy">
+                      <property name="toolTip">
+                        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;AKA &lt;span style=&quot; font-weight:600;&quot;&gt;Unused&lt;/span&gt; or &lt;span style=&quot; font-weight:600;&quot;&gt;Rescue Active&lt;/span&gt;. This player acts like a dummy player without the risks of &lt;span style=&quot; font-weight:600;&quot;&gt;Occupied Player&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                      </property>
+                      <property name="text">
+                        <string>Dummy</string>
+                      </property>
+                      <attribute name="buttonGroup">
+                        <string notr="true">btnGroupController</string>
+                      </attribute>
+                    </widget>
+                  </item>
+                  <item>
+                    <widget class="QRadioButton" name="radioControlComputer">
+                      <property name="text">
+                        <string>Computer</string>
+                      </property>
+                      <attribute name="buttonGroup">
+                        <string notr="true">btnGroupController</string>
+                      </attribute>
+                    </widget>
+                  </item>
+                  <item>
+                    <widget class="QRadioButton" name="radioControlHuman">
+                      <property name="text">
+                        <string>Human</string>
+                      </property>
+                      <attribute name="buttonGroup">
+                        <string notr="true">btnGroupController</string>
+                      </attribute>
+                    </widget>
+                  </item>
+                  <item>
+                    <widget class="QRadioButton" name="radioControlNeutral">
+                      <property name="text">
+                        <string>Neutral</string>
+                      </property>
+                      <attribute name="buttonGroup">
+                        <string notr="true">btnGroupController</string>
+                      </attribute>
+                    </widget>
+                  </item>
+                  <item>
+                    <widget class="QRadioButton" name="radioControlClosed">
+                      <property name="toolTip">
+                        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Similar to &lt;span style=&quot; font-weight:600;&quot;&gt;Inactive&lt;/span&gt;, but shows up in melee.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                      </property>
+                      <property name="text">
+                        <string>Closed</string>
+                      </property>
+                      <attribute name="buttonGroup">
+                        <string notr="true">btnGroupController</string>
+                      </attribute>
+                    </widget>
+                  </item>
+                  <item>
+                    <spacer name="verticalSpacer_3">
+                      <property name="orientation">
+                        <enum>Qt::Vertical</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                        <size>
+                          <width>20</width>
+                          <height>0</height>
+                        </size>
+                      </property>
+                    </spacer>
+                  </item>
+                </layout>
+              </widget>
+            </item>
+            <item>
+              <widget class="QGroupBox" name="grpPlayerForce">
+                <property name="title">
+                  <string>Force</string>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_3">
+                  <item>
+                    <widget class="QRadioButton" name="radioForce1">
+                      <property name="text">
+                        <string>Force 1</string>
+                      </property>
+                      <property name="checked">
+                        <bool>true</bool>
+                      </property>
+                      <attribute name="buttonGroup">
+                        <string notr="true">btnGroupPlayerForce</string>
+                      </attribute>
+                    </widget>
+                  </item>
+                  <item>
+                    <widget class="QRadioButton" name="radioForce2">
+                      <property name="text">
+                        <string>Force 2</string>
+                      </property>
+                      <attribute name="buttonGroup">
+                        <string notr="true">btnGroupPlayerForce</string>
+                      </attribute>
+                    </widget>
+                  </item>
+                  <item>
+                    <widget class="QRadioButton" name="radioForce3">
+                      <property name="text">
+                        <string>Force 3</string>
+                      </property>
+                      <attribute name="buttonGroup">
+                        <string notr="true">btnGroupPlayerForce</string>
+                      </attribute>
+                    </widget>
+                  </item>
+                  <item>
+                    <widget class="QRadioButton" name="radioForce4">
+                      <property name="text">
+                        <string>Force 4</string>
+                      </property>
+                      <attribute name="buttonGroup">
+                        <string notr="true">btnGroupPlayerForce</string>
+                      </attribute>
+                    </widget>
+                  </item>
+                  <item>
+                    <widget class="QRadioButton" name="radioForceNone">
+                      <property name="toolTip">
+                        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hidden from the lobby. This also prevents human players from occupying the slot.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                      </property>
+                      <property name="text">
+                        <string>None</string>
+                      </property>
+                      <attribute name="buttonGroup">
+                        <string notr="true">btnGroupPlayerForce</string>
+                      </attribute>
+                    </widget>
+                  </item>
+                  <item>
+                    <spacer name="verticalSpacer_4">
+                      <property name="orientation">
+                        <enum>Qt::Vertical</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                        <size>
+                          <width>20</width>
+                          <height>0</height>
+                        </size>
+                      </property>
+                    </spacer>
+                  </item>
+                </layout>
+              </widget>
+            </item>
+          </layout>
+        </widget>
+      </item>
+    </layout>
+  </widget>
+ <pixmapfunction></pixmapfunction>
+ <connections/>
+  <buttongroups>
+    <buttongroup name="btnGroupRace"/>
+    <buttongroup name="btnGroupController"/>
+    <buttongroup name="btnGroupColour"/>
+    <buttongroup name="btnGroupPlayerForce"/>
+  </buttongroups>
+</ui>

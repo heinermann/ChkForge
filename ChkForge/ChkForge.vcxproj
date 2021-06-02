@@ -200,6 +200,7 @@
     <ClCompile Include="exportimage.cpp" />
     <ClCompile Include="exportsections.cpp" />
     <ClCompile Include="filemanager.cpp" />
+    <ClCompile Include="forcestab.cpp" />
     <ClCompile Include="icons.cpp" />
     <ClCompile Include="importsections.cpp" />
     <ClCompile Include="itempalette.cpp" />
@@ -221,34 +222,40 @@
     <ClCompile Include="newmap.cpp" />
     <ClCompile Include="outputwindow.cpp" />
     <ClCompile Include="PlaceUnitAction.cpp" />
+    <ClCompile Include="playerstab.cpp" />
     <ClCompile Include="previewpainter.cpp" />
     <ClCompile Include="recenttiles.cpp" />
     <ClCompile Include="savemap.cpp" />
     <ClCompile Include="scenariodescription.cpp" />
     <ClCompile Include="scenariosettings.cpp" />
+    <ClCompile Include="scenariosettingstab.cpp" />
     <ClCompile Include="stringmanager.cpp" />
     <ClCompile Include="strings.cpp" />
     <ClCompile Include="terrain.cpp" />
     <ClCompile Include="terrainbrush.cpp" />
     <ClCompile Include="tilepalette.cpp" />
     <ClCompile Include="tristategroupbox.cpp" />
+    <ClCompile Include="unitstab.cpp" />
+    <ClCompile Include="upgradestab.cpp" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="abilitiestab.h" />
     <ClInclude Include="Action.h" />
-    <ClInclude Include="unitstab.h" />
-    <ClInclude Include="upgradestab.h" />
+    <QtMoc Include="unitstab.h" />
+    <QtMoc Include="upgradestab.h" />
     <QtMoc Include="charmap.h" />
     <QtMoc Include="CharacterWidget.h" />
     <ClInclude Include="CheckboxDataMapper.h" />
     <ClInclude Include="CompoundAction.h" />
-    <ClInclude Include="forcestab.h" />
+    <QtMoc Include="forcestab.h" />
     <ClInclude Include="PlaceUnitAction.h" />
     <QtMoc Include="scenariodescription.h" />
     <QtMoc Include="tristategroupbox.h" />
     <ClInclude Include="DataMapper.h" />
-    <ClInclude Include="playerstab.h" />
+    <QtMoc Include="playerstab.h" />
     <ClInclude Include="RadioDataMapper.h" />
+    <ClInclude Include="scenariosettingsdata.h" />
+    <QtMoc Include="scenariosettingstab.h" />
     <ClInclude Include="strings.h" />
     <ClInclude Include="UndoManager.h" />
     <ClInclude Include="UnitFinder.h" />
@@ -330,6 +337,7 @@
     </QtUic>
     <QtUic Include="filemanager.ui">
     </QtUic>
+    <QtUic Include="forcestab.ui" />
     <QtUic Include="importsections.ui">
     </QtUic>
     <QtUic Include="itempalette.ui">
@@ -346,6 +354,7 @@
     <QtUic Include="newmap.ui" />
     <QtUic Include="outputwindow.ui">
     </QtUic>
+    <QtUic Include="playerstab.ui" />
     <QtUic Include="previewpainter.ui">
     </QtUic>
     <QtUic Include="recenttiles.ui">
@@ -365,6 +374,8 @@
     </QtUic>
     <QtUic Include="toolbars.ui" />
     <QtUic Include="unitproperties.ui" />
+    <QtUic Include="unitstab.ui" />
+    <QtUic Include="upgradestab.ui" />
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="..\oxygen-subset.qrc" />

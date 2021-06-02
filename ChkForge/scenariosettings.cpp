@@ -2,6 +2,10 @@
 #include "ui_scenariosettings.h"
 #include "strings.h"
 
+#include "abilitiestab.h"
+
+#include <QMessageBox>
+
 #include <set>
 #include <algorithm>
 
@@ -11,60 +15,13 @@ ScenarioSettings::ScenarioSettings(QWidget* parent, int startTab) :
 {
   ui->setupUi(this);
 
+  ui->playersTab->settings = &settings;
+  ui->forcesTab->settings = &settings;
+
+  connect(ui->playersTab, &PlayersTab::updateData, ui->forcesTab, &ForcesTab::updateForcesTree);
+
   ui->tabs->setCurrentIndex(startTab);
   on_tabs_currentChanged(startTab);
-  init();
-}
-
-void ScenarioSettings::init() {
-  // Set up Players tab
-  ui->plyrList->header()->setSectionResizeMode(QHeaderView::ResizeToContents);
-  ui->plyrList->header()->setSectionResizeMode(1, QHeaderView::Stretch);
-  ui->plyrList->header()->setSectionsMovable(false);
-
-  ui->btnGroupRace->setId(ui->radioRaceZerg, Chk::Race::Zerg);
-  ui->btnGroupRace->setId(ui->radioRaceTerran, Chk::Race::Terran);
-  ui->btnGroupRace->setId(ui->radioRaceProtoss, Chk::Race::Protoss);
-  ui->btnGroupRace->setId(ui->radioRaceUserSelect, Chk::Race::UserSelectable);
-  ui->btnGroupRace->setId(ui->radioRaceRandom, Chk::Race::Random);
-
-  ui->btnGroupController->setId(ui->radioControlInactive, Sc::Player::SlotType::Inactive);
-  ui->btnGroupController->setId(ui->radioControlOccupiedComputer, Sc::Player::SlotType::GameComputer);
-  ui->btnGroupController->setId(ui->radioControlRescuable, Sc::Player::SlotType::RescuePassive);
-  ui->btnGroupController->setId(ui->radioControlDummy, Sc::Player::SlotType::Unused);
-  ui->btnGroupController->setId(ui->radioControlComputer, Sc::Player::SlotType::Computer);
-  ui->btnGroupController->setId(ui->radioControlHuman, Sc::Player::SlotType::Human);
-  ui->btnGroupController->setId(ui->radioControlNeutral, Sc::Player::SlotType::Neutral);
-  ui->btnGroupController->setId(ui->radioControlClosed, Sc::Player::SlotType::GameClosed);
-
-  ui->btnGroupPlayerForce->setId(ui->radioForce1, 0);
-  ui->btnGroupPlayerForce->setId(ui->radioForce2, 1);
-  ui->btnGroupPlayerForce->setId(ui->radioForce3, 2);
-  ui->btnGroupPlayerForce->setId(ui->radioForce4, 3);
-  ui->btnGroupPlayerForce->setId(ui->radioForceNone, 4);
-
-  // Set up Forces tab
-  ui->forcesTree->header()->setSectionResizeMode(QHeaderView::ResizeToContents);
-
-  for (int i = 0; i < 5; ++i) {
-    QTreeWidgetItem* forceItem = ui->forcesTree->topLevelItem(i);
-    forceItem->setData(0, Qt::UserRole, i);
-    forceItem->setFirstColumnSpanned(true);
-  }
-
-  for (int i = 0; i < Sc::Player::TotalSlots; ++i) {
-    QTreeWidgetItem* playerItem = new QTreeWidgetItem(QStringList{ getGenericPlayerName(i), "a", "b", QString::number(i) });
-    playerItem->setData(0, Qt::UserRole, i);
-    playerItem->setFlags(Qt::ItemNeverHasChildren);
-    playersUnderForces.append(playerItem);
-  }
-  ui->forcesTree->topLevelItem(4)->addChildren(playersUnderForces);
-  ui->forcesTree->hideColumn(3);
-  ui->forcesTree->expandAll();
-}
-
-void ScenarioSettings::initForcesTab() {
-
 }
 
 ScenarioSettings::~ScenarioSettings()
@@ -79,92 +36,9 @@ QString ScenarioSettings::getForceName(unsigned force) const {
   return QString::fromStdString(settings.forceNames[force]);
 }
 
-void ScenarioSettings::updatePlayerTree() {
-  for (int i = 0; i < Sc::Player::TotalSlots; ++i) {
-    unsigned controller = settings.ownr.slotType[i];
-    unsigned race = settings.side.playerRaces[i];
-    unsigned force = settings.forc.playerForce[i];
-    unsigned color = settings.colr.playerColor[i];
-
-    QTreeWidgetItem* itm = ui->plyrList->topLevelItem(i);
-    itm->setText(1, getPlayerName(i, race, controller));
-    itm->setText(2, getColorName(color));
-    itm->setText(3, getRaceName(race));
-    itm->setText(4, getPlayerOwnerName(controller));
-    itm->setText(5, getForceName(force));
-    itm->setData(0, Qt::UserRole, i);
-  }
-  updateForcesTree();
-}
-
-void ScenarioSettings::setPlayerSlotEnabled(int slot, bool enabled) {
-  for (int i = 0; i < playersUnderForces[slot]->columnCount(); ++i) {
-    playersUnderForces[slot]->setForeground(i, enabled ? QColorConstants::Black : QColorConstants::Gray);
-  }
-}
-
-void ScenarioSettings::setForceSlotEnabled(int slot, bool enabled) {
-  ui->forcesTree->topLevelItem(slot)->setForeground(0, enabled ? QColorConstants::Black : QColorConstants::Gray);
-}
-
-void ScenarioSettings::updatePlayerSlotEnabled(int slot) {
-  setPlayerSlotEnabled(slot, isPlayerSlotEnabled(slot));
-}
-
-bool ScenarioSettings::isPlayerSlotEnabled(int slot) {
-  return settings.forc.playerForce[slot] < 4 &&
-    (settings.ownr.slotType[slot] == Sc::Player::SlotType::Computer || settings.ownr.slotType[slot] == Sc::Player::SlotType::Human);
-}
-
-void ScenarioSettings::updateForceSlotEnabled(int slot) {
-  QTreeWidgetItem* forceItem = ui->forcesTree->topLevelItem(slot);
-  bool shouldBeEnabled = false;
-  for (int i = 0; i < forceItem->childCount(); ++i) {
-    if (isPlayerSlotEnabled(playerIdFrom(forceItem->child(i)))) {
-      shouldBeEnabled = true;
-      break;
-    }
-  }
-  setForceSlotEnabled(slot, shouldBeEnabled);
-}
-
-bool ScenarioSettings::anyRemasteredColor() {
-  for (Chk::PlayerColor color : settings.colr.playerColor) {
-    if (color >= 16) return true;
-  }
-  return false;
-}
-
-void ScenarioSettings::updateForcesTree() {
-  bool useRemasteredColorStr = anyRemasteredColor();
-
-  for (int playerSlot = 0; playerSlot < playersUnderForces.size(); ++playerSlot) {
-    QTreeWidgetItem* itm = playersUnderForces[playerSlot];
-
-    itm->setText(0, getSlotOwnerName(settings.ownr.slotType[playerSlot]));
-    itm->setText(1, getSlotRaceName(settings.side.playerRaces[playerSlot]));
-    itm->setText(2, useRemasteredColorStr ? getSlotColorName(3, settings.colr.playerColor[playerSlot]) : tr("Map specified"));
-
-    int index = itm->parent()->indexOfChild(itm);
-    itm->parent()->takeChild(index);
-
-    int force = std::clamp(settings.forc.playerForce[playerSlot], Chk::Force(0), Chk::Force(4));
-
-    ui->forcesTree->topLevelItem(force)->addChild(itm);
-    updatePlayerSlotEnabled(playerSlot);
-  }
-
-  for (int forceSlot = 0; forceSlot < 5; ++forceSlot) {
-    updateForceSlotEnabled(forceSlot);
-  }
-  ui->forcesTree->expandAll();
-}
-
 void ScenarioSettings::syncUiWithData() {
   // Also calls updateForcesTree()
-  updatePlayerTree();
-  ui->plyrList->topLevelItem(0)->setSelected(true);
-  ui->forcesTree->topLevelItem(0)->setSelected(true);
+  ui->playersTab->updatePlayerTree();
 }
 
 void ScenarioSettings::readFromMap(const MapFile& map) {
@@ -186,22 +60,23 @@ void ScenarioSettings::readFromMap(const MapFile& map) {
   settings.ptec = map.properties.ptec->get();
   settings.ptex = map.properties.ptex->get();
 
+  // TODO: Chk::Scope::Game is broken
   for (unsigned i = 0; i < Chk::TotalForces; ++i) {
     Chk::Force force = Chk::Force(i);
-    bool useDefaultForceName = map.strings.getForceNameStringId(force) == Chk::StringId::NoString;
+    bool useDefaultForceName = map.strings.getForceNameStringId(force, Chk::Scope::Editor) == Chk::StringId::NoString;
 
     settings.useDefaultForceNames[i] = useDefaultForceName;
     if (!useDefaultForceName)
-      settings.forceNames[i] = *map.strings.getForceName<RawString>(force);
+      settings.forceNames[i] = *map.strings.getForceName<RawString>(force, Chk::Scope::Editor);
   }
 
   for (unsigned i = 0; i < Sc::Unit::TotalTypes; ++i) {
     Sc::Unit::Type unitType = Sc::Unit::Type(i);
-    bool useDefaultUnitName = map.strings.getUnitNameStringId(unitType) == Chk::StringId::NoString;
+    bool useDefaultUnitName = map.strings.getUnitNameStringId(unitType, Chk::UseExpSection::YesIfAvailable, Chk::Scope::Editor) == Chk::StringId::NoString;
 
     settings.useDefaultUnitNames[i] = useDefaultUnitName;
     if (!useDefaultUnitName)
-      settings.unitNames[i] = *map.strings.getUnitName<RawString>(unitType);
+      settings.unitNames[i] = *map.strings.getUnitName<RawString>(unitType, Chk::Scope::Editor);
   }
   syncUiWithData();
 }
@@ -242,206 +117,7 @@ void ScenarioSettings::writeToMap(MapFile& map) const {
   }
 }
 
-void ScenarioSettings::setSelectedButtonGroup(QButtonGroup* btnGroup, int id) {
-  QAbstractButton* btn = btnGroup->button(id);
-  if (btn != nullptr)
-    btn->setChecked(true);
-}
-
-void ScenarioSettings::clearSelectedButtonGroup(QButtonGroup* btnGroup) {
-  btnGroup->setExclusive(false);
-  for (QAbstractButton* btn : btnGroup->buttons()) {
-    btn->setChecked(false);
-  }
-  btnGroup->setExclusive(true);
-}
-
-void ScenarioSettings::on_plyrList_itemSelectionChanged() {
-  bool anySelected = !ui->plyrList->selectedItems().empty();
-
-  ui->playerOptionsWidget->setEnabled(anySelected);
-  if (!anySelected) return;
-
-  std::set<unsigned> uniqueControllers;
-  std::set<unsigned> uniqueRaces;
-  std::set<unsigned> uniqueForces;
-  std::set<unsigned> uniqueColors;
-  for (QTreeWidgetItem* itm : ui->plyrList->selectedItems()) {
-    int player_id = playerIdFrom(itm);
-    unsigned controller = settings.ownr.slotType[player_id];
-    unsigned race = settings.side.playerRaces[player_id];
-    unsigned force = settings.forc.playerForce[player_id];
-    unsigned color = settings.colr.playerColor[player_id];
-
-    uniqueControllers.insert(controller);
-    uniqueRaces.insert(race);
-    uniqueForces.insert(force);
-    uniqueColors.insert(color);
-  }
-
-  if (uniqueControllers.size() > 1)
-    clearSelectedButtonGroup(ui->btnGroupController);
-  else
-    setSelectedButtonGroup(ui->btnGroupController, *uniqueControllers.begin());
-
-  if (uniqueRaces.size() > 1)
-    clearSelectedButtonGroup(ui->btnGroupRace);
-  else
-    setSelectedButtonGroup(ui->btnGroupRace, *uniqueRaces.begin());
-
-  if (uniqueForces.size() > 1)
-    clearSelectedButtonGroup(ui->btnGroupPlayerForce);
-  else
-    setSelectedButtonGroup(ui->btnGroupPlayerForce, *uniqueForces.begin());
-}
-
-int ScenarioSettings::playerIdFrom(QTreeWidgetItem* itm) {
-  return itm->data(0, Qt::UserRole).toInt();
-}
-
-void ScenarioSettings::on_btnGroupController_idClicked(int id) {
-  for (QTreeWidgetItem* itm : ui->plyrList->selectedItems()) {
-    int player_id = playerIdFrom(itm);
-    settings.ownr.slotType[player_id] = Sc::Player::SlotType(id);
-  }
-  updatePlayerTree();
-}
-
-void ScenarioSettings::on_btnGroupRace_idClicked(int id) {
-  for (QTreeWidgetItem* itm : ui->plyrList->selectedItems()) {
-    int player_id = playerIdFrom(itm);
-    settings.side.playerRaces[player_id] = Chk::Race(id);
-  }
-  updatePlayerTree();
-}
-
-void ScenarioSettings::on_btnGroupPlayerForce_idClicked(int id) {
-  for (QTreeWidgetItem* itm : ui->plyrList->selectedItems()) {
-    int player_id = playerIdFrom(itm);
-    settings.forc.playerForce[player_id] = Chk::Force(id);
-  }
-  updatePlayerTree();
-}
-
 void ScenarioSettings::on_tabs_currentChanged(int index) {
-  switch (index) {
-  case 0: // players
-    ui->plyrList->setFocus();
-    break;
-  case 1: // forces
-    ui->forcesTree->setFocus();
-    break;
-  case 2: // units
-    ui->unitTree->setFocus();
-    break;
-  case 3: // upgrades
-    ui->upgradeTree->setFocus();
-    break;
-  case 4: // tech
-    //ui->techTree->setFocus();
-    break;
-  default:
-    break;
-  }
-}
-
-void ScenarioSettings::on_forcesTree_itemSelectionChanged() {
-  std::set<bool> uniqueHasCustomName;
-  std::set<bool> uniqueAllies;
-  std::set<bool> uniqueRandomStartLoc;
-  std::set<bool> uniqueAlliedVictory;
-  std::set<bool> uniqueSharedVision;
-  std::set<std::string> uniqueNames;
-  for (QTreeWidgetItem* itm : ui->forcesTree->selectedItems()) {
-    int force = ui->forcesTree->indexOfTopLevelItem(itm);
-
-    uniqueHasCustomName.insert(!settings.useDefaultForceNames[force]);
-    uniqueNames.insert(settings.forceNames[force]);
-    uniqueAllies.insert(settings.forc.flags[force] & Chk::ForceFlags::RandomAllies);
-    uniqueRandomStartLoc.insert(settings.forc.flags[force] & Chk::ForceFlags::RandomizeStartLocation);
-    uniqueAlliedVictory.insert(settings.forc.flags[force] & Chk::ForceFlags::AlliedVictory);
-    uniqueSharedVision.insert(settings.forc.flags[force] & Chk::ForceFlags::SharedVision);
-  }
-
-  // TODO: normal tri-state groupbox
-  //if (uniqueHasCustomName.size() > 1)
-
-  if (uniqueNames.size() > 1)
-    ui->txtForceName->clear();
-  else
-    ui->txtForceName->setText(QString::fromStdString(*uniqueNames.begin()));
-
-  if (uniqueAllies.size() > 1)
-    ui->chkForceAllies->setCheckState(Qt::PartiallyChecked);
-  else
-    ui->chkForceAllies->setChecked(*uniqueAllies.begin());
-
-  if (uniqueRandomStartLoc.size() > 1)
-    ui->chkForceRandomStartLocation->setCheckState(Qt::PartiallyChecked);
-  else
-    ui->chkForceRandomStartLocation->setChecked(*uniqueRandomStartLoc.begin());
-
-  if (uniqueAlliedVictory.size() > 1)
-    ui->chkForceAlliedVictory->setCheckState(Qt::PartiallyChecked);
-  else
-    ui->chkForceAlliedVictory->setChecked(*uniqueAlliedVictory.begin());
-
-  if (uniqueSharedVision.size() > 1)
-    ui->chkForceSharedVision->setCheckState(Qt::PartiallyChecked);
-  else
-    ui->chkForceSharedVision->setChecked(*uniqueSharedVision.begin());
-}
-
-void ScenarioSettings::on_txtForceName_textEdited(const QString& text) {
-  for (QTreeWidgetItem* itm : ui->forcesTree->selectedItems()) {
-    int force = ui->forcesTree->indexOfTopLevelItem(itm);
-    QByteArray utf8Name = text.toUtf8();
-    settings.forceNames[force] = std::string(utf8Name.data(), utf8Name.size());
-    settings.useDefaultForceNames[force] = false;
-    ui->grpCustomName->setChecked(true);
-  }
-}
-
-void ScenarioSettings::on_chkForceAllies_stateChanged(int state) {
-  for (QTreeWidgetItem* itm : ui->forcesTree->selectedItems()) {
-    int force = ui->forcesTree->indexOfTopLevelItem(itm);
-    
-    if (state == Qt::Checked)
-      settings.forc.flags[force] |= Chk::ForceFlags::RandomAllies;
-    else if (state == Qt::Unchecked)
-      settings.forc.flags[force] &= ~Chk::ForceFlags::RandomAllies;
-  }
-}
-
-void ScenarioSettings::on_chkForceAlliedVictory_stateChanged(int state) {
-  for (QTreeWidgetItem* itm : ui->forcesTree->selectedItems()) {
-    int force = ui->forcesTree->indexOfTopLevelItem(itm);
-
-    if (state == Qt::Checked)
-      settings.forc.flags[force] |= Chk::ForceFlags::AlliedVictory;
-    else if (state == Qt::Unchecked)
-      settings.forc.flags[force] &= ~Chk::ForceFlags::AlliedVictory;
-  }
-}
-
-void ScenarioSettings::on_chkForceRandomStartLocation_stateChanged(int state) {
-  for (QTreeWidgetItem* itm : ui->forcesTree->selectedItems()) {
-    int force = ui->forcesTree->indexOfTopLevelItem(itm);
-
-    if (state == Qt::Checked)
-      settings.forc.flags[force] |= Chk::ForceFlags::RandomizeStartLocation;
-    else if (state == Qt::Unchecked)
-      settings.forc.flags[force] &= ~Chk::ForceFlags::RandomizeStartLocation;
-  }
-}
-
-void ScenarioSettings::on_chkForceSharedVision_stateChanged(int state) {
-  for (QTreeWidgetItem* itm : ui->forcesTree->selectedItems()) {
-    int force = ui->forcesTree->indexOfTopLevelItem(itm);
-
-    if (state == Qt::Checked)
-      settings.forc.flags[force] |= Chk::ForceFlags::SharedVision;
-    else if (state == Qt::Unchecked)
-      settings.forc.flags[force] &= ~Chk::ForceFlags::SharedVision;
-  }
+  ScenarioSettingsTab* tab = qobject_cast<ScenarioSettingsTab*>(ui->tabs->widget(index));
+  tab->setTabFocus();
 }

@@ -480,13 +480,13 @@ void MainWindow::launchScenarioSettings(int startTab) {
   if (currentMapView() == nullptr) return;
   auto map = currentMapView()->getMap();
 
-  ScenarioSettings settings(this, startTab);
+  auto settings = std::make_unique<ScenarioSettings>(this, startTab);
 
-  settings.readFromMap(map->chk);
+  settings->readFromMap(map->chk);
 
-  int result = settings.exec();
+  int result = settings->exec();
   if (result == QDialog::Accepted) {
-    settings.writeToMap(map->chk);
+    settings->writeToMap(map->chk);
   }
 }
 

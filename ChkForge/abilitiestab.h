@@ -2,17 +2,19 @@
 #include <QObject>
 #include <QWidget>
 
+#include "scenariosettingstab.h"
+
 namespace Ui {
   class AbilitiesTab;
 }
 
-class AbilitiesTab : public QWidget {
+class AbilitiesTab : public ScenarioSettingsTab {
   Q_OBJECT
 public:
   explicit AbilitiesTab(QWidget* parent = nullptr);
-  ~AbilitiesTab();
+  ~AbilitiesTab() override;
 
-  void setTabFocus();
+  void setTabFocus() override;
 
 private:
   Ui::AbilitiesTab* ui;

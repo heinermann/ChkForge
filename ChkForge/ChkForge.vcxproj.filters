@@ -231,6 +231,21 @@
     <ClCompile Include="abilitiestab.cpp">
       <Filter>Source Files\ui\Dialogs\ScenarioSettings</Filter>
     </ClCompile>
+    <ClCompile Include="forcestab.cpp">
+      <Filter>Source Files\ui\Dialogs\ScenarioSettings</Filter>
+    </ClCompile>
+    <ClCompile Include="playerstab.cpp">
+      <Filter>Source Files\ui\Dialogs\ScenarioSettings</Filter>
+    </ClCompile>
+    <ClCompile Include="unitstab.cpp">
+      <Filter>Source Files\ui\Dialogs\ScenarioSettings</Filter>
+    </ClCompile>
+    <ClCompile Include="upgradestab.cpp">
+      <Filter>Source Files\ui\Dialogs\ScenarioSettings</Filter>
+    </ClCompile>
+    <ClCompile Include="scenariosettingstab.cpp">
+      <Filter>Source Files\ui\Dialogs\ScenarioSettings</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="layers.h">
@@ -278,16 +293,7 @@
     <ClInclude Include="CheckboxDataMapper.h">
       <Filter>Header Files\DataMappers</Filter>
     </ClInclude>
-    <ClInclude Include="unitstab.h">
-      <Filter>Header Files\ui\Dialogs\ScenarioSettings</Filter>
-    </ClInclude>
-    <ClInclude Include="playerstab.h">
-      <Filter>Header Files\ui\Dialogs\ScenarioSettings</Filter>
-    </ClInclude>
-    <ClInclude Include="forcestab.h">
-      <Filter>Header Files\ui\Dialogs\ScenarioSettings</Filter>
-    </ClInclude>
-    <ClInclude Include="upgradestab.h">
+    <ClInclude Include="scenariosettingsdata.h">
       <Filter>Header Files\ui\Dialogs\ScenarioSettings</Filter>
     </ClInclude>
   </ItemGroup>
@@ -387,6 +393,18 @@
       <Filter>Form Files\Dialogs\ScenarioSettings</Filter>
     </QtUic>
     <QtUic Include="abilitiestab.ui">
+      <Filter>Form Files\Dialogs\ScenarioSettings</Filter>
+    </QtUic>
+    <QtUic Include="upgradestab.ui">
+      <Filter>Form Files\Dialogs\ScenarioSettings</Filter>
+    </QtUic>
+    <QtUic Include="unitstab.ui">
+      <Filter>Form Files\Dialogs\ScenarioSettings</Filter>
+    </QtUic>
+    <QtUic Include="forcestab.ui">
+      <Filter>Form Files\Dialogs\ScenarioSettings</Filter>
+    </QtUic>
+    <QtUic Include="playerstab.ui">
       <Filter>Form Files\Dialogs\ScenarioSettings</Filter>
     </QtUic>
   </ItemGroup>
@@ -490,6 +508,21 @@
       <Filter>Header Files\ui\Dialogs\ScenarioSettings</Filter>
     </QtMoc>
     <QtMoc Include="abilitiestab.h">
+      <Filter>Header Files\ui\Dialogs\ScenarioSettings</Filter>
+    </QtMoc>
+    <QtMoc Include="forcestab.h">
+      <Filter>Header Files\ui\Dialogs\ScenarioSettings</Filter>
+    </QtMoc>
+    <QtMoc Include="playerstab.h">
+      <Filter>Header Files\ui\Dialogs\ScenarioSettings</Filter>
+    </QtMoc>
+    <QtMoc Include="unitstab.h">
+      <Filter>Header Files\ui\Dialogs\ScenarioSettings</Filter>
+    </QtMoc>
+    <QtMoc Include="upgradestab.h">
+      <Filter>Header Files\ui\Dialogs\ScenarioSettings</Filter>
+    </QtMoc>
+    <QtMoc Include="scenariosettingstab.h">
       <Filter>Header Files\ui\Dialogs\ScenarioSettings</Filter>
     </QtMoc>
   </ItemGroup>
