@@ -34,7 +34,7 @@ void MapContext::update() {
 }
 
 void MapContext::new_map(int tileWidth, int tileHeight, Sc::Terrain::Tileset tileset, int brush, int clutter) {
-  chk = MapFile(tileset, tileWidth, tileHeight);
+  chk = std::make_shared<MapFile>(tileset, tileWidth, tileHeight);
   
   apply_brush(map_dimensions(), brush, clutter);
   chkdraft_to_openbw(true);
@@ -44,7 +44,7 @@ void MapContext::new_map(int tileWidth, int tileHeight, Sc::Terrain::Tileset til
 bool MapContext::load_map(const std::string& map_file_str) {
   std::string dumb_path_limitation_string = map_file_str;
   std::replace(std::begin(dumb_path_limitation_string), std::end(dumb_path_limitation_string), '/', '\\');
-  if (!chk.load(dumb_path_limitation_string)) {
+  if (!chk->load(dumb_path_limitation_string)) {
     QMessageBox::critical(nullptr, QString(), "Failed to read the Chk file (chk), not a valid map.");
     return false;
   }
@@ -76,11 +76,11 @@ QRect MapContext::map_dimensions()
 }
 int MapContext::tile_width()
 {
-  return chk.layers.getTileWidth();
+  return chk->layers.getTileWidth();
 }
 int MapContext::tile_height()
 {
-  return chk.layers.getTileHeight();
+  return chk->layers.getTileHeight();
 }
 
 void MapContext::place_unit(Sc::Unit::Type unitType, int owner, int x, int y)
@@ -110,7 +110,7 @@ void MapContext::place_unit(Sc::Unit::Type unitType, int owner, int x, int y)
 
   // TODO: Undo
 
-  chk.layers.addUnit(unit);
+  chk->layers.addUnit(unit);
 
   // see also create_initial_unit
   openbw_ui.create_completed_unit(openbw_ui.get_unit_type(static_cast<bwgame::UnitTypes>(unitType)), bwgame::xy{ x, y }, owner);
@@ -121,7 +121,7 @@ void MapContext::apply_brush(const QRect& rect, int tileGroup, int clutter)
   // Source: Modified from Starforge: Ultimate
   QRect clip = rect.intersected(map_dimensions());
 
-  Tileset* tileset = Tileset::fromId(chk.layers.getTileset());
+  Tileset* tileset = Tileset::fromId(chk->layers.getTileset());
 
   // TODO: undo
   for (int y = clip.top(); y <= clip.bottom(); ++y) {
@@ -130,25 +130,25 @@ void MapContext::apply_brush(const QRect& rect, int tileGroup, int clutter)
 
         if (x == clip.right() - 1 && x < tile_width() - 1 && tileGroup > 1)
         {
-          int next_tile = chk.layers.getTile(x + 1, y);
+          int next_tile = chk->layers.getTile(x + 1, y);
           if (next_tile / 16 == tileGroup + 1) {
-            chk.layers.setTile(x, y, next_tile - 16);
+            chk->layers.setTile(x, y, next_tile - 16);
             continue;
           }
         }
 
-        chk.layers.setTile(x, y, tileset->randomTile(tileGroup, clutter));
+        chk->layers.setTile(x, y, tileset->randomTile(tileGroup, clutter));
       }
       else {
         if (x == clip.x() && x > 0) {
-          int prev_tile = chk.layers.getTile(x - 1, y);
+          int prev_tile = chk->layers.getTile(x - 1, y);
           if (prev_tile / 16 != tileGroup) {
-            chk.layers.setTile(x, y, tileset->randomTile(tileGroup + 1, clutter));
+            chk->layers.setTile(x, y, tileset->randomTile(tileGroup + 1, clutter));
             continue;
           }
         }
 
-        chk.layers.setTile(x, y, chk.layers.getTile(x - 1, y) + 16);
+        chk->layers.setTile(x, y, chk->layers.getTile(x - 1, y) + 16);
       }
 
     }
@@ -173,12 +173,12 @@ bool MapContext::is_unsaved()
 
 std::string MapContext::filename()
 {
-  return chk.getFileName();
+  return chk->getFileName();
 }
 
 std::string MapContext::mapname()
 {
-  auto str = chk.strings.getScenarioName<RawString>();
+  auto str = chk->strings.getScenarioName<RawString>();
   if (str) {
     return *str.get();
   }

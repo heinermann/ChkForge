@@ -13,7 +13,7 @@ void MapContext::chkdraft_to_openbw(bool is_editor_mode)
   game_load_funcs.st.is_editor_paused = true;
 
   // Sync dimensions
-  size_t tile_width = chk.layers.getTileWidth(), tile_height = chk.layers.getTileHeight();
+  size_t tile_width = chk->layers.getTileWidth(), tile_height = chk->layers.getTileHeight();
   game_load_funcs.st.game->map_tile_width = tile_width;
   game_load_funcs.st.game->map_tile_height = tile_height;
   game_load_funcs.st.game->map_width = tile_width * 32;
@@ -22,13 +22,13 @@ void MapContext::chkdraft_to_openbw(bool is_editor_mode)
   game_load_funcs.st.game->map_walk_height = tile_height * 4;
 
   // Sync tileset
-  game_load_funcs.st.game->tileset_index = chk.layers.getTileset() % 8;
+  game_load_funcs.st.game->tileset_index = chk->layers.getTileset() % 8;
 
   // Sync player data
   for (size_t i = 0; i != Sc::Player::Total; ++i) {
-    game_load_funcs.st.players[i].controller = chk.players.getSlotType(i);
+    game_load_funcs.st.players[i].controller = chk->players.getSlotType(i);
 
-    Chk::Race srcRace = chk.players.getPlayerRace(i);
+    Chk::Race srcRace = chk->players.getPlayerRace(i);
     if (srcRace == Chk::Race::UserSelectable || srcRace == Chk::Race::Random) {
       srcRace = static_cast<Chk::Race>(random() % 3);
     }
@@ -45,8 +45,8 @@ void MapContext::chkdraft_to_openbw(bool is_editor_mode)
     }
 
     if (i < Sc::Player::TotalSlots) {
-      game_load_funcs.st.players[i].force = chk.players.getPlayerForce(i);
-      int color = chk.players.getPlayerColor(i);
+      game_load_funcs.st.players[i].force = chk->players.getPlayerForce(i);
+      int color = chk->players.getPlayerColor(i);
       if (color < 0 || color >= 16) color = i;
       game_load_funcs.st.players[i].color = color;
     }
@@ -54,10 +54,10 @@ void MapContext::chkdraft_to_openbw(bool is_editor_mode)
 
   // Sync string data
   game_load_funcs.st.game->map_strings.clear();
-  size_t num_strings = chk.strings.getCapacity(Chk::Scope::Game);
+  size_t num_strings = chk->strings.getCapacity(Chk::Scope::Game);
   game_load_funcs.st.game->map_strings.reserve(num_strings);
   for (size_t i = 1; i < num_strings; ++i) {
-    auto str = chk.strings.getString<RawString>(i, Chk::Scope::Game);
+    auto str = chk->strings.getString<RawString>(i, Chk::Scope::Game);
     if (str) {
       game_load_funcs.st.game->map_strings.emplace_back(*str.get());
     }
@@ -66,11 +66,11 @@ void MapContext::chkdraft_to_openbw(bool is_editor_mode)
     }
   }
 
-  auto scenario_name = chk.strings.getScenarioName<RawString>(Chk::Scope::GameOverEditor);
+  auto scenario_name = chk->strings.getScenarioName<RawString>(Chk::Scope::GameOverEditor);
   if (scenario_name) {
     game_load_funcs.st.game->scenario_name = *scenario_name.get();
   }
-  auto scenario_desc = chk.strings.getScenarioDescription<RawString>(Chk::Scope::GameOverEditor);
+  auto scenario_desc = chk->strings.getScenarioDescription<RawString>(Chk::Scope::GameOverEditor);
   if (scenario_desc) {
     game_load_funcs.st.game->scenario_description = *scenario_desc.get();
   }
@@ -87,7 +87,7 @@ void MapContext::chkdraft_to_openbw(bool is_editor_mode)
     bwgame::tile_id tile{ 0 };
     if (!mtxm_out_of_range) {
       try {
-        tile.raw_value = chk.layers.mtxm->getTile(i);
+        tile.raw_value = chk->layers.mtxm->getTile(i);
       }
       catch (std::out_of_range e) {
         mtxm_out_of_range = true;
@@ -98,7 +98,7 @@ void MapContext::chkdraft_to_openbw(bool is_editor_mode)
     uint8_t mask = 0;
     if (!mask_out_of_range) {
       try {
-        mask = chk.layers.mask->getFog(i);
+        mask = chk->layers.mask->getFog(i);
       }
       catch (std::out_of_range e) {
         mask_out_of_range = true;
@@ -153,8 +153,8 @@ void MapContext::chkdraft_to_openbw(bool is_editor_mode)
   game_load_funcs.regions_create();
 
   // Sync THG2 (Sprites)
-  for (size_t i = 0; i < chk.layers.thg2->numSprites(); ++i) {
-    Chk::SpritePtr sprite = chk.layers.thg2->getSprite(i);
+  for (size_t i = 0; i < chk->layers.thg2->numSprites(); ++i) {
+    Chk::SpritePtr sprite = chk->layers.thg2->getSprite(i);
     bwgame::xy position{ sprite->xc, sprite->yc };
     if (sprite->isDrawnAsSprite()) {
       if (sprite->type >= Sc::Sprite::TotalSprites) continue;
@@ -177,70 +177,70 @@ void MapContext::chkdraft_to_openbw(bool is_editor_mode)
   // Sync Unit and Weapon settings
   for (size_t i = 0; i < Sc::Unit::TotalTypes; ++i) {
     auto chkd_type = Sc::Unit::Type(i);
-    if (chk.properties.unitUsesDefaultSettings(chkd_type)) continue;
+    if (chk->properties.unitUsesDefaultSettings(chkd_type)) continue;
 
     bwgame::unit_type_t* unit_type = game_load_funcs.get_unit_type(bwgame::UnitTypes(i));
 
-    unit_type->hitpoints = bwgame::fp8::from_raw(chk.properties.getUnitHitpoints(chkd_type));
-    unit_type->shield_points = chk.properties.getUnitShieldPoints(chkd_type);
-    unit_type->armor = chk.properties.getUnitArmorLevel(chkd_type);
-    unit_type->build_time = chk.properties.getUnitBuildTime(chkd_type);
-    unit_type->mineral_cost = chk.properties.getUnitMineralCost(chkd_type);
-    unit_type->gas_cost = chk.properties.getUnitGasCost(chkd_type);
-    unit_type->unit_map_string_index = chk.properties.getUnitNameStringId(chkd_type);
+    unit_type->hitpoints = bwgame::fp8::from_raw(chk->properties.getUnitHitpoints(chkd_type));
+    unit_type->shield_points = chk->properties.getUnitShieldPoints(chkd_type);
+    unit_type->armor = chk->properties.getUnitArmorLevel(chkd_type);
+    unit_type->build_time = chk->properties.getUnitBuildTime(chkd_type);
+    unit_type->mineral_cost = chk->properties.getUnitMineralCost(chkd_type);
+    unit_type->gas_cost = chk->properties.getUnitGasCost(chkd_type);
+    unit_type->unit_map_string_index = chk->properties.getUnitNameStringId(chkd_type);
 
     bwgame::unit_type_t* attacking_type = unit_type->turret_unit_type ? (bwgame::unit_type_t*)unit_type->turret_unit_type : unit_type;
     bwgame::weapon_type_t* grnd_wpn = (bwgame::weapon_type_t*)(const bwgame::weapon_type_t*)attacking_type->ground_weapon;
     bwgame::weapon_type_t* air_wpn = (bwgame::weapon_type_t*)(const bwgame::weapon_type_t*)attacking_type->air_weapon;
 
     if (grnd_wpn) {
-      grnd_wpn->damage_amount = chk.properties.getWeaponBaseDamage(Sc::Weapon::Type(grnd_wpn->id));
-      grnd_wpn->damage_bonus = chk.properties.getWeaponUpgradeDamage(Sc::Weapon::Type(grnd_wpn->id));
+      grnd_wpn->damage_amount = chk->properties.getWeaponBaseDamage(Sc::Weapon::Type(grnd_wpn->id));
+      grnd_wpn->damage_bonus = chk->properties.getWeaponUpgradeDamage(Sc::Weapon::Type(grnd_wpn->id));
     }
     if (air_wpn) {
-      air_wpn->damage_amount = chk.properties.getWeaponBaseDamage(Sc::Weapon::Type(air_wpn->id));
-      air_wpn->damage_bonus = chk.properties.getWeaponUpgradeDamage(Sc::Weapon::Type(air_wpn->id));
+      air_wpn->damage_amount = chk->properties.getWeaponBaseDamage(Sc::Weapon::Type(air_wpn->id));
+      air_wpn->damage_bonus = chk->properties.getWeaponUpgradeDamage(Sc::Weapon::Type(air_wpn->id));
     }
   }
 
   // Sync Upgrade settings
-  size_t num_upgrades = chk.versions.isHybridOrAbove() ? Sc::Upgrade::TotalTypes : Sc::Upgrade::TotalOriginalTypes;
+  size_t num_upgrades = chk->versions.isHybridOrAbove() ? Sc::Upgrade::TotalTypes : Sc::Upgrade::TotalOriginalTypes;
   for (size_t i = 0; i < num_upgrades; ++i) {
     auto chkd_type = Sc::Upgrade::Type(i);
-    if (chk.properties.upgradeUsesDefaultCosts(chkd_type)) continue;
+    if (chk->properties.upgradeUsesDefaultCosts(chkd_type)) continue;
 
     bwgame::upgrade_type_t* upg_type = game_load_funcs.get_upgrade_type(bwgame::UpgradeTypes(i));
-    upg_type->mineral_cost_base = chk.properties.getUpgradeBaseMineralCost(chkd_type);
-    upg_type->mineral_cost_factor = chk.properties.getUpgradeMineralCostFactor(chkd_type);
-    upg_type->gas_cost_base = chk.properties.getUpgradeBaseGasCost(chkd_type);
-    upg_type->gas_cost_factor = chk.properties.getUpgradeGasCostFactor(chkd_type);
-    upg_type->time_cost_base = chk.properties.getUpgradeBaseResearchTime(chkd_type);
-    upg_type->time_cost_factor = chk.properties.getUpgradeResearchTimeFactor(chkd_type);
+    upg_type->mineral_cost_base = chk->properties.getUpgradeBaseMineralCost(chkd_type);
+    upg_type->mineral_cost_factor = chk->properties.getUpgradeMineralCostFactor(chkd_type);
+    upg_type->gas_cost_base = chk->properties.getUpgradeBaseGasCost(chkd_type);
+    upg_type->gas_cost_factor = chk->properties.getUpgradeGasCostFactor(chkd_type);
+    upg_type->time_cost_base = chk->properties.getUpgradeBaseResearchTime(chkd_type);
+    upg_type->time_cost_factor = chk->properties.getUpgradeResearchTimeFactor(chkd_type);
   }
 
   // Sync Tech settings
-  size_t num_techs = chk.versions.isHybridOrAbove() ? Sc::Tech::TotalTypes : Sc::Tech::TotalOriginalTypes;
+  size_t num_techs = chk->versions.isHybridOrAbove() ? Sc::Tech::TotalTypes : Sc::Tech::TotalOriginalTypes;
   for (size_t i = 0; i < num_techs; ++i) {
     auto chkd_type = Sc::Tech::Type(i);
-    if (chk.properties.techUsesDefaultSettings(chkd_type)) continue;
+    if (chk->properties.techUsesDefaultSettings(chkd_type)) continue;
 
     bwgame::tech_type_t* tech_type = game_load_funcs.get_tech_type(bwgame::TechTypes(i));
-    tech_type->mineral_cost = chk.properties.getTechMineralCost(chkd_type);
-    tech_type->gas_cost = chk.properties.getTechGasCost(chkd_type);
-    tech_type->research_time = chk.properties.getTechResearchTime(chkd_type);
-    tech_type->energy_cost = chk.properties.getTechEnergyCost(chkd_type);
+    tech_type->mineral_cost = chk->properties.getTechMineralCost(chkd_type);
+    tech_type->gas_cost = chk->properties.getTechGasCost(chkd_type);
+    tech_type->research_time = chk->properties.getTechResearchTime(chkd_type);
+    tech_type->energy_cost = chk->properties.getTechEnergyCost(chkd_type);
   }
 
   // Sync Upgrade restrictions
   for (size_t player = 0; player < Sc::Player::Total; ++player) {
     for (size_t i = 0; i < num_upgrades; ++i) {
       auto chkd_type = Sc::Upgrade::Type(i);
-      bool use_default = chk.properties.playerUsesDefaultUpgradeLeveling(chkd_type, player);
+      bool use_default = chk->properties.playerUsesDefaultUpgradeLeveling(chkd_type, player);
       game_load_funcs.game_st.max_upgrade_levels[player][bwgame::UpgradeTypes(i)]
-        = use_default ? chk.properties.getDefaultMaxUpgradeLevel(chkd_type) : chk.properties.getMaxUpgradeLevel(chkd_type, player);
+        = use_default ? chk->properties.getDefaultMaxUpgradeLevel(chkd_type) : chk->properties.getMaxUpgradeLevel(chkd_type, player);
 
       game_load_funcs.st.upgrade_levels[player][bwgame::UpgradeTypes(i)]
-        = use_default ? chk.properties.getDefaultStartUpgradeLevel(chkd_type) : chk.properties.getStartUpgradeLevel(chkd_type, player);
+        = use_default ? chk->properties.getDefaultStartUpgradeLevel(chkd_type) : chk->properties.getStartUpgradeLevel(chkd_type, player);
     }
   }
 
@@ -248,13 +248,13 @@ void MapContext::chkdraft_to_openbw(bool is_editor_mode)
   for (size_t player = 0; player < Sc::Player::Total; ++player) {
     for (size_t i = 0; i < num_techs; ++i) {
       auto chkd_type = Sc::Tech::Type(i);
-      bool use_default = chk.properties.playerUsesDefaultTechSettings(chkd_type, player);
+      bool use_default = chk->properties.playerUsesDefaultTechSettings(chkd_type, player);
 
       game_load_funcs.game_st.tech_available[player][bwgame::TechTypes(i)]
-        = use_default ? chk.properties.techDefaultAvailable(chkd_type) : chk.properties.techAvailable(chkd_type, player);
+        = use_default ? chk->properties.techDefaultAvailable(chkd_type) : chk->properties.techAvailable(chkd_type, player);
 
       game_load_funcs.st.tech_researched[player][bwgame::TechTypes(i)]
-        = use_default ? chk.properties.techDefaultResearched(chkd_type) : chk.properties.techResearched(chkd_type, player);
+        = use_default ? chk->properties.techDefaultResearched(chkd_type) : chk->properties.techResearched(chkd_type, player);
     }
   }
 
@@ -262,16 +262,16 @@ void MapContext::chkdraft_to_openbw(bool is_editor_mode)
   for (size_t player = 0; player < Sc::Player::Total; ++player) {
     for (size_t i = 0; i < Sc::Unit::TotalTypes; ++i) {
       auto chkd_type = Sc::Unit::Type(i);
-      bool use_default = chk.properties.playerUsesDefaultUnitBuildability(chkd_type, player);
+      bool use_default = chk->properties.playerUsesDefaultUnitBuildability(chkd_type, player);
 
       game_load_funcs.game_st.unit_type_allowed[player][bwgame::UnitTypes(i)]
-        = use_default ? chk.properties.isUnitDefaultBuildable(chkd_type) : chk.properties.isUnitBuildable(chkd_type, player);
+        = use_default ? chk->properties.isUnitDefaultBuildable(chkd_type) : chk->properties.isUnitBuildable(chkd_type, player);
     }
   }
 
   // Sync Unit placement
-  for (size_t i = 0; i < chk.layers.numUnits(); ++i) {
-    auto unit = chk.layers.getUnit(i);
+  for (size_t i = 0; i < chk->layers.numUnits(); ++i) {
+    auto unit = chk->layers.getUnit(i);
     placeOpenBwUnit(unit);
   }
 
@@ -284,8 +284,8 @@ void MapContext::chkdraft_to_openbw(bool is_editor_mode)
   // TODO
 
   // Sync locations (for triggers)
-  for (size_t i = 0; i < chk.layers.numLocations(); ++i) {
-    auto chk_loc = chk.layers.getLocation(i);
+  for (size_t i = 0; i < chk->layers.numLocations(); ++i) {
+    auto chk_loc = chk->layers.getLocation(i);
     auto& openbw_loc = game_load_funcs.st.locations.emplace_back();
 
     if (!chk_loc) continue;
@@ -294,8 +294,8 @@ void MapContext::chkdraft_to_openbw(bool is_editor_mode)
   }
 
   // Sync Triggers
-  for (size_t i = 0; i < chk.triggers.numTriggers(); ++i) {
-    auto chk_trig = chk.triggers.getTrigger(i);
+  for (size_t i = 0; i < chk->triggers.numTriggers(); ++i) {
+    auto chk_trig = chk->triggers.getTrigger(i);
     auto& openbw_trig = game_load_funcs.game_st.triggers.emplace_back();
     // TODO
   }

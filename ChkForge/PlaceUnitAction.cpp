@@ -22,13 +22,13 @@ void PlaceUnitAction::apply() {
   unit->unused = 0;
   unit->relationClassId = 0;
 
-  this->chkDraftIndex = map->chk.layers.addUnit(unit);
+  this->chkDraftIndex = map->chk->layers.addUnit(unit);
   this->openbwIndex = map->placeOpenBwUnit(unit);
 }
 
 void PlaceUnitAction::undo() {
   if (chkDraftIndex != -1) {
-    map->chk.layers.deleteUnit(chkDraftIndex);
+    map->chk->layers.deleteUnit(chkDraftIndex);
   }
   if (openbwIndex != -1) {
     map->removeOpenBwUnit(openbwIndex);

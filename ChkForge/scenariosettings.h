@@ -5,6 +5,7 @@
 #include <QList>
 #include <cstdint>
 #include <array>
+#include <memory>
 
 #include <MappingCoreLib/Chk.h>
 #include <MappingCoreLib/Sc.h>
@@ -35,8 +36,8 @@ public:
   explicit ScenarioSettings(QWidget *parent, int startTab);
   ~ScenarioSettings();
 
-  void readFromMap(const MapFile& map);
-  void writeToMap(MapFile& map) const;
+  void readFromMap(const std::shared_ptr<MapFile> map);
+  void writeToMap(std::shared_ptr<MapFile> map) const;
 
   void syncUiWithData();
 

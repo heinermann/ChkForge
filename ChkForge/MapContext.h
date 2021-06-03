@@ -90,7 +90,7 @@ namespace ChkForge
     void removeOpenBwUnit(int index);
 
   public:
-    MapFile chk{ Sc::Terrain::Tileset::Badlands, 64, 64 };
+    std::shared_ptr<MapFile> chk = std::make_shared<MapFile>(Sc::Terrain::Tileset::Badlands, 64, 64);
     bwgame::ui_functions openbw_ui;
 
     UndoManager actions{ this };
