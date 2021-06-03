@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>ItemPalette</class>
  <widget class="QFrame" name="ItemPalette">
@@ -9,8 +10,7 @@
     <height>300</height>
    </rect>
   </property>
-  <property name="windowTitle">
-   <string>Frame</string>
-  </property>
  </widget>
+ <resources/>
+ <connections/>
 </ui>

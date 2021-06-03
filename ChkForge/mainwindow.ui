@@ -201,9 +201,6 @@ QSplitter::handle:vertical {
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QToolBar" name="file_toolbar">
-   <property name="windowTitle">
-    <string>toolBar</string>
-   </property>
    <property name="allowedAreas">
     <set>Qt::BottomToolBarArea|Qt::TopToolBarArea</set>
    </property>
@@ -233,9 +230,6 @@ QSplitter::handle:vertical {
    <addaction name="action_edit_delete"/>
   </widget>
   <widget class="QToolBar" name="layer_toolbar">
-   <property name="windowTitle">
-    <string>toolBar_2</string>
-   </property>
    <property name="allowedAreas">
     <set>Qt::BottomToolBarArea|Qt::TopToolBarArea</set>
    </property>
@@ -256,9 +250,6 @@ QSplitter::handle:vertical {
    </attribute>
   </widget>
   <widget class="QToolBar" name="test_toolbar">
-   <property name="windowTitle">
-    <string>toolBar</string>
-   </property>
    <property name="allowedAreas">
     <set>Qt::BottomToolBarArea|Qt::TopToolBarArea</set>
    </property>
@@ -282,9 +273,6 @@ QSplitter::handle:vertical {
    <addaction name="action_test_duplicate"/>
   </widget>
   <widget class="QToolBar" name="zoom_toolbar">
-   <property name="windowTitle">
-    <string>toolBar</string>
-   </property>
    <property name="allowedAreas">
     <set>Qt::BottomToolBarArea|Qt::TopToolBarArea</set>
    </property>

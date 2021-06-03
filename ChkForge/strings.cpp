@@ -147,7 +147,7 @@ const std::array<const QString, 23> colorNames = {
   QObject::tr("Tan"),
   QObject::tr("Dark Aqua"),
   QObject::tr("Pale Green"),
-  QObject::tr("Blueish Grey"),
+  QObject::tr("Bluish Grey"),
   QObject::tr("Pale Yellow"),
   QObject::tr("Cyan"),
   QObject::tr("Pink"),

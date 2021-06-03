@@ -54,13 +54,11 @@
   </ImportGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>debug\</OutDir>
-    <IntDir>debug\</IntDir>
     <TargetName>ChkForge</TargetName>
     <IgnoreImportLibrary>true</IgnoreImportLibrary>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>release\</OutDir>
-    <IntDir>release\</IntDir>
+    <OutDir>distrib\</OutDir>
     <TargetName>ChkForge</TargetName>
     <IgnoreImportLibrary>true</IgnoreImportLibrary>
     <LinkIncremental>false</LinkIncremental>
@@ -136,6 +134,13 @@
     <PostBuildEvent>
       <Command>"$(QTDIR)\bin\windeployqt.exe" "$(OutDir.TrimEnd('\'))" --release</Command>
     </PostBuildEvent>
+    <QtTranslation>
+      <BuildAction>lupdate_lrelease</BuildAction>
+      <QmOutputDir>$(OutDir)/translations</QmOutputDir>
+      <NoUnfinished>true</NoUnfinished>
+      <RemoveIdentical>true</RemoveIdentical>
+      <NoObsolete>true</NoObsolete>
+    </QtTranslation>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -190,6 +195,12 @@
       <QtUicDir>$(ProjectDir)</QtUicDir>
       <QtUicFileName>ui_%(Filename).h</QtUicFileName>
     </QtUic>
+    <QtTranslation>
+      <BuildAction>lupdate</BuildAction>
+      <NoUnfinished>true</NoUnfinished>
+      <RemoveIdentical>true</RemoveIdentical>
+      <NoObsolete>true</NoObsolete>
+    </QtTranslation>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="abilitiestab.cpp" />
@@ -327,9 +338,6 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ChkForge_en_CA.ts" />
-  </ItemGroup>
-  <ItemGroup>
     <QtUic Include="abilitiestab.ui" />
     <QtUic Include="aboutdlg.ui" />
     <QtUic Include="charmap.ui" />
@@ -420,6 +428,10 @@
     <ProjectReference Include="..\openbw\openbw.vcxproj">
       <Project>{0cdb9d85-290f-4658-8240-6df99435d1ef}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <QtTranslation Include="chkforge_en_ca.ts" />
+    <QtTranslation Include="chkforge_en_us.ts" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

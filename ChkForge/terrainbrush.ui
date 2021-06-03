@@ -10,9 +10,6 @@
     <height>279</height>
    </rect>
   </property>
-  <property name="windowTitle">
-   <string>Frame</string>
-  </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="8" column="0">
     <spacer name="verticalSpacer">
@@ -89,7 +86,7 @@
         </sizepolicy>
        </property>
        <property name="text">
-        <string>×</string>
+        <string notr="true">×</string>
        </property>
       </widget>
      </item>

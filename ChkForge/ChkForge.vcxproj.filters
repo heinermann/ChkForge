@@ -318,11 +318,6 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ChkForge_en_CA.ts">
-      <Filter>Translation Files</Filter>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <QtUic Include="mainwindow.ui">
       <Filter>Form Files</Filter>
     </QtUic>
@@ -537,5 +532,13 @@
     <QtMoc Include="scenariosettingstab.h">
       <Filter>Header Files\ui\Dialogs\ScenarioSettings</Filter>
     </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <QtTranslation Include="chkforge_en_us.ts">
+      <Filter>Translation Files</Filter>
+    </QtTranslation>
+    <QtTranslation Include="chkforge_en_ca.ts">
+      <Filter>Translation Files</Filter>
+    </QtTranslation>
   </ItemGroup>
 </Project>

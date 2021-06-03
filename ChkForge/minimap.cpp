@@ -14,7 +14,7 @@
 #include <QColor>
 
 Minimap::Minimap(QWidget *parent) :
-  DockWidgetWrapper<Ui::Minimap>("Minimap", parent)
+  DockWidgetWrapper<Ui::Minimap>(tr("Minimap"), parent)
 {
   timer = std::make_unique<QTimer>(this);
   connect(timer.get(), &QTimer::timeout, this, &Minimap::updateLogic);

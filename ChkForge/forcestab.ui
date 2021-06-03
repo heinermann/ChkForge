@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>ForcesTab</class>
- <widget class="QWidget" name="forcesTab">
+ <widget class="QWidget" name="ForcesTab">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -128,22 +128,22 @@
      </attribute>
      <column>
       <property name="text">
-       <string>Slot</string>
+       <string notr="true">Slot</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>Race</string>
+       <string notr="true">Race</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>Colour</string>
+       <string notr="true">Colour</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>id</string>
+       <string notr="true">id</string>
       </property>
      </column>
      <item>
@@ -157,7 +157,7 @@
        <string/>
       </property>
       <property name="text">
-       <string>0</string>
+       <string notr="true">0</string>
       </property>
       <property name="flags">
        <set>ItemIsSelectable|ItemIsEnabled</set>
@@ -174,7 +174,7 @@
        <string/>
       </property>
       <property name="text">
-       <string>1</string>
+       <string notr="true">1</string>
       </property>
       <property name="flags">
        <set>ItemIsSelectable|ItemIsEnabled</set>
@@ -191,7 +191,7 @@
        <string/>
       </property>
       <property name="text">
-       <string>2</string>
+       <string notr="true">2</string>
       </property>
       <property name="flags">
        <set>ItemIsSelectable|ItemIsEnabled</set>
@@ -208,7 +208,7 @@
        <string/>
       </property>
       <property name="text">
-       <string>3</string>
+       <string notr="true">3</string>
       </property>
       <property name="flags">
        <set>ItemIsSelectable|ItemIsEnabled</set>
@@ -234,7 +234,7 @@
        <string/>
       </property>
       <property name="text">
-       <string>4</string>
+       <string notr="true">4</string>
       </property>
       <property name="flags">
        <set>NoItemFlags</set>

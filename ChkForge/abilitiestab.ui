@@ -10,9 +10,6 @@
     <height>471</height>
    </rect>
   </property>
-  <property name="windowTitle">
-   <string>Form</string>
-  </property>
   <layout class="QGridLayout" name="gridLayout" rowstretch="1,1" columnstretch="2,3">
    <item row="0" column="0" rowspan="2">
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -58,7 +55,7 @@
       <item row="0" column="0">
        <widget class="QLabel" name="label">
         <property name="text">
-         <string>Minerals:</string>
+         <string>Minerals</string>
         </property>
        </widget>
       </item>
@@ -84,7 +81,7 @@
       <item row="1" column="0">
        <widget class="QLabel" name="label_2">
         <property name="text">
-         <string>Gas:</string>
+         <string>Gas</string>
         </property>
        </widget>
       </item>
@@ -104,7 +101,7 @@
       <item row="2" column="0">
        <widget class="QLabel" name="label_3">
         <property name="text">
-         <string>Research Time:</string>
+         <string>Research Time</string>
         </property>
        </widget>
       </item>
@@ -124,7 +121,7 @@
       <item row="3" column="0">
        <widget class="QLabel" name="label_4">
         <property name="text">
-         <string>Energy:</string>
+         <string>Energy</string>
         </property>
        </widget>
       </item>

@@ -15,7 +15,7 @@
 
 
 ItemTree::ItemTree(QWidget *parent)
-  : DockWidgetWrapper<Ui::ItemTree>("Item Tree", parent)
+  : DockWidgetWrapper<Ui::ItemTree>(tr("Item Tree"), parent)
   , treeModel(this)
 {
   treeModel.invisibleRootItem()->appendRow(createTilesetTree());
@@ -103,7 +103,7 @@ void ItemTree::createTreeFromFile(QStandardItem* parent, const QString& resource
 {
   QFile treeFile(":/Trees/" + resourceName);
   if (!treeFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
-    QMessageBox::critical(this, "Error", "Unable to load Trees/" + resourceName + ": " + treeFile.errorString());
+    QMessageBox::critical(this, tr("Error"), tr("Unable to load Trees/%1: %2").arg(resourceName).arg(treeFile.errorString()));
   }
   QTextStream contents(treeFile.readAll());
   txtToTree(parent, contents, category, item_cb);
