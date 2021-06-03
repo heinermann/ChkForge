@@ -220,6 +220,7 @@
     <ClCompile Include="mapview.cpp" />
     <ClCompile Include="minimap.cpp" />
     <ClCompile Include="newmap.cpp" />
+    <ClCompile Include="OpenSave.cpp" />
     <ClCompile Include="outputwindow.cpp" />
     <ClCompile Include="PlaceUnitAction.cpp" />
     <ClCompile Include="playerstab.cpp" />
@@ -237,8 +238,10 @@
     <ClCompile Include="tristategroupbox.cpp" />
     <ClCompile Include="unitstab.cpp" />
     <ClCompile Include="upgradestab.cpp" />
+    <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Utils.h" />
     <QtMoc Include="abilitiestab.h" />
     <ClInclude Include="Action.h" />
     <QtMoc Include="unitstab.h" />
@@ -248,6 +251,7 @@
     <ClInclude Include="CheckboxDataMapper.h" />
     <ClInclude Include="CompoundAction.h" />
     <QtMoc Include="forcestab.h" />
+    <ClInclude Include="OpenSave.h" />
     <ClInclude Include="PlaceUnitAction.h" />
     <QtMoc Include="scenariodescription.h" />
     <QtMoc Include="tristategroupbox.h" />

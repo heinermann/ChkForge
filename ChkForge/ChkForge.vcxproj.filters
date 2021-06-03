@@ -246,6 +246,12 @@
     <ClCompile Include="scenariosettingstab.cpp">
       <Filter>Source Files\ui\Dialogs\ScenarioSettings</Filter>
     </ClCompile>
+    <ClCompile Include="OpenSave.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="Utils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="layers.h">
@@ -295,6 +301,12 @@
     </ClInclude>
     <ClInclude Include="scenariosettingsdata.h">
       <Filter>Header Files\ui\Dialogs\ScenarioSettings</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenSave.h">
+      <Filter>Header Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -81,9 +81,9 @@ private:
 
   virtual void keyPressEvent(QKeyEvent* event) override;
 
-  bool open_map(const QString& map_filename);
+  bool open_map(const std::filesystem::path& map_filename);
   void on_recent_file_triggered();
-  void addRecentFile(const QString& filename);
+  void addRecentFile(std::filesystem::path filename);
   void resetRecentFileMenu();
 
   virtual void dragEnterEvent(QDragEnterEvent* event) override;

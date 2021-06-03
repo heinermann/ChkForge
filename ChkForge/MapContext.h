@@ -6,6 +6,7 @@
 #include <random>
 #include <memory>
 #include <vector>
+#include <filesystem>
 
 #include <MappingCoreLib/MapFile.h>
 
@@ -44,7 +45,7 @@ namespace ChkForge
     void update();
 
     void new_map(int tileWidth, int tileHeight, Sc::Terrain::Tileset tileset, int brush, int clutter);
-    bool load_map(const std::string& map_file_str);
+    bool load_map(std::filesystem::path map_file);
 
     void add_view(MapView* view);
     void remove_view(MapView* view);
@@ -63,7 +64,10 @@ namespace ChkForge
     void select_all();
 
     bool is_unsaved();
+    bool save();
+    bool saveAs(std::filesystem::path filename);
     std::string filename();
+    std::string filepath();
 
     std::string mapname();
 

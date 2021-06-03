@@ -52,7 +52,7 @@ MapView::~MapView()
 
 void MapView::closeEvent(QCloseEvent* closeEvent)
 {
-  if (map->has_one_view()) {
+  if (map->has_one_view() && map->is_unsaved()) {
     auto widget = qobject_cast<ads::CDockWidget*>(sender());
 
     auto qstring_map_name = QString::fromStdString(map->mapname());
@@ -63,7 +63,7 @@ void MapView::closeEvent(QCloseEvent* closeEvent)
 
     switch (result) {
     case QMessageBox::Save:
-      // TODO
+      map->save();
       break;
     case QMessageBox::Discard:
       break;

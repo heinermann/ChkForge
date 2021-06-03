@@ -11,6 +11,8 @@
 #include "layers.h"
 #include "PlaceUnitAction.h"
 
+#include "OpenSave.h"
+
 using namespace ChkForge;
 
 MapContext::MapContext()
@@ -41,11 +43,10 @@ void MapContext::new_map(int tileWidth, int tileHeight, Sc::Terrain::Tileset til
   openbw_ui.set_image_data();
 }
 
-bool MapContext::load_map(const std::string& map_file_str) {
-  std::string dumb_path_limitation_string = map_file_str;
-  std::replace(std::begin(dumb_path_limitation_string), std::end(dumb_path_limitation_string), '/', '\\');
-  if (!chk->load(dumb_path_limitation_string)) {
-    QMessageBox::critical(nullptr, QString(), "Failed to read the Chk file (chk), not a valid map.");
+bool MapContext::load_map(std::filesystem::path map_file) {
+  map_file.make_preferred();
+  if (!chk->load(map_file.string())) {
+    QMessageBox::critical(nullptr, QString(), tr("Failed to read the Chk file (chk), not a valid map."));
     return false;
   }
 
@@ -171,9 +172,29 @@ bool MapContext::is_unsaved()
   return this->has_unsaved_changes;
 }
 
+bool MapContext::save() {
+  std::filesystem::path path = chk->getFilePath();
+  if (path.empty()) {
+    path = OpenSave::getMapSaveFilename();
+  }
+  return saveAs(path);
+}
+
+bool MapContext::saveAs(std::filesystem::path filename) {
+  filename.make_preferred();
+  bool result = chk->save(filename.string());
+  if (result) this->has_unsaved_changes = false;
+  return result;
+}
+
 std::string MapContext::filename()
 {
   return chk->getFileName();
+}
+
+std::string MapContext::filepath()
+{
+  return chk->getFilePath();
 }
 
 std::string MapContext::mapname()

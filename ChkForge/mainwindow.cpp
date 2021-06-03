@@ -16,7 +16,6 @@
 #include <DockAreaWidget.h>
 #include <QLabel>
 #include <QMessageBox>
-#include <QFileDialog>
 #include <QMdiArea>
 #include <QMdiSubwindow>
 #include <QStandardPaths>
@@ -28,7 +27,11 @@
 #include <QFileInfo>
 #include <QMimeData>
 
+#include <filesystem>
+
 #include "MapContext.h"
+#include "OpenSave.h"
+#include "Utils.h"
 
 MainWindow::MainWindow(QWidget *parent)
   : QMainWindow(parent)
@@ -264,17 +267,19 @@ void MainWindow::resetRecentFileMenu() {
 
 void MainWindow::on_recent_file_triggered() {
   QAction* action = qobject_cast<QAction*>(sender());
-  open_map(action->text());
+  open_map(toStdString(action->text()));
 }
 
-void MainWindow::addRecentFile(const QString& filename) {
-  recent_files.removeAll(filename);
-  recent_files.prepend(filename);
+void MainWindow::addRecentFile(std::filesystem::path filename) {
+  filename.make_preferred();
+
+  QString str = QString::fromStdString(filename.string());
+  recent_files.removeAll(str);
+  recent_files.prepend(str);
   recent_files.removeDuplicates();
   recent_files = recent_files.mid(0, max_recent_files);
 
   settings.setValue("recentFiles", QVariant{ recent_files });
-
   resetRecentFileMenu();
 }
 
@@ -301,13 +306,12 @@ void MainWindow::on_action_file_new_triggered()
   createNewMap(newMap.tile_width, newMap.tile_height, Sc::Terrain::Tileset(newMap.tileset->getTilesetId()), newMap.brush, newMap.clutter);
 }
 
-bool MainWindow::open_map(const QString& map_filename)
+bool MainWindow::open_map(const std::filesystem::path& map_filename)
 {
-  if (map_filename.isEmpty()) return false;
+  if (map_filename.empty()) return false;
 
   auto map = ChkForge::MapContext::create();
-  std::string file_str = std::string(map_filename.toLatin1());
-  if (map->load_map(file_str)) {
+  if (map->load_map(map_filename)) {
     createMapView(map);
     addRecentFile(map_filename);
     return true;
@@ -315,40 +319,32 @@ bool MainWindow::open_map(const QString& map_filename)
   return false;
 }
 
-namespace {
-  static const QString file_filter =
-    QObject::tr("All Starcraft Maps") + " (*.scm *.scx *.rep);;" +
-    QObject::tr("Vanilla Maps") + " (*.scm);;" +
-    QObject::tr("Expansion Maps") + " (*.scx);;" +
-    QObject::tr("Replays") + " (*.rep);;" +
-    QObject::tr("All files") + " (*)";
-}
-
 void MainWindow::on_action_file_open_triggered()
 {
-  QString documents = QStandardPaths::standardLocations(QStandardPaths::StandardLocation::DocumentsLocation).first();
-  QString result = QFileDialog::getOpenFileName(this, QString(), documents + "/Starcraft/maps", file_filter);
+  auto path = OpenSave::getMapOpenFilename(this);
 
-  open_map(result);
+  open_map(path);
 }
 
 void MainWindow::on_action_file_save_triggered()
 {
-  // if (map was not saved before)
-  on_action_file_saveAs_triggered();
+  if (!currentMapView()->getMap()->save()) {
+    on_action_file_saveAs_triggered();
+  }
 }
 
 void MainWindow::on_action_file_saveAs_triggered()
 {
   if (currentMapView() == nullptr) return;
 
-  QString result = QFileDialog::getSaveFileName(this, QString(), QString(), file_filter);
-  if (result.isEmpty()) return;
+  auto map = currentMapView()->getMap();
 
-  result.replace('/', '\\');
-  currentMapView()->getMap()->chk->save(std::string(result.toLatin1()));
+  auto path = OpenSave::getMapSaveFilename(QString::fromStdString(map->filepath()), this);
+  if (path.empty()) return;
 
-  addRecentFile(result);
+  currentMapView()->getMap()->saveAs(path);
+
+  addRecentFile(path);
 }
 
 void MainWindow::on_action_file_saveMapImage_triggered()
@@ -858,7 +854,8 @@ void MainWindow::dropEvent(QDropEvent* event)
 
   for (auto& url : event->mimeData()->urls()) {
     if (isValidFormat(url.toLocalFile())) {
-      if (open_map(url.toLocalFile())) {
+      std::filesystem::path path = toStdString(url.toLocalFile());
+      if (open_map(path)) {
         event->acceptProposedAction();
       }
     }
