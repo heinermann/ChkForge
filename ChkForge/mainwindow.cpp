@@ -345,6 +345,7 @@ void MainWindow::on_action_file_saveAs_triggered()
   QString result = QFileDialog::getSaveFileName(this, QString(), QString(), file_filter);
   if (result.isEmpty()) return;
 
+  result.replace('/', '\\');
   currentMapView()->getMap()->chk->save(std::string(result.toLatin1()));
 
   addRecentFile(result);
