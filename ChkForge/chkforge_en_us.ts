@@ -2291,6 +2291,16 @@ Please select a different directory.</source>
         <source>High Basilica</source>
         <translation></translation>
     </message>
+    <message>
+        <location filename="PluginManager.cpp" line="20"/>
+        <source>Failed to load SCMDraft plugin: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="PluginManager.cpp" line="30"/>
+        <source>Unable to resolve SCMDraft plugin exports: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QObject::QObject</name>

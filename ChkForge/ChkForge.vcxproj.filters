@@ -109,6 +109,12 @@
     <Filter Include="Form Files\Dialogs\ScenarioSettings">
       <UniqueIdentifier>{9c956ad6-59df-458f-ab6b-b643e89ca0f0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\SCMDraft">
+      <UniqueIdentifier>{ce4b68b5-dace-47a3-9e9a-ccb0cfa6eb77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\SCMDraft">
+      <UniqueIdentifier>{3ebcbbac-2472-48e4-a6c1-2924db27a861}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -252,6 +258,15 @@
     <ClCompile Include="Utils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SICStringList.cpp">
+      <Filter>Source Files\SCMDraft</Filter>
+    </ClCompile>
+    <ClCompile Include="PluginManager.cpp">
+      <Filter>Source Files\SCMDraft</Filter>
+    </ClCompile>
+    <ClCompile Include="SCMDPlugin.cpp">
+      <Filter>Source Files\SCMDraft</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="layers.h">
@@ -307,6 +322,15 @@
     </ClInclude>
     <ClInclude Include="Utils.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PluginManager.h">
+      <Filter>Header Files\SCMDraft</Filter>
+    </ClInclude>
+    <ClInclude Include="SICStringList.h">
+      <Filter>Header Files\SCMDraft</Filter>
+    </ClInclude>
+    <ClInclude Include="SCMDPlugin.h">
+      <Filter>Header Files\SCMDraft</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
