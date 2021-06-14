@@ -14,6 +14,7 @@
 #include "MapContext.h"
 
 #include "itemtree.h"
+#include "PluginManager.h"
 
 class MapView;
 
@@ -56,6 +57,8 @@ private:
   int max_recent_files = 20;
   QStringList recent_files;
   QSettings settings;
+
+  PluginManager scmd_pluginManager;
 private:
   template <typename Func>
   void connectTrigger(QAction* action, const Func& method) {
@@ -88,6 +91,7 @@ private:
 
   virtual void dragEnterEvent(QDragEnterEvent* event) override;
   virtual void dropEvent(QDropEvent* event) override;
+  virtual void showEvent(QShowEvent* event) override;
 
   bool isValidFormat(QString filename) const;
 
@@ -127,6 +131,7 @@ private slots:
   void on_action_view_toolwindows_showAll_triggered();
   void on_action_view_toolwindows_closeAll_triggered();
   void on_action_tools_mapRevealers_triggered();
+  void on_action_tools_stackUnits_triggered();
   void on_action_tools_preferences_triggered();
   void on_action_scenario_players_triggered();
   void on_action_scenario_forces_triggered();

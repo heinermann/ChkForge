@@ -5,10 +5,7 @@
 #include <sstream>
 #include <cctype>
 
-std::shared_ptr<MapFile> current_map_file;
-Strings::StringBackup current_map_string_backup;
-
-void setTrackingMap(std::shared_ptr<MapFile> map) {
+void SCMDStringList::setTrackingMap(std::shared_ptr<MapFile> map) {
 	current_map_file = map;
 	current_map_string_backup = { nullptr };
 }
@@ -20,7 +17,11 @@ int SCMDStringList::FindString_RawIndex(const char* str) {
 
 
 const char* SCMDStringList::GetString(int strid) {
-  return current_map_file->strings.getString<RawString>(strid)->c_str();
+	if (strid >= 0 && strid < GetTotalStringNum()) {
+		auto str = current_map_file->strings.getString<RawString>(strid);
+		return str ? str->c_str() : "";
+	}
+	return "";
 }
 
 static int ParseXDigit(int ch) {
@@ -72,23 +73,25 @@ std::string ConvertString_SCMD2ToRaw(const char* scmd2text) {
 
 int SCMDStringList::AddSCMD2String(const char* scmd2text, int SectionName, char AlwaysCreate) {
 	std::string newString = ConvertString_SCMD2ToRaw(scmd2text);
-	current_map_file->strings.addString(RawString(newString));
+	return current_map_file->strings.addString(RawString(newString));
 }
 
 
 int SCMDStringList::Dereference(__int16 stringindex, int SectionName, int unkown_arg) {
+	return 0;
 }
 
 
 int SCMDStringList::DerefAndAddString(const char* Text, int oldStringIndex, int SectionName) {
 	Dereference(oldStringIndex, SectionName, 0);
-	AddSCMD2String(Text, SectionName, 1);
+	return AddSCMD2String(Text, SectionName, 1);
 }
 
 
 char SCMDStringList::SetSCMD2Text(const char* scmd2text, int stringID) {
 	std::string newString = ConvertString_SCMD2ToRaw(scmd2text);
 	current_map_file->strings.replaceString(stringID, RawString(newString));
+	return 1;
 }
 
 

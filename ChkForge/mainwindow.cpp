@@ -38,6 +38,7 @@ MainWindow::MainWindow(QWidget *parent)
   , ui(new Ui::MainWindow)
   , statusBar_ui(new Ui::StatusBar)
   , toolbars_ui(new Ui::toolbars)
+  , scmd_pluginManager(this)
 {
   ui->setupUi(this);
 
@@ -232,6 +233,7 @@ void MainWindow::mapMenuActions()
     ui->action_view_toggle_showUnitSize,
     ui->action_view_toggle_snapToGrid,
     ui->action_tools_mapRevealers,
+    ui->action_tools_stackUnits,
     ui->action_window_cascade,
     ui->action_window_closeAllMapViews,
     ui->action_window_closeMapView,
@@ -260,7 +262,7 @@ void MainWindow::initRecentFiles() {
 
 void MainWindow::resetRecentFileMenu() {
   ui->menu_recentFiles->clear();
-  for (QString& file : recent_files) {
+  for (const QString& file : recent_files) {
     ui->menu_recentFiles->addAction(file, this, &MainWindow::on_recent_file_triggered)->setParent(ui->menu_recentFiles);
   }
 }
@@ -469,6 +471,10 @@ void MainWindow::on_action_tools_mapRevealers_triggered()
 {
 }
 
+void MainWindow::on_action_tools_stackUnits_triggered()
+{
+}
+
 void MainWindow::on_action_tools_preferences_triggered()
 {
 }
@@ -665,7 +671,6 @@ void MainWindow::selectPlayerIndex(int index) {
   }
 }
 
-
 void MainWindow::onMdiSubWindowActivated(QMdiSubWindow* window)
 {
   if (window == nullptr) {
@@ -702,6 +707,8 @@ void MainWindow::onMdiSubWindowActivated(QMdiSubWindow* window)
 
   // Update layer to whatever the map has selected
   this->selectLayerIndex(map->getMap()->get_layer()->getLayerId());
+
+  scmd_pluginManager.setTrackingMap(map->getMap()->chk);
 }
 
 void MainWindow::mapMouseMoved(const QPoint& pos)
@@ -860,6 +867,18 @@ void MainWindow::dropEvent(QDropEvent* event)
       }
     }
   }
+}
+
+void MainWindow::showEvent(QShowEvent* event)
+{
+  QWidget::showEvent(event);
+
+  scmd_pluginManager.loadPlugins();
+
+  auto newOptions = scmd_pluginManager.addMenuOptions(ui->menu_Tools);
+  mapAvailableActions.insert(mapAvailableActions.end(), newOptions.begin(), newOptions.end());
+
+  updateMenusEnabled(false);
 }
 
 void MainWindow::onUndoRedoUpdated()

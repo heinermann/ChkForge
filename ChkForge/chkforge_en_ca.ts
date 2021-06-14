@@ -1027,8 +1027,8 @@ Some select Starforge code snippets and resources.
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="104"/>
-        <location filename="mainwindow.cpp" line="655"/>
+        <location filename="mainwindow.cpp" line="105"/>
+        <location filename="mainwindow.cpp" line="661"/>
         <source>Player %1</source>
         <translation></translation>
     </message>
@@ -2297,12 +2297,12 @@ Please select a different directory.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PluginManager.cpp" line="20"/>
+        <location filename="PluginManager.cpp" line="134"/>
         <source>Failed to load SCMDraft plugin: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="PluginManager.cpp" line="30"/>
+        <location filename="PluginManager.cpp" line="148"/>
         <source>Unable to resolve SCMDraft plugin exports: %1</source>
         <translation type="unfinished"></translation>
     </message>

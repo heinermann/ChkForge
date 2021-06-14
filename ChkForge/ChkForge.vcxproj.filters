@@ -323,13 +323,13 @@
     <ClInclude Include="Utils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="PluginManager.h">
-      <Filter>Header Files\SCMDraft</Filter>
-    </ClInclude>
     <ClInclude Include="SICStringList.h">
       <Filter>Header Files\SCMDraft</Filter>
     </ClInclude>
     <ClInclude Include="SCMDPlugin.h">
+      <Filter>Header Files\SCMDraft</Filter>
+    </ClInclude>
+    <ClInclude Include="PluginManager.h">
       <Filter>Header Files\SCMDraft</Filter>
     </ClInclude>
   </ItemGroup>
