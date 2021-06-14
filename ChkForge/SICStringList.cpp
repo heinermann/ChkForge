@@ -5,10 +5,13 @@
 #include <sstream>
 #include <cctype>
 
+
 void SCMDStringList::setTrackingMap(std::shared_ptr<MapFile> map) {
 	current_map_file = map;
 	current_map_string_backup = { nullptr };
+	string_keeper.clear();
 }
+
 
 int SCMDStringList::FindString_RawIndex(const char* str) {
   RawString target = RawString(str);
@@ -17,18 +20,25 @@ int SCMDStringList::FindString_RawIndex(const char* str) {
 
 
 const char* SCMDStringList::GetString(int strid) {
-	if (strid >= 0 && strid < GetTotalStringNum()) {
-		auto str = current_map_file->strings.getString<RawString>(strid);
-		return str ? str->c_str() : "";
+	if (string_keeper.count(strid) != 0) {
+		return string_keeper.at(strid)->c_str();
+	}
+
+	auto str = current_map_file->strings.getString<RawString>(strid);
+	if (str) {
+		string_keeper.emplace(strid, str);
+		return str->c_str();
 	}
 	return "";
 }
+
 
 static int ParseXDigit(int ch) {
 	if ('0' <= ch && ch <= '9') return ch - '0';
 	else if ('a' <= ch && ch <= 'f') return ch - 'a' + 10;
 	else return ch - 'A' + 10;
 }
+
 
 std::string ConvertString_SCMD2ToRaw(const char* scmd2text) {
 	std::ostringstream result;
@@ -71,6 +81,7 @@ std::string ConvertString_SCMD2ToRaw(const char* scmd2text) {
 	return result.str();
 }
 
+
 int SCMDStringList::AddSCMD2String(const char* scmd2text, int SectionName, char AlwaysCreate) {
 	std::string newString = ConvertString_SCMD2ToRaw(scmd2text);
 	return current_map_file->strings.addString(RawString(newString));
@@ -90,6 +101,7 @@ int SCMDStringList::DerefAndAddString(const char* Text, int oldStringIndex, int 
 
 char SCMDStringList::SetSCMD2Text(const char* scmd2text, int stringID) {
 	std::string newString = ConvertString_SCMD2ToRaw(scmd2text);
+	string_keeper.erase(stringID);
 	current_map_file->strings.replaceString(stringID, RawString(newString));
 	return 1;
 }
@@ -113,6 +125,7 @@ char SCMDStringList::RestoreBackup() {
 	if (current_map_string_backup.strBackup == nullptr) return 0;
 
 	current_map_file->strings.restore(current_map_string_backup);
+	string_keeper.clear();
 	return 1;
 }
 

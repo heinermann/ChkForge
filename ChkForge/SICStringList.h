@@ -2,6 +2,8 @@
 
 #include <MappingCoreLib/MapFile.h>
 #include <memory>
+#include <unordered_set>
+#include <unordered_map>
 
 class SCMDStringList {
 public:
@@ -53,4 +55,5 @@ public:
 private:
   std::shared_ptr<MapFile> current_map_file = nullptr;
   Strings::StringBackup current_map_string_backup = { nullptr };
+  std::unordered_map<int,RawStringPtr> string_keeper;
 };
