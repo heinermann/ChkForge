@@ -449,7 +449,7 @@ std::shared_ptr<ChkForge::MapContext> MapView::getMap()
 
 void MapView::updateTitle()
 {
-  setWindowTitle(QString::fromStdString(map->filename()) + (map->is_unsaved() ? "*" : ""));
+  setWindowTitle(QString::fromStdString(map->filename()) + (map->is_unsaved() ? " *" : ""));
 }
 
 QPoint MapView::pointToMap(const QPoint &pt)

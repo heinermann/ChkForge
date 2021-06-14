@@ -12,6 +12,8 @@
 
 #include <Windows.h>
 
+#include "MapContext.h"
+
 PluginLib::PluginLib(std::shared_ptr<QLibrary> lib, QFunctionPointer initPlugin, QFunctionPointer runPlugin, QFunctionPointer pluginGetMenuString, QFunctionPointer getPluginVersion)
   : library(lib)
   , InitPlugin(reinterpret_cast<decltype(InitPlugin)>(initPlugin))
@@ -58,6 +60,8 @@ void PluginManager::runPlugin(std::shared_ptr<PluginLib> plugin, DWORD section) 
     fromChunkData(&swnm, map->triggers.swnm.get());
     fromChunkData(&uprp, map->triggers.uprp.get());
     fromChunkData(&upus, map->triggers.upus.get());
+
+    mapContext->set_unsaved();
   }
 
   destroyChunkData(&trig);
@@ -165,8 +169,9 @@ bool PluginManager::initPlugin(std::shared_ptr<PluginLib> plugin) {
   return result;
 }
 
-void PluginManager::setTrackingMap(std::shared_ptr<MapFile> map) {
-  this->map = map;
+void PluginManager::setTrackingMap(std::shared_ptr<ChkForge::MapContext> mapContext) {
+  this->mapContext = mapContext;
+  this->map = mapContext->chk;
   mapStrings.setTrackingMap(map);
 
   for (int i = 0; i < Chk::TotalForces; ++i) {

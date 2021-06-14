@@ -41,6 +41,7 @@ void MapContext::new_map(int tileWidth, int tileHeight, Sc::Terrain::Tileset til
   apply_brush(map_dimensions(), brush, clutter);
   chkdraft_to_openbw(true);
   openbw_ui.set_image_data();
+  set_unsaved(true);
 }
 
 bool MapContext::load_map(std::filesystem::path map_file) {
@@ -52,6 +53,7 @@ bool MapContext::load_map(std::filesystem::path map_file) {
 
   chkdraft_to_openbw(true);
   openbw_ui.set_image_data();
+  set_unsaved(false);
   return true;
 }
 
@@ -167,10 +169,18 @@ void MapContext::select_all() {
   }
 }
 
-bool MapContext::is_unsaved()
-{
+bool MapContext::is_unsaved() {
   return this->has_unsaved_changes;
 }
+
+void MapContext::set_unsaved(bool needs_saving) {
+  this->has_unsaved_changes = needs_saving;
+
+  for (MapView* view : this->views) {
+    view->updateTitle();
+  }
+}
+
 
 bool MapContext::save() {
   std::filesystem::path path = chk->getFilePath();

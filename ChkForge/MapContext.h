@@ -64,6 +64,7 @@ namespace ChkForge
     void select_all();
 
     bool is_unsaved();
+    void set_unsaved(bool needs_saving = true);
     bool save();
     bool saveAs(std::filesystem::path filename);
     std::string filename();

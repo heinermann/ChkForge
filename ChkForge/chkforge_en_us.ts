@@ -378,7 +378,7 @@ Some select Starforge code snippets and resources.
 <context>
     <name>ChkForge::MapContext</name>
     <message>
-        <location filename="MapContext.cpp" line="49"/>
+        <location filename="MapContext.cpp" line="50"/>
         <source>Failed to read the Chk file (chk), not a valid map.</source>
         <translation></translation>
     </message>
@@ -2292,12 +2292,12 @@ Please select a different directory.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PluginManager.cpp" line="134"/>
+        <location filename="PluginManager.cpp" line="138"/>
         <source>Failed to load SCMDraft plugin: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="PluginManager.cpp" line="148"/>
+        <location filename="PluginManager.cpp" line="152"/>
         <source>Unable to resolve SCMDraft plugin exports: %1</source>
         <translation type="unfinished"></translation>
     </message>

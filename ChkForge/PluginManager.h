@@ -9,6 +9,7 @@
 
 #include "SCMDPlugin.h"
 #include "SICStringList.h"
+#include "MapContext.h"
 
 struct PluginLib {
   PluginLib(std::shared_ptr<QLibrary> lib, QFunctionPointer initPlugin, QFunctionPointer runPlugin, QFunctionPointer pluginGetMenuString, QFunctionPointer getPluginVersion);
@@ -27,7 +28,7 @@ public:
   PluginManager(QMainWindow* main_window);
 
   void loadPlugins();
-  void setTrackingMap(std::shared_ptr<MapFile> map);
+  void setTrackingMap(std::shared_ptr<ChkForge::MapContext> mapContext);
 
   std::vector<QAction*> addMenuOptions(QMenu* menu);
 
@@ -49,6 +50,7 @@ private:
 
   std::list<std::shared_ptr<PluginLib>> libraries;
   std::shared_ptr<MapFile> map;
+  std::shared_ptr<ChkForge::MapContext> mapContext; // for marking maps as unsaved only
 
   SCMDStringList mapStrings;
   TEngineData engine_data = {};

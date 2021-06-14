@@ -157,7 +157,7 @@ void MainWindow::createMapView(std::shared_ptr<ChkForge::MapContext> map)
   mapView->showMaximized();
 
   QString map_filename = QString::fromStdString(map->filename());
-  mapView->setWindowTitle(map_filename);
+  mapView->updateTitle();
 
   QIcon map_icon = map_filename.isEmpty() ? QIcon(":/icons/scx.png") : icon_provider.icon(QFileInfo(map_filename));
   mapView->setWindowIcon(map_icon);
@@ -708,7 +708,7 @@ void MainWindow::onMdiSubWindowActivated(QMdiSubWindow* window)
   // Update layer to whatever the map has selected
   this->selectLayerIndex(map->getMap()->get_layer()->getLayerId());
 
-  scmd_pluginManager.setTrackingMap(map->getMap()->chk);
+  scmd_pluginManager.setTrackingMap(map->getMap());
 }
 
 void MainWindow::mapMouseMoved(const QPoint& pos)
