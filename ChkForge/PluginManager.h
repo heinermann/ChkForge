@@ -4,7 +4,6 @@
 #include <QMainWindow>
 #include <memory>
 #include <list>
-#include <optional>
 #include <vector>
 
 #include "SCMDPlugin.h"
@@ -34,16 +33,16 @@ public:
 
 private:
   std::shared_ptr<QLibrary> loadLibrary(const std::filesystem::path& path);
-  bool loadPlugin(const std::filesystem::path &path);
-  std::optional<std::shared_ptr<PluginLib>> createPluginEntry(std::shared_ptr<QLibrary> lib);
+  void loadPlugin(const std::filesystem::path &path);
+  std::shared_ptr<PluginLib> createPluginEntry(std::shared_ptr<QLibrary> lib);
   bool initPlugin(std::shared_ptr<PluginLib> plugin);
 
   void runPlugin(std::shared_ptr<PluginLib> plugin, DWORD section);
   void toChunkData(CChunkData* data, ChkSection* section);
   void fromChunkData(CChunkData* data, ChkSection* section);
-  void destroyChunkData(CChunkData* data);
 
   void setupEngineData();
+  void populateEngineMapData();
 
 private:
   QMainWindow* mainWnd;

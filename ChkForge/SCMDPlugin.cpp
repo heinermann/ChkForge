@@ -13,3 +13,8 @@ void __cdecl SCMDDeAllocRam(void* Ram) {
 void* __cdecl SCMDReAllocRam(void* Ram, DWORD Size) {
   return std::realloc(Ram, Size);
 }
+
+_CChunkData::~_CChunkData() {
+  if (ChunkData != nullptr)
+    SCMDDeAllocRam(ChunkData);
+}

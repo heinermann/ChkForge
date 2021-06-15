@@ -2297,12 +2297,12 @@ Please select a different directory.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PluginManager.cpp" line="138"/>
+        <location filename="PluginManager.cpp" line="124"/>
         <source>Failed to load SCMDraft plugin: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="PluginManager.cpp" line="152"/>
+        <location filename="PluginManager.cpp" line="138"/>
         <source>Unable to resolve SCMDraft plugin exports: %1</source>
         <translation type="unfinished"></translation>
     </message>

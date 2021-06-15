@@ -31,7 +31,9 @@ typedef struct _LocationNode {
 // Structure for CHK Sections
 typedef struct _CChunkData {
 	DWORD	ChunkSize;   // Size of section
-	BYTE* ChunkData;   // Data pointer. Maybe you can use scmd_alloc, scmd_realloc
+	BYTE* ChunkData = nullptr;   // Data pointer. Maybe you can use scmd_alloc, scmd_realloc
+
+	~_CChunkData();
 } CChunkData;
 
 

@@ -63,12 +63,6 @@ void PluginManager::runPlugin(std::shared_ptr<PluginLib> plugin, DWORD section) 
 
     mapContext->set_unsaved();
   }
-
-  destroyChunkData(&trig);
-  destroyChunkData(&mbrf);
-  destroyChunkData(&swnm);
-  destroyChunkData(&uprp);
-  destroyChunkData(&upus);
 }
 
 void PluginManager::setupEngineData() {
@@ -101,10 +95,6 @@ void PluginManager::fromChunkData(CChunkData* data, ChkSection* section) {
   section->read(hdr, ss);
 }
 
-void PluginManager::destroyChunkData(CChunkData* data) {
-  SCMDDeAllocRam(data->ChunkData);
-}
-
 void PluginManager::loadPlugins() {
   std::error_code silent_err;
   for (auto& entry : std::filesystem::directory_iterator("plugins", silent_err)) {
@@ -114,20 +104,16 @@ void PluginManager::loadPlugins() {
   }
 }
 
-bool PluginManager::loadPlugin(const std::filesystem::path& path) {
+void PluginManager::loadPlugin(const std::filesystem::path& path) {
   auto library = loadLibrary(path);
-  if (!library)
-    return false;
+  if (!library) return;
 
   auto pluginEntry = createPluginEntry(library);
-  if (!pluginEntry)
-    return false;
+  if (!pluginEntry) return;
 
-  if (!initPlugin(pluginEntry.value()))
-    return false;
+  if (!initPlugin(pluginEntry)) return;
 
-  libraries.emplace_back(pluginEntry.value());
-  return true;
+  libraries.emplace_back(pluginEntry);
 }
 
 std::shared_ptr<QLibrary> PluginManager::loadLibrary(const std::filesystem::path& path) {
@@ -142,7 +128,7 @@ std::shared_ptr<QLibrary> PluginManager::loadLibrary(const std::filesystem::path
   return library;
 }
 
-std::optional<std::shared_ptr<PluginLib>> PluginManager::createPluginEntry(std::shared_ptr<QLibrary> lib) {
+std::shared_ptr<PluginLib> PluginManager::createPluginEntry(std::shared_ptr<QLibrary> lib) {
   QFunctionPointer InitPlugin = lib->resolve("InitPlugin");
   QFunctionPointer RunPlugin = lib->resolve("RunPlugin");
   QFunctionPointer PluginGetMenuString = lib->resolve("PluginGetMenuString");
@@ -150,7 +136,7 @@ std::optional<std::shared_ptr<PluginLib>> PluginManager::createPluginEntry(std::
 
   if (InitPlugin == nullptr || RunPlugin == nullptr || PluginGetMenuString == nullptr || GetPluginVersion == nullptr) {
     QMessageBox::warning(mainWnd, QString(), QObject::tr("Unable to resolve SCMDraft plugin exports: %1").arg(lib->fileName()));
-    return std::nullopt;
+    return nullptr;
   }
 
   return std::make_shared<PluginLib>(lib, InitPlugin, RunPlugin, PluginGetMenuString, GetPluginVersion);
@@ -174,6 +160,10 @@ void PluginManager::setTrackingMap(std::shared_ptr<ChkForge::MapContext> mapCont
   this->map = mapContext->chk;
   mapStrings.setTrackingMap(map);
 
+  populateEngineMapData();
+}
+
+void PluginManager::populateEngineMapData() {
   for (int i = 0; i < Chk::TotalForces; ++i) {
     forceNameIds[i] = map->players.getForceStringId(Chk::Force(i));
   }
@@ -195,3 +185,4 @@ void PluginManager::setTrackingMap(std::shared_ptr<ChkForge::MapContext> mapCont
     locations[i].Exists = !locations[i].Data.isBlank();
   }
 }
+
