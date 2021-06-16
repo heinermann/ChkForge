@@ -18,6 +18,8 @@ ScenarioSettings::ScenarioSettings(QWidget* parent, int startTab) :
   ui->playersTab->settings = &settings;
   ui->forcesTab->settings = &settings;
 
+  ui->forcesTab->setupDataMappers();
+
   connect(ui->playersTab, &PlayersTab::updateData, ui->forcesTab, &ForcesTab::updateForcesTree);
 
   ui->tabs->setCurrentIndex(startTab);

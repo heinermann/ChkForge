@@ -27,6 +27,8 @@ namespace ChkForge {
     }
 
     void OnSelectionChanged() {
+      if (tree->selectedItems().empty()) return;
+
       uniques.clear();
       IterateSelectedIds([&](int id) { uniques.insert(GetData(id)); });
 

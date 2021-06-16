@@ -15,7 +15,7 @@ namespace ChkForge {
       , bitflag(flag)
       , widget(checkboxWidget)
     {
-      this->connect(checkboxWidget, &QCheckBox::stateChanged, this, &CheckboxDataMapper<T>::stateChanged);
+      this->connect(checkboxWidget, &QCheckBox::clicked, this, &CheckboxDataMapper<T>::clicked);
     }
 
     virtual ~CheckboxDataMapper() {}
@@ -29,13 +29,17 @@ namespace ChkForge {
     }
 
     virtual void setValue(std::any value) override {
-      widget->setChecked(std::any_cast<T>(value));
+      widget->setTristate(false);
+      widget->setCheckState(std::any_cast<T>(value) ? Qt::Checked : Qt::Unchecked);
     }
   private:
     T bitflag;
     QCheckBox* widget;
 
-    void stateChanged(int state) {
+    void clicked(bool checked) {
+      widget->setTristate(false);
+
+      Qt::CheckState state = widget->checkState();
       this->IterateSelectedIds([&](int id) {
         if (state == Qt::Checked)
           this->data[id] |= bitflag;

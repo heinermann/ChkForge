@@ -5,6 +5,7 @@
 #include <QTreeWidget>
 
 #include "scenariosettingstab.h"
+#include "CheckboxDataMapper.h"
 
 namespace Ui {
   class ForcesTab;
@@ -18,6 +19,7 @@ public:
 
   void setTabFocus() override;
   void updateForcesTree();
+  void setupDataMappers();
 
 private:
   void init();
@@ -37,11 +39,12 @@ private:
 
   QList<QTreeWidgetItem*> playersUnderForces;
 
+  std::shared_ptr<ChkForge::CheckboxDataMapper<u8>> chkAllies;
+  std::shared_ptr<ChkForge::CheckboxDataMapper<u8>> chkAlliedVictory;
+  std::shared_ptr<ChkForge::CheckboxDataMapper<u8>> chkRandomStartLocation;
+  std::shared_ptr<ChkForge::CheckboxDataMapper<u8>> chkSharedVision;
+
 private slots:
   void on_forcesTree_itemSelectionChanged();
   void on_txtForceName_textEdited(const QString& text);
-  void on_chkForceAllies_stateChanged(int state);
-  void on_chkForceAlliedVictory_stateChanged(int state);
-  void on_chkForceRandomStartLocation_stateChanged(int state);
-  void on_chkForceSharedVision_stateChanged(int state);
 };

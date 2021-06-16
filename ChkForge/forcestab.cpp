@@ -34,6 +34,13 @@ void ForcesTab::init() {
   ui->forcesTree->expandAll();
 }
 
+void ForcesTab::setupDataMappers() {
+  chkAllies = std::make_shared<ChkForge::CheckboxDataMapper<u8>>(ui->forcesTree, ui->chkForceAllies, settings->forc.flags, Chk::ForceFlags::RandomAllies);
+  chkAlliedVictory = std::make_shared<ChkForge::CheckboxDataMapper<u8>>(ui->forcesTree, ui->chkForceAlliedVictory, settings->forc.flags, Chk::ForceFlags::AlliedVictory);
+  chkRandomStartLocation = std::make_shared<ChkForge::CheckboxDataMapper<u8>>(ui->forcesTree, ui->chkForceRandomStartLocation, settings->forc.flags, Chk::ForceFlags::RandomizeStartLocation);
+  chkSharedVision = std::make_shared<ChkForge::CheckboxDataMapper<u8>>(ui->forcesTree, ui->chkForceSharedVision, settings->forc.flags, Chk::ForceFlags::SharedVision);
+}
+
 ForcesTab::~ForcesTab() {
   delete ui;
 }
@@ -115,21 +122,17 @@ void ForcesTab::updateForcesTree() {
 void ForcesTab::on_forcesTree_itemSelectionChanged() {
   if (settings == nullptr) return;
 
+  bool anySelected = !ui->forcesTree->selectedItems().empty();
+  ui->forcePropsWidget->setEnabled(anySelected);
+  if (!anySelected) return;
+
   std::set<bool> uniqueHasCustomName;
-  std::set<bool> uniqueAllies;
-  std::set<bool> uniqueRandomStartLoc;
-  std::set<bool> uniqueAlliedVictory;
-  std::set<bool> uniqueSharedVision;
   std::set<std::string> uniqueNames;
   for (QTreeWidgetItem* itm : ui->forcesTree->selectedItems()) {
     int force = ui->forcesTree->indexOfTopLevelItem(itm);
 
     uniqueHasCustomName.insert(!settings->useDefaultForceNames[force]);
     uniqueNames.insert(settings->forceNames[force]);
-    uniqueAllies.insert(settings->forc.flags[force] & Chk::ForceFlags::RandomAllies);
-    uniqueRandomStartLoc.insert(settings->forc.flags[force] & Chk::ForceFlags::RandomizeStartLocation);
-    uniqueAlliedVictory.insert(settings->forc.flags[force] & Chk::ForceFlags::AlliedVictory);
-    uniqueSharedVision.insert(settings->forc.flags[force] & Chk::ForceFlags::SharedVision);
   }
 
   // TODO: normal tri-state groupbox
@@ -139,26 +142,6 @@ void ForcesTab::on_forcesTree_itemSelectionChanged() {
     ui->txtForceName->clear();
   else
     ui->txtForceName->setText(QString::fromStdString(*uniqueNames.begin()));
-
-  if (uniqueAllies.size() > 1)
-    ui->chkForceAllies->setCheckState(Qt::PartiallyChecked);
-  else
-    ui->chkForceAllies->setChecked(*uniqueAllies.begin());
-
-  if (uniqueRandomStartLoc.size() > 1)
-    ui->chkForceRandomStartLocation->setCheckState(Qt::PartiallyChecked);
-  else
-    ui->chkForceRandomStartLocation->setChecked(*uniqueRandomStartLoc.begin());
-
-  if (uniqueAlliedVictory.size() > 1)
-    ui->chkForceAlliedVictory->setCheckState(Qt::PartiallyChecked);
-  else
-    ui->chkForceAlliedVictory->setChecked(*uniqueAlliedVictory.begin());
-
-  if (uniqueSharedVision.size() > 1)
-    ui->chkForceSharedVision->setCheckState(Qt::PartiallyChecked);
-  else
-    ui->chkForceSharedVision->setChecked(*uniqueSharedVision.begin());
 }
 
 void ForcesTab::on_txtForceName_textEdited(const QString& text) {
@@ -168,49 +151,5 @@ void ForcesTab::on_txtForceName_textEdited(const QString& text) {
     settings->forceNames[force] = std::string(utf8Name.data(), utf8Name.size());
     settings->useDefaultForceNames[force] = false;
     ui->grpForceCustomName->setChecked(true);
-  }
-}
-
-void ForcesTab::on_chkForceAllies_stateChanged(int state) {
-  for (QTreeWidgetItem* itm : ui->forcesTree->selectedItems()) {
-    int force = ui->forcesTree->indexOfTopLevelItem(itm);
-
-    if (state == Qt::Checked)
-      settings->forc.flags[force] |= Chk::ForceFlags::RandomAllies;
-    else if (state == Qt::Unchecked)
-      settings->forc.flags[force] &= ~Chk::ForceFlags::RandomAllies;
-  }
-}
-
-void ForcesTab::on_chkForceAlliedVictory_stateChanged(int state) {
-  for (QTreeWidgetItem* itm : ui->forcesTree->selectedItems()) {
-    int force = ui->forcesTree->indexOfTopLevelItem(itm);
-
-    if (state == Qt::Checked)
-      settings->forc.flags[force] |= Chk::ForceFlags::AlliedVictory;
-    else if (state == Qt::Unchecked)
-      settings->forc.flags[force] &= ~Chk::ForceFlags::AlliedVictory;
-  }
-}
-
-void ForcesTab::on_chkForceRandomStartLocation_stateChanged(int state) {
-  for (QTreeWidgetItem* itm : ui->forcesTree->selectedItems()) {
-    int force = ui->forcesTree->indexOfTopLevelItem(itm);
-
-    if (state == Qt::Checked)
-      settings->forc.flags[force] |= Chk::ForceFlags::RandomizeStartLocation;
-    else if (state == Qt::Unchecked)
-      settings->forc.flags[force] &= ~Chk::ForceFlags::RandomizeStartLocation;
-  }
-}
-
-void ForcesTab::on_chkForceSharedVision_stateChanged(int state) {
-  for (QTreeWidgetItem* itm : ui->forcesTree->selectedItems()) {
-    int force = ui->forcesTree->indexOfTopLevelItem(itm);
-
-    if (state == Qt::Checked)
-      settings->forc.flags[force] |= Chk::ForceFlags::SharedVision;
-    else if (state == Qt::Unchecked)
-      settings->forc.flags[force] &= ~Chk::ForceFlags::SharedVision;
   }
 }
