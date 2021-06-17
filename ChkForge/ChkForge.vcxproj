@@ -441,6 +441,7 @@
     <ClInclude Include="PluginManager.h" />
     <ClInclude Include="SCMDPlugin.h" />
     <ClInclude Include="SICStringList.h" />
+    <ClInclude Include="TextDataMapper.h" />
     <ClInclude Include="Utils.h" />
     <QtMoc Include="abilitiestab.h" />
     <ClInclude Include="Action.h" />

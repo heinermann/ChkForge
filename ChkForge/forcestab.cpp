@@ -40,6 +40,7 @@ void ForcesTab::setupDataMappers() {
   chkRandomStartLocation = std::make_shared<ChkForge::CheckboxDataMapper<u8>>(ui->forcesTree, ui->chkForceRandomStartLocation, settings->forc.flags, Chk::ForceFlags::RandomizeStartLocation);
   chkSharedVision = std::make_shared<ChkForge::CheckboxDataMapper<u8>>(ui->forcesTree, ui->chkForceSharedVision, settings->forc.flags, Chk::ForceFlags::SharedVision);
   chkCustomName = std::make_shared<ChkForge::GroupBoxDataMapper<bool>>(ui->forcesTree, ui->grpForceCustomName, &settings->useCustomForceNames[0], true);
+  txtForceName = std::make_shared<ChkForge::TextDataMapper>(ui->forcesTree, ui->txtForceName, &settings->forceNames[0]);
 }
 
 ForcesTab::~ForcesTab() {
@@ -92,6 +93,7 @@ bool ForcesTab::anyRemasteredColor() {
   return false;
 }
 
+// TODO: Change force name in the QTreeView
 void ForcesTab::updateForcesTree() {
   bool useRemasteredColorStr = anyRemasteredColor();
 
@@ -118,34 +120,4 @@ void ForcesTab::updateForcesTree() {
 
   if (ui->forcesTree->selectedItems().empty())
     ui->forcesTree->topLevelItem(0)->setSelected(true);
-}
-
-void ForcesTab::on_forcesTree_itemSelectionChanged() {
-  if (settings == nullptr) return;
-
-  bool anySelected = !ui->forcesTree->selectedItems().empty();
-  ui->forcePropsWidget->setEnabled(anySelected);
-  if (!anySelected) return;
-
-  std::set<std::string> uniqueNames;
-  for (QTreeWidgetItem* itm : ui->forcesTree->selectedItems()) {
-    int force = ui->forcesTree->indexOfTopLevelItem(itm);
-
-    uniqueNames.insert(settings->forceNames[force]);
-  }
-
-  if (uniqueNames.size() > 1)
-    ui->txtForceName->clear();
-  else
-    ui->txtForceName->setText(QString::fromStdString(*uniqueNames.begin()));
-}
-
-void ForcesTab::on_txtForceName_textEdited(const QString& text) {
-  for (QTreeWidgetItem* itm : ui->forcesTree->selectedItems()) {
-    int force = ui->forcesTree->indexOfTopLevelItem(itm);
-    QByteArray utf8Name = text.toUtf8();
-    settings->forceNames[force] = std::string(utf8Name.data(), utf8Name.size());
-    settings->useCustomForceNames[force] = true;
-    ui->grpForceCustomName->setChecked(true);
-  }
 }

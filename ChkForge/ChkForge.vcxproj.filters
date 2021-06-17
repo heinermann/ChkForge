@@ -338,6 +338,9 @@
     <ClInclude Include="GroupBoxDataMapper.h">
       <Filter>Header Files\DataMappers</Filter>
     </ClInclude>
+    <ClInclude Include="TextDataMapper.h">
+      <Filter>Header Files\DataMappers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="debug\moc_predefs.h.cbt">
