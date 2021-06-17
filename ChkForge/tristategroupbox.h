@@ -15,6 +15,7 @@ public:
   void paintEvent(QPaintEvent*) override;
 
   void setPartiallyChecked(bool partialCheck = true);
+  bool isPartiallyChecked();
 
 protected:
   bool partiallyChecked = false;

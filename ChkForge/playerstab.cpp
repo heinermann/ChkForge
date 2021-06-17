@@ -158,7 +158,7 @@ void PlayersTab::updatePlayerTree() {
 }
 
 QString PlayersTab::getForceName(unsigned force) const {
-  if (force >= 4 || settings->useDefaultForceNames[force]) {
+  if (force >= 4 || !settings->useCustomForceNames[force]) {
     return getDefaultForceName(force);
   }
   return QString::fromStdString(settings->forceNames[force]);

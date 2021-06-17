@@ -25,7 +25,7 @@ struct ScenarioSettingsData
   Chk::PTEC ptec; // Technology availability
   Chk::PTEx ptex; // Expansion technology availability
 
-  std::array<bool, Chk::TotalForces> useDefaultForceNames;
+  std::array<bool, Chk::TotalForces> useCustomForceNames;
   std::array<std::string, Chk::TotalForces> forceNames;
 
   std::array<bool, Sc::Unit::TotalTypes> useDefaultUnitNames;

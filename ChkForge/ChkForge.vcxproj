@@ -437,6 +437,7 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="invertedtristategroupbox.h" />
+    <ClInclude Include="GroupBoxDataMapper.h" />
     <ClInclude Include="PluginManager.h" />
     <ClInclude Include="SCMDPlugin.h" />
     <ClInclude Include="SICStringList.h" />

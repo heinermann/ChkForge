@@ -39,6 +39,7 @@ void ForcesTab::setupDataMappers() {
   chkAlliedVictory = std::make_shared<ChkForge::CheckboxDataMapper<u8>>(ui->forcesTree, ui->chkForceAlliedVictory, settings->forc.flags, Chk::ForceFlags::AlliedVictory);
   chkRandomStartLocation = std::make_shared<ChkForge::CheckboxDataMapper<u8>>(ui->forcesTree, ui->chkForceRandomStartLocation, settings->forc.flags, Chk::ForceFlags::RandomizeStartLocation);
   chkSharedVision = std::make_shared<ChkForge::CheckboxDataMapper<u8>>(ui->forcesTree, ui->chkForceSharedVision, settings->forc.flags, Chk::ForceFlags::SharedVision);
+  chkCustomName = std::make_shared<ChkForge::GroupBoxDataMapper<bool>>(ui->forcesTree, ui->grpForceCustomName, &settings->useCustomForceNames[0], true);
 }
 
 ForcesTab::~ForcesTab() {
@@ -126,17 +127,12 @@ void ForcesTab::on_forcesTree_itemSelectionChanged() {
   ui->forcePropsWidget->setEnabled(anySelected);
   if (!anySelected) return;
 
-  std::set<bool> uniqueHasCustomName;
   std::set<std::string> uniqueNames;
   for (QTreeWidgetItem* itm : ui->forcesTree->selectedItems()) {
     int force = ui->forcesTree->indexOfTopLevelItem(itm);
 
-    uniqueHasCustomName.insert(!settings->useDefaultForceNames[force]);
     uniqueNames.insert(settings->forceNames[force]);
   }
-
-  // TODO: normal tri-state groupbox
-  //if (uniqueHasCustomName.size() > 1)
 
   if (uniqueNames.size() > 1)
     ui->txtForceName->clear();
@@ -149,7 +145,7 @@ void ForcesTab::on_txtForceName_textEdited(const QString& text) {
     int force = ui->forcesTree->indexOfTopLevelItem(itm);
     QByteArray utf8Name = text.toUtf8();
     settings->forceNames[force] = std::string(utf8Name.data(), utf8Name.size());
-    settings->useDefaultForceNames[force] = false;
+    settings->useCustomForceNames[force] = true;
     ui->grpForceCustomName->setChecked(true);
   }
 }

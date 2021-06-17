@@ -43,6 +43,10 @@ void TriStateGroupBox::setPartiallyChecked(bool partialCheck) {
   update();
 }
 
+bool TriStateGroupBox::isPartiallyChecked() {
+  return partiallyChecked;
+}
+
 void TriStateGroupBox::wasClicked(bool checked) {
   if (partiallyChecked) {
     partiallyChecked = false;

@@ -32,7 +32,7 @@ ScenarioSettings::~ScenarioSettings()
 }
 
 QString ScenarioSettings::getForceName(unsigned force) const {
-  if (force >= 4 || settings.useDefaultForceNames[force]) {
+  if (force >= 4 || !settings.useCustomForceNames[force]) {
     return getDefaultForceName(force);
   }
   return QString::fromStdString(settings.forceNames[force]);
@@ -65,10 +65,10 @@ void ScenarioSettings::readFromMap(const std::shared_ptr<MapFile> map) {
   // TODO: Chk::Scope::Game is broken
   for (unsigned i = 0; i < Chk::TotalForces; ++i) {
     Chk::Force force = Chk::Force(i);
-    bool useDefaultForceName = map->strings.getForceNameStringId(force) == Chk::StringId::NoString;
+    bool useCustomForceName = map->strings.getForceNameStringId(force) != Chk::StringId::NoString;
 
-    settings.useDefaultForceNames[i] = useDefaultForceName;
-    if (!useDefaultForceName)
+    settings.useCustomForceNames[i] = useCustomForceName;
+    if (useCustomForceName)
       settings.forceNames[i] = *map->strings.getForceName<RawString>(force);
   }
 
@@ -104,10 +104,10 @@ void ScenarioSettings::writeToMap(std::shared_ptr<MapFile> map) const {
 
   for (unsigned i = 0; i < Chk::TotalForces; ++i) {
     Chk::Force force = Chk::Force(i);
-    if (settings.useDefaultForceNames[i])
-      map->strings.setForceNameStringId(force, Chk::StringId::NoString);
-    else
+    if (settings.useCustomForceNames[i])
       map->strings.setForceName(force, RawString(settings.forceNames[i]));
+    else
+      map->strings.setForceNameStringId(force, Chk::StringId::NoString);
   }
 
   for (unsigned i = 0; i < Sc::Unit::TotalTypes; ++i) {

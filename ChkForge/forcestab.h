@@ -6,6 +6,7 @@
 
 #include "scenariosettingstab.h"
 #include "CheckboxDataMapper.h"
+#include "GroupBoxDataMapper.h"
 
 namespace Ui {
   class ForcesTab;
@@ -43,6 +44,7 @@ private:
   std::shared_ptr<ChkForge::CheckboxDataMapper<u8>> chkAlliedVictory;
   std::shared_ptr<ChkForge::CheckboxDataMapper<u8>> chkRandomStartLocation;
   std::shared_ptr<ChkForge::CheckboxDataMapper<u8>> chkSharedVision;
+  std::shared_ptr<ChkForge::GroupBoxDataMapper<bool>> chkCustomName;
 
 private slots:
   void on_forcesTree_itemSelectionChanged();

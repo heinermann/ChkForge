@@ -335,6 +335,9 @@
     <ClInclude Include="PluginManager.h">
       <Filter>Header Files\SCMDraft</Filter>
     </ClInclude>
+    <ClInclude Include="GroupBoxDataMapper.h">
+      <Filter>Header Files\DataMappers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="debug\moc_predefs.h.cbt">
