@@ -41,9 +41,9 @@
     </layout>
    </item>
    <item row="0" column="1">
-    <widget class="TriStateGroupBox" name="grpTechUseDefaults">
+    <widget class="InvertedTriStateGroupBox" name="grpTechUseDefaults">
      <property name="title">
-      <string>Use Defaults</string>
+      <string>Use Default</string>
      </property>
      <property name="checkable">
       <bool>true</bool>
@@ -163,7 +163,7 @@
        <number>0</number>
       </property>
       <item row="1" column="1">
-       <widget class="TriStateGroupBox" name="grpTechPlayerDefault">
+       <widget class="InvertedTriStateGroupBox" name="grpTechPlayerDefault">
         <property name="title">
          <string>Use Default</string>
         </property>
@@ -385,9 +385,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>TriStateGroupBox</class>
+   <class>InvertedTriStateGroupBox</class>
    <extends>QGroupBox</extends>
-   <header>tristategroupbox.h</header>
+   <header>invertedtristategroupbox.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

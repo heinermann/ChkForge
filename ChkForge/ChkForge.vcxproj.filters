@@ -267,6 +267,9 @@
     <ClCompile Include="SCMDPlugin.cpp">
       <Filter>Source Files\SCMDraft</Filter>
     </ClCompile>
+    <ClCompile Include="invertedtristategroupbox.cpp">
+      <Filter>Source Files\ui\Controls</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="layers.h">
@@ -555,6 +558,9 @@
     </QtMoc>
     <QtMoc Include="scenariosettingstab.h">
       <Filter>Header Files\ui\Dialogs\ScenarioSettings</Filter>
+    </QtMoc>
+    <QtMoc Include="invertedtristategroupbox.h">
+      <Filter>Header Files\ui\Controls</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>

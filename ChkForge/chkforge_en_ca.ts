@@ -10,8 +10,10 @@
     </message>
     <message>
         <location filename="abilitiestab.ui" line="46"/>
-        <source>Use Defaults</source>
-        <translation></translation>
+        <location filename="abilitiestab.ui" line="168"/>
+        <source>Use Default</source>
+        <oldsource>Use Defaults</oldsource>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="abilitiestab.ui" line="58"/>
@@ -41,11 +43,6 @@
         <location filename="abilitiestab.ui" line="147"/>
         <location filename="abilitiestab.ui" line="316"/>
         <source>Availability</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="abilitiestab.ui" line="168"/>
-        <source>Use Default</source>
         <translation></translation>
     </message>
     <message>
@@ -2626,155 +2623,153 @@ p, li { white-space: pre-wrap; }
         <translation></translation>
     </message>
     <message>
-        <location filename="unitstab.ui" line="49"/>
-        <source>Use Defaults</source>
-        <translation></translation>
+        <location filename="unitstab.ui" line="185"/>
+        <location filename="unitstab.ui" line="219"/>
+        <source>Use Default</source>
+        <oldsource>Use Defaults</oldsource>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="unitstab.ui" line="66"/>
+        <location filename="unitstab.ui" line="230"/>
         <source>Hit Points</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="unitstab.ui" line="97"/>
+        <location filename="unitstab.ui" line="261"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This is the fractional HP portion, ranging between 0 and 255 which translates to values between 0.00 and 0.99... of a hit point.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="unitstab.ui" line="115"/>
+        <location filename="unitstab.ui" line="279"/>
         <source>Shields</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="unitstab.ui" line="138"/>
+        <location filename="unitstab.ui" line="302"/>
         <source>Armour</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="unitstab.ui" line="160"/>
+        <location filename="unitstab.ui" line="324"/>
         <source>Ground Weapon</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="unitstab.ui" line="183"/>
-        <location filename="unitstab.ui" line="251"/>
+        <location filename="unitstab.ui" line="347"/>
+        <location filename="unitstab.ui" line="415"/>
         <source>Damage</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="unitstab.ui" line="203"/>
-        <location filename="unitstab.ui" line="271"/>
+        <location filename="unitstab.ui" line="367"/>
+        <location filename="unitstab.ui" line="435"/>
         <source>Bonus</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="unitstab.ui" line="228"/>
+        <location filename="unitstab.ui" line="392"/>
         <source>Air Weapon</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="unitstab.ui" line="311"/>
+        <location filename="unitstab.ui" line="475"/>
         <source>Build Time</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="unitstab.ui" line="331"/>
+        <location filename="unitstab.ui" line="495"/>
         <source>Minerals</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="unitstab.ui" line="351"/>
+        <location filename="unitstab.ui" line="515"/>
         <source>Gas</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="unitstab.ui" line="373"/>
+        <location filename="unitstab.ui" line="537"/>
         <source>Custom Name</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="unitstab.ui" line="422"/>
-        <location filename="unitstab.ui" line="511"/>
+        <location filename="unitstab.ui" line="46"/>
+        <location filename="unitstab.ui" line="104"/>
         <source>Availability</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="unitstab.ui" line="443"/>
-        <source>Use Default</source>
-        <translation></translation>
+        <location filename="unitstab.ui" line="67"/>
+        <source>Enabled by Default</source>
+        <oldsource>Use Default</oldsource>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="unitstab.ui" line="461"/>
+        <location filename="unitstab.ui" line="200"/>
         <source>Enabled for Player</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="unitstab.ui" line="474"/>
-        <source>Enabled by Default</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="unitstab.ui" line="506"/>
+        <location filename="unitstab.ui" line="99"/>
         <source>Player</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="unitstab.ui" line="516"/>
+        <location filename="unitstab.ui" line="109"/>
         <source>Player 1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="unitstab.ui" line="521"/>
+        <location filename="unitstab.ui" line="114"/>
         <source>Player 2</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="unitstab.ui" line="526"/>
+        <location filename="unitstab.ui" line="119"/>
         <source>Player 3</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="unitstab.ui" line="531"/>
+        <location filename="unitstab.ui" line="124"/>
         <source>Player 4</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="unitstab.ui" line="536"/>
+        <location filename="unitstab.ui" line="129"/>
         <source>Player 5</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="unitstab.ui" line="541"/>
+        <location filename="unitstab.ui" line="134"/>
         <source>Player 6</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="unitstab.ui" line="546"/>
+        <location filename="unitstab.ui" line="139"/>
         <source>Player 7</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="unitstab.ui" line="551"/>
+        <location filename="unitstab.ui" line="144"/>
         <source>Player 8</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="unitstab.ui" line="556"/>
+        <location filename="unitstab.ui" line="149"/>
         <source>Player 9</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="unitstab.ui" line="561"/>
+        <location filename="unitstab.ui" line="154"/>
         <source>Player 10</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="unitstab.ui" line="566"/>
+        <location filename="unitstab.ui" line="159"/>
         <source>Player 11</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="unitstab.ui" line="571"/>
+        <location filename="unitstab.ui" line="164"/>
         <source>Player 12</source>
         <translation></translation>
     </message>
@@ -2782,131 +2777,127 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>UpgradesTab</name>
     <message>
-        <location filename="upgradestab.ui" line="17"/>
-        <source>Use Defaults</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="upgradestab.ui" line="29"/>
+        <location filename="upgradestab.ui" line="297"/>
         <source>Minerals</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="upgradestab.ui" line="78"/>
-        <location filename="upgradestab.ui" line="149"/>
-        <location filename="upgradestab.ui" line="220"/>
+        <location filename="upgradestab.ui" line="346"/>
+        <location filename="upgradestab.ui" line="417"/>
+        <location filename="upgradestab.ui" line="488"/>
         <source>level</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="upgradestab.ui" line="100"/>
+        <location filename="upgradestab.ui" line="368"/>
         <source>Gas</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="upgradestab.ui" line="171"/>
+        <location filename="upgradestab.ui" line="439"/>
         <source>Upgrade Time</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="upgradestab.ui" line="265"/>
+        <location filename="upgradestab.ui" line="37"/>
         <source>Restore Defaults to Selected</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="upgradestab.ui" line="274"/>
+        <location filename="upgradestab.ui" line="46"/>
         <source>Upgrade Level</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="upgradestab.ui" line="320"/>
+        <location filename="upgradestab.ui" line="92"/>
         <source>Player</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="upgradestab.ui" line="325"/>
-        <location filename="upgradestab.ui" line="457"/>
+        <location filename="upgradestab.ui" line="97"/>
+        <location filename="upgradestab.ui" line="239"/>
         <source>Start</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="upgradestab.ui" line="330"/>
-        <location filename="upgradestab.ui" line="477"/>
+        <location filename="upgradestab.ui" line="102"/>
+        <location filename="upgradestab.ui" line="259"/>
         <source>Max</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="upgradestab.ui" line="335"/>
+        <location filename="upgradestab.ui" line="107"/>
         <source>Player 1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="upgradestab.ui" line="340"/>
+        <location filename="upgradestab.ui" line="112"/>
         <source>Player 2</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="upgradestab.ui" line="345"/>
+        <location filename="upgradestab.ui" line="117"/>
         <source>Player 3</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="upgradestab.ui" line="350"/>
+        <location filename="upgradestab.ui" line="122"/>
         <source>Player 4</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="upgradestab.ui" line="355"/>
+        <location filename="upgradestab.ui" line="127"/>
         <source>Player 5</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="upgradestab.ui" line="360"/>
+        <location filename="upgradestab.ui" line="132"/>
         <source>Player 6</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="upgradestab.ui" line="365"/>
+        <location filename="upgradestab.ui" line="137"/>
         <source>Player 7</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="upgradestab.ui" line="370"/>
+        <location filename="upgradestab.ui" line="142"/>
         <source>Player 8</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="upgradestab.ui" line="375"/>
+        <location filename="upgradestab.ui" line="147"/>
         <source>Player 9</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="upgradestab.ui" line="380"/>
+        <location filename="upgradestab.ui" line="152"/>
         <source>Player 10</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="upgradestab.ui" line="385"/>
+        <location filename="upgradestab.ui" line="157"/>
         <source>Player 11</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="upgradestab.ui" line="390"/>
+        <location filename="upgradestab.ui" line="162"/>
         <source>Player 12</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="upgradestab.ui" line="400"/>
+        <location filename="upgradestab.ui" line="172"/>
         <source>Default Start</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="upgradestab.ui" line="420"/>
+        <location filename="upgradestab.ui" line="192"/>
         <source>Default Max</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="upgradestab.ui" line="445"/>
+        <location filename="upgradestab.ui" line="230"/>
+        <location filename="upgradestab.ui" line="288"/>
         <source>Use Default</source>
         <translation></translation>
     </message>

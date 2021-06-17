@@ -40,21 +40,185 @@
      </item>
     </layout>
    </item>
+   <item row="1" column="1">
+    <widget class="QGroupBox" name="groupBox_9">
+     <property name="title">
+      <string>Availability</string>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_13" columnstretch="1,1">
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>4</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
+      <item row="0" column="1">
+       <widget class="QCheckBox" name="chkUnitEnabledGlobally">
+        <property name="text">
+         <string>Enabled by Default</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0" rowspan="4">
+       <widget class="QTreeWidget" name="unitPlyrList">
+        <property name="editTriggers">
+         <set>QAbstractItemView::NoEditTriggers</set>
+        </property>
+        <property name="selectionMode">
+         <enum>QAbstractItemView::ExtendedSelection</enum>
+        </property>
+        <property name="rootIsDecorated">
+         <bool>false</bool>
+        </property>
+        <property name="itemsExpandable">
+         <bool>false</bool>
+        </property>
+        <property name="allColumnsShowFocus">
+         <bool>true</bool>
+        </property>
+        <property name="expandsOnDoubleClick">
+         <bool>false</bool>
+        </property>
+        <attribute name="headerDefaultSectionSize">
+         <number>56</number>
+        </attribute>
+        <column>
+         <property name="text">
+          <string>Player</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Availability</string>
+         </property>
+        </column>
+        <item>
+         <property name="text">
+          <string>Player 1</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Player 2</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Player 3</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Player 4</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Player 5</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Player 6</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Player 7</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Player 8</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Player 9</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Player 10</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Player 11</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Player 12</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <spacer name="verticalSpacer_7">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="1" column="1">
+       <widget class="InvertedTriStateGroupBox" name="grpUnitPlayerDefaults">
+        <property name="title">
+         <string>Use Default</string>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_5">
+         <item>
+          <widget class="QCheckBox" name="chkUnitEnabledForPlayer">
+           <property name="minimumSize">
+            <size>
+             <width>128</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Enabled for Player</string>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
    <item row="0" column="1">
-    <widget class="TriStateGroupBox" name="grpUnitUseDefaults" native="true">
+    <widget class="InvertedTriStateGroupBox" name="grpUnitUseDefaults">
      <property name="enabled">
       <bool>true</bool>
      </property>
-     <property name="title" stdset="0">
-      <string>Use Defaults</string>
+     <property name="title">
+      <string>Use Default</string>
      </property>
-     <property name="flat" stdset="0">
-      <bool>false</bool>
-     </property>
-     <property name="checkable" stdset="0">
-      <bool>true</bool>
-     </property>
-     <property name="checked" stdset="0">
+     <property name="checkable">
       <bool>true</bool>
      </property>
      <layout class="QGridLayout" name="gridLayout_9">
@@ -368,7 +532,7 @@
        </layout>
       </item>
       <item row="0" column="0" colspan="3">
-       <widget class="QGroupBox" name="grpCustomName">
+       <widget class="TriStateGroupBox" name="grpCustomName">
         <property name="title">
          <string>Custom Name</string>
         </property>
@@ -416,186 +580,20 @@
      </layout>
     </widget>
    </item>
-   <item row="1" column="1">
-    <widget class="QGroupBox" name="groupBox_9">
-     <property name="title">
-      <string>Availability</string>
-     </property>
-     <property name="flat">
-      <bool>true</bool>
-     </property>
-     <layout class="QGridLayout" name="gridLayout_13" columnstretch="1,1">
-      <property name="leftMargin">
-       <number>0</number>
-      </property>
-      <property name="topMargin">
-       <number>4</number>
-      </property>
-      <property name="rightMargin">
-       <number>0</number>
-      </property>
-      <property name="bottomMargin">
-       <number>0</number>
-      </property>
-      <item row="1" column="1">
-       <widget class="TriStateGroupBox" name="grpUnitPlayerDefaults" native="true">
-        <property name="title" stdset="0">
-         <string>Use Default</string>
-        </property>
-        <property name="checkable" stdset="0">
-         <bool>true</bool>
-        </property>
-        <property name="checked" stdset="0">
-         <bool>true</bool>
-        </property>
-        <layout class="QVBoxLayout" name="verticalLayout_5">
-         <item>
-          <widget class="QCheckBox" name="chkUnitEnabledForPlayer">
-           <property name="minimumSize">
-            <size>
-             <width>128</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="text">
-            <string>Enabled for Player</string>
-           </property>
-           <property name="checked">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-      </item>
-      <item row="0" column="1">
-       <widget class="QCheckBox" name="chkUnitEnabledGlobally">
-        <property name="text">
-         <string>Enabled by Default</string>
-        </property>
-        <property name="checked">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0" rowspan="4">
-       <widget class="QTreeWidget" name="unitPlyrList">
-        <property name="editTriggers">
-         <set>QAbstractItemView::NoEditTriggers</set>
-        </property>
-        <property name="selectionMode">
-         <enum>QAbstractItemView::ExtendedSelection</enum>
-        </property>
-        <property name="rootIsDecorated">
-         <bool>false</bool>
-        </property>
-        <property name="itemsExpandable">
-         <bool>false</bool>
-        </property>
-        <property name="allColumnsShowFocus">
-         <bool>true</bool>
-        </property>
-        <property name="expandsOnDoubleClick">
-         <bool>false</bool>
-        </property>
-        <attribute name="headerDefaultSectionSize">
-         <number>56</number>
-        </attribute>
-        <column>
-         <property name="text">
-          <string>Player</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Availability</string>
-         </property>
-        </column>
-        <item>
-         <property name="text">
-          <string>Player 1</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Player 2</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Player 3</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Player 4</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Player 5</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Player 6</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Player 7</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Player 8</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Player 9</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Player 10</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Player 11</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Player 12</string>
-         </property>
-        </item>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <spacer name="verticalSpacer_7">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>40</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-     </layout>
-    </widget>
-   </item>
   </layout>
  </widget>
  <customwidgets>
   <customwidget>
+   <class>InvertedTriStateGroupBox</class>
+   <extends>QGroupBox</extends>
+   <header>invertedtristategroupbox.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
    <class>TriStateGroupBox</class>
-   <extends>QWidget</extends>
+   <extends>QGroupBox</extends>
    <header>tristategroupbox.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources/>

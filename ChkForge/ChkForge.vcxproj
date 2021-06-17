@@ -394,6 +394,7 @@
     <ClCompile Include="forcestab.cpp" />
     <ClCompile Include="icons.cpp" />
     <ClCompile Include="importsections.cpp" />
+    <ClCompile Include="invertedtristategroupbox.cpp" />
     <ClCompile Include="itempalette.cpp" />
     <ClCompile Include="itemtree.cpp" />
     <ClCompile Include="layers.cpp" />
@@ -435,6 +436,7 @@
     <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="invertedtristategroupbox.h" />
     <ClInclude Include="PluginManager.h" />
     <ClInclude Include="SCMDPlugin.h" />
     <ClInclude Include="SICStringList.h" />

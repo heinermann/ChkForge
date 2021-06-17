@@ -59,7 +59,7 @@
        </widget>
       </item>
       <item row="0" column="0" colspan="2">
-       <widget class="QGroupBox" name="grpForceCustomName">
+       <widget class="TriStateGroupBox" name="grpForceCustomName">
         <property name="title">
          <string>Custom Name</string>
         </property>
@@ -244,6 +244,14 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>TriStateGroupBox</class>
+   <extends>QGroupBox</extends>
+   <header>tristategroupbox.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

@@ -30,11 +30,8 @@ void TriStateGroupBox::paintEvent(QPaintEvent*)
   if (this->partiallyChecked) {
     option.state &= ~(QStyle::State_On | QStyle::State_Off);
     option.state |= QStyle::StateFlag::State_NoChange;
-  } else if (option.state & (QStyle::State_On | QStyle::State_Off)) {
-    option.state ^= QStyle::State_On | QStyle::State_Off;
   }
 
-  // Draw control
   paint.drawComplexControl(QStyle::CC_GroupBox, option);
 }
 

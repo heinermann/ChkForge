@@ -5,23 +5,23 @@
 #include <QString>
 
 class TriStateGroupBox : public QGroupBox {
-  Q_OBJECT
+  Q_OBJECT;
 
 public:
   explicit TriStateGroupBox(QWidget* parent = nullptr);
   explicit TriStateGroupBox(const QString& title, QWidget* parent = nullptr);
 
-  // Used to invert the checkbox and draw tri-state
+  // Used to draw tri-state
   void paintEvent(QPaintEvent*) override;
 
   void setPartiallyChecked(bool partialCheck = true);
 
-
-private:
-  Q_DISABLE_COPY(TriStateGroupBox)
-
+protected:
   bool partiallyChecked = false;
 
+private:
+  Q_DISABLE_COPY(TriStateGroupBox);
+  
   void wasClicked(bool checked);
   void init();
 };
