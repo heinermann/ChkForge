@@ -5,7 +5,10 @@
 #include <QButtonGroup>
 #include <QTreeWidget>
 
+#include <memory>
+
 #include "scenariosettingstab.h"
+#include "RadioDataMapper.h"
 
 namespace Ui {
   class PlayersTab;
@@ -19,6 +22,7 @@ public:
 
   void setTabFocus() override;
   void updatePlayerTree();
+  void setupDataMappers();
 
 private:
   void init();
@@ -30,11 +34,12 @@ private:
 private:
   Ui::PlayersTab* ui;
 
+  std::shared_ptr<ChkForge::RadioDataMapper<Sc::Player::SlotType>> rdoSlot;
+  std::shared_ptr<ChkForge::RadioDataMapper<Chk::Race>> rdoRace;
+  std::shared_ptr<ChkForge::RadioDataMapper<Chk::Force>> rdoForce;
+
 private slots:
   void on_plyrList_itemSelectionChanged();
-  void on_btnGroupController_idClicked(int id);
-  void on_btnGroupRace_idClicked(int id);
-  void on_btnGroupPlayerForce_idClicked(int id);
 
 signals:
   void updateData();

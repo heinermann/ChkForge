@@ -18,6 +18,7 @@ ScenarioSettings::ScenarioSettings(QWidget* parent, int startTab) :
   ui->playersTab->settings = &settings;
   ui->forcesTab->settings = &settings;
 
+  ui->playersTab->setupDataMappers();
   ui->forcesTab->setupDataMappers();
 
   connect(ui->playersTab, &PlayersTab::updateData, ui->forcesTab, &ForcesTab::updateForcesTree);

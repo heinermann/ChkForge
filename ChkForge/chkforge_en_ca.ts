@@ -407,7 +407,7 @@ Some select Starforge code snippets and resources.
 <context>
     <name>ForcesTab</name>
     <message>
-        <location filename="forcestab.cpp" line="104"/>
+        <location filename="forcestab.cpp" line="105"/>
         <source>Map specified</source>
         <translation></translation>
     </message>

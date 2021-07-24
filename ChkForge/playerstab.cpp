@@ -44,6 +44,16 @@ void PlayersTab::init() {
   ui->btnGroupPlayerForce->setId(ui->radioForceNone, 4);
 }
 
+void PlayersTab::setupDataMappers() {
+  auto updateFn = [&]() {
+    this->updatePlayerTree();
+  };
+
+  rdoSlot = std::make_shared<ChkForge::RadioDataMapper<Sc::Player::SlotType>>(ui->plyrList, ui->btnGroupController, settings->ownr.slotType, updateFn);
+  rdoRace = std::make_shared<ChkForge::RadioDataMapper<Chk::Race>>(ui->plyrList, ui->btnGroupRace, settings->side.playerRaces, updateFn);
+  rdoForce = std::make_shared<ChkForge::RadioDataMapper<Chk::Force>>(ui->plyrList, ui->btnGroupPlayerForce, settings->forc.playerForce, updateFn);
+}
+
 PlayersTab::~PlayersTab() {
   delete ui;
 }
@@ -75,9 +85,6 @@ void PlayersTab::on_plyrList_itemSelectionChanged() {
   ui->playerOptionsWidget->setEnabled(anySelected);
   if (!anySelected) return;
 
-  std::set<unsigned> uniqueControllers;
-  std::set<unsigned> uniqueRaces;
-  std::set<unsigned> uniqueForces;
   std::set<unsigned> uniqueColors;
   for (QTreeWidgetItem* itm : ui->plyrList->selectedItems()) {
     int player_id = playerIdFrom(itm);
@@ -86,54 +93,12 @@ void PlayersTab::on_plyrList_itemSelectionChanged() {
     unsigned force = settings->forc.playerForce[player_id];
     unsigned color = settings->colr.playerColor[player_id];
 
-    uniqueControllers.insert(controller);
-    uniqueRaces.insert(race);
-    uniqueForces.insert(force);
     uniqueColors.insert(color);
   }
-
-  if (uniqueControllers.size() > 1)
-    clearSelectedButtonGroup(ui->btnGroupController);
-  else
-    setSelectedButtonGroup(ui->btnGroupController, *uniqueControllers.begin());
-
-  if (uniqueRaces.size() > 1)
-    clearSelectedButtonGroup(ui->btnGroupRace);
-  else
-    setSelectedButtonGroup(ui->btnGroupRace, *uniqueRaces.begin());
-
-  if (uniqueForces.size() > 1)
-    clearSelectedButtonGroup(ui->btnGroupPlayerForce);
-  else
-    setSelectedButtonGroup(ui->btnGroupPlayerForce, *uniqueForces.begin());
 }
 
 int PlayersTab::playerIdFrom(QTreeWidgetItem* itm) {
   return itm->data(0, Qt::UserRole).toInt();
-}
-
-void PlayersTab::on_btnGroupController_idClicked(int id) {
-  for (QTreeWidgetItem* itm : ui->plyrList->selectedItems()) {
-    int player_id = playerIdFrom(itm);
-    settings->ownr.slotType[player_id] = Sc::Player::SlotType(id);
-  }
-  updatePlayerTree();
-}
-
-void PlayersTab::on_btnGroupRace_idClicked(int id) {
-  for (QTreeWidgetItem* itm : ui->plyrList->selectedItems()) {
-    int player_id = playerIdFrom(itm);
-    settings->side.playerRaces[player_id] = Chk::Race(id);
-  }
-  updatePlayerTree();
-}
-
-void PlayersTab::on_btnGroupPlayerForce_idClicked(int id) {
-  for (QTreeWidgetItem* itm : ui->plyrList->selectedItems()) {
-    int player_id = playerIdFrom(itm);
-    settings->forc.playerForce[player_id] = Chk::Force(id);
-  }
-  updatePlayerTree();
 }
 
 void PlayersTab::updatePlayerTree() {
