@@ -2328,11 +2328,7 @@ struct state_functions {
 				}
 				kill_unit(u);
 			} else {
-				thingy_t* t = create_thingy(get_sprite_type(SpriteTypes::SPRITEID_Zerg_Building_Spawn_Small), u->sprite->position, 0);
-				if (t) {
-					t->sprite->elevation_level = u->sprite->elevation_level + 1;
-					if (!us_hidden(t)) set_sprite_visibility(t->sprite, tile_visibility(t->sprite->position));
-				}
+				create_thingy_ex(get_sprite_type(SpriteTypes::SPRITEID_Zerg_Building_Spawn_Small), u->sprite->position, 0, u->sprite->elevation_level + 1);
 				const unit_type_t* build_type = u->unit_type;
 				morph_unit(u, get_unit_type(UnitTypes::Zerg_Drone));
 				finish_building_unit(u);
@@ -3404,14 +3400,10 @@ struct state_functions {
 		for (size_t i = offset_from; i != offset_to + 1; ++i) {
 			xy offset = get_image_lo_offset(sprite->main_image, lo_index, i);
 			if (offset.x != 127 && offset.y != 127) {
-				auto* t = create_thingy(get_sprite_type(sprite_id), sprite->position + offset, 0);
-				if (t) {
-					t->sprite->elevation_level = sprite->elevation_level + 1;
-					if (!us_hidden(t)) set_sprite_visibility(t->sprite, tile_visibility(t->sprite->position));
-					if (flipped) {
-						for (auto* image : ptr(t->sprite->images)) {
-							set_image_frame_index_offset(image, image->frame_index_offset, true);
-						}
+				auto* t = create_thingy_ex(get_sprite_type(sprite_id), sprite->position + offset, 0, sprite->elevation_level + 1);
+				if (t && flipped) {
+					for (auto* image : ptr(t->sprite->images)) {
+						set_image_frame_index_offset(image, image->frame_index_offset, true);
 					}
 				}
 			}
@@ -4506,11 +4498,7 @@ struct state_functions {
 		} else {
 			if (u_hallucination(u)) {
 				play_sound(619, u);
-				thingy_t* t = create_thingy(get_sprite_type(SpriteTypes::SPRITEID_Hallucination_Death1), u->sprite->position, 0);
-				if (t) {
-					t->sprite->elevation_level = u->sprite->elevation_level + 1;
-					if (!us_hidden(t)) set_sprite_visibility(t->sprite, tile_visibility(t->sprite->position));
-				}
+				create_thingy_ex(get_sprite_type(SpriteTypes::SPRITEID_Hallucination_Death1), u->sprite->position, 0, u->sprite->elevation_level + 1);
 			}
 			hide_unit(u);
 			destroy_unit(u);
@@ -6216,12 +6204,7 @@ struct state_functions {
 			sprite_run_anim(u->sprite, iscript_anims::SpecialState1);
 			xy pos;
 			if (u->connected_unit) pos = u->connected_unit->order_target.pos;
-			thingy_t* t = create_thingy(get_sprite_type(SpriteTypes::SPRITEID_Nuke_Target_Dot), pos, u->owner);
-			u->ghost.nuke_dot = t;
-			if (t) {
-				t->sprite->elevation_level = u->sprite->elevation_level + 1;
-				if (!us_hidden(t)) set_sprite_visibility(t->sprite, tile_visibility(t->sprite->position));
-			}
+			u->ghost.nuke_dot = create_thingy_ex(get_sprite_type(SpriteTypes::SPRITEID_Nuke_Target_Dot), pos, u->owner, u->sprite->elevation_level + 1);
 			u->order_state = 6;
 		} else if (u->order_state == 6) {
 			if (!u->connected_unit || u->connected_unit->order_state == 5) {
@@ -7141,11 +7124,7 @@ struct state_functions {
 			}
 			u->energy -= fp8::integer(get_tech_type(TechTypes::Recall)->energy_cost);
 			if (u->order_target.unit) u->order_target.pos = u->order_target.unit->sprite->position;
-			thingy_t* t = create_thingy(get_sprite_type(SpriteTypes::SPRITEID_Recall_Field), u->order_target.pos, 0);
-			if (t) {
-				t->sprite->elevation_level = u->sprite->elevation_level + 1;
-				if (!us_hidden(t)) set_sprite_visibility(t->sprite, tile_visibility(t->sprite->position));
-			}
+			create_thingy_ex(get_sprite_type(SpriteTypes::SPRITEID_Recall_Field), u->order_target.pos, 0, u->sprite->elevation_level + 1);
 			play_sound(550 + lcg_rand(17) % 2, u->order_target.pos);
 			u->main_order_timer = 22;
 			u->order_state = 1;
@@ -7190,11 +7169,7 @@ struct state_functions {
 				move_unit(target, r.second);
 				refresh_unit_position(target);
 				if (!unit_is(target, UnitTypes::Zerg_Cocoon)) set_unit_order(target, target->unit_type->return_to_idle);
-				thingy_t* t = create_thingy(get_sprite_type(SpriteTypes::SPRITEID_Recall_Field), r.second, 0);
-				if (t) {
-					t->sprite->elevation_level = target->sprite->elevation_level + 1;
-					if (!us_hidden(t)) set_sprite_visibility(t->sprite, tile_visibility(t->sprite->position));
-				}
+				create_thingy_ex(get_sprite_type(SpriteTypes::SPRITEID_Recall_Field), r.second, 0, target->sprite->elevation_level + 1);
 				if (unit_is_ghost(target) && target->connected_unit && unit_is(target->connected_unit, UnitTypes::Terran_Nuclear_Missile)) {
 					target->connected_unit->connected_unit = nullptr;
 					target->connected_unit = nullptr;
@@ -7554,11 +7529,7 @@ struct state_functions {
 				play_sound(1061, target);
 				if (unit_dying(target)) {
 					SpriteTypes sprite_id = (SpriteTypes)((int)SpriteTypes::SPRITEID_Feedback_Hit_Small + unit_sprite_size(target));
-					thingy_t* t = create_thingy(get_sprite_type(sprite_id), u->sprite->position, 0);
-					if (t) {
-						t->sprite->elevation_level = u->sprite->elevation_level + 1;
-						if (!us_hidden(t)) set_sprite_visibility(t->sprite, tile_visibility(t->sprite->position));
-					}
+					create_thingy_ex(get_sprite_type(sprite_id), u->sprite->position, 0, u->sprite->elevation_level + 1);
 				} else {
 					create_sized_image(u, ImageTypes::IMAGEID_Feedback_Small);
 				}
@@ -12472,10 +12443,8 @@ struct state_functions {
 			heading = direction_from_index(16 * 2 * index);
 		}
 		xy offset = get_image_lo_offset(u->connected_unit->sprite->main_image, 0, index);
-		auto* t = create_thingy(sprite, u->sprite->position + offset, 0);
+		auto* t = create_thingy_ex(sprite, u->sprite->position + offset, 0, u->sprite->elevation_level + 1);
 		if (t) {
-			t->sprite->elevation_level = u->sprite->elevation_level + 1;
-			if (!us_hidden(t)) set_sprite_visibility(t->sprite, tile_visibility(t->sprite->position));
 			for (image_t* i : ptr(t->sprite->images)) {
 				set_image_heading(i, heading);
 			}
@@ -13918,9 +13887,7 @@ struct state_functions {
 	}
 
 	void ensnare(xy pos, const unit_t* source_unit) {
-		thingy_t* t = create_thingy(get_sprite_type(SpriteTypes::SPRITEID_Ensnare), pos, 0);
-		t->sprite->elevation_level = 19;
-		if (!us_hidden(t)) set_sprite_visibility(t->sprite, tile_visibility(t->sprite->position));
+		create_thingy_ex(get_sprite_type(SpriteTypes::SPRITEID_Ensnare), pos, 0, 19);
 		for (unit_t* target : find_units_noexpand(square_at(pos, 64))) {
 			if (target == source_unit) continue;
 			if (ut_building(target)) continue;
@@ -13984,11 +13951,7 @@ struct state_functions {
 	}
 
 	void stasis_field(xy pos, unit_t* source_unit) {
-		thingy_t* t = create_thingy(get_sprite_type(SpriteTypes::SPRITEID_Stasis_Field_Hit), pos, 0);
-		if (t) {
-			t->sprite->elevation_level = 17;
-			if (!us_hidden(t)) set_sprite_visibility(t->sprite, tile_visibility(t->sprite->position));
-		}
+		create_thingy_ex(get_sprite_type(SpriteTypes::SPRITEID_Stasis_Field_Hit), pos, 0, 17);
 		for (unit_t* target : find_units_noexpand(square_at(pos, 48))) {
 			if (target == source_unit) continue;
 			if (u_invincible(target)) continue;
@@ -14007,11 +13970,7 @@ struct state_functions {
 	}
 
 	void maelstrom(xy pos, unit_t* source_unit) {
-		thingy_t* t = create_thingy(get_sprite_type(SpriteTypes::SPRITEID_Maelstrom_Hit), pos, 0);
-		if (t) {
-			t->sprite->elevation_level = 17;
-			if (!us_hidden(t)) set_sprite_visibility(t->sprite, tile_visibility(t->sprite->position));
-		}
+		create_thingy_ex(get_sprite_type(SpriteTypes::SPRITEID_Maelstrom_Hit), pos, 0, 17);
 		play_sound(1064, source_unit);
 		for (unit_t* target : find_units_noexpand(square_at(pos, 48))) {
 			if (u_hallucination(target)) {
@@ -14549,12 +14508,16 @@ struct state_functions {
 		return t;
 	}
 
-	thingy_t* create_thingy_at_image(const image_t* parent_image, const sprite_type_t* sprite_type, xy offset, int elevation_level) {
-		thingy_t* t = create_thingy(sprite_type, parent_image->sprite->position + parent_image->offset + offset, 0);
+	thingy_t* create_thingy_ex(const sprite_type_t* sprite_type, xy pos, int owner, int elevation_level) {
+		thingy_t* t = create_thingy(sprite_type, pos, owner);
 		if (!t) return nullptr;
 		t->sprite->elevation_level = elevation_level;
 		if (!us_hidden(t)) set_sprite_visibility(t->sprite, tile_visibility(t->sprite->position));
 		return t;
+	}
+
+	thingy_t* create_thingy_at_image(const image_t* parent_image, const sprite_type_t* sprite_type, xy offset, int elevation_level) {
+		return create_thingy_ex(sprite_type, parent_image->sprite->position + parent_image->offset + offset, 0, elevation_level);
 	}
 
 	bool unit_tech_target_valid(const unit_t* u, const tech_type_t* tech, const unit_t* target) const {
