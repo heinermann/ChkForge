@@ -622,44 +622,38 @@ struct state_functions {
 	}
 
 	bool is_in_map_bounds(const unit_type_t* unit_type, xy pos) const {
-		if (pos.x - unit_type->dimensions.from.x < 0) return false;
-		if (pos.y - unit_type->dimensions.from.y < 0) return false;
-		if ((size_t)(pos.x + unit_type->dimensions.to.x) >= game_st.map_width) return false;
-		if ((size_t)(pos.y + unit_type->dimensions.to.y) >= game_st.map_height) return false;
-		return true;
+		return pos.x - unit_type->dimensions.from.x >= 0 &&
+			pos.y - unit_type->dimensions.from.y >= 0 &&
+			(size_t)(pos.x + unit_type->dimensions.to.x) < game_st.map_width &&
+			(size_t)(pos.y + unit_type->dimensions.to.y) < game_st.map_height;
 	}
 	bool is_in_map_bounds(rect area) const {
-		if (area.from.x < 0) return false;
-		if ((size_t)area.to.x > game_st.map_width) return false;
-		if (area.from.y < 0) return false;
-		if ((size_t)area.to.y > game_st.map_height) return false;
-		return true;
+		return area.from.x >= 0 &&
+			area.from.y >= 0 &&
+			(size_t)area.to.x <= game_st.map_width &&
+			(size_t)area.to.y <= game_st.map_height;
 	}
 	bool is_in_inner_map_bounds(rect area) const {
-		if (area.from.x < 0) return false;
-		if ((size_t)area.to.x >= game_st.map_width) return false;
-		if (area.from.y < 0) return false;
-		if ((size_t)area.to.y >= game_st.map_height) return false;
-		return true;
+		return area.from.x >= 0 &&
+			area.from.y >= 0 &&
+			is_in_map_bounds(area.to);
 	}
 	bool is_in_map_bounds(xy pos) const {
 		return (size_t)pos.x < game_st.map_width && (size_t)pos.y < game_st.map_height;
 	}
 
 	bool is_in_bounds(rect area, rect bounds) const {
-		if (area.from.x < bounds.from.x) return false;
-		if (area.to.x > bounds.to.x) return false;
-		if (area.from.y < bounds.from.y) return false;
-		if (area.to.y > bounds.to.y) return false;
-		return true;
+		return area.from.x >= bounds.from.x &&
+			area.from.y >= bounds.from.y &&
+			area.to.x <= bounds.to.x &&
+			area.to.y <= bounds.to.y;
 	}
 
 	bool is_in_inner_bounds(rect area, rect bounds) const {
-		if (area.from.x < bounds.from.x) return false;
-		if (area.to.x >= bounds.to.x) return false;
-		if (area.from.y < bounds.from.y) return false;
-		if (area.to.y >= bounds.to.y) return false;
-		return true;
+		return area.from.x >= bounds.from.x &&
+			area.from.y >= bounds.from.y &&
+			area.to.x < bounds.to.x &&
+			area.to.y < bounds.to.y;
 	}
 
 	bool is_in_bounds(xy pos, rect bounds) const {
@@ -751,6 +745,7 @@ struct state_functions {
 		size_t index = tile_index(pos);
 		auto& tile = st.tiles[index];
 		if (tile.flags & tile_t::flag_has_creep) return true;
+
 		if (tile.flags & tile_t::flag_partially_walkable) {
 			size_t ux = pos.x;
 			size_t uy = pos.y;
@@ -758,8 +753,8 @@ struct state_functions {
 			int flags = vf4().at(megatile_index).flags[uy / 8 % 4 * 4 + ux / 8 % 4];
 			return flags & vf4_entry::flag_walkable;
 		}
-		if (tile.flags & tile_t::flag_walkable) return true;
-		return false;
+
+		return tile.flags & tile_t::flag_walkable;
 	}
 
 	void tiles_flags_and(size_t offset_x, size_t offset_y, size_t width, size_t height, int flags) {
@@ -802,13 +797,12 @@ struct state_functions {
 	}
 
 	bool unit_type_spreads_creep(unit_type_autocast ut, bool unit_is_completed = true) const {
-		if (unit_is(ut, UnitTypes::Zerg_Hatchery) && unit_is_completed) return true;
-		if (unit_is(ut, UnitTypes::Zerg_Lair)) return true;
-		if (unit_is(ut, UnitTypes::Zerg_Hive)) return true;
-		if (unit_is(ut, UnitTypes::Zerg_Creep_Colony) && unit_is_completed) return true;
-		if (unit_is(ut, UnitTypes::Zerg_Spore_Colony)) return true;
-		if (unit_is(ut, UnitTypes::Zerg_Sunken_Colony)) return true;
-		return false;
+		return (unit_is(ut, UnitTypes::Zerg_Hatchery) && unit_is_completed)
+			|| (unit_is(ut, UnitTypes::Zerg_Lair))
+			|| (unit_is(ut, UnitTypes::Zerg_Hive))
+			|| (unit_is(ut, UnitTypes::Zerg_Creep_Colony) && unit_is_completed)
+			|| (unit_is(ut, UnitTypes::Zerg_Spore_Colony))
+			|| (unit_is(ut, UnitTypes::Zerg_Sunken_Colony));
 	}
 
 	int visible_hp_plus_shields(const unit_t* u) const {
@@ -941,10 +935,9 @@ struct state_functions {
 	}
 
 	bool unit_is_mineral_field(unit_type_autocast ut) const {
-		if (ut->id == UnitTypes::Resource_Mineral_Field) return true;
-		if (ut->id == UnitTypes::Resource_Mineral_Field_Type_2) return true;
-		if (ut->id == UnitTypes::Resource_Mineral_Field_Type_3) return true;
-		return false;
+		return ut->id == UnitTypes::Resource_Mineral_Field
+			|| ut->id == UnitTypes::Resource_Mineral_Field_Type_2
+			|| ut->id == UnitTypes::Resource_Mineral_Field_Type_3;
 	}
 
 	void set_unit_resources(unit_t* u, int resources) {
@@ -963,11 +956,7 @@ struct state_functions {
 	}
 
 	bool unit_is_disabled(const unit_t* u) const {
-		if (u_disabled(u)) return true;
-		if (u->lockdown_timer) return true;
-		if (u->stasis_timer) return true;
-		if (u->maelstrom_timer) return true;
-		return false;
+		return u_disabled(u) || u->lockdown_timer || u->stasis_timer || u->maelstrom_timer;
 	}
 
 	image_t* find_image(sprite_t* sprite, ImageTypes first_id, ImageTypes last_id) const {
@@ -1310,50 +1299,37 @@ struct state_functions {
 	}
 
 	bool unit_is_hatchery(unit_type_autocast ut) const {
-		if (unit_is(ut, UnitTypes::Zerg_Hatchery)) return true;
-		if (unit_is(ut, UnitTypes::Zerg_Lair)) return true;
-		if (unit_is(ut, UnitTypes::Zerg_Hive)) return true;
-		return false;
+		return unit_is(ut, UnitTypes::Zerg_Hatchery)
+			|| unit_is(ut, UnitTypes::Zerg_Lair)
+			|| unit_is(ut, UnitTypes::Zerg_Hive);
 	}
 
 	bool unit_is_marine(unit_type_autocast ut) const {
-		if (unit_is(ut, UnitTypes::Terran_Marine)) return true;
-		if (unit_is(ut, UnitTypes::Hero_Jim_Raynor_Marine)) return true;
-		return false;
+		return unit_is(ut, UnitTypes::Terran_Marine) || unit_is(ut, UnitTypes::Hero_Jim_Raynor_Marine);
 	}
 
 	bool unit_is_firebat(unit_type_autocast ut) const {
-		if (unit_is(ut, UnitTypes::Terran_Firebat)) return true;
-		if (unit_is(ut, UnitTypes::Hero_Gui_Montag)) return true;
-		return false;
+		return unit_is(ut, UnitTypes::Terran_Firebat) || unit_is(ut, UnitTypes::Hero_Gui_Montag);
 	}
 
 	bool unit_is_ghost(unit_type_autocast ut) const {
-		if (unit_is(ut, UnitTypes::Terran_Ghost)) return true;
-		if (unit_is(ut, UnitTypes::Hero_Sarah_Kerrigan)) return true;
-		if (unit_is(ut, UnitTypes::Hero_Alexei_Stukov)) return true;
-		if (unit_is(ut, UnitTypes::Hero_Samir_Duran)) return true;
-		if (unit_is(ut, UnitTypes::Hero_Infested_Duran)) return true;
-		return false;
+		return unit_is(ut, UnitTypes::Terran_Ghost)
+			|| unit_is(ut, UnitTypes::Hero_Sarah_Kerrigan)
+			|| unit_is(ut, UnitTypes::Hero_Alexei_Stukov)
+			|| unit_is(ut, UnitTypes::Hero_Samir_Duran)
+			|| unit_is(ut, UnitTypes::Hero_Infested_Duran);
 	}
 
 	bool unit_is_wraith(unit_type_autocast ut) const {
-		if (unit_is(ut, UnitTypes::Terran_Wraith)) return true;
-		if (unit_is(ut, UnitTypes::Hero_Tom_Kazansky)) return true;
-		return false;
+		return unit_is(ut, UnitTypes::Terran_Wraith) || unit_is(ut, UnitTypes::Hero_Tom_Kazansky);
 	}
 
 	bool unit_is_map_revealer(unit_type_autocast ut) const {
-		if (unit_is(ut, UnitTypes::Spell_Scanner_Sweep)) return true;
-		if (unit_is(ut, UnitTypes::Special_Map_Revealer)) return true;
-		return false;
+		return unit_is(ut, UnitTypes::Spell_Scanner_Sweep) || unit_is(ut, UnitTypes::Special_Map_Revealer);
 	}
 
 	bool unit_is_refinery(unit_type_autocast ut) const {
-		if (unit_is(ut, UnitTypes::Terran_Refinery)) return true;
-		if (unit_is(ut, UnitTypes::Protoss_Assimilator)) return true;
-		if (unit_is(ut, UnitTypes::Zerg_Extractor)) return true;
-		return false;
+		return unit_is(ut, UnitTypes::Terran_Refinery) || unit_is(ut, UnitTypes::Protoss_Assimilator) || unit_is(ut, UnitTypes::Zerg_Extractor);
 	}
 
 	bool unit_is_non_flag_beacon(unit_type_autocast ut) const {
@@ -1377,68 +1353,48 @@ struct state_functions {
 	}
 
 	bool unit_is_defiler(unit_type_autocast ut) const {
-		if (unit_is(ut, UnitTypes::Zerg_Defiler)) return true;
-		if (unit_is(ut, UnitTypes::Hero_Unclean_One)) return true;
-		return false;
+		return unit_is(ut, UnitTypes::Zerg_Defiler) || unit_is(ut, UnitTypes::Hero_Unclean_One);
 	}
 
 	bool unit_is_ultralisk(unit_type_autocast ut) const {
-		if (unit_is(ut, UnitTypes::Zerg_Ultralisk)) return true;
-		if (unit_is(ut, UnitTypes::Hero_Torrasque)) return true;
-		return false;
+		return unit_is(ut, UnitTypes::Zerg_Ultralisk) || unit_is(ut, UnitTypes::Hero_Torrasque);
 	}
 
 	bool unit_is_arbiter(unit_type_autocast ut) const {
-		if (unit_is(ut, UnitTypes::Protoss_Arbiter)) return true;
-		if (unit_is(ut, UnitTypes::Hero_Danimoth)) return true;
-		return false;
+		return unit_is(ut, UnitTypes::Protoss_Arbiter) || unit_is(ut, UnitTypes::Hero_Danimoth);
 	}
 
 	bool unit_is_egg(unit_type_autocast ut) const {
-		if (unit_is(ut, UnitTypes::Zerg_Egg)) return true;
-		if (unit_is(ut, UnitTypes::Zerg_Cocoon)) return true;
-		if (unit_is(ut, UnitTypes::Zerg_Lurker_Egg)) return true;
-		return false;
+		return unit_is(ut, UnitTypes::Zerg_Egg) || unit_is(ut, UnitTypes::Zerg_Cocoon) || unit_is(ut, UnitTypes::Zerg_Lurker_Egg);
 	}
 
 	bool unit_is_goliath(unit_type_autocast ut) const {
-		if (unit_is(ut, UnitTypes::Terran_Goliath)) return true;
-		if (unit_is(ut, UnitTypes::Hero_Alan_Schezar)) return true;
-		return false;
+		return unit_is(ut, UnitTypes::Terran_Goliath) || unit_is(ut, UnitTypes::Hero_Alan_Schezar);
 	}
 
 	bool unit_is_critter(unit_type_autocast ut) const {
-		if (unit_is(ut, UnitTypes::Critter_Rhynadon)) return true;
-		if (unit_is(ut, UnitTypes::Critter_Bengalaas)) return true;
-		if (unit_is(ut, UnitTypes::Critter_Ragnasaur)) return true;
-		if (unit_is(ut, UnitTypes::Critter_Scantid)) return true;
-		if (unit_is(ut, UnitTypes::Critter_Kakaru)) return true;
-		if (unit_is(ut, UnitTypes::Critter_Ursadon)) return true;
-		return false;
+		return unit_is(ut, UnitTypes::Critter_Rhynadon)
+			|| unit_is(ut, UnitTypes::Critter_Bengalaas)
+			|| unit_is(ut, UnitTypes::Critter_Ragnasaur)
+			|| unit_is(ut, UnitTypes::Critter_Scantid)
+			|| unit_is(ut, UnitTypes::Critter_Kakaru)
+			|| unit_is(ut, UnitTypes::Critter_Ursadon);
 	}
 
 	bool unit_is_sieged_tank(unit_type_autocast ut) const {
-		if (unit_is(ut, UnitTypes::Terran_Siege_Tank_Siege_Mode)) return true;
-		if (unit_is(ut, UnitTypes::Hero_Edmund_Duke_Siege_Mode)) return true;
-		return false;
+		return unit_is(ut, UnitTypes::Terran_Siege_Tank_Siege_Mode) || unit_is(ut, UnitTypes::Hero_Edmund_Duke_Siege_Mode);
 	}
 
 	bool unit_is_unsieged_tank(unit_type_autocast ut) const {
-		if (unit_is(ut, UnitTypes::Terran_Siege_Tank_Tank_Mode)) return true;
-		if (unit_is(ut, UnitTypes::Hero_Edmund_Duke_Tank_Mode)) return true;
-		return false;
+		return unit_is(ut, UnitTypes::Terran_Siege_Tank_Tank_Mode) || unit_is(ut, UnitTypes::Hero_Edmund_Duke_Tank_Mode);
 	}
 
 	bool unit_is_normal_tank(unit_type_autocast ut) const {
-	  if (unit_is(ut, UnitTypes::Terran_Siege_Tank_Tank_Mode)) return true;
-	  if (unit_is(ut, UnitTypes::Terran_Siege_Tank_Siege_Mode)) return true;
-	  return false;
+		return unit_is(ut, UnitTypes::Terran_Siege_Tank_Tank_Mode) || unit_is(ut, UnitTypes::Terran_Siege_Tank_Siege_Mode);
 	}
 
 	bool unit_is_hero_tank(unit_type_autocast ut) const {
-	  if (unit_is(ut, UnitTypes::Hero_Edmund_Duke_Tank_Mode)) return true;
-	  if (unit_is(ut, UnitTypes::Hero_Edmund_Duke_Siege_Mode)) return true;
-	  return false;
+		return unit_is(ut, UnitTypes::Hero_Edmund_Duke_Tank_Mode) || unit_is(ut, UnitTypes::Hero_Edmund_Duke_Siege_Mode);
 	}
 
 	bool unit_is_tank(unit_type_autocast ut) const {
@@ -1468,9 +1424,7 @@ struct state_functions {
 	}
 
 	bool unit_is_fighter(unit_type_autocast ut) const {
-		if (unit_is(ut, UnitTypes::Protoss_Interceptor)) return true;
-		if (unit_is(ut, UnitTypes::Protoss_Scarab)) return true;
-		return false;
+		return unit_is(ut, UnitTypes::Protoss_Interceptor) || unit_is(ut, UnitTypes::Protoss_Scarab);
 	}
 
 	bool unit_is_undetected(const unit_t* u, int owner) const {
@@ -1857,10 +1811,9 @@ struct state_functions {
 	}
 
 	bool unit_can_attack(const unit_t* u) const {
-		if (unit_or_subunit_ground_weapon(u) || unit_or_subunit_air_weapon(u)) return true;
-		if (unit_interceptor_count(u)) return true;
-		if (unit_scarab_count(u)) return true;
-		return false;
+		return unit_or_subunit_ground_weapon(u) || unit_or_subunit_air_weapon(u)
+			|| unit_interceptor_count(u)
+			|| unit_scarab_count(u);
 	}
 
 	int unit_target_attack_priority(const unit_t* u, const unit_t* target) const {
@@ -3468,17 +3421,17 @@ struct state_functions {
 
 	bool unit_can_attach_addon(const unit_t* u, const unit_t* addon) const {
 		if (unit_is(addon, UnitTypes::Terran_Comsat_Station)) {
-			if (unit_is(u, UnitTypes::Terran_Command_Center)) return true;
+			return unit_is(u, UnitTypes::Terran_Command_Center);
 		} else if (unit_is(addon, UnitTypes::Terran_Nuclear_Silo)) {
-			if (unit_is(u, UnitTypes::Terran_Command_Center)) return true;
+			return unit_is(u, UnitTypes::Terran_Command_Center);
 		} else if (unit_is(addon, UnitTypes::Terran_Control_Tower)) {
-			if (unit_is(u, UnitTypes::Terran_Starport)) return true;
+			return unit_is(u, UnitTypes::Terran_Starport);
 		} else if (unit_is(addon, UnitTypes::Terran_Covert_Ops)) {
-			if (unit_is(u, UnitTypes::Terran_Science_Facility)) return true;
+			return unit_is(u, UnitTypes::Terran_Science_Facility);
 		} else if (unit_is(addon, UnitTypes::Terran_Physics_Lab)) {
-			if (unit_is(u, UnitTypes::Terran_Science_Facility)) return true;
+			return unit_is(u, UnitTypes::Terran_Science_Facility);
 		} else if (unit_is(addon, UnitTypes::Terran_Machine_Shop)) {
-			if (unit_is(u, UnitTypes::Terran_Factory)) return true;
+			return unit_is(u, UnitTypes::Terran_Factory);
 		}
 		return false;
 	}
@@ -12236,12 +12189,11 @@ struct state_functions {
 	}
 
 	bool unit_type_is_morphing_building(unit_type_autocast ut) const {
-		if (unit_is(ut, UnitTypes::Zerg_Hive)) return true;
-		if (unit_is(ut, UnitTypes::Zerg_Lair)) return true;
-		if (unit_is(ut, UnitTypes::Zerg_Greater_Spire)) return true;
-		if (unit_is(ut, UnitTypes::Zerg_Spore_Colony)) return true;
-		if (unit_is(ut, UnitTypes::Zerg_Sunken_Colony)) return true;
-		return false;
+		return unit_is(ut, UnitTypes::Zerg_Hive)
+			|| unit_is(ut, UnitTypes::Zerg_Lair)
+			|| unit_is(ut, UnitTypes::Zerg_Greater_Spire)
+			|| unit_is(ut, UnitTypes::Zerg_Spore_Colony)
+			|| unit_is(ut, UnitTypes::Zerg_Sunken_Colony);
 	}
 
 	bool unit_is_morphing_building(const unit_t* u) const {
@@ -12505,10 +12457,7 @@ struct state_functions {
 	}
 
 	bool unit_can_fire_from_bunker(unit_t* u) {
-		if (unit_is_marine(u)) return true;
-		if (unit_is_firebat(u)) return true;
-		if (unit_is_ghost(u)) return true;
-		return false;
+		return unit_is_marine(u) || unit_is_firebat(u) || unit_is_ghost(u);
 	}
 
 	void create_bunker_fire_animation(unit_t* u) {
@@ -13473,30 +13422,29 @@ struct state_functions {
 
 	bool is_spell(const weapon_type_t* weapon_type) {
 		auto id = weapon_type->id;
-		if (id == WeaponTypes::Spider_Mines) return true;
-		if (id == WeaponTypes::Lockdown) return true;
-		if (id == WeaponTypes::EMP_Shockwave) return true;
-		if (id == WeaponTypes::Irradiate) return true;
-		if (id == WeaponTypes::unk_50) return true;
-		if (id == WeaponTypes::unk_51) return true;
-		if (id == WeaponTypes::Suicide_Infested_Terran) return true;
-		if (id == WeaponTypes::Parasite) return true;
-		if (id == WeaponTypes::Spawn_Broodlings) return true;
-		if (id == WeaponTypes::Ensnare) return true;
-		if (id == WeaponTypes::Dark_Swarm) return true;
-		if (id == WeaponTypes::Plague) return true;
-		if (id == WeaponTypes::Consume) return true;
-		if (id == WeaponTypes::unk_68) return true;
-		if (id == WeaponTypes::Psi_Assault) return true;
-		if (id == WeaponTypes::Scarab) return true;
-		if (id == WeaponTypes::Stasis_Field) return true;
-		if (id == WeaponTypes::Psionic_Storm) return true;
-		if (id == WeaponTypes::Restoration) return true;
-		if (id == WeaponTypes::Mind_Control) return true;
-		if (id == WeaponTypes::Feedback) return true;
-		if (id == WeaponTypes::Optical_Flare) return true;
-		if (id == WeaponTypes::Maelstrom) return true;
-		return false;
+		return id == WeaponTypes::Spider_Mines
+			|| id == WeaponTypes::Lockdown
+			|| id == WeaponTypes::EMP_Shockwave
+			|| id == WeaponTypes::Irradiate
+			|| id == WeaponTypes::unk_50
+			|| id == WeaponTypes::unk_51
+			|| id == WeaponTypes::Suicide_Infested_Terran
+			|| id == WeaponTypes::Parasite
+			|| id == WeaponTypes::Spawn_Broodlings
+			|| id == WeaponTypes::Ensnare
+			|| id == WeaponTypes::Dark_Swarm
+			|| id == WeaponTypes::Plague
+			|| id == WeaponTypes::Consume
+			|| id == WeaponTypes::unk_68
+			|| id == WeaponTypes::Psi_Assault
+			|| id == WeaponTypes::Scarab
+			|| id == WeaponTypes::Stasis_Field
+			|| id == WeaponTypes::Psionic_Storm
+			|| id == WeaponTypes::Restoration
+			|| id == WeaponTypes::Mind_Control
+			|| id == WeaponTypes::Feedback
+			|| id == WeaponTypes::Optical_Flare
+			|| id == WeaponTypes::Maelstrom;
 	}
 
 	fp8 weapon_damage_amount(const weapon_type_t* w, int owner) const {
@@ -15875,17 +15823,16 @@ struct state_functions {
 	}
 
 	bool unit_is_factory(const unit_t* u) const {
-		if (unit_is(u, UnitTypes::Terran_Command_Center)) return true;
-		if (unit_is(u, UnitTypes::Terran_Barracks)) return true;
-		if (unit_is(u, UnitTypes::Terran_Factory)) return true;
-		if (unit_is(u, UnitTypes::Terran_Starport)) return true;
-		if (unit_is(u, UnitTypes::Zerg_Infested_Command_Center)) return true;
-		if (unit_is_hatchery(u)) return true;
-		if (unit_is(u, UnitTypes::Protoss_Nexus)) return true;
-		if (unit_is(u, UnitTypes::Protoss_Gateway)) return true;
-		if (unit_is(u, UnitTypes::Protoss_Stargate)) return true;
-		if (unit_is(u, UnitTypes::Protoss_Robotics_Facility)) return true;
-		return false;
+		return unit_is(u, UnitTypes::Terran_Command_Center)
+			|| unit_is(u, UnitTypes::Terran_Barracks)
+			|| unit_is(u, UnitTypes::Terran_Factory)
+			|| unit_is(u, UnitTypes::Terran_Starport)
+			|| unit_is(u, UnitTypes::Zerg_Infested_Command_Center)
+			|| unit_is_hatchery(u)
+			|| unit_is(u, UnitTypes::Protoss_Nexus)
+			|| unit_is(u, UnitTypes::Protoss_Gateway)
+			|| unit_is(u, UnitTypes::Protoss_Stargate)
+			|| unit_is(u, UnitTypes::Protoss_Robotics_Facility);
 	}
 
 	void set_unit_tiles_occupied(unit_type_autocast ut, xy position) {
@@ -17006,11 +16953,10 @@ struct state_functions {
 	}
 
 	bool is_intersecting(rect a, rect b) const {
-		if (b.from.x > a.to.x) return false;
-		if (b.from.y > a.to.y) return false;
-		if (a.from.x > b.to.x) return false;
-		if (a.from.y > b.to.y) return false;
-		return true;
+		return b.from.x <= a.to.x
+			&& b.from.y <= a.to.y
+			&& a.from.x <= b.to.x
+			&& a.from.y <= b.to.y;
 	}
 
 	bool unit_finder_units_intersecting(unit_t* a, unit_t* b) const {
@@ -17335,10 +17281,7 @@ struct state_functions {
 		return false;
 	}
 	bool unit_is_constructing(const unit_t* u) const {
-		if (!u->build_queue.empty()) return true;
-		if (unit_is_building_addon(u)) return true;
-		if (unit_is_building_protoss_thing(u)) return true;
-		return false;
+		return !u->build_queue.empty() || unit_is_building_addon(u) || unit_is_building_protoss_thing(u);
 	}
 	bool unit_is_researching(const unit_t* u) const {
 		return u->building.researching_type != nullptr;
@@ -21680,12 +21623,12 @@ struct game_load_functions : state_functions {
 					if (setup_info.create_no_units) return false;
 					if (owner >= 8) return true;
 					int controller = st.players[owner].controller;
-					if (controller == player_t::controller_computer_game) return true;
-					if (controller == player_t::controller_occupied) return true;
-					if (controller == player_t::controller_rescue_passive) return true;
-					if (controller == player_t::controller_unused_rescue_active) return true;
-					if (controller == player_t::controller_neutral) return true;
-					return false;
+
+					return controller == player_t::controller_computer_game
+						|| controller == player_t::controller_occupied
+						|| controller == player_t::controller_rescue_passive
+						|| controller == player_t::controller_unused_rescue_active
+						|| controller == player_t::controller_neutral;
 				};
 				auto is_neutral_unit = [&]() {
 					if (owner == 11) return true;
