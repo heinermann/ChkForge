@@ -232,7 +232,7 @@ struct action_functions: state_functions {
 		auto sel = selected_units(owner);
 		auto i = sel.begin();
 		if (i == sel.end()) return false;
-		if (!unit_can_use_tech(*i, get_tech_type(is_dark_archon ? TechTypes::Dark_Archon_Meld : TechTypes::Archon_Warp), owner)) return false;
+		if (!unit_can_use_tech(*i, is_dark_archon ? TechTypes::Dark_Archon_Meld : TechTypes::Archon_Warp, owner)) return false;
 		bool retval = false;
 		static_vector<unit_t*, 12> units;
 		for (;i != sel.end(); ++i) {
@@ -475,7 +475,7 @@ struct action_functions: state_functions {
 			if (order->tech_type == TechTypes::None) {
 				if (!unit_can_receive_order(u, order, owner)) continue;
 			} else {
-				if (!unit_can_use_tech(u, get_tech_type(order->tech_type), owner)) continue;
+				if (!unit_can_use_tech(u, order->tech_type, owner)) continue;
 			}
 			if (u == target) {
 				if (!unit_order_can_target_self(u, order)) continue;
@@ -726,7 +726,7 @@ struct action_functions: state_functions {
 			if (u->owner != owner) continue;
 			if (!unit_is_sieged_tank(u)) continue;
 			if (u->order_type->id == Orders::Unsieging) continue;
-			if (!unit_can_use_tech(u, get_tech_type(TechTypes::Tank_Siege_Mode))) continue;
+			if (!unit_can_use_tech(u, TechTypes::Tank_Siege_Mode)) continue;
 			issue_order(u, queue, get_order_type(Orders::Unsieging), {});
 			retval = true;
 		}
@@ -739,7 +739,7 @@ struct action_functions: state_functions {
 			if (u->owner != owner) continue;
 			if (!unit_is_unsieged_tank(u)) continue;
 			if (u->order_type->id == Orders::Sieging) continue;
-			if (!unit_can_use_tech(u, get_tech_type(TechTypes::Tank_Siege_Mode))) continue;
+			if (!unit_can_use_tech(u, TechTypes::Tank_Siege_Mode)) continue;
 			issue_order(u, queue, get_order_type(Orders::Sieging), {});
 			retval = true;
 		}
@@ -784,7 +784,7 @@ struct action_functions: state_functions {
 			if (unit_is_ghost(u)) tech = get_tech_type(TechTypes::Personnel_Cloaking);
 			else if (unit_is_wraith(u)) tech = get_tech_type(TechTypes::Cloaking_Field);
 			if (!tech) continue;
-			if (!unit_can_use_tech(u, tech)) continue;
+			if (!unit_can_use_tech(u, tech->id)) continue;
 			if (u_requires_detector(u)) continue;
 			if (u->energy < fp8::integer(tech->energy_cost)) continue;
 			u->energy -= fp8::integer(tech->energy_cost);
@@ -801,7 +801,7 @@ struct action_functions: state_functions {
 			if (unit_is_ghost(u)) tech = get_tech_type(TechTypes::Personnel_Cloaking);
 			else if (unit_is_wraith(u)) tech = get_tech_type(TechTypes::Cloaking_Field);
 			if (!tech) continue;
-			if (!unit_can_use_tech(u, tech)) continue;
+			if (!unit_can_use_tech(u, tech->id)) continue;
 			set_secondary_order(u, get_order_type(Orders::Decloak));
 		}
 		return retval;
@@ -843,7 +843,7 @@ struct action_functions: state_functions {
 		bool retval = false;
 		for (unit_t* u : selected_units(owner)) {
 			if (u->owner != owner) continue;
-			if (!unit_can_use_tech(u, get_tech_type(TechTypes::Stim_Packs))) continue;
+			if (!unit_can_use_tech(u, TechTypes::Stim_Packs)) continue;
 			if (u->hp <= fp8::integer(10)) continue;
 			play_sound(lcg_rand(31, 278, 279), u);
 			unit_deal_damage(u, fp8::integer(10), nullptr, ~0);
@@ -873,7 +873,7 @@ struct action_functions: state_functions {
 		for (unit_t* u : selected_units(owner)) {
 			if (u->owner != owner) continue;
 			if (unit_is(u, UnitTypes::Zerg_Hydralisk) && unit_is(unit_type, UnitTypes::Zerg_Lurker)) {
-				if (!unit_can_use_tech(u, get_tech_type(TechTypes::Lurker_Aspect))) continue;
+				if (!unit_can_use_tech(u, TechTypes::Lurker_Aspect)) continue;
 			} else if (unit_is(u, UnitTypes::Zerg_Larva) || unit_is(u, UnitTypes::Zerg_Mutalisk)) {
 				if (!unit_can_build(u, unit_type)) continue;
 			} else continue;
@@ -902,7 +902,7 @@ struct action_functions: state_functions {
 	bool action_burrow(int owner, bool queue) {
 		bool retval = false;
 		for (unit_t* u : selected_units(owner)) {
-			if (!unit_can_use_tech(u, get_tech_type(TechTypes::Burrowing), owner)) continue;
+			if (!unit_can_use_tech(u, TechTypes::Burrowing, owner)) continue;
 			if (u_burrowed(u)) continue;
 			if (u->order_type->id == Orders::Burrowing) continue;
 			issue_order(u, queue, get_order_type(Orders::Burrowing), {});
@@ -914,7 +914,7 @@ struct action_functions: state_functions {
 	bool action_unburrow(int owner) {
 		bool retval = false;
 		for (unit_t* u : selected_units(owner)) {
-			if (!unit_can_use_tech(u, get_tech_type(TechTypes::Burrowing), owner)) continue;
+			if (!unit_can_use_tech(u, TechTypes::Burrowing, owner)) continue;
 			if (!ut_can_burrow(u)) continue;
 			unburrow_unit(u);
 			retval = true;

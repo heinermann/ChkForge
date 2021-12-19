@@ -352,7 +352,7 @@ int MapContext::placeOpenBwUnit(Chk::UnitPtr unit) {
   }
 
   if (unit->validStateFlags & unit->stateFlags & Chk::Unit::State::Burrow) {
-    if (openbw_ui.unit_can_use_tech(new_unit, openbw_ui.get_tech_type(bwgame::TechTypes::Burrowing))) {
+    if (openbw_ui.unit_can_use_tech(new_unit, bwgame::TechTypes::Burrowing)) {
       for (auto img = new_unit->sprite->images.begin(); img != new_unit->sprite->images.end(); ++img) {
         openbw_ui.iscript_run_anim(&*img, 14);
       }

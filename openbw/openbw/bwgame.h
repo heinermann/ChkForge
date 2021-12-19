@@ -3741,7 +3741,7 @@ struct state_functions {
 	}
 
 	unit_t* find_medic_target(const unit_t* u) const {
-		if (!unit_can_use_tech(u, get_tech_type(TechTypes::Healing))) return nullptr;
+		if (!unit_can_use_tech(u, TechTypes::Healing)) return nullptr;
 		return find_nearest_unit(u, square_at(u->sprite->position, 160), [&](unit_t* target) {
 			if (target->is_being_healed) return false;
 			return medic_can_heal_target(u, target);
@@ -3749,7 +3749,7 @@ struct state_functions {
 	}
 
 	int medic_try_heal(unit_t* u) {
-		if (!unit_can_use_tech(u, get_tech_type(TechTypes::Healing))) return 0;
+		if (!unit_can_use_tech(u, TechTypes::Healing)) return 0;
 		unit_t* target = u->order_target.unit;
 		if (!target || !medic_can_heal_target(u, target)) return 0;
 		if (target->is_being_healed) {
@@ -5543,7 +5543,7 @@ struct state_functions {
 			}
 			u->order_state = 1;
 		} else {
-			if (!unit_can_use_tech(u, get_tech_type(TechTypes::Spider_Mines)) || (unit_is_at_move_target(u) && u_immovable(u))) {
+			if (!unit_can_use_tech(u, TechTypes::Spider_Mines) || (unit_is_at_move_target(u) && u_immovable(u))) {
 				order_done(u);
 				return;
 			}
@@ -13899,7 +13899,7 @@ struct state_functions {
 
 	void consume_unit(unit_t* target, unit_t* source_unit) {
 		if (!target || u_invincible(target)) return;
-		if (!unit_tech_target_valid(source_unit, get_tech_type(TechTypes::Consume), target)) return;
+		if (!unit_tech_target_valid(source_unit, TechTypes::Consume, target)) return;
 		// todo: scores
 		kill_unit(target);
 		if (!u_hallucination(target)) {
@@ -14520,9 +14520,9 @@ struct state_functions {
 		return create_thingy_ex(sprite_type, parent_image->sprite->position + parent_image->offset + offset, 0, elevation_level);
 	}
 
-	bool unit_tech_target_valid(const unit_t* u, const tech_type_t* tech, const unit_t* target) const {
+	bool unit_tech_target_valid(const unit_t* u, const TechTypes tech, const unit_t* target) const {
 		if (target->stasis_timer) return false;
-		switch (tech->id) {
+		switch (tech) {
 		case TechTypes::Feedback:
 			if (ut_building(target)) return false;
 			if (!ut_has_energy(target)) return false;
@@ -14581,7 +14581,7 @@ struct state_functions {
 			return true;
 		default:
 			if (!u->order_target.unit || u_invincible(u->order_target.unit)) return false;
-			return unit_tech_target_valid(u, get_tech_type(u->order_type->tech_type), u->order_target.unit);
+			return unit_tech_target_valid(u, u->order_type->tech_type, u->order_target.unit);
 		}
 	}
 
@@ -16329,7 +16329,7 @@ struct state_functions {
 
 	void apply_unit_effects(unit_t*u) {
 		if (u->defensive_matrix_timer) {
-			if (u_invincible(u) || !unit_tech_target_valid(u, get_tech_type(TechTypes::Defensive_Matrix), u)) {
+			if (u_invincible(u) || !unit_tech_target_valid(u, TechTypes::Defensive_Matrix, u)) {
 				u->defensive_matrix_hp = 0_fp8;
 				u->defensive_matrix_timer = 0;
 			} else {
@@ -18589,18 +18589,18 @@ struct state_functions {
 		}
 	}
 
-	bool unit_can_use_tech(const unit_t* u, const tech_type_t* tech, int owner) const {
+	bool unit_can_use_tech(const unit_t* u, const TechTypes tech, int owner) const {
 		if (u->owner != owner) return false;
 		return unit_can_use_tech(u, tech);
 	}
 
-	bool unit_can_use_tech(const unit_t* u, const tech_type_t* tech) const {
+	bool unit_can_use_tech(const unit_t* u, const TechTypes tech) const {
 		if (!u_completed(u)) return false;
 		if (u_hallucination(u)) return false;
 		if (unit_is_disabled(u)) return false;
 		int owner = u->owner;
-		if (!player_tech_available(owner, tech->id)) return false;
-		switch (tech->id) {
+		if (!player_tech_available(owner, tech)) return false;
+		switch (tech) {
 		case TechTypes::Stim_Packs:
 			if (!ut_hero(u) && !player_has_researched(owner, TechTypes::Stim_Packs)) return false;
 			if (!unit_is_marine(u) && !unit_is_firebat(u)) return false;
