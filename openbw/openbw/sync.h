@@ -54,15 +54,7 @@ struct sync_state {
 			}
 			return r;
 		}
-		bool operator<(const uid_t& n) const {
-			return vals > n.vals;
-		}
-		bool operator==(const uid_t& n) const {
-			return vals == n.vals;
-		}
-		bool operator!=(const uid_t& n) const {
-			return vals != n.vals;
-		}
+		auto operator <=>(const uid_t& other) const = default;
 		a_string str() {
 			a_string r;
 			for (auto& v : vals) r += format(r.empty() ? "%08x" : "-%08x", v);

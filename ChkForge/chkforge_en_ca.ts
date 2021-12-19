@@ -1492,6 +1492,7 @@ Please select a different directory.</source>
     <message>
         <location filename="strings.cpp" line="20"/>
         <location filename="strings.cpp" line="190"/>
+        <location filename="strings.cpp" line="199"/>
         <location filename="strings.cpp" line="209"/>
         <source>Random</source>
         <translation></translation>
@@ -1870,14 +1871,34 @@ Please select a different directory.</source>
         <translation></translation>
     </message>
     <message>
+        <location filename="strings.cpp" line="184"/>
+        <source>Open ▼</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="strings.cpp" line="189"/>
         <source>Unknown</source>
         <translation></translation>
     </message>
     <message>
+        <location filename="strings.cpp" line="198"/>
+        <source>Select Race ▼</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="strings.cpp" line="200"/>
         <source>Select Race</source>
         <translation></translation>
+    </message>
+    <message>
+        <location filename="strings.cpp" line="210"/>
+        <source>Random ▼</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="strings.cpp" line="211"/>
+        <source>Map specified</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="65"/>
@@ -2302,19 +2323,6 @@ Please select a different directory.</source>
         <location filename="PluginManager.cpp" line="138"/>
         <source>Unable to resolve SCMDraft plugin exports: %1</source>
         <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>QObject::QObject</name>
-    <message>
-        <location filename="strings.cpp" line="199"/>
-        <source>Random</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="strings.cpp" line="211"/>
-        <source>Map specified</source>
-        <translation></translation>
     </message>
 </context>
 <context>

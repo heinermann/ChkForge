@@ -482,7 +482,8 @@ private:
 		std::swap(m_end, other.m_end);
 	}
 	void m_destroy(pointer p) {
-		get_allocator().destroy(p);
+		auto alloc = get_allocator();
+		std::allocator_traits<allocator_T>::destroy(alloc, p);
 	}
 public:
 	circular_vector() {}

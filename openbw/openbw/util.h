@@ -19,28 +19,7 @@ struct xy_t {
 	utype y {};
 	xy_t() = default;
 	xy_t(utype x, utype y) : x(x), y(y) {}
-	bool operator<(const xy_t& n) const {
-		if (y == n.y) return x < n.x;
-		return y < n.y;
-	}
-	bool operator>(const xy_t& n) const {
-		if (y == n.y) return x > n.x;
-		return y > n.y;
-	}
-	bool operator<=(const xy_t& n) const {
-		if (y == n.y) return x <= n.x;
-		return y <= n.y;
-	}
-	bool operator>=(const xy_t& n) const {
-		if (y == n.y) return x >= n.x;
-		return y >= n.y;
-	}
-	bool operator==(const xy_t& n) const {
-		return x == n.x && y == n.y;
-	}
-	bool operator!=(const xy_t& n) const {
-		return x != n.x || y != n.y;
-	}
+	auto operator<=>(const xy_t& other) const = default;
 	xy_t operator-(const xy_t& n) const {
 		xy_t r(*this);
 		return r -= n;
@@ -108,9 +87,7 @@ struct rect_t {
 	T to;
 	rect_t() = default;
 	rect_t(T from, T to) : from(from), to(to) {}
-	bool operator==(const rect_t& n) const {
-		return from == n.from && to == n.to;
-	}
+	bool operator==(const rect_t& n) const = default;
 
 	rect_t operator+(const rect_t& n) const {
 		return { from + n.from, to + n.to };
@@ -183,7 +160,7 @@ private:
 	transform_F f;
 public:
 	using iterator_category = typename std::iterator_traits<iterator_T>::iterator_category;
-	using reference = typename std::result_of<transform_F(typename std::iterator_traits<iterator_T>::reference)>::type;
+	using reference = typename std::invoke_result<transform_F, typename std::iterator_traits<iterator_T>::reference>::type;
 	using value_type = typename std::remove_cv<typename std::remove_const<reference>::type>::type;
 	using difference_type = typename std::iterator_traits<iterator_T>::difference_type;
 	using pointer = typename std::remove_reference<reference>::type*;
@@ -400,7 +377,7 @@ template<typename T, std::enable_if<std::is_integral<T>::value && std::numeric_l
 using int_bits = std::integral_constant<size_t, std::numeric_limits<T>::digits + std::is_signed<T>::value>;
 
 template<typename T>
-using is_native_fast_int = std::integral_constant<bool, std::is_integral<T>::value && std::is_literal_type<T>::value && sizeof(T) <= sizeof(void*)>;
+using is_native_fast_int = std::integral_constant<bool, std::is_integral<T>::value && sizeof(T) <= sizeof(void*)>;
 
 template<size_t t_integer_bits, size_t t_fractional_bits, bool t_is_signed, bool t_exact_integer_bits = false>
 struct fixed_point {
@@ -478,24 +455,7 @@ struct fixed_point {
 		return fixed_point<integer_bits, fractional_bits, false, exact_integer_bits>::from_raw(raw_value);
 	}
 
-	bool operator==(const fixed_point& n) const {
-		return raw_value == n.raw_value;
-	}
-	bool operator!=(const fixed_point& n) const {
-		return raw_value != n.raw_value;
-	}
-	bool operator<(const fixed_point& n) const {
-		return raw_value < n.raw_value;
-	}
-	bool operator<=(const fixed_point& n) const {
-		return raw_value <= n.raw_value;
-	}
-	bool operator>(const fixed_point& n) const {
-		return raw_value > n.raw_value;
-	}
-	bool operator>=(const fixed_point& n) const {
-		return raw_value >= n.raw_value;
-	}
+	auto operator <=>(const fixed_point& other) const = default;
 
 	fixed_point operator-() const {
 		static_assert(is_signed, "fixed_point: cannot negate an unsigned number");

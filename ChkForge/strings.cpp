@@ -181,7 +181,7 @@ const QString getSlotOwnerName(unsigned owner) {
   if (owner == Sc::Player::SlotType::Computer)
     return QObject::tr("Computer");
   else if (owner == Sc::Player::SlotType::Human)
-    return QObject::tr(u8"Open \u25BC");
+    return QObject::tr("Open \u25BC");
   else
     return emptyStr;
 }
@@ -195,7 +195,7 @@ const std::array<const QString, 8> slotRaceNames = {
   QObject::tr("Protoss"),
   unknownStr,
   unknownStr,
-  QObject::tr(u8"Select Race \u25BC"),
+  QObject::tr("Select Race \u25BC"),
   QObject::tr("Random"),
   QObject::tr("Select Race")
 };
@@ -207,7 +207,7 @@ const QString getSlotRaceName(unsigned race) {
 
 const std::array<const QString, 3> slotScrColorNames = {
   QObject::tr("Random"),
-  QObject::tr(u8"Random \u25BC"),
+  QObject::tr("Random \u25BC"),
   QObject::tr("Map specified")
 };
 
