@@ -278,3 +278,27 @@ void MapContext::placeUnit(int x, int y, Sc::Unit::Type type, int player)
   actions.applyAction<PlaceUnitAction>(x, y, type, player);
   emit triggerUndoRedoChanged();
 }
+
+bool MapContext::isPaused() {
+  return openbw_ui.st.is_editor_paused;
+}
+
+bool MapContext::togglePause() {
+  openbw_ui.st.is_editor_paused = !openbw_ui.st.is_editor_paused;
+  return isPaused();
+}
+
+void MapContext::frameAdvance(int num_frames) {
+  bool pause_state = isPaused();
+  openbw_ui.st.is_editor_paused = false;
+  for (int i = 0; i < num_frames; ++i) {
+    openbw_ui.player.next_frame();
+  }
+  openbw_ui.st.is_editor_paused = pause_state;
+}
+
+void MapContext::resetPlayback() {
+  openbw_ui.st.is_editor_paused = true;
+
+  // TODO
+}

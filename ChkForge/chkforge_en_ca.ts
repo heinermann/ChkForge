@@ -955,11 +955,23 @@ Some select Starforge code snippets and resources.
     </message>
     <message>
         <location filename="mainwindow.ui" line="787"/>
-        <source>&amp;Play/Pause</source>
-        <translation></translation>
+        <location filename="mainwindow.cpp" line="589"/>
+        <source>&amp;Play</source>
+        <oldsource>&amp;Play/Pause</oldsource>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="790"/>
+        <source>Space</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="802"/>
+        <source>Shift+Space</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="814"/>
         <source>F5</source>
         <translation></translation>
     </message>
@@ -969,65 +981,65 @@ Some select Starforge code snippets and resources.
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="808"/>
+        <location filename="mainwindow.ui" line="811"/>
         <source>Stop &amp;&amp; &amp;Reset</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="811"/>
-        <source>Shift+F5</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="mainwindow.ui" line="823"/>
+        <location filename="mainwindow.ui" line="826"/>
         <source>Copy State to New Map</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="826"/>
+        <location filename="mainwindow.ui" line="829"/>
         <source>Copy the current state to a new map</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="835"/>
+        <location filename="mainwindow.ui" line="838"/>
         <source>New Map View</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="844"/>
+        <location filename="mainwindow.ui" line="847"/>
         <source>Close Map View</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="853"/>
+        <location filename="mainwindow.ui" line="856"/>
         <source>Close All Map Views</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="858"/>
+        <location filename="mainwindow.ui" line="861"/>
         <source>Cascade</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="863"/>
+        <location filename="mainwindow.ui" line="866"/>
         <source>Tile</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="872"/>
+        <location filename="mainwindow.ui" line="875"/>
         <source>Report an Issue</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="881"/>
+        <location filename="mainwindow.ui" line="884"/>
         <source>Stack Units</source>
         <translation></translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="105"/>
-        <location filename="mainwindow.cpp" line="675"/>
+        <location filename="mainwindow.cpp" line="686"/>
         <source>Player %1</source>
         <translation></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="593"/>
+        <source>&amp;Pause</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

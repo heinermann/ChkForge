@@ -330,21 +330,20 @@ void MainWindow::on_action_file_open_triggered()
 
 void MainWindow::on_action_file_save_triggered()
 {
-  if (!currentMapView()->getMap()->save()) {
+  if (!currentMap()->save()) {
     on_action_file_saveAs_triggered();
   }
 }
 
 void MainWindow::on_action_file_saveAs_triggered()
 {
-  if (currentMapView() == nullptr) return;
-
-  auto map = currentMapView()->getMap();
+  auto map = currentMap();
+  if (map == nullptr) return;
 
   auto path = OpenSave::getMapSaveFilename(QString::fromStdString(map->filepath()), this);
   if (path.empty()) return;
 
-  currentMapView()->getMap()->saveAs(path);
+  map->saveAs(path);
 
   addRecentFile(path);
 }
@@ -536,9 +535,8 @@ void MainWindow::on_action_scenario_techSettings_triggered()
 
 void MainWindow::on_action_scenario_description_triggered()
 {
-  MapView* mapView = currentMapView();
-  if (!mapView) return;
-  auto map = mapView->getMap();
+  auto map = currentMap();
+  if (!map) return;
 
   ScenarioDescription scenarioDlg(this);
   RawString name, desc;
@@ -576,14 +574,41 @@ void MainWindow::on_action_help_report_triggered()
 
 void MainWindow::on_action_test_play_triggered()
 {
+  auto map = currentMap();
+  if (!map) return;
+
+  map->togglePause();
+  updatePlaybackState();
+}
+
+void MainWindow::updatePlaybackState() {
+  auto map = currentMap();
+  if (!map) return; 
+
+  if (map->isPaused()) {
+    ui->action_test_play->setText(tr("&Play"));
+    ui->action_test_play->setIcon(QIcon(":/themes/oxygen-icons-png/oxygen/48x48/actions/media-playback-start.png"));
+  }
+  else {
+    ui->action_test_play->setText(tr("&Pause"));
+    ui->action_test_play->setIcon(QIcon(":/themes/oxygen-icons-png/oxygen/48x48/actions/media-playback-pause.png"));
+  }
 }
 
 void MainWindow::on_action_test_advance1_triggered()
 {
+  auto map = currentMap();
+  if (!map) return;
+
+  map->frameAdvance();
 }
 
 void MainWindow::on_action_test_reset_triggered()
 {
+  auto map = currentMap();
+  if (!map) return;
+
+  map->resetPlayback();
 }
 
 void MainWindow::on_action_test_duplicate_triggered()
@@ -721,6 +746,12 @@ MapView* MainWindow::currentMapView() {
   return qobject_cast<MapView*>(mdi->currentSubWindow());
 }
 
+std::shared_ptr<ChkForge::MapContext> MainWindow::currentMap() {
+  MapView* map = currentMapView();
+  if (map == nullptr) return nullptr;
+  return map->getMap();
+}
+
 void MainWindow::closeEvent(QCloseEvent* event)
 {
   auto subwindows = mdi->subWindowList(QMdiArea::StackingOrder);
@@ -748,10 +779,8 @@ void MainWindow::zoomChanged(int value)
 
 void MainWindow::onItemTreeChanged(ItemTree::Category category, int id)
 {
-  MapView* mapView = currentMapView();
-  if (mapView == nullptr) return;
-
-  auto map = mapView->getMap();
+  auto map = currentMap();
+  if (map == nullptr) return;
 
   switch (category) {
     case ItemTree::CAT_NONE:

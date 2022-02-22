@@ -77,6 +77,7 @@ private:
 
   void createMapView(std::shared_ptr<ChkForge::MapContext> map);
   MapView* currentMapView();
+  std::shared_ptr<ChkForge::MapContext> currentMap();
 
   virtual void closeEvent(QCloseEvent* event) override;
 
@@ -96,6 +97,7 @@ private:
   bool isValidFormat(QString filename) const;
 
   void launchScenarioSettings(int startTab);
+  void updatePlaybackState();
 private slots:
   void mapMouseMoved(const QPoint& pos);
   void zoomChanged(int value);

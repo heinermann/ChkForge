@@ -94,6 +94,11 @@ namespace ChkForge
     int placeOpenBwUnit(Chk::UnitPtr unit);
     void removeOpenBwUnit(int index);
 
+    bool isPaused();
+    bool togglePause();
+    void frameAdvance(int num_frames = 1);
+    void resetPlayback();
+
   public:
     std::shared_ptr<MapFile> chk = std::make_shared<MapFile>(Sc::Terrain::Tileset::Badlands, 64, 64);
     bwgame::ui_functions openbw_ui;

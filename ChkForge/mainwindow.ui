@@ -784,10 +784,10 @@ QSplitter::handle:vertical {
      <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/media-playback-start.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/media-playback-start.png</iconset>
    </property>
    <property name="text">
-    <string>&amp;Play/Pause</string>
+    <string>&amp;Play</string>
    </property>
    <property name="shortcut">
-    <string>F5</string>
+    <string>Space</string>
    </property>
   </action>
   <action name="action_test_advance1">
@@ -797,6 +797,9 @@ QSplitter::handle:vertical {
    </property>
    <property name="text">
     <string>Advance 1 Frame</string>
+   </property>
+   <property name="shortcut">
+    <string>Shift+Space</string>
    </property>
   </action>
   <action name="action_test_reset">
@@ -808,7 +811,7 @@ QSplitter::handle:vertical {
     <string>Stop &amp;&amp; &amp;Reset</string>
    </property>
    <property name="shortcut">
-    <string>Shift+F5</string>
+    <string>F5</string>
    </property>
   </action>
   <action name="action_test_duplicate">
