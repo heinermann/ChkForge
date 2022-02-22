@@ -20,9 +20,8 @@
    <string>About</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normalon>:/themes/oxygen-icons-png/oxygen/16x16/actions/help-about.png</normalon>
-   </iconset>
+   <iconset resource="../oxygen-subset.qrc">
+    <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/help-about.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/help-about.png</iconset>
   </property>
   <property name="modal">
    <bool>true</bool>

@@ -56,7 +56,7 @@ QSplitter::handle:vertical {
      </property>
      <property name="icon">
       <iconset resource="../oxygen-subset.qrc">
-       <normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/document-open-recent.png</normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/document-open-recent.png</iconset>
+       <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/document-open-recent.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/document-open-recent.png</iconset>
      </property>
     </widget>
     <addaction name="action_file_new"/>
@@ -295,7 +295,7 @@ QSplitter::handle:vertical {
   <action name="action_file_new">
    <property name="icon">
     <iconset resource="../oxygen-subset.qrc">
-     <normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/document-new.png</normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/document-new.png</iconset>
+     <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/document-new.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/document-new.png</iconset>
    </property>
    <property name="text">
     <string>&amp;New</string>
@@ -304,7 +304,7 @@ QSplitter::handle:vertical {
   <action name="action_file_open">
    <property name="icon">
     <iconset resource="../oxygen-subset.qrc">
-     <normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/document-open.png</normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/document-open.png</iconset>
+     <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/document-open.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/document-open.png</iconset>
    </property>
    <property name="text">
     <string>&amp;Open</string>
@@ -313,7 +313,7 @@ QSplitter::handle:vertical {
   <action name="action_file_save">
    <property name="icon">
     <iconset resource="../oxygen-subset.qrc">
-     <normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/document-save.png</normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/document-save.png</iconset>
+     <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/document-save.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/document-save.png</iconset>
    </property>
    <property name="text">
     <string>&amp;Save</string>
@@ -322,7 +322,7 @@ QSplitter::handle:vertical {
   <action name="action_file_saveAs">
    <property name="icon">
     <iconset resource="../oxygen-subset.qrc">
-     <normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/document-save-as.png</normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/document-save-as.png</iconset>
+     <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/document-save-as.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/document-save-as.png</iconset>
    </property>
    <property name="text">
     <string>Save &amp;As...</string>
@@ -345,7 +345,7 @@ QSplitter::handle:vertical {
    </property>
    <property name="icon">
     <iconset resource="../oxygen-subset.qrc">
-     <normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/document-import.png</normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/document-import.png</iconset>
+     <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/document-import.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/document-import.png</iconset>
    </property>
    <property name="text">
     <string>&amp;Import Sections...</string>
@@ -357,7 +357,7 @@ QSplitter::handle:vertical {
    </property>
    <property name="icon">
     <iconset resource="../oxygen-subset.qrc">
-     <normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/document-export.png</normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/document-export.png</iconset>
+     <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/document-export.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/document-export.png</iconset>
    </property>
    <property name="text">
     <string>&amp;Export Sections...</string>
@@ -366,7 +366,7 @@ QSplitter::handle:vertical {
   <action name="action_file_exit">
    <property name="icon">
     <iconset resource="../oxygen-subset.qrc">
-     <normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/application-exit.png</normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/application-exit.png</iconset>
+     <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/application-exit.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/application-exit.png</iconset>
    </property>
    <property name="text">
     <string>E&amp;xit</string>
@@ -378,7 +378,7 @@ QSplitter::handle:vertical {
   <action name="action_edit_undo">
    <property name="icon">
     <iconset resource="../oxygen-subset.qrc">
-     <normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/edit-undo.png</normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/edit-undo.png</iconset>
+     <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/edit-undo.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/edit-undo.png</iconset>
    </property>
    <property name="text">
     <string>&amp;Undo</string>
@@ -387,7 +387,7 @@ QSplitter::handle:vertical {
   <action name="action_edit_redo">
    <property name="icon">
     <iconset resource="../oxygen-subset.qrc">
-     <normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/edit-redo.png</normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/edit-redo.png</iconset>
+     <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/edit-redo.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/edit-redo.png</iconset>
    </property>
    <property name="text">
     <string>&amp;Redo</string>
@@ -396,7 +396,7 @@ QSplitter::handle:vertical {
   <action name="action_edit_cut">
    <property name="icon">
     <iconset resource="../oxygen-subset.qrc">
-     <normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/edit-cut.png</normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/edit-cut.png</iconset>
+     <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/edit-cut.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/edit-cut.png</iconset>
    </property>
    <property name="text">
     <string>Cu&amp;t</string>
@@ -405,7 +405,7 @@ QSplitter::handle:vertical {
   <action name="action_edit_copy">
    <property name="icon">
     <iconset resource="../oxygen-subset.qrc">
-     <normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/edit-copy.png</normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/edit-copy.png</iconset>
+     <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/edit-copy.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/edit-copy.png</iconset>
    </property>
    <property name="text">
     <string>&amp;Copy</string>
@@ -414,7 +414,7 @@ QSplitter::handle:vertical {
   <action name="action_edit_paste">
    <property name="icon">
     <iconset resource="../oxygen-subset.qrc">
-     <normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/edit-paste.png</normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/edit-paste.png</iconset>
+     <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/edit-paste.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/edit-paste.png</iconset>
    </property>
    <property name="text">
     <string>&amp;Paste</string>
@@ -423,7 +423,7 @@ QSplitter::handle:vertical {
   <action name="action_edit_delete">
    <property name="icon">
     <iconset resource="../oxygen-subset.qrc">
-     <normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/edit-delete.png</normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/edit-delete.png</iconset>
+     <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/edit-delete.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/edit-delete.png</iconset>
    </property>
    <property name="text">
     <string>&amp;Delete</string>
@@ -432,7 +432,7 @@ QSplitter::handle:vertical {
   <action name="action_edit_selectAll">
    <property name="icon">
     <iconset resource="../oxygen-subset.qrc">
-     <normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/edit-select-all.png</normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/edit-select-all.png</iconset>
+     <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/edit-select-all.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/edit-select-all.png</iconset>
    </property>
    <property name="text">
     <string>Select &amp;All</string>
@@ -441,7 +441,7 @@ QSplitter::handle:vertical {
   <action name="action_edit_properties">
    <property name="icon">
     <iconset resource="../oxygen-subset.qrc">
-     <normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/document-properties.png</normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/document-properties.png</iconset>
+     <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/document-properties.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/document-properties.png</iconset>
    </property>
    <property name="text">
     <string>P&amp;roperties</string>
@@ -458,7 +458,7 @@ QSplitter::handle:vertical {
   <action name="action_view_toggle_snapToGrid">
    <property name="icon">
     <iconset resource="../oxygen-subset.qrc">
-     <normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/snap-orthogonal.png</normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/snap-orthogonal.png</iconset>
+     <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/snap-orthogonal.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/snap-orthogonal.png</iconset>
    </property>
    <property name="text">
     <string>&amp;Snap to Grid</string>
@@ -467,7 +467,7 @@ QSplitter::handle:vertical {
   <action name="action_view_toggle_showGrid">
    <property name="icon">
     <iconset resource="../oxygen-subset.qrc">
-     <normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/view-grid.png</normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/view-grid.png</iconset>
+     <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/view-grid.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/view-grid.png</iconset>
    </property>
    <property name="text">
     <string>Show &amp;Grid</string>
@@ -578,7 +578,7 @@ QSplitter::handle:vertical {
   <action name="action_scenario_players">
    <property name="icon">
     <iconset resource="../oxygen-subset.qrc">
-     <normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/user-properties.png</normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/user-properties.png</iconset>
+     <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/user-properties.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/user-properties.png</iconset>
    </property>
    <property name="text">
     <string>Players</string>
@@ -586,8 +586,8 @@ QSplitter::handle:vertical {
   </action>
   <action name="action_scenario_forces">
    <property name="icon">
-    <iconset resource="Icons.qrc">
-     <normaloff>:/icons/forces.png</normaloff>:/icons/forces.png</iconset>
+    <iconset resource="../oxygen-subset.qrc">
+     <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/flag-red.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/flag-red.png</iconset>
    </property>
    <property name="text">
     <string>Forces</string>
@@ -596,7 +596,7 @@ QSplitter::handle:vertical {
   <action name="action_scenario_sounds">
    <property name="icon">
     <iconset resource="../oxygen-subset.qrc">
-     <normaloff>:/themes/oxygen-icons-png/oxygen/16x16/status/audio-volume-low.png</normaloff>:/themes/oxygen-icons-png/oxygen/16x16/status/audio-volume-low.png</iconset>
+     <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/speaker.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/speaker.png</iconset>
    </property>
    <property name="text">
     <string>Sounds</string>
@@ -604,8 +604,8 @@ QSplitter::handle:vertical {
   </action>
   <action name="action_scenario_triggers">
    <property name="icon">
-    <iconset resource="Icons.qrc">
-     <normaloff>:/icons/triggers.png</normaloff>:/icons/triggers.png</iconset>
+    <iconset resource="../oxygen-subset.qrc">
+     <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/code-class.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/code-class.png</iconset>
    </property>
    <property name="text">
     <string>Triggers</string>
@@ -613,8 +613,8 @@ QSplitter::handle:vertical {
   </action>
   <action name="action_scenario_briefings">
    <property name="icon">
-    <iconset resource="Icons.qrc">
-     <normaloff>:/icons/briefing.png</normaloff>:/icons/briefing.png</iconset>
+    <iconset resource="../oxygen-subset.qrc">
+     <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/view-pim-notes.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/view-pim-notes.png</iconset>
    </property>
    <property name="text">
     <string>Briefings</string>
@@ -623,7 +623,7 @@ QSplitter::handle:vertical {
   <action name="action_scenario_strings">
    <property name="icon">
     <iconset resource="../oxygen-subset.qrc">
-     <normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/draw-text.png</normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/draw-text.png</iconset>
+     <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/draw-text.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/draw-text.png</iconset>
    </property>
    <property name="text">
     <string>Strings</string>
@@ -737,7 +737,7 @@ QSplitter::handle:vertical {
    </property>
    <property name="icon">
     <iconset resource="../oxygen-subset.qrc">
-     <normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/edit-select.png</normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/edit-select.png</iconset>
+     <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/edit-select.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/edit-select.png</iconset>
    </property>
    <property name="text">
     <string>S&amp;elect (Cut/Copy/Paste)</string>
@@ -769,7 +769,7 @@ QSplitter::handle:vertical {
   <action name="action_help_about">
    <property name="icon">
     <iconset resource="../oxygen-subset.qrc">
-     <normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/help-about.png</normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/help-about.png</iconset>
+     <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/help-about.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/help-about.png</iconset>
    </property>
    <property name="text">
     <string>&amp;About</string>
@@ -781,7 +781,7 @@ QSplitter::handle:vertical {
   <action name="action_test_play">
    <property name="icon">
     <iconset resource="../oxygen-subset.qrc">
-     <normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/media-playback-start.png</normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/media-playback-start.png</iconset>
+     <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/media-playback-start.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/media-playback-start.png</iconset>
    </property>
    <property name="text">
     <string>&amp;Play/Pause</string>
@@ -793,7 +793,7 @@ QSplitter::handle:vertical {
   <action name="action_test_advance1">
    <property name="icon">
     <iconset resource="../oxygen-subset.qrc">
-     <normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/debug-step-into.png</normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/debug-step-into.png</iconset>
+     <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/debug-step-into.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/debug-step-into.png</iconset>
    </property>
    <property name="text">
     <string>Advance 1 Frame</string>
@@ -802,7 +802,7 @@ QSplitter::handle:vertical {
   <action name="action_test_reset">
    <property name="icon">
     <iconset resource="../oxygen-subset.qrc">
-     <normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/media-playback-stop.png</normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/media-playback-stop.png</iconset>
+     <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/media-playback-stop.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/media-playback-stop.png</iconset>
    </property>
    <property name="text">
     <string>Stop &amp;&amp; &amp;Reset</string>
@@ -817,7 +817,7 @@ QSplitter::handle:vertical {
    </property>
    <property name="icon">
     <iconset resource="../oxygen-subset.qrc">
-     <normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/window-duplicate.png</normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/window-duplicate.png</iconset>
+     <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/window-duplicate.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/window-duplicate.png</iconset>
    </property>
    <property name="text">
     <string>Copy State to New Map</string>
@@ -829,7 +829,7 @@ QSplitter::handle:vertical {
   <action name="action_window_newMapView">
    <property name="icon">
     <iconset resource="../oxygen-subset.qrc">
-     <normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/view-right-new.png</normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/view-right-new.png</iconset>
+     <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/window-new.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/window-new.png</iconset>
    </property>
    <property name="text">
     <string>New Map View</string>
@@ -838,7 +838,7 @@ QSplitter::handle:vertical {
   <action name="action_window_closeMapView">
    <property name="icon">
     <iconset resource="../oxygen-subset.qrc">
-     <normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/project-development-close.png</normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/project-development-close.png</iconset>
+     <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/project-development-close.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/project-development-close.png</iconset>
    </property>
    <property name="text">
     <string>Close Map View</string>
@@ -847,7 +847,7 @@ QSplitter::handle:vertical {
   <action name="action_window_closeAllMapViews">
    <property name="icon">
     <iconset resource="../oxygen-subset.qrc">
-     <normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/project-development-close-all.png</normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/project-development-close-all.png</iconset>
+     <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/project-development-close-all.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/project-development-close-all.png</iconset>
    </property>
    <property name="text">
     <string>Close All Map Views</string>
@@ -866,7 +866,7 @@ QSplitter::handle:vertical {
   <action name="action_help_report">
    <property name="icon">
     <iconset resource="../oxygen-subset.qrc">
-     <normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/tools-report-bug.png</normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/tools-report-bug.png</iconset>
+     <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/tools-report-bug.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/tools-report-bug.png</iconset>
    </property>
    <property name="text">
     <string>Report an Issue</string>
@@ -874,9 +874,8 @@ QSplitter::handle:vertical {
   </action>
   <action name="action_tools_stackUnits">
    <property name="icon">
-    <iconset>
-     <normalon>:/themes/oxygen-icons-png/oxygen/16x16/emblems/image-stack.png</normalon>
-    </iconset>
+    <iconset resource="../oxygen-subset.qrc">
+     <normaloff>:/themes/oxygen-icons-png/oxygen/32x32/emblems/image-stack.png</normaloff>:/themes/oxygen-icons-png/oxygen/32x32/emblems/image-stack.png</iconset>
    </property>
    <property name="text">
     <string>Stack Units</string>

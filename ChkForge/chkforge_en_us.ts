@@ -154,17 +154,17 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="aboutdlg.ui" line="42"/>
+        <location filename="aboutdlg.ui" line="41"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a style=&quot;text-decoration:none&quot; href=&quot;https://github.com/heinermann/ChkForge&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:600; color:#0000ff;&quot;&gt;ChkForge on Github&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="aboutdlg.ui" line="90"/>
+        <location filename="aboutdlg.ui" line="89"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a style=&quot;text-decoration:none&quot; href=&quot;https://discord.gg/uXYccmk&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:600; color:#0000ff;&quot;&gt;Staredit Network Discord&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="aboutdlg.ui" line="107"/>
+        <location filename="aboutdlg.ui" line="106"/>
         <source>## Tech
 **[Qt](https://www.qt.io/)** for the GUI.
 
@@ -194,7 +194,7 @@ Some select Starforge code snippets and resources.
         <translation></translation>
     </message>
     <message>
-        <location filename="aboutdlg.ui" line="165"/>
+        <location filename="aboutdlg.ui" line="164"/>
         <source>OK</source>
         <translation></translation>
     </message>
@@ -1014,13 +1014,13 @@ Some select Starforge code snippets and resources.
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="882"/>
+        <location filename="mainwindow.ui" line="881"/>
         <source>Stack Units</source>
         <translation></translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="105"/>
-        <location filename="mainwindow.cpp" line="661"/>
+        <location filename="mainwindow.cpp" line="675"/>
         <source>Player %1</source>
         <translation></translation>
     </message>

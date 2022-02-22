@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="../oxygen-subset.qrc">
-    <normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/document-new.png</normaloff>:/themes/oxygen-icons-png/oxygen/16x16/actions/document-new.png</iconset>
+    <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/document-new.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/document-new.png</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout_3" rowstretch="0,1,0">
    <item row="0" column="2">

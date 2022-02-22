@@ -1,21 +1,12 @@
 <RCC>
     <qresource prefix="/">
-        <file>icons/briefing.png</file>
-        <file>icons/brush.png</file>
-        <file>icons/circlefog.png</file>
         <file>icons/doodad.png</file>
-        <file>icons/forces.png</file>
-        <file>icons/grid.png</file>
         <file>icons/location.png</file>
         <file>icons/revealer.png</file>
         <file>icons/scm.png</file>
         <file>icons/scx.png</file>
-        <file>icons/snap.png</file>
         <file>icons/sprite.png</file>
-        <file>icons/squarefog.png</file>
-        <file>icons/strings.png</file>
         <file>icons/terrain.png</file>
-        <file>icons/triggers.png</file>
         <file>icons/unit.png</file>
         <file>icons/GitHub-Mark-32px.png</file>
         <file>icons/Discord-Logo-Black-32px.png</file>
