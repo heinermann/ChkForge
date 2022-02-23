@@ -2,16 +2,22 @@
 
 using namespace ChkForge;
 
-void MapContext::chkdraft_to_openbw(bool is_editor_mode)
+void MapContext::chkdraft_to_openbw()
 {
   openbw_ui.reset();
 
   bwgame::game_load_functions game_load_funcs(openbw_ui.st);
   game_load_funcs.use_map_settings = true;
 
-  openbw_ui.is_editor = true;
-  game_load_funcs.st.is_editor_paused = true;
+  openbw_ui.is_editor = editor_state == MapContext::TestState::Editing;
+  game_load_funcs.st.is_editor_paused = editor_state == MapContext::TestState::Editing;
 
+  std::stringstream map_data;
+  chk->write(map_data);
+
+  std::string data = map_data.str();
+  game_load_funcs.load_map_data(reinterpret_cast<unsigned char*>(data.data()), data.size(), {}, !openbw_ui.is_editor);
+/*
   // Sync dimensions
   size_t tile_width = chk->layers.getTileWidth(), tile_height = chk->layers.getTileHeight();
   game_load_funcs.st.game->map_tile_width = tile_width;
@@ -300,6 +306,7 @@ void MapContext::chkdraft_to_openbw(bool is_editor_mode)
     // TODO
   }
   // TODO
+  */
 }
 
 int MapContext::placeOpenBwUnit(Chk::UnitPtr unit) {
@@ -314,17 +321,33 @@ int MapContext::placeOpenBwUnit(Chk::UnitPtr unit) {
 
   if (unit->type == Sc::Unit::Type::StartLocation) {
     openbw_ui.st.game->start_locations[unit->owner] = { unit->xc, unit->yc };
-    auto* new_unit = openbw_ui.create_unit(obw_unit_type, { unit->xc, unit->yc }, unit->owner);
-    openbw_ui.hide_unit(new_unit);
-    placed_units.insert(new_unit);
-    unit_finder.add(new_unit);
-    return new_unit->index;
+
+    if (!is_testing()) {
+      auto* new_unit = openbw_ui.create_unit(obw_unit_type, { unit->xc, unit->yc }, unit->owner);
+      openbw_ui.hide_unit(new_unit);
+      placed_units.insert(new_unit);
+      unit_finder.add(new_unit);
+      return new_unit->index;
+    }
+    return -1;
   }
 
-  bwgame::unit_t* new_unit = openbw_ui.create_completed_unit(obw_unit_type, { unit->xc, unit->yc }, owner);
-  if (!new_unit) return -1;
-  if (openbw_ui.unit_type_spreads_creep(obw_unit_type, true) || openbw_ui.ut_requires_creep(obw_unit_type)) {
-    openbw_ui.spread_creep_completely(new_unit, new_unit->sprite->position);
+  if (is_testing()) {
+
+  }
+
+  bwgame::unit_t* new_unit;
+  
+  if (is_testing()) {
+    new_unit = openbw_ui.create_initial_unit(obw_unit_type, { unit->xc, unit->yc }, owner);
+    if (!new_unit) return -1;
+  }
+  else {
+    new_unit = openbw_ui.create_completed_unit(obw_unit_type, { unit->xc, unit->yc }, owner);
+    if (!new_unit) return -1;
+    if (openbw_ui.unit_type_spreads_creep(obw_unit_type, true) || openbw_ui.ut_requires_creep(obw_unit_type)) {
+      openbw_ui.spread_creep_completely(new_unit, new_unit->sprite->position);
+    }
   }
 
   if (unit->validFieldFlags & Chk::Unit::ValidField::Hitpoints) {

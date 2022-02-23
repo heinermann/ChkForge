@@ -31,7 +31,9 @@ void MapContext::reset() {
 }
 
 void MapContext::update() {
-  openbw_ui.player.next_frame();
+  if (!game_paused) {
+    openbw_ui.player.next_frame();
+  }
   current_layer->logicUpdate();
 }
 
@@ -39,7 +41,7 @@ void MapContext::new_map(int tileWidth, int tileHeight, Sc::Terrain::Tileset til
   chk = std::make_shared<MapFile>(tileset, tileWidth, tileHeight);
   
   apply_brush(map_dimensions(), brush, clutter);
-  chkdraft_to_openbw(true);
+  chkdraft_to_openbw();
   openbw_ui.set_image_data();
   set_unsaved(true);
 }
@@ -51,7 +53,7 @@ bool MapContext::load_map(std::filesystem::path map_file) {
     return false;
   }
 
-  chkdraft_to_openbw(true);
+  chkdraft_to_openbw();
   openbw_ui.set_image_data();
   set_unsaved(false);
   return true;
@@ -241,12 +243,17 @@ bwgame::xy MapContext::toBw(const QPoint& pt) {
 
 void MapContext::set_layer(Layer_t layer_index)
 {
-  if (current_layer->getLayerId() == layer_index) return;
+  if (current_layer->getLayerId() == layer_index || is_testing()) return;
 
   current_layer->layerChanged(false);
-  current_layer = layer_map.at(layer_index);
+  override_layer(layer_index);
   current_layer->layerChanged(true);
 }
+
+void MapContext::override_layer(Layer_t layer_index) {
+  current_layer = layer_map.at(layer_index);
+}
+
 std::shared_ptr<Layer> MapContext::get_layer()
 {
   return current_layer;
@@ -279,26 +286,54 @@ void MapContext::placeUnit(int x, int y, Sc::Unit::Type type, int player)
   emit triggerUndoRedoChanged();
 }
 
-bool MapContext::isPaused() {
-  return openbw_ui.st.is_editor_paused;
+void MapContext::start_playback() {
+  if (is_testing()) return;
+  
+  editor_state = TestState::Testing;
+  game_paused = false;
+
+  last_edit_layer = Layer_t(get_layer()->getLayerId());
+  override_layer(Layer_t::LAYER_GAME_TEST);
+
+  // Resync map to game
+  chkdraft_to_openbw();
 }
 
-bool MapContext::togglePause() {
-  openbw_ui.st.is_editor_paused = !openbw_ui.st.is_editor_paused;
-  return isPaused();
+void MapContext::stop_playback() {
+  if (!is_testing()) return;
+  
+  editor_state = TestState::Editing;
+  game_paused = false;
+
+  current_layer->layerChanged(false);
+  override_layer(last_edit_layer);
+
+  // Resync map to game
+  chkdraft_to_openbw();
 }
 
-void MapContext::frameAdvance(int num_frames) {
-  bool pause_state = isPaused();
-  openbw_ui.st.is_editor_paused = false;
+bool MapContext::is_paused() {
+  return game_paused;
+}
+
+bool MapContext::toggle_pause() {
+  if (is_testing()) {
+    game_paused = !game_paused;
+  }
+  return game_paused;
+}
+
+void MapContext::frame_advance(int num_frames) {
+  if (!is_testing()) return;
   for (int i = 0; i < num_frames; ++i) {
     openbw_ui.player.next_frame();
   }
-  openbw_ui.st.is_editor_paused = pause_state;
 }
 
-void MapContext::resetPlayback() {
-  openbw_ui.st.is_editor_paused = true;
+MapContext::TestState MapContext::get_editor_state() {
+  return editor_state;
+}
 
-  // TODO
+bool MapContext::is_testing() {
+  return editor_state == MapContext::TestState::Testing;
 }

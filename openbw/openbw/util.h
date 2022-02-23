@@ -682,18 +682,20 @@ struct exception : std::runtime_error {
 	exception(const a_string& str) : std::runtime_error(str.c_str()) {}
 };
 
-template<typename...T>
-void error(const char* fmt, T&&... args) {
-	throw exception(format(fmt, std::forward<T>(args)...));
-}
-
 namespace ui {
   void log_str(a_string str);
 }
 
 template<typename...T>
+void error(const char* fmt, T&&... args) {
+	bwgame::a_string str = format(fmt, std::forward<T>(args)...);
+	ui::log_str(str + "\n");
+	throw exception(str);
+}
+
+template<typename...T>
 void warn(const char* fmt, T&&... args) {
-  ui::log_str(format(fmt, std::forward<T>(args)...));
+  ui::log_str(format(fmt, std::forward<T>(args)...) + "\n");
 }
 
 }

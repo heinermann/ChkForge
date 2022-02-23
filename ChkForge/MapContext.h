@@ -37,6 +37,11 @@ namespace ChkForge
     Q_OBJECT
 
   public:
+    enum class TestState {
+      Editing,
+      Testing
+    };
+
     MapContext();
 
     static std::shared_ptr<MapContext> create();
@@ -58,7 +63,7 @@ namespace ChkForge
     void place_unit(Sc::Unit::Type unitType, int owner, int x, int y);
     void apply_brush(const QRect& rect, int tileGroup, int clutter);
 
-    void chkdraft_to_openbw(bool is_editor_mode = true);
+    void chkdraft_to_openbw();
 
     std::unordered_set<bwgame::unit_t*> find_units(bwgame::rect rect);
     void select_all();
@@ -81,6 +86,8 @@ namespace ChkForge
     bwgame::xy toBw(const QPoint& pt);
 
     void set_layer(Layer_t layer_index);
+    // Change layer without cleanup
+    void override_layer(Layer_t layer_index);
     std::shared_ptr<Layer> get_layer();
 
     void set_player(int player_id);
@@ -94,10 +101,14 @@ namespace ChkForge
     int placeOpenBwUnit(Chk::UnitPtr unit);
     void removeOpenBwUnit(int index);
 
-    bool isPaused();
-    bool togglePause();
-    void frameAdvance(int num_frames = 1);
-    void resetPlayback();
+    void start_playback();
+    void stop_playback();
+    bool is_paused();
+    bool toggle_pause();
+    void frame_advance(int num_frames = 1);
+
+    TestState get_editor_state();
+    bool is_testing();
 
   public:
     std::shared_ptr<MapFile> chk = std::make_shared<MapFile>(Sc::Terrain::Tileset::Badlands, 64, 64);
@@ -112,6 +123,9 @@ namespace ChkForge
     std::mt19937 random{ rnd_d() };
 
     bool has_unsaved_changes = false;
+    bool game_paused = false;
+    TestState editor_state = TestState::Editing;
+    Layer_t last_edit_layer = Layer_t::LAYER_SELECT;
 
     QTimer update_timer{};
 
@@ -122,6 +136,7 @@ namespace ChkForge
     std::shared_ptr<UnitLayer> layer_unit = std::make_shared<UnitLayer>(this);
     std::shared_ptr<LocationLayer> layer_location = std::make_shared<LocationLayer>(this);
     std::shared_ptr<FogLayer> layer_fog = std::make_shared<FogLayer>(this);
+    std::shared_ptr<GameTestLayer> layer_game_test = std::make_shared<GameTestLayer>(this);
 
     std::shared_ptr<Layer> current_layer = layer_select;
 
@@ -132,7 +147,8 @@ namespace ChkForge
       {Layer_t::LAYER_SPRITE, layer_sprite},
       {Layer_t::LAYER_UNIT, layer_unit},
       {Layer_t::LAYER_LOCATION, layer_location},
-      {Layer_t::LAYER_FOG, layer_fog}
+      {Layer_t::LAYER_FOG, layer_fog},
+      {Layer_t::LAYER_GAME_TEST, layer_game_test},
     };
 
     int current_player = 0;

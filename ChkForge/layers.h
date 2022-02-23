@@ -25,7 +25,8 @@ namespace ChkForge {
     LAYER_SPRITE,
     LAYER_UNIT,
     LAYER_LOCATION,
-    LAYER_FOG
+    LAYER_FOG,
+    LAYER_GAME_TEST
   };
 
   class Layer : public QObject {
@@ -222,4 +223,24 @@ namespace ChkForge {
   private:
   };
 
+  class GameTestLayer : public Layer, ThingyPlacer {
+  public:
+    GameTestLayer(MapContext* map) : Layer(map, Layer_t::LAYER_GAME_TEST) {}
+    virtual ~GameTestLayer() {}
+
+    virtual bool mouseEvent(MapView* map, QMouseEvent* e) override;
+    virtual void showContextMenu(QWidget* owner, const QPoint& position) override;
+
+    virtual void paintOverlay(MapView* map, QWidget* obj, QPainter& painter) override;
+    virtual void paintGame(MapView* map, uint8_t* data, size_t data_pitch, bwgame::rect screen_rect) override;
+    virtual void reset() override;
+    virtual void logicUpdate() override;
+
+    virtual void layerChanged(bool isEntering) override;
+
+    virtual bool isPlacingThingy() override;
+    virtual void select_thingy_at(bool double_clicked, bool shift, bool ctrl, const QPoint& position) override;
+    virtual void select_thingies(bool double_clicked, bool shift, bool ctrl, const QRect& rect) override;
+
+  };
 }

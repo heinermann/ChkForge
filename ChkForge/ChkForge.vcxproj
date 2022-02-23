@@ -400,6 +400,7 @@
     <ClCompile Include="layers.cpp" />
     <ClCompile Include="layer_doodad.cpp" />
     <ClCompile Include="layer_fog.cpp" />
+    <ClCompile Include="layer_game_test.cpp" />
     <ClCompile Include="layer_location.cpp" />
     <ClCompile Include="layer_select.cpp" />
     <ClCompile Include="layer_sprite.cpp" />

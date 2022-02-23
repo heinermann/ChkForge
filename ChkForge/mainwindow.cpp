@@ -577,7 +577,12 @@ void MainWindow::on_action_test_play_triggered()
   auto map = currentMap();
   if (!map) return;
 
-  map->togglePause();
+  if (!map->is_testing()) {
+    map->start_playback();
+  }
+  else {
+    map->toggle_pause();
+  }
   updatePlaybackState();
 }
 
@@ -585,7 +590,9 @@ void MainWindow::updatePlaybackState() {
   auto map = currentMap();
   if (!map) return; 
 
-  if (map->isPaused()) {
+  bool is_editing = !map->is_testing();
+
+  if (is_editing || map->is_paused()) {
     ui->action_test_play->setText(tr("&Play"));
     ui->action_test_play->setIcon(QIcon(":/themes/oxygen-icons-png/oxygen/48x48/actions/media-playback-start.png"));
   }
@@ -593,6 +600,12 @@ void MainWindow::updatePlaybackState() {
     ui->action_test_play->setText(tr("&Pause"));
     ui->action_test_play->setIcon(QIcon(":/themes/oxygen-icons-png/oxygen/48x48/actions/media-playback-pause.png"));
   }
+
+  // TODO: deduplicate code?
+  toolbars_ui->cmb_layer->setEnabled(is_editing);
+  ui->menu_Layer->menuAction()->setVisible(is_editing);
+  ui->menu_Edit->menuAction()->setVisible(is_editing);
+  ui->menu_Tools->menuAction()->setVisible(is_editing);
 }
 
 void MainWindow::on_action_test_advance1_triggered()
@@ -600,7 +613,7 @@ void MainWindow::on_action_test_advance1_triggered()
   auto map = currentMap();
   if (!map) return;
 
-  map->frameAdvance();
+  map->frame_advance();
 }
 
 void MainWindow::on_action_test_reset_triggered()
@@ -608,7 +621,8 @@ void MainWindow::on_action_test_reset_triggered()
   auto map = currentMap();
   if (!map) return;
 
-  map->resetPlayback();
+  map->stop_playback();
+  updatePlaybackState();
 }
 
 void MainWindow::on_action_test_duplicate_triggered()

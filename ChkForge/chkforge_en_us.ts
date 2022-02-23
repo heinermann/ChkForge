@@ -375,7 +375,7 @@ Some select Starforge code snippets and resources.
 <context>
     <name>ChkForge::MapContext</name>
     <message>
-        <location filename="MapContext.cpp" line="50"/>
+        <location filename="MapContext.cpp" line="52"/>
         <source>Failed to read the Chk file (chk), not a valid map.</source>
         <translation></translation>
     </message>
@@ -488,47 +488,47 @@ Some select Starforge code snippets and resources.
         <translation></translation>
     </message>
     <message>
-        <location filename="itemtree.cpp" line="54"/>
+        <location filename="itemtree.cpp" line="55"/>
         <source>Doodads</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="itemtree.cpp" line="61"/>
+        <location filename="itemtree.cpp" line="62"/>
         <source>Units</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="itemtree.cpp" line="70"/>
+        <location filename="itemtree.cpp" line="71"/>
         <source>Sprites</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="itemtree.cpp" line="79"/>
+        <location filename="itemtree.cpp" line="80"/>
         <source>Unit-Sprites</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="itemtree.cpp" line="88"/>
+        <location filename="itemtree.cpp" line="89"/>
         <source>Locations</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="itemtree.cpp" line="95"/>
+        <location filename="itemtree.cpp" line="96"/>
         <source>Custom Brushes</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="itemtree.cpp" line="96"/>
+        <location filename="itemtree.cpp" line="97"/>
         <source>Clipboard</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="itemtree.cpp" line="106"/>
+        <location filename="itemtree.cpp" line="107"/>
         <source>Error</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="itemtree.cpp" line="106"/>
+        <location filename="itemtree.cpp" line="107"/>
         <source>Unable to load Trees/%1: %2</source>
         <translation></translation>
     </message>
@@ -950,7 +950,7 @@ Some select Starforge code snippets and resources.
     </message>
     <message>
         <location filename="mainwindow.ui" line="787"/>
-        <location filename="mainwindow.cpp" line="589"/>
+        <location filename="mainwindow.cpp" line="596"/>
         <source>&amp;Play</source>
         <oldsource>&amp;Play/Pause</oldsource>
         <translation type="unfinished"></translation>
@@ -1027,12 +1027,12 @@ Some select Starforge code snippets and resources.
     </message>
     <message>
         <location filename="mainwindow.cpp" line="105"/>
-        <location filename="mainwindow.cpp" line="686"/>
+        <location filename="mainwindow.cpp" line="700"/>
         <source>Player %1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="593"/>
+        <location filename="mainwindow.cpp" line="600"/>
         <source>&amp;Pause</source>
         <translation type="unfinished"></translation>
     </message>

@@ -270,6 +270,9 @@
     <ClCompile Include="invertedtristategroupbox.cpp">
       <Filter>Source Files\ui\Controls</Filter>
     </ClCompile>
+    <ClCompile Include="layer_game_test.cpp">
+      <Filter>Source Files\layers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="layers.h">

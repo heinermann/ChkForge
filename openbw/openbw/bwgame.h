@@ -17175,12 +17175,22 @@ struct state_functions {
 		}
 		finish_building_unit(u);
 		if (!place_completed_unit(u)) {
-			error("place_completed_unit failed");
+			warn("Unable to place unit: %d at (%d, %d)", int(unit_type->id), pos.x, pos.y);
+			remove_unit(u);
+			return nullptr;
 		}
 
 		complete_unit(u);
 
 		return u;
+	}
+
+	unit_t* create_editor_unit(const unit_type_t* unit_type, xy pos, int owner) {
+		unit_t* u = create_completed_unit(unit_type, pos, owner);
+		if (!u) return nullptr;
+		if (unit_type_spreads_creep(unit_type, true) || ut_requires_creep(unit_type)) {
+			spread_creep_completely(u, u->sprite->position);
+		}
 	}
 
 	unit_t* create_completed_unit(const unit_type_t* unit_type, xy pos, int owner) {
@@ -21217,6 +21227,26 @@ struct game_load_functions : state_functions {
 	  }
 	}
 
+	bool should_create_units_for_player(int owner) {
+		if (setup_info.create_no_units) return false;
+		if (owner >= 8) return true;
+		int controller = st.players[owner].controller;
+
+		return controller == player_t::controller_computer_game
+			|| controller == player_t::controller_occupied
+			|| controller == player_t::controller_rescue_passive
+			|| controller == player_t::controller_unused_rescue_active
+			|| controller == player_t::controller_neutral;
+	}
+
+	bool is_neutral_start_unit(unit_type_autocast unit_type, int owner) {
+		if (owner == 11) return true;
+		if (unit_is_mineral_field(unit_type)) return true;
+		if (unit_type->id == UnitTypes::Resource_Vespene_Geyser) return true;
+		if (unit_is_critter(unit_type)) return true;
+		return false;
+	};
+
 	void load_map_data(uint8_t* data, size_t data_size, std::function<void()> setup_f = {}, bool initial_processing = true) {
 
 		using data_loading::data_reader_le;
@@ -21375,11 +21405,19 @@ struct game_load_functions : state_functions {
 					create_thingy(sprite_type, {x, y}, owner);
 				} else {
 					auto unit_type = (UnitTypes)id;
-					if (unit_is_door(get_unit_type(unit_type))) owner = 11;
-					if (use_map_settings || owner == 11) {
-						unit_t* unit = create_initial_unit(get_unit_type(unit_type), xy(x, y), owner);
-						if (flags & 0x80) disable_thg2_unit(unit);
+
+					unit_t* unit = nullptr;
+					if (st.is_editor_paused) {
+						unit = create_editor_unit(get_unit_type(unit_type), xy(x, y), owner);
 					}
+					else
+					{
+						if (unit_is_door(get_unit_type(unit_type))) owner = 11;
+						if (use_map_settings || owner == 11) {
+							unit = create_initial_unit(get_unit_type(unit_type), xy(x, y), owner);
+						}
+					}
+					if (flags & 0x80 && unit != nullptr) disable_thg2_unit(unit);
 				}
 			}
 		};
@@ -21572,6 +21610,7 @@ struct game_load_functions : state_functions {
 
 				(void)id; (void)link; (void)valid_flags; (void)units_in_hangar; (void)flags; (void)related_unit_id;
 
+				// TODO: Handle
 				if ((size_t)unit_type_id >= 228) error("UNIT: invalid unit type %d", (int)unit_type_id);
 				if ((size_t)owner >= 12) error("UNIT: invalid owner %d", owner);
 
@@ -21580,40 +21619,38 @@ struct game_load_functions : state_functions {
 				if (unit_type->id == UnitTypes::Special_Start_Location) {
 					game_st.start_locations[owner] = { x, y };
 					// todo: some callback to set initial screen position?
-					continue;
-				}
-				auto should_create_units_for_this_player = [&]() {
-					if (setup_info.create_no_units) return false;
-					if (owner >= 8) return true;
-					int controller = st.players[owner].controller;
 
-					return controller == player_t::controller_computer_game
-						|| controller == player_t::controller_occupied
-						|| controller == player_t::controller_rescue_passive
-						|| controller == player_t::controller_unused_rescue_active
-						|| controller == player_t::controller_neutral;
-				};
-				auto is_neutral_unit = [&]() {
-					if (owner == 11) return true;
-					if (unit_is_mineral_field(unit_type)) return true;
-					if (unit_type->id == UnitTypes::Resource_Vespene_Geyser) return true;
-					if (unit_is_critter(unit_type)) return true;
-					return false;
-				};
-				if (!should_create_units_for_this_player()) continue;
-				if (!use_map_settings && !is_neutral_unit()) continue;
-				if (use_map_settings) {
-					if (owner < 8 && setup_info.create_melee_units_for_player[owner] && ~unit_type->group_flags & GroupFlags::Neutral) continue;
-				}
+					if (st.is_editor_paused) {
+						create_editor_unit(get_unit_type(unit_type->id), { x, y }, owner);
+					}
 
-				if (is_invalid) {
-					lcg_rand(14);
-					if (is_in_map_bounds(xy(x, y))) error("attempt to create invalid initial unit in valid map bounds");
 					continue;
 				}
 
-				unit_t* u = create_initial_unit(unit_type, {x, y}, owner);
+				if (!st.is_editor_paused) {
+					if (!should_create_units_for_player(owner)) continue;
+					if (!use_map_settings && !is_neutral_start_unit(unit_type, owner)) continue;
+					if (use_map_settings) {
+						if (owner < 8 && setup_info.create_melee_units_for_player[owner] && ~unit_type->group_flags & GroupFlags::Neutral) continue;
+					}
 
+					if (is_invalid) {
+						lcg_rand(14);
+						if (is_in_map_bounds(xy(x, y))) error("attempt to create invalid initial unit in valid map bounds");
+						continue;
+					}
+				}
+
+				unit_t* u = nullptr;
+				if (st.is_editor_paused) {
+					u = create_editor_unit(unit_type, { x, y }, owner);
+				}
+				else
+				{
+					u = create_initial_unit(unit_type, { x, y }, owner);
+				}
+
+				// TODO handle
 				if (!u) continue;
 
 				if (valid_properties & 0x2) {

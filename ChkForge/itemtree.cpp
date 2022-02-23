@@ -45,7 +45,8 @@ ItemTree::ItemTree(QWidget *parent)
 QStandardItem* ItemTree::createTilesetTree()
 {
   QStandardItem* top = createTreeItem("Tileset");
-  createTreeFromFile(top, "terrain.txt", CAT_TERRAIN);
+  // TODO
+  //createTreeFromFile(top, "terrain.txt", CAT_TERRAIN);
   return top;
 }
 
