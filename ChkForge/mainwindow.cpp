@@ -172,11 +172,11 @@ void MainWindow::createToolWindows()
   ui->menu_Tool_Windows->addAction(minimap->toggleViewAction());
   ads::CDockAreaWidget* leftPane = m_DockManager->addDockWidget(ads::LeftDockWidgetArea, minimap);
 
-  itemTree = new ItemTree();
+  itemTree = new ItemTree(this);
   ui->menu_Tool_Windows->addAction(itemTree->toggleViewAction());
   m_DockManager->addDockWidget(ads::BottomDockWidgetArea, itemTree, leftPane);
 
-  TerrainBrush* terrainBrush = new TerrainBrush();
+  TerrainBrush* terrainBrush = new TerrainBrush(this);
   ui->menu_Tool_Windows->addAction(terrainBrush->toggleViewAction());
   m_DockManager->addDockWidget(ads::BottomDockWidgetArea, terrainBrush, leftPane);
 

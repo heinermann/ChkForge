@@ -60,6 +60,7 @@ Tileset::Tileset(int tilesetId, const QString& name, const QList<TileGroup>& bru
   , defaultBrushIndex(defaultBrushIndex)
 {}
 
+// TODO: Buildable structure
 Tileset Tileset::Badlands = Tileset{
   Sc::Terrain::Tileset::Badlands,
   QObject::tr("Badlands"),

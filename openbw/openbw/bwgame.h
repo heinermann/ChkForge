@@ -110,12 +110,12 @@ struct game_state {
 	game_state& operator=(const game_state&) = delete;
 	game_state& operator=(game_state&&) = default;
 
-	size_t map_tile_width;
-	size_t map_tile_height;
-	size_t map_walk_width;
-	size_t map_walk_height;
-	size_t map_width;
-	size_t map_height;
+	size_t map_tile_width = 0;
+	size_t map_tile_height = 0;
+	size_t map_walk_width = 0;
+	size_t map_walk_height = 0;
+	size_t map_width = 0;
+	size_t map_height = 0;
 
 	a_vector<a_string> map_strings;
 
@@ -133,7 +133,7 @@ struct game_state {
 
 	std::array<sight_values_t, 12> sight_values;
 
-	size_t tileset_index;
+	size_t tileset_index = 0;
 
 	a_vector<tile_id> gfx_tiles;
 
@@ -148,11 +148,11 @@ struct game_state {
 
 	std::array<xy, 12> start_locations;
 
-	int max_unit_width;
-	int max_unit_height;
+	int max_unit_width = 0;
+	int max_unit_height = 0;
 
-	size_t repulse_field_width;
-	size_t repulse_field_height;
+	size_t repulse_field_width = 0;
+	size_t repulse_field_height = 0;
 
 	regions_t regions;
 

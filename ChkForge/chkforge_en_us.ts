@@ -1908,416 +1908,416 @@ Please select a different directory.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="65"/>
+        <location filename="terrain.cpp" line="66"/>
         <source>Badlands</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="terrain.cpp" line="67"/>
-        <location filename="terrain.cpp" line="86"/>
-        <location filename="terrain.cpp" line="106"/>
-        <location filename="terrain.cpp" line="123"/>
-        <location filename="terrain.cpp" line="141"/>
-        <location filename="terrain.cpp" line="164"/>
-        <location filename="terrain.cpp" line="187"/>
-        <location filename="terrain.cpp" line="210"/>
-        <source>Null</source>
         <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="68"/>
         <location filename="terrain.cpp" line="87"/>
+        <location filename="terrain.cpp" line="107"/>
         <location filename="terrain.cpp" line="124"/>
         <location filename="terrain.cpp" line="142"/>
         <location filename="terrain.cpp" line="165"/>
         <location filename="terrain.cpp" line="188"/>
         <location filename="terrain.cpp" line="211"/>
-        <source>Creep</source>
+        <source>Null</source>
         <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="69"/>
-        <location filename="terrain.cpp" line="126"/>
-        <location filename="terrain.cpp" line="144"/>
-        <location filename="terrain.cpp" line="167"/>
-        <location filename="terrain.cpp" line="192"/>
-        <location filename="terrain.cpp" line="213"/>
-        <source>Dirt</source>
+        <location filename="terrain.cpp" line="88"/>
+        <location filename="terrain.cpp" line="125"/>
+        <location filename="terrain.cpp" line="143"/>
+        <location filename="terrain.cpp" line="166"/>
+        <location filename="terrain.cpp" line="189"/>
+        <location filename="terrain.cpp" line="212"/>
+        <source>Creep</source>
         <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="70"/>
+        <location filename="terrain.cpp" line="127"/>
         <location filename="terrain.cpp" line="145"/>
+        <location filename="terrain.cpp" line="168"/>
+        <location filename="terrain.cpp" line="193"/>
         <location filename="terrain.cpp" line="214"/>
-        <source>Mud</source>
+        <source>Dirt</source>
         <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="71"/>
-        <location filename="terrain.cpp" line="130"/>
-        <location filename="terrain.cpp" line="151"/>
-        <location filename="terrain.cpp" line="174"/>
-        <location filename="terrain.cpp" line="198"/>
-        <location filename="terrain.cpp" line="220"/>
-        <source>High Dirt</source>
+        <location filename="terrain.cpp" line="146"/>
+        <location filename="terrain.cpp" line="215"/>
+        <source>Mud</source>
         <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="72"/>
-        <location filename="terrain.cpp" line="143"/>
-        <location filename="terrain.cpp" line="195"/>
-        <location filename="terrain.cpp" line="212"/>
-        <source>Water</source>
+        <location filename="terrain.cpp" line="131"/>
+        <location filename="terrain.cpp" line="152"/>
+        <location filename="terrain.cpp" line="175"/>
+        <location filename="terrain.cpp" line="199"/>
+        <location filename="terrain.cpp" line="221"/>
+        <source>High Dirt</source>
         <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="73"/>
-        <location filename="terrain.cpp" line="194"/>
-        <source>Grass</source>
+        <location filename="terrain.cpp" line="144"/>
+        <location filename="terrain.cpp" line="196"/>
+        <location filename="terrain.cpp" line="213"/>
+        <source>Water</source>
         <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="74"/>
-        <location filename="terrain.cpp" line="199"/>
-        <source>High Grass</source>
+        <location filename="terrain.cpp" line="195"/>
+        <source>Grass</source>
         <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="75"/>
-        <source>Structure</source>
+        <location filename="terrain.cpp" line="200"/>
+        <source>High Grass</source>
         <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="76"/>
-        <source>Asphalt</source>
+        <source>Structure</source>
         <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="77"/>
-        <location filename="terrain.cpp" line="147"/>
-        <location filename="terrain.cpp" line="170"/>
+        <source>Asphalt</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="78"/>
+        <location filename="terrain.cpp" line="148"/>
+        <location filename="terrain.cpp" line="171"/>
         <source>Rocky Ground</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="84"/>
+        <location filename="terrain.cpp" line="85"/>
         <source>Space Platform</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="88"/>
+        <location filename="terrain.cpp" line="89"/>
         <source>Space</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="89"/>
+        <location filename="terrain.cpp" line="90"/>
         <source>Low Platform</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="90"/>
+        <location filename="terrain.cpp" line="91"/>
         <source>Rusty Pit</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="91"/>
+        <location filename="terrain.cpp" line="92"/>
         <source>Platform</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="92"/>
+        <location filename="terrain.cpp" line="93"/>
         <source>Dark Platform</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="93"/>
-        <location filename="terrain.cpp" line="111"/>
+        <location filename="terrain.cpp" line="94"/>
+        <location filename="terrain.cpp" line="112"/>
         <source>Plating</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="94"/>
+        <location filename="terrain.cpp" line="95"/>
         <source>Solar Array</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="95"/>
+        <location filename="terrain.cpp" line="96"/>
         <source>High Platform</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="96"/>
+        <location filename="terrain.cpp" line="97"/>
         <source>High Plating</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="97"/>
+        <location filename="terrain.cpp" line="98"/>
         <source>Elevated Catwalk</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="104"/>
+        <location filename="terrain.cpp" line="105"/>
         <source>Installation</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="107"/>
+        <location filename="terrain.cpp" line="108"/>
         <source>Substructure</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="108"/>
+        <location filename="terrain.cpp" line="109"/>
         <source>Substructure Plating</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="109"/>
+        <location filename="terrain.cpp" line="110"/>
         <source>Floor</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="110"/>
+        <location filename="terrain.cpp" line="111"/>
         <source>Roof</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="112"/>
+        <location filename="terrain.cpp" line="113"/>
         <source>Bottomless Pit</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="113"/>
+        <location filename="terrain.cpp" line="114"/>
         <source>Substructure Panels</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="114"/>
+        <location filename="terrain.cpp" line="115"/>
         <source>Buildable Substructure</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="121"/>
+        <location filename="terrain.cpp" line="122"/>
         <source>Ash World</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="125"/>
+        <location filename="terrain.cpp" line="126"/>
         <source>Magma</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="127"/>
+        <location filename="terrain.cpp" line="128"/>
         <source>Lava</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="128"/>
+        <location filename="terrain.cpp" line="129"/>
         <source>Shale</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="129"/>
+        <location filename="terrain.cpp" line="130"/>
         <source>Broken Rock</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="131"/>
+        <location filename="terrain.cpp" line="132"/>
         <source>High Lava</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="132"/>
+        <location filename="terrain.cpp" line="133"/>
         <source>High Shale</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="139"/>
+        <location filename="terrain.cpp" line="140"/>
         <source>Jungle World</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="146"/>
+        <location filename="terrain.cpp" line="147"/>
         <source>Jungle</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="148"/>
+        <location filename="terrain.cpp" line="149"/>
         <source>Ruins</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="149"/>
+        <location filename="terrain.cpp" line="150"/>
         <source>Raised Jungle</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="150"/>
+        <location filename="terrain.cpp" line="151"/>
         <source>Temple</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="152"/>
+        <location filename="terrain.cpp" line="153"/>
         <source>High Jungle</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="153"/>
+        <location filename="terrain.cpp" line="154"/>
         <source>High Ruins</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="154"/>
+        <location filename="terrain.cpp" line="155"/>
         <source>High Raised Jungle</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="155"/>
+        <location filename="terrain.cpp" line="156"/>
         <source>High Temple</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="162"/>
+        <location filename="terrain.cpp" line="163"/>
         <source>Desert</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="166"/>
+        <location filename="terrain.cpp" line="167"/>
         <source>Tar</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="168"/>
+        <location filename="terrain.cpp" line="169"/>
         <source>Dried Mud</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="169"/>
+        <location filename="terrain.cpp" line="170"/>
         <source>Sand Dunes</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="171"/>
+        <location filename="terrain.cpp" line="172"/>
         <source>Crags</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="172"/>
+        <location filename="terrain.cpp" line="173"/>
         <source>Sandy Sunken Pit</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="173"/>
+        <location filename="terrain.cpp" line="174"/>
         <source>Compound</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="175"/>
+        <location filename="terrain.cpp" line="176"/>
         <source>High Sand Dunes</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="176"/>
+        <location filename="terrain.cpp" line="177"/>
         <source>High Crags</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="177"/>
+        <location filename="terrain.cpp" line="178"/>
         <source>High Sandy Sunken Pit</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="178"/>
+        <location filename="terrain.cpp" line="179"/>
         <source>High Compound</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="185"/>
-        <location filename="terrain.cpp" line="189"/>
+        <location filename="terrain.cpp" line="186"/>
+        <location filename="terrain.cpp" line="190"/>
         <source>Ice</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="190"/>
+        <location filename="terrain.cpp" line="191"/>
         <source>Snow</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="191"/>
+        <location filename="terrain.cpp" line="192"/>
         <source>Moguls</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="193"/>
+        <location filename="terrain.cpp" line="194"/>
         <source>Rocky Snow</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="196"/>
+        <location filename="terrain.cpp" line="197"/>
         <source>Outpost</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="197"/>
+        <location filename="terrain.cpp" line="198"/>
         <source>High Snow</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="200"/>
+        <location filename="terrain.cpp" line="201"/>
         <source>High Water</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="201"/>
+        <location filename="terrain.cpp" line="202"/>
         <source>High Outpost</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="208"/>
+        <location filename="terrain.cpp" line="209"/>
         <source>Twilight</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="215"/>
+        <location filename="terrain.cpp" line="216"/>
         <source>Crushed Rock</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="216"/>
+        <location filename="terrain.cpp" line="217"/>
         <source>Crevices</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="217"/>
+        <location filename="terrain.cpp" line="218"/>
         <source>Flagstones</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="218"/>
+        <location filename="terrain.cpp" line="219"/>
         <source>Sunken Ground</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="219"/>
+        <location filename="terrain.cpp" line="220"/>
         <source>Basilica</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="221"/>
+        <location filename="terrain.cpp" line="222"/>
         <source>High Crushed Rock</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="222"/>
+        <location filename="terrain.cpp" line="223"/>
         <source>High Flagstones</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="223"/>
+        <location filename="terrain.cpp" line="224"/>
         <source>High Sunken Ground</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="224"/>
+        <location filename="terrain.cpp" line="225"/>
         <source>High Basilica</source>
         <translation></translation>
     </message>
