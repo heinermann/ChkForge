@@ -393,9 +393,12 @@ void MapView::select_units(bool double_clicked, bool shift, bool ctrl, const QRe
   
   if (!shift) map->openbw_ui.current_selection_clear();
 
-  for (bwgame::unit_t* u : map->find_units(map->toBw(translated))) {
+  auto units_to_select = map->find_units(map->toBw(translated));
+  for (bwgame::unit_t* u : units_to_select) {
     map->openbw_ui.current_selection_add(u);
   }
+
+  bwgame::warn("Selected %d units", units_to_select.size());
 }
 
 void MapView::select_unit_at(bool double_clicked, bool shift, bool ctrl, const QPoint& position)

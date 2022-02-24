@@ -23,6 +23,7 @@ void PlaceUnitAction::apply() {
   unit->relationClassId = 0;
 
   this->chkDraftIndex = map->chk->layers.addUnit(unit);
+  // TODO: index will get shuffled when units are deleted in OpenBW
   this->openbwIndex = map->placeOpenBwUnit(unit);
 }
 

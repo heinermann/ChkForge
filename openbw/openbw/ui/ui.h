@@ -938,6 +938,14 @@ struct ui_functions: ui_util_functions {
 		replay_st = replay_state();
 		action_st = action_state();
 
+		is_editor = false;
+
+		replay_frame = 0;
+		game_speed = fp8::integer(1);
+		current_selection.clear();
+		current_selection_sprites.clear();
+		current_selection_sprites_set.assign(2500, nullptr);
+
 		st.game = &game;
 	}
 };

@@ -17191,6 +17191,7 @@ struct state_functions {
 		if (unit_type_spreads_creep(unit_type, true) || ut_requires_creep(unit_type)) {
 			spread_creep_completely(u, u->sprite->position);
 		}
+		return u;
 	}
 
 	unit_t* create_completed_unit(const unit_type_t* unit_type, xy pos, int owner) {
@@ -21247,7 +21248,7 @@ struct game_load_functions : state_functions {
 		return false;
 	};
 
-	void load_map_data(uint8_t* data, size_t data_size, std::function<void()> setup_f = {}, bool initial_processing = true) {
+	void load_map_data(uint8_t* data, size_t data_size, std::function<void()> setup_f = {}, bool initial_processing = true, std::function<void(int, unit_t*, bool)> unit_created_f = {}) {
 
 		using data_loading::data_reader_le;
 
@@ -21391,6 +21392,7 @@ struct game_load_functions : state_functions {
 		};
 
 		tag_funcs["THG2"] = [&](data_reader_le r) {
+			int index = 0;
 			while (r.left()) {
 				int id = r.get<uint16_t>();
 				int x = r.get<uint16_t>();
@@ -21418,7 +21420,9 @@ struct game_load_functions : state_functions {
 						}
 					}
 					if (flags & 0x80 && unit != nullptr) disable_thg2_unit(unit);
+					if (unit_created_f) unit_created_f(index, unit, true);
 				}
+				++index;
 			}
 		};
 		tag_funcs["MASK"] = [&](data_reader_le r) {
@@ -21584,6 +21588,7 @@ struct game_load_functions : state_functions {
 		};
 
 		tag_funcs["UNIT"] = [&](data_reader_le r) {
+			int index = 0;
 			while (r.left()) {
 
 				int id = r.get<uint32_t>();
@@ -21621,7 +21626,8 @@ struct game_load_functions : state_functions {
 					// todo: some callback to set initial screen position?
 
 					if (st.is_editor_paused) {
-						create_editor_unit(get_unit_type(unit_type->id), { x, y }, owner);
+						unit_t* u = create_editor_unit(get_unit_type(unit_type->id), { x, y }, owner);
+						if (unit_created_f) unit_created_f(index, u, false);
 					}
 
 					continue;
@@ -21672,6 +21678,8 @@ struct game_load_functions : state_functions {
 					set_remove_timer(u);
 				}
 
+				if (unit_created_f) unit_created_f(index, u, false);
+				index++;
 			}
 
 			for (unit_t* u : ptr(st.visible_units)) {

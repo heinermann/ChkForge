@@ -28,6 +28,11 @@ public:
     removeFromSet(u, unitFinderY, dim.to.y);
   }
 
+  void clear() {
+    unitFinderX.clear();
+    unitFinderY.clear();
+  }
+
   std::unordered_set<bwgame::unit_t*> find(int left, int top, int right, int bottom) const
   {
     int searchRight = right, searchBottom = bottom;
