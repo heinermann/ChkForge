@@ -241,8 +241,6 @@ void MainWindow::mapMenuActions()
     ui->action_window_tile,
     ui->action_test_play,
     ui->action_test_duplicate,
-    ui->action_test_advance1,
-    ui->action_test_reset
   };
 
   contextSensitiveActions = std::vector<QAction*>{
@@ -251,7 +249,16 @@ void MainWindow::mapMenuActions()
     ui->action_edit_cut,
     ui->action_edit_copy,
     ui->action_edit_paste,
-    ui->action_edit_delete
+    ui->action_edit_delete,
+    ui->action_test_advance1,
+    ui->action_test_reset,
+  };
+
+  selectionActions = std::vector<QAction*>{
+    ui->action_edit_cut,
+    ui->action_edit_copy,
+    ui->action_edit_delete,
+    ui->action_tools_stackUnits,
   };
 }
 
@@ -588,7 +595,7 @@ void MainWindow::on_action_test_play_triggered()
 
 void MainWindow::updatePlaybackState() {
   auto map = currentMap();
-  if (!map) return; 
+  if (!map) return;
 
   bool is_editing = !map->is_testing();
 
@@ -606,6 +613,9 @@ void MainWindow::updatePlaybackState() {
   ui->menu_Layer->menuAction()->setVisible(is_editing);
   ui->menu_Edit->menuAction()->setVisible(is_editing);
   ui->menu_Tools->menuAction()->setVisible(is_editing);
+
+  ui->action_test_advance1->setEnabled(map->is_testing() && map->is_paused());
+  ui->action_test_reset->setEnabled(map->is_testing());
 }
 
 void MainWindow::on_action_test_advance1_triggered()
@@ -842,9 +852,12 @@ void MainWindow::updateMenusEnabled(bool enabled)
     }
   }
 
+  ui->menu_Edit->menuAction()->setVisible(enabled);
+  ui->menu_View->menuAction()->setVisible(enabled);
   ui->menu_Layer->menuAction()->setVisible(enabled);
   ui->menu_Scenario->menuAction()->setVisible(enabled);
   ui->menu_Test->menuAction()->setVisible(enabled);
+  ui->menu_Tools->menuAction()->setVisible(enabled);
 }
 
 void MainWindow::keyPressEvent(QKeyEvent* event) {

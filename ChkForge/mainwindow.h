@@ -48,6 +48,7 @@ private:
   std::vector<QAction*> layerOptions;
   std::vector<QAction*> mapAvailableActions;
   std::vector<QAction*> contextSensitiveActions;
+  std::vector<QAction*> selectionActions;
 
   bool is_changing_layer = false;
   bool is_changing_zoom = false;

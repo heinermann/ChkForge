@@ -955,7 +955,7 @@ Some select Starforge code snippets and resources.
     </message>
     <message>
         <location filename="mainwindow.ui" line="787"/>
-        <location filename="mainwindow.cpp" line="596"/>
+        <location filename="mainwindow.cpp" line="603"/>
         <source>&amp;Play</source>
         <oldsource>&amp;Play/Pause</oldsource>
         <translation type="unfinished"></translation>
@@ -1032,12 +1032,12 @@ Some select Starforge code snippets and resources.
     </message>
     <message>
         <location filename="mainwindow.cpp" line="105"/>
-        <location filename="mainwindow.cpp" line="700"/>
+        <location filename="mainwindow.cpp" line="710"/>
         <source>Player %1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="600"/>
+        <location filename="mainwindow.cpp" line="607"/>
         <source>&amp;Pause</source>
         <translation type="unfinished"></translation>
     </message>
