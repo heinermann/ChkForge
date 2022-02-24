@@ -1506,6 +1506,7 @@ Please select a different directory.</source>
         <location filename="strings.cpp" line="190"/>
         <location filename="strings.cpp" line="199"/>
         <location filename="strings.cpp" line="209"/>
+        <location filename="strings.cpp" line="210"/>
         <source>Random</source>
         <translation></translation>
     </message>
@@ -1884,7 +1885,8 @@ Please select a different directory.</source>
     </message>
     <message>
         <location filename="strings.cpp" line="184"/>
-        <source>Open ▼</source>
+        <source>Open</source>
+        <oldsource>Open ▼</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1894,17 +1896,9 @@ Please select a different directory.</source>
     </message>
     <message>
         <location filename="strings.cpp" line="198"/>
-        <source>Select Race ▼</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="strings.cpp" line="200"/>
         <source>Select Race</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="strings.cpp" line="210"/>
-        <source>Random ▼</source>
+        <oldsource>Select Race ▼</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>

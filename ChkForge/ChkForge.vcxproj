@@ -635,8 +635,20 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <QtTranslation Include="chkforge_de_de.ts" />
     <QtTranslation Include="chkforge_en_ca.ts" />
     <QtTranslation Include="chkforge_en_us.ts" />
+    <QtTranslation Include="chkforge_es_es.ts" />
+    <QtTranslation Include="chkforge_es_mx.ts" />
+    <QtTranslation Include="chkforge_fr_fr.ts" />
+    <QtTranslation Include="chkforge_it_it.ts" />
+    <QtTranslation Include="chkforge_ja_jp.ts" />
+    <QtTranslation Include="chkforge_ko_kr.ts" />
+    <QtTranslation Include="chkforge_pl_pl.ts" />
+    <QtTranslation Include="chkforge_pt_br.ts" />
+    <QtTranslation Include="chkforge_ru_ru.ts" />
+    <QtTranslation Include="chkforge_zh_cn.ts" />
+    <QtTranslation Include="chkforge_zh_tw.ts" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
