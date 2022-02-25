@@ -64,7 +64,7 @@
       <item row="0" column="1">
        <widget class="QCheckBox" name="chkUnitEnabledGlobally">
         <property name="text">
-         <string>Enabled by Default</string>
+         <string>Enable by Default</string>
         </property>
         <property name="checked">
          <bool>true</bool>
@@ -146,22 +146,22 @@
         </item>
         <item>
          <property name="text">
-          <string>Player 9</string>
+          <string>Independent 1</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Player 10</string>
+          <string>Independent 2</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Player 11</string>
+          <string>Independent 3</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Player 12</string>
+          <string>Neutral</string>
          </property>
         </item>
        </widget>
@@ -182,7 +182,7 @@
       <item row="1" column="1">
        <widget class="InvertedTriStateGroupBox" name="grpUnitPlayerDefaults">
         <property name="title">
-         <string>Use Default</string>
+         <string>Use Defaults</string>
         </property>
         <property name="checkable">
          <bool>true</bool>
@@ -197,7 +197,7 @@
             </size>
            </property>
            <property name="text">
-            <string>Enabled for Player</string>
+            <string>Enable for Player</string>
            </property>
            <property name="checked">
             <bool>true</bool>
@@ -216,7 +216,7 @@
       <bool>true</bool>
      </property>
      <property name="title">
-      <string>Use Default</string>
+      <string>Use Defaults</string>
      </property>
      <property name="checkable">
       <bool>true</bool>
@@ -472,7 +472,7 @@
         <item row="0" column="0">
          <widget class="QLabel" name="label_4">
           <property name="text">
-           <string>Build Time</string>
+           <string>Time</string>
           </property>
          </widget>
         </item>

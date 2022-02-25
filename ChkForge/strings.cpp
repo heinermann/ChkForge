@@ -55,9 +55,9 @@ const std::array<const QString, Sc::Player::Total> genericPlayerNames = {
   QObject::tr("Player 6"),
   QObject::tr("Player 7"),
   QObject::tr("Player 8"),
-  QObject::tr("Player 9"),
-  QObject::tr("Player 10"),
-  QObject::tr("Player 11"),
+  QObject::tr("Independent 1"),
+  QObject::tr("Independent 2"),
+  QObject::tr("Independent 3"),
   QObject::tr("Neutral")
 };
 
@@ -143,9 +143,9 @@ const std::array<const QString, 23> colorNames = {
   QObject::tr("White"),
   QObject::tr("Yellow"),
   QObject::tr("Green"),
-  QObject::tr("Pale Yellow"),
+  QObject::tr("Gold"),
   QObject::tr("Tan"),
-  QObject::tr("Dark Aqua"),
+  QObject::tr("Azure"),
   QObject::tr("Pale Green"),
   QObject::tr("Bluish Grey"),
   QObject::tr("Pale Yellow"),

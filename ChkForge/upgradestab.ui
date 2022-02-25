@@ -94,7 +94,7 @@
         </column>
         <column>
          <property name="text">
-          <string>Start</string>
+          <string>Level</string>
          </property>
         </column>
         <column>
@@ -144,22 +144,22 @@
         </item>
         <item>
          <property name="text">
-          <string>Player 9</string>
+          <string>Independent 1</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Player 10</string>
+          <string>Independent 2</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Player 11</string>
+          <string>Independent 3</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Player 12</string>
+          <string>Neutral</string>
          </property>
         </item>
        </widget>
@@ -169,7 +169,7 @@
         <item row="0" column="0">
          <widget class="QLabel" name="label_25">
           <property name="text">
-           <string>Default Start</string>
+           <string>Default Level</string>
           </property>
          </widget>
         </item>
@@ -227,7 +227,7 @@
       <item row="1" column="1">
        <widget class="InvertedTriStateGroupBox" name="grpUpgradePlayerDefaults">
         <property name="title">
-         <string>Use Default</string>
+         <string>Use Defaults</string>
         </property>
         <property name="checkable">
          <bool>true</bool>
@@ -236,7 +236,7 @@
          <item row="0" column="0">
           <widget class="QLabel" name="label_19">
            <property name="text">
-            <string>Start</string>
+            <string>Level</string>
            </property>
           </widget>
          </item>
@@ -285,7 +285,7 @@
    <item row="0" column="1">
     <widget class="InvertedTriStateGroupBox" name="grpUpgradeUseDefaults">
      <property name="title">
-      <string>Use Default</string>
+      <string>Use Defaults</string>
      </property>
      <property name="checkable">
       <bool>true</bool>
@@ -436,7 +436,7 @@
       <item row="2" column="0">
        <widget class="QLabel" name="label_13">
         <property name="text">
-         <string>Upgrade Time</string>
+         <string>Time</string>
         </property>
        </widget>
       </item>

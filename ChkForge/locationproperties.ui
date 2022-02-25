@@ -141,42 +141,42 @@
       <item row="1" column="1">
        <widget class="QCheckBox" name="chk_air_mid">
         <property name="text">
-         <string>Mid Air</string>
+         <string>Mi&amp;d Air</string>
         </property>
        </widget>
       </item>
       <item row="0" column="1">
        <widget class="QCheckBox" name="chk_air_low">
         <property name="text">
-         <string>Low Air</string>
+         <string>Low &amp;Air</string>
         </property>
        </widget>
       </item>
       <item row="0" column="0">
        <widget class="QCheckBox" name="chk_elevation_low">
         <property name="text">
-         <string>Low Elevation</string>
+         <string>&amp;Low Elevation</string>
         </property>
        </widget>
       </item>
       <item row="1" column="0">
        <widget class="QCheckBox" name="chk_elevation_mid">
         <property name="text">
-         <string>Mid Elevation</string>
+         <string>&amp;Mid Elevation</string>
         </property>
        </widget>
       </item>
       <item row="2" column="0">
        <widget class="QCheckBox" name="chk_elevation_high">
         <property name="text">
-         <string>High Elevation</string>
+         <string>&amp;High Elevation</string>
         </property>
        </widget>
       </item>
       <item row="2" column="1">
        <widget class="QCheckBox" name="chk_air_high">
         <property name="text">
-         <string>High Air</string>
+         <string>Hi&amp;gh Air</string>
         </property>
        </widget>
       </item>

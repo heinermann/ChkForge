@@ -316,7 +316,6 @@
       <QtUicFileName>ui_%(Filename).h</QtUicFileName>
     </QtUic>
     <QtTranslation>
-      <BuildAction>lupdate</BuildAction>
       <NoUnfinished>true</NoUnfinished>
       <RemoveIdentical>true</RemoveIdentical>
       <NoObsolete>true</NoObsolete>
@@ -376,7 +375,6 @@
       <QtUicFileName>ui_%(Filename).h</QtUicFileName>
     </QtUic>
     <QtTranslation>
-      <BuildAction>lupdate</BuildAction>
       <NoUnfinished>true</NoUnfinished>
       <RemoveIdentical>true</RemoveIdentical>
       <NoObsolete>true</NoObsolete>

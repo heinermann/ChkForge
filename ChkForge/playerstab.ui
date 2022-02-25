@@ -62,7 +62,7 @@
      </column>
      <column>
       <property name="text">
-       <string>Controller</string>
+       <string>Control</string>
       </property>
      </column>
      <column>
@@ -408,7 +408,7 @@
       <item>
        <widget class="QGroupBox" name="grpPlayerController">
         <property name="title">
-         <string>Controller</string>
+         <string>Control</string>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_2">
          <item>
@@ -606,8 +606,8 @@
  <connections/>
  <buttongroups>
   <buttongroup name="btnGroupPlayerForce"/>
+  <buttongroup name="btnGroupRace"/>
   <buttongroup name="btnGroupColour"/>
   <buttongroup name="btnGroupController"/>
-  <buttongroup name="btnGroupRace"/>
  </buttongroups>
 </ui>

@@ -97,7 +97,7 @@
      </widget>
      <widget class="AbilitiesTab" name="techSettingsTab">
       <attribute name="title">
-       <string>Abilities</string>
+       <string>Special Abilities</string>
       </attribute>
       <layout class="QGridLayout" name="gridLayout_19" rowstretch="0" columnstretch="0"/>
      </widget>
