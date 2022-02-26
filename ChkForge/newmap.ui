@@ -11,17 +11,17 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>New Scenario</string>
+   <string extracomment="EditLocal:1200">New Scenario</string>
   </property>
   <property name="windowIcon">
    <iconset resource="../oxygen-subset.qrc">
     <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/document-new.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/document-new.png</iconset>
   </property>
-  <layout class="QGridLayout" name="gridLayout_3" rowstretch="0,1,0">
+  <layout class="QGridLayout" name="gridLayout_3" rowstretch="0,0,0">
    <item row="0" column="2">
     <widget class="QGroupBox" name="groupBox_3">
      <property name="title">
-      <string>Scenario Size</string>
+      <string extracomment="EditLocal:1200">Scenario Size</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_4" rowstretch="1,0">
       <item row="0" column="0">
@@ -114,7 +114,7 @@ Other sizes may crash Starcraft.</string>
    <item row="1" column="2">
     <widget class="QGroupBox" name="groupBox">
      <property name="title">
-      <string>Scenario Type</string>
+      <string extracomment="EditLocal:1200">Scenario Type</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
       <item row="2" column="0" colspan="3">
@@ -213,53 +213,14 @@ Other sizes may crash Starcraft.</string>
     </widget>
    </item>
    <item row="2" column="2">
-    <layout class="QHBoxLayout">
-     <property name="spacing">
-      <number>6</number>
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
      </property>
-     <property name="leftMargin">
-      <number>0</number>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
      </property>
-     <property name="topMargin">
-      <number>0</number>
-     </property>
-     <property name="rightMargin">
-      <number>0</number>
-     </property>
-     <property name="bottomMargin">
-      <number>0</number>
-     </property>
-     <item>
-      <widget class="QPushButton" name="cancelButton">
-       <property name="text">
-        <string>Cancel</string>
-       </property>
-       <property name="autoDefault">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <spacer>
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>131</width>
-         <height>31</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="okButton">
-       <property name="text">
-        <string>OK</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
+    </widget>
    </item>
   </layout>
  </widget>
@@ -267,42 +228,40 @@ Other sizes may crash Starcraft.</string>
   <tabstop>cmb_tileset</tabstop>
   <tabstop>lst_terrain</tabstop>
   <tabstop>spn_clutter</tabstop>
-  <tabstop>okButton</tabstop>
-  <tabstop>cancelButton</tabstop>
  </tabstops>
  <resources>
   <include location="../oxygen-subset.qrc"/>
  </resources>
  <connections>
   <connection>
-   <sender>okButton</sender>
-   <signal>clicked()</signal>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
    <receiver>NewMap</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>356</x>
-     <y>496</y>
+     <x>191</x>
+     <y>489</y>
     </hint>
     <hint type="destinationlabel">
-     <x>96</x>
-     <y>254</y>
+     <x>191</x>
+     <y>255</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>cancelButton</sender>
-   <signal>clicked()</signal>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
    <receiver>NewMap</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>84</x>
-     <y>496</y>
+     <x>191</x>
+     <y>489</y>
     </hint>
     <hint type="destinationlabel">
-     <x>179</x>
-     <y>282</y>
+     <x>191</x>
+     <y>255</y>
     </hint>
    </hints>
   </connection>

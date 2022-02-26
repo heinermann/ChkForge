@@ -66,6 +66,8 @@ private:
     this->connect(action, &QAction::triggered, this, method);
   }
 
+  void applyTranslations();
+
   void toggleToolWindows(bool isOpen);
 
   void createNewMap(int tileWidth, int tileHeight, Sc::Terrain::Tileset tileset, int brush, int clutter);

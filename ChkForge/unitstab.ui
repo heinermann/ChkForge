@@ -61,16 +61,6 @@
       <property name="bottomMargin">
        <number>0</number>
       </property>
-      <item row="0" column="1">
-       <widget class="QCheckBox" name="chkUnitEnabledGlobally">
-        <property name="text">
-         <string>Enable by Default</string>
-        </property>
-        <property name="checked">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
       <item row="0" column="0" rowspan="4">
        <widget class="QTreeWidget" name="unitPlyrList">
         <property name="editTriggers">
@@ -96,7 +86,7 @@
         </attribute>
         <column>
          <property name="text">
-          <string>Player</string>
+          <string extracomment="EditLocal:3:42">Player</string>
          </property>
         </column>
         <column>
@@ -106,62 +96,62 @@
         </column>
         <item>
          <property name="text">
-          <string>Player 1</string>
+          <string extracomment="EditLocal:8:126">Player 1</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Player 2</string>
+          <string extracomment="EditLocal:8:127">Player 2</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Player 3</string>
+          <string extracomment="EditLocal:9:128">Player 3</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Player 4</string>
+          <string extracomment="EditLocal:9:129">Player 4</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Player 5</string>
+          <string extracomment="EditLocal:9:130">Player 5</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Player 6</string>
+          <string extracomment="EditLocal:9:131">Player 6</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Player 7</string>
+          <string extracomment="EditLocal:9:132">Player 7</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Player 8</string>
+          <string extracomment="EditLocal:9:133">Player 8</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Independent 1</string>
+          <string extracomment="EditLocal:9:134">Independent 1</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Independent 2</string>
+          <string extracomment="EditLocal:9:135">Independent 2</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Independent 3</string>
+          <string extracomment="EditLocal:9:136">Independent 3</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Neutral</string>
+          <string extracomment="EditLocal:9:137">Neutral</string>
          </property>
         </item>
        </widget>
@@ -207,6 +197,16 @@
         </layout>
        </widget>
       </item>
+      <item row="0" column="1">
+       <widget class="QCheckBox" name="chkUnitEnabledGlobally">
+        <property name="text">
+         <string extracomment="EditLocal:1217:1192">Enable by Default</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
    </item>
@@ -227,7 +227,7 @@
         <item row="0" column="0">
          <widget class="QLabel" name="label">
           <property name="text">
-           <string>Hit Points</string>
+           <string extracomment="EditLocal:1216:1000">Hit Points</string>
           </property>
          </widget>
         </item>
@@ -276,7 +276,7 @@
         <item row="1" column="0">
          <widget class="QLabel" name="label_2">
           <property name="text">
-           <string>Shields</string>
+           <string extracomment="EditLocal:1216:1219">Shields</string>
           </property>
          </widget>
         </item>
@@ -299,7 +299,7 @@
         <item row="2" column="0">
          <widget class="QLabel" name="label_3">
           <property name="text">
-           <string>Armour</string>
+           <string extracomment="EditLocal:1216">Armour</string>
           </property>
          </widget>
         </item>
@@ -321,7 +321,7 @@
       <item row="2" column="0">
        <widget class="QGroupBox" name="grpGroundWeapon">
         <property name="title">
-         <string>Ground Weapon</string>
+         <string extracomment="EditLocal:1216:1227">Ground Weapon</string>
         </property>
         <property name="flat">
          <bool>true</bool>
@@ -344,7 +344,7 @@
            <item row="0" column="0">
             <widget class="QLabel" name="label_7">
              <property name="text">
-              <string>Damage</string>
+              <string extracomment="EditLocal:1216">Damage</string>
              </property>
             </widget>
            </item>
@@ -364,7 +364,7 @@
            <item row="1" column="0">
             <widget class="QLabel" name="label_8">
              <property name="text">
-              <string>Bonus</string>
+              <string extracomment="EditLocal:1216">Bonus</string>
              </property>
             </widget>
            </item>
@@ -389,7 +389,7 @@
       <item row="2" column="1">
        <widget class="QGroupBox" name="grpAirWeapon">
         <property name="title">
-         <string>Air Weapon</string>
+         <string extracomment="EditLocal:1216:1228">Air Weapon</string>
         </property>
         <property name="flat">
          <bool>true</bool>
@@ -412,7 +412,7 @@
            <item row="0" column="0">
             <widget class="QLabel" name="label_10">
              <property name="text">
-              <string>Damage</string>
+              <string extracomment="EditLocal:1216">Damage</string>
              </property>
             </widget>
            </item>
@@ -432,7 +432,7 @@
            <item row="1" column="0">
             <widget class="QLabel" name="label_9">
              <property name="text">
-              <string>Bonus</string>
+              <string extracomment="EditLocal:1216">Bonus</string>
              </property>
             </widget>
            </item>
@@ -472,7 +472,7 @@
         <item row="0" column="0">
          <widget class="QLabel" name="label_4">
           <property name="text">
-           <string>Time</string>
+           <string extracomment="EditLocal:1216">Time</string>
           </property>
          </widget>
         </item>
@@ -492,7 +492,7 @@
         <item row="1" column="0">
          <widget class="QLabel" name="label_5">
           <property name="text">
-           <string>Minerals</string>
+           <string extracomment="EditLocal:1216">Minerals</string>
           </property>
          </widget>
         </item>
@@ -512,7 +512,7 @@
         <item row="2" column="0">
          <widget class="QLabel" name="label_6">
           <property name="text">
-           <string>Gas</string>
+           <string extracomment="EditLocal:1216">Gas</string>
           </property>
          </widget>
         </item>
@@ -534,7 +534,7 @@
       <item row="0" column="0" colspan="3">
        <widget class="TriStateGroupBox" name="grpCustomName">
         <property name="title">
-         <string>Custom Name</string>
+         <string extracomment="SEditENU:1216">Custom Name</string>
         </property>
         <property name="flat">
          <bool>true</bool>

@@ -14,58 +14,6 @@
    <string>Scenario Settings</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="2" column="0">
-    <layout class="QHBoxLayout">
-     <property name="spacing">
-      <number>6</number>
-     </property>
-     <property name="leftMargin">
-      <number>0</number>
-     </property>
-     <property name="topMargin">
-      <number>0</number>
-     </property>
-     <property name="rightMargin">
-      <number>0</number>
-     </property>
-     <property name="bottomMargin">
-      <number>0</number>
-     </property>
-     <item>
-      <widget class="QPushButton" name="cancelButton">
-       <property name="text">
-        <string>Cancel</string>
-       </property>
-       <property name="autoDefault">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <spacer>
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>131</width>
-         <height>31</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="okButton">
-       <property name="text">
-        <string>OK</string>
-       </property>
-       <property name="default">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
    <item row="1" column="0">
     <widget class="QTabWidget" name="tabs">
      <property name="currentIndex">
@@ -73,34 +21,41 @@
      </property>
      <widget class="PlayersTab" name="playersTab">
       <attribute name="title">
-       <string>Players</string>
+       <string extracomment="EditLocal:1202">Players</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_13"/>
      </widget>
      <widget class="ForcesTab" name="forcesTab">
       <attribute name="title">
-       <string>Forces</string>
+       <string extracomment="EditLocal:188">Forces</string>
       </attribute>
       <layout class="QGridLayout" name="gridLayout_2" columnstretch="0"/>
      </widget>
      <widget class="UnitsTab" name="unitSettingsTab">
       <attribute name="title">
-       <string>Units</string>
+       <string extracomment="EditLocal:1217">Units</string>
       </attribute>
       <layout class="QGridLayout" name="gridLayout_8" rowstretch="0" columnstretch="0"/>
      </widget>
      <widget class="UpgradesTab" name="upgradeSettingsTab">
       <attribute name="title">
-       <string>Upgrades</string>
+       <string extracomment="EditLocal:1218">Upgrades</string>
       </attribute>
       <layout class="QGridLayout" name="gridLayout_12" rowstretch="0" columnstretch="0"/>
      </widget>
      <widget class="AbilitiesTab" name="techSettingsTab">
       <attribute name="title">
-       <string>Special Abilities</string>
+       <string extracomment="EditLocal:1219">Special Abilities</string>
       </attribute>
       <layout class="QGridLayout" name="gridLayout_19" rowstretch="0" columnstretch="0"/>
      </widget>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
     </widget>
    </item>
   </layout>
@@ -140,14 +95,14 @@
  <resources/>
  <connections>
   <connection>
-   <sender>okButton</sender>
-   <signal>clicked()</signal>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
    <receiver>ScenarioSettings</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>545</x>
-     <y>535</y>
+     <x>296</x>
+     <y>539</y>
     </hint>
     <hint type="destinationlabel">
      <x>296</x>
@@ -156,14 +111,14 @@
    </hints>
   </connection>
   <connection>
-   <sender>cancelButton</sender>
-   <signal>clicked()</signal>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
    <receiver>ScenarioSettings</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>47</x>
-     <y>535</y>
+     <x>296</x>
+     <y>539</y>
     </hint>
     <hint type="destinationlabel">
      <x>296</x>

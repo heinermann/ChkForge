@@ -42,7 +42,7 @@
      </attribute>
      <column>
       <property name="text">
-       <string>Player</string>
+       <string extracomment="gluAll:scr.leaderboard.table.heading.2">Player</string>
       </property>
      </column>
      <column>
@@ -52,17 +52,17 @@
      </column>
      <column>
       <property name="text">
-       <string>Colour</string>
+       <string extracomment="EditLocal:3:43">Colour</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>Race</string>
+       <string extracomment="EditLocal:3:44">Race</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>Control</string>
+       <string extracomment="EditLocal:3:45">Control</string>
       </property>
      </column>
      <column>
@@ -72,162 +72,42 @@
      </column>
      <item>
       <property name="text">
-       <string>Player 1</string>
-      </property>
-      <property name="text">
-       <string>Elite Guard</string>
-      </property>
-      <property name="text">
-       <string>Red</string>
-      </property>
-      <property name="text">
-       <string>Terran</string>
-      </property>
-      <property name="text">
-       <string>Computer</string>
-      </property>
-      <property name="text">
-       <string>Force 1</string>
+       <string extracomment="EditLocal:8:126">Player 1</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>Player 2</string>
-      </property>
-      <property name="text">
-       <string>Mar Sara</string>
-      </property>
-      <property name="text">
-       <string>Blue</string>
-      </property>
-      <property name="text">
-       <string>Terran</string>
-      </property>
-      <property name="text">
-       <string>Computer</string>
-      </property>
-      <property name="text">
-       <string>Force 1</string>
+       <string extracomment="EditLocal:8:127">Player 2</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>Player 3</string>
-      </property>
-      <property name="text">
-       <string>Kel-Morian Combine</string>
-      </property>
-      <property name="text">
-       <string>Teal</string>
-      </property>
-      <property name="text">
-       <string>Terran</string>
-      </property>
-      <property name="text">
-       <string>Computer</string>
-      </property>
-      <property name="text">
-       <string>Force 1</string>
+       <string extracomment="EditLocal:9:128">Player 3</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>Player 4</string>
-      </property>
-      <property name="text">
-       <string>Antiga</string>
-      </property>
-      <property name="text">
-       <string>Purple</string>
-      </property>
-      <property name="text">
-       <string>Terran</string>
-      </property>
-      <property name="text">
-       <string>Computer</string>
-      </property>
-      <property name="text">
-       <string>Force 1</string>
+       <string extracomment="EditLocal:9:129">Player 4</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>Player 5</string>
-      </property>
-      <property name="text">
-       <string>Delta Squadron</string>
-      </property>
-      <property name="text">
-       <string>Orange</string>
-      </property>
-      <property name="text">
-       <string>Terran</string>
-      </property>
-      <property name="text">
-       <string>Computer</string>
-      </property>
-      <property name="text">
-       <string>Force 1</string>
+       <string extracomment="EditLocal:9:130">Player 5</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>Player 6</string>
-      </property>
-      <property name="text">
-       <string>Omega Squadron</string>
-      </property>
-      <property name="text">
-       <string>Brown</string>
-      </property>
-      <property name="text">
-       <string>Terran</string>
-      </property>
-      <property name="text">
-       <string>Computer</string>
-      </property>
-      <property name="text">
-       <string>Force 1</string>
+       <string extracomment="EditLocal:9:131">Player 6</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>Player 7</string>
-      </property>
-      <property name="text">
-       <string>Alpha Squadron</string>
-      </property>
-      <property name="text">
-       <string>White</string>
-      </property>
-      <property name="text">
-       <string>Terran</string>
-      </property>
-      <property name="text">
-       <string>Computer</string>
-      </property>
-      <property name="text">
-       <string>Force 1</string>
+       <string extracomment="EditLocal:9:132">Player 7</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>Player 8</string>
-      </property>
-      <property name="text">
-       <string>Epsilon Squadron</string>
-      </property>
-      <property name="text">
-       <string>Yellow</string>
-      </property>
-      <property name="text">
-       <string>Terran</string>
-      </property>
-      <property name="text">
-       <string>Computer</string>
-      </property>
-      <property name="text">
-       <string>Force 1</string>
+       <string extracomment="EditLocal:9:133">Player 8</string>
       </property>
      </item>
     </widget>
@@ -253,7 +133,7 @@
       <item>
        <widget class="QGroupBox" name="grpPlayerColor">
         <property name="title">
-         <string>Colour</string>
+         <string extracomment="EditLocal:3:43">Colour</string>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_8">
          <item>
@@ -291,7 +171,7 @@
             <bool>false</bool>
            </property>
            <property name="text">
-            <string>RGB</string>
+            <string notr="true">RGB</string>
            </property>
            <attribute name="buttonGroup">
             <string notr="true">btnGroupColour</string>
@@ -333,13 +213,13 @@
       <item>
        <widget class="QGroupBox" name="grpPlayerRace">
         <property name="title">
-         <string>Race</string>
+         <string extracomment="EditLocal:3:44">Race</string>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout">
          <item>
           <widget class="QRadioButton" name="radioRaceZerg">
            <property name="text">
-            <string>Zerg</string>
+            <string extracomment="gluAll:lobbyScreen_zerg">Zerg</string>
            </property>
            <property name="checked">
             <bool>true</bool>
@@ -352,7 +232,7 @@
          <item>
           <widget class="QRadioButton" name="radioRaceTerran">
            <property name="text">
-            <string>Terran</string>
+            <string extracomment="gluAll:lobbyScreen_terran">Terran</string>
            </property>
            <attribute name="buttonGroup">
             <string notr="true">btnGroupRace</string>
@@ -362,7 +242,7 @@
          <item>
           <widget class="QRadioButton" name="radioRaceProtoss">
            <property name="text">
-            <string>Protoss</string>
+            <string extracomment="gluAll:lobbyScreen_protoss">Protoss</string>
            </property>
            <attribute name="buttonGroup">
             <string notr="true">btnGroupRace</string>
@@ -372,7 +252,7 @@
          <item>
           <widget class="QRadioButton" name="radioRaceUserSelect">
            <property name="text">
-            <string>User Selectable</string>
+            <string extracomment="EditLocal:34:536">User Selectable</string>
            </property>
            <attribute name="buttonGroup">
             <string notr="true">btnGroupRace</string>
@@ -382,7 +262,7 @@
          <item>
           <widget class="QRadioButton" name="radioRaceRandom">
            <property name="text">
-            <string>Random</string>
+            <string extracomment="gluAll:lobbyScreen_random">Random</string>
            </property>
            <attribute name="buttonGroup">
             <string notr="true">btnGroupRace</string>
@@ -408,13 +288,13 @@
       <item>
        <widget class="QGroupBox" name="grpPlayerController">
         <property name="title">
-         <string>Control</string>
+         <string extracomment="EditLocal:3:45">Control</string>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_2">
          <item>
           <widget class="QRadioButton" name="radioControlInactive">
            <property name="text">
-            <string>Inactive</string>
+            <string extracomment="EditLocal:10:147">Inactive</string>
            </property>
            <property name="checked">
             <bool>true</bool>
@@ -440,7 +320,7 @@
          <item>
           <widget class="QRadioButton" name="radioControlRescuable">
            <property name="text">
-            <string>Rescuable</string>
+            <string extracomment="EditLocal:24:377">Rescuable</string>
            </property>
            <attribute name="buttonGroup">
             <string notr="true">btnGroupController</string>
@@ -463,7 +343,7 @@
          <item>
           <widget class="QRadioButton" name="radioControlComputer">
            <property name="text">
-            <string>Computer</string>
+            <string extracomment="gluAll:lobbyScreen_computer">Computer</string>
            </property>
            <attribute name="buttonGroup">
             <string notr="true">btnGroupController</string>
@@ -473,7 +353,7 @@
          <item>
           <widget class="QRadioButton" name="radioControlHuman">
            <property name="text">
-            <string>Human</string>
+            <string extracomment="EditLocal:8:123">Human</string>
            </property>
            <attribute name="buttonGroup">
             <string notr="true">btnGroupController</string>
@@ -483,7 +363,7 @@
          <item>
           <widget class="QRadioButton" name="radioControlNeutral">
            <property name="text">
-            <string>Neutral</string>
+            <string extracomment="EditLocal:24:379">Neutral</string>
            </property>
            <attribute name="buttonGroup">
             <string notr="true">btnGroupController</string>
@@ -496,7 +376,7 @@
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Similar to &lt;span style=&quot; font-weight:600;&quot;&gt;Inactive&lt;/span&gt;, but shows up in melee.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="text">
-            <string>Closed</string>
+            <string extracomment="gluAll:lobbyScreen_closed">Closed</string>
            </property>
            <attribute name="buttonGroup">
             <string notr="true">btnGroupController</string>
@@ -528,7 +408,7 @@
          <item>
           <widget class="QRadioButton" name="radioForce1">
            <property name="text">
-            <string>Force 1</string>
+            <string extracomment="network:strFORCE1">Force 1</string>
            </property>
            <property name="checked">
             <bool>true</bool>
@@ -541,7 +421,7 @@
          <item>
           <widget class="QRadioButton" name="radioForce2">
            <property name="text">
-            <string>Force 2</string>
+            <string extracomment="network:strFORCE2">Force 2</string>
            </property>
            <attribute name="buttonGroup">
             <string notr="true">btnGroupPlayerForce</string>
@@ -551,7 +431,7 @@
          <item>
           <widget class="QRadioButton" name="radioForce3">
            <property name="text">
-            <string>Force 3</string>
+            <string extracomment="network:strFORCE3">Force 3</string>
            </property>
            <attribute name="buttonGroup">
             <string notr="true">btnGroupPlayerForce</string>
@@ -561,7 +441,7 @@
          <item>
           <widget class="QRadioButton" name="radioForce4">
            <property name="text">
-            <string>Force 4</string>
+            <string extracomment="network:strFORCE4">Force 4</string>
            </property>
            <attribute name="buttonGroup">
             <string notr="true">btnGroupPlayerForce</string>
@@ -605,9 +485,9 @@
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="btnGroupPlayerForce"/>
-  <buttongroup name="btnGroupRace"/>
   <buttongroup name="btnGroupColour"/>
+  <buttongroup name="btnGroupRace"/>
   <buttongroup name="btnGroupController"/>
+  <buttongroup name="btnGroupPlayerForce"/>
  </buttongroups>
 </ui>

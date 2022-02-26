@@ -26,6 +26,8 @@
 #include <QFileIconProvider>
 #include <QFileInfo>
 #include <QMimeData>
+#include <QLineEdit>
+#include <QShortcut>
 
 #include <filesystem>
 
@@ -67,6 +69,29 @@ MainWindow::MainWindow(QWidget *parent)
   selectPlayerIndex(0);
 
   updateMenusEnabled(false);
+  applyTranslations();
+}
+
+void MainWindow::applyTranslations() {
+  // Pull Qt-standardized translations from QLineEdit
+
+  //: DO NOT TRANSLATE
+  ui->action_edit_cut->setText(QLineEdit::tr("Cu&t"));
+  //: DO NOT TRANSLATE
+  ui->action_edit_copy->setText(QLineEdit::tr("&Copy"));
+  //: DO NOT TRANSLATE
+  ui->action_edit_paste->setText(QLineEdit::tr("&Paste"));
+  //: DO NOT TRANSLATE
+  ui->action_edit_undo->setText(QLineEdit::tr("&Undo"));
+  //: DO NOT TRANSLATE
+  ui->action_edit_redo->setText(QLineEdit::tr("&Redo"));
+  //: DO NOT TRANSLATE
+  ui->action_edit_delete->setText(QLineEdit::tr("Delete"));
+  //: DO NOT TRANSLATE
+  ui->action_edit_selectAll->setText(QLineEdit::tr("Select All"));
+
+  //: DO NOT TRANSLATE
+  toolbars_ui->label_zoom->setText(QShortcut::tr("Zoom"));
 }
 
 namespace {
@@ -208,6 +233,11 @@ void MainWindow::mapMenuActions()
   ui->action_edit_undo->setShortcuts(QKeySequence::Undo);
   ui->action_edit_redo->setShortcuts(QKeySequence::Redo);
   ui->action_edit_selectAll->setShortcuts(QKeySequence::SelectAll);
+  ui->action_edit_properties->setShortcut(QKeySequence(Qt::Key_Enter));
+
+  ui->action_test_reset->setShortcuts({ QKeySequence(QKeySequence::Refresh), QKeyCombination(Qt::CTRL, Qt::Key_R) });
+  ui->action_test_play->setShortcut(QKeySequence(Qt::Key_Space));
+  ui->action_test_advance1->setShortcut(QKeyCombination(Qt::SHIFT, Qt::Key_Space));
 
   ui->action_window_newMapView->setShortcuts(QKeySequence::AddTab);
 

@@ -10,58 +10,54 @@
     <height>413</height>
    </rect>
   </property>
-  <layout class="QGridLayout" name="gridLayout_2" columnstretch="1,1">
-   <item row="1" column="1">
-    <spacer name="verticalSpacer_10">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>40</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
+  <layout class="QGridLayout" name="gridLayout_2" columnstretch="1,0">
    <item row="0" column="1">
-    <widget class="QGroupBox" name="forcePropsWidget">
-     <property name="title">
-      <string>Force Properties</string>
-     </property>
+    <widget class="QWidget" name="forcePropsWidget" native="true">
      <layout class="QGridLayout" name="gridLayout_4">
-      <item row="1" column="1">
-       <widget class="QCheckBox" name="chkForceRandomStartLocation">
-        <property name="text">
-         <string>Random Start Location</string>
-        </property>
-       </widget>
-      </item>
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
       <item row="2" column="1">
        <widget class="QCheckBox" name="chkForceSharedVision">
         <property name="text">
-         <string>Shared Vision</string>
+         <string extracomment="EditLocal:188:1113">Shared Vision</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QCheckBox" name="chkForceRandomStartLocation">
+        <property name="text">
+         <string extracomment="EditLocal:188:1111">Random Start Location</string>
         </property>
        </widget>
       </item>
       <item row="2" column="0">
        <widget class="QCheckBox" name="chkForceAlliedVictory">
         <property name="text">
-         <string>Allied Victory</string>
+         <string extracomment="EditLocal:188:1116">Allied Victory</string>
         </property>
        </widget>
       </item>
       <item row="1" column="0">
        <widget class="QCheckBox" name="chkForceAllies">
         <property name="text">
-         <string>Allies</string>
+         <string extracomment="EditLocal:188:1115">Allies</string>
         </property>
        </widget>
       </item>
       <item row="0" column="0" colspan="2">
        <widget class="TriStateGroupBox" name="grpForceCustomName">
         <property name="title">
-         <string>Custom Name</string>
+         <string extracomment="SEditENU:1216">Custom Name</string>
         </property>
         <property name="flat">
          <bool>true</bool>
@@ -90,6 +86,19 @@
       </item>
      </layout>
     </widget>
+   </item>
+   <item row="1" column="1">
+    <spacer name="verticalSpacer_10">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
    </item>
    <item row="0" column="0" rowspan="2">
     <widget class="QTreeWidget" name="forcesTree">
@@ -148,7 +157,7 @@
      </column>
      <item>
       <property name="text">
-       <string>Force 1</string>
+       <string extracomment="network:strFORCE1">Force 1</string>
       </property>
       <property name="text">
        <string/>
@@ -165,7 +174,7 @@
      </item>
      <item>
       <property name="text">
-       <string>Force 2</string>
+       <string extracomment="network:strFORCE2">Force 2</string>
       </property>
       <property name="text">
        <string/>
@@ -182,7 +191,7 @@
      </item>
      <item>
       <property name="text">
-       <string>Force 3</string>
+       <string extracomment="network:strFORCE3">Force 3</string>
       </property>
       <property name="text">
        <string/>
@@ -199,7 +208,7 @@
      </item>
      <item>
       <property name="text">
-       <string>Force 4</string>
+       <string extracomment="network:strFORCE4">Force 4</string>
       </property>
       <property name="text">
        <string/>

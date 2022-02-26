@@ -169,7 +169,7 @@
         <item row="0" column="0">
          <widget class="QLabel" name="label_25">
           <property name="text">
-           <string>Default Level</string>
+           <string extracomment="EditLocal:1218">Default Level</string>
           </property>
          </widget>
         </item>
@@ -189,7 +189,7 @@
         <item row="1" column="0">
          <widget class="QLabel" name="label_26">
           <property name="text">
-           <string>Default Max</string>
+           <string extracomment="EditLocal:1218">Default Max</string>
           </property>
          </widget>
         </item>
@@ -294,7 +294,7 @@
       <item row="0" column="0">
        <widget class="QLabel" name="label_17">
         <property name="text">
-         <string>Minerals</string>
+         <string extracomment="EditLocal:1223">Minerals</string>
         </property>
        </widget>
       </item>
@@ -365,7 +365,7 @@
       <item row="1" column="0">
        <widget class="QLabel" name="label_14">
         <property name="text">
-         <string>Gas</string>
+         <string extracomment="EditLocal:1223">Gas</string>
         </property>
        </widget>
       </item>
@@ -436,7 +436,7 @@
       <item row="2" column="0">
        <widget class="QLabel" name="label_13">
         <property name="text">
-         <string>Time</string>
+         <string extracomment="EditLocal:1223">Time</string>
         </property>
        </widget>
       </item>

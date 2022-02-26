@@ -20,7 +20,7 @@
    <bool>true</bool>
   </property>
   <property name="windowTitle">
-   <string>ChkForge</string>
+   <string notr="true">ChkForge</string>
   </property>
   <property name="styleSheet">
    <string notr="true">QSplitter::handle:horizontal {
@@ -48,11 +48,11 @@ QSplitter::handle:vertical {
    </property>
    <widget class="QMenu" name="menu_File">
     <property name="title">
-     <string>&amp;File</string>
+     <string extracomment="EditLocal:109">&amp;File</string>
     </property>
     <widget class="QMenu" name="menu_recentFiles">
      <property name="title">
-      <string>Recent File</string>
+      <string extracomment="EditLocal:109:40334">Recent File</string>
      </property>
      <property name="icon">
       <iconset resource="../oxygen-subset.qrc">
@@ -74,7 +74,7 @@ QSplitter::handle:vertical {
    </widget>
    <widget class="QMenu" name="menu_Edit">
     <property name="title">
-     <string>&amp;Edit</string>
+     <string extracomment="EditLocal:109">&amp;Edit</string>
     </property>
     <addaction name="action_edit_undo"/>
     <addaction name="action_edit_redo"/>
@@ -124,7 +124,7 @@ QSplitter::handle:vertical {
    </widget>
    <widget class="QMenu" name="menu_Layer">
     <property name="title">
-     <string>&amp;Layer</string>
+     <string extracomment="EditLocal:109">&amp;Layer</string>
     </property>
     <addaction name="action_layer_selectBrush"/>
     <addaction name="action_layer_terrain"/>
@@ -298,7 +298,7 @@ QSplitter::handle:vertical {
      <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/document-new.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/document-new.png</iconset>
    </property>
    <property name="text">
-    <string>&amp;New...</string>
+    <string extracomment="EditLocal:109:40010">&amp;New...</string>
    </property>
   </action>
   <action name="action_file_open">
@@ -307,7 +307,7 @@ QSplitter::handle:vertical {
      <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/document-open.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/document-open.png</iconset>
    </property>
    <property name="text">
-    <string>&amp;Open...</string>
+    <string extracomment="EditLocal:109:57601">&amp;Open...</string>
    </property>
   </action>
   <action name="action_file_save">
@@ -316,7 +316,7 @@ QSplitter::handle:vertical {
      <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/document-save.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/document-save.png</iconset>
    </property>
    <property name="text">
-    <string>&amp;Save</string>
+    <string extracomment="EditLocal:109:57603">&amp;Save</string>
    </property>
   </action>
   <action name="action_file_saveAs">
@@ -325,10 +325,7 @@ QSplitter::handle:vertical {
      <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/document-save-as.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/document-save-as.png</iconset>
    </property>
    <property name="text">
-    <string>Save &amp;As...</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+Shift+S</string>
+    <string extracomment="EditLocal:109:40018">Save &amp;As...</string>
    </property>
   </action>
   <action name="action_file_saveMapImage">
@@ -369,7 +366,7 @@ QSplitter::handle:vertical {
      <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/application-exit.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/application-exit.png</iconset>
    </property>
    <property name="text">
-    <string>E&amp;xit</string>
+    <string extracomment="EditLocal:109:40013">E&amp;xit</string>
    </property>
    <property name="menuRole">
     <enum>QAction::QuitRole</enum>
@@ -381,7 +378,7 @@ QSplitter::handle:vertical {
      <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/edit-undo.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/edit-undo.png</iconset>
    </property>
    <property name="text">
-    <string>&amp;Undo</string>
+    <string notr="true">&amp;Undo</string>
    </property>
   </action>
   <action name="action_edit_redo">
@@ -390,7 +387,7 @@ QSplitter::handle:vertical {
      <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/edit-redo.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/edit-redo.png</iconset>
    </property>
    <property name="text">
-    <string>&amp;Redo</string>
+    <string notr="true">&amp;Redo</string>
    </property>
   </action>
   <action name="action_edit_cut">
@@ -399,7 +396,7 @@ QSplitter::handle:vertical {
      <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/edit-cut.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/edit-cut.png</iconset>
    </property>
    <property name="text">
-    <string>Cu&amp;t</string>
+    <string notr="true">Cu&amp;t</string>
    </property>
   </action>
   <action name="action_edit_copy">
@@ -408,7 +405,7 @@ QSplitter::handle:vertical {
      <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/edit-copy.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/edit-copy.png</iconset>
    </property>
    <property name="text">
-    <string>&amp;Copy</string>
+    <string notr="true">&amp;Copy</string>
    </property>
   </action>
   <action name="action_edit_paste">
@@ -417,7 +414,7 @@ QSplitter::handle:vertical {
      <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/edit-paste.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/edit-paste.png</iconset>
    </property>
    <property name="text">
-    <string>&amp;Paste</string>
+    <string notr="true">&amp;Paste</string>
    </property>
   </action>
   <action name="action_edit_delete">
@@ -426,7 +423,7 @@ QSplitter::handle:vertical {
      <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/edit-delete.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/edit-delete.png</iconset>
    </property>
    <property name="text">
-    <string>&amp;Delete</string>
+    <string notr="true">Delete</string>
    </property>
   </action>
   <action name="action_edit_selectAll">
@@ -435,7 +432,7 @@ QSplitter::handle:vertical {
      <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/edit-select-all.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/edit-select-all.png</iconset>
    </property>
    <property name="text">
-    <string>Select &amp;All</string>
+    <string notr="true">Select All</string>
    </property>
   </action>
   <action name="action_edit_properties">
@@ -444,10 +441,7 @@ QSplitter::handle:vertical {
      <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/document-properties.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/document-properties.png</iconset>
    </property>
    <property name="text">
-    <string>&amp;Properties...</string>
-   </property>
-   <property name="shortcut">
-    <string>Return</string>
+    <string extracomment="EditLocal:109:40317">&amp;Properties...</string>
    </property>
   </action>
   <action name="action_view_gridSettings">
@@ -470,7 +464,7 @@ QSplitter::handle:vertical {
      <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/view-grid.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/view-grid.png</iconset>
    </property>
    <property name="text">
-    <string>Show &amp;Grid</string>
+    <string extracomment="EditLocal:109:40356">Show &amp;Grid</string>
    </property>
   </action>
   <action name="action_view_toggle_showLocations">
@@ -581,7 +575,7 @@ QSplitter::handle:vertical {
      <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/user-properties.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/user-properties.png</iconset>
    </property>
    <property name="text">
-    <string>&amp;Players...</string>
+    <string extracomment="EditLocal:1202">&amp;Players...</string>
    </property>
   </action>
   <action name="action_scenario_forces">
@@ -590,7 +584,7 @@ QSplitter::handle:vertical {
      <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/flag-red.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/flag-red.png</iconset>
    </property>
    <property name="text">
-    <string>&amp;Forces...</string>
+    <string extracomment="EditLocal:109:40312">&amp;Forces...</string>
    </property>
   </action>
   <action name="action_scenario_sounds">
@@ -599,7 +593,7 @@ QSplitter::handle:vertical {
      <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/speaker.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/speaker.png</iconset>
    </property>
    <property name="text">
-    <string>&amp;Sounds...</string>
+    <string extracomment="EditLocal:109:40332">&amp;Sounds...</string>
    </property>
   </action>
   <action name="action_scenario_triggers">
@@ -608,7 +602,7 @@ QSplitter::handle:vertical {
      <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/code-class.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/code-class.png</iconset>
    </property>
    <property name="text">
-    <string>&amp;Triggers...</string>
+    <string extracomment="EditLocal:109:40280">&amp;Triggers...</string>
    </property>
   </action>
   <action name="action_scenario_briefings">
@@ -617,7 +611,7 @@ QSplitter::handle:vertical {
      <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/view-pim-notes.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/view-pim-notes.png</iconset>
    </property>
    <property name="text">
-    <string>&amp;Mission Briefings...</string>
+    <string extracomment="EditLocal:109:40316">&amp;Mission Briefings...</string>
    </property>
   </action>
   <action name="action_scenario_strings">
@@ -635,17 +629,17 @@ QSplitter::handle:vertical {
      <normaloff>:/icons/unit.png</normaloff>:/icons/unit.png</iconset>
    </property>
    <property name="text">
-    <string>Unit and &amp;Hero Settings...</string>
+    <string extracomment="EditLocal:109:40326">Unit and &amp;Hero Settings...</string>
    </property>
   </action>
   <action name="action_scenario_upgradeSettings">
    <property name="text">
-    <string>&amp;Upgrade Settings...</string>
+    <string extracomment="EditLocal:109:40327">&amp;Upgrade Settings...</string>
    </property>
   </action>
   <action name="action_scenario_techSettings">
    <property name="text">
-    <string>Special &amp;Ability Settings...</string>
+    <string extracomment="EditLocal:109:40328">Special &amp;Ability Settings...</string>
    </property>
   </action>
   <action name="action_scenario_description">
@@ -662,7 +656,7 @@ QSplitter::handle:vertical {
      <normaloff>:/icons/terrain.png</normaloff>:/icons/terrain.png</iconset>
    </property>
    <property name="text">
-    <string>&amp;Terrain</string>
+    <string extracomment="EditLocal:109:40300">&amp;Terrain</string>
    </property>
    <property name="layer_id" stdset="0">
     <number>1</number>
@@ -677,7 +671,7 @@ QSplitter::handle:vertical {
      <normaloff>:/icons/doodad.png</normaloff>:/icons/doodad.png</iconset>
    </property>
    <property name="text">
-    <string>&amp;Doodad</string>
+    <string extracomment="EditLocal:109:40301">&amp;Doodad</string>
    </property>
    <property name="layer_id" stdset="0">
     <number>2</number>
@@ -707,7 +701,7 @@ QSplitter::handle:vertical {
      <normaloff>:/icons/unit.png</normaloff>:/icons/unit.png</iconset>
    </property>
    <property name="text">
-    <string>&amp;Unit</string>
+    <string extracomment="EditLocal:109:40302">&amp;Unit</string>
    </property>
    <property name="layer_id" stdset="0">
     <number>4</number>
@@ -722,7 +716,7 @@ QSplitter::handle:vertical {
      <normaloff>:/icons/location.png</normaloff>:/icons/location.png</iconset>
    </property>
    <property name="text">
-    <string>&amp;Location</string>
+    <string extracomment="EditLocal:109:40304">&amp;Location</string>
    </property>
    <property name="layer_id" stdset="0">
     <number>5</number>
@@ -755,7 +749,7 @@ QSplitter::handle:vertical {
      <normaloff>:/icons/revealer.png</normaloff>:/icons/revealer.png</iconset>
    </property>
    <property name="text">
-    <string>&amp;Fog of War</string>
+    <string extracomment="EditLocal:109:40305">&amp;Fog of War</string>
    </property>
    <property name="layer_id" stdset="0">
     <number>6</number>
@@ -786,9 +780,6 @@ QSplitter::handle:vertical {
    <property name="text">
     <string>&amp;Play</string>
    </property>
-   <property name="shortcut">
-    <string>Space</string>
-   </property>
   </action>
   <action name="action_test_advance1">
    <property name="icon">
@@ -798,9 +789,6 @@ QSplitter::handle:vertical {
    <property name="text">
     <string>Advance 1 Frame</string>
    </property>
-   <property name="shortcut">
-    <string>Shift+Space</string>
-   </property>
   </action>
   <action name="action_test_reset">
    <property name="icon">
@@ -809,9 +797,6 @@ QSplitter::handle:vertical {
    </property>
    <property name="text">
     <string>Stop &amp;&amp; &amp;Reset</string>
-   </property>
-   <property name="shortcut">
-    <string>F5</string>
    </property>
   </action>
   <action name="action_test_duplicate">
@@ -835,7 +820,7 @@ QSplitter::handle:vertical {
      <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/window-new.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/window-new.png</iconset>
    </property>
    <property name="text">
-    <string>&amp;New Map View</string>
+    <string extracomment="EditLocal:109:40198">&amp;New Map View</string>
    </property>
   </action>
   <action name="action_window_closeMapView">
@@ -844,7 +829,7 @@ QSplitter::handle:vertical {
      <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/project-development-close.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/project-development-close.png</iconset>
    </property>
    <property name="text">
-    <string>Cl&amp;ose Map View</string>
+    <string extracomment="EditLocal:109:40199">Cl&amp;ose Map View</string>
    </property>
   </action>
   <action name="action_window_closeAllMapViews">
@@ -853,12 +838,12 @@ QSplitter::handle:vertical {
      <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/project-development-close-all.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/project-development-close-all.png</iconset>
    </property>
    <property name="text">
-    <string>Close Al&amp;l Map Views</string>
+    <string extracomment="EditLocal:109:40200">Close Al&amp;l Map Views</string>
    </property>
   </action>
   <action name="action_window_cascade">
    <property name="text">
-    <string>&amp;Cascade</string>
+    <string extracomment="EditLocal:109:57650">&amp;Cascade</string>
    </property>
   </action>
   <action name="action_window_tile">

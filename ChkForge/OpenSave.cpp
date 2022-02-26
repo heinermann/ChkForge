@@ -11,12 +11,20 @@
 #include "Utils.h"
 
 namespace {
+  static const QString allMaps = QObject::tr("All Starcraft Maps");
+  static const QString vanillaMaps = QObject::tr("Vanilla Maps");
+  static const QString expansionMaps = QObject::tr("Expansion Maps");
+  //: gluAll:gameCloudReplays
+  static const QString replays = QObject::tr("Replays");
+  //: DO NOT TRANSLATE
+  static const QString allFiles = QFileDialog::tr("All Files (*)");
+
   static const QString file_filter =
-    QObject::tr("All Starcraft Maps") + " (*.scm *.scx *.rep);;" +
-    QObject::tr("Vanilla Maps") + " (*.scm);;" +
-    QObject::tr("Expansion Maps") + " (*.scx);;" +
-    QObject::tr("Replays") + " (*.rep);;" +
-    QObject::tr("All files") + " (*)";
+    allMaps + " (*.scm *.scx *.rep);;" +
+    vanillaMaps + " (*.scm);;" +
+    expansionMaps + " (*.scx);;" +
+    replays + " (*.rep);;" +
+    allFiles;
 }
 
 namespace OpenSave {
