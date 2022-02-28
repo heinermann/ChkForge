@@ -383,6 +383,7 @@
   <ItemGroup>
     <ClCompile Include="abilitiestab.cpp" />
     <ClCompile Include="about.cpp" />
+    <ClCompile Include="appsettings.cpp" />
     <ClCompile Include="CharacterWidget.cpp" />
     <ClCompile Include="charmap.cpp" />
     <ClCompile Include="doodadpalette.cpp" />
@@ -395,6 +396,7 @@
     <ClCompile Include="invertedtristategroupbox.cpp" />
     <ClCompile Include="itempalette.cpp" />
     <ClCompile Include="itemtree.cpp" />
+    <ClCompile Include="language.cpp" />
     <ClCompile Include="layers.cpp" />
     <ClCompile Include="layer_doodad.cpp" />
     <ClCompile Include="layer_fog.cpp" />
@@ -436,7 +438,9 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="invertedtristategroupbox.h" />
+    <QtMoc Include="appsettings.h" />
     <ClInclude Include="GroupBoxDataMapper.h" />
+    <ClInclude Include="language.h" />
     <ClInclude Include="PluginManager.h" />
     <ClInclude Include="SCMDPlugin.h" />
     <ClInclude Include="SICStringList.h" />
@@ -539,6 +543,7 @@
   <ItemGroup>
     <QtUic Include="abilitiestab.ui" />
     <QtUic Include="aboutdlg.ui" />
+    <QtUic Include="appsettings.ui" />
     <QtUic Include="charmap.ui" />
     <QtUic Include="doodadpalette.ui">
     </QtUic>
@@ -589,6 +594,7 @@
     <QtUic Include="upgradestab.ui" />
   </ItemGroup>
   <ItemGroup>
+    <QtRcc Include="..\country-icons.qrc" />
     <QtRcc Include="..\oxygen-subset.qrc" />
     <QtRcc Include="ChkForge.qrc">
       <InitFuncName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ChkForge</InitFuncName>

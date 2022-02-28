@@ -273,6 +273,12 @@
     <ClCompile Include="layer_game_test.cpp">
       <Filter>Source Files\layers</Filter>
     </ClCompile>
+    <ClCompile Include="appsettings.cpp">
+      <Filter>Source Files\ui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="language.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="layers.h">
@@ -343,6 +349,9 @@
     </ClInclude>
     <ClInclude Include="TextDataMapper.h">
       <Filter>Header Files\DataMappers</Filter>
+    </ClInclude>
+    <ClInclude Include="language.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -450,6 +459,9 @@
     <QtUic Include="playerstab.ui">
       <Filter>Form Files\Dialogs\ScenarioSettings</Filter>
     </QtUic>
+    <QtUic Include="appsettings.ui">
+      <Filter>Form Files\Dialogs</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="ChkForge.qrc">
@@ -477,6 +489,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <QtRcc Include="..\oxygen-subset.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
+    <QtRcc Include="..\country-icons.qrc">
       <Filter>Resource Files</Filter>
     </QtRcc>
   </ItemGroup>
@@ -570,6 +585,9 @@
     </QtMoc>
     <QtMoc Include="invertedtristategroupbox.h">
       <Filter>Header Files\ui\Controls</Filter>
+    </QtMoc>
+    <QtMoc Include="appsettings.h">
+      <Filter>Header Files\ui\Dialogs</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>

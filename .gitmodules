@@ -13,3 +13,6 @@
 [submodule "oxygen-icons-png"]
 	path = oxygen-icons-png
 	url = git@github.com:pasnox/oxygen-icons-png.git
+[submodule "flag-icon"]
+	path = flag-icon
+	url = https://github.com/stevenrskelton/flag-icon.git

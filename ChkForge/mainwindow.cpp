@@ -9,6 +9,7 @@
 #include "mapview.h"
 
 #include "about.h"
+#include "appsettings.h"
 #include "newmap.h"
 #include "scenariodescription.h"
 #include "scenariosettings.h"
@@ -32,6 +33,7 @@
 #include <filesystem>
 
 #include "MapContext.h"
+#include "language.h"
 #include "OpenSave.h"
 #include "Utils.h"
 
@@ -42,6 +44,9 @@ MainWindow::MainWindow(QWidget *parent)
   , toolbars_ui(new Ui::toolbars)
   , scmd_pluginManager(this)
 {
+  QLocale lang = settings.value("language", QLocale()).toLocale();
+  ChkForge::SetLanguage(lang);
+
   ui->setupUi(this);
 
   layerOptions = std::vector{
@@ -387,6 +392,26 @@ void MainWindow::on_action_file_saveAs_triggered()
 
 void MainWindow::on_action_file_saveMapImage_triggered()
 {
+}
+
+void MainWindow::on_action_file_settings_triggered()
+{
+  AppSettings settingsUI(this);
+  int result = settingsUI.exec();
+  if (result != QDialog::Accepted) return;
+
+  // Retranslate UI
+  QLocale language = settingsUI.language();
+  ChkForge::SetLanguage(language);
+
+  ui->retranslateUi(this);
+  toolbars_ui->retranslateUi(&toolbars_container);
+  statusBar_ui->retranslateUi(&statusBar_container);
+  applyTranslations();
+
+  settings.setValue("language", language);
+
+  // TODO Apply other global settings from dialog here
 }
 
 void MainWindow::on_action_file_importSections_triggered()

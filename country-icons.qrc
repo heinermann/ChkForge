@@ -1,0 +1,17 @@
+<RCC>
+    <qresource prefix="/">
+        <file alias="flag/DE">flag-icon/png/75/country-4x3/de.png</file>
+        <file alias="flag/CA">flag-icon/png/75/country-4x3/ca.png</file>
+        <file alias="flag/US">flag-icon/png/75/country-4x3/us.png</file>
+        <file alias="flag/ES">flag-icon/png/75/country-4x3/es.png</file>
+        <file alias="flag/MX">flag-icon/png/75/country-4x3/mx.png</file>
+        <file alias="flag/FR">flag-icon/png/75/country-4x3/fr.png</file>
+        <file alias="flag/IT">flag-icon/png/75/country-4x3/it.png</file>
+        <file alias="flag/JP">flag-icon/png/75/country-4x3/jp.png</file>
+        <file alias="flag/KR">flag-icon/png/75/country-4x3/kr.png</file>
+        <file alias="flag/PL">flag-icon/png/75/country-4x3/pl.png</file>
+        <file alias="flag/BR">flag-icon/png/75/country-4x3/br.png</file>
+        <file alias="flag/CN">flag-icon/png/75/country-4x3/cn.png</file>
+        <file alias="flag/TW">flag-icon/png/75/country-4x3/tw.png</file>
+    </qresource>
+</RCC>

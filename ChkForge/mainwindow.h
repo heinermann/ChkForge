@@ -110,6 +110,7 @@ private slots:
   void on_action_file_save_triggered();
   void on_action_file_saveAs_triggered();
   void on_action_file_saveMapImage_triggered();
+  void on_action_file_settings_triggered();
   void on_action_file_importSections_triggered();
   void on_action_file_exportSections_triggered();
   void on_action_edit_undo_triggered();

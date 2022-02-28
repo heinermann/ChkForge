@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1063</width>
+    <width>1062</width>
     <height>864</height>
    </rect>
   </property>
@@ -42,7 +42,7 @@ QSplitter::handle:vertical {
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1063</width>
+     <width>1062</width>
      <height>22</height>
     </rect>
    </property>
@@ -69,6 +69,8 @@ QSplitter::handle:vertical {
     <addaction name="separator"/>
     <addaction name="action_file_importSections"/>
     <addaction name="action_file_exportSections"/>
+    <addaction name="separator"/>
+    <addaction name="action_file_settings"/>
     <addaction name="separator"/>
     <addaction name="action_file_exit"/>
    </widget>
@@ -331,6 +333,10 @@ QSplitter::handle:vertical {
   <action name="action_file_saveMapImage">
    <property name="enabled">
     <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../oxygen-subset.qrc">
+     <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/view-preview.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/view-preview.png</iconset>
    </property>
    <property name="text">
     <string>Save Map Image...</string>
@@ -867,6 +873,15 @@ QSplitter::handle:vertical {
    </property>
    <property name="text">
     <string>Stack Units</string>
+   </property>
+  </action>
+  <action name="action_file_settings">
+   <property name="icon">
+    <iconset resource="../oxygen-subset.qrc">
+     <normaloff>:/themes/oxygen-icons-png/oxygen/64x64/actions/configure.png</normaloff>:/themes/oxygen-icons-png/oxygen/64x64/actions/configure.png</iconset>
+   </property>
+   <property name="text">
+    <string extracomment="EditLocal:142:40237">&amp;Settings...</string>
    </property>
   </action>
  </widget>

@@ -220,6 +220,45 @@ Some select Starforge code snippets and resources.
     </message>
 </context>
 <context>
+    <name>AppSettings</name>
+    <message>
+        <location filename="appsettings.ui" line="14"/>
+        <source>Application Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="appsettings.ui" line="26"/>
+        <source>Paths</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="appsettings.ui" line="32"/>
+        <source>Starcraft Directory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="appsettings.ui" line="57"/>
+        <source>Default Map Directory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="appsettings.ui" line="85"/>
+        <source>General Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="appsettings.ui" line="91"/>
+        <source>Language</source>
+        <extracomment>gluAll:bnet119_optionsPanel_game_subtitle_language</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="appsettings.ui" line="101"/>
+        <source>Automatic Updates</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>CharMap</name>
     <message>
         <location filename="charmap.ui" line="14"/>
@@ -667,397 +706,404 @@ Some select Starforge code snippets and resources.
         <translation>Letzte Datei</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="77"/>
+        <location filename="mainwindow.ui" line="79"/>
         <source>&amp;Edit</source>
         <extracomment>EditLocal:109</extracomment>
         <translation>&amp;Bearbeiten</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="92"/>
+        <location filename="mainwindow.ui" line="94"/>
         <source>&amp;View</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="96"/>
+        <location filename="mainwindow.ui" line="98"/>
         <source>&amp;Tool Windows</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="104"/>
+        <location filename="mainwindow.ui" line="106"/>
         <source>Show &amp;Unit Data</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="127"/>
+        <location filename="mainwindow.ui" line="129"/>
         <source>&amp;Layer</source>
         <extracomment>EditLocal:109</extracomment>
         <translation>&amp;Ebene</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="141"/>
+        <location filename="mainwindow.ui" line="143"/>
         <source>&amp;Scenario</source>
         <translation>S&amp;zenario</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="158"/>
+        <location filename="mainwindow.ui" line="160"/>
         <source>&amp;Tools</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="165"/>
+        <location filename="mainwindow.ui" line="167"/>
         <source>&amp;Window</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="177"/>
+        <location filename="mainwindow.ui" line="179"/>
         <source>&amp;Help</source>
         <translation>&amp;Hilfe</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="184"/>
+        <location filename="mainwindow.ui" line="186"/>
         <source>&amp;Test</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="301"/>
+        <location filename="mainwindow.ui" line="303"/>
         <source>&amp;New...</source>
         <oldsource>&amp;New</oldsource>
         <extracomment>EditLocal:109:40010</extracomment>
         <translation>&amp;Neu ...</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="310"/>
+        <location filename="mainwindow.ui" line="312"/>
         <source>&amp;Open...</source>
         <oldsource>&amp;Open</oldsource>
         <extracomment>EditLocal:109:57601</extracomment>
         <translation>&amp;Öffnen ...</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="319"/>
+        <location filename="mainwindow.ui" line="321"/>
         <source>&amp;Save</source>
         <extracomment>EditLocal:109:57603</extracomment>
         <translation>&amp;Speichern</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="328"/>
+        <location filename="mainwindow.ui" line="330"/>
         <source>Save &amp;As...</source>
         <extracomment>EditLocal:109:40018</extracomment>
         <translation>Speichern &amp;unter ...</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="336"/>
+        <location filename="mainwindow.ui" line="342"/>
         <source>Save Map Image...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="348"/>
+        <location filename="mainwindow.ui" line="354"/>
         <source>&amp;Import Sections...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="360"/>
+        <location filename="mainwindow.ui" line="366"/>
         <source>&amp;Export Sections...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="369"/>
+        <location filename="mainwindow.ui" line="375"/>
         <source>E&amp;xit</source>
         <extracomment>EditLocal:109:40013</extracomment>
         <translation>&amp;Beenden</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="444"/>
+        <location filename="mainwindow.ui" line="450"/>
         <source>&amp;Properties...</source>
         <oldsource>&amp;Properties</oldsource>
         <extracomment>EditLocal:109:40317</extracomment>
         <translation>&amp;Eigenschaften ...</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="449"/>
+        <location filename="mainwindow.ui" line="455"/>
         <source>Grid Se&amp;ttings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="458"/>
+        <location filename="mainwindow.ui" line="464"/>
         <source>&amp;Snap to Grid</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="467"/>
+        <location filename="mainwindow.ui" line="473"/>
         <source>Show &amp;Grid</source>
         <extracomment>EditLocal:109:40356</extracomment>
         <translation>&amp;Gitter zeigen</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="476"/>
+        <location filename="mainwindow.ui" line="482"/>
         <source>Show &amp;Locations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="481"/>
+        <location filename="mainwindow.ui" line="487"/>
         <source>Clean Map</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="489"/>
+        <location filename="mainwindow.ui" line="495"/>
         <source>Unit Size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="497"/>
+        <location filename="mainwindow.ui" line="503"/>
         <source>Building Size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="505"/>
+        <location filename="mainwindow.ui" line="511"/>
         <source>Sight Range</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="513"/>
+        <location filename="mainwindow.ui" line="519"/>
         <source>Seek &amp;&amp; Attack Range</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="521"/>
+        <location filename="mainwindow.ui" line="527"/>
         <source>Creep</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="529"/>
+        <location filename="mainwindow.ui" line="535"/>
         <source>Pylon Aura</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="537"/>
+        <location filename="mainwindow.ui" line="543"/>
         <source>Addon/Nydus Linkage</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="545"/>
+        <location filename="mainwindow.ui" line="551"/>
         <source>Collisions</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="550"/>
+        <location filename="mainwindow.ui" line="556"/>
         <source>&amp;Show All</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="555"/>
+        <location filename="mainwindow.ui" line="561"/>
         <source>&amp;Close All</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="564"/>
+        <location filename="mainwindow.ui" line="570"/>
         <source>Map Revealers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="569"/>
+        <location filename="mainwindow.ui" line="575"/>
         <source>Preferences</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="578"/>
+        <location filename="mainwindow.ui" line="584"/>
         <source>&amp;Players...</source>
         <oldsource>Players</oldsource>
         <extracomment>EditLocal:1202</extracomment>
         <translation>S&amp;pieler...</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="587"/>
+        <location filename="mainwindow.ui" line="593"/>
         <source>&amp;Forces...</source>
         <oldsource>Forces</oldsource>
         <extracomment>EditLocal:109:40312</extracomment>
         <translation>&amp;Gruppierungen ...</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="596"/>
+        <location filename="mainwindow.ui" line="602"/>
         <source>&amp;Sounds...</source>
         <oldsource>Sounds</oldsource>
         <extracomment>EditLocal:109:40332</extracomment>
         <translation>&amp;Sounds ...</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="605"/>
+        <location filename="mainwindow.ui" line="611"/>
         <source>&amp;Triggers...</source>
         <oldsource>Triggers</oldsource>
         <extracomment>EditLocal:109:40280</extracomment>
         <translation>&amp;Auslöser ...</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="614"/>
+        <location filename="mainwindow.ui" line="620"/>
         <source>&amp;Mission Briefings...</source>
         <oldsource>Briefings</oldsource>
         <extracomment>EditLocal:109:40316</extracomment>
         <translation>&amp;Missionsbeschreibungen ...</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="623"/>
+        <location filename="mainwindow.ui" line="629"/>
         <source>S&amp;trings...</source>
         <oldsource>Strings</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="632"/>
+        <location filename="mainwindow.ui" line="638"/>
         <source>Unit and &amp;Hero Settings...</source>
         <oldsource>Unit and Hero Settings...</oldsource>
         <extracomment>EditLocal:109:40326</extracomment>
         <translation>Einheiten- und &amp;Helden-Einstellungen ...</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="637"/>
+        <location filename="mainwindow.ui" line="643"/>
         <source>&amp;Upgrade Settings...</source>
         <oldsource>Upgrade Settings...</oldsource>
         <extracomment>EditLocal:109:40327</extracomment>
         <translation>&amp;Upgrade-Einstellungen ...</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="642"/>
+        <location filename="mainwindow.ui" line="648"/>
         <source>Special &amp;Ability Settings...</source>
         <oldsource>Ability (Tech) Settings...</oldsource>
         <extracomment>EditLocal:109:40328</extracomment>
         <translation>Besondere &amp;F\xE4higkeit-Einstellungen ...</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="647"/>
+        <location filename="mainwindow.ui" line="653"/>
         <source>Scenario &amp;Description...</source>
         <oldsource>Scenario Description...</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="659"/>
+        <location filename="mainwindow.ui" line="665"/>
         <source>&amp;Terrain</source>
         <extracomment>EditLocal:109:40300</extracomment>
         <translation>&amp;Terrain</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="674"/>
+        <location filename="mainwindow.ui" line="680"/>
         <source>&amp;Doodad</source>
         <oldsource>&amp;Doodads</oldsource>
         <extracomment>EditLocal:109:40301</extracomment>
         <translation>&amp;Gegenstand</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="689"/>
+        <location filename="mainwindow.ui" line="695"/>
         <source>&amp;Sprite</source>
         <oldsource>&amp;Sprites</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="704"/>
+        <location filename="mainwindow.ui" line="710"/>
         <source>&amp;Unit</source>
         <oldsource>&amp;Units</oldsource>
         <extracomment>EditLocal:109:40302</extracomment>
         <translation>&amp;Einheit</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="719"/>
+        <location filename="mainwindow.ui" line="725"/>
         <source>&amp;Location</source>
         <oldsource>&amp;Locations</oldsource>
         <extracomment>EditLocal:109:40304</extracomment>
         <translation>&amp;Region</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="737"/>
+        <location filename="mainwindow.ui" line="743"/>
         <source>S&amp;elect (Cut/Copy/Paste)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="752"/>
+        <location filename="mainwindow.ui" line="758"/>
         <source>&amp;Fog of War</source>
         <extracomment>EditLocal:109:40305</extracomment>
         <translation>&amp;Nebel des Krieges</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="760"/>
+        <location filename="mainwindow.ui" line="766"/>
         <source>Layer &amp;Options...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="769"/>
+        <location filename="mainwindow.ui" line="775"/>
         <source>&amp;About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="781"/>
-        <location filename="mainwindow.cpp" line="633"/>
+        <location filename="mainwindow.ui" line="787"/>
+        <location filename="mainwindow.cpp" line="658"/>
         <source>&amp;Play</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="790"/>
+        <location filename="mainwindow.ui" line="796"/>
         <source>Advance 1 Frame</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="799"/>
+        <location filename="mainwindow.ui" line="805"/>
         <source>Stop &amp;&amp; &amp;Reset</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="811"/>
+        <location filename="mainwindow.ui" line="817"/>
         <source>Copy State to New Map</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="814"/>
+        <location filename="mainwindow.ui" line="820"/>
         <source>Copy the current state to a new map</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="823"/>
+        <location filename="mainwindow.ui" line="829"/>
         <source>&amp;New Map View</source>
         <oldsource>New Map View</oldsource>
         <extracomment>EditLocal:109:40198</extracomment>
         <translation>&amp;Neue Kartenansicht</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="832"/>
+        <location filename="mainwindow.ui" line="838"/>
         <source>Cl&amp;ose Map View</source>
         <oldsource>Close Map View</oldsource>
         <extracomment>EditLocal:109:40199</extracomment>
         <translation>Kartenansicht &amp;schließen</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="841"/>
+        <location filename="mainwindow.ui" line="847"/>
         <source>Close Al&amp;l Map Views</source>
         <oldsource>Close All Map Views</oldsource>
         <extracomment>EditLocal:109:40200</extracomment>
         <translation>A&amp;lle Kartenansichten schließen</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="846"/>
+        <location filename="mainwindow.ui" line="852"/>
         <source>&amp;Cascade</source>
         <oldsource>Cascade</oldsource>
         <extracomment>EditLocal:109:57650</extracomment>
         <translation>&amp;Überlappend</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="851"/>
+        <location filename="mainwindow.ui" line="857"/>
         <source>&amp;Tile</source>
         <oldsource>Tile</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="860"/>
+        <location filename="mainwindow.ui" line="866"/>
         <source>Report an Issue</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="869"/>
+        <location filename="mainwindow.ui" line="875"/>
         <source>Stack Units</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="130"/>
-        <location filename="mainwindow.cpp" line="740"/>
+        <location filename="mainwindow.ui" line="884"/>
+        <source>&amp;Settings...</source>
+        <oldsource>Settings...</oldsource>
+        <extracomment>EditLocal:142:40237</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="135"/>
+        <location filename="mainwindow.cpp" line="765"/>
         <source>Player %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="637"/>
+        <location filename="mainwindow.cpp" line="662"/>
         <source>&amp;Pause</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1364,43 +1410,43 @@ Other sizes may crash Starcraft.</source>
 <context>
     <name>QLineEdit</name>
     <message>
-        <location filename="mainwindow.cpp" line="79"/>
+        <location filename="mainwindow.cpp" line="84"/>
         <source>Cu&amp;t</source>
         <extracomment>DO NOT TRANSLATE</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="81"/>
+        <location filename="mainwindow.cpp" line="86"/>
         <source>&amp;Copy</source>
         <extracomment>DO NOT TRANSLATE</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="83"/>
+        <location filename="mainwindow.cpp" line="88"/>
         <source>&amp;Paste</source>
         <extracomment>DO NOT TRANSLATE</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="85"/>
+        <location filename="mainwindow.cpp" line="90"/>
         <source>&amp;Undo</source>
         <extracomment>DO NOT TRANSLATE</extracomment>
         <translation type="unfinished">&amp;Rückgängig</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="87"/>
+        <location filename="mainwindow.cpp" line="92"/>
         <source>&amp;Redo</source>
         <extracomment>DO NOT TRANSLATE</extracomment>
         <translation type="unfinished">&amp;Wiederholen</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="89"/>
+        <location filename="mainwindow.cpp" line="94"/>
         <source>Delete</source>
         <extracomment>DO NOT TRANSLATE</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="91"/>
+        <location filename="mainwindow.cpp" line="96"/>
         <source>Select All</source>
         <extracomment>DO NOT TRANSLATE</extracomment>
         <translation type="unfinished"></translation>
@@ -2611,7 +2657,7 @@ EditLocal:11:175</extracomment>
 <context>
     <name>QShortcut</name>
     <message>
-        <location filename="mainwindow.cpp" line="94"/>
+        <location filename="mainwindow.cpp" line="99"/>
         <source>Zoom</source>
         <extracomment>DO NOT TRANSLATE</extracomment>
         <translation type="unfinished"></translation>
