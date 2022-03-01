@@ -86,7 +86,7 @@
         </attribute>
         <column>
          <property name="text">
-          <string extracomment="EditLocal:3:42">Player</string>
+          <string extracomment="gluAll:gluAll:scr.leaderboard.table.heading.2">Player</string>
          </property>
         </column>
         <column>
@@ -276,7 +276,7 @@
         <item row="1" column="0">
          <widget class="QLabel" name="label_2">
           <property name="text">
-           <string extracomment="EditLocal:1216:1219">Shields</string>
+           <string extracomment="stat_txt:STR_SHIELD_LBL">Shields</string>
           </property>
          </widget>
         </item>
@@ -299,7 +299,7 @@
         <item row="2" column="0">
          <widget class="QLabel" name="label_3">
           <property name="text">
-           <string extracomment="EditLocal:1216">Armour</string>
+           <string extracomment="stat_txt:STR_ARMOR_LBL">Armour</string>
           </property>
          </widget>
         </item>
@@ -344,7 +344,7 @@
            <item row="0" column="0">
             <widget class="QLabel" name="label_7">
              <property name="text">
-              <string extracomment="EditLocal:1216">Damage</string>
+              <string extracomment="stat_txt:STR_DAMAGE_LBL">Damage</string>
              </property>
             </widget>
            </item>
@@ -412,7 +412,7 @@
            <item row="0" column="0">
             <widget class="QLabel" name="label_10">
              <property name="text">
-              <string extracomment="EditLocal:1216">Damage</string>
+              <string extracomment="stat_txt:STR_DAMAGE_LBL">Damage</string>
              </property>
             </widget>
            </item>

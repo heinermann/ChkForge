@@ -48,12 +48,14 @@
     <message>
         <location filename="abilitiestab.ui" line="186"/>
         <source>Disabled</source>
-        <translation type="unfinished"></translation>
+        <extracomment>gluAll:createGameScreen_disabled</extracomment>
+        <translation>关闭</translation>
     </message>
     <message>
         <location filename="abilitiestab.ui" line="199"/>
         <source>Enabled</source>
-        <translation type="unfinished"></translation>
+        <extracomment>gluAll:createGameScreen_enabled</extracomment>
+        <translation>开启</translation>
     </message>
     <message>
         <location filename="abilitiestab.ui" line="215"/>
@@ -63,7 +65,8 @@
     <message>
         <location filename="abilitiestab.ui" line="225"/>
         <source>Default</source>
-        <translation type="unfinished"></translation>
+        <extracomment>gluAll:bnet119_hotkeysPanel_binding_default</extracomment>
+        <translation>默认</translation>
     </message>
     <message>
         <location filename="abilitiestab.ui" line="237"/>
@@ -88,8 +91,8 @@
     <message>
         <location filename="abilitiestab.ui" line="311"/>
         <source>Player</source>
-        <extracomment>EditLocal:3:42</extracomment>
-        <translation type="unfinished"></translation>
+        <extracomment>gluAll:scr.leaderboard.table.heading.2</extracomment>
+        <translation>玩家</translation>
     </message>
     <message>
         <location filename="abilitiestab.ui" line="321"/>
@@ -161,7 +164,7 @@
         <location filename="abilitiestab.ui" line="385"/>
         <source>Neutral</source>
         <extracomment>EditLocal:9:137</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>中立</translation>
     </message>
 </context>
 <context>
@@ -243,7 +246,7 @@ Some select Starforge code snippets and resources.
         <location filename="appsettings.ui" line="91"/>
         <source>Language</source>
         <extracomment>gluAll:bnet119_optionsPanel_game_subtitle_language</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>语言</translation>
     </message>
     <message>
         <location filename="appsettings.ui" line="101"/>
@@ -467,20 +470,20 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="forcestab.ui" line="32"/>
         <source>Shared Vision</source>
-        <extracomment>EditLocal:188:1113</extracomment>
+        <extracomment>RC3:allyfltr-24:25</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="forcestab.ui" line="46"/>
         <source>Allied Victory</source>
-        <extracomment>EditLocal:188:1116</extracomment>
-        <translation type="unfinished"></translation>
+        <extracomment>RC3:allyfltr-21</extracomment>
+        <translation>结盟获胜</translation>
     </message>
     <message>
         <location filename="forcestab.ui" line="53"/>
         <source>Allies</source>
-        <extracomment>EditLocal:188:1115</extracomment>
-        <translation type="unfinished"></translation>
+        <extracomment>RC3:allyfltr-23</extracomment>
+        <translation>盟友</translation>
     </message>
     <message>
         <location filename="forcestab.ui" line="60"/>
@@ -492,35 +495,36 @@ Some select Starforge code snippets and resources.
         <location filename="forcestab.ui" line="160"/>
         <source>Force 1</source>
         <extracomment>network:strFORCE1</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>势力1</translation>
     </message>
     <message>
         <location filename="forcestab.ui" line="177"/>
         <source>Force 2</source>
         <extracomment>network:strFORCE2</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>势力2</translation>
     </message>
     <message>
         <location filename="forcestab.ui" line="194"/>
         <source>Force 3</source>
         <extracomment>network:strFORCE3</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>势力3</translation>
     </message>
     <message>
         <location filename="forcestab.ui" line="211"/>
         <source>Force 4</source>
         <extracomment>network:strFORCE4</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>势力4</translation>
     </message>
     <message>
         <location filename="forcestab.ui" line="228"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>无</translation>
     </message>
     <message>
-        <location filename="forcestab.cpp" line="105"/>
+        <location filename="forcestab.cpp" line="106"/>
         <source>Map specified</source>
-        <translation type="unfinished"></translation>
+        <extracomment>gluAll:lobbyScreen_MapSpecified</extracomment>
+        <translation type="unfinished">地图指定</translation>
     </message>
 </context>
 <context>
@@ -544,47 +548,49 @@ Some select Starforge code snippets and resources.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="itemtree.cpp" line="55"/>
+        <location filename="itemtree.cpp" line="56"/>
         <source>Doodads</source>
-        <translation type="unfinished"></translation>
+        <extracomment>stat_txt:FIRST_UNIT_STRING-203</extracomment>
+        <translation>小装置</translation>
     </message>
     <message>
-        <location filename="itemtree.cpp" line="62"/>
+        <location filename="itemtree.cpp" line="64"/>
         <source>Units</source>
-        <translation type="unfinished"></translation>
+        <extracomment>gluAll:scoreUNITS</extracomment>
+        <translation>单位</translation>
     </message>
     <message>
-        <location filename="itemtree.cpp" line="71"/>
+        <location filename="itemtree.cpp" line="73"/>
         <source>Sprites</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="itemtree.cpp" line="80"/>
+        <location filename="itemtree.cpp" line="82"/>
         <source>Unit-Sprites</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="itemtree.cpp" line="89"/>
+        <location filename="itemtree.cpp" line="91"/>
         <source>Locations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="itemtree.cpp" line="96"/>
+        <location filename="itemtree.cpp" line="98"/>
         <source>Custom Brushes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="itemtree.cpp" line="97"/>
+        <location filename="itemtree.cpp" line="99"/>
         <source>Clipboard</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="itemtree.cpp" line="107"/>
+        <location filename="itemtree.cpp" line="109"/>
         <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="itemtree.cpp" line="107"/>
+        <location filename="itemtree.cpp" line="109"/>
         <source>Unable to load Trees/%1: %2</source>
         <translation type="unfinished"></translation>
     </message>
@@ -599,28 +605,28 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="locationproperties.ui" line="22"/>
         <source>Left</source>
-        <translation type="unfinished"></translation>
+        <translation>左侧</translation>
     </message>
     <message>
         <location filename="locationproperties.ui" line="42"/>
         <source>Top</source>
-        <translation type="unfinished"></translation>
+        <translation>顶部</translation>
     </message>
     <message>
         <location filename="locationproperties.ui" line="49"/>
         <source>Right</source>
-        <translation type="unfinished"></translation>
+        <translation>右侧</translation>
     </message>
     <message>
         <location filename="locationproperties.ui" line="89"/>
         <source>Bottom</source>
-        <translation type="unfinished"></translation>
+        <translation>底部</translation>
     </message>
     <message>
         <location filename="locationproperties.ui" line="116"/>
         <source>Name</source>
         <extracomment>EditLocal:175</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>名称</translation>
     </message>
     <message>
         <location filename="locationproperties.ui" line="135"/>
@@ -677,7 +683,7 @@ Some select Starforge code snippets and resources.
         <location filename="mainwindow.ui" line="51"/>
         <source>&amp;File</source>
         <extracomment>EditLocal:109</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>文件(&amp;F)</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="55"/>
@@ -690,12 +696,12 @@ Some select Starforge code snippets and resources.
         <location filename="mainwindow.ui" line="79"/>
         <source>&amp;Edit</source>
         <extracomment>EditLocal:109</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>编辑(&amp;E)</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="94"/>
         <source>&amp;View</source>
-        <translation type="unfinished"></translation>
+        <translation>视图(&amp;V)</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="98"/>
@@ -721,17 +727,18 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="mainwindow.ui" line="160"/>
         <source>&amp;Tools</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">工具</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="167"/>
         <source>&amp;Window</source>
-        <translation type="unfinished"></translation>
+        <translation>窗口(&amp;W)</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="179"/>
         <source>&amp;Help</source>
-        <translation type="unfinished"></translation>
+        <extracomment>gluAll:bnet119_optionsPanel_tabs_help</extracomment>
+        <translation>帮助(&amp;H)</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="186"/>
@@ -741,14 +748,14 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="mainwindow.ui" line="321"/>
         <source>&amp;Save</source>
-        <extracomment>EditLocal:109:57603</extracomment>
-        <translation type="unfinished"></translation>
+        <extracomment>RC3:savegame-1</extracomment>
+        <translation>保存(&amp;S)</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="330"/>
         <source>Save &amp;As...</source>
         <extracomment>EditLocal:109:40018</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>另存为(&amp;A)...</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="342"/>
@@ -768,20 +775,20 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="mainwindow.ui" line="375"/>
         <source>E&amp;xit</source>
-        <extracomment>EditLocal:109:40013</extracomment>
-        <translation type="unfinished"></translation>
+        <extracomment>RC3:gluMain-1</extracomment>
+        <translation>退出(&amp;X)</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="303"/>
         <source>&amp;New...</source>
-        <extracomment>EditLocal:109:40010</extracomment>
-        <translation type="unfinished"></translation>
+        <extracomment>RC3:gluBattlenetToonRegistry-3</extracomment>
+        <translation>新建(&amp;N)...</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="312"/>
         <source>&amp;Open...</source>
         <extracomment>EditLocal:109:57601</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>打开(&amp;O)...</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="450"/>
@@ -863,7 +870,7 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="mainwindow.ui" line="561"/>
         <source>&amp;Close All</source>
-        <translation type="unfinished"></translation>
+        <translation>关闭全部(&amp;C)</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="570"/>
@@ -871,203 +878,198 @@ Some select Starforge code snippets and resources.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="575"/>
-        <source>Preferences</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="mainwindow.ui" line="584"/>
+        <location filename="mainwindow.ui" line="579"/>
         <source>&amp;Players...</source>
         <oldsource>Players</oldsource>
-        <extracomment>EditLocal:1202</extracomment>
+        <extracomment>gluAll:infoPane_players</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="593"/>
+        <location filename="mainwindow.ui" line="588"/>
         <source>&amp;Forces...</source>
         <oldsource>Forces</oldsource>
         <extracomment>EditLocal:109:40312</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="602"/>
+        <location filename="mainwindow.ui" line="597"/>
         <source>&amp;Sounds...</source>
         <oldsource>Sounds</oldsource>
         <extracomment>EditLocal:109:40332</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="611"/>
+        <location filename="mainwindow.ui" line="606"/>
         <source>&amp;Triggers...</source>
         <oldsource>Triggers</oldsource>
         <extracomment>EditLocal:109:40280</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="620"/>
+        <location filename="mainwindow.ui" line="615"/>
         <source>&amp;Mission Briefings...</source>
         <oldsource>Briefings</oldsource>
         <extracomment>EditLocal:109:40316</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="629"/>
+        <location filename="mainwindow.ui" line="624"/>
         <source>S&amp;trings...</source>
         <oldsource>Strings</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="638"/>
+        <location filename="mainwindow.ui" line="633"/>
         <source>Unit and &amp;Hero Settings...</source>
         <oldsource>Unit and Hero Settings...</oldsource>
         <extracomment>EditLocal:109:40326</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="643"/>
+        <location filename="mainwindow.ui" line="638"/>
         <source>&amp;Upgrade Settings...</source>
         <oldsource>Upgrade Settings...</oldsource>
         <extracomment>EditLocal:109:40327</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="648"/>
+        <location filename="mainwindow.ui" line="643"/>
         <source>Special &amp;Ability Settings...</source>
         <oldsource>Ability (Tech) Settings...</oldsource>
         <extracomment>EditLocal:109:40328</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="653"/>
+        <location filename="mainwindow.ui" line="648"/>
         <source>Scenario &amp;Description...</source>
         <oldsource>Scenario Description...</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="665"/>
+        <location filename="mainwindow.ui" line="660"/>
         <source>&amp;Terrain</source>
         <extracomment>EditLocal:109:40300</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="680"/>
+        <location filename="mainwindow.ui" line="675"/>
         <source>&amp;Doodad</source>
         <oldsource>&amp;Doodads</oldsource>
         <extracomment>EditLocal:109:40301</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="695"/>
+        <location filename="mainwindow.ui" line="690"/>
         <source>&amp;Sprite</source>
         <oldsource>&amp;Sprites</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="710"/>
+        <location filename="mainwindow.ui" line="705"/>
         <source>&amp;Unit</source>
         <oldsource>&amp;Units</oldsource>
         <extracomment>EditLocal:109:40302</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="725"/>
+        <location filename="mainwindow.ui" line="720"/>
         <source>&amp;Location</source>
         <oldsource>&amp;Locations</oldsource>
         <extracomment>EditLocal:109:40304</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="743"/>
+        <location filename="mainwindow.ui" line="738"/>
         <source>S&amp;elect (Cut/Copy/Paste)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="758"/>
+        <location filename="mainwindow.ui" line="753"/>
         <source>&amp;Fog of War</source>
         <extracomment>EditLocal:109:40305</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="766"/>
+        <location filename="mainwindow.ui" line="761"/>
         <source>Layer &amp;Options...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="775"/>
+        <location filename="mainwindow.ui" line="770"/>
         <source>&amp;About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="787"/>
+        <location filename="mainwindow.ui" line="782"/>
         <location filename="mainwindow.cpp" line="658"/>
         <source>&amp;Play</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="852"/>
+        <location filename="mainwindow.ui" line="847"/>
         <source>&amp;Cascade</source>
         <extracomment>EditLocal:109:57650</extracomment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">层叠</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="857"/>
+        <location filename="mainwindow.ui" line="852"/>
         <source>&amp;Tile</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">平铺</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="884"/>
+        <location filename="mainwindow.ui" line="879"/>
         <source>&amp;Settings...</source>
         <oldsource>Settings...</oldsource>
         <extracomment>EditLocal:142:40237</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>设置(&amp;G)...</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="796"/>
+        <location filename="mainwindow.ui" line="791"/>
         <source>Advance 1 Frame</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="805"/>
+        <location filename="mainwindow.ui" line="800"/>
         <source>Stop &amp;&amp; &amp;Reset</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="817"/>
+        <location filename="mainwindow.ui" line="812"/>
         <source>Copy State to New Map</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="820"/>
+        <location filename="mainwindow.ui" line="815"/>
         <source>Copy the current state to a new map</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="829"/>
+        <location filename="mainwindow.ui" line="824"/>
         <source>&amp;New Map View</source>
         <extracomment>EditLocal:109:40198</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="838"/>
+        <location filename="mainwindow.ui" line="833"/>
         <source>Cl&amp;ose Map View</source>
         <oldsource>New Map View</oldsource>
         <extracomment>EditLocal:109:40199</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="847"/>
+        <location filename="mainwindow.ui" line="842"/>
         <source>Close Al&amp;l Map Views</source>
         <oldsource>Close Map View</oldsource>
         <extracomment>EditLocal:109:40200</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="866"/>
+        <location filename="mainwindow.ui" line="861"/>
         <source>Report an Issue</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="875"/>
+        <location filename="mainwindow.ui" line="870"/>
         <source>Stack Units</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1116,14 +1118,8 @@ Some select Starforge code snippets and resources.
     </message>
     <message>
         <location filename="newmap.ui" line="24"/>
-        <source>Scenario Size</source>
-        <extracomment>EditLocal:1200</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="newmap.ui" line="117"/>
-        <source>Scenario Type</source>
-        <extracomment>EditLocal:1200</extracomment>
+        <source>Size</source>
+        <extracomment>gluAll:infoPane_size</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1131,6 +1127,12 @@ Some select Starforge code snippets and resources.
         <source>Standard sizes are **64**, **96**, **128**,  **192**, and **256**.
 
 Other sizes may crash Starcraft.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="newmap.ui" line="117"/>
+        <source>Tileset</source>
+        <extracomment>gluAll:infoPane_tileset</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1145,19 +1147,19 @@ Other sizes may crash Starcraft.</source>
         <location filename="playerstab.ui" line="45"/>
         <source>Player</source>
         <extracomment>gluAll:scr.leaderboard.table.heading.2</extracomment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">玩家</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="50"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>名称</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="55"/>
         <location filename="playerstab.ui" line="136"/>
         <source>Colour</source>
         <extracomment>EditLocal:3:43</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>颜色</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="60"/>
@@ -1190,19 +1192,19 @@ Other sizes may crash Starcraft.</source>
         <location filename="playerstab.ui" line="235"/>
         <source>Terran</source>
         <extracomment>gluAll:lobbyScreen_terran</extracomment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">人类</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="346"/>
         <source>Computer</source>
         <extracomment>gluAll:lobbyScreen_computer</extracomment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">电脑</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="411"/>
         <source>Force 1</source>
         <extracomment>network:strFORCE1</extracomment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">势力1</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="80"/>
@@ -1251,7 +1253,7 @@ Other sizes may crash Starcraft.</source>
         <location filename="playerstab.ui" line="265"/>
         <source>Random</source>
         <extracomment>gluAll:lobbyScreen_random</extracomment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">随机</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="161"/>
@@ -1267,13 +1269,13 @@ Other sizes may crash Starcraft.</source>
         <location filename="playerstab.ui" line="222"/>
         <source>Zerg</source>
         <extracomment>gluAll:lobbyScreen_zerg</extracomment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">异虫</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="245"/>
         <source>Protoss</source>
         <extracomment>gluAll:lobbyScreen_protoss</extracomment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">星灵</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="255"/>
@@ -1323,7 +1325,7 @@ Other sizes may crash Starcraft.</source>
         <location filename="playerstab.ui" line="366"/>
         <source>Neutral</source>
         <extracomment>EditLocal:24:379</extracomment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">中立</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="376"/>
@@ -1334,25 +1336,25 @@ Other sizes may crash Starcraft.</source>
         <location filename="playerstab.ui" line="379"/>
         <source>Closed</source>
         <extracomment>gluAll:lobbyScreen_closed</extracomment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">关闭</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="424"/>
         <source>Force 2</source>
         <extracomment>network:strFORCE2</extracomment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">势力2</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="434"/>
         <source>Force 3</source>
         <extracomment>network:strFORCE3</extracomment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">势力3</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="444"/>
         <source>Force 4</source>
         <extracomment>network:strFORCE4</extracomment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">势力4</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="454"/>
@@ -1362,7 +1364,7 @@ Other sizes may crash Starcraft.</source>
     <message>
         <location filename="playerstab.ui" line="457"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>无</translation>
     </message>
 </context>
 <context>
@@ -1471,7 +1473,7 @@ Please select a different directory.</source>
         <location filename="OpenSave.cpp" line="18"/>
         <source>Replays</source>
         <extracomment>gluAll:gameCloudReplays</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>游戏录像</translation>
     </message>
     <message>
         <location filename="PluginManager.cpp" line="124"/>
@@ -1488,21 +1490,21 @@ Please select a different directory.</source>
         <location filename="strings.cpp" line="274"/>
         <source>Zerg</source>
         <extracomment>gluAll:lobbyScreen_zerg</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>异虫</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="17"/>
         <location filename="strings.cpp" line="276"/>
         <source>Terran</source>
         <extracomment>gluAll:lobbyScreen_terran</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>人类</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="19"/>
         <location filename="strings.cpp" line="278"/>
         <source>Protoss</source>
         <extracomment>gluAll:lobbyScreen_protoss</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>星灵</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="20"/>
@@ -1523,14 +1525,14 @@ Please select a different directory.</source>
         <location filename="strings.cpp" line="298"/>
         <source>Random</source>
         <extracomment>gluAll:lobbyScreen_random</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>随机</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="27"/>
         <location filename="strings.cpp" line="36"/>
         <location filename="strings.cpp" line="249"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>无</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="37"/>
@@ -1563,7 +1565,7 @@ Please select a different directory.</source>
 EditLocal:8:124
 ----------
 gluAll:slotCOMPUTER</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>电脑</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="45"/>
@@ -1579,19 +1581,19 @@ gluAll:slotCOMPUTER</extracomment>
         <extracomment>EditLocal:8:125
 ----------
 EditLocal:9:137</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>中立</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="49"/>
         <source>Closed</source>
-        <extracomment>gluAll:lobbyScreen_open</extracomment>
-        <translation type="unfinished"></translation>
+        <extracomment>gluAll:lobbyScreen_closed</extracomment>
+        <translation>关闭</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="51"/>
         <source>Observer</source>
         <extracomment>network:strOBSERVER</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>观战者</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="52"/>
@@ -1679,308 +1681,308 @@ EditLocal:9:137</extracomment>
         <location filename="strings.cpp" line="96"/>
         <source>Tiamat Brood</source>
         <extracomment>network:strNATION_ZERG_0</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>提亚玛特虫巢</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="98"/>
         <source>Surtur Brood</source>
         <extracomment>network:strNATION_ZERG_1</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>苏图尔虫巢</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="100"/>
         <source>Fenris Brood</source>
         <extracomment>network:strNATION_ZERG_2</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>芬利斯虫巢</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="102"/>
         <source>Jormungand Brood</source>
         <extracomment>network:strNATION_ZERG_3</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>约姆加德虫巢</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="104"/>
         <source>Garm Brood</source>
         <extracomment>network:strNATION_ZERG_4</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>嘎姆虫巢</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="106"/>
         <source>Grendel Brood</source>
         <extracomment>network:strNATION_ZERG_5</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>格伦德虫巢</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="108"/>
         <source>Baelrog Brood</source>
         <extracomment>network:strNATION_ZERG_6</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>贝罗格虫巢</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="110"/>
         <source>Leviathan Brood</source>
         <extracomment>network:strNATION_ZERG_7</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>利维坦虫巢</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="114"/>
         <source>Elite Guard</source>
         <extracomment>network:strNATION_TERRAN_0</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>精英卫队</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="116"/>
         <source>Mar Sara</source>
         <extracomment>network:strNATION_TERRAN_1</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>玛·萨拉</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="118"/>
         <source>Kel - Morian Combine</source>
         <extracomment>network:strNATION_TERRAN_2</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>凯莫瑞安联合体</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="120"/>
         <source>Antiga</source>
         <extracomment>network:strNATION_TERRAN_3</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>安提加</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="122"/>
         <source>Delta Squadron</source>
         <extracomment>network:strNATION_TERRAN_4</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>德尔塔中队</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="124"/>
         <source>Omega Squadron</source>
         <extracomment>network:strNATION_TERRAN_5</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>欧米茄中队</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="126"/>
         <source>Alpha Squadron</source>
         <extracomment>network:strNATION_TERRAN_6</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>阿尔法中队</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="128"/>
         <source>Epsilon Squadron</source>
         <extracomment>network:strNATION_TERRAN_7</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>艾普西隆中队</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="132"/>
         <source>Ara Tribe</source>
         <extracomment>network:strNATION_PROTOSS_0</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>亚拉部族</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="134"/>
         <source>Sargas Tribe</source>
         <extracomment>network:strNATION_PROTOSS_1</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>萨加斯部族</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="136"/>
         <source>Akilae Tribe</source>
         <extracomment>network:strNATION_PROTOSS_2</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>阿基拉部族</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="138"/>
         <source>Furinax Tribe</source>
         <extracomment>network:strNATION_PROTOSS_3</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>弗里纳克斯部族</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="140"/>
         <source>Auriga Tribe</source>
         <extracomment>network:strNATION_PROTOSS_4</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>奥力加部族</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="142"/>
         <source>Venatir Tribe</source>
         <extracomment>network:strNATION_PROTOSS_5</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>凡纳提尔部族</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="144"/>
         <source>Shelak Tribe</source>
         <extracomment>network:strNATION_PROTOSS_6</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>希莱克部族</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="146"/>
         <source>Velari Tribe</source>
         <extracomment>network:strNATION_PROTOSS_7</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>维拉利部族</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="188"/>
         <source>Red</source>
         <extracomment>gluAll:lobbyScreen_Red</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>红色</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="190"/>
         <source>Blue</source>
         <extracomment>gluAll:lobbyScreen_Blue</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>蓝色</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="192"/>
         <source>Teal</source>
         <extracomment>gluAll:lobbyScreen_Teal</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>青色</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="194"/>
         <source>Purple</source>
         <extracomment>gluAll:lobbyScreen_Purple</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>紫色</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="196"/>
         <source>Orange</source>
         <extracomment>gluAll:lobbyScreen_Orange</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>橙色</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="198"/>
         <source>Brown</source>
         <extracomment>gluAll:lobbyScreen_Brown</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>棕色</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="200"/>
         <source>White</source>
         <extracomment>gluAll:lobbyScreen_White</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>白色</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="202"/>
         <source>Yellow</source>
         <extracomment>gluAll:lobbyScreen_Yellow</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>黄色</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="204"/>
         <source>Green</source>
         <extracomment>gluAll:lobbyScreen_Green</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>绿色</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="206"/>
         <location filename="strings.cpp" line="216"/>
         <source>Pale Yellow</source>
         <extracomment>gluAll:lobbyScreen_PaleYellow</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>灰黄</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="208"/>
         <source>Tan</source>
         <extracomment>gluAll:lobbyScreen_Tan</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>褐色</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="210"/>
         <source>Dark Aqua</source>
         <extracomment>gluAll:lobbyScreen_DarkAqua</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>深绿</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="212"/>
         <source>Pale Green</source>
         <extracomment>gluAll:lobbyScreen_PaleGreen</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>灰绿</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="214"/>
         <source>Bluish Grey</source>
         <extracomment>gluAll:lobbyScreen_BluishGrey</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>蓝灰</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="218"/>
         <source>Cyan</source>
         <extracomment>gluAll:lobbyScreen_Cyan</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>蓝绿</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="220"/>
         <source>Pink</source>
         <extracomment>gluAll:lobbyScreen_Pink</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>粉色</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="222"/>
         <source>Olive</source>
         <extracomment>gluAll:lobbyScreen_Olive</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>橄榄绿</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="224"/>
         <source>Lime</source>
         <extracomment>gluAll:lobbyScreen_Lime</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>灰白</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="226"/>
         <source>Navy</source>
         <extracomment>gluAll:lobbyScreen_Navy</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>海军蓝</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="228"/>
         <source>Magenta</source>
         <extracomment>gluAll:lobbyScreen_Magenta</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>紫红</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="230"/>
         <source>Grey</source>
         <extracomment>gluAll:lobbyScreen_Grey</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>灰色</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="232"/>
         <source>Black</source>
         <extracomment>gluAll:lobbyScreen_Black</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>黑色</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="242"/>
         <source>Force 1</source>
         <extracomment>network:strFORCE1</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>势力1</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="244"/>
         <source>Force 2</source>
         <extracomment>network:strFORCE2</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>势力2</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="246"/>
         <source>Force 3</source>
         <extracomment>network:strFORCE3</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>势力3</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="248"/>
         <source>Force 4</source>
         <extracomment>network:strFORCE4</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>势力4</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="263"/>
         <source>Open</source>
         <extracomment>gluAll:slotOPEN</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>打开</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="268"/>
@@ -1992,19 +1994,19 @@ EditLocal:9:137</extracomment>
         <location filename="strings.cpp" line="286"/>
         <source>Select Race</source>
         <extracomment>gluAll:lobbyScreen_selectRace</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>选择种族</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="300"/>
         <source>Map specified</source>
         <extracomment>gluAll:lobbyScreen_MapSpecified</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>地图指定</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="67"/>
         <source>Badlands</source>
         <extracomment>gluAll:gameMapERA</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>荒原</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="69"/>
@@ -2037,15 +2039,15 @@ EditLocal:9:137</extracomment>
         <location filename="terrain.cpp" line="264"/>
         <location filename="terrain.cpp" line="297"/>
         <source>Dirt</source>
-        <extracomment>EditLocal:1:15
+        <extracomment>EditLocal:1:15, stat_txt:DDS_BAD_LODIRT
 ----------
-EditLocal:15:232
+EditLocal:15:232, stat_txt:DDS_ASH_DDLOWASH
 ----------
-SEditENU:188:3002
+SEditENU:188:3002, stat_txt:DDS_DESERT_HARDPAN
 ----------
-SEditENU:189:3017
+SEditENU:189:3017, stat_txt:DDS_ICE_ROUGHSNOW
 ----------
-SEditENU:190:3029</extracomment>
+SEditENU:190:3029, stat_txt:DDS_TWILIGHT_DIRT</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2053,11 +2055,11 @@ SEditENU:190:3029</extracomment>
         <location filename="terrain.cpp" line="188"/>
         <location filename="terrain.cpp" line="299"/>
         <source>Mud</source>
-        <extracomment>EditLocal:33:526
+        <extracomment>EditLocal:33:526, stat_txt:DDS_TWILIGHT_MUD
 ----------
-EditLocal:33:527
+EditLocal:33:527, stat_txt:DDS_TWILIGHT_MUD
 ----------
-SEditENU:190:3030</extracomment>
+SEditENU:190:3030, stat_txt:DDS_TWILIGHT_MUD</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2068,15 +2070,17 @@ SEditENU:190:3030</extracomment>
         <location filename="terrain.cpp" line="276"/>
         <location filename="terrain.cpp" line="311"/>
         <source>High Dirt</source>
-        <extracomment>EditLocal:2:16
+        <extracomment>EditLocal:2:16, stat_txt:DDS_BAD_HIDIRT
 ----------
-EditLocal:15:235
+EditLocal:15:235, stat_txt:DDS_ASH_DDHIGHASH
 ----------
-SEditENU:189:3009
+EditLocal:2:16
 ----------
-SEditENU:189:3023
+SEditENU:189:3009, stat_txt:DDS_DESERT_HIGHDIRT
 ----------
-SEditENU:191:3040</extracomment>
+SEditENU:189:3023, stat_txt:DDS_ICE_HIGHROUGHSNOW
+----------
+SEditENU:191:3040, stat_txt:DDS_TWILIGHT_HIGHDIRT</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2085,39 +2089,41 @@ SEditENU:191:3040</extracomment>
         <location filename="terrain.cpp" line="270"/>
         <location filename="terrain.cpp" line="295"/>
         <source>Water</source>
-        <extracomment>EditLocal:2:24
+        <extracomment>EditLocal:2:24, stat_txt:DDS_BAD_WATER
 ----------
-SEditENU:190:3028</extracomment>
+SEditENU:190:3028, stat_txt:DDS_ICE_WATER
+----------
+SEditENU:190:3028, stat_txt:DDS_TWILIGHT_WATER</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="80"/>
         <location filename="terrain.cpp" line="268"/>
         <source>Grass</source>
-        <extracomment>EditLocal:2:17
+        <extracomment>EditLocal:2:17, stat_txt:DDS_BAD_LOGRASS
 ----------
-SEditENU:189:3019</extracomment>
+SEditENU:189:3019, stat_txt:DDS_ICE_SNOWYRUINS</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="82"/>
         <location filename="terrain.cpp" line="278"/>
         <source>High Grass</source>
-        <extracomment>EditLocal:23:356
+        <extracomment>EditLocal:23:356, stat_txt:DDS_BAD_HIGRASS
 ----------
-SEditENU:190:3024</extracomment>
+SEditENU:190:3024, stat_txt:DDS_ICE_HIGHSNOWYRUINS</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="84"/>
         <source>Structure</source>
-        <extracomment>EditLocal:23:357</extracomment>
+        <extracomment>EditLocal:23:357, stat_txt:DDS_BAD_BLDG</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="86"/>
         <source>Asphalt</source>
-        <extracomment>EditLocal:11:168</extracomment>
+        <extracomment>EditLocal:11:168, stat_txt:DDS_BAD_CONCRETE</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2125,9 +2131,9 @@ SEditENU:190:3024</extracomment>
         <location filename="terrain.cpp" line="192"/>
         <location filename="terrain.cpp" line="229"/>
         <source>Rocky Ground</source>
-        <extracomment>EditLocal:11:169
+        <extracomment>EditLocal:11:169, stat_txt:DDS_BAD_RUBBLE
 ----------
-SEditENU:188:3005</extracomment>
+SEditENU:188:3005, stat_txt:DDS_DESERT_ROCKYGROUND</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2135,52 +2141,52 @@ SEditENU:188:3005</extracomment>
         <source>Space</source>
         <comment>Tileset</comment>
         <extracomment>gluAll:gameMapERA1 (&quot;Space&quot;)</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>太空</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="101"/>
         <source>Space</source>
         <comment>Brush</comment>
         <extracomment>EditLocal:2:22</extracomment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">太空</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="103"/>
         <source>Low Platform</source>
-        <extracomment>EditLocal:14:221</extracomment>
+        <extracomment>EditLocal:14:221, stat_txt:DDS_PLAT_DDPLATPIT</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="105"/>
         <source>Rusty Pit</source>
-        <extracomment>EditLocal:14:222</extracomment>
+        <extracomment>EditLocal:14:222, stat_txt:DDS_PLAT_DDRUSTYPIT</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="107"/>
         <source>Platform</source>
-        <extracomment>EditLocal:2:19</extracomment>
+        <extracomment>EditLocal:2:19, stat_txt:DDS_PLAT_DDLOWNBLD</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="109"/>
         <source>Dark Platform</source>
-        <extracomment>EditLocal:23:363</extracomment>
+        <extracomment>EditLocal:23:363, stat_txt:DDS_PLAT_DDDARK</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="111"/>
         <location filename="terrain.cpp" line="139"/>
         <source>Plating</source>
-        <extracomment>EditLocal:2:18
+        <extracomment>EditLocal:2:18, stat_txt:DDS_PLAT_DDLOWBLD
 ----------
-EditLocal:11:175</extracomment>
+EditLocal:11:175, stat_txt:DDS_INSTALL_DDWALK</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="113"/>
         <source>Solar Array</source>
-        <extracomment>EditLocal:14:220</extracomment>
+        <extracomment>EditLocal:14:220, stat_txt:DDS_PLAT_DDSOLARPANEL</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2192,7 +2198,7 @@ EditLocal:11:175</extracomment>
     <message>
         <location filename="terrain.cpp" line="117"/>
         <source>High Plating</source>
-        <extracomment>EditLocal:2:20</extracomment>
+        <extracomment>EditLocal:2:20, stat_txt:DDS_PLAT_DDHIGHBLD</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2205,12 +2211,12 @@ EditLocal:11:175</extracomment>
         <location filename="terrain.cpp" line="127"/>
         <source>Installation</source>
         <extracomment>gluAll:gameMapERA2</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>基地</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="131"/>
         <source>Substructure</source>
-        <extracomment>EditLocal:11:171</extracomment>
+        <extracomment>EditLocal:11:171, stat_txt:DDS_INSTALL_DDDIRT</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2222,7 +2228,7 @@ EditLocal:11:175</extracomment>
     <message>
         <location filename="terrain.cpp" line="135"/>
         <source>Floor</source>
-        <extracomment>EditLocal:11:172</extracomment>
+        <extracomment>EditLocal:11:172, stat_txt:DDS_INSTALL_DDCLEAN</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2252,42 +2258,42 @@ EditLocal:11:175</extracomment>
         <location filename="terrain.cpp" line="152"/>
         <source>Ashworld</source>
         <extracomment>gluAll:gameMapERA3 (&quot;Ashworld&quot;)</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>灰烬</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="179"/>
         <source>Jungle</source>
         <comment>Tileset</comment>
         <extracomment>gluAll:gameMapERA4 (&quot;Jungle&quot;)</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>丛林</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="190"/>
         <source>Jungle</source>
         <comment>Brush</comment>
-        <extracomment>EditLocal:11:167</extracomment>
-        <translation type="unfinished"></translation>
+        <extracomment>EditLocal:11:167, stat_txt:DDS_JUNG_JUNGLE</extracomment>
+        <translation type="unfinished">丛林</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="216"/>
         <source>Desert</source>
         <comment>Tileset</comment>
         <extracomment>gluAll:gameMapERA5</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>沙漠</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="253"/>
         <source>Ice</source>
         <comment>Tileset</comment>
         <extracomment>gluAll:gameMapERA6</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>冰原</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="258"/>
         <source>Ice</source>
         <comment>Brush</comment>
-        <extracomment>SEditENU:189:3014</extracomment>
-        <translation type="unfinished"></translation>
+        <extracomment>SEditENU:189:3014, stat_txt:DDS_ICE_SUNKENICE</extracomment>
+        <translation type="unfinished">冰原</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="157"/>
@@ -2304,7 +2310,7 @@ EditLocal:11:175</extracomment>
     <message>
         <location filename="terrain.cpp" line="163"/>
         <source>Shale</source>
-        <extracomment>EditLocal:15:234</extracomment>
+        <extracomment>EditLocal:15:234, stat_txt:DDS_ASH_DDROCKS</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2328,7 +2334,7 @@ EditLocal:11:175</extracomment>
     <message>
         <location filename="terrain.cpp" line="194"/>
         <source>Ruins</source>
-        <extracomment>EditLocal:11:166</extracomment>
+        <extracomment>EditLocal:11:166, stat_txt:DDS_JUNG_RUINS</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2346,13 +2352,13 @@ EditLocal:11:175</extracomment>
     <message>
         <location filename="terrain.cpp" line="202"/>
         <source>High Jungle</source>
-        <extracomment>EditLocal:23:359</extracomment>
+        <extracomment>EditLocal:23:359, stat_txt:DDS_HIGH_JUNGLE</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="204"/>
         <source>High Ruins</source>
-        <extracomment>EditLocal:23:360</extracomment>
+        <extracomment>EditLocal:23:360, stat_txt:DDS_HIGH_RUINS</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2370,91 +2376,91 @@ EditLocal:11:175</extracomment>
     <message>
         <location filename="terrain.cpp" line="221"/>
         <source>Tar</source>
-        <extracomment>SEditENU:188:3001</extracomment>
+        <extracomment>SEditENU:188:3001, stat_txt:DDS_DESERT_WATER</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="225"/>
         <source>Dried Mud</source>
-        <extracomment>SEditENU:188:3003</extracomment>
+        <extracomment>SEditENU:188:3003, stat_txt:DDS_DESERT_DRIEDMUD</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="227"/>
         <source>Sand Dunes</source>
-        <extracomment>SEditENU:188:3004</extracomment>
+        <extracomment>SEditENU:188:3004, stat_txt:DDS_DESERT_SANDDUNES</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="231"/>
         <source>Crags</source>
-        <extracomment>SEditENU:188:3006</extracomment>
+        <extracomment>SEditENU:188:3006, stat_txt:DDS_DESERT_RUINS</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="233"/>
         <source>Sandy Sunken Pit</source>
-        <extracomment>SEditENU:188:3007</extracomment>
+        <extracomment>SEditENU:188:3007, stat_txt:DDS_DESERT_SANDYSUNKEN</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="235"/>
         <source>Compound</source>
-        <extracomment>SEditENU:189:3008</extracomment>
+        <extracomment>SEditENU:189:3008, stat_txt:DDS_DESERT_RESOURCE</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="239"/>
         <source>High Sand Dunes</source>
-        <extracomment>SEditENU:189:3010</extracomment>
+        <extracomment>SEditENU:189:3010, stat_txt:DDS_DESERT_HIGHSANDDUNES</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="241"/>
         <source>High Crags</source>
-        <extracomment>SEditENU:189:3011</extracomment>
+        <extracomment>SEditENU:189:3011, stat_txt:DDS_DESERT_HIGHRUINS</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="243"/>
         <source>High Sandy Sunken Pit</source>
-        <extracomment>SEditENU:189:3012</extracomment>
+        <extracomment>SEditENU:189:3012, stat_txt:DDS_DESERT_HIGHSANDSUNKEN</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="245"/>
         <source>High Compound</source>
-        <extracomment>SEditENU:189:3013</extracomment>
+        <extracomment>SEditENU:189:3013, stat_txt:DDS_DESERT_HIGHRESOURCE</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="260"/>
         <source>Snow</source>
-        <extracomment>SEditENU:189:3015</extracomment>
+        <extracomment>SEditENU:189:3015, stat_txt:DDS_ICE_SNOW</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="262"/>
         <source>Moguls</source>
-        <extracomment>SEditENU:189:3016</extracomment>
+        <extracomment>SEditENU:189:3016, stat_txt:DDS_ICE_MUD</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="266"/>
         <source>Rocky Snow</source>
-        <extracomment>SEditENU:189:3018</extracomment>
+        <extracomment>SEditENU:189:3018, stat_txt:DDS_ICE_ROCKYSNOW</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="272"/>
         <source>Outpost</source>
-        <extracomment>SEditENU:189:3021</extracomment>
+        <extracomment>SEditENU:189:3021, stat_txt:DDS_ICE_OUTPOST</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="274"/>
         <source>High Snow</source>
-        <extracomment>SEditENU:189:3022</extracomment>
+        <extracomment>SEditENU:189:3022, stat_txt:DDS_ICE_HIGHSNOW</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2466,67 +2472,67 @@ EditLocal:11:175</extracomment>
     <message>
         <location filename="terrain.cpp" line="282"/>
         <source>High Outpost</source>
-        <extracomment>SEditENU:190:3026</extracomment>
+        <extracomment>SEditENU:190:3026, stat_txt:DDS_ICE_HIGHOUTPOST</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="290"/>
         <source>Twilight</source>
         <extracomment>gluAll:gameMapERA7</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>暮光</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="301"/>
         <source>Crushed Rock</source>
-        <extracomment>SEditENU:190:3031</extracomment>
+        <extracomment>SEditENU:190:3031, stat_txt:DDS_TWILIGHT_CRACKEDICE</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="303"/>
         <source>Crevices</source>
-        <extracomment>SEditENU:190:3032</extracomment>
+        <extracomment>SEditENU:190:3032, stat_txt:DDS_TWILIGHT_CREVICE</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="305"/>
         <source>Flagstones</source>
-        <extracomment>SEditENU:190:3033</extracomment>
+        <extracomment>SEditENU:190:3033, stat_txt:DDS_TWILIGHT_ANCIENTRUINS</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="307"/>
         <source>Sunken Ground</source>
-        <extracomment>SEditENU:190:3034</extracomment>
+        <extracomment>SEditENU:190:3034, stat_txt:DDS_TWILIGHT_SUNKENGROUND</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="309"/>
         <source>Basilica</source>
-        <extracomment>SEditENU:190:3035</extracomment>
+        <extracomment>SEditENU:190:3035, stat_txt:DDS_TWILIGHT_COMPOUND</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="313"/>
         <source>High Crushed Rock</source>
-        <extracomment>SEditENU:190:3036</extracomment>
+        <extracomment>SEditENU:190:3036, stat_txt:DDS_TWILIGHT_HIGHCRACKEDICE</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="315"/>
         <source>High Flagstones</source>
-        <extracomment>SEditENU:190:3037</extracomment>
+        <extracomment>SEditENU:190:3037, stat_txt:DDS_TWILIGHT_HIGHANCIENTRUINS</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="317"/>
         <source>High Sunken Ground</source>
-        <extracomment>SEditENU:190:3038</extracomment>
+        <extracomment>SEditENU:190:3038, stat_txt:DDS_TWILIGHT_HIGHSUNKENGROUND</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="319"/>
         <source>High Basilica</source>
-        <extracomment>SEditENU:190:3039</extracomment>
+        <extracomment>SEditENU:190:3039, stat_txt:DDS_TWILIGHT_HIGHCOMPOUND</extracomment>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2558,7 +2564,7 @@ EditLocal:11:175</extracomment>
         <location filename="scenariodescription.ui" line="20"/>
         <source>Name</source>
         <extracomment>EditLocal:185</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>名称</translation>
     </message>
     <message>
         <location filename="scenariodescription.ui" line="87"/>
@@ -2577,8 +2583,8 @@ EditLocal:11:175</extracomment>
     <message>
         <location filename="scenariosettings.ui" line="24"/>
         <source>Players</source>
-        <extracomment>EditLocal:1202</extracomment>
-        <translation type="unfinished"></translation>
+        <extracomment>gluAll:infoPane_players</extracomment>
+        <translation>玩家</translation>
     </message>
     <message>
         <location filename="scenariosettings.ui" line="30"/>
@@ -2589,8 +2595,8 @@ EditLocal:11:175</extracomment>
     <message>
         <location filename="scenariosettings.ui" line="36"/>
         <source>Units</source>
-        <extracomment>EditLocal:1217</extracomment>
-        <translation type="unfinished"></translation>
+        <extracomment>gluAll:scoreUNITS</extracomment>
+        <translation>单位</translation>
     </message>
     <message>
         <location filename="scenariosettings.ui" line="42"/>
@@ -2637,7 +2643,7 @@ EditLocal:11:175</extracomment>
         <location filename="spriteproperties.ui" line="106"/>
         <source>Disabled</source>
         <extracomment>gluAll:createGameScreen_disabled</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>关闭</translation>
     </message>
 </context>
 <context>
@@ -2682,11 +2688,18 @@ EditLocal:11:175</extracomment>
         <location filename="unitproperties.ui" line="14"/>
         <location filename="unitproperties.ui" line="20"/>
         <source>Unit Properties</source>
+        <extracomment>EditLocal:1214:1168</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="unitproperties.ui" line="28"/>
+        <source>Type</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="unitproperties.ui" line="38"/>
         <source>Owner</source>
+        <extracomment>EditLocal:1214</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2702,62 +2715,73 @@ EditLocal:11:175</extracomment>
     <message>
         <location filename="unitproperties.ui" line="107"/>
         <source>Initial State</source>
+        <extracomment>EditLocal:1214</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="unitproperties.ui" line="115"/>
         <source>Hit Point %</source>
+        <extracomment>EditLocal:1214</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="unitproperties.ui" line="129"/>
         <source>Shield Point %</source>
         <oldsource>Shield %</oldsource>
+        <extracomment>EditLocal:1214</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="unitproperties.ui" line="143"/>
         <source>Energy %</source>
+        <extracomment>EditLocal:1214</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="unitproperties.ui" line="157"/>
         <source>In Hangar</source>
         <oldsource>Hangar Count</oldsource>
+        <extracomment>EditLocal:1214</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="unitproperties.ui" line="171"/>
         <source>Resources</source>
+        <extracomment>EditLocal:1214</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="unitproperties.ui" line="189"/>
         <source>&amp;Cloaked</source>
         <oldsource>Cloaked</oldsource>
+        <extracomment>EditLocal:1214:1111</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="unitproperties.ui" line="196"/>
         <source>&amp;Burrowed</source>
         <oldsource>Burrowed</oldsource>
+        <extracomment>EditLocal:1214:1161</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="unitproperties.ui" line="203"/>
         <source>In &amp;Transit</source>
+        <extracomment>EditLocal:1214:1162</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="unitproperties.ui" line="210"/>
         <source>H&amp;allucinated</source>
         <oldsource>Hallucinated</oldsource>
+        <extracomment>EditLocal:1214:1164</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="unitproperties.ui" line="217"/>
         <source>In&amp;vincible</source>
         <oldsource>Invincible</oldsource>
+        <extracomment>EditLocal:1214:1163</extracomment>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2777,8 +2801,8 @@ EditLocal:11:175</extracomment>
     <message>
         <location filename="unitstab.ui" line="89"/>
         <source>Player</source>
-        <extracomment>EditLocal:3:42</extracomment>
-        <translation type="unfinished"></translation>
+        <extracomment>gluAll:gluAll:scr.leaderboard.table.heading.2</extracomment>
+        <translation>玩家</translation>
     </message>
     <message>
         <location filename="unitstab.ui" line="99"/>
@@ -2857,7 +2881,7 @@ EditLocal:11:175</extracomment>
         <location filename="unitstab.ui" line="154"/>
         <source>Neutral</source>
         <extracomment>EditLocal:9:137</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>中立</translation>
     </message>
     <message>
         <location filename="unitstab.ui" line="190"/>
@@ -2884,14 +2908,14 @@ EditLocal:11:175</extracomment>
     <message>
         <location filename="unitstab.ui" line="279"/>
         <source>Shields</source>
-        <extracomment>EditLocal:1216:1219</extracomment>
-        <translation type="unfinished"></translation>
+        <extracomment>stat_txt:STR_SHIELD_LBL</extracomment>
+        <translation>护盾</translation>
     </message>
     <message>
         <location filename="unitstab.ui" line="302"/>
         <source>Armour</source>
-        <extracomment>EditLocal:1216</extracomment>
-        <translation type="unfinished"></translation>
+        <extracomment>stat_txt:STR_ARMOR_LBL</extracomment>
+        <translation>护甲</translation>
     </message>
     <message>
         <location filename="unitstab.ui" line="324"/>
@@ -2903,8 +2927,8 @@ EditLocal:11:175</extracomment>
         <location filename="unitstab.ui" line="347"/>
         <location filename="unitstab.ui" line="415"/>
         <source>Damage</source>
-        <extracomment>EditLocal:1216</extracomment>
-        <translation type="unfinished"></translation>
+        <extracomment>stat_txt:STR_DAMAGE_LBL</extracomment>
+        <translation>伤害</translation>
     </message>
     <message>
         <location filename="unitstab.ui" line="367"/>
@@ -2960,7 +2984,8 @@ EditLocal:11:175</extracomment>
     <message>
         <location filename="upgradestab.ui" line="92"/>
         <source>Player</source>
-        <translation type="unfinished"></translation>
+        <extracomment>gluAll:gluAll:scr.leaderboard.table.heading.2</extracomment>
+        <translation type="unfinished">玩家</translation>
     </message>
     <message>
         <location filename="upgradestab.ui" line="97"/>
@@ -3032,7 +3057,7 @@ EditLocal:11:175</extracomment>
     <message>
         <location filename="upgradestab.ui" line="162"/>
         <source>Neutral</source>
-        <translation type="unfinished"></translation>
+        <translation>中立</translation>
     </message>
     <message>
         <location filename="upgradestab.ui" line="439"/>

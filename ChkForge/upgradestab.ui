@@ -89,7 +89,7 @@
         </attribute>
         <column>
          <property name="text">
-          <string>Player</string>
+          <string extracomment="gluAll:gluAll:scr.leaderboard.table.heading.2">Player</string>
          </property>
         </column>
         <column>

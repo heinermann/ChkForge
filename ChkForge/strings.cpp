@@ -45,7 +45,7 @@ const std::array<const QString, 12> ownerNames = {
   QObject::tr("Human"),
   //: EditLocal:8:125
   QObject::tr("Neutral"),
-  //: gluAll:lobbyScreen_open
+  //: gluAll:lobbyScreen_closed
   QObject::tr("Closed"),
   //: network:strOBSERVER
   QObject::tr("Observer"),

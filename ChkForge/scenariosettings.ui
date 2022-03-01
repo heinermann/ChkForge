@@ -21,7 +21,7 @@
      </property>
      <widget class="PlayersTab" name="playersTab">
       <attribute name="title">
-       <string extracomment="EditLocal:1202">Players</string>
+       <string extracomment="gluAll:infoPane_players">Players</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_13"/>
      </widget>
@@ -33,7 +33,7 @@
      </widget>
      <widget class="UnitsTab" name="unitSettingsTab">
       <attribute name="title">
-       <string extracomment="EditLocal:1217">Units</string>
+       <string extracomment="gluAll:scoreUNITS">Units</string>
       </attribute>
       <layout class="QGridLayout" name="gridLayout_8" rowstretch="0" columnstretch="0"/>
      </widget>

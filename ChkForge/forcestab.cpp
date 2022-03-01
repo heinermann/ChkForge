@@ -102,6 +102,7 @@ void ForcesTab::updateForcesTree() {
 
     itm->setText(0, getSlotOwnerName(settings->ownr.slotType[playerSlot]));
     itm->setText(1, getSlotRaceName(settings->side.playerRaces[playerSlot]));
+    //: gluAll:lobbyScreen_MapSpecified
     itm->setText(2, useRemasteredColorStr ? getSlotColorName(3, settings->colr.playerColor[playerSlot]) : tr("Map specified"));
 
     int index = itm->parent()->indexOfChild(itm);

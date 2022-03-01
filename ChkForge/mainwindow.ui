@@ -176,7 +176,7 @@ QSplitter::handle:vertical {
    </widget>
    <widget class="QMenu" name="menu_Help">
     <property name="title">
-     <string>&amp;Help</string>
+     <string extracomment="gluAll:bnet119_optionsPanel_tabs_help">&amp;Help</string>
     </property>
     <addaction name="action_help_about"/>
     <addaction name="action_help_report"/>
@@ -300,7 +300,7 @@ QSplitter::handle:vertical {
      <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/document-new.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/document-new.png</iconset>
    </property>
    <property name="text">
-    <string extracomment="EditLocal:109:40010">&amp;New...</string>
+    <string extracomment="RC3:gluBattlenetToonRegistry-3">&amp;New...</string>
    </property>
   </action>
   <action name="action_file_open">
@@ -318,7 +318,7 @@ QSplitter::handle:vertical {
      <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/document-save.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/document-save.png</iconset>
    </property>
    <property name="text">
-    <string extracomment="EditLocal:109:57603">&amp;Save</string>
+    <string extracomment="RC3:savegame-1">&amp;Save</string>
    </property>
   </action>
   <action name="action_file_saveAs">
@@ -372,7 +372,7 @@ QSplitter::handle:vertical {
      <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/application-exit.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/application-exit.png</iconset>
    </property>
    <property name="text">
-    <string extracomment="EditLocal:109:40013">E&amp;xit</string>
+    <string extracomment="RC3:gluMain-1">E&amp;xit</string>
    </property>
    <property name="menuRole">
     <enum>QAction::QuitRole</enum>
@@ -570,18 +570,13 @@ QSplitter::handle:vertical {
     <string>Map Revealers</string>
    </property>
   </action>
-  <action name="action_tools_preferences">
-   <property name="text">
-    <string>Preferences</string>
-   </property>
-  </action>
   <action name="action_scenario_players">
    <property name="icon">
     <iconset resource="../oxygen-subset.qrc">
      <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/user-properties.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/user-properties.png</iconset>
    </property>
    <property name="text">
-    <string extracomment="EditLocal:1202">&amp;Players...</string>
+    <string extracomment="gluAll:infoPane_players">&amp;Players...</string>
    </property>
   </action>
   <action name="action_scenario_forces">

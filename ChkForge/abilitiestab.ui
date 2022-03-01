@@ -183,7 +183,7 @@
             </size>
            </property>
            <property name="text">
-            <string>Disabled</string>
+            <string extracomment="gluAll:createGameScreen_disabled">Disabled</string>
            </property>
           </widget>
          </item>
@@ -196,7 +196,7 @@
             </size>
            </property>
            <property name="text">
-            <string>Enabled</string>
+            <string extracomment="gluAll:createGameScreen_enabled">Enabled</string>
            </property>
            <property name="checked">
             <bool>true</bool>
@@ -222,7 +222,7 @@
       <item row="0" column="1">
        <widget class="QGroupBox" name="groupBox_2">
         <property name="title">
-         <string>Default</string>
+         <string extracomment="gluAll:bnet119_hotkeysPanel_binding_default">Default</string>
         </property>
         <layout class="QFormLayout" name="formLayout_25">
          <item row="0" column="0">
@@ -308,7 +308,7 @@
         </attribute>
         <column>
          <property name="text">
-          <string extracomment="EditLocal:3:42">Player</string>
+          <string extracomment="gluAll:scr.leaderboard.table.heading.2">Player</string>
          </property>
         </column>
         <column>

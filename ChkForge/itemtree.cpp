@@ -52,6 +52,7 @@ QStandardItem* ItemTree::createTilesetTree()
 
 QStandardItem* ItemTree::createDoodadsTree()
 {
+  //: stat_txt:FIRST_UNIT_STRING-203
   QStandardItem* top = createTreeItem(tr("Doodads"));
 
   return top;
@@ -59,6 +60,7 @@ QStandardItem* ItemTree::createDoodadsTree()
 
 QStandardItem* ItemTree::createUnitsTree()
 {
+  //: gluAll:scoreUNITS
   QStandardItem* top = createTreeItem(tr("Units"));
   createTreeFromFile(top, "units.txt", CAT_UNIT, [](QStandardItem* itm) {
     itm->setIcon(ChkForge::Icons::getUnitIcon(itm->data(ROLE_ID).toInt()));

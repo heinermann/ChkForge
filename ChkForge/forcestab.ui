@@ -29,7 +29,7 @@
       <item row="2" column="1">
        <widget class="QCheckBox" name="chkForceSharedVision">
         <property name="text">
-         <string extracomment="EditLocal:188:1113">Shared Vision</string>
+         <string extracomment="RC3:allyfltr-24:25">Shared Vision</string>
         </property>
        </widget>
       </item>
@@ -43,14 +43,14 @@
       <item row="2" column="0">
        <widget class="QCheckBox" name="chkForceAlliedVictory">
         <property name="text">
-         <string extracomment="EditLocal:188:1116">Allied Victory</string>
+         <string extracomment="RC3:allyfltr-21">Allied Victory</string>
         </property>
        </widget>
       </item>
       <item row="1" column="0">
        <widget class="QCheckBox" name="chkForceAllies">
         <property name="text">
-         <string extracomment="EditLocal:188:1115">Allies</string>
+         <string extracomment="RC3:allyfltr-23">Allies</string>
         </property>
        </widget>
       </item>

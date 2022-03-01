@@ -68,23 +68,23 @@ Tileset Tileset::Badlands = Tileset{
   QList<TileGroup>{
     {0, 0, QObject::tr("Null")},
     {0, 1, QObject::tr("Creep")},
-    //: EditLocal:1:15
+    //: EditLocal:1:15, stat_txt:DDS_BAD_LODIRT
     {0, 2, QObject::tr("Dirt")},
-    //: EditLocal:33:526
+    //: EditLocal:33:526, stat_txt:DDS_TWILIGHT_MUD
     {0, 20, QObject::tr("Mud")},
-    //: EditLocal:2:16
+    //: EditLocal:2:16, stat_txt:DDS_BAD_HIDIRT
     {0, 4, QObject::tr("High Dirt")},
-    //: EditLocal:2:24
+    //: EditLocal:2:24, stat_txt:DDS_BAD_WATER
     {0, 6, QObject::tr("Water")},
-    //: EditLocal:2:17
+    //: EditLocal:2:17, stat_txt:DDS_BAD_LOGRASS
     {0, 8, QObject::tr("Grass")},
-    //: EditLocal:23:356
+    //: EditLocal:23:356, stat_txt:DDS_BAD_HIGRASS
     {0, 10, QObject::tr("High Grass")},
-    //: EditLocal:23:357
+    //: EditLocal:23:357, stat_txt:DDS_BAD_BLDG
     {0, 18, QObject::tr("Structure")},
-    //: EditLocal:11:168
+    //: EditLocal:11:168, stat_txt:DDS_BAD_CONCRETE
     {0, 16, QObject::tr("Asphalt")},
-    //: EditLocal:11:169
+    //: EditLocal:11:169, stat_txt:DDS_BAD_RUBBLE
     {0, 12, QObject::tr("Rocky Ground")}
   },
   2
@@ -99,21 +99,21 @@ Tileset Tileset::Space = Tileset{
     {1, 1, QObject::tr("Creep")},
     //: EditLocal:2:22
     {1, 2, QObject::tr("Space", "Brush")},
-    //: EditLocal:14:221
+    //: EditLocal:14:221, stat_txt:DDS_PLAT_DDPLATPIT
     {1, 14, QObject::tr("Low Platform")},
-    //: EditLocal:14:222
+    //: EditLocal:14:222, stat_txt:DDS_PLAT_DDRUSTYPIT
     {1, 18, QObject::tr("Rusty Pit")},
-    //: EditLocal:2:19
+    //: EditLocal:2:19, stat_txt:DDS_PLAT_DDLOWNBLD
     {1, 4, QObject::tr("Platform")},
-    //: EditLocal:23:363
+    //: EditLocal:23:363, stat_txt:DDS_PLAT_DDDARK
     {1, 16, QObject::tr("Dark Platform")},
-    //: EditLocal:2:18
+    //: EditLocal:2:18, stat_txt:DDS_PLAT_DDLOWBLD
     {1, 6, QObject::tr("Plating")},
-    //: EditLocal:14:220
+    //: EditLocal:14:220, stat_txt:DDS_PLAT_DDSOLARPANEL
     {1, 12, QObject::tr("Solar Array")},
     //: EditLocal:2:21
     {1, 8, QObject::tr("High Platform")},
-    //: EditLocal:2:20
+    //: EditLocal:2:20, stat_txt:DDS_PLAT_DDHIGHBLD
     {1, 10, QObject::tr("High Plating")},
     //: EditLocal:16:241
     {1, 20, QObject::tr("Elevated Catwalk")}
@@ -127,15 +127,15 @@ Tileset Tileset::Installation = Tileset{
   QObject::tr("Installation"),
   QList<TileGroup>{
     {2, 0, QObject::tr("Null")},
-    //: EditLocal:11:171
+    //: EditLocal:11:171, stat_txt:DDS_INSTALL_DDDIRT
     {2, 2, QObject::tr("Substructure")},
     //: EditLocal:11:174
     {2, 4, QObject::tr("Substructure Plating")},
-    //: EditLocal:11:172
+    //: EditLocal:11:172, stat_txt:DDS_INSTALL_DDCLEAN
     {2, 6, QObject::tr("Floor")},
     //: EditLocal:11:173
     {2, 8, QObject::tr("Roof")},
-    //: EditLocal:11:175
+    //: EditLocal:11:175, stat_txt:DDS_INSTALL_DDWALK
     {2, 10, QObject::tr("Plating")},
     //: EditLocal:16:245
     {2, 12, QObject::tr("Bottomless Pit")},
@@ -155,15 +155,15 @@ Tileset Tileset::Ashworld = Tileset{
     {3, 1, QObject::tr("Creep")},
     //: EditLocal:15:231
     {3, 14, QObject::tr("Magma")},
-    //: EditLocal:15:232
+    //: EditLocal:15:232, stat_txt:DDS_ASH_DDLOWASH
     {3, 2, QObject::tr("Dirt")},
     //: EditLocal:15:233
     {3, 4, QObject::tr("Lava")},
-    //: EditLocal:15:234
+    //: EditLocal:15:234, stat_txt:DDS_ASH_DDROCKS
     {3, 10, QObject::tr("Shale")},
     //: EditLocal:15:239
     {3, 16, QObject::tr("Broken Rock")},
-    //: EditLocal:15:235
+    //: EditLocal:15:235, stat_txt:DDS_ASH_DDHIGHASH
     {3, 6, QObject::tr("High Dirt")},
     //: EditLocal:15:236
     {3, 8, QObject::tr("High Lava")},
@@ -180,17 +180,17 @@ Tileset Tileset::Jungle = Tileset{
   QList<TileGroup>{
     {4, 0, QObject::tr("Null")},
     {4, 1, QObject::tr("Creep")},
-    //: EditLocal:2:24
+    //: EditLocal:2:24, stat_txt:DDS_BAD_WATER
     {4, 6, QObject::tr("Water")},
-    //: EditLocal:1:15
+    //: EditLocal:1:15, stat_txt:DDS_BAD_LODIRT
     {4, 2, QObject::tr("Dirt")},
-    //: EditLocal:33:527
+    //: EditLocal:33:527, stat_txt:DDS_TWILIGHT_MUD
     {4, 26, QObject::tr("Mud")},
-    //: EditLocal:11:167
+    //: EditLocal:11:167, stat_txt:DDS_JUNG_JUNGLE
     {4, 8, QObject::tr("Jungle", "Brush")},
-    //: EditLocal:11:169
+    //: EditLocal:11:169, stat_txt:DDS_BAD_RUBBLE
     {4, 10, QObject::tr("Rocky Ground")},
-    //: EditLocal:11:166
+    //: EditLocal:11:166, stat_txt:DDS_JUNG_RUINS
     {4, 14, QObject::tr("Ruins")},
     //: EditLocal:12:190
     {4, 12, QObject::tr("Raised Jungle")},
@@ -198,9 +198,9 @@ Tileset Tileset::Jungle = Tileset{
     {4, 16, QObject::tr("Temple")},
     //: EditLocal:2:16
     {4, 4, QObject::tr("High Dirt")},
-    //: EditLocal:23:359
+    //: EditLocal:23:359, stat_txt:DDS_HIGH_JUNGLE
     {4, 18, QObject::tr("High Jungle")},
-    //: EditLocal:23:360
+    //: EditLocal:23:360, stat_txt:DDS_HIGH_RUINS
     {4, 20, QObject::tr("High Ruins")},
     //: EditLocal:23:361
     {4, 22, QObject::tr("High Raised Jungle")},
@@ -217,31 +217,31 @@ Tileset Tileset::Desert = Tileset{
   QList<TileGroup>{
     {5, 0, QObject::tr("Null")},
     {5, 1, QObject::tr("Creep")},
-    //: SEditENU:188:3001
+    //: SEditENU:188:3001, stat_txt:DDS_DESERT_WATER
     {5, 6, QObject::tr("Tar")},
-    //: SEditENU:188:3002
+    //: SEditENU:188:3002, stat_txt:DDS_DESERT_HARDPAN
     {5, 2, QObject::tr("Dirt")},
-    //: SEditENU:188:3003
+    //: SEditENU:188:3003, stat_txt:DDS_DESERT_DRIEDMUD
     {5, 26, QObject::tr("Dried Mud")},
-    //: SEditENU:188:3004
+    //: SEditENU:188:3004, stat_txt:DDS_DESERT_SANDDUNES
     {5, 8, QObject::tr("Sand Dunes")},
-    //: SEditENU:188:3005
+    //: SEditENU:188:3005, stat_txt:DDS_DESERT_ROCKYGROUND
     {5, 10, QObject::tr("Rocky Ground")},
-    //: SEditENU:188:3006
+    //: SEditENU:188:3006, stat_txt:DDS_DESERT_RUINS
     {5, 14, QObject::tr("Crags")},
-    //: SEditENU:188:3007
+    //: SEditENU:188:3007, stat_txt:DDS_DESERT_SANDYSUNKEN
     {5, 12, QObject::tr("Sandy Sunken Pit")},
-    //: SEditENU:189:3008
+    //: SEditENU:189:3008, stat_txt:DDS_DESERT_RESOURCE
     {5, 16, QObject::tr("Compound")},
-    //: SEditENU:189:3009
+    //: SEditENU:189:3009, stat_txt:DDS_DESERT_HIGHDIRT
     {5, 4, QObject::tr("High Dirt")},
-    //: SEditENU:189:3010
+    //: SEditENU:189:3010, stat_txt:DDS_DESERT_HIGHSANDDUNES
     {5, 18, QObject::tr("High Sand Dunes")},
-    //: SEditENU:189:3011
+    //: SEditENU:189:3011, stat_txt:DDS_DESERT_HIGHRUINS
     {5, 20, QObject::tr("High Crags")},
-    //: SEditENU:189:3012
+    //: SEditENU:189:3012, stat_txt:DDS_DESERT_HIGHSANDSUNKEN
     {5, 22, QObject::tr("High Sandy Sunken Pit")},
-    //: SEditENU:189:3013
+    //: SEditENU:189:3013, stat_txt:DDS_DESERT_HIGHRESOURCE
     {5, 24, QObject::tr("High Compound")}
   },
   5
@@ -254,31 +254,31 @@ Tileset Tileset::Ice = Tileset{
   QList<TileGroup>{
     {6, 0, QObject::tr("Null")},
     {6, 1, QObject::tr("Creep")},
-    //: SEditENU:189:3014
+    //: SEditENU:189:3014, stat_txt:DDS_ICE_SUNKENICE
     {6, 6, QObject::tr("Ice", "Brush")},
-    //: SEditENU:189:3015
+    //: SEditENU:189:3015, stat_txt:DDS_ICE_SNOW
     {6, 2, QObject::tr("Snow")},
-    //: SEditENU:189:3016
+    //: SEditENU:189:3016, stat_txt:DDS_ICE_MUD
     {6, 26, QObject::tr("Moguls")},
-    //: SEditENU:189:3017
+    //: SEditENU:189:3017, stat_txt:DDS_ICE_ROUGHSNOW
     {6, 8, QObject::tr("Dirt")},
-    //: SEditENU:189:3018
+    //: SEditENU:189:3018, stat_txt:DDS_ICE_ROCKYSNOW
     {6, 10, QObject::tr("Rocky Snow")},
-    //: SEditENU:189:3019
+    //: SEditENU:189:3019, stat_txt:DDS_ICE_SNOWYRUINS
     {6, 14, QObject::tr("Grass")},
-    //: SEditENU:190:3028
+    //: SEditENU:190:3028, stat_txt:DDS_ICE_WATER
     {6, 12, QObject::tr("Water")},
-    //: SEditENU:189:3021
+    //: SEditENU:189:3021, stat_txt:DDS_ICE_OUTPOST
     {6, 16, QObject::tr("Outpost")},
-    //: SEditENU:189:3022
+    //: SEditENU:189:3022, stat_txt:DDS_ICE_HIGHSNOW
     {6, 4, QObject::tr("High Snow")},
-    //: SEditENU:189:3023
+    //: SEditENU:189:3023, stat_txt:DDS_ICE_HIGHROUGHSNOW
     {6, 18, QObject::tr("High Dirt")},
-    //: SEditENU:190:3024
+    //: SEditENU:190:3024, stat_txt:DDS_ICE_HIGHSNOWYRUINS
     {6, 20, QObject::tr("High Grass")},
     //: SEditENU:190:3025
     {6, 22, QObject::tr("High Water")},
-    //: SEditENU:190:3026
+    //: SEditENU:190:3026, stat_txt:DDS_ICE_HIGHOUTPOST
     {6, 24, QObject::tr("High Outpost")}
   },
   3
@@ -291,31 +291,31 @@ Tileset Tileset::Twilight = Tileset{
   QList<TileGroup>{
     {7, 0, QObject::tr("Null")},
     {7, 1, QObject::tr("Creep")},
-    //: SEditENU:190:3028
+    //: SEditENU:190:3028, stat_txt:DDS_TWILIGHT_WATER
     {7, 6, QObject::tr("Water")},
-    //: SEditENU:190:3029
+    //: SEditENU:190:3029, stat_txt:DDS_TWILIGHT_DIRT
     {7, 2, QObject::tr("Dirt")},
-    //: SEditENU:190:3030
+    //: SEditENU:190:3030, stat_txt:DDS_TWILIGHT_MUD
     {7, 26, QObject::tr("Mud")},
-    //: SEditENU:190:3031
+    //: SEditENU:190:3031, stat_txt:DDS_TWILIGHT_CRACKEDICE
     {7, 8, QObject::tr("Crushed Rock")},
-    //: SEditENU:190:3032
+    //: SEditENU:190:3032, stat_txt:DDS_TWILIGHT_CREVICE
     {7, 10, QObject::tr("Crevices")},
-    //: SEditENU:190:3033
+    //: SEditENU:190:3033, stat_txt:DDS_TWILIGHT_ANCIENTRUINS
     {7, 14, QObject::tr("Flagstones")},
-    //: SEditENU:190:3034
+    //: SEditENU:190:3034, stat_txt:DDS_TWILIGHT_SUNKENGROUND
     {7, 12, QObject::tr("Sunken Ground")},
-    //: SEditENU:190:3035
+    //: SEditENU:190:3035, stat_txt:DDS_TWILIGHT_COMPOUND
     {7, 16, QObject::tr("Basilica")},
-    //: SEditENU:191:3040
+    //: SEditENU:191:3040, stat_txt:DDS_TWILIGHT_HIGHDIRT
     {7, 4, QObject::tr("High Dirt")},
-    //: SEditENU:190:3036
+    //: SEditENU:190:3036, stat_txt:DDS_TWILIGHT_HIGHCRACKEDICE
     {7, 18, QObject::tr("High Crushed Rock")},
-    //: SEditENU:190:3037
+    //: SEditENU:190:3037, stat_txt:DDS_TWILIGHT_HIGHANCIENTRUINS
     {7, 20, QObject::tr("High Flagstones")},
-    //: SEditENU:190:3038
+    //: SEditENU:190:3038, stat_txt:DDS_TWILIGHT_HIGHSUNKENGROUND
     {7, 22, QObject::tr("High Sunken Ground")},
-    //: SEditENU:190:3039
+    //: SEditENU:190:3039, stat_txt:DDS_TWILIGHT_HIGHCOMPOUND
     {7, 24, QObject::tr("High Basilica")}
   },
   3
