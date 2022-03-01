@@ -19,25 +19,25 @@
         <location filename="abilitiestab.ui" line="58"/>
         <source>Minerals</source>
         <extracomment>EditLocal:1223</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>ミネラル</translation>
     </message>
     <message>
         <location filename="abilitiestab.ui" line="84"/>
         <source>Gas</source>
         <extracomment>EditLocal:1223</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>ガス</translation>
     </message>
     <message>
         <location filename="abilitiestab.ui" line="104"/>
         <source>Time</source>
         <extracomment>EditLocal:1223</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>時間</translation>
     </message>
     <message>
         <location filename="abilitiestab.ui" line="124"/>
         <source>Energy</source>
         <extracomment>EditLocal:1223</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>エネルギー</translation>
     </message>
     <message>
         <location filename="abilitiestab.ui" line="147"/>
@@ -73,20 +73,20 @@
         <source>Disabled by default</source>
         <oldsource>Disabled by Default</oldsource>
         <extracomment>EditLocal:1219:100</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>デフォルトで不可</translation>
     </message>
     <message>
         <location filename="abilitiestab.ui" line="250"/>
         <source>Enabled by default</source>
         <oldsource>Enabled by Default</oldsource>
         <extracomment>EditLocal:1219:101</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>デフォルトで可</translation>
     </message>
     <message>
         <location filename="abilitiestab.ui" line="266"/>
         <source>Researched by Default</source>
         <extracomment>EditLocal:1219:102</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>デフォルトでリサーチ</translation>
     </message>
     <message>
         <location filename="abilitiestab.ui" line="311"/>
@@ -393,13 +393,13 @@ Some select Starforge code snippets and resources.
         <location filename="forcestab.ui" line="39"/>
         <source>Random Start Location</source>
         <extracomment>EditLocal:188:1111</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>ランダムなスタートの場所</translation>
     </message>
     <message>
         <location filename="forcestab.ui" line="32"/>
         <source>Shared Vision</source>
         <extracomment>RC3:allyfltr-24:25</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>視界の共有</translation>
     </message>
     <message>
         <location filename="forcestab.ui" line="46"/>
@@ -560,49 +560,49 @@ Some select Starforge code snippets and resources.
         <location filename="locationproperties.ui" line="135"/>
         <source>Apply Location to</source>
         <extracomment>EditLocal:175</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>ロケーション設定</translation>
     </message>
     <message>
         <location filename="locationproperties.ui" line="144"/>
         <source>Mi&amp;d Air</source>
         <oldsource>Mid Air</oldsource>
         <extracomment>EditLocal:175:104</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>中間高度(&amp;D)</translation>
     </message>
     <message>
         <location filename="locationproperties.ui" line="151"/>
         <source>Low &amp;Air</source>
         <oldsource>Low Air</oldsource>
         <extracomment>EditLocal:175:103</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>低い高度(&amp;A)</translation>
     </message>
     <message>
         <location filename="locationproperties.ui" line="158"/>
         <source>&amp;Low Elevation</source>
         <oldsource>Low Elevation</oldsource>
         <extracomment>EditLocal:175:100</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>低い高地(&amp;L)</translation>
     </message>
     <message>
         <location filename="locationproperties.ui" line="165"/>
         <source>&amp;Mid Elevation</source>
         <oldsource>Mid Elevation</oldsource>
         <extracomment>EditLocal:175:101</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>中間高地(&amp;M)</translation>
     </message>
     <message>
         <location filename="locationproperties.ui" line="172"/>
         <source>&amp;High Elevation</source>
         <oldsource>High Elevation</oldsource>
         <extracomment>EditLocal:175:102</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>高い高地(&amp;H)</translation>
     </message>
     <message>
         <location filename="locationproperties.ui" line="179"/>
         <source>Hi&amp;gh Air</source>
         <oldsource>High Air</oldsource>
         <extracomment>EditLocal:175:105</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>高い高度(&amp;G)</translation>
     </message>
 </context>
 <context>
@@ -618,7 +618,7 @@ Some select Starforge code snippets and resources.
         <source>Recent File</source>
         <oldsource>&amp;Recent Files</oldsource>
         <extracomment>EditLocal:109:40334</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>最近使ったファイル</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="79"/>
@@ -645,12 +645,12 @@ Some select Starforge code snippets and resources.
         <location filename="mainwindow.ui" line="129"/>
         <source>&amp;Layer</source>
         <extracomment>EditLocal:109</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>レイヤー(&amp;L)</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="143"/>
         <source>&amp;Scenario</source>
-        <translation type="unfinished"></translation>
+        <translation>シナリオ(&amp;S)</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="160"/>
@@ -722,7 +722,7 @@ Some select Starforge code snippets and resources.
         <location filename="mainwindow.ui" line="450"/>
         <source>&amp;Properties...</source>
         <extracomment>EditLocal:109:40317</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>プロパティ(&amp;P)...</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="455"/>
@@ -738,7 +738,7 @@ Some select Starforge code snippets and resources.
         <location filename="mainwindow.ui" line="473"/>
         <source>Show &amp;Grid</source>
         <extracomment>EditLocal:109:40356</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>グリッド表示(&amp;G)</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="482"/>
@@ -817,28 +817,28 @@ Some select Starforge code snippets and resources.
         <source>&amp;Forces...</source>
         <oldsource>Forces</oldsource>
         <extracomment>EditLocal:109:40312</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>フォース(&amp;F)...</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="597"/>
         <source>&amp;Sounds...</source>
         <oldsource>Sounds</oldsource>
         <extracomment>EditLocal:109:40332</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>サウンド(&amp;S)...</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="606"/>
         <source>&amp;Triggers...</source>
         <oldsource>Triggers</oldsource>
         <extracomment>EditLocal:109:40280</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>トリガー(&amp;T)...</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="615"/>
         <source>&amp;Mission Briefings...</source>
         <oldsource>Briefings</oldsource>
         <extracomment>EditLocal:109:40316</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>ミッションブリーフィング(&amp;M)...</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="624"/>
@@ -851,21 +851,21 @@ Some select Starforge code snippets and resources.
         <source>Unit and &amp;Hero Settings...</source>
         <oldsource>Unit and Hero Settings...</oldsource>
         <extracomment>EditLocal:109:40326</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>ユニット/ヒーロー設定(&amp;H)...</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="638"/>
         <source>&amp;Upgrade Settings...</source>
         <oldsource>Upgrade Settings...</oldsource>
         <extracomment>EditLocal:109:40327</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>アップグレード設定(&amp;U)...</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="643"/>
         <source>Special &amp;Ability Settings...</source>
         <oldsource>Ability (Tech) Settings...</oldsource>
         <extracomment>EditLocal:109:40328</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>特殊能力設定(&amp;A)...</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="648"/>
@@ -877,14 +877,14 @@ Some select Starforge code snippets and resources.
         <location filename="mainwindow.ui" line="660"/>
         <source>&amp;Terrain</source>
         <extracomment>EditLocal:109:40300</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>地形(&amp;T)</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="675"/>
         <source>&amp;Doodad</source>
         <oldsource>&amp;Doodads</oldsource>
         <extracomment>EditLocal:109:40301</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>飾り(&amp;D)</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="690"/>
@@ -897,14 +897,14 @@ Some select Starforge code snippets and resources.
         <source>&amp;Unit</source>
         <oldsource>&amp;Units</oldsource>
         <extracomment>EditLocal:109:40302</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>ユニット(&amp;U)</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="720"/>
         <source>&amp;Location</source>
         <oldsource>&amp;Locations</oldsource>
         <extracomment>EditLocal:109:40304</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>ロケーション(&amp;L)</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="738"/>
@@ -915,7 +915,7 @@ Some select Starforge code snippets and resources.
         <location filename="mainwindow.ui" line="753"/>
         <source>&amp;Fog of War</source>
         <extracomment>EditLocal:109:40305</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>ウォーフォッグ(&amp;F)</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="761"/>
@@ -937,7 +937,7 @@ Some select Starforge code snippets and resources.
         <location filename="mainwindow.ui" line="847"/>
         <source>&amp;Cascade</source>
         <extracomment>EditLocal:109:57650</extracomment>
-        <translation type="unfinished">カスケード表示</translation>
+        <translation>重ねて表示(&amp;C)</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="852"/>
@@ -975,21 +975,21 @@ Some select Starforge code snippets and resources.
         <location filename="mainwindow.ui" line="824"/>
         <source>&amp;New Map View</source>
         <extracomment>EditLocal:109:40198</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>新しくマップウィンドウを開く(&amp;N)</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="833"/>
         <source>Cl&amp;ose Map View</source>
         <oldsource>New Map View</oldsource>
         <extracomment>EditLocal:109:40199</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>マップウィンドウを閉じる(&amp;o)</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="842"/>
         <source>Close Al&amp;l Map Views</source>
         <oldsource>Close Map View</oldsource>
         <extracomment>EditLocal:109:40200</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>全てのマップウィンドウを閉じる(&amp;l)</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="861"/>
@@ -1031,7 +1031,7 @@ Some select Starforge code snippets and resources.
         <location filename="minimap.cpp" line="18"/>
         <source>Minimap</source>
         <extracomment>EditLocal:10:148</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>ミニマップ</translation>
     </message>
 </context>
 <context>
@@ -1041,7 +1041,7 @@ Some select Starforge code snippets and resources.
         <source>New Scenario</source>
         <oldsource>New Map</oldsource>
         <extracomment>EditLocal:1200</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>新規シナリオ</translation>
     </message>
     <message>
         <location filename="newmap.ui" line="24"/>
@@ -1093,7 +1093,7 @@ Other sizes may crash Starcraft.</source>
         <location filename="playerstab.ui" line="176"/>
         <source>Race</source>
         <extracomment>EditLocal:3:44</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>種族</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="65"/>
@@ -1101,7 +1101,7 @@ Other sizes may crash Starcraft.</source>
         <source>Control</source>
         <oldsource>Controller</oldsource>
         <extracomment>EditLocal:3:45</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>コントロール</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="70"/>
@@ -1160,13 +1160,13 @@ Other sizes may crash Starcraft.</source>
         <location filename="playerstab.ui" line="215"/>
         <source>User Selectable</source>
         <extracomment>EditLocal:34:536</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>ユーザーが選択可能</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="257"/>
         <source>Inactive</source>
         <extracomment>EditLocal:10:147, gluAll:season_srank_description</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>インアクティブ</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="270"/>
@@ -1199,7 +1199,7 @@ Other sizes may crash Starcraft.</source>
         <location filename="playerstab.ui" line="316"/>
         <source>Human</source>
         <extracomment>EditLocal:8:123</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>ヒューマン</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="326"/>
@@ -1395,7 +1395,7 @@ Please select a different directory.</source>
         <location filename="strings.cpp" line="24"/>
         <source>Unused</source>
         <extracomment>EditLocal:29:458</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>未使用</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="28"/>
@@ -1492,73 +1492,73 @@ EditLocal:8:125</extracomment>
         <location filename="strings.cpp" line="65"/>
         <source>Player 1</source>
         <extracomment>EditLocal:8:126</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>プレイヤー１</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="67"/>
         <source>Player 2</source>
         <extracomment>EditLocal:8:127</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>プレイヤー２</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="69"/>
         <source>Player 3</source>
         <extracomment>EditLocal:9:128</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>プレイヤー３</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="71"/>
         <source>Player 4</source>
         <extracomment>EditLocal:9:129</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>プレイヤー４</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="73"/>
         <source>Player 5</source>
         <extracomment>EditLocal:9:130</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>プレイヤー５</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="75"/>
         <source>Player 6</source>
         <extracomment>EditLocal:9:131</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>プレイヤー６</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="77"/>
         <source>Player 7</source>
         <extracomment>EditLocal:9:132</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>プレイヤー７</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="79"/>
         <source>Player 8</source>
         <extracomment>EditLocal:9:133</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>プレイヤー８</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="26"/>
         <source>User Selectable</source>
         <extracomment>EditLocal:34:536</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>ユーザーが選択可能</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="81"/>
         <source>Independent 1</source>
         <extracomment>EditLocal:9:134</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>無所属 1</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="83"/>
         <source>Independent 2</source>
         <extracomment>EditLocal:9:135</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>無所属 2</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="85"/>
         <source>Independent 3</source>
         <extracomment>EditLocal:9:136</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>無所属 3</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="98"/>
@@ -1915,58 +1915,6 @@ EditLocal:8:125</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="72"/>
-        <location filename="terrain.cpp" line="159"/>
-        <location filename="terrain.cpp" line="186"/>
-        <location filename="terrain.cpp" line="223"/>
-        <location filename="terrain.cpp" line="264"/>
-        <location filename="terrain.cpp" line="297"/>
-        <source>Dirt</source>
-        <extracomment>EditLocal:1:15, stat_txt:DDS_BAD_LODIRT
-----------
-EditLocal:15:232, stat_txt:DDS_ASH_DDLOWASH
-----------
-SEditENU:188:3002, stat_txt:DDS_DESERT_HARDPAN
-----------
-SEditENU:189:3017, stat_txt:DDS_ICE_ROUGHSNOW
-----------
-SEditENU:190:3029, stat_txt:DDS_TWILIGHT_DIRT</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="terrain.cpp" line="74"/>
-        <location filename="terrain.cpp" line="188"/>
-        <location filename="terrain.cpp" line="299"/>
-        <source>Mud</source>
-        <extracomment>EditLocal:33:526, stat_txt:DDS_TWILIGHT_MUD
-----------
-EditLocal:33:527, stat_txt:DDS_TWILIGHT_MUD
-----------
-SEditENU:190:3030, stat_txt:DDS_TWILIGHT_MUD</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="terrain.cpp" line="76"/>
-        <location filename="terrain.cpp" line="167"/>
-        <location filename="terrain.cpp" line="200"/>
-        <location filename="terrain.cpp" line="237"/>
-        <location filename="terrain.cpp" line="276"/>
-        <location filename="terrain.cpp" line="311"/>
-        <source>High Dirt</source>
-        <extracomment>EditLocal:2:16, stat_txt:DDS_BAD_HIDIRT
-----------
-EditLocal:15:235, stat_txt:DDS_ASH_DDHIGHASH
-----------
-EditLocal:2:16
-----------
-SEditENU:189:3009, stat_txt:DDS_DESERT_HIGHDIRT
-----------
-SEditENU:189:3023, stat_txt:DDS_ICE_HIGHROUGHSNOW
-----------
-SEditENU:191:3040, stat_txt:DDS_TWILIGHT_HIGHDIRT</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="terrain.cpp" line="78"/>
         <location filename="terrain.cpp" line="184"/>
         <location filename="terrain.cpp" line="270"/>
@@ -1977,47 +1925,7 @@ SEditENU:191:3040, stat_txt:DDS_TWILIGHT_HIGHDIRT</extracomment>
 SEditENU:190:3028, stat_txt:DDS_ICE_WATER
 ----------
 SEditENU:190:3028, stat_txt:DDS_TWILIGHT_WATER</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="terrain.cpp" line="80"/>
-        <location filename="terrain.cpp" line="268"/>
-        <source>Grass</source>
-        <extracomment>EditLocal:2:17, stat_txt:DDS_BAD_LOGRASS
-----------
-SEditENU:189:3019, stat_txt:DDS_ICE_SNOWYRUINS</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="terrain.cpp" line="82"/>
-        <location filename="terrain.cpp" line="278"/>
-        <source>High Grass</source>
-        <extracomment>EditLocal:23:356, stat_txt:DDS_BAD_HIGRASS
-----------
-SEditENU:190:3024, stat_txt:DDS_ICE_HIGHSNOWYRUINS</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="terrain.cpp" line="84"/>
-        <source>Structure</source>
-        <extracomment>EditLocal:23:357, stat_txt:DDS_BAD_BLDG</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="terrain.cpp" line="86"/>
-        <source>Asphalt</source>
-        <extracomment>EditLocal:11:168, stat_txt:DDS_BAD_CONCRETE</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="terrain.cpp" line="88"/>
-        <location filename="terrain.cpp" line="192"/>
-        <location filename="terrain.cpp" line="229"/>
-        <source>Rocky Ground</source>
-        <extracomment>EditLocal:11:169, stat_txt:DDS_BAD_RUBBLE
-----------
-SEditENU:188:3005, stat_txt:DDS_DESERT_ROCKYGROUND</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>水</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="96"/>
@@ -2031,64 +1939,7 @@ SEditENU:188:3005, stat_txt:DDS_DESERT_ROCKYGROUND</extracomment>
         <source>Space</source>
         <comment>Brush</comment>
         <extracomment>EditLocal:2:22</extracomment>
-        <translation type="unfinished">スペース</translation>
-    </message>
-    <message>
-        <location filename="terrain.cpp" line="103"/>
-        <source>Low Platform</source>
-        <extracomment>EditLocal:14:221, stat_txt:DDS_PLAT_DDPLATPIT</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="terrain.cpp" line="105"/>
-        <source>Rusty Pit</source>
-        <extracomment>EditLocal:14:222, stat_txt:DDS_PLAT_DDRUSTYPIT</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="terrain.cpp" line="107"/>
-        <source>Platform</source>
-        <extracomment>EditLocal:2:19, stat_txt:DDS_PLAT_DDLOWNBLD</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="terrain.cpp" line="109"/>
-        <source>Dark Platform</source>
-        <extracomment>EditLocal:23:363, stat_txt:DDS_PLAT_DDDARK</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="terrain.cpp" line="111"/>
-        <location filename="terrain.cpp" line="139"/>
-        <source>Plating</source>
-        <extracomment>EditLocal:2:18, stat_txt:DDS_PLAT_DDLOWBLD
-----------
-EditLocal:11:175, stat_txt:DDS_INSTALL_DDWALK</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="terrain.cpp" line="113"/>
-        <source>Solar Array</source>
-        <extracomment>EditLocal:14:220, stat_txt:DDS_PLAT_DDSOLARPANEL</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="terrain.cpp" line="115"/>
-        <source>High Platform</source>
-        <extracomment>EditLocal:2:21</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="terrain.cpp" line="117"/>
-        <source>High Plating</source>
-        <extracomment>EditLocal:2:20, stat_txt:DDS_PLAT_DDHIGHBLD</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="terrain.cpp" line="119"/>
-        <source>Elevated Catwalk</source>
-        <extracomment>EditLocal:16:241</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>宇宙空間</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="127"/>
@@ -2097,44 +1948,185 @@ EditLocal:11:175, stat_txt:DDS_INSTALL_DDWALK</extracomment>
         <translation>インストレーション</translation>
     </message>
     <message>
+        <location filename="terrain.cpp" line="72"/>
+        <location filename="terrain.cpp" line="186"/>
+        <source>Dirt</source>
+        <comment>BadJungle</comment>
+        <extracomment>EditLocal:1:15, stat_txt:DDS_BAD_LODIRT</extracomment>
+        <translation>地面</translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="74"/>
+        <location filename="terrain.cpp" line="188"/>
+        <source>Mud</source>
+        <comment>BadJungle</comment>
+        <extracomment>EditLocal:33:526, stat_txt:DDS_TWILIGHT_MUD
+----------
+EditLocal:33:527, stat_txt:DDS_TWILIGHT_MUD</extracomment>
+        <translation>泥地</translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="76"/>
+        <location filename="terrain.cpp" line="200"/>
+        <source>High Dirt</source>
+        <comment>BadJungle</comment>
+        <extracomment>EditLocal:2:16, stat_txt:DDS_BAD_HIDIRT
+----------
+EditLocal:2:16</extracomment>
+        <translation>高台</translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="80"/>
+        <source>Grass</source>
+        <comment>BadJungle</comment>
+        <extracomment>EditLocal:2:17, stat_txt:DDS_BAD_LOGRASS</extracomment>
+        <translation>草原</translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="82"/>
+        <source>High Grass</source>
+        <comment>BadJungle</comment>
+        <extracomment>EditLocal:23:356, stat_txt:DDS_BAD_HIGRASS</extracomment>
+        <translation>高原</translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="84"/>
+        <source>Structure</source>
+        <comment>BadJungle</comment>
+        <extracomment>EditLocal:23:357, stat_txt:DDS_BAD_BLDG</extracomment>
+        <translation>建造物</translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="86"/>
+        <source>Asphalt</source>
+        <comment>BadJungle</comment>
+        <extracomment>EditLocal:11:168, stat_txt:DDS_BAD_CONCRETE</extracomment>
+        <translation>アスファルト</translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="88"/>
+        <location filename="terrain.cpp" line="192"/>
+        <source>Rocky Ground</source>
+        <comment>BadJungle</comment>
+        <extracomment>EditLocal:11:169, stat_txt:DDS_BAD_RUBBLE</extracomment>
+        <translation>砂利</translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="103"/>
+        <source>Low Platform</source>
+        <comment>Space</comment>
+        <extracomment>EditLocal:14:221, stat_txt:DDS_PLAT_DDPLATPIT</extracomment>
+        <translation>ロープラットフォーム</translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="105"/>
+        <source>Rusty Pit</source>
+        <comment>Space</comment>
+        <extracomment>EditLocal:14:222, stat_txt:DDS_PLAT_DDRUSTYPIT</extracomment>
+        <translation>ラスティピット</translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="107"/>
+        <source>Platform</source>
+        <comment>Space</comment>
+        <extracomment>EditLocal:2:19, stat_txt:DDS_PLAT_DDLOWNBLD</extracomment>
+        <translation>プラットフォーム</translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="109"/>
+        <source>Dark Platform</source>
+        <comment>Space</comment>
+        <extracomment>EditLocal:23:363, stat_txt:DDS_PLAT_DDDARK</extracomment>
+        <translation>ダークプラットフォーム</translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="111"/>
+        <source>Plating</source>
+        <comment>Space</comment>
+        <extracomment>EditLocal:2:18, stat_txt:DDS_PLAT_DDLOWBLD</extracomment>
+        <translation>プレート</translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="113"/>
+        <source>Solar Array</source>
+        <comment>Space</comment>
+        <extracomment>EditLocal:14:220, stat_txt:DDS_PLAT_DDSOLARPANEL</extracomment>
+        <translation>ソーラーアレイ</translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="115"/>
+        <source>High Platform</source>
+        <comment>Space</comment>
+        <extracomment>EditLocal:2:21</extracomment>
+        <translation>プラットフォーム（高）</translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="117"/>
+        <source>High Plating</source>
+        <comment>Space</comment>
+        <extracomment>EditLocal:2:20, stat_txt:DDS_PLAT_DDHIGHBLD</extracomment>
+        <translation>プレート（高）</translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="119"/>
+        <source>Elevated Catwalk</source>
+        <comment>Space</comment>
+        <extracomment>EditLocal:16:241</extracomment>
+        <translation>キャットウォーク</translation>
+    </message>
+    <message>
         <location filename="terrain.cpp" line="131"/>
         <source>Substructure</source>
+        <comment>Installation</comment>
         <extracomment>EditLocal:11:171, stat_txt:DDS_INSTALL_DDDIRT</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>土台</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="133"/>
         <source>Substructure Plating</source>
+        <comment>Installation</comment>
         <extracomment>EditLocal:11:174</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>土台プレート</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="135"/>
         <source>Floor</source>
+        <comment>Installation</comment>
         <extracomment>EditLocal:11:172, stat_txt:DDS_INSTALL_DDCLEAN</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>床</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="137"/>
         <source>Roof</source>
+        <comment>Installation</comment>
         <extracomment>EditLocal:11:173</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>天井</translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="139"/>
+        <source>Plating</source>
+        <comment>Installation</comment>
+        <extracomment>EditLocal:11:175, stat_txt:DDS_INSTALL_DDWALK</extracomment>
+        <translation>プレート</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="141"/>
         <source>Bottomless Pit</source>
+        <comment>Installation</comment>
         <extracomment>EditLocal:16:245</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>ボトムレスピット</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="143"/>
         <source>Substructure Panels</source>
+        <comment>Installation</comment>
         <extracomment>EditLocal:16:244</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>土台パネル</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="144"/>
         <source>Buildable Substructure</source>
+        <comment>Installation</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2142,6 +2134,62 @@ EditLocal:11:175, stat_txt:DDS_INSTALL_DDWALK</extracomment>
         <source>Ashworld</source>
         <extracomment>gluAll:gameMapERA3 (&quot;Ashworld&quot;)</extracomment>
         <translation>アッシュワールド</translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="157"/>
+        <source>Magma</source>
+        <comment>Ashworld</comment>
+        <extracomment>EditLocal:15:231</extracomment>
+        <translation>マグマ</translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="159"/>
+        <source>Dirt</source>
+        <comment>Ashworld</comment>
+        <extracomment>EditLocal:15:232, stat_txt:DDS_ASH_DDLOWASH</extracomment>
+        <translation>大地</translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="161"/>
+        <source>Lava</source>
+        <comment>Ashworld</comment>
+        <extracomment>EditLocal:15:233</extracomment>
+        <translation>溶岩</translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="163"/>
+        <source>Shale</source>
+        <comment>Ashworld</comment>
+        <extracomment>EditLocal:15:234, stat_txt:DDS_ASH_DDROCKS</extracomment>
+        <translation>シェール</translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="165"/>
+        <source>Broken Rock</source>
+        <comment>Ashworld</comment>
+        <extracomment>EditLocal:15:239</extracomment>
+        <translation>壊れた岩石</translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="167"/>
+        <source>High Dirt</source>
+        <comment>Ashworld</comment>
+        <extracomment>EditLocal:15:235, stat_txt:DDS_ASH_DDHIGHASH</extracomment>
+        <translation>高台</translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="169"/>
+        <source>High Lava</source>
+        <comment>Ashworld</comment>
+        <extracomment>EditLocal:15:236</extracomment>
+        <translation>溶岩（高）</translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="171"/>
+        <source>High Shale</source>
+        <comment>Ashworld</comment>
+        <extracomment>EditLocal:15:237</extracomment>
+        <translation>シェール（高）</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="179"/>
@@ -2155,7 +2203,56 @@ EditLocal:11:175, stat_txt:DDS_INSTALL_DDWALK</extracomment>
         <source>Jungle</source>
         <comment>Brush</comment>
         <extracomment>EditLocal:11:167, stat_txt:DDS_JUNG_JUNGLE</extracomment>
-        <translation type="unfinished">ジャングル</translation>
+        <translation>ジャングル</translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="194"/>
+        <source>Ruins</source>
+        <comment>BadJungle</comment>
+        <extracomment>EditLocal:11:166, stat_txt:DDS_JUNG_RUINS</extracomment>
+        <translation>廃墟</translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="196"/>
+        <source>Raised Jungle</source>
+        <comment>BadJungle</comment>
+        <extracomment>EditLocal:12:190</extracomment>
+        <translation>レイズド・ジャングル</translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="198"/>
+        <source>Temple</source>
+        <comment>BadJungle</comment>
+        <extracomment>EditLocal:23:358</extracomment>
+        <translation>神殿</translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="202"/>
+        <source>High Jungle</source>
+        <comment>BadJungle</comment>
+        <extracomment>EditLocal:23:359, stat_txt:DDS_HIGH_JUNGLE</extracomment>
+        <translation>ジャングル（高）</translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="204"/>
+        <source>High Ruins</source>
+        <comment>BadJungle</comment>
+        <extracomment>EditLocal:23:360, stat_txt:DDS_HIGH_RUINS</extracomment>
+        <translation>廃墟（高）</translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="206"/>
+        <source>High Raised Jungle</source>
+        <comment>BadJungle</comment>
+        <extracomment>EditLocal:23:361</extracomment>
+        <translation>レイズド・ジャングル（高）</translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="208"/>
+        <source>High Temple</source>
+        <comment>BadJungle</comment>
+        <extracomment>EditLocal:23:362</extracomment>
+        <translation>神殿（高）</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="216"/>
@@ -2163,6 +2260,97 @@ EditLocal:11:175, stat_txt:DDS_INSTALL_DDWALK</extracomment>
         <comment>Tileset</comment>
         <extracomment>gluAll:gameMapERA5</extracomment>
         <translation>デザート</translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="221"/>
+        <source>Tar</source>
+        <comment>Desert</comment>
+        <extracomment>SEditENU:188:3001, stat_txt:DDS_DESERT_WATER</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="223"/>
+        <source>Dirt</source>
+        <comment>Desert</comment>
+        <extracomment>SEditENU:188:3002, stat_txt:DDS_DESERT_HARDPAN</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="225"/>
+        <source>Dried Mud</source>
+        <comment>Desert</comment>
+        <extracomment>SEditENU:188:3003, stat_txt:DDS_DESERT_DRIEDMUD</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="227"/>
+        <source>Sand Dunes</source>
+        <comment>Desert</comment>
+        <extracomment>SEditENU:188:3004, stat_txt:DDS_DESERT_SANDDUNES</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="229"/>
+        <source>Rocky Ground</source>
+        <comment>Desert</comment>
+        <extracomment>SEditENU:188:3005, stat_txt:DDS_DESERT_ROCKYGROUND</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="231"/>
+        <source>Crags</source>
+        <comment>Desert</comment>
+        <extracomment>SEditENU:188:3006, stat_txt:DDS_DESERT_RUINS</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="233"/>
+        <source>Sandy Sunken Pit</source>
+        <comment>Desert</comment>
+        <extracomment>SEditENU:188:3007, stat_txt:DDS_DESERT_SANDYSUNKEN</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="235"/>
+        <source>Compound</source>
+        <comment>Desert</comment>
+        <extracomment>SEditENU:189:3008, stat_txt:DDS_DESERT_RESOURCE</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="237"/>
+        <source>High Dirt</source>
+        <comment>Desert</comment>
+        <extracomment>SEditENU:189:3009, stat_txt:DDS_DESERT_HIGHDIRT</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="239"/>
+        <source>High Sand Dunes</source>
+        <comment>Desert</comment>
+        <extracomment>SEditENU:189:3010, stat_txt:DDS_DESERT_HIGHSANDDUNES</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="241"/>
+        <source>High Crags</source>
+        <comment>Desert</comment>
+        <extracomment>SEditENU:189:3011, stat_txt:DDS_DESERT_HIGHRUINS</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="243"/>
+        <source>High Sandy Sunken Pit</source>
+        <comment>Desert</comment>
+        <extracomment>SEditENU:189:3012, stat_txt:DDS_DESERT_HIGHSANDSUNKEN</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="245"/>
+        <source>High Compound</source>
+        <comment>Desert</comment>
+        <extracomment>SEditENU:189:3013, stat_txt:DDS_DESERT_HIGHRESOURCE</extracomment>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="253"/>
@@ -2179,183 +2367,164 @@ EditLocal:11:175, stat_txt:DDS_INSTALL_DDWALK</extracomment>
         <translation type="unfinished">アイス</translation>
     </message>
     <message>
-        <location filename="terrain.cpp" line="157"/>
-        <source>Magma</source>
-        <extracomment>EditLocal:15:231</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="terrain.cpp" line="161"/>
-        <source>Lava</source>
-        <extracomment>EditLocal:15:233</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="terrain.cpp" line="163"/>
-        <source>Shale</source>
-        <extracomment>EditLocal:15:234, stat_txt:DDS_ASH_DDROCKS</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="terrain.cpp" line="165"/>
-        <source>Broken Rock</source>
-        <extracomment>EditLocal:15:239</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="terrain.cpp" line="169"/>
-        <source>High Lava</source>
-        <extracomment>EditLocal:15:236</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="terrain.cpp" line="171"/>
-        <source>High Shale</source>
-        <extracomment>EditLocal:15:237</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="terrain.cpp" line="194"/>
-        <source>Ruins</source>
-        <extracomment>EditLocal:11:166, stat_txt:DDS_JUNG_RUINS</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="terrain.cpp" line="196"/>
-        <source>Raised Jungle</source>
-        <extracomment>EditLocal:12:190</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="terrain.cpp" line="198"/>
-        <source>Temple</source>
-        <extracomment>EditLocal:23:358</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="terrain.cpp" line="202"/>
-        <source>High Jungle</source>
-        <extracomment>EditLocal:23:359, stat_txt:DDS_HIGH_JUNGLE</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="terrain.cpp" line="204"/>
-        <source>High Ruins</source>
-        <extracomment>EditLocal:23:360, stat_txt:DDS_HIGH_RUINS</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="terrain.cpp" line="206"/>
-        <source>High Raised Jungle</source>
-        <extracomment>EditLocal:23:361</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="terrain.cpp" line="208"/>
-        <source>High Temple</source>
-        <extracomment>EditLocal:23:362</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="terrain.cpp" line="221"/>
-        <source>Tar</source>
-        <extracomment>SEditENU:188:3001, stat_txt:DDS_DESERT_WATER</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="terrain.cpp" line="225"/>
-        <source>Dried Mud</source>
-        <extracomment>SEditENU:188:3003, stat_txt:DDS_DESERT_DRIEDMUD</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="terrain.cpp" line="227"/>
-        <source>Sand Dunes</source>
-        <extracomment>SEditENU:188:3004, stat_txt:DDS_DESERT_SANDDUNES</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="terrain.cpp" line="231"/>
-        <source>Crags</source>
-        <extracomment>SEditENU:188:3006, stat_txt:DDS_DESERT_RUINS</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="terrain.cpp" line="233"/>
-        <source>Sandy Sunken Pit</source>
-        <extracomment>SEditENU:188:3007, stat_txt:DDS_DESERT_SANDYSUNKEN</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="terrain.cpp" line="235"/>
-        <source>Compound</source>
-        <extracomment>SEditENU:189:3008, stat_txt:DDS_DESERT_RESOURCE</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="terrain.cpp" line="239"/>
-        <source>High Sand Dunes</source>
-        <extracomment>SEditENU:189:3010, stat_txt:DDS_DESERT_HIGHSANDDUNES</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="terrain.cpp" line="241"/>
-        <source>High Crags</source>
-        <extracomment>SEditENU:189:3011, stat_txt:DDS_DESERT_HIGHRUINS</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="terrain.cpp" line="243"/>
-        <source>High Sandy Sunken Pit</source>
-        <extracomment>SEditENU:189:3012, stat_txt:DDS_DESERT_HIGHSANDSUNKEN</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="terrain.cpp" line="245"/>
-        <source>High Compound</source>
-        <extracomment>SEditENU:189:3013, stat_txt:DDS_DESERT_HIGHRESOURCE</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="terrain.cpp" line="260"/>
         <source>Snow</source>
+        <comment>Ice</comment>
         <extracomment>SEditENU:189:3015, stat_txt:DDS_ICE_SNOW</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="262"/>
         <source>Moguls</source>
+        <comment>Ice</comment>
         <extracomment>SEditENU:189:3016, stat_txt:DDS_ICE_MUD</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="264"/>
+        <source>Dirt</source>
+        <comment>Ice</comment>
+        <extracomment>SEditENU:189:3017, stat_txt:DDS_ICE_ROUGHSNOW</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="266"/>
         <source>Rocky Snow</source>
+        <comment>Ice</comment>
         <extracomment>SEditENU:189:3018, stat_txt:DDS_ICE_ROCKYSNOW</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="268"/>
+        <source>Grass</source>
+        <comment>Ice</comment>
+        <extracomment>SEditENU:189:3019, stat_txt:DDS_ICE_SNOWYRUINS</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="272"/>
         <source>Outpost</source>
+        <comment>Ice</comment>
         <extracomment>SEditENU:189:3021, stat_txt:DDS_ICE_OUTPOST</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="274"/>
         <source>High Snow</source>
+        <comment>Ice</comment>
         <extracomment>SEditENU:189:3022, stat_txt:DDS_ICE_HIGHSNOW</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="276"/>
+        <source>High Dirt</source>
+        <comment>Ice</comment>
+        <extracomment>SEditENU:189:3023, stat_txt:DDS_ICE_HIGHROUGHSNOW</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="278"/>
+        <source>High Grass</source>
+        <comment>Ice</comment>
+        <extracomment>SEditENU:190:3024, stat_txt:DDS_ICE_HIGHSNOWYRUINS</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="280"/>
         <source>High Water</source>
+        <comment>Ice</comment>
         <extracomment>SEditENU:190:3025</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="282"/>
         <source>High Outpost</source>
+        <comment>Ice</comment>
         <extracomment>SEditENU:190:3026, stat_txt:DDS_ICE_HIGHOUTPOST</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="297"/>
+        <source>Dirt</source>
+        <comment>Twilight</comment>
+        <extracomment>SEditENU:190:3029, stat_txt:DDS_TWILIGHT_DIRT</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="299"/>
+        <source>Mud</source>
+        <comment>Twilight</comment>
+        <extracomment>SEditENU:190:3030, stat_txt:DDS_TWILIGHT_MUD</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="301"/>
+        <source>Crushed Rock</source>
+        <comment>Twilight</comment>
+        <extracomment>SEditENU:190:3031, stat_txt:DDS_TWILIGHT_CRACKEDICE</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="303"/>
+        <source>Crevices</source>
+        <comment>Twilight</comment>
+        <extracomment>SEditENU:190:3032, stat_txt:DDS_TWILIGHT_CREVICE</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="305"/>
+        <source>Flagstones</source>
+        <comment>Twilight</comment>
+        <extracomment>SEditENU:190:3033, stat_txt:DDS_TWILIGHT_ANCIENTRUINS</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="307"/>
+        <source>Sunken Ground</source>
+        <comment>Twilight</comment>
+        <extracomment>SEditENU:190:3034, stat_txt:DDS_TWILIGHT_SUNKENGROUND</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="309"/>
+        <source>Basilica</source>
+        <comment>Twilight</comment>
+        <extracomment>SEditENU:190:3035, stat_txt:DDS_TWILIGHT_COMPOUND</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="311"/>
+        <source>High Dirt</source>
+        <comment>Twilight</comment>
+        <extracomment>SEditENU:191:3040, stat_txt:DDS_TWILIGHT_HIGHDIRT</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="313"/>
+        <source>High Crushed Rock</source>
+        <comment>Twilight</comment>
+        <extracomment>SEditENU:190:3036, stat_txt:DDS_TWILIGHT_HIGHCRACKEDICE</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="315"/>
+        <source>High Flagstones</source>
+        <comment>Twilight</comment>
+        <extracomment>SEditENU:190:3037, stat_txt:DDS_TWILIGHT_HIGHANCIENTRUINS</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="317"/>
+        <source>High Sunken Ground</source>
+        <comment>Twilight</comment>
+        <extracomment>SEditENU:190:3038, stat_txt:DDS_TWILIGHT_HIGHSUNKENGROUND</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="terrain.cpp" line="319"/>
+        <source>High Basilica</source>
+        <comment>Twilight</comment>
+        <extracomment>SEditENU:190:3039, stat_txt:DDS_TWILIGHT_HIGHCOMPOUND</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2363,60 +2532,6 @@ EditLocal:11:175, stat_txt:DDS_INSTALL_DDWALK</extracomment>
         <source>Twilight</source>
         <extracomment>gluAll:gameMapERA7</extracomment>
         <translation>トワイライト</translation>
-    </message>
-    <message>
-        <location filename="terrain.cpp" line="301"/>
-        <source>Crushed Rock</source>
-        <extracomment>SEditENU:190:3031, stat_txt:DDS_TWILIGHT_CRACKEDICE</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="terrain.cpp" line="303"/>
-        <source>Crevices</source>
-        <extracomment>SEditENU:190:3032, stat_txt:DDS_TWILIGHT_CREVICE</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="terrain.cpp" line="305"/>
-        <source>Flagstones</source>
-        <extracomment>SEditENU:190:3033, stat_txt:DDS_TWILIGHT_ANCIENTRUINS</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="terrain.cpp" line="307"/>
-        <source>Sunken Ground</source>
-        <extracomment>SEditENU:190:3034, stat_txt:DDS_TWILIGHT_SUNKENGROUND</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="terrain.cpp" line="309"/>
-        <source>Basilica</source>
-        <extracomment>SEditENU:190:3035, stat_txt:DDS_TWILIGHT_COMPOUND</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="terrain.cpp" line="313"/>
-        <source>High Crushed Rock</source>
-        <extracomment>SEditENU:190:3036, stat_txt:DDS_TWILIGHT_HIGHCRACKEDICE</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="terrain.cpp" line="315"/>
-        <source>High Flagstones</source>
-        <extracomment>SEditENU:190:3037, stat_txt:DDS_TWILIGHT_HIGHANCIENTRUINS</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="terrain.cpp" line="317"/>
-        <source>High Sunken Ground</source>
-        <extracomment>SEditENU:190:3038, stat_txt:DDS_TWILIGHT_HIGHSUNKENGROUND</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="terrain.cpp" line="319"/>
-        <source>High Basilica</source>
-        <extracomment>SEditENU:190:3039, stat_txt:DDS_TWILIGHT_HIGHCOMPOUND</extracomment>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2453,7 +2568,7 @@ EditLocal:11:175, stat_txt:DDS_INSTALL_DDWALK</extracomment>
         <location filename="scenariodescription.ui" line="87"/>
         <source>Description</source>
         <extracomment>EditLocal:185</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>詳細</translation>
     </message>
 </context>
 <context>
@@ -2473,7 +2588,7 @@ EditLocal:11:175, stat_txt:DDS_INSTALL_DDWALK</extracomment>
         <location filename="scenariosettings.ui" line="30"/>
         <source>Forces</source>
         <extracomment>EditLocal:188</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>フォース</translation>
     </message>
     <message>
         <location filename="scenariosettings.ui" line="36"/>
@@ -2485,13 +2600,13 @@ EditLocal:11:175, stat_txt:DDS_INSTALL_DDWALK</extracomment>
         <location filename="scenariosettings.ui" line="42"/>
         <source>Upgrades</source>
         <extracomment>EditLocal:1218</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>アップグレード</translation>
     </message>
     <message>
         <location filename="scenariosettings.ui" line="48"/>
         <source>Special Abilities</source>
         <extracomment>EditLocal:1219</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>特殊能力</translation>
     </message>
 </context>
 <context>
@@ -2510,7 +2625,7 @@ EditLocal:11:175, stat_txt:DDS_INSTALL_DDWALK</extracomment>
         <location filename="spriteproperties.ui" line="35"/>
         <source>Owner</source>
         <extracomment>EditLocal:1214</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>オーナー</translation>
     </message>
     <message>
         <location filename="spriteproperties.ui" line="93"/>
@@ -2572,7 +2687,7 @@ EditLocal:11:175, stat_txt:DDS_INSTALL_DDWALK</extracomment>
         <location filename="unitproperties.ui" line="20"/>
         <source>Unit Properties</source>
         <extracomment>EditLocal:1214:1168</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>ユニットプロパティ</translation>
     </message>
     <message>
         <location filename="unitproperties.ui" line="28"/>
@@ -2583,7 +2698,7 @@ EditLocal:11:175, stat_txt:DDS_INSTALL_DDWALK</extracomment>
         <location filename="unitproperties.ui" line="38"/>
         <source>Owner</source>
         <extracomment>EditLocal:1214</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>オーナー</translation>
     </message>
     <message>
         <location filename="unitproperties.ui" line="75"/>
@@ -2599,73 +2714,73 @@ EditLocal:11:175, stat_txt:DDS_INSTALL_DDWALK</extracomment>
         <location filename="unitproperties.ui" line="107"/>
         <source>Initial State</source>
         <extracomment>EditLocal:1214</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>初期状態</translation>
     </message>
     <message>
         <location filename="unitproperties.ui" line="115"/>
         <source>Hit Point %</source>
         <extracomment>EditLocal:1214</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>ヒットポイント%</translation>
     </message>
     <message>
         <location filename="unitproperties.ui" line="129"/>
         <source>Shield Point %</source>
         <oldsource>Shield %</oldsource>
         <extracomment>EditLocal:1214</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>シールドポイント%</translation>
     </message>
     <message>
         <location filename="unitproperties.ui" line="143"/>
         <source>Energy %</source>
         <extracomment>EditLocal:1214</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>エネルギー%</translation>
     </message>
     <message>
         <location filename="unitproperties.ui" line="157"/>
         <source>In Hangar</source>
         <oldsource>Hangar Count</oldsource>
         <extracomment>EditLocal:1214</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>格納中</translation>
     </message>
     <message>
         <location filename="unitproperties.ui" line="171"/>
         <source>Resources</source>
         <extracomment>EditLocal:1214</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>資源</translation>
     </message>
     <message>
         <location filename="unitproperties.ui" line="189"/>
         <source>&amp;Cloaked</source>
         <oldsource>Cloaked</oldsource>
         <extracomment>EditLocal:1214:1111</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>クローク(&amp;C)</translation>
     </message>
     <message>
         <location filename="unitproperties.ui" line="196"/>
         <source>&amp;Burrowed</source>
         <oldsource>Burrowed</oldsource>
         <extracomment>EditLocal:1214:1161</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>潜伏(&amp;B)</translation>
     </message>
     <message>
         <location filename="unitproperties.ui" line="203"/>
         <source>In &amp;Transit</source>
         <extracomment>EditLocal:1214:1162</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>運送中(&amp;T)</translation>
     </message>
     <message>
         <location filename="unitproperties.ui" line="210"/>
         <source>H&amp;allucinated</source>
         <oldsource>Hallucinated</oldsource>
         <extracomment>EditLocal:1214:1164</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>幻影(&amp;A)</translation>
     </message>
     <message>
         <location filename="unitproperties.ui" line="217"/>
         <source>In&amp;vincible</source>
         <oldsource>Invincible</oldsource>
         <extracomment>EditLocal:1214:1163</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>無敵(&amp;V)</translation>
     </message>
 </context>
 <context>
@@ -2703,13 +2818,13 @@ EditLocal:11:175, stat_txt:DDS_INSTALL_DDWALK</extracomment>
         <location filename="unitstab.ui" line="143"/>
         <source>Enable by Default</source>
         <extracomment>EditLocal:1217:1192</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>デフォルトで可</translation>
     </message>
     <message>
         <location filename="unitstab.ui" line="170"/>
         <source>Hit Points</source>
         <extracomment>EditLocal:1216:1000</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>HP</translation>
     </message>
     <message>
         <location filename="unitstab.ui" line="201"/>
@@ -2732,7 +2847,7 @@ EditLocal:11:175, stat_txt:DDS_INSTALL_DDWALK</extracomment>
         <location filename="unitstab.ui" line="264"/>
         <source>Ground Weapon</source>
         <extracomment>EditLocal:1216:1227</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>地上攻撃</translation>
     </message>
     <message>
         <location filename="unitstab.ui" line="287"/>
@@ -2746,32 +2861,32 @@ EditLocal:11:175, stat_txt:DDS_INSTALL_DDWALK</extracomment>
         <location filename="unitstab.ui" line="375"/>
         <source>Bonus</source>
         <extracomment>EditLocal:1216</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>ボーナス</translation>
     </message>
     <message>
         <location filename="unitstab.ui" line="332"/>
         <source>Air Weapon</source>
         <extracomment>EditLocal:1216:1228</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>空中攻撃</translation>
     </message>
     <message>
         <location filename="unitstab.ui" line="415"/>
         <source>Time</source>
         <oldsource>Build Time</oldsource>
         <extracomment>EditLocal:1216</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>時間</translation>
     </message>
     <message>
         <location filename="unitstab.ui" line="435"/>
         <source>Minerals</source>
         <extracomment>EditLocal:1216</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>ミネラル</translation>
     </message>
     <message>
         <location filename="unitstab.ui" line="455"/>
         <source>Gas</source>
         <extracomment>EditLocal:1216</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>ガス</translation>
     </message>
     <message>
         <location filename="unitstab.ui" line="477"/>
@@ -2802,32 +2917,32 @@ EditLocal:11:175, stat_txt:DDS_INSTALL_DDWALK</extracomment>
         <location filename="upgradestab.ui" line="97"/>
         <location filename="upgradestab.ui" line="179"/>
         <source>Level</source>
-        <translation type="unfinished"></translation>
+        <translation>レベル</translation>
     </message>
     <message>
         <location filename="upgradestab.ui" line="102"/>
         <location filename="upgradestab.ui" line="199"/>
         <source>Max</source>
-        <translation type="unfinished"></translation>
+        <translation>最大値</translation>
     </message>
     <message>
         <location filename="upgradestab.ui" line="379"/>
         <source>Time</source>
         <extracomment>EditLocal:1223</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>時間</translation>
     </message>
     <message>
         <location filename="upgradestab.ui" line="112"/>
         <source>Default Level</source>
         <oldsource>Default Start</oldsource>
         <extracomment>EditLocal:1218</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>レベル初期値</translation>
     </message>
     <message>
         <location filename="upgradestab.ui" line="132"/>
         <source>Default Max</source>
         <extracomment>EditLocal:1218</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>最大初期値</translation>
     </message>
     <message>
         <location filename="upgradestab.ui" line="170"/>
@@ -2840,7 +2955,7 @@ EditLocal:11:175, stat_txt:DDS_INSTALL_DDWALK</extracomment>
         <location filename="upgradestab.ui" line="237"/>
         <source>Minerals</source>
         <extracomment>EditLocal:1223</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>ミネラル</translation>
     </message>
     <message>
         <location filename="upgradestab.ui" line="286"/>
@@ -2853,7 +2968,7 @@ EditLocal:11:175, stat_txt:DDS_INSTALL_DDWALK</extracomment>
         <location filename="upgradestab.ui" line="308"/>
         <source>Gas</source>
         <extracomment>EditLocal:1223</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>ガス</translation>
     </message>
 </context>
 </TS>
