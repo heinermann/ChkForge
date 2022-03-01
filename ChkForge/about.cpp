@@ -3,12 +3,9 @@
 
 About::About(QWidget* parent) :
   QDialog(parent),
-  ui(new Ui::About)
+  ui(std::make_unique<Ui::About>())
 {
   ui->setupUi(this);
 }
 
-About::~About()
-{
-  delete ui;
-}
+About::~About() {}

@@ -13,11 +13,14 @@
 
 #include "icons.h"
 
-
 ItemTree::ItemTree(QWidget *parent)
-  : DockWidgetWrapper<Ui::ItemTree>(tr("Item Tree"), parent)
+  : DockWidgetWrapper(tr("Item Tree"), parent)
+  , ui(std::make_unique<Ui::ItemTree>())
   , treeModel(this)
 {
+  ui->setupUi(&frame);
+  setupDockWidget();
+
   treeModel.invisibleRootItem()->appendRow(createTilesetTree());
   treeModel.invisibleRootItem()->appendRow(createDoodadsTree());
   treeModel.invisibleRootItem()->appendRow(createUnitsTree());
@@ -41,6 +44,7 @@ ItemTree::ItemTree(QWidget *parent)
   connect(ui->treeView, &QTreeView::clicked, this, &ItemTree::itemClicked);
 }
 
+ItemTree::~ItemTree() {}
 
 QStandardItem* ItemTree::createTilesetTree()
 {

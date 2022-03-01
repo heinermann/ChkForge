@@ -1,7 +1,6 @@
-#ifndef SAVEMAP_H
-#define SAVEMAP_H
-
+#pragma once
 #include <QDialog>
+#include <memory>
 
 namespace Ui {
   class SaveMap;
@@ -16,7 +15,5 @@ public:
   ~SaveMap();
 
 private:
-  Ui::SaveMap *ui;
+  std::unique_ptr<Ui::SaveMap> ui;
 };
-
-#endif // SAVEMAP_H

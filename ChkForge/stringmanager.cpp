@@ -3,12 +3,9 @@
 
 StringManager::StringManager(QWidget *parent) :
   QDialog(parent),
-  ui(new Ui::StringManager)
+  ui(std::make_unique<Ui::StringManager>())
 {
   ui->setupUi(this);
 }
 
-StringManager::~StringManager()
-{
-  delete ui;
-}
+StringManager::~StringManager() {}

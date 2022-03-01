@@ -1,6 +1,4 @@
-#ifndef STRINGMANAGER_H
-#define STRINGMANAGER_H
-
+#pragma once
 #include <QDialog>
 
 namespace Ui {
@@ -16,7 +14,5 @@ public:
   ~StringManager();
 
 private:
-  Ui::StringManager *ui;
+  std::unique_ptr<Ui::StringManager> ui;
 };
-
-#endif // STRINGMANAGER_H

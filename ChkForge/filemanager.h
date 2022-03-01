@@ -1,7 +1,6 @@
-#ifndef FILEMANAGER_H
-#define FILEMANAGER_H
-
+#pragma once
 #include <QDialog>
+#include <memory>
 
 namespace Ui {
   class FileManager;
@@ -16,7 +15,5 @@ public:
   ~FileManager();
 
 private:
-  Ui::FileManager *ui;
+  std::unique_ptr<Ui::FileManager> ui;
 };
-
-#endif // FILEMANAGER_H

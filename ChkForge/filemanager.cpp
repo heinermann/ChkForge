@@ -3,12 +3,9 @@
 
 FileManager::FileManager(QWidget *parent) :
   QDialog(parent),
-  ui(new Ui::FileManager)
+  ui(std::make_unique<Ui::FileManager>())
 {
   ui->setupUi(this);
 }
 
-FileManager::~FileManager()
-{
-  delete ui;
-}
+FileManager::~FileManager() {}

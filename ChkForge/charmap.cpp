@@ -8,7 +8,7 @@
 CharMap::CharMap(QWidget* parent, const QFont& font) :
   QDialog(parent),
   font(font),
-  ui(new Ui::CharMap)
+  ui(std::make_unique<Ui::CharMap>())
 {
   ui->setupUi(this);
 
@@ -64,10 +64,7 @@ void CharMap::initCategories()
   ui->cmb_categories->setCurrentIndex(0);
 }
 
-CharMap::~CharMap()
-{
-  delete ui;
-}
+CharMap::~CharMap() {}
 
 void CharMap::on_cmb_categories_currentIndexChanged(int index)
 {

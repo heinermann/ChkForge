@@ -23,7 +23,7 @@
 MapView::MapView(std::shared_ptr<ChkForge::MapContext> mapContext, QWidget *parent)
   : QMdiSubWindow(parent)
   , map(mapContext)
-  , ui(new Ui::MapView)
+  , ui(std::make_unique<Ui::MapView>())
 {
   QFrame* frame = new QFrame();
   ui->setupUi(frame);
@@ -47,7 +47,6 @@ MapView::MapView(std::shared_ptr<ChkForge::MapContext> mapContext, QWidget *pare
 MapView::~MapView()
 {
   map->remove_view(this);
-  delete ui;
 }
 
 void MapView::closeEvent(QCloseEvent* closeEvent)

@@ -5,6 +5,7 @@
 #include <QSortFilterProxyModel>
 
 #include <unordered_map>
+#include <memory>
 
 namespace Ui {
   class CharMap;
@@ -21,7 +22,7 @@ public:
 
 private:
   QFont font;
-  Ui::CharMap* ui;
+  std::unique_ptr<Ui::CharMap> ui;
 
   CharacterWidget* charWidget;
 

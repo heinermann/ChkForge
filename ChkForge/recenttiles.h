@@ -1,7 +1,6 @@
-#ifndef RECENTTILES_H
-#define RECENTTILES_H
-
+#pragma once
 #include <QFrame>
+#include <memory>
 
 namespace Ui {
   class RecentTiles;
@@ -16,7 +15,5 @@ public:
   ~RecentTiles();
 
 private:
-  Ui::RecentTiles *ui;
+  std::unique_ptr<Ui::RecentTiles> ui;
 };
-
-#endif // RECENTTILES_H

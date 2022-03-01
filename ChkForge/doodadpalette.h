@@ -1,7 +1,6 @@
-#ifndef DOODADPALETTE_H
-#define DOODADPALETTE_H
-
+#pragma once
 #include <QFrame>
+#include <memory>
 
 namespace Ui {
   class DoodadPalette;
@@ -16,7 +15,5 @@ public:
   ~DoodadPalette();
 
 private:
-  Ui::DoodadPalette *ui;
+  std::unique_ptr<Ui::DoodadPalette> ui;
 };
-
-#endif // DOODADPALETTE_H

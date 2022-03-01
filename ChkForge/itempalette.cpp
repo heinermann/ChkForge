@@ -3,12 +3,9 @@
 
 ItemPalette::ItemPalette(QWidget *parent) :
   QFrame(parent),
-  ui(new Ui::ItemPalette)
+  ui(std::make_unique<Ui::ItemPalette>())
 {
   ui->setupUi(this);
 }
 
-ItemPalette::~ItemPalette()
-{
-  delete ui;
-}
+ItemPalette::~ItemPalette() {}

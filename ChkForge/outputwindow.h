@@ -1,7 +1,6 @@
-#ifndef OUTPUTWINDOW_H
-#define OUTPUTWINDOW_H
-
+#pragma once
 #include <QFrame>
+#include <memory>
 
 namespace Ui {
   class OutputWindow;
@@ -16,7 +15,5 @@ public:
   ~OutputWindow();
 
 private:
-  Ui::OutputWindow *ui;
+  std::unique_ptr<Ui::OutputWindow> ui;
 };
-
-#endif // OUTPUTWINDOW_H

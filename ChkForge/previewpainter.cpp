@@ -3,12 +3,9 @@
 
 PreviewPainter::PreviewPainter(QWidget *parent) :
   QDialog(parent),
-  ui(new Ui::PreviewPainter)
+  ui(std::make_unique<Ui::PreviewPainter>())
 {
   ui->setupUi(this);
 }
 
-PreviewPainter::~PreviewPainter()
-{
-  delete ui;
-}
+PreviewPainter::~PreviewPainter() {}

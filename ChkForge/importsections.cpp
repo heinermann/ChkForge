@@ -3,12 +3,9 @@
 
 ImportSections::ImportSections(QWidget *parent) :
   QDialog(parent),
-  ui(new Ui::ImportSections)
+  ui(std::make_unique<Ui::ImportSections>())
 {
   ui->setupUi(this);
 }
 
-ImportSections::~ImportSections()
-{
-  delete ui;
-}
+ImportSections::~ImportSections() {}

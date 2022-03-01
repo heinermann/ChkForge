@@ -1,7 +1,7 @@
-#ifndef ABOUT_H
-#define ABOUT_H
+#pragma once
 
 #include <QDialog>
+#include <memory>
 
 namespace Ui {
   class About;
@@ -16,6 +16,5 @@ public:
   ~About();
 
 private:
-  Ui::About* ui;
+  std::unique_ptr<Ui::About> ui;
 };
-#endif

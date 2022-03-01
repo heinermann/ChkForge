@@ -1,7 +1,7 @@
-#ifndef EXPORTIMAGE_H
-#define EXPORTIMAGE_H
+#pragma once
 
 #include <QDialog>
+#include <memory>
 
 namespace Ui {
   class ExportImage;
@@ -16,7 +16,5 @@ public:
   ~ExportImage();
 
 private:
-  Ui::ExportImage *ui;
+  std::unique_ptr<Ui::ExportImage> ui;
 };
-
-#endif // EXPORTIMAGE_H

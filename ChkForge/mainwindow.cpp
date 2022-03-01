@@ -40,9 +40,9 @@
 
 MainWindow::MainWindow(QWidget *parent)
   : QMainWindow(parent)
-  , ui(new Ui::MainWindow)
-  , statusBar_ui(new Ui::StatusBar)
-  , toolbars_ui(new Ui::toolbars)
+  , ui(std::make_unique<Ui::MainWindow>())
+  , statusBar_ui(std::make_unique<Ui::StatusBar>())
+  , toolbars_ui(std::make_unique<Ui::toolbars>())
   , scmd_pluginManager(this)
 {
   QLocale lang = settings.value("language", QLocale()).toLocale();
@@ -152,7 +152,7 @@ void MainWindow::createStatusBar()
 
 void MainWindow::createMdiDockArea()
 {
-  m_DockManager = new ads::CDockManager(this);
+  m_DockManager = std::make_unique<ads::CDockManager>(this);
   m_DockManager->setStyleSheet(m_DockManager->styleSheet() + "\nads--CDockContainerWidget QSplitter::handle { background: palette(light); }");
 
   connect(mdi, &QMdiArea::subWindowActivated, this, &MainWindow::onMdiSubWindowActivated);
@@ -336,11 +336,7 @@ void MainWindow::toggleToolWindows(bool isOpen)
   }
 }
 
-MainWindow::~MainWindow()
-{
-  delete m_DockManager;
-  delete ui;
-}
+MainWindow::~MainWindow() {}
 
 void MainWindow::on_action_file_new_triggered()
 {

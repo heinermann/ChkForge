@@ -1,18 +1,20 @@
-#ifndef TERRAINBRUSH_H
-#define TERRAINBRUSH_H
-
+#pragma once
 #include "DockWidgetWrapper.h"
-#include "ui_terrainbrush.h"
 
-class TerrainBrush : public DockWidgetWrapper<Ui::TerrainBrush>
+#include <memory>
+
+namespace Ui {
+  class TerrainBrush;
+}
+
+class TerrainBrush : public DockWidgetWrapper
 {
   Q_OBJECT
 
 public:
   explicit TerrainBrush(QWidget *parent = nullptr);
-  virtual ~TerrainBrush() {}
+  virtual ~TerrainBrush() override;
 
 private:
+  std::unique_ptr<Ui::TerrainBrush> ui;
 };
-
-#endif // TERRAINBRUSH_H

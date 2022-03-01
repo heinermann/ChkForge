@@ -3,15 +3,13 @@
 
 UpgradesTab::UpgradesTab(QWidget* parent)
   : ScenarioSettingsTab(parent)
-  , ui(new Ui::UpgradesTab)
+  , ui(std::make_unique<Ui::UpgradesTab>())
 {
   ui->setupUi(this);
   populatePlayerList(ui->upgradePlyrList);
 }
 
-UpgradesTab::~UpgradesTab() {
-  delete ui;
-}
+UpgradesTab::~UpgradesTab() {}
 
 void UpgradesTab::setTabFocus() {
   ui->upgradeTree->setFocus();

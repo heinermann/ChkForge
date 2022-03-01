@@ -3,6 +3,7 @@
 #include <QWidget>
 #include <QList>
 #include <QTreeWidget>
+#include <memory>
 
 #include "scenariosettingstab.h"
 #include "CheckboxDataMapper.h"
@@ -37,7 +38,7 @@ private:
   int playerIdFrom(QTreeWidgetItem* itm); // TODO: Duplicated from PlayersTab
 
 private:
-  Ui::ForcesTab* ui;
+  std::unique_ptr<Ui::ForcesTab> ui;
 
   QList<QTreeWidgetItem*> playersUnderForces;
 

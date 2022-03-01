@@ -11,7 +11,7 @@
 
 ScenarioSettings::ScenarioSettings(QWidget* parent, int startTab) :
   QDialog(parent),
-  ui(new Ui::ScenarioSettings)
+  ui(std::make_unique<Ui::ScenarioSettings>())
 {
   ui->setupUi(this);
 
@@ -27,10 +27,7 @@ ScenarioSettings::ScenarioSettings(QWidget* parent, int startTab) :
   on_tabs_currentChanged(startTab);
 }
 
-ScenarioSettings::~ScenarioSettings()
-{
-  delete ui;
-}
+ScenarioSettings::~ScenarioSettings() {}
 
 QString ScenarioSettings::getForceName(unsigned force) const {
   if (force >= 4 || !settings.useCustomForceNames[force]) {

@@ -1,7 +1,6 @@
-#ifndef TILEPALETTE_H
-#define TILEPALETTE_H
-
+#pragma once
 #include <QFrame>
+#include <memory>
 
 namespace Ui {
   class TilePalette;
@@ -16,7 +15,5 @@ public:
   ~TilePalette();
 
 private:
-  Ui::TilePalette *ui;
+  std::unique_ptr<Ui::TilePalette> ui;
 };
-
-#endif // TILEPALETTE_H

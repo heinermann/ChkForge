@@ -1,7 +1,6 @@
-#ifndef EXPORTSECTIONS_H
-#define EXPORTSECTIONS_H
-
+#pragma once
 #include <QDialog>
+#include <memory>
 
 namespace Ui {
   class ExportSections;
@@ -16,7 +15,5 @@ public:
   ~ExportSections();
 
 private:
-  Ui::ExportSections *ui;
+  std::unique_ptr<Ui::ExportSections> ui;
 };
-
-#endif // EXPORTSECTIONS_H

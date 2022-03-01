@@ -3,15 +3,13 @@
 
 UnitsTab::UnitsTab(QWidget* parent)
   : ScenarioSettingsTab(parent)
-  , ui(new Ui::UnitsTab)
+  , ui(std::make_unique<Ui::UnitsTab>())
 {
   ui->setupUi(this);
   populatePlayerList(ui->unitPlyrList);
 }
 
-UnitsTab::~UnitsTab() {
-  delete ui;
-}
+UnitsTab::~UnitsTab() {}
 
 void UnitsTab::setTabFocus() {
   ui->unitTree->setFocus();

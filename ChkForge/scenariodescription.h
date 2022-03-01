@@ -1,6 +1,4 @@
-#ifndef SCENARIODESCRIPTION_H
-#define SCENARIODESCRIPTION_H
-
+#pragma once
 #include <QDialog>
 #include <QStandardItemModel>
 
@@ -25,10 +23,8 @@ public:
   virtual void accept() override;
 
 private:
-  Ui::ScenarioDescription* ui;
+  std::unique_ptr<Ui::ScenarioDescription> ui;
 
 private slots:
   void on_toolButton_pressed();
 };
-
-#endif // NEWMAP_H

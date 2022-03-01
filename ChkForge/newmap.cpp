@@ -11,7 +11,7 @@
 
 NewMap::NewMap(QWidget *parent) :
   QDialog(parent),
-  ui(new Ui::NewMap)
+  ui(std::make_unique<Ui::NewMap>())
 {
   ui->setupUi(this);
 
@@ -24,10 +24,7 @@ NewMap::NewMap(QWidget *parent) :
   ui->cmb_tileset->setCurrentIndex(0);
 }
 
-NewMap::~NewMap()
-{
-  delete ui;
-}
+NewMap::~NewMap() {}
 
 void NewMap::on_cmb_tileset_currentIndexChanged(int index)
 {

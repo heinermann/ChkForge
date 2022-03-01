@@ -393,7 +393,7 @@ Some select Starforge code snippets and resources.
 <context>
     <name>ForcesTab</name>
     <message>
-        <location filename="forcestab.cpp" line="106"/>
+        <location filename="forcestab.cpp" line="104"/>
         <source>Map specified</source>
         <extracomment>gluAll:lobbyScreen_MapSpecified</extracomment>
         <translation></translation>
@@ -474,54 +474,54 @@ Some select Starforge code snippets and resources.
         <translation></translation>
     </message>
     <message>
-        <location filename="itemtree.cpp" line="18"/>
+        <location filename="itemtree.cpp" line="17"/>
         <source>Item Tree</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="itemtree.cpp" line="56"/>
+        <location filename="itemtree.cpp" line="60"/>
         <source>Doodads</source>
         <extracomment>stat_txt:FIRST_UNIT_STRING-203</extracomment>
         <translation></translation>
     </message>
     <message>
-        <location filename="itemtree.cpp" line="64"/>
+        <location filename="itemtree.cpp" line="68"/>
         <source>Units</source>
         <extracomment>gluAll:scoreUNITS</extracomment>
         <translation></translation>
     </message>
     <message>
-        <location filename="itemtree.cpp" line="73"/>
+        <location filename="itemtree.cpp" line="77"/>
         <source>Sprites</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="itemtree.cpp" line="82"/>
+        <location filename="itemtree.cpp" line="86"/>
         <source>Unit-Sprites</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="itemtree.cpp" line="91"/>
+        <location filename="itemtree.cpp" line="95"/>
         <source>Locations</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="itemtree.cpp" line="98"/>
+        <location filename="itemtree.cpp" line="102"/>
         <source>Custom Brushes</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="itemtree.cpp" line="99"/>
+        <location filename="itemtree.cpp" line="103"/>
         <source>Clipboard</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="itemtree.cpp" line="109"/>
+        <location filename="itemtree.cpp" line="113"/>
         <source>Error</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="itemtree.cpp" line="109"/>
+        <location filename="itemtree.cpp" line="113"/>
         <source>Unable to load Trees/%1: %2</source>
         <translation></translation>
     </message>
@@ -932,7 +932,7 @@ Some select Starforge code snippets and resources.
     </message>
     <message>
         <location filename="mainwindow.ui" line="782"/>
-        <location filename="mainwindow.cpp" line="659"/>
+        <location filename="mainwindow.cpp" line="655"/>
         <source>&amp;Play</source>
         <oldsource>&amp;Play/Pause</oldsource>
         <translation></translation>
@@ -1006,12 +1006,12 @@ Some select Starforge code snippets and resources.
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="766"/>
+        <location filename="mainwindow.cpp" line="762"/>
         <source>Player %1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="663"/>
+        <location filename="mainwindow.cpp" line="659"/>
         <source>&amp;Pause</source>
         <translation></translation>
     </message>
@@ -1019,12 +1019,12 @@ Some select Starforge code snippets and resources.
 <context>
     <name>MapView</name>
     <message>
-        <location filename="mapview.cpp" line="59"/>
+        <location filename="mapview.cpp" line="58"/>
         <source>Do you want to save changes to &quot;%1&quot; before closing?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mapview.cpp" line="61"/>
+        <location filename="mapview.cpp" line="60"/>
         <source>Unsaved changes...</source>
         <translation></translation>
     </message>

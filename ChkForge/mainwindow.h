@@ -1,11 +1,11 @@
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#pragma once
 
 #include <QMainWindow>
 #include <QMdiArea>
 #include <QIcon>
 #include <QSettings>
 #include <DockManager.h>
+#include <memory>
 
 #include "ui_mainwindow.h"
 
@@ -18,9 +18,10 @@
 
 class MapView;
 
-QT_BEGIN_NAMESPACE
-namespace Ui { class MainWindow; class StatusBar; class toolbars; }
-QT_END_NAMESPACE
+namespace Ui {
+  class StatusBar;
+  class toolbars;
+}
 
 class MainWindow : public QMainWindow
 {
@@ -31,18 +32,18 @@ public:
   ~MainWindow();
 
 private:
-  Ui::MainWindow *ui;
-  Ui::StatusBar* statusBar_ui;
-  Ui::toolbars* toolbars_ui;
+  std::unique_ptr<Ui::MainWindow> ui;
+  std::unique_ptr<Ui::StatusBar> statusBar_ui;
+  std::unique_ptr<Ui::toolbars> toolbars_ui;
 
   QWidget statusBar_container;
   QWidget toolbars_container;
 
   Minimap* minimap = new Minimap();
   QMdiArea* mdi = new QMdiArea();
-  ItemTree* itemTree = nullptr;
+  ItemTree* itemTree;
 
-  ads::CDockManager* m_DockManager;
+  std::unique_ptr<ads::CDockManager> m_DockManager;
   ads::CDockWidget* mdi_dock = new ads::CDockWidget("");
 
   std::vector<QAction*> layerOptions;
@@ -171,4 +172,3 @@ private slots:
   void onItemTreeChanged(ItemTree::Category category, int id);
   void onUndoRedoUpdated();
 };
-#endif // MAINWINDOW_H

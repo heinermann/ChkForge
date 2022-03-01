@@ -1,7 +1,4 @@
-#ifndef MAPVIEW_H
-#define MAPVIEW_H
-
-#include "ui_mapview.h"
+#pragma once
 #include <QImage>
 #include <memory>
 #include <optional>
@@ -16,6 +13,10 @@
 
 namespace ChkForge {
   class MapContext;
+}
+
+namespace Ui {
+  class MapView;
 }
 
 class MapView : public QMdiSubWindow
@@ -59,7 +60,7 @@ public:
 
   void setItemTreeSelection(ItemTree::Category category, int id);
 private:
-  Ui::MapView* ui;
+  std::unique_ptr<Ui::MapView> ui;
 
   QImage buffer;
   QPixmap pix_buffer;
@@ -74,8 +75,6 @@ private:
   QRect screen_position{0, 0, 640, 480};
 
   double view_scale_percent = 100.0;
-
-
 
 private:
   void updateScrollbarPositions();
@@ -102,5 +101,3 @@ signals:
   void scaleChangedPercent(int value);
   void setItemTreeSelectionSignal(ItemTree::Category category, int id);
 };
-
-#endif // MAPVIEW_H

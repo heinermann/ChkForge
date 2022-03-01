@@ -10,7 +10,7 @@
 
 PlayersTab::PlayersTab(QWidget* parent)
   : ScenarioSettingsTab(parent)
-  , ui(new Ui::PlayersTab)
+  , ui(std::make_unique<Ui::PlayersTab>())
 {
   ui->setupUi(this);
   populatePlayerList(ui->plyrList, Sc::Player::TotalSlots);
@@ -55,9 +55,7 @@ void PlayersTab::setupDataMappers() {
   rdoForce = std::make_shared<ChkForge::RadioDataMapper<Chk::Force>>(ui->plyrList, ui->btnGroupPlayerForce, settings->forc.playerForce, updateFn);
 }
 
-PlayersTab::~PlayersTab() {
-  delete ui;
-}
+PlayersTab::~PlayersTab() {}
 
 void PlayersTab::setTabFocus() {
   ui->plyrList->setFocus();

@@ -1,21 +1,23 @@
-#ifndef MINIMAP_H
-#define MINIMAP_H
-
+#pragma once
 #include "DockWidgetWrapper.h"
-#include "ui_minimap.h"
 
 #include <QTimer>
 #include <QImage>
+#include <memory>
 
 class MapView;
 
-class Minimap : public DockWidgetWrapper<Ui::Minimap>
+namespace Ui {
+  class Minimap;
+}
+
+class Minimap : public DockWidgetWrapper
 {
   Q_OBJECT
 
 public:
   explicit Minimap(QWidget* parent = nullptr);
-  virtual ~Minimap();
+  virtual ~Minimap() override;
 
   void setActiveMapView(MapView* view);
   void resetMapBuffer();
@@ -24,6 +26,8 @@ public:
   void onCloseMapView(MapView* map);
 
 private:
+  std::unique_ptr<Ui::Minimap> ui;
+
   QImage minimap_buffer;
 
   std::unique_ptr<QTimer> timer;
@@ -33,5 +37,3 @@ private:
   void paint_surface(QWidget* obj, QPaintEvent* paintEvent);
   void updateLogic();
 };
-
-#endif // MINIMAP_H

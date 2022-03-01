@@ -1,6 +1,7 @@
 #pragma once
 #include <QObject>
 #include <QWidget>
+#include <memory>
 
 #include "scenariosettingstab.h"
 
@@ -17,6 +18,5 @@ public:
   void setTabFocus() override;
 
 private:
-  Ui::UpgradesTab* ui;
-
+  std::unique_ptr<Ui::UpgradesTab> ui;
 };

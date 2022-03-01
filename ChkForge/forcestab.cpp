@@ -7,7 +7,7 @@
 
 ForcesTab::ForcesTab(QWidget* parent)
   : ScenarioSettingsTab(parent)
-  , ui(new Ui::ForcesTab)
+  , ui(std::make_unique<Ui::ForcesTab>())
 {
   ui->setupUi(this);
   init();
@@ -43,9 +43,7 @@ void ForcesTab::setupDataMappers() {
   txtForceName = std::make_shared<ChkForge::TextDataMapper>(ui->forcesTree, ui->txtForceName, &settings->forceNames[0]);
 }
 
-ForcesTab::~ForcesTab() {
-  delete ui;
-}
+ForcesTab::~ForcesTab() {}
 
 void ForcesTab::setTabFocus() {
   ui->forcesTree->setFocus();

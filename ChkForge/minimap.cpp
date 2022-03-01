@@ -15,8 +15,12 @@
 
 Minimap::Minimap(QWidget *parent) :
   //: EditLocal:10:148
-  DockWidgetWrapper<Ui::Minimap>(tr("Minimap"), parent)
+  DockWidgetWrapper(tr("Minimap"), parent)
+  , ui(std::make_unique<Ui::Minimap>())
 {
+  ui->setupUi(&frame);
+  setupDockWidget();
+
   timer = std::make_unique<QTimer>(this);
   connect(timer.get(), &QTimer::timeout, this, &Minimap::updateLogic);
 
@@ -25,9 +29,7 @@ Minimap::Minimap(QWidget *parent) :
   timer->start(33);
 }
 
-Minimap::~Minimap()
-{
-}
+Minimap::~Minimap() {}
 
 void Minimap::updateLogic()
 {

@@ -1,6 +1,4 @@
-#ifndef NEWMAP_H
-#define NEWMAP_H
-
+#pragma once
 #include <QDialog>
 #include <QStandardItemModel>
 
@@ -28,7 +26,7 @@ public:
   int tile_height = 128;
 
 private:
-  Ui::NewMap *ui;
+  std::unique_ptr<Ui::NewMap> ui;
 
   QStandardItemModel brush_list_model;
 
@@ -37,5 +35,3 @@ private slots:
   void on_cmb_tileset_currentIndexChanged(int index);
   virtual void accept() override;
 };
-
-#endif // NEWMAP_H

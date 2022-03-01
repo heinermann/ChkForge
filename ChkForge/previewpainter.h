@@ -1,7 +1,6 @@
-#ifndef PREVIEWPAINTER_H
-#define PREVIEWPAINTER_H
-
+#pragma once
 #include <QDialog>
+#include <memory>
 
 namespace Ui {
   class PreviewPainter;
@@ -17,7 +16,5 @@ public:
   ~PreviewPainter();
 
 private:
-  Ui::PreviewPainter *ui;
+  std::unique_ptr<Ui::PreviewPainter> ui;
 };
-
-#endif // PREVIEWPAINTER_H

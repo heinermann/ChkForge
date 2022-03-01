@@ -1,7 +1,6 @@
-#ifndef ITEMPALETTE_H
-#define ITEMPALETTE_H
-
+#pragma once
 #include <QFrame>
+#include <memory>
 
 namespace Ui {
   class ItemPalette;
@@ -16,7 +15,5 @@ public:
   ~ItemPalette();
 
 private:
-  Ui::ItemPalette *ui;
+  std::unique_ptr<Ui::ItemPalette> ui;
 };
-
-#endif // ITEMPALETTE_H

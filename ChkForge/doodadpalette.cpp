@@ -3,12 +3,9 @@
 
 DoodadPalette::DoodadPalette(QWidget *parent) :
   QFrame(parent),
-  ui(new Ui::DoodadPalette)
+  ui(std::make_unique<Ui::DoodadPalette>())
 {
   ui->setupUi(this);
 }
 
-DoodadPalette::~DoodadPalette()
-{
-  delete ui;
-}
+DoodadPalette::~DoodadPalette() {}

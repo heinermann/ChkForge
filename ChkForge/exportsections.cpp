@@ -3,12 +3,9 @@
 
 ExportSections::ExportSections(QWidget *parent) :
   QDialog(parent),
-  ui(new Ui::ExportSections)
+  ui(std::make_unique<Ui::ExportSections>())
 {
   ui->setupUi(this);
 }
 
-ExportSections::~ExportSections()
-{
-  delete ui;
-}
+ExportSections::~ExportSections() {}

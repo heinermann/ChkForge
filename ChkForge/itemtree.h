@@ -8,15 +8,18 @@
 #include <functional>
 
 #include "DockWidgetWrapper.h"
-#include "ui_itemtree.h"
 
-class ItemTree : public DockWidgetWrapper<Ui::ItemTree>
+namespace Ui {
+  class ItemTree;
+}
+
+class ItemTree : public DockWidgetWrapper
 {
   Q_OBJECT
 
 public:
   explicit ItemTree(QWidget *parent = nullptr);
-  virtual ~ItemTree() {};
+  virtual ~ItemTree() override;
 
   enum Category {
     CAT_NONE,
@@ -32,6 +35,8 @@ public:
   void set_item(Category category, int id);
 
 private:
+  std::unique_ptr<Ui::ItemTree> ui;
+
   static const int ROLE_CATEGORY = Qt::UserRole + 1;
   static const int ROLE_ID = Qt::UserRole + 2;
   static const int ROLE_SEARCHKEY = Qt::UserRole + 3;

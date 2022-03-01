@@ -3,12 +3,9 @@
 
 SaveMap::SaveMap(QWidget *parent) :
   QDialog(parent),
-  ui(new Ui::SaveMap)
+  ui(std::make_unique<Ui::SaveMap>())
 {
   ui->setupUi(this);
 }
 
-SaveMap::~SaveMap()
-{
-  delete ui;
-}
+SaveMap::~SaveMap() {}

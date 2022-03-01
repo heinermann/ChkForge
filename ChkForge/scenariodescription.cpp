@@ -9,14 +9,12 @@
 
 ScenarioDescription::ScenarioDescription(QWidget* parent) :
   QDialog(parent),
-  ui(new Ui::ScenarioDescription)
+  ui(std::make_unique<Ui::ScenarioDescription>())
 {
   ui->setupUi(this);
 }
 
-ScenarioDescription::~ScenarioDescription() {
-  delete ui;
-}
+ScenarioDescription::~ScenarioDescription() {}
 
 int ScenarioDescription::exec() {
   QFont namefont{};

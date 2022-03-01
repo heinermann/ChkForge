@@ -1,5 +1,4 @@
-#ifndef SCENARIOSETTINGS_H
-#define SCENARIOSETTINGS_H
+#pragma once
 
 #include <QDialog>
 #include <QList>
@@ -44,11 +43,9 @@ public:
   QString getForceName(unsigned force) const;
 
 private:
-  Ui::ScenarioSettings *ui;
+  std::unique_ptr<Ui::ScenarioSettings> ui;
   ScenarioSettingsData settings;
 
 private slots:
   void on_tabs_currentChanged(int index);
 };
-
-#endif // SCENARIOSETTINGS_H

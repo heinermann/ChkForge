@@ -3,12 +3,9 @@
 
 TilePalette::TilePalette(QWidget *parent) :
   QFrame(parent),
-  ui(new Ui::TilePalette)
+  ui(std::make_unique<Ui::TilePalette>())
 {
   ui->setupUi(this);
 }
 
-TilePalette::~TilePalette()
-{
-  delete ui;
-}
+TilePalette::~TilePalette() {}

@@ -3,12 +3,9 @@
 
 ExportImage::ExportImage(QWidget *parent) :
   QDialog(parent),
-  ui(new Ui::ExportImage)
+  ui(std::make_unique<Ui::ExportImage>())
 {
   ui->setupUi(this);
 }
 
-ExportImage::~ExportImage()
-{
-  delete ui;
-}
+ExportImage::~ExportImage() {}

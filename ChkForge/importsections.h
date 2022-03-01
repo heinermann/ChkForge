@@ -1,7 +1,6 @@
-#ifndef IMPORTSECTIONS_H
-#define IMPORTSECTIONS_H
-
+#pragma once
 #include <QDialog>
+#include <memory>
 
 namespace Ui {
   class ImportSections;
@@ -16,7 +15,5 @@ public:
   ~ImportSections();
 
 private:
-  Ui::ImportSections *ui;
+  std::unique_ptr<Ui::ImportSections> ui;
 };
-
-#endif // IMPORTSECTIONS_H

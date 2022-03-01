@@ -32,7 +32,7 @@ private:
   QString getForceName(unsigned force) const;
 
 private:
-  Ui::PlayersTab* ui;
+  std::unique_ptr<Ui::PlayersTab> ui;
 
   std::shared_ptr<ChkForge::RadioDataMapper<Sc::Player::SlotType>> rdoSlot;
   std::shared_ptr<ChkForge::RadioDataMapper<Chk::Race>> rdoRace;

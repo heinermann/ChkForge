@@ -3,12 +3,9 @@
 
 RecentTiles::RecentTiles(QWidget *parent) :
   QFrame(parent),
-  ui(new Ui::RecentTiles)
+  ui(std::make_unique<Ui::RecentTiles>())
 {
   ui->setupUi(this);
 }
 
-RecentTiles::~RecentTiles()
-{
-  delete ui;
-}
+RecentTiles::~RecentTiles() {}

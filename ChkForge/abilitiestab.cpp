@@ -3,15 +3,13 @@
 
 AbilitiesTab::AbilitiesTab(QWidget* parent)
   : ScenarioSettingsTab(parent)
-  , ui(new Ui::AbilitiesTab)
+  , ui(std::make_unique<Ui::AbilitiesTab>())
 {
   ui->setupUi(this);
   populatePlayerList(ui->techPlyrList);
 }
 
-AbilitiesTab::~AbilitiesTab() {
-  delete ui;
-}
+AbilitiesTab::~AbilitiesTab() {}
 
 void AbilitiesTab::setTabFocus() {
   ui->techTree->setFocus();
