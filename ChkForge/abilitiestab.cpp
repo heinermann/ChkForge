@@ -6,6 +6,7 @@ AbilitiesTab::AbilitiesTab(QWidget* parent)
   , ui(new Ui::AbilitiesTab)
 {
   ui->setupUi(this);
+  populatePlayerList(ui->techPlyrList);
 }
 
 AbilitiesTab::~AbilitiesTab() {

@@ -13,6 +13,7 @@
 #include "newmap.h"
 #include "scenariodescription.h"
 #include "scenariosettings.h"
+#include "strings.h"
 
 #include <DockAreaWidget.h>
 #include <QLabel>
@@ -132,7 +133,7 @@ void MainWindow::createToolbars() {
   for (int i = 0; i < Sc::Player::Total; ++i) {
     auto pixmap = QPixmap(16, 16);
     pixmap.fill(default_player_color[i]);
-    toolbars_ui->cmb_player->addItem(QIcon(pixmap), tr("Player %1").arg(i + 1));
+    toolbars_ui->cmb_player->addItem(QIcon(pixmap), ChkForge::getGenericPlayerName(i));
   }
 
   connect(toolbars_ui->cmb_layer, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &MainWindow::selectLayerIndex);

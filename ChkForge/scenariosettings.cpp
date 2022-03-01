@@ -34,7 +34,7 @@ ScenarioSettings::~ScenarioSettings()
 
 QString ScenarioSettings::getForceName(unsigned force) const {
   if (force >= 4 || !settings.useCustomForceNames[force]) {
-    return getDefaultForceName(force);
+    return ChkForge::getDefaultForceName(force);
   }
   return QString::fromStdString(settings.forceNames[force]);
 }

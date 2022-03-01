@@ -13,6 +13,7 @@ PlayersTab::PlayersTab(QWidget* parent)
   , ui(new Ui::PlayersTab)
 {
   ui->setupUi(this);
+  populatePlayerList(ui->plyrList, Sc::Player::TotalSlots);
   init();
 }
 
@@ -109,10 +110,10 @@ void PlayersTab::updatePlayerTree() {
     unsigned color = settings->colr.playerColor[i];
 
     QTreeWidgetItem* itm = ui->plyrList->topLevelItem(i);
-    itm->setText(1, getPlayerName(i, race, controller));
-    itm->setText(2, getColorName(color));
-    itm->setText(3, getRaceName(race));
-    itm->setText(4, getPlayerOwnerName(controller));
+    itm->setText(1, ChkForge::getPlayerName(i, race, controller));
+    itm->setText(2, ChkForge::getColorName(color));
+    itm->setText(3, ChkForge::getRaceName(race));
+    itm->setText(4, ChkForge::getPlayerOwnerName(controller));
     itm->setText(5, getForceName(force));
     itm->setData(0, Qt::UserRole, i);
   }
@@ -124,7 +125,7 @@ void PlayersTab::updatePlayerTree() {
 
 QString PlayersTab::getForceName(unsigned force) const {
   if (force >= 4 || !settings->useCustomForceNames[force]) {
-    return getDefaultForceName(force);
+    return ChkForge::getDefaultForceName(force);
   }
   return QString::fromStdString(settings->forceNames[force]);
 }

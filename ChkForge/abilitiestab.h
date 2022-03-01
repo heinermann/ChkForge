@@ -18,5 +18,4 @@ public:
 
 private:
   Ui::AbilitiesTab* ui;
-
 };

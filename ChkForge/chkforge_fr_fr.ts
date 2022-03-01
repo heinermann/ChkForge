@@ -94,78 +94,6 @@
         <extracomment>gluAll:scr.leaderboard.table.heading.2</extracomment>
         <translation>Joueur</translation>
     </message>
-    <message>
-        <location filename="abilitiestab.ui" line="321"/>
-        <source>Player 1</source>
-        <extracomment>EditLocal:8:126</extracomment>
-        <translation>Joueur 1</translation>
-    </message>
-    <message>
-        <location filename="abilitiestab.ui" line="326"/>
-        <source>Player 2</source>
-        <extracomment>EditLocal:8:127</extracomment>
-        <translation>Joueur 2</translation>
-    </message>
-    <message>
-        <location filename="abilitiestab.ui" line="334"/>
-        <source>Player 3</source>
-        <extracomment>EditLocal:9:128</extracomment>
-        <translation>Joueur 3</translation>
-    </message>
-    <message>
-        <location filename="abilitiestab.ui" line="342"/>
-        <source>Player 4</source>
-        <extracomment>EditLocal:9:129</extracomment>
-        <translation>Joueur 4</translation>
-    </message>
-    <message>
-        <location filename="abilitiestab.ui" line="350"/>
-        <source>Player 5</source>
-        <extracomment>EditLocal:9:130</extracomment>
-        <translation>Joueur 5</translation>
-    </message>
-    <message>
-        <location filename="abilitiestab.ui" line="355"/>
-        <source>Player 6</source>
-        <extracomment>EditLocal:9:131</extracomment>
-        <translation>Joueur 6</translation>
-    </message>
-    <message>
-        <location filename="abilitiestab.ui" line="360"/>
-        <source>Player 7</source>
-        <extracomment>EditLocal:9:132</extracomment>
-        <translation>Joueur 7</translation>
-    </message>
-    <message>
-        <location filename="abilitiestab.ui" line="365"/>
-        <source>Player 8</source>
-        <extracomment>EditLocal:9:133</extracomment>
-        <translation>Joueur 8</translation>
-    </message>
-    <message>
-        <location filename="abilitiestab.ui" line="370"/>
-        <source>Independent 1</source>
-        <extracomment>EditLocal:9:134</extracomment>
-        <translation>Indépendant 1</translation>
-    </message>
-    <message>
-        <location filename="abilitiestab.ui" line="375"/>
-        <source>Independent 2</source>
-        <extracomment>EditLocal:9:135</extracomment>
-        <translation>Indépendant 2</translation>
-    </message>
-    <message>
-        <location filename="abilitiestab.ui" line="380"/>
-        <source>Independent 3</source>
-        <extracomment>EditLocal:9:136</extracomment>
-        <translation>Indépendant 3</translation>
-    </message>
-    <message>
-        <location filename="abilitiestab.ui" line="385"/>
-        <source>Neutral</source>
-        <extracomment>EditLocal:9:137</extracomment>
-        <translation>Neutre</translation>
-    </message>
 </context>
 <context>
     <name>About</name>
@@ -1001,7 +929,7 @@ Some select Starforge code snippets and resources.
     </message>
     <message>
         <location filename="mainwindow.ui" line="782"/>
-        <location filename="mainwindow.cpp" line="658"/>
+        <location filename="mainwindow.cpp" line="659"/>
         <source>&amp;Play</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1074,13 +1002,12 @@ Some select Starforge code snippets and resources.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="135"/>
-        <location filename="mainwindow.cpp" line="765"/>
+        <location filename="mainwindow.cpp" line="766"/>
         <source>Player %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="662"/>
+        <location filename="mainwindow.cpp" line="663"/>
         <source>&amp;Pause</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1156,21 +1083,21 @@ Other sizes may crash Starcraft.</source>
     </message>
     <message>
         <location filename="playerstab.ui" line="55"/>
-        <location filename="playerstab.ui" line="136"/>
+        <location filename="playerstab.ui" line="96"/>
         <source>Colour</source>
         <extracomment>EditLocal:3:43</extracomment>
         <translation>Couleur</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="60"/>
-        <location filename="playerstab.ui" line="216"/>
+        <location filename="playerstab.ui" line="176"/>
         <source>Race</source>
         <extracomment>EditLocal:3:44</extracomment>
         <translation>Race</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="65"/>
-        <location filename="playerstab.ui" line="291"/>
+        <location filename="playerstab.ui" line="251"/>
         <source>Control</source>
         <oldsource>Controller</oldsource>
         <extracomment>EditLocal:3:45</extracomment>
@@ -1178,191 +1105,143 @@ Other sizes may crash Starcraft.</source>
     </message>
     <message>
         <location filename="playerstab.ui" line="70"/>
-        <location filename="playerstab.ui" line="405"/>
+        <location filename="playerstab.ui" line="365"/>
         <source>Force</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="playerstab.ui" line="75"/>
-        <source>Player 1</source>
-        <extracomment>EditLocal:8:126</extracomment>
-        <translation>Joueur 1</translation>
-    </message>
-    <message>
-        <location filename="playerstab.ui" line="235"/>
+        <location filename="playerstab.ui" line="195"/>
         <source>Terran</source>
         <extracomment>gluAll:lobbyScreen_terran</extracomment>
         <translation type="unfinished">Terran</translation>
     </message>
     <message>
-        <location filename="playerstab.ui" line="346"/>
+        <location filename="playerstab.ui" line="306"/>
         <source>Computer</source>
         <extracomment>gluAll:lobbyScreen_computer</extracomment>
         <translation type="unfinished">IA</translation>
     </message>
     <message>
-        <location filename="playerstab.ui" line="411"/>
+        <location filename="playerstab.ui" line="371"/>
         <source>Force 1</source>
         <extracomment>network:strFORCE1</extracomment>
         <translation type="unfinished">Force 1</translation>
     </message>
     <message>
-        <location filename="playerstab.ui" line="80"/>
-        <source>Player 2</source>
-        <extracomment>EditLocal:8:127</extracomment>
-        <translation>Joueur 2</translation>
-    </message>
-    <message>
-        <location filename="playerstab.ui" line="85"/>
-        <source>Player 3</source>
-        <extracomment>EditLocal:9:128</extracomment>
-        <translation>Joueur 3</translation>
-    </message>
-    <message>
-        <location filename="playerstab.ui" line="90"/>
-        <source>Player 4</source>
-        <extracomment>EditLocal:9:129</extracomment>
-        <translation>Joueur 4</translation>
-    </message>
-    <message>
-        <location filename="playerstab.ui" line="95"/>
-        <source>Player 5</source>
-        <extracomment>EditLocal:9:130</extracomment>
-        <translation>Joueur 5</translation>
-    </message>
-    <message>
-        <location filename="playerstab.ui" line="100"/>
-        <source>Player 6</source>
-        <extracomment>EditLocal:9:131</extracomment>
-        <translation>Joueur 6</translation>
-    </message>
-    <message>
         <location filename="playerstab.ui" line="105"/>
-        <source>Player 7</source>
-        <extracomment>EditLocal:9:132</extracomment>
-        <translation>Joueur 7</translation>
-    </message>
-    <message>
-        <location filename="playerstab.ui" line="110"/>
-        <source>Player 8</source>
-        <extracomment>EditLocal:9:133</extracomment>
-        <translation>Joueur 8</translation>
-    </message>
-    <message>
-        <location filename="playerstab.ui" line="145"/>
-        <location filename="playerstab.ui" line="265"/>
+        <location filename="playerstab.ui" line="225"/>
         <source>Random</source>
         <extracomment>gluAll:lobbyScreen_random</extracomment>
         <translation type="unfinished">Aléatoire</translation>
     </message>
     <message>
-        <location filename="playerstab.ui" line="161"/>
+        <location filename="playerstab.ui" line="121"/>
         <source>Player Choice</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="playerstab.ui" line="184"/>
+        <location filename="playerstab.ui" line="144"/>
         <source>Classic</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="playerstab.ui" line="222"/>
+        <location filename="playerstab.ui" line="182"/>
         <source>Zerg</source>
         <extracomment>gluAll:lobbyScreen_zerg</extracomment>
         <translation type="unfinished">Zerg</translation>
     </message>
     <message>
-        <location filename="playerstab.ui" line="245"/>
+        <location filename="playerstab.ui" line="205"/>
         <source>Protoss</source>
         <extracomment>gluAll:lobbyScreen_protoss</extracomment>
         <translation type="unfinished">Protoss</translation>
     </message>
     <message>
-        <location filename="playerstab.ui" line="255"/>
+        <location filename="playerstab.ui" line="215"/>
         <source>User Selectable</source>
         <extracomment>EditLocal:34:536</extracomment>
         <translation>Peut être Sélectionné par l&apos;Utilisateur</translation>
     </message>
     <message>
-        <location filename="playerstab.ui" line="297"/>
+        <location filename="playerstab.ui" line="257"/>
         <source>Inactive</source>
         <extracomment>EditLocal:10:147</extracomment>
         <translation>Inactifs</translation>
     </message>
     <message>
-        <location filename="playerstab.ui" line="310"/>
+        <location filename="playerstab.ui" line="270"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:9pt; font-weight:600;&quot;&gt;In Use Map Settings&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Does not show up in lobby but acts as a normal computer slot.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:9pt; font-weight:600;&quot;&gt;In Melee&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Prefills a computer slot.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="playerstab.ui" line="313"/>
+        <location filename="playerstab.ui" line="273"/>
         <source>Occupied Computer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="playerstab.ui" line="323"/>
+        <location filename="playerstab.ui" line="283"/>
         <source>Rescuable</source>
         <extracomment>EditLocal:24:377</extracomment>
         <translation>Sauvable</translation>
     </message>
     <message>
-        <location filename="playerstab.ui" line="333"/>
+        <location filename="playerstab.ui" line="293"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;AKA &lt;span style=&quot; font-weight:600;&quot;&gt;Unused&lt;/span&gt; or &lt;span style=&quot; font-weight:600;&quot;&gt;Rescue Active&lt;/span&gt;. This player acts like a dummy player without the risks of &lt;span style=&quot; font-weight:600;&quot;&gt;Occupied Player&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="playerstab.ui" line="336"/>
+        <location filename="playerstab.ui" line="296"/>
         <source>Dummy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="playerstab.ui" line="356"/>
+        <location filename="playerstab.ui" line="316"/>
         <source>Human</source>
         <extracomment>EditLocal:8:123</extracomment>
         <translation>Humain</translation>
     </message>
     <message>
-        <location filename="playerstab.ui" line="366"/>
+        <location filename="playerstab.ui" line="326"/>
         <source>Neutral</source>
         <extracomment>EditLocal:24:379</extracomment>
         <translation>Neutre</translation>
     </message>
     <message>
-        <location filename="playerstab.ui" line="376"/>
+        <location filename="playerstab.ui" line="336"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Similar to &lt;span style=&quot; font-weight:600;&quot;&gt;Inactive&lt;/span&gt;, but shows up in melee.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="playerstab.ui" line="379"/>
+        <location filename="playerstab.ui" line="339"/>
         <source>Closed</source>
         <extracomment>gluAll:lobbyScreen_closed</extracomment>
         <translation type="unfinished">Fermé</translation>
     </message>
     <message>
-        <location filename="playerstab.ui" line="424"/>
+        <location filename="playerstab.ui" line="384"/>
         <source>Force 2</source>
         <extracomment>network:strFORCE2</extracomment>
         <translation type="unfinished">Force 2</translation>
     </message>
     <message>
-        <location filename="playerstab.ui" line="434"/>
+        <location filename="playerstab.ui" line="394"/>
         <source>Force 3</source>
         <extracomment>network:strFORCE3</extracomment>
         <translation type="unfinished">Force 3</translation>
     </message>
     <message>
-        <location filename="playerstab.ui" line="444"/>
+        <location filename="playerstab.ui" line="404"/>
         <source>Force 4</source>
         <extracomment>network:strFORCE4</extracomment>
         <translation type="unfinished">Force 4</translation>
     </message>
     <message>
-        <location filename="playerstab.ui" line="454"/>
+        <location filename="playerstab.ui" line="414"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hidden from the lobby. This also prevents human players from occupying the slot.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="playerstab.ui" line="457"/>
+        <location filename="playerstab.ui" line="417"/>
         <source>None</source>
         <translation>Aucun</translation>
     </message>
@@ -1387,43 +1266,43 @@ Other sizes may crash Starcraft.</source>
 <context>
     <name>QLineEdit</name>
     <message>
-        <location filename="mainwindow.cpp" line="84"/>
+        <location filename="mainwindow.cpp" line="85"/>
         <source>Cu&amp;t</source>
         <extracomment>DO NOT TRANSLATE</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="86"/>
+        <location filename="mainwindow.cpp" line="87"/>
         <source>&amp;Copy</source>
         <extracomment>DO NOT TRANSLATE</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="88"/>
+        <location filename="mainwindow.cpp" line="89"/>
         <source>&amp;Paste</source>
         <extracomment>DO NOT TRANSLATE</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="90"/>
+        <location filename="mainwindow.cpp" line="91"/>
         <source>&amp;Undo</source>
         <extracomment>DO NOT TRANSLATE</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="92"/>
+        <location filename="mainwindow.cpp" line="93"/>
         <source>&amp;Redo</source>
         <extracomment>DO NOT TRANSLATE</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="94"/>
+        <location filename="mainwindow.cpp" line="95"/>
         <source>Delete</source>
         <extracomment>DO NOT TRANSLATE</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="96"/>
+        <location filename="mainwindow.cpp" line="97"/>
         <source>Select All</source>
         <extracomment>DO NOT TRANSLATE</extracomment>
         <translation type="unfinished"></translation>
@@ -1486,79 +1365,79 @@ Please select a different directory.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="15"/>
-        <location filename="strings.cpp" line="274"/>
+        <location filename="strings.cpp" line="17"/>
+        <location filename="strings.cpp" line="276"/>
         <source>Zerg</source>
         <extracomment>gluAll:lobbyScreen_zerg</extracomment>
         <translation>Zerg</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="17"/>
-        <location filename="strings.cpp" line="276"/>
+        <location filename="strings.cpp" line="19"/>
+        <location filename="strings.cpp" line="278"/>
         <source>Terran</source>
         <extracomment>gluAll:lobbyScreen_terran</extracomment>
         <translation>Terran</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="19"/>
-        <location filename="strings.cpp" line="278"/>
+        <location filename="strings.cpp" line="21"/>
+        <location filename="strings.cpp" line="280"/>
         <source>Protoss</source>
         <extracomment>gluAll:lobbyScreen_protoss</extracomment>
         <translation>Protoss</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="20"/>
+        <location filename="strings.cpp" line="22"/>
         <source>Other</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="22"/>
+        <location filename="strings.cpp" line="24"/>
         <source>Unused</source>
         <extracomment>EditLocal:29:458</extracomment>
         <translation>inutilisé</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="26"/>
-        <location filename="strings.cpp" line="270"/>
-        <location filename="strings.cpp" line="284"/>
-        <location filename="strings.cpp" line="296"/>
+        <location filename="strings.cpp" line="28"/>
+        <location filename="strings.cpp" line="272"/>
+        <location filename="strings.cpp" line="286"/>
         <location filename="strings.cpp" line="298"/>
+        <location filename="strings.cpp" line="300"/>
         <source>Random</source>
         <extracomment>gluAll:lobbyScreen_random</extracomment>
         <translation>Aléatoire</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="27"/>
-        <location filename="strings.cpp" line="36"/>
-        <location filename="strings.cpp" line="249"/>
+        <location filename="strings.cpp" line="29"/>
+        <location filename="strings.cpp" line="38"/>
+        <location filename="strings.cpp" line="251"/>
         <source>None</source>
         <translation>Aucun</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="37"/>
+        <location filename="strings.cpp" line="39"/>
         <source>Occupied Computer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="38"/>
+        <location filename="strings.cpp" line="40"/>
         <source>Occupied Human</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="40"/>
+        <location filename="strings.cpp" line="42"/>
         <source>Rescuable</source>
         <extracomment>EditLocal:24:377</extracomment>
         <translation>Sauvable</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="41"/>
+        <location filename="strings.cpp" line="43"/>
         <source>Dummy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="43"/>
-        <location filename="strings.cpp" line="155"/>
-        <location filename="strings.cpp" line="260"/>
+        <location filename="strings.cpp" line="45"/>
+        <location filename="strings.cpp" line="157"/>
+        <location filename="strings.cpp" line="262"/>
         <source>Computer</source>
         <extracomment>gluAll:lobbyScreen_computer
 ----------
@@ -1568,15 +1447,15 @@ gluAll:slotCOMPUTER</extracomment>
         <translation>IA</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="45"/>
+        <location filename="strings.cpp" line="47"/>
         <source>Human</source>
         <extracomment>EditLocal:8:123</extracomment>
         <translation>Humain</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="47"/>
-        <location filename="strings.cpp" line="85"/>
-        <location filename="strings.cpp" line="157"/>
+        <location filename="strings.cpp" line="49"/>
+        <location filename="strings.cpp" line="87"/>
+        <location filename="strings.cpp" line="159"/>
         <source>Neutral</source>
         <extracomment>EditLocal:8:125
 ----------
@@ -1584,422 +1463,422 @@ EditLocal:9:137</extracomment>
         <translation>Neutre</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="49"/>
+        <location filename="strings.cpp" line="51"/>
         <source>Closed</source>
         <extracomment>gluAll:lobbyScreen_closed</extracomment>
         <translation>Fermé</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="51"/>
+        <location filename="strings.cpp" line="53"/>
         <source>Observer</source>
         <extracomment>network:strOBSERVER</extracomment>
         <translation>Observateur</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="52"/>
+        <location filename="strings.cpp" line="54"/>
         <source>Computer Left</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="53"/>
+        <location filename="strings.cpp" line="55"/>
         <source>Player Left</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="63"/>
+        <location filename="strings.cpp" line="65"/>
         <source>Player 1</source>
         <extracomment>EditLocal:8:126</extracomment>
         <translation>Joueur 1</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="65"/>
+        <location filename="strings.cpp" line="67"/>
         <source>Player 2</source>
         <extracomment>EditLocal:8:127</extracomment>
         <translation>Joueur 2</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="67"/>
+        <location filename="strings.cpp" line="69"/>
         <source>Player 3</source>
         <extracomment>EditLocal:9:128</extracomment>
         <translation>Joueur 3</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="69"/>
+        <location filename="strings.cpp" line="71"/>
         <source>Player 4</source>
         <extracomment>EditLocal:9:129</extracomment>
         <translation>Joueur 4</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="71"/>
+        <location filename="strings.cpp" line="73"/>
         <source>Player 5</source>
         <extracomment>EditLocal:9:130</extracomment>
         <translation>Joueur 5</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="73"/>
+        <location filename="strings.cpp" line="75"/>
         <source>Player 6</source>
         <extracomment>EditLocal:9:131</extracomment>
         <translation>Joueur 6</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="75"/>
+        <location filename="strings.cpp" line="77"/>
         <source>Player 7</source>
         <extracomment>EditLocal:9:132</extracomment>
         <translation>Joueur 7</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="77"/>
+        <location filename="strings.cpp" line="79"/>
         <source>Player 8</source>
         <extracomment>EditLocal:9:133</extracomment>
         <translation>Joueur 8</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="24"/>
+        <location filename="strings.cpp" line="26"/>
         <source>User Selectable</source>
         <extracomment>EditLocal:34:536</extracomment>
         <translation>Peut être Sélectionné par l&apos;Utilisateur</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="79"/>
+        <location filename="strings.cpp" line="81"/>
         <source>Independent 1</source>
         <extracomment>EditLocal:9:134</extracomment>
         <translation>Indépendant 1</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="81"/>
+        <location filename="strings.cpp" line="83"/>
         <source>Independent 2</source>
         <extracomment>EditLocal:9:135</extracomment>
         <translation>Indépendant 2</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="83"/>
+        <location filename="strings.cpp" line="85"/>
         <source>Independent 3</source>
         <extracomment>EditLocal:9:136</extracomment>
         <translation>Indépendant 3</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="96"/>
+        <location filename="strings.cpp" line="98"/>
         <source>Tiamat Brood</source>
         <extracomment>network:strNATION_ZERG_0</extracomment>
         <translation>Couvée Tiamat</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="98"/>
+        <location filename="strings.cpp" line="100"/>
         <source>Surtur Brood</source>
         <extracomment>network:strNATION_ZERG_1</extracomment>
         <translation>Couvée Surtur</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="100"/>
+        <location filename="strings.cpp" line="102"/>
         <source>Fenris Brood</source>
         <extracomment>network:strNATION_ZERG_2</extracomment>
         <translation>Couvée Fenris</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="102"/>
+        <location filename="strings.cpp" line="104"/>
         <source>Jormungand Brood</source>
         <extracomment>network:strNATION_ZERG_3</extracomment>
         <translation>Couvée Jormungand</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="104"/>
+        <location filename="strings.cpp" line="106"/>
         <source>Garm Brood</source>
         <extracomment>network:strNATION_ZERG_4</extracomment>
         <translation>Couvée Garm</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="106"/>
+        <location filename="strings.cpp" line="108"/>
         <source>Grendel Brood</source>
         <extracomment>network:strNATION_ZERG_5</extracomment>
         <translation>Couvée Grendel</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="108"/>
+        <location filename="strings.cpp" line="110"/>
         <source>Baelrog Brood</source>
         <extracomment>network:strNATION_ZERG_6</extracomment>
         <translation>Couvée Baelrog</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="110"/>
+        <location filename="strings.cpp" line="112"/>
         <source>Leviathan Brood</source>
         <extracomment>network:strNATION_ZERG_7</extracomment>
         <translation>Couvée Leviathan</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="114"/>
+        <location filename="strings.cpp" line="116"/>
         <source>Elite Guard</source>
         <extracomment>network:strNATION_TERRAN_0</extracomment>
         <translation>Garde d’élite</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="116"/>
+        <location filename="strings.cpp" line="118"/>
         <source>Mar Sara</source>
         <extracomment>network:strNATION_TERRAN_1</extracomment>
         <translation>Mar Sara</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="118"/>
+        <location filename="strings.cpp" line="120"/>
         <source>Kel - Morian Combine</source>
         <extracomment>network:strNATION_TERRAN_2</extracomment>
         <translation>Combinat Kel-Morian</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="120"/>
+        <location filename="strings.cpp" line="122"/>
         <source>Antiga</source>
         <extracomment>network:strNATION_TERRAN_3</extracomment>
         <translation>Antiga</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="122"/>
+        <location filename="strings.cpp" line="124"/>
         <source>Delta Squadron</source>
         <extracomment>network:strNATION_TERRAN_4</extracomment>
         <translation>Escadron delta</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="124"/>
+        <location filename="strings.cpp" line="126"/>
         <source>Omega Squadron</source>
         <extracomment>network:strNATION_TERRAN_5</extracomment>
         <translation>Escadron oméga</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="126"/>
+        <location filename="strings.cpp" line="128"/>
         <source>Alpha Squadron</source>
         <extracomment>network:strNATION_TERRAN_6</extracomment>
         <translation>Escadron alpha</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="128"/>
+        <location filename="strings.cpp" line="130"/>
         <source>Epsilon Squadron</source>
         <extracomment>network:strNATION_TERRAN_7</extracomment>
         <translation>Escadron epsilon</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="132"/>
+        <location filename="strings.cpp" line="134"/>
         <source>Ara Tribe</source>
         <extracomment>network:strNATION_PROTOSS_0</extracomment>
         <translation>Tribu Ara</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="134"/>
+        <location filename="strings.cpp" line="136"/>
         <source>Sargas Tribe</source>
         <extracomment>network:strNATION_PROTOSS_1</extracomment>
         <translation>Tribu Sargas</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="136"/>
+        <location filename="strings.cpp" line="138"/>
         <source>Akilae Tribe</source>
         <extracomment>network:strNATION_PROTOSS_2</extracomment>
         <translation>Tribu Akilae</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="138"/>
+        <location filename="strings.cpp" line="140"/>
         <source>Furinax Tribe</source>
         <extracomment>network:strNATION_PROTOSS_3</extracomment>
         <translation>Tribu Furinax</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="140"/>
+        <location filename="strings.cpp" line="142"/>
         <source>Auriga Tribe</source>
         <extracomment>network:strNATION_PROTOSS_4</extracomment>
         <translation>Tribu Auriga</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="142"/>
+        <location filename="strings.cpp" line="144"/>
         <source>Venatir Tribe</source>
         <extracomment>network:strNATION_PROTOSS_5</extracomment>
         <translation>Tribu Venatir</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="144"/>
+        <location filename="strings.cpp" line="146"/>
         <source>Shelak Tribe</source>
         <extracomment>network:strNATION_PROTOSS_6</extracomment>
         <translation>Tribu Shelak</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="146"/>
+        <location filename="strings.cpp" line="148"/>
         <source>Velari Tribe</source>
         <extracomment>network:strNATION_PROTOSS_7</extracomment>
         <translation>Tribu Velari</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="188"/>
+        <location filename="strings.cpp" line="190"/>
         <source>Red</source>
         <extracomment>gluAll:lobbyScreen_Red</extracomment>
         <translation>Rouge</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="190"/>
+        <location filename="strings.cpp" line="192"/>
         <source>Blue</source>
         <extracomment>gluAll:lobbyScreen_Blue</extracomment>
         <translation>Bleu</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="192"/>
+        <location filename="strings.cpp" line="194"/>
         <source>Teal</source>
         <extracomment>gluAll:lobbyScreen_Teal</extracomment>
         <translation>Bleu canard</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="194"/>
+        <location filename="strings.cpp" line="196"/>
         <source>Purple</source>
         <extracomment>gluAll:lobbyScreen_Purple</extracomment>
         <translation>Violet</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="196"/>
+        <location filename="strings.cpp" line="198"/>
         <source>Orange</source>
         <extracomment>gluAll:lobbyScreen_Orange</extracomment>
         <translation>Orange</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="198"/>
+        <location filename="strings.cpp" line="200"/>
         <source>Brown</source>
         <extracomment>gluAll:lobbyScreen_Brown</extracomment>
         <translation>Marron</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="200"/>
+        <location filename="strings.cpp" line="202"/>
         <source>White</source>
         <extracomment>gluAll:lobbyScreen_White</extracomment>
         <translation>Blanc</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="202"/>
+        <location filename="strings.cpp" line="204"/>
         <source>Yellow</source>
         <extracomment>gluAll:lobbyScreen_Yellow</extracomment>
         <translation>Jaune</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="204"/>
+        <location filename="strings.cpp" line="206"/>
         <source>Green</source>
         <extracomment>gluAll:lobbyScreen_Green</extracomment>
         <translation>Vert</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="206"/>
-        <location filename="strings.cpp" line="216"/>
+        <location filename="strings.cpp" line="208"/>
+        <location filename="strings.cpp" line="218"/>
         <source>Pale Yellow</source>
         <extracomment>gluAll:lobbyScreen_PaleYellow</extracomment>
         <translation>Jaune pâle</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="208"/>
+        <location filename="strings.cpp" line="210"/>
         <source>Tan</source>
         <extracomment>gluAll:lobbyScreen_Tan</extracomment>
         <translation>Brun clair</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="210"/>
+        <location filename="strings.cpp" line="212"/>
         <source>Dark Aqua</source>
         <extracomment>gluAll:lobbyScreen_DarkAqua</extracomment>
         <translation>Turquoise foncé</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="212"/>
+        <location filename="strings.cpp" line="214"/>
         <source>Pale Green</source>
         <extracomment>gluAll:lobbyScreen_PaleGreen</extracomment>
         <translation>Vert pâle</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="214"/>
+        <location filename="strings.cpp" line="216"/>
         <source>Bluish Grey</source>
         <extracomment>gluAll:lobbyScreen_BluishGrey</extracomment>
         <translation>Gris bleuté</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="218"/>
+        <location filename="strings.cpp" line="220"/>
         <source>Cyan</source>
         <extracomment>gluAll:lobbyScreen_Cyan</extracomment>
         <translation>Cyan</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="220"/>
+        <location filename="strings.cpp" line="222"/>
         <source>Pink</source>
         <extracomment>gluAll:lobbyScreen_Pink</extracomment>
         <translation>Rose</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="222"/>
+        <location filename="strings.cpp" line="224"/>
         <source>Olive</source>
         <extracomment>gluAll:lobbyScreen_Olive</extracomment>
         <translation>Olive</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="224"/>
+        <location filename="strings.cpp" line="226"/>
         <source>Lime</source>
         <extracomment>gluAll:lobbyScreen_Lime</extracomment>
         <translation>Citron vert</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="226"/>
+        <location filename="strings.cpp" line="228"/>
         <source>Navy</source>
         <extracomment>gluAll:lobbyScreen_Navy</extracomment>
         <translation>Bleu marine</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="228"/>
+        <location filename="strings.cpp" line="230"/>
         <source>Magenta</source>
         <extracomment>gluAll:lobbyScreen_Magenta</extracomment>
         <translation>Magenta</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="230"/>
+        <location filename="strings.cpp" line="232"/>
         <source>Grey</source>
         <extracomment>gluAll:lobbyScreen_Grey</extracomment>
         <translation>Gris</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="232"/>
+        <location filename="strings.cpp" line="234"/>
         <source>Black</source>
         <extracomment>gluAll:lobbyScreen_Black</extracomment>
         <translation>Noir</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="242"/>
+        <location filename="strings.cpp" line="244"/>
         <source>Force 1</source>
         <extracomment>network:strFORCE1</extracomment>
         <translation>Force 1</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="244"/>
+        <location filename="strings.cpp" line="246"/>
         <source>Force 2</source>
         <extracomment>network:strFORCE2</extracomment>
         <translation>Force 2</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="246"/>
+        <location filename="strings.cpp" line="248"/>
         <source>Force 3</source>
         <extracomment>network:strFORCE3</extracomment>
         <translation>Force 3</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="248"/>
+        <location filename="strings.cpp" line="250"/>
         <source>Force 4</source>
         <extracomment>network:strFORCE4</extracomment>
         <translation>Force 4</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="263"/>
+        <location filename="strings.cpp" line="265"/>
         <source>Open</source>
         <oldsource>Open ▼</oldsource>
         <extracomment>gluAll:slotOPEN</extracomment>
         <translation>Ouvert</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="268"/>
+        <location filename="strings.cpp" line="270"/>
         <source>Unknown</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="282"/>
-        <location filename="strings.cpp" line="286"/>
+        <location filename="strings.cpp" line="284"/>
+        <location filename="strings.cpp" line="288"/>
         <source>Select Race</source>
         <oldsource>Select Race ▼</oldsource>
         <extracomment>gluAll:lobbyScreen_selectRace</extracomment>
         <translation>Choisir une race</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="300"/>
+        <location filename="strings.cpp" line="302"/>
         <source>Map specified</source>
         <extracomment>gluAll:lobbyScreen_MapSpecified</extracomment>
         <translation>Défini par la carte</translation>
@@ -2541,7 +2420,7 @@ EditLocal:11:175, stat_txt:DDS_INSTALL_DDWALK</extracomment>
 <context>
     <name>QShortcut</name>
     <message>
-        <location filename="mainwindow.cpp" line="99"/>
+        <location filename="mainwindow.cpp" line="100"/>
         <source>Zoom</source>
         <extracomment>DO NOT TRANSLATE</extracomment>
         <translation type="unfinished"></translation>
@@ -2807,165 +2686,93 @@ EditLocal:11:175, stat_txt:DDS_INSTALL_DDWALK</extracomment>
         <translation>Joueur</translation>
     </message>
     <message>
-        <location filename="unitstab.ui" line="99"/>
-        <source>Player 1</source>
-        <extracomment>EditLocal:8:126</extracomment>
-        <translation>Joueur 1</translation>
-    </message>
-    <message>
-        <location filename="unitstab.ui" line="104"/>
-        <source>Player 2</source>
-        <extracomment>EditLocal:8:127</extracomment>
-        <translation>Joueur 2</translation>
-    </message>
-    <message>
-        <location filename="unitstab.ui" line="109"/>
-        <source>Player 3</source>
-        <extracomment>EditLocal:9:128</extracomment>
-        <translation>Joueur 3</translation>
-    </message>
-    <message>
-        <location filename="unitstab.ui" line="114"/>
-        <source>Player 4</source>
-        <extracomment>EditLocal:9:129</extracomment>
-        <translation>Joueur 4</translation>
-    </message>
-    <message>
-        <location filename="unitstab.ui" line="119"/>
-        <source>Player 5</source>
-        <extracomment>EditLocal:9:130</extracomment>
-        <translation>Joueur 5</translation>
-    </message>
-    <message>
-        <location filename="unitstab.ui" line="124"/>
-        <source>Player 6</source>
-        <extracomment>EditLocal:9:131</extracomment>
-        <translation>Joueur 6</translation>
-    </message>
-    <message>
-        <location filename="unitstab.ui" line="129"/>
-        <source>Player 7</source>
-        <extracomment>EditLocal:9:132</extracomment>
-        <translation>Joueur 7</translation>
-    </message>
-    <message>
-        <location filename="unitstab.ui" line="134"/>
-        <source>Player 8</source>
-        <extracomment>EditLocal:9:133</extracomment>
-        <translation>Joueur 8</translation>
-    </message>
-    <message>
-        <location filename="unitstab.ui" line="175"/>
-        <location filename="unitstab.ui" line="219"/>
+        <location filename="unitstab.ui" line="115"/>
+        <location filename="unitstab.ui" line="159"/>
         <source>Use Defaults</source>
         <oldsource>Use Default</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="unitstab.ui" line="139"/>
-        <source>Independent 1</source>
-        <extracomment>EditLocal:9:134</extracomment>
-        <translation>Indépendant 1</translation>
-    </message>
-    <message>
-        <location filename="unitstab.ui" line="144"/>
-        <source>Independent 2</source>
-        <extracomment>EditLocal:9:135</extracomment>
-        <translation>Indépendant 2</translation>
-    </message>
-    <message>
-        <location filename="unitstab.ui" line="149"/>
-        <source>Independent 3</source>
-        <extracomment>EditLocal:9:136</extracomment>
-        <translation>Indépendant 3</translation>
-    </message>
-    <message>
-        <location filename="unitstab.ui" line="154"/>
-        <source>Neutral</source>
-        <extracomment>EditLocal:9:137</extracomment>
-        <translation>Neutre</translation>
-    </message>
-    <message>
-        <location filename="unitstab.ui" line="190"/>
+        <location filename="unitstab.ui" line="130"/>
         <source>Enable for Player</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="unitstab.ui" line="203"/>
+        <location filename="unitstab.ui" line="143"/>
         <source>Enable by Default</source>
         <extracomment>EditLocal:1217:1192</extracomment>
         <translation>Actif par Défaut</translation>
     </message>
     <message>
-        <location filename="unitstab.ui" line="230"/>
+        <location filename="unitstab.ui" line="170"/>
         <source>Hit Points</source>
         <extracomment>EditLocal:1216:1000</extracomment>
         <translation>Points de Vie</translation>
     </message>
     <message>
-        <location filename="unitstab.ui" line="261"/>
+        <location filename="unitstab.ui" line="201"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This is the fractional HP portion, ranging between 0 and 255 which translates to values between 0.00 and 0.99... of a hit point.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="unitstab.ui" line="279"/>
+        <location filename="unitstab.ui" line="219"/>
         <source>Shields</source>
         <extracomment>stat_txt:STR_SHIELD_LBL</extracomment>
         <translation>Boucliers</translation>
     </message>
     <message>
-        <location filename="unitstab.ui" line="302"/>
+        <location filename="unitstab.ui" line="242"/>
         <source>Armour</source>
         <extracomment>stat_txt:STR_ARMOR_LBL</extracomment>
         <translation>Armure</translation>
     </message>
     <message>
-        <location filename="unitstab.ui" line="324"/>
+        <location filename="unitstab.ui" line="264"/>
         <source>Ground Weapon</source>
         <extracomment>EditLocal:1216:1227</extracomment>
         <translation>Armes Terrestres</translation>
     </message>
     <message>
-        <location filename="unitstab.ui" line="347"/>
-        <location filename="unitstab.ui" line="415"/>
+        <location filename="unitstab.ui" line="287"/>
+        <location filename="unitstab.ui" line="355"/>
         <source>Damage</source>
         <extracomment>stat_txt:STR_DAMAGE_LBL</extracomment>
         <translation>Dégâts</translation>
     </message>
     <message>
-        <location filename="unitstab.ui" line="367"/>
-        <location filename="unitstab.ui" line="435"/>
+        <location filename="unitstab.ui" line="307"/>
+        <location filename="unitstab.ui" line="375"/>
         <source>Bonus</source>
         <extracomment>EditLocal:1216</extracomment>
         <translation>Bonus</translation>
     </message>
     <message>
-        <location filename="unitstab.ui" line="392"/>
+        <location filename="unitstab.ui" line="332"/>
         <source>Air Weapon</source>
         <extracomment>EditLocal:1216:1228</extracomment>
         <translation>Armes Aériennes</translation>
     </message>
     <message>
-        <location filename="unitstab.ui" line="475"/>
+        <location filename="unitstab.ui" line="415"/>
         <source>Time</source>
         <oldsource>Build Time</oldsource>
         <extracomment>EditLocal:1216</extracomment>
         <translation>Temps</translation>
     </message>
     <message>
-        <location filename="unitstab.ui" line="495"/>
+        <location filename="unitstab.ui" line="435"/>
         <source>Minerals</source>
         <extracomment>EditLocal:1216</extracomment>
         <translation>Minerais</translation>
     </message>
     <message>
-        <location filename="unitstab.ui" line="515"/>
+        <location filename="unitstab.ui" line="455"/>
         <source>Gas</source>
         <extracomment>EditLocal:1216</extracomment>
         <translation>Gaz</translation>
     </message>
     <message>
-        <location filename="unitstab.ui" line="537"/>
+        <location filename="unitstab.ui" line="477"/>
         <source>Custom Name</source>
         <extracomment>SEditENU:1216</extracomment>
         <translation type="unfinished"></translation>
@@ -2991,117 +2798,57 @@ EditLocal:11:175, stat_txt:DDS_INSTALL_DDWALK</extracomment>
     </message>
     <message>
         <location filename="upgradestab.ui" line="97"/>
-        <location filename="upgradestab.ui" line="239"/>
+        <location filename="upgradestab.ui" line="179"/>
         <source>Level</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="upgradestab.ui" line="102"/>
-        <location filename="upgradestab.ui" line="259"/>
+        <location filename="upgradestab.ui" line="199"/>
         <source>Max</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="upgradestab.ui" line="107"/>
-        <source>Player 1</source>
-        <translation>Joueur 1</translation>
-    </message>
-    <message>
-        <location filename="upgradestab.ui" line="112"/>
-        <source>Player 2</source>
-        <translation>Joueur 2</translation>
-    </message>
-    <message>
-        <location filename="upgradestab.ui" line="117"/>
-        <source>Player 3</source>
-        <translation>Joueur 3</translation>
-    </message>
-    <message>
-        <location filename="upgradestab.ui" line="122"/>
-        <source>Player 4</source>
-        <translation>Joueur 4</translation>
-    </message>
-    <message>
-        <location filename="upgradestab.ui" line="127"/>
-        <source>Player 5</source>
-        <translation>Joueur 5</translation>
-    </message>
-    <message>
-        <location filename="upgradestab.ui" line="132"/>
-        <source>Player 6</source>
-        <translation>Joueur 6</translation>
-    </message>
-    <message>
-        <location filename="upgradestab.ui" line="137"/>
-        <source>Player 7</source>
-        <translation>Joueur 7</translation>
-    </message>
-    <message>
-        <location filename="upgradestab.ui" line="142"/>
-        <source>Player 8</source>
-        <translation>Joueur 8</translation>
-    </message>
-    <message>
-        <location filename="upgradestab.ui" line="147"/>
-        <source>Independent 1</source>
-        <translation>Indépendant 1</translation>
-    </message>
-    <message>
-        <location filename="upgradestab.ui" line="152"/>
-        <source>Independent 2</source>
-        <translation>Indépendant 2</translation>
-    </message>
-    <message>
-        <location filename="upgradestab.ui" line="157"/>
-        <source>Independent 3</source>
-        <translation>Indépendant 3</translation>
-    </message>
-    <message>
-        <location filename="upgradestab.ui" line="162"/>
-        <source>Neutral</source>
-        <translation>Neutre</translation>
-    </message>
-    <message>
-        <location filename="upgradestab.ui" line="439"/>
+        <location filename="upgradestab.ui" line="379"/>
         <source>Time</source>
         <extracomment>EditLocal:1223</extracomment>
         <translation>Temps</translation>
     </message>
     <message>
-        <location filename="upgradestab.ui" line="172"/>
+        <location filename="upgradestab.ui" line="112"/>
         <source>Default Level</source>
         <oldsource>Default Start</oldsource>
         <extracomment>EditLocal:1218</extracomment>
         <translation>Niveau par Défaut</translation>
     </message>
     <message>
-        <location filename="upgradestab.ui" line="192"/>
+        <location filename="upgradestab.ui" line="132"/>
         <source>Default Max</source>
         <extracomment>EditLocal:1218</extracomment>
         <translation>Max par Défaut</translation>
     </message>
     <message>
-        <location filename="upgradestab.ui" line="230"/>
-        <location filename="upgradestab.ui" line="288"/>
+        <location filename="upgradestab.ui" line="170"/>
+        <location filename="upgradestab.ui" line="228"/>
         <source>Use Defaults</source>
         <oldsource>Use Default</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="upgradestab.ui" line="297"/>
+        <location filename="upgradestab.ui" line="237"/>
         <source>Minerals</source>
         <extracomment>EditLocal:1223</extracomment>
         <translation>Minerais</translation>
     </message>
     <message>
-        <location filename="upgradestab.ui" line="346"/>
-        <location filename="upgradestab.ui" line="417"/>
-        <location filename="upgradestab.ui" line="488"/>
+        <location filename="upgradestab.ui" line="286"/>
+        <location filename="upgradestab.ui" line="357"/>
+        <location filename="upgradestab.ui" line="428"/>
         <source>level</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="upgradestab.ui" line="368"/>
+        <location filename="upgradestab.ui" line="308"/>
         <source>Gas</source>
         <extracomment>EditLocal:1223</extracomment>
         <translation>Gaz</translation>

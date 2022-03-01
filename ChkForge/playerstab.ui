@@ -70,46 +70,6 @@
        <string>Force</string>
       </property>
      </column>
-     <item>
-      <property name="text">
-       <string extracomment="EditLocal:8:126">Player 1</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string extracomment="EditLocal:8:127">Player 2</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string extracomment="EditLocal:9:128">Player 3</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string extracomment="EditLocal:9:129">Player 4</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string extracomment="EditLocal:9:130">Player 5</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string extracomment="EditLocal:9:131">Player 6</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string extracomment="EditLocal:9:132">Player 7</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string extracomment="EditLocal:9:133">Player 8</string>
-      </property>
-     </item>
     </widget>
    </item>
    <item>

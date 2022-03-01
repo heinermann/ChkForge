@@ -102,66 +102,6 @@
           <string>Max</string>
          </property>
         </column>
-        <item>
-         <property name="text">
-          <string>Player 1</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Player 2</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Player 3</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Player 4</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Player 5</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Player 6</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Player 7</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Player 8</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Independent 1</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Independent 2</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Independent 3</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Neutral</string>
-         </property>
-        </item>
        </widget>
       </item>
       <item row="0" column="1">

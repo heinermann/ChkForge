@@ -6,6 +6,7 @@ UpgradesTab::UpgradesTab(QWidget* parent)
   , ui(new Ui::UpgradesTab)
 {
   ui->setupUi(this);
+  populatePlayerList(ui->upgradePlyrList);
 }
 
 UpgradesTab::~UpgradesTab() {

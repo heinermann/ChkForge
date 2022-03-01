@@ -6,6 +6,7 @@ UnitsTab::UnitsTab(QWidget* parent)
   , ui(new Ui::UnitsTab)
 {
   ui->setupUi(this);
+  populatePlayerList(ui->unitPlyrList);
 }
 
 UnitsTab::~UnitsTab() {

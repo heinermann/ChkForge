@@ -24,7 +24,7 @@ void ForcesTab::init() {
   }
 
   for (int i = 0; i < Sc::Player::TotalSlots; ++i) {
-    QTreeWidgetItem* playerItem = new QTreeWidgetItem(QStringList{ getGenericPlayerName(i), "a", "b", QString::number(i) });
+    QTreeWidgetItem* playerItem = new QTreeWidgetItem(QStringList{ ChkForge::getGenericPlayerName(i), "a", "b", QString::number(i) });
     playerItem->setData(0, Qt::UserRole, i);
     playerItem->setFlags(Qt::ItemNeverHasChildren);
     playersUnderForces.append(playerItem);
@@ -100,10 +100,10 @@ void ForcesTab::updateForcesTree() {
   for (int playerSlot = 0; playerSlot < playersUnderForces.size(); ++playerSlot) {
     QTreeWidgetItem* itm = playersUnderForces[playerSlot];
 
-    itm->setText(0, getSlotOwnerName(settings->ownr.slotType[playerSlot]));
-    itm->setText(1, getSlotRaceName(settings->side.playerRaces[playerSlot]));
+    itm->setText(0, ChkForge::getSlotOwnerName(settings->ownr.slotType[playerSlot]));
+    itm->setText(1, ChkForge::getSlotRaceName(settings->side.playerRaces[playerSlot]));
     //: gluAll:lobbyScreen_MapSpecified
-    itm->setText(2, useRemasteredColorStr ? getSlotColorName(3, settings->colr.playerColor[playerSlot]) : tr("Map specified"));
+    itm->setText(2, useRemasteredColorStr ? ChkForge::getSlotColorName(3, settings->colr.playerColor[playerSlot]) : tr("Map specified"));
 
     int index = itm->parent()->indexOfChild(itm);
     itm->parent()->takeChild(index);
