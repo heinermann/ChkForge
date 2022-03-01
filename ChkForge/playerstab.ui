@@ -254,7 +254,7 @@
          <item>
           <widget class="QRadioButton" name="radioControlInactive">
            <property name="text">
-            <string extracomment="EditLocal:10:147">Inactive</string>
+            <string extracomment="EditLocal:10:147, gluAll:season_srank_description">Inactive</string>
            </property>
            <property name="checked">
             <bool>true</bool>
@@ -280,7 +280,7 @@
          <item>
           <widget class="QRadioButton" name="radioControlRescuable">
            <property name="text">
-            <string extracomment="EditLocal:24:377">Rescuable</string>
+            <string extracomment="stat_txt:STR_ORDER_RESCUE_PASSIVE">Rescue Passive</string>
            </property>
            <attribute name="buttonGroup">
             <string notr="true">btnGroupController</string>
@@ -323,7 +323,7 @@
          <item>
           <widget class="QRadioButton" name="radioControlNeutral">
            <property name="text">
-            <string extracomment="EditLocal:24:379">Neutral</string>
+            <string extracomment="stat_txt:FIRST_UNIT_STRING-179">Neutral</string>
            </property>
            <attribute name="buttonGroup">
             <string notr="true">btnGroupController</string>
@@ -445,9 +445,9 @@
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="btnGroupColour"/>
   <buttongroup name="btnGroupRace"/>
   <buttongroup name="btnGroupController"/>
   <buttongroup name="btnGroupPlayerForce"/>
+  <buttongroup name="btnGroupColour"/>
  </buttongroups>
 </ui>

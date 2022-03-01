@@ -38,14 +38,14 @@ namespace ChkForge {
     QObject::tr("None"),
     QObject::tr("Occupied Computer"),
     QObject::tr("Occupied Human"),
-    //: EditLocal:24:377
-    QObject::tr("Rescuable"),
+    //: stat_txt:STR_ORDER_RESCUE_PASSIVE
+    QObject::tr("Rescue Passive"),
     QObject::tr("Dummy"),
     //: gluAll:lobbyScreen_computer
     QObject::tr("Computer"),
     //: EditLocal:8:123
     QObject::tr("Human"),
-    //: EditLocal:8:125
+    //: stat_txt:STR_ORDER_NEUTRAL, stat_txt:FIRST_UNIT_STRING-179
     QObject::tr("Neutral"),
     //: gluAll:lobbyScreen_closed
     QObject::tr("Closed"),

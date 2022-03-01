@@ -1174,7 +1174,7 @@ Other sizes may crash Starcraft.</source>
     <message>
         <location filename="playerstab.ui" line="257"/>
         <source>Inactive</source>
-        <extracomment>EditLocal:10:147</extracomment>
+        <extracomment>EditLocal:10:147, gluAll:season_srank_description</extracomment>
         <translation></translation>
     </message>
     <message>
@@ -1189,9 +1189,10 @@ Other sizes may crash Starcraft.</source>
     </message>
     <message>
         <location filename="playerstab.ui" line="283"/>
-        <source>Rescuable</source>
-        <extracomment>EditLocal:24:377</extracomment>
-        <translation></translation>
+        <source>Rescue Passive</source>
+        <oldsource>Rescuable</oldsource>
+        <extracomment>stat_txt:STR_ORDER_RESCUE_PASSIVE</extracomment>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="293"/>
@@ -1212,7 +1213,7 @@ Other sizes may crash Starcraft.</source>
     <message>
         <location filename="playerstab.ui" line="326"/>
         <source>Neutral</source>
-        <extracomment>EditLocal:24:379</extracomment>
+        <extracomment>stat_txt:FIRST_UNIT_STRING-179</extracomment>
         <translation></translation>
     </message>
     <message>
@@ -1424,9 +1425,10 @@ Please select a different directory.</source>
     </message>
     <message>
         <location filename="strings.cpp" line="42"/>
-        <source>Rescuable</source>
-        <extracomment>EditLocal:24:377</extracomment>
-        <translation></translation>
+        <source>Rescue Passive</source>
+        <oldsource>Rescuable</oldsource>
+        <extracomment>stat_txt:STR_ORDER_RESCUE_PASSIVE</extracomment>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="strings.cpp" line="43"/>
@@ -1456,9 +1458,11 @@ gluAll:slotCOMPUTER</extracomment>
         <location filename="strings.cpp" line="87"/>
         <location filename="strings.cpp" line="159"/>
         <source>Neutral</source>
-        <extracomment>EditLocal:8:125
+        <extracomment>stat_txt:STR_ORDER_NEUTRAL, stat_txt:FIRST_UNIT_STRING-179
 ----------
-EditLocal:9:137</extracomment>
+EditLocal:9:137
+----------
+EditLocal:8:125</extracomment>
         <translation></translation>
     </message>
     <message>

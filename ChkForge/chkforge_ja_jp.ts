@@ -452,7 +452,7 @@ Some select Starforge code snippets and resources.
         <location filename="forcestab.cpp" line="104"/>
         <source>Map specified</source>
         <extracomment>gluAll:lobbyScreen_MapSpecified</extracomment>
-        <translation type="unfinished">マップ指定</translation>
+        <translation>マップ指定</translation>
     </message>
 </context>
 <context>
@@ -1047,7 +1047,7 @@ Some select Starforge code snippets and resources.
         <location filename="newmap.ui" line="24"/>
         <source>Size</source>
         <extracomment>gluAll:infoPane_size</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>サイズ</translation>
     </message>
     <message>
         <location filename="newmap.ui" line="86"/>
@@ -1060,7 +1060,7 @@ Other sizes may crash Starcraft.</source>
         <location filename="newmap.ui" line="117"/>
         <source>Tileset</source>
         <extracomment>gluAll:infoPane_tileset</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>タイルセット</translation>
     </message>
     <message>
         <location filename="newmap.ui" line="195"/>
@@ -1074,7 +1074,7 @@ Other sizes may crash Starcraft.</source>
         <location filename="playerstab.ui" line="45"/>
         <source>Player</source>
         <extracomment>gluAll:scr.leaderboard.table.heading.2</extracomment>
-        <translation type="unfinished">プレイヤー</translation>
+        <translation>プレイヤー</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="50"/>
@@ -1113,26 +1113,26 @@ Other sizes may crash Starcraft.</source>
         <location filename="playerstab.ui" line="195"/>
         <source>Terran</source>
         <extracomment>gluAll:lobbyScreen_terran</extracomment>
-        <translation type="unfinished">テラン</translation>
+        <translation>テラン</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="306"/>
         <source>Computer</source>
         <extracomment>gluAll:lobbyScreen_computer</extracomment>
-        <translation type="unfinished">コンピューター</translation>
+        <translation>コンピューター</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="371"/>
         <source>Force 1</source>
         <extracomment>network:strFORCE1</extracomment>
-        <translation type="unfinished">部隊1</translation>
+        <translation>部隊1</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="105"/>
         <location filename="playerstab.ui" line="225"/>
         <source>Random</source>
         <extracomment>gluAll:lobbyScreen_random</extracomment>
-        <translation type="unfinished">ランダム</translation>
+        <translation>ランダム</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="121"/>
@@ -1148,13 +1148,13 @@ Other sizes may crash Starcraft.</source>
         <location filename="playerstab.ui" line="182"/>
         <source>Zerg</source>
         <extracomment>gluAll:lobbyScreen_zerg</extracomment>
-        <translation type="unfinished">ザーグ</translation>
+        <translation>ザーグ</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="205"/>
         <source>Protoss</source>
         <extracomment>gluAll:lobbyScreen_protoss</extracomment>
-        <translation type="unfinished">プロトス</translation>
+        <translation>プロトス</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="215"/>
@@ -1165,7 +1165,7 @@ Other sizes may crash Starcraft.</source>
     <message>
         <location filename="playerstab.ui" line="257"/>
         <source>Inactive</source>
-        <extracomment>EditLocal:10:147</extracomment>
+        <extracomment>EditLocal:10:147, gluAll:season_srank_description</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1180,9 +1180,10 @@ Other sizes may crash Starcraft.</source>
     </message>
     <message>
         <location filename="playerstab.ui" line="283"/>
-        <source>Rescuable</source>
-        <extracomment>EditLocal:24:377</extracomment>
-        <translation type="unfinished"></translation>
+        <source>Rescue Passive</source>
+        <oldsource>Rescuable</oldsource>
+        <extracomment>stat_txt:STR_ORDER_RESCUE_PASSIVE</extracomment>
+        <translation>消極的救助</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="293"/>
@@ -1203,8 +1204,8 @@ Other sizes may crash Starcraft.</source>
     <message>
         <location filename="playerstab.ui" line="326"/>
         <source>Neutral</source>
-        <extracomment>EditLocal:24:379</extracomment>
-        <translation type="unfinished">中立</translation>
+        <extracomment>stat_txt:FIRST_UNIT_STRING-179</extracomment>
+        <translation>中立</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="336"/>
@@ -1215,25 +1216,25 @@ Other sizes may crash Starcraft.</source>
         <location filename="playerstab.ui" line="339"/>
         <source>Closed</source>
         <extracomment>gluAll:lobbyScreen_closed</extracomment>
-        <translation type="unfinished">参加不可</translation>
+        <translation>参加不可</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="384"/>
         <source>Force 2</source>
         <extracomment>network:strFORCE2</extracomment>
-        <translation type="unfinished">部隊2</translation>
+        <translation>部隊2</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="394"/>
         <source>Force 3</source>
         <extracomment>network:strFORCE3</extracomment>
-        <translation type="unfinished">部隊3</translation>
+        <translation>部隊3</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="404"/>
         <source>Force 4</source>
         <extracomment>network:strFORCE4</extracomment>
-        <translation type="unfinished">部隊4</translation>
+        <translation>部隊4</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="414"/>
@@ -1425,9 +1426,10 @@ Please select a different directory.</source>
     </message>
     <message>
         <location filename="strings.cpp" line="42"/>
-        <source>Rescuable</source>
-        <extracomment>EditLocal:24:377</extracomment>
-        <translation type="unfinished"></translation>
+        <source>Rescue Passive</source>
+        <oldsource>Rescuable</oldsource>
+        <extracomment>stat_txt:STR_ORDER_RESCUE_PASSIVE</extracomment>
+        <translation>消極的救助</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="43"/>
@@ -1457,9 +1459,11 @@ gluAll:slotCOMPUTER</extracomment>
         <location filename="strings.cpp" line="87"/>
         <location filename="strings.cpp" line="159"/>
         <source>Neutral</source>
-        <extracomment>EditLocal:8:125
+        <extracomment>stat_txt:STR_ORDER_NEUTRAL, stat_txt:FIRST_UNIT_STRING-179
 ----------
-EditLocal:9:137</extracomment>
+EditLocal:9:137
+----------
+EditLocal:8:125</extracomment>
         <translation>中立</translation>
     </message>
     <message>
@@ -2538,7 +2542,7 @@ EditLocal:11:175, stat_txt:DDS_INSTALL_DDWALK</extracomment>
     <message>
         <location filename="terrainbrush.ui" line="38"/>
         <source>Size</source>
-        <translation type="unfinished"></translation>
+        <translation>サイズ</translation>
     </message>
     <message>
         <location filename="terrainbrush.ui" line="150"/>
@@ -2792,7 +2796,7 @@ EditLocal:11:175, stat_txt:DDS_INSTALL_DDWALK</extracomment>
         <location filename="upgradestab.ui" line="92"/>
         <source>Player</source>
         <extracomment>gluAll:gluAll:scr.leaderboard.table.heading.2</extracomment>
-        <translation type="unfinished">プレイヤー</translation>
+        <translation>プレイヤー</translation>
     </message>
     <message>
         <location filename="upgradestab.ui" line="97"/>

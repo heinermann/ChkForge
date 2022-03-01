@@ -452,7 +452,7 @@ Some select Starforge code snippets and resources.
         <location filename="forcestab.cpp" line="104"/>
         <source>Map specified</source>
         <extracomment>gluAll:lobbyScreen_MapSpecified</extracomment>
-        <translation type="unfinished">Definido por el mapa</translation>
+        <translation>Definido por el mapa</translation>
     </message>
 </context>
 <context>
@@ -1047,7 +1047,7 @@ Some select Starforge code snippets and resources.
         <location filename="newmap.ui" line="24"/>
         <source>Size</source>
         <extracomment>gluAll:infoPane_size</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Tamaño</translation>
     </message>
     <message>
         <location filename="newmap.ui" line="86"/>
@@ -1060,7 +1060,7 @@ Other sizes may crash Starcraft.</source>
         <location filename="newmap.ui" line="117"/>
         <source>Tileset</source>
         <extracomment>gluAll:infoPane_tileset</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Conjunto de teselas</translation>
     </message>
     <message>
         <location filename="newmap.ui" line="195"/>
@@ -1113,26 +1113,26 @@ Other sizes may crash Starcraft.</source>
         <location filename="playerstab.ui" line="195"/>
         <source>Terran</source>
         <extracomment>gluAll:lobbyScreen_terran</extracomment>
-        <translation type="unfinished">Terran</translation>
+        <translation>Terran</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="306"/>
         <source>Computer</source>
         <extracomment>gluAll:lobbyScreen_computer</extracomment>
-        <translation type="unfinished">IA</translation>
+        <translation>IA</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="371"/>
         <source>Force 1</source>
         <extracomment>network:strFORCE1</extracomment>
-        <translation type="unfinished">Fuerza 1</translation>
+        <translation>Fuerza 1</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="105"/>
         <location filename="playerstab.ui" line="225"/>
         <source>Random</source>
         <extracomment>gluAll:lobbyScreen_random</extracomment>
-        <translation type="unfinished">Aleatoria</translation>
+        <translation>Aleatoria</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="121"/>
@@ -1148,13 +1148,13 @@ Other sizes may crash Starcraft.</source>
         <location filename="playerstab.ui" line="182"/>
         <source>Zerg</source>
         <extracomment>gluAll:lobbyScreen_zerg</extracomment>
-        <translation type="unfinished">Zerg</translation>
+        <translation>Zerg</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="205"/>
         <source>Protoss</source>
         <extracomment>gluAll:lobbyScreen_protoss</extracomment>
-        <translation type="unfinished">Protoss</translation>
+        <translation>Protoss</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="215"/>
@@ -1165,7 +1165,7 @@ Other sizes may crash Starcraft.</source>
     <message>
         <location filename="playerstab.ui" line="257"/>
         <source>Inactive</source>
-        <extracomment>EditLocal:10:147</extracomment>
+        <extracomment>EditLocal:10:147, gluAll:season_srank_description</extracomment>
         <translation>Inactivo</translation>
     </message>
     <message>
@@ -1180,9 +1180,10 @@ Other sizes may crash Starcraft.</source>
     </message>
     <message>
         <location filename="playerstab.ui" line="283"/>
-        <source>Rescuable</source>
-        <extracomment>EditLocal:24:377</extracomment>
-        <translation>Rescatable</translation>
+        <source>Rescue Passive</source>
+        <oldsource>Rescuable</oldsource>
+        <extracomment>stat_txt:STR_ORDER_RESCUE_PASSIVE</extracomment>
+        <translation>Rescate pasivo</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="293"/>
@@ -1203,7 +1204,7 @@ Other sizes may crash Starcraft.</source>
     <message>
         <location filename="playerstab.ui" line="326"/>
         <source>Neutral</source>
-        <extracomment>EditLocal:24:379</extracomment>
+        <extracomment>stat_txt:FIRST_UNIT_STRING-179</extracomment>
         <translation>Neutral</translation>
     </message>
     <message>
@@ -1215,25 +1216,25 @@ Other sizes may crash Starcraft.</source>
         <location filename="playerstab.ui" line="339"/>
         <source>Closed</source>
         <extracomment>gluAll:lobbyScreen_closed</extracomment>
-        <translation type="unfinished">Cerrado</translation>
+        <translation>Cerrado</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="384"/>
         <source>Force 2</source>
         <extracomment>network:strFORCE2</extracomment>
-        <translation type="unfinished">Fuerza 2</translation>
+        <translation>Fuerza 2</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="394"/>
         <source>Force 3</source>
         <extracomment>network:strFORCE3</extracomment>
-        <translation type="unfinished">Fuerza 3</translation>
+        <translation>Fuerza 3</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="404"/>
         <source>Force 4</source>
         <extracomment>network:strFORCE4</extracomment>
-        <translation type="unfinished">Fuerza 4</translation>
+        <translation>Fuerza 4</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="414"/>
@@ -1425,9 +1426,10 @@ Please select a different directory.</source>
     </message>
     <message>
         <location filename="strings.cpp" line="42"/>
-        <source>Rescuable</source>
-        <extracomment>EditLocal:24:377</extracomment>
-        <translation>Rescatable</translation>
+        <source>Rescue Passive</source>
+        <oldsource>Rescuable</oldsource>
+        <extracomment>stat_txt:STR_ORDER_RESCUE_PASSIVE</extracomment>
+        <translation>Rescate pasivo</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="43"/>
@@ -1457,9 +1459,11 @@ gluAll:slotCOMPUTER</extracomment>
         <location filename="strings.cpp" line="87"/>
         <location filename="strings.cpp" line="159"/>
         <source>Neutral</source>
-        <extracomment>EditLocal:8:125
+        <extracomment>stat_txt:STR_ORDER_NEUTRAL, stat_txt:FIRST_UNIT_STRING-179
 ----------
-EditLocal:9:137</extracomment>
+EditLocal:9:137
+----------
+EditLocal:8:125</extracomment>
         <translation>Neutral</translation>
     </message>
     <message>
@@ -1941,7 +1945,7 @@ SEditENU:190:3029, stat_txt:DDS_TWILIGHT_DIRT</extracomment>
 EditLocal:33:527, stat_txt:DDS_TWILIGHT_MUD
 ----------
 SEditENU:190:3030, stat_txt:DDS_TWILIGHT_MUD</extracomment>
-        <translation>Lodo</translation>
+        <translation>Barro</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="76"/>
@@ -1962,7 +1966,7 @@ SEditENU:189:3009, stat_txt:DDS_DESERT_HIGHDIRT
 SEditENU:189:3023, stat_txt:DDS_ICE_HIGHROUGHSNOW
 ----------
 SEditENU:191:3040, stat_txt:DDS_TWILIGHT_HIGHDIRT</extracomment>
-        <translation>Tierra Alta</translation>
+        <translation>Tierra alta</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="78"/>
@@ -1993,7 +1997,7 @@ SEditENU:189:3019, stat_txt:DDS_ICE_SNOWYRUINS</extracomment>
         <extracomment>EditLocal:23:356, stat_txt:DDS_BAD_HIGRASS
 ----------
 SEditENU:190:3024, stat_txt:DDS_ICE_HIGHSNOWYRUINS</extracomment>
-        <translation>Hierba Alta</translation>
+        <translation>Hierba alta</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="84"/>
@@ -2041,7 +2045,7 @@ SEditENU:188:3005, stat_txt:DDS_DESERT_ROCKYGROUND</extracomment>
         <location filename="terrain.cpp" line="105"/>
         <source>Rusty Pit</source>
         <extracomment>EditLocal:14:222, stat_txt:DDS_PLAT_DDRUSTYPIT</extracomment>
-        <translation>Fosa oxidada</translation>
+        <translation>Foso oxidado</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="107"/>
@@ -2068,7 +2072,7 @@ EditLocal:11:175, stat_txt:DDS_INSTALL_DDWALK</extracomment>
         <location filename="terrain.cpp" line="113"/>
         <source>Solar Array</source>
         <extracomment>EditLocal:14:220, stat_txt:DDS_PLAT_DDSOLARPANEL</extracomment>
-        <translation>Paneles solares</translation>
+        <translation>Cubierta de panel solar</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="115"/>
@@ -2080,7 +2084,7 @@ EditLocal:11:175, stat_txt:DDS_INSTALL_DDWALK</extracomment>
         <location filename="terrain.cpp" line="117"/>
         <source>High Plating</source>
         <extracomment>EditLocal:2:20, stat_txt:DDS_PLAT_DDHIGHBLD</extracomment>
-        <translation>Alto Chapado</translation>
+        <translation>Chapado alto</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="119"/>
@@ -2174,7 +2178,7 @@ EditLocal:11:175, stat_txt:DDS_INSTALL_DDWALK</extracomment>
         <source>Ice</source>
         <comment>Brush</comment>
         <extracomment>SEditENU:189:3014, stat_txt:DDS_ICE_SUNKENICE</extracomment>
-        <translation type="unfinished">Hielo</translation>
+        <translation>Hielo</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="157"/>
@@ -2234,13 +2238,13 @@ EditLocal:11:175, stat_txt:DDS_INSTALL_DDWALK</extracomment>
         <location filename="terrain.cpp" line="202"/>
         <source>High Jungle</source>
         <extracomment>EditLocal:23:359, stat_txt:DDS_HIGH_JUNGLE</extracomment>
-        <translation>Alta Jungla</translation>
+        <translation>Jungla alta</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="204"/>
         <source>High Ruins</source>
         <extracomment>EditLocal:23:360, stat_txt:DDS_HIGH_RUINS</extracomment>
-        <translation>Altas Ruinas</translation>
+        <translation>Ruinas altas</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="206"/>
@@ -2258,91 +2262,91 @@ EditLocal:11:175, stat_txt:DDS_INSTALL_DDWALK</extracomment>
         <location filename="terrain.cpp" line="221"/>
         <source>Tar</source>
         <extracomment>SEditENU:188:3001, stat_txt:DDS_DESERT_WATER</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Alquitrán</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="225"/>
         <source>Dried Mud</source>
         <extracomment>SEditENU:188:3003, stat_txt:DDS_DESERT_DRIEDMUD</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Barro seco</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="227"/>
         <source>Sand Dunes</source>
         <extracomment>SEditENU:188:3004, stat_txt:DDS_DESERT_SANDDUNES</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Dunas de arena</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="231"/>
         <source>Crags</source>
         <extracomment>SEditENU:188:3006, stat_txt:DDS_DESERT_RUINS</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Riscos</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="233"/>
         <source>Sandy Sunken Pit</source>
         <extracomment>SEditENU:188:3007, stat_txt:DDS_DESERT_SANDYSUNKEN</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Pozo de arena</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="235"/>
         <source>Compound</source>
         <extracomment>SEditENU:189:3008, stat_txt:DDS_DESERT_RESOURCE</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Recinto</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="239"/>
         <source>High Sand Dunes</source>
         <extracomment>SEditENU:189:3010, stat_txt:DDS_DESERT_HIGHSANDDUNES</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Dunas de arena altas</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="241"/>
         <source>High Crags</source>
         <extracomment>SEditENU:189:3011, stat_txt:DDS_DESERT_HIGHRUINS</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Riscos altos</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="243"/>
         <source>High Sandy Sunken Pit</source>
         <extracomment>SEditENU:189:3012, stat_txt:DDS_DESERT_HIGHSANDSUNKEN</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Pozo de arena alto</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="245"/>
         <source>High Compound</source>
         <extracomment>SEditENU:189:3013, stat_txt:DDS_DESERT_HIGHRESOURCE</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Recinto alto</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="260"/>
         <source>Snow</source>
         <extracomment>SEditENU:189:3015, stat_txt:DDS_ICE_SNOW</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Nieve</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="262"/>
         <source>Moguls</source>
         <extracomment>SEditENU:189:3016, stat_txt:DDS_ICE_MUD</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Montículos de nieve dura</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="266"/>
         <source>Rocky Snow</source>
         <extracomment>SEditENU:189:3018, stat_txt:DDS_ICE_ROCKYSNOW</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Terreno rocoso con nieve</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="272"/>
         <source>Outpost</source>
         <extracomment>SEditENU:189:3021, stat_txt:DDS_ICE_OUTPOST</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Puesto avanzado</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="274"/>
         <source>High Snow</source>
         <extracomment>SEditENU:189:3022, stat_txt:DDS_ICE_HIGHSNOW</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Nieve alta</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="280"/>
@@ -2354,7 +2358,7 @@ EditLocal:11:175, stat_txt:DDS_INSTALL_DDWALK</extracomment>
         <location filename="terrain.cpp" line="282"/>
         <source>High Outpost</source>
         <extracomment>SEditENU:190:3026, stat_txt:DDS_ICE_HIGHOUTPOST</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Puesto avanzado alto</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="290"/>
@@ -2366,55 +2370,55 @@ EditLocal:11:175, stat_txt:DDS_INSTALL_DDWALK</extracomment>
         <location filename="terrain.cpp" line="301"/>
         <source>Crushed Rock</source>
         <extracomment>SEditENU:190:3031, stat_txt:DDS_TWILIGHT_CRACKEDICE</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Roca aplastada</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="303"/>
         <source>Crevices</source>
         <extracomment>SEditENU:190:3032, stat_txt:DDS_TWILIGHT_CREVICE</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Grietas</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="305"/>
         <source>Flagstones</source>
         <extracomment>SEditENU:190:3033, stat_txt:DDS_TWILIGHT_ANCIENTRUINS</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Losas</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="307"/>
         <source>Sunken Ground</source>
         <extracomment>SEditENU:190:3034, stat_txt:DDS_TWILIGHT_SUNKENGROUND</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Terreno hundido</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="309"/>
         <source>Basilica</source>
         <extracomment>SEditENU:190:3035, stat_txt:DDS_TWILIGHT_COMPOUND</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Basílica</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="313"/>
         <source>High Crushed Rock</source>
         <extracomment>SEditENU:190:3036, stat_txt:DDS_TWILIGHT_HIGHCRACKEDICE</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Roca aplastada alta</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="315"/>
         <source>High Flagstones</source>
         <extracomment>SEditENU:190:3037, stat_txt:DDS_TWILIGHT_HIGHANCIENTRUINS</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Losas altas</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="317"/>
         <source>High Sunken Ground</source>
         <extracomment>SEditENU:190:3038, stat_txt:DDS_TWILIGHT_HIGHSUNKENGROUND</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Terreno hundido alto</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="319"/>
         <source>High Basilica</source>
         <extracomment>SEditENU:190:3039, stat_txt:DDS_TWILIGHT_HIGHCOMPOUND</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Basílica alta</translation>
     </message>
 </context>
 <context>
@@ -2540,7 +2544,7 @@ EditLocal:11:175, stat_txt:DDS_INSTALL_DDWALK</extracomment>
     <message>
         <location filename="terrainbrush.ui" line="38"/>
         <source>Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Tamaño</translation>
     </message>
     <message>
         <location filename="terrainbrush.ui" line="150"/>

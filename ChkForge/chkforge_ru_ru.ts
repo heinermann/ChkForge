@@ -452,7 +452,7 @@ Some select Starforge code snippets and resources.
         <location filename="forcestab.cpp" line="104"/>
         <source>Map specified</source>
         <extracomment>gluAll:lobbyScreen_MapSpecified</extracomment>
-        <translation type="unfinished">Настройки карты</translation>
+        <translation>Настройки карты</translation>
     </message>
 </context>
 <context>
@@ -1047,7 +1047,7 @@ Some select Starforge code snippets and resources.
         <location filename="newmap.ui" line="24"/>
         <source>Size</source>
         <extracomment>gluAll:infoPane_size</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Размер</translation>
     </message>
     <message>
         <location filename="newmap.ui" line="86"/>
@@ -1060,7 +1060,7 @@ Other sizes may crash Starcraft.</source>
         <location filename="newmap.ui" line="117"/>
         <source>Tileset</source>
         <extracomment>gluAll:infoPane_tileset</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Набор текстур</translation>
     </message>
     <message>
         <location filename="newmap.ui" line="195"/>
@@ -1074,7 +1074,7 @@ Other sizes may crash Starcraft.</source>
         <location filename="playerstab.ui" line="45"/>
         <source>Player</source>
         <extracomment>gluAll:scr.leaderboard.table.heading.2</extracomment>
-        <translation type="unfinished">Игрок</translation>
+        <translation>Игрок</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="50"/>
@@ -1113,26 +1113,26 @@ Other sizes may crash Starcraft.</source>
         <location filename="playerstab.ui" line="195"/>
         <source>Terran</source>
         <extracomment>gluAll:lobbyScreen_terran</extracomment>
-        <translation type="unfinished">Терраны</translation>
+        <translation>Терраны</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="306"/>
         <source>Computer</source>
         <extracomment>gluAll:lobbyScreen_computer</extracomment>
-        <translation type="unfinished">ИИ</translation>
+        <translation>ИИ</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="371"/>
         <source>Force 1</source>
         <extracomment>network:strFORCE1</extracomment>
-        <translation type="unfinished">Войско 1</translation>
+        <translation>Войско 1</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="105"/>
         <location filename="playerstab.ui" line="225"/>
         <source>Random</source>
         <extracomment>gluAll:lobbyScreen_random</extracomment>
-        <translation type="unfinished">Случайный выбор</translation>
+        <translation>Случайный выбор</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="121"/>
@@ -1148,13 +1148,13 @@ Other sizes may crash Starcraft.</source>
         <location filename="playerstab.ui" line="182"/>
         <source>Zerg</source>
         <extracomment>gluAll:lobbyScreen_zerg</extracomment>
-        <translation type="unfinished">Зерги</translation>
+        <translation>Зерги</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="205"/>
         <source>Protoss</source>
         <extracomment>gluAll:lobbyScreen_protoss</extracomment>
-        <translation type="unfinished">Протоссы</translation>
+        <translation>Протоссы</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="215"/>
@@ -1165,7 +1165,7 @@ Other sizes may crash Starcraft.</source>
     <message>
         <location filename="playerstab.ui" line="257"/>
         <source>Inactive</source>
-        <extracomment>EditLocal:10:147</extracomment>
+        <extracomment>EditLocal:10:147, gluAll:season_srank_description</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1180,8 +1180,9 @@ Other sizes may crash Starcraft.</source>
     </message>
     <message>
         <location filename="playerstab.ui" line="283"/>
-        <source>Rescuable</source>
-        <extracomment>EditLocal:24:377</extracomment>
+        <source>Rescue Passive</source>
+        <oldsource>Rescuable</oldsource>
+        <extracomment>stat_txt:STR_ORDER_RESCUE_PASSIVE</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1203,8 +1204,8 @@ Other sizes may crash Starcraft.</source>
     <message>
         <location filename="playerstab.ui" line="326"/>
         <source>Neutral</source>
-        <extracomment>EditLocal:24:379</extracomment>
-        <translation type="unfinished">Нейтральные</translation>
+        <extracomment>stat_txt:FIRST_UNIT_STRING-179</extracomment>
+        <translation>Нейтральные</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="336"/>
@@ -1215,25 +1216,25 @@ Other sizes may crash Starcraft.</source>
         <location filename="playerstab.ui" line="339"/>
         <source>Closed</source>
         <extracomment>gluAll:lobbyScreen_closed</extracomment>
-        <translation type="unfinished">Закрытый слот</translation>
+        <translation>Закрытый слот</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="384"/>
         <source>Force 2</source>
         <extracomment>network:strFORCE2</extracomment>
-        <translation type="unfinished">Войско 2</translation>
+        <translation>Войско 2</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="394"/>
         <source>Force 3</source>
         <extracomment>network:strFORCE3</extracomment>
-        <translation type="unfinished">Войско 3</translation>
+        <translation>Войско 3</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="404"/>
         <source>Force 4</source>
         <extracomment>network:strFORCE4</extracomment>
-        <translation type="unfinished">Войско 4</translation>
+        <translation>Войско 4</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="414"/>
@@ -1425,8 +1426,9 @@ Please select a different directory.</source>
     </message>
     <message>
         <location filename="strings.cpp" line="42"/>
-        <source>Rescuable</source>
-        <extracomment>EditLocal:24:377</extracomment>
+        <source>Rescue Passive</source>
+        <oldsource>Rescuable</oldsource>
+        <extracomment>stat_txt:STR_ORDER_RESCUE_PASSIVE</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1457,9 +1459,11 @@ gluAll:slotCOMPUTER</extracomment>
         <location filename="strings.cpp" line="87"/>
         <location filename="strings.cpp" line="159"/>
         <source>Neutral</source>
-        <extracomment>EditLocal:8:125
+        <extracomment>stat_txt:STR_ORDER_NEUTRAL, stat_txt:FIRST_UNIT_STRING-179
 ----------
-EditLocal:9:137</extracomment>
+EditLocal:9:137
+----------
+EditLocal:8:125</extracomment>
         <translation>Нейтральные</translation>
     </message>
     <message>
@@ -1927,7 +1931,7 @@ SEditENU:188:3002, stat_txt:DDS_DESERT_HARDPAN
 SEditENU:189:3017, stat_txt:DDS_ICE_ROUGHSNOW
 ----------
 SEditENU:190:3029, stat_txt:DDS_TWILIGHT_DIRT</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Земля</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="74"/>
@@ -1939,7 +1943,7 @@ SEditENU:190:3029, stat_txt:DDS_TWILIGHT_DIRT</extracomment>
 EditLocal:33:527, stat_txt:DDS_TWILIGHT_MUD
 ----------
 SEditENU:190:3030, stat_txt:DDS_TWILIGHT_MUD</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Грязь</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="76"/>
@@ -1973,7 +1977,7 @@ SEditENU:191:3040, stat_txt:DDS_TWILIGHT_HIGHDIRT</extracomment>
 SEditENU:190:3028, stat_txt:DDS_ICE_WATER
 ----------
 SEditENU:190:3028, stat_txt:DDS_TWILIGHT_WATER</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Вода</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="80"/>
@@ -1982,7 +1986,7 @@ SEditENU:190:3028, stat_txt:DDS_TWILIGHT_WATER</extracomment>
         <extracomment>EditLocal:2:17, stat_txt:DDS_BAD_LOGRASS
 ----------
 SEditENU:189:3019, stat_txt:DDS_ICE_SNOWYRUINS</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Трава</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="82"/>
@@ -1997,7 +2001,7 @@ SEditENU:190:3024, stat_txt:DDS_ICE_HIGHSNOWYRUINS</extracomment>
         <location filename="terrain.cpp" line="84"/>
         <source>Structure</source>
         <extracomment>EditLocal:23:357, stat_txt:DDS_BAD_BLDG</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>строение</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="86"/>
@@ -2045,7 +2049,7 @@ SEditENU:188:3005, stat_txt:DDS_DESERT_ROCKYGROUND</extracomment>
         <location filename="terrain.cpp" line="107"/>
         <source>Platform</source>
         <extracomment>EditLocal:2:19, stat_txt:DDS_PLAT_DDLOWNBLD</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Платформа</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="109"/>
@@ -2060,7 +2064,7 @@ SEditENU:188:3005, stat_txt:DDS_DESERT_ROCKYGROUND</extracomment>
         <extracomment>EditLocal:2:18, stat_txt:DDS_PLAT_DDLOWBLD
 ----------
 EditLocal:11:175, stat_txt:DDS_INSTALL_DDWALK</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Обшивка</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="113"/>
@@ -2108,7 +2112,7 @@ EditLocal:11:175, stat_txt:DDS_INSTALL_DDWALK</extracomment>
         <location filename="terrain.cpp" line="135"/>
         <source>Floor</source>
         <extracomment>EditLocal:11:172, stat_txt:DDS_INSTALL_DDCLEAN</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Пол</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="137"/>
@@ -2151,7 +2155,7 @@ EditLocal:11:175, stat_txt:DDS_INSTALL_DDWALK</extracomment>
         <source>Jungle</source>
         <comment>Brush</comment>
         <extracomment>EditLocal:11:167, stat_txt:DDS_JUNG_JUNGLE</extracomment>
-        <translation type="unfinished">джунгли</translation>
+        <translation>Джунгли</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="216"/>
@@ -2172,7 +2176,7 @@ EditLocal:11:175, stat_txt:DDS_INSTALL_DDWALK</extracomment>
         <source>Ice</source>
         <comment>Brush</comment>
         <extracomment>SEditENU:189:3014, stat_txt:DDS_ICE_SUNKENICE</extracomment>
-        <translation type="unfinished">лед</translation>
+        <translation>Лед</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="157"/>
@@ -2214,7 +2218,7 @@ EditLocal:11:175, stat_txt:DDS_INSTALL_DDWALK</extracomment>
         <location filename="terrain.cpp" line="194"/>
         <source>Ruins</source>
         <extracomment>EditLocal:11:166, stat_txt:DDS_JUNG_RUINS</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Развалины</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="196"/>
@@ -2256,7 +2260,7 @@ EditLocal:11:175, stat_txt:DDS_INSTALL_DDWALK</extracomment>
         <location filename="terrain.cpp" line="221"/>
         <source>Tar</source>
         <extracomment>SEditENU:188:3001, stat_txt:DDS_DESERT_WATER</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Смола</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="225"/>
@@ -2316,7 +2320,7 @@ EditLocal:11:175, stat_txt:DDS_INSTALL_DDWALK</extracomment>
         <location filename="terrain.cpp" line="260"/>
         <source>Snow</source>
         <extracomment>SEditENU:189:3015, stat_txt:DDS_ICE_SNOW</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Снег</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="262"/>
@@ -2538,7 +2542,7 @@ EditLocal:11:175, stat_txt:DDS_INSTALL_DDWALK</extracomment>
     <message>
         <location filename="terrainbrush.ui" line="38"/>
         <source>Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Размер</translation>
     </message>
     <message>
         <location filename="terrainbrush.ui" line="150"/>
@@ -2792,7 +2796,7 @@ EditLocal:11:175, stat_txt:DDS_INSTALL_DDWALK</extracomment>
         <location filename="upgradestab.ui" line="92"/>
         <source>Player</source>
         <extracomment>gluAll:gluAll:scr.leaderboard.table.heading.2</extracomment>
-        <translation type="unfinished">Игрок</translation>
+        <translation>Игрок</translation>
     </message>
     <message>
         <location filename="upgradestab.ui" line="97"/>
