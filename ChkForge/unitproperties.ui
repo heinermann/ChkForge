@@ -200,14 +200,14 @@
         <item>
          <widget class="QCheckBox" name="chk_lifted">
           <property name="text">
-           <string extracomment="EditLocal:1214:1162">In &amp;Transit</string>
+           <string extracomment="EditLocal:1214:1162">&amp;Lifted</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QCheckBox" name="chk_hallucinated">
           <property name="text">
-           <string extracomment="EditLocal:1214:1164">H&amp;allucinated</string>
+           <string extracomment="EditLocal:1214:1164">H&amp;allucination</string>
           </property>
          </widget>
         </item>

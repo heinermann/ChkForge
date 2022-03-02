@@ -52,7 +52,7 @@ QSplitter::handle:vertical {
     </property>
     <widget class="QMenu" name="menu_recentFiles">
      <property name="title">
-      <string extracomment="EditLocal:109:40334">Recent File</string>
+      <string extracomment="EditLocal:109:40334">Recently Opened &amp;Files</string>
      </property>
      <property name="icon">
       <iconset resource="../oxygen-subset.qrc">

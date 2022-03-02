@@ -60,7 +60,7 @@
     <message>
         <location filename="abilitiestab.ui" line="215"/>
         <source>Researched</source>
-        <translation type="unfinished"></translation>
+        <translation>Recherché</translation>
     </message>
     <message>
         <location filename="abilitiestab.ui" line="225"/>
@@ -100,7 +100,7 @@
     <message>
         <location filename="aboutdlg.ui" line="20"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>À propos</translation>
     </message>
     <message>
         <location filename="aboutdlg.ui" line="41"/>
@@ -615,10 +615,10 @@ Some select Starforge code snippets and resources.
     </message>
     <message>
         <location filename="mainwindow.ui" line="55"/>
-        <source>Recent File</source>
-        <oldsource>&amp;Recent Files</oldsource>
+        <source>Recently Opened &amp;Files</source>
+        <oldsource>Recent File</oldsource>
         <extracomment>EditLocal:109:40334</extracomment>
-        <translation>Fichier Récent</translation>
+        <translation>&amp;Fichiers récemment ouverts</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="79"/>
@@ -793,7 +793,7 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="mainwindow.ui" line="556"/>
         <source>&amp;Show All</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Tout afficher</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="561"/>
@@ -810,7 +810,7 @@ Some select Starforge code snippets and resources.
         <source>&amp;Players...</source>
         <oldsource>Players</oldsource>
         <extracomment>gluAll:infoPane_players</extracomment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Joueurs...</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="588"/>
@@ -844,7 +844,7 @@ Some select Starforge code snippets and resources.
         <location filename="mainwindow.ui" line="624"/>
         <source>S&amp;trings...</source>
         <oldsource>Strings</oldsource>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Chaînes...</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="633"/>
@@ -932,7 +932,7 @@ Some select Starforge code snippets and resources.
         <location filename="mainwindow.ui" line="782"/>
         <location filename="mainwindow.cpp" line="655"/>
         <source>&amp;Play</source>
-        <translation type="unfinished">Jouer</translation>
+        <translation>&amp;Jouer</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="847"/>
@@ -1006,7 +1006,7 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="mainwindow.cpp" line="659"/>
         <source>&amp;Pause</source>
-        <translation type="unfinished">Pause</translation>
+        <translation>&amp;Pause</translation>
     </message>
 </context>
 <context>
@@ -1366,21 +1366,21 @@ Please select a different directory.</source>
     </message>
     <message>
         <location filename="strings.cpp" line="17"/>
-        <location filename="strings.cpp" line="276"/>
+        <location filename="strings.cpp" line="278"/>
         <source>Zerg</source>
         <extracomment>gluAll:lobbyScreen_zerg</extracomment>
         <translation>Zerg</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="19"/>
-        <location filename="strings.cpp" line="278"/>
+        <location filename="strings.cpp" line="280"/>
         <source>Terran</source>
         <extracomment>gluAll:lobbyScreen_terran</extracomment>
         <translation>Terran</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="21"/>
-        <location filename="strings.cpp" line="280"/>
+        <location filename="strings.cpp" line="282"/>
         <source>Protoss</source>
         <extracomment>gluAll:lobbyScreen_protoss</extracomment>
         <translation>Protoss</translation>
@@ -1398,10 +1398,10 @@ Please select a different directory.</source>
     </message>
     <message>
         <location filename="strings.cpp" line="28"/>
-        <location filename="strings.cpp" line="272"/>
-        <location filename="strings.cpp" line="286"/>
-        <location filename="strings.cpp" line="298"/>
+        <location filename="strings.cpp" line="274"/>
+        <location filename="strings.cpp" line="288"/>
         <location filename="strings.cpp" line="300"/>
+        <location filename="strings.cpp" line="302"/>
         <source>Random</source>
         <extracomment>gluAll:lobbyScreen_random</extracomment>
         <translation>Aléatoire</translation>
@@ -1868,20 +1868,15 @@ EditLocal:8:125</extracomment>
         <translation>Ouvert</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="270"/>
-        <source>Unknown</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="strings.cpp" line="284"/>
-        <location filename="strings.cpp" line="288"/>
+        <location filename="strings.cpp" line="286"/>
+        <location filename="strings.cpp" line="290"/>
         <source>Select Race</source>
         <oldsource>Select Race ▼</oldsource>
         <extracomment>gluAll:lobbyScreen_selectRace</extracomment>
         <translation>Choisir une race</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="302"/>
+        <location filename="strings.cpp" line="304"/>
         <source>Map specified</source>
         <extracomment>gluAll:lobbyScreen_MapSpecified</extracomment>
         <translation>Défini par la carte</translation>
@@ -2693,7 +2688,7 @@ EditLocal:2:16</extracomment>
     <message>
         <location filename="unitproperties.ui" line="28"/>
         <source>Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Type</translation>
     </message>
     <message>
         <location filename="unitproperties.ui" line="38"/>
@@ -2754,27 +2749,27 @@ EditLocal:2:16</extracomment>
         <source>&amp;Cloaked</source>
         <oldsource>Cloaked</oldsource>
         <extracomment>EditLocal:1214:1111</extracomment>
-        <translation>&amp;Mode Furtif</translation>
+        <translation>&amp;Camouflé</translation>
     </message>
     <message>
         <location filename="unitproperties.ui" line="196"/>
         <source>&amp;Burrowed</source>
         <oldsource>Burrowed</oldsource>
         <extracomment>EditLocal:1214:1161</extracomment>
-        <translation>E&amp;nterré</translation>
+        <translation>E&amp;nfoui</translation>
     </message>
     <message>
         <location filename="unitproperties.ui" line="203"/>
-        <source>In &amp;Transit</source>
+        <source>&amp;Lifted</source>
         <extracomment>EditLocal:1214:1162</extracomment>
-        <translation>En &amp;Transit</translation>
+        <translation>Sou&amp;levé</translation>
     </message>
     <message>
         <location filename="unitproperties.ui" line="210"/>
-        <source>H&amp;allucinated</source>
-        <oldsource>Hallucinated</oldsource>
+        <source>H&amp;allucination</source>
+        <oldsource>H&amp;allucinated</oldsource>
         <extracomment>EditLocal:1214:1164</extracomment>
-        <translation>&amp;Halluciné</translation>
+        <translation>H&amp;allucination</translation>
     </message>
     <message>
         <location filename="unitproperties.ui" line="217"/>

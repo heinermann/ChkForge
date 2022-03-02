@@ -615,8 +615,8 @@ Some select Starforge code snippets and resources.
     </message>
     <message>
         <location filename="mainwindow.ui" line="55"/>
-        <source>Recent File</source>
-        <oldsource>&amp;Recent Files</oldsource>
+        <source>Recently Opened &amp;Files</source>
+        <oldsource>Recent File</oldsource>
         <extracomment>EditLocal:109:40334</extracomment>
         <translation type="unfinished"></translation>
     </message>
@@ -1367,21 +1367,21 @@ Please select a different directory.</source>
     </message>
     <message>
         <location filename="strings.cpp" line="17"/>
-        <location filename="strings.cpp" line="276"/>
+        <location filename="strings.cpp" line="278"/>
         <source>Zerg</source>
         <extracomment>gluAll:lobbyScreen_zerg</extracomment>
         <translation>Zerg</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="19"/>
-        <location filename="strings.cpp" line="278"/>
+        <location filename="strings.cpp" line="280"/>
         <source>Terran</source>
         <extracomment>gluAll:lobbyScreen_terran</extracomment>
         <translation>Terran</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="21"/>
-        <location filename="strings.cpp" line="280"/>
+        <location filename="strings.cpp" line="282"/>
         <source>Protoss</source>
         <extracomment>gluAll:lobbyScreen_protoss</extracomment>
         <translation>Protoss</translation>
@@ -1399,10 +1399,10 @@ Please select a different directory.</source>
     </message>
     <message>
         <location filename="strings.cpp" line="28"/>
-        <location filename="strings.cpp" line="272"/>
-        <location filename="strings.cpp" line="286"/>
-        <location filename="strings.cpp" line="298"/>
+        <location filename="strings.cpp" line="274"/>
+        <location filename="strings.cpp" line="288"/>
         <location filename="strings.cpp" line="300"/>
+        <location filename="strings.cpp" line="302"/>
         <source>Random</source>
         <extracomment>gluAll:lobbyScreen_random</extracomment>
         <translation>Aleatoria</translation>
@@ -1868,19 +1868,14 @@ EditLocal:8:125</extracomment>
         <translation>Abierto</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="270"/>
-        <source>Unknown</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="strings.cpp" line="284"/>
-        <location filename="strings.cpp" line="288"/>
+        <location filename="strings.cpp" line="286"/>
+        <location filename="strings.cpp" line="290"/>
         <source>Select Race</source>
         <extracomment>gluAll:lobbyScreen_selectRace</extracomment>
         <translation>Elegir raza</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="302"/>
+        <location filename="strings.cpp" line="304"/>
         <source>Map specified</source>
         <extracomment>gluAll:lobbyScreen_MapSpecified</extracomment>
         <translation>Elegido por mapa</translation>
@@ -2764,14 +2759,14 @@ EditLocal:2:16</extracomment>
     </message>
     <message>
         <location filename="unitproperties.ui" line="203"/>
-        <source>In &amp;Transit</source>
+        <source>&amp;Lifted</source>
         <extracomment>EditLocal:1214:1162</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="unitproperties.ui" line="210"/>
-        <source>H&amp;allucinated</source>
-        <oldsource>Hallucinated</oldsource>
+        <source>H&amp;allucination</source>
+        <oldsource>H&amp;allucinated</oldsource>
         <extracomment>EditLocal:1214:1164</extracomment>
         <translation type="unfinished"></translation>
     </message>

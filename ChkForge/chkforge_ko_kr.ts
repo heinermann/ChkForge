@@ -100,7 +100,7 @@
     <message>
         <location filename="aboutdlg.ui" line="20"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>정보</translation>
     </message>
     <message>
         <location filename="aboutdlg.ui" line="41"/>
@@ -615,10 +615,10 @@ Some select Starforge code snippets and resources.
     </message>
     <message>
         <location filename="mainwindow.ui" line="55"/>
-        <source>Recent File</source>
-        <oldsource>&amp;Recent Files</oldsource>
+        <source>Recently Opened &amp;Files</source>
+        <oldsource>Recent File</oldsource>
         <extracomment>EditLocal:109:40334</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>최근에 연 파일(&amp;F)</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="79"/>
@@ -793,7 +793,7 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="mainwindow.ui" line="556"/>
         <source>&amp;Show All</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">모두 표시</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="561"/>
@@ -810,7 +810,7 @@ Some select Starforge code snippets and resources.
         <source>&amp;Players...</source>
         <oldsource>Players</oldsource>
         <extracomment>gluAll:infoPane_players</extracomment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">플레이어...</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="588"/>
@@ -844,7 +844,7 @@ Some select Starforge code snippets and resources.
         <location filename="mainwindow.ui" line="624"/>
         <source>S&amp;trings...</source>
         <oldsource>Strings</oldsource>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">문자열...</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="633"/>
@@ -932,7 +932,7 @@ Some select Starforge code snippets and resources.
         <location filename="mainwindow.ui" line="782"/>
         <location filename="mainwindow.cpp" line="655"/>
         <source>&amp;Play</source>
-        <translation type="unfinished">플레이</translation>
+        <translation>플레이(&amp;P)</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="847"/>
@@ -1006,7 +1006,7 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="mainwindow.cpp" line="659"/>
         <source>&amp;Pause</source>
-        <translation type="unfinished">일시 정지</translation>
+        <translation>일시 정지(&amp;P)</translation>
     </message>
 </context>
 <context>
@@ -1366,21 +1366,21 @@ Please select a different directory.</source>
     </message>
     <message>
         <location filename="strings.cpp" line="17"/>
-        <location filename="strings.cpp" line="276"/>
+        <location filename="strings.cpp" line="278"/>
         <source>Zerg</source>
         <extracomment>gluAll:lobbyScreen_zerg</extracomment>
         <translation>저그</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="19"/>
-        <location filename="strings.cpp" line="278"/>
+        <location filename="strings.cpp" line="280"/>
         <source>Terran</source>
         <extracomment>gluAll:lobbyScreen_terran</extracomment>
         <translation>테란</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="21"/>
-        <location filename="strings.cpp" line="280"/>
+        <location filename="strings.cpp" line="282"/>
         <source>Protoss</source>
         <extracomment>gluAll:lobbyScreen_protoss</extracomment>
         <translation>프로토스</translation>
@@ -1398,10 +1398,10 @@ Please select a different directory.</source>
     </message>
     <message>
         <location filename="strings.cpp" line="28"/>
-        <location filename="strings.cpp" line="272"/>
-        <location filename="strings.cpp" line="286"/>
-        <location filename="strings.cpp" line="298"/>
+        <location filename="strings.cpp" line="274"/>
+        <location filename="strings.cpp" line="288"/>
         <location filename="strings.cpp" line="300"/>
+        <location filename="strings.cpp" line="302"/>
         <source>Random</source>
         <extracomment>gluAll:lobbyScreen_random</extracomment>
         <translation>무작위</translation>
@@ -1491,49 +1491,49 @@ EditLocal:8:125</extracomment>
         <location filename="strings.cpp" line="65"/>
         <source>Player 1</source>
         <extracomment>EditLocal:8:126</extracomment>
-        <translation type="unfinished">플래이어 1</translation>
+        <translation>플레이어 1</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="67"/>
         <source>Player 2</source>
         <extracomment>EditLocal:8:127</extracomment>
-        <translation type="unfinished">플래이어 2</translation>
+        <translation>플레이어 2</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="69"/>
         <source>Player 3</source>
         <extracomment>EditLocal:9:128</extracomment>
-        <translation type="unfinished">플래이어 3</translation>
+        <translation>플레이어 3</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="71"/>
         <source>Player 4</source>
         <extracomment>EditLocal:9:129</extracomment>
-        <translation type="unfinished">플래이어 4</translation>
+        <translation>플레이어 4</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="73"/>
         <source>Player 5</source>
         <extracomment>EditLocal:9:130</extracomment>
-        <translation type="unfinished">플래이어 5</translation>
+        <translation>플레이어 5</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="75"/>
         <source>Player 6</source>
         <extracomment>EditLocal:9:131</extracomment>
-        <translation type="unfinished">플래이어 6</translation>
+        <translation>플레이어 6</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="77"/>
         <source>Player 7</source>
         <extracomment>EditLocal:9:132</extracomment>
-        <translation type="unfinished">플래이어 7</translation>
+        <translation>플레이어 7</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="79"/>
         <source>Player 8</source>
         <extracomment>EditLocal:9:133</extracomment>
-        <translation type="unfinished">플래이어 8</translation>
+        <translation>플레이어 8</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="26"/>
@@ -1545,19 +1545,19 @@ EditLocal:8:125</extracomment>
         <location filename="strings.cpp" line="81"/>
         <source>Independent 1</source>
         <extracomment>EditLocal:9:134</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>독립1</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="83"/>
         <source>Independent 2</source>
         <extracomment>EditLocal:9:135</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>독립2</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="85"/>
         <source>Independent 3</source>
         <extracomment>EditLocal:9:136</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>독립3</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="98"/>
@@ -1867,19 +1867,14 @@ EditLocal:8:125</extracomment>
         <translation>열기</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="270"/>
-        <source>Unknown</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="strings.cpp" line="284"/>
-        <location filename="strings.cpp" line="288"/>
+        <location filename="strings.cpp" line="286"/>
+        <location filename="strings.cpp" line="290"/>
         <source>Select Race</source>
         <extracomment>gluAll:lobbyScreen_selectRace</extracomment>
         <translation>종족 선택</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="302"/>
+        <location filename="strings.cpp" line="304"/>
         <source>Map specified</source>
         <extracomment>gluAll:lobbyScreen_MapSpecified</extracomment>
         <translation>지도 지정</translation>
@@ -2293,7 +2288,7 @@ EditLocal:2:16</extracomment>
         <source>Rocky Ground</source>
         <comment>Desert</comment>
         <extracomment>SEditENU:188:3005, stat_txt:DDS_DESERT_ROCKYGROUND</extracomment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">암석</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="231"/>
@@ -2321,7 +2316,7 @@ EditLocal:2:16</extracomment>
         <source>High Dirt</source>
         <comment>Desert</comment>
         <extracomment>SEditENU:189:3009, stat_txt:DDS_DESERT_HIGHDIRT</extracomment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">높은 지대</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="239"/>
@@ -2419,14 +2414,14 @@ EditLocal:2:16</extracomment>
         <source>High Dirt</source>
         <comment>Ice</comment>
         <extracomment>SEditENU:189:3023, stat_txt:DDS_ICE_HIGHROUGHSNOW</extracomment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">높은 지대</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="278"/>
         <source>High Grass</source>
         <comment>Ice</comment>
         <extracomment>SEditENU:190:3024, stat_txt:DDS_ICE_HIGHSNOWYRUINS</extracomment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">높은 지대풀</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="280"/>
@@ -2496,7 +2491,7 @@ EditLocal:2:16</extracomment>
         <source>High Dirt</source>
         <comment>Twilight</comment>
         <extracomment>SEditENU:191:3040, stat_txt:DDS_TWILIGHT_HIGHDIRT</extracomment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">높은 지대</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="313"/>
@@ -2691,7 +2686,7 @@ EditLocal:2:16</extracomment>
     <message>
         <location filename="unitproperties.ui" line="28"/>
         <source>Type</source>
-        <translation type="unfinished"></translation>
+        <translation>형식</translation>
     </message>
     <message>
         <location filename="unitproperties.ui" line="38"/>
@@ -2745,34 +2740,34 @@ EditLocal:2:16</extracomment>
         <location filename="unitproperties.ui" line="171"/>
         <source>Resources</source>
         <extracomment>EditLocal:1214</extracomment>
-        <translation type="unfinished">자원</translation>
+        <translation>자원</translation>
     </message>
     <message>
         <location filename="unitproperties.ui" line="189"/>
         <source>&amp;Cloaked</source>
         <oldsource>Cloaked</oldsource>
         <extracomment>EditLocal:1214:1111</extracomment>
-        <translation type="unfinished">크로킹</translation>
+        <translation>클로크(&amp;C)</translation>
     </message>
     <message>
         <location filename="unitproperties.ui" line="196"/>
         <source>&amp;Burrowed</source>
         <oldsource>Burrowed</oldsource>
         <extracomment>EditLocal:1214:1161</extracomment>
-        <translation type="unfinished">은신</translation>
+        <translation>버로우(&amp;B)</translation>
     </message>
     <message>
         <location filename="unitproperties.ui" line="203"/>
-        <source>In &amp;Transit</source>
+        <source>&amp;Lifted</source>
         <extracomment>EditLocal:1214:1162</extracomment>
-        <translation type="unfinished">건물띄우기</translation>
+        <translation>들어 올림(&amp;L)</translation>
     </message>
     <message>
         <location filename="unitproperties.ui" line="210"/>
-        <source>H&amp;allucinated</source>
-        <oldsource>Hallucinated</oldsource>
+        <source>H&amp;allucination</source>
+        <oldsource>H&amp;allucinated</oldsource>
         <extracomment>EditLocal:1214:1164</extracomment>
-        <translation type="unfinished">환상</translation>
+        <translation>할루시네이션(&amp;A)</translation>
     </message>
     <message>
         <location filename="unitproperties.ui" line="217"/>
@@ -2879,13 +2874,13 @@ EditLocal:2:16</extracomment>
         <location filename="unitstab.ui" line="435"/>
         <source>Minerals</source>
         <extracomment>EditLocal:1216</extracomment>
-        <translation type="unfinished">미네랄</translation>
+        <translation>미네랄</translation>
     </message>
     <message>
         <location filename="unitstab.ui" line="455"/>
         <source>Gas</source>
         <extracomment>EditLocal:1216</extracomment>
-        <translation type="unfinished">가스</translation>
+        <translation>가스</translation>
     </message>
     <message>
         <location filename="unitstab.ui" line="477"/>

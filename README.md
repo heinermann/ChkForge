@@ -26,7 +26,7 @@ Code and ideas sourced from the following:
 Translations were sourced from the following:
 
 - Qt
-- Polyglot Gamedev Project
+- [Polyglot Gamedev Project](https://docs.google.com/spreadsheets/d/17f0dQawb-s_Fd7DHgmVvJoEGDMH_yoSd8EYigrb0zmM/)
 - Starcraft: Remastered
 - Starcraft 1.16.1
 - Starcraft JP

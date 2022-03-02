@@ -19,19 +19,19 @@
         <location filename="abilitiestab.ui" line="58"/>
         <source>Minerals</source>
         <extracomment>EditLocal:1223</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>晶礦</translation>
     </message>
     <message>
         <location filename="abilitiestab.ui" line="84"/>
         <source>Gas</source>
         <extracomment>EditLocal:1223</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>瓦斯</translation>
     </message>
     <message>
         <location filename="abilitiestab.ui" line="104"/>
         <source>Time</source>
         <extracomment>EditLocal:1223</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>時間</translation>
     </message>
     <message>
         <location filename="abilitiestab.ui" line="124"/>
@@ -100,7 +100,7 @@
     <message>
         <location filename="aboutdlg.ui" line="20"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>關於</translation>
     </message>
     <message>
         <location filename="aboutdlg.ui" line="41"/>
@@ -615,10 +615,10 @@ Some select Starforge code snippets and resources.
     </message>
     <message>
         <location filename="mainwindow.ui" line="55"/>
-        <source>Recent File</source>
-        <oldsource>&amp;Recent Files</oldsource>
+        <source>Recently Opened &amp;Files</source>
+        <oldsource>Recent File</oldsource>
         <extracomment>EditLocal:109:40334</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>最近開啟的檔案(&amp;F)</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="79"/>
@@ -793,7 +793,7 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="mainwindow.ui" line="556"/>
         <source>&amp;Show All</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">顯示全部</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="561"/>
@@ -810,7 +810,7 @@ Some select Starforge code snippets and resources.
         <source>&amp;Players...</source>
         <oldsource>Players</oldsource>
         <extracomment>gluAll:infoPane_players</extracomment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">玩家...</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="588"/>
@@ -844,7 +844,7 @@ Some select Starforge code snippets and resources.
         <location filename="mainwindow.ui" line="624"/>
         <source>S&amp;trings...</source>
         <oldsource>Strings</oldsource>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">字串...</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="633"/>
@@ -932,7 +932,7 @@ Some select Starforge code snippets and resources.
         <location filename="mainwindow.ui" line="782"/>
         <location filename="mainwindow.cpp" line="655"/>
         <source>&amp;Play</source>
-        <translation type="unfinished"></translation>
+        <translation>開始(&amp;P)</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="847"/>
@@ -1006,7 +1006,7 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="mainwindow.cpp" line="659"/>
         <source>&amp;Pause</source>
-        <translation type="unfinished"></translation>
+        <translation>暫停(&amp;P)</translation>
     </message>
 </context>
 <context>
@@ -1366,21 +1366,21 @@ Please select a different directory.</source>
     </message>
     <message>
         <location filename="strings.cpp" line="17"/>
-        <location filename="strings.cpp" line="276"/>
+        <location filename="strings.cpp" line="278"/>
         <source>Zerg</source>
         <extracomment>gluAll:lobbyScreen_zerg</extracomment>
         <translation>蟲族</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="19"/>
-        <location filename="strings.cpp" line="278"/>
+        <location filename="strings.cpp" line="280"/>
         <source>Terran</source>
         <extracomment>gluAll:lobbyScreen_terran</extracomment>
         <translation>人類</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="21"/>
-        <location filename="strings.cpp" line="280"/>
+        <location filename="strings.cpp" line="282"/>
         <source>Protoss</source>
         <extracomment>gluAll:lobbyScreen_protoss</extracomment>
         <translation>神族</translation>
@@ -1398,10 +1398,10 @@ Please select a different directory.</source>
     </message>
     <message>
         <location filename="strings.cpp" line="28"/>
-        <location filename="strings.cpp" line="272"/>
-        <location filename="strings.cpp" line="286"/>
-        <location filename="strings.cpp" line="298"/>
+        <location filename="strings.cpp" line="274"/>
+        <location filename="strings.cpp" line="288"/>
         <location filename="strings.cpp" line="300"/>
+        <location filename="strings.cpp" line="302"/>
         <source>Random</source>
         <extracomment>gluAll:lobbyScreen_random</extracomment>
         <translation>隨機</translation>
@@ -1491,49 +1491,49 @@ EditLocal:8:125</extracomment>
         <location filename="strings.cpp" line="65"/>
         <source>Player 1</source>
         <extracomment>EditLocal:8:126</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>玩家1</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="67"/>
         <source>Player 2</source>
         <extracomment>EditLocal:8:127</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>玩家2</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="69"/>
         <source>Player 3</source>
         <extracomment>EditLocal:9:128</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>玩家3</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="71"/>
         <source>Player 4</source>
         <extracomment>EditLocal:9:129</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>玩家4</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="73"/>
         <source>Player 5</source>
         <extracomment>EditLocal:9:130</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>玩家5</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="75"/>
         <source>Player 6</source>
         <extracomment>EditLocal:9:131</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>玩家6</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="77"/>
         <source>Player 7</source>
         <extracomment>EditLocal:9:132</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>玩家7</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="79"/>
         <source>Player 8</source>
         <extracomment>EditLocal:9:133</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>玩家8</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="26"/>
@@ -1545,19 +1545,19 @@ EditLocal:8:125</extracomment>
         <location filename="strings.cpp" line="81"/>
         <source>Independent 1</source>
         <extracomment>EditLocal:9:134</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>獨立1</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="83"/>
         <source>Independent 2</source>
         <extracomment>EditLocal:9:135</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>獨立2</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="85"/>
         <source>Independent 3</source>
         <extracomment>EditLocal:9:136</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>獨立3</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="98"/>
@@ -1867,19 +1867,14 @@ EditLocal:8:125</extracomment>
         <translation>開放</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="270"/>
-        <source>Unknown</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="strings.cpp" line="284"/>
-        <location filename="strings.cpp" line="288"/>
+        <location filename="strings.cpp" line="286"/>
+        <location filename="strings.cpp" line="290"/>
         <source>Select Race</source>
         <extracomment>gluAll:lobbyScreen_selectRace</extracomment>
         <translation>選擇種族</translation>
     </message>
     <message>
-        <location filename="strings.cpp" line="302"/>
+        <location filename="strings.cpp" line="304"/>
         <source>Map specified</source>
         <extracomment>gluAll:lobbyScreen_MapSpecified</extracomment>
         <translation>指定地圖</translation>
@@ -2691,7 +2686,7 @@ EditLocal:2:16</extracomment>
     <message>
         <location filename="unitproperties.ui" line="28"/>
         <source>Type</source>
-        <translation type="unfinished"></translation>
+        <translation>型態</translation>
     </message>
     <message>
         <location filename="unitproperties.ui" line="38"/>
@@ -2745,34 +2740,34 @@ EditLocal:2:16</extracomment>
         <location filename="unitproperties.ui" line="171"/>
         <source>Resources</source>
         <extracomment>EditLocal:1214</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>資源量</translation>
     </message>
     <message>
         <location filename="unitproperties.ui" line="189"/>
         <source>&amp;Cloaked</source>
         <oldsource>Cloaked</oldsource>
         <extracomment>EditLocal:1214:1111</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>匿蹤(&amp;C)</translation>
     </message>
     <message>
         <location filename="unitproperties.ui" line="196"/>
         <source>&amp;Burrowed</source>
         <oldsource>Burrowed</oldsource>
         <extracomment>EditLocal:1214:1161</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>遁地(&amp;B)</translation>
     </message>
     <message>
         <location filename="unitproperties.ui" line="203"/>
-        <source>In &amp;Transit</source>
+        <source>&amp;Lifted</source>
         <extracomment>EditLocal:1214:1162</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>升空(&amp;L)</translation>
     </message>
     <message>
         <location filename="unitproperties.ui" line="210"/>
-        <source>H&amp;allucinated</source>
-        <oldsource>Hallucinated</oldsource>
+        <source>H&amp;allucination</source>
+        <oldsource>H&amp;allucinated</oldsource>
         <extracomment>EditLocal:1214:1164</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>幻影分身(&amp;A)</translation>
     </message>
     <message>
         <location filename="unitproperties.ui" line="217"/>
@@ -2873,19 +2868,19 @@ EditLocal:2:16</extracomment>
         <source>Time</source>
         <oldsource>Build Time</oldsource>
         <extracomment>EditLocal:1216</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>時間</translation>
     </message>
     <message>
         <location filename="unitstab.ui" line="435"/>
         <source>Minerals</source>
         <extracomment>EditLocal:1216</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>晶礦</translation>
     </message>
     <message>
         <location filename="unitstab.ui" line="455"/>
         <source>Gas</source>
         <extracomment>EditLocal:1216</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>瓦斯</translation>
     </message>
     <message>
         <location filename="unitstab.ui" line="477"/>
@@ -2939,7 +2934,7 @@ EditLocal:2:16</extracomment>
         <location filename="upgradestab.ui" line="379"/>
         <source>Time</source>
         <extracomment>EditLocal:1223</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>時間</translation>
     </message>
     <message>
         <location filename="upgradestab.ui" line="112"/>
@@ -2958,13 +2953,13 @@ EditLocal:2:16</extracomment>
         <location filename="upgradestab.ui" line="237"/>
         <source>Minerals</source>
         <extracomment>EditLocal:1223</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>晶礦</translation>
     </message>
     <message>
         <location filename="upgradestab.ui" line="308"/>
         <source>Gas</source>
         <extracomment>EditLocal:1223</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>瓦斯</translation>
     </message>
 </context>
 </TS>

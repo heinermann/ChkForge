@@ -267,7 +267,9 @@ namespace ChkForge {
       return emptyStr;
   }
 
-  const QString unknownStr = QObject::tr("Unknown");
+  // This is always shown in English in Starcraft
+  const QString unknownStr = "Unknown";
+
   //: gluAll:lobbyScreen_random
   const QString randomStr = QObject::tr("Random");
 
