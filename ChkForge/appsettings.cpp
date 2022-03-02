@@ -23,7 +23,7 @@ namespace {
     QLocale(QLocale::English, QLocale::UnitedStates),
     QLocale(QLocale::German, QLocale::Germany),
     QLocale(QLocale::Spanish, QLocale::Spain),
-    QLocale(QLocale::Spanish, QLocale::Mexico),
+    //QLocale(QLocale::Spanish, QLocale::Mexico),
     QLocale(QLocale::French, QLocale::France),
     QLocale(QLocale::Italian, QLocale::Italy),
     QLocale(QLocale::Japanese, QLocale::Japan),
