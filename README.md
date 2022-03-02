@@ -12,6 +12,26 @@ Some code snippets from Starforge are used (i.e. terrain).
 - [CascLib](https://github.com/ladislav-zezula/CascLib) for Casc loading.
 - [oxygen-icons-png](https://github.com/pasnox/oxygen-icons-png) for icons.
 
+## Credits
+### Code and Vision
+Code and ideas sourced from the following:
+
+- [tscmoo](https://github.com/tscmoo) for OpenBW
+- [TheNitesWhoSay](https://github.com/TheNitesWhoSay) for MappingCoreLib
+- Jon Cable (Heimdal), Carlos Pastor (Clokr_), and Sam Wilkins for Starforge: Ultimate (unreleased)
+- Henrik Arlinghaus (Suicidal Insanity) for SCMDraft
+
+
+### Translations
+Translations were sourced from the following:
+
+- Qt
+- Polyglot Gamedev Project
+- Starcraft: Remastered
+- Starcraft 1.16.1
+- Starcraft JP
+
+
 ## Development
 ### Developer Setup
 1. Install [Visual Studio 2019: Community Edition](https://visualstudio.microsoft.com/).

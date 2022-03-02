@@ -11,8 +11,8 @@
     <message>
         <location filename="abilitiestab.ui" line="46"/>
         <location filename="abilitiestab.ui" line="168"/>
-        <source>Use Defaults</source>
-        <oldsource>Use Default</oldsource>
+        <source>Use Default</source>
+        <oldsource>Use Defaults</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -31,7 +31,7 @@
         <location filename="abilitiestab.ui" line="104"/>
         <source>Time</source>
         <extracomment>EditLocal:1223</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>시간</translation>
     </message>
     <message>
         <location filename="abilitiestab.ui" line="124"/>
@@ -924,14 +924,15 @@ Some select Starforge code snippets and resources.
     </message>
     <message>
         <location filename="mainwindow.ui" line="770"/>
-        <source>&amp;About</source>
-        <translation type="unfinished"></translation>
+        <source>About...</source>
+        <oldsource>&amp;About</oldsource>
+        <translation>정보...</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="782"/>
         <location filename="mainwindow.cpp" line="655"/>
         <source>&amp;Play</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">플레이</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="847"/>
@@ -993,7 +994,8 @@ Some select Starforge code snippets and resources.
     </message>
     <message>
         <location filename="mainwindow.ui" line="861"/>
-        <source>Report an Issue</source>
+        <source>Report an Issue...</source>
+        <oldsource>Report an Issue</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1002,14 +1004,9 @@ Some select Starforge code snippets and resources.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="762"/>
-        <source>Player %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="mainwindow.cpp" line="659"/>
         <source>&amp;Pause</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">일시 정지</translation>
     </message>
 </context>
 <context>
@@ -1166,8 +1163,7 @@ Other sizes may crash Starcraft.</source>
         <location filename="playerstab.ui" line="257"/>
         <source>Inactive</source>
         <extracomment>EditLocal:10:147, gluAll:season_srank_description</extracomment>
-        <translatorcomment>gluAll:season_srank_description</translatorcomment>
-        <translation>비활성화</translation>
+        <translation>비활성</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="270"/>
@@ -1259,7 +1255,7 @@ Other sizes may crash Starcraft.</source>
 <context>
     <name>QFileDialog</name>
     <message>
-        <location filename="OpenSave.cpp" line="20"/>
+        <location filename="OpenSave.cpp" line="22"/>
         <source>All Files (*)</source>
         <extracomment>DO NOT TRANSLATE</extracomment>
         <translation type="unfinished"></translation>
@@ -1341,17 +1337,19 @@ Please select a different directory.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="OpenSave.cpp" line="15"/>
-        <source>Vanilla Maps</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="OpenSave.cpp" line="16"/>
-        <source>Expansion Maps</source>
+        <source>Starcraft Scenario (*.scm)</source>
+        <extracomment>SEditENU:195:3115</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="OpenSave.cpp" line="18"/>
+        <source>Brood War Scenario (*.scx)</source>
+        <extracomment>SEditENU:195:3116</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="OpenSave.cpp" line="20"/>
         <source>Replays</source>
         <extracomment>gluAll:gameCloudReplays</extracomment>
         <translation>리플레이</translation>
@@ -2806,8 +2804,8 @@ EditLocal:2:16</extracomment>
     <message>
         <location filename="unitstab.ui" line="115"/>
         <location filename="unitstab.ui" line="159"/>
-        <source>Use Defaults</source>
-        <oldsource>Use Default</oldsource>
+        <source>Use Default</source>
+        <oldsource>Use Defaults</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2825,7 +2823,7 @@ EditLocal:2:16</extracomment>
         <location filename="unitstab.ui" line="170"/>
         <source>Hit Points</source>
         <extracomment>EditLocal:1216:1000</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>체력</translation>
     </message>
     <message>
         <location filename="unitstab.ui" line="201"/>
@@ -2875,7 +2873,7 @@ EditLocal:2:16</extracomment>
         <source>Time</source>
         <oldsource>Build Time</oldsource>
         <extracomment>EditLocal:1216</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>시간</translation>
     </message>
     <message>
         <location filename="unitstab.ui" line="435"/>
@@ -2917,20 +2915,31 @@ EditLocal:2:16</extracomment>
     <message>
         <location filename="upgradestab.ui" line="97"/>
         <location filename="upgradestab.ui" line="179"/>
+        <location filename="upgradestab.ui" line="286"/>
+        <location filename="upgradestab.ui" line="357"/>
+        <location filename="upgradestab.ui" line="428"/>
         <source>Level</source>
-        <translation type="unfinished"></translation>
+        <extracomment>EditLocal:32:498</extracomment>
+        <translation>레벨</translation>
     </message>
     <message>
         <location filename="upgradestab.ui" line="102"/>
         <location filename="upgradestab.ui" line="199"/>
         <source>Max</source>
+        <extracomment>EditLocal:32:499</extracomment>
+        <translation>최대</translation>
+    </message>
+    <message>
+        <location filename="upgradestab.ui" line="170"/>
+        <location filename="upgradestab.ui" line="228"/>
+        <source>Use Default</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="upgradestab.ui" line="379"/>
         <source>Time</source>
         <extracomment>EditLocal:1223</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>시간</translation>
     </message>
     <message>
         <location filename="upgradestab.ui" line="112"/>
@@ -2946,23 +2955,9 @@ EditLocal:2:16</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="upgradestab.ui" line="170"/>
-        <location filename="upgradestab.ui" line="228"/>
-        <source>Use Defaults</source>
-        <oldsource>Use Default</oldsource>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="upgradestab.ui" line="237"/>
         <source>Minerals</source>
         <extracomment>EditLocal:1223</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="upgradestab.ui" line="286"/>
-        <location filename="upgradestab.ui" line="357"/>
-        <location filename="upgradestab.ui" line="428"/>
-        <source>level</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

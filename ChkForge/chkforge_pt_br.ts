@@ -11,33 +11,33 @@
     <message>
         <location filename="abilitiestab.ui" line="46"/>
         <location filename="abilitiestab.ui" line="168"/>
-        <source>Use Defaults</source>
-        <oldsource>Use Default</oldsource>
-        <translation type="unfinished"></translation>
+        <source>Use Default</source>
+        <oldsource>Use Defaults</oldsource>
+        <translation>Usar Padrão</translation>
     </message>
     <message>
         <location filename="abilitiestab.ui" line="58"/>
         <source>Minerals</source>
         <extracomment>EditLocal:1223</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Minerais</translation>
     </message>
     <message>
         <location filename="abilitiestab.ui" line="84"/>
         <source>Gas</source>
         <extracomment>EditLocal:1223</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Gás</translation>
     </message>
     <message>
         <location filename="abilitiestab.ui" line="104"/>
         <source>Time</source>
         <extracomment>EditLocal:1223</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Tempo</translation>
     </message>
     <message>
         <location filename="abilitiestab.ui" line="124"/>
         <source>Energy</source>
         <extracomment>EditLocal:1223</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Energia</translation>
     </message>
     <message>
         <location filename="abilitiestab.ui" line="147"/>
@@ -73,20 +73,20 @@
         <source>Disabled by default</source>
         <oldsource>Disabled by Default</oldsource>
         <extracomment>EditLocal:1219:100</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Desabilitado por padrão</translation>
     </message>
     <message>
         <location filename="abilitiestab.ui" line="250"/>
         <source>Enabled by default</source>
         <oldsource>Enabled by Default</oldsource>
         <extracomment>EditLocal:1219:101</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Habilitado por padrão</translation>
     </message>
     <message>
         <location filename="abilitiestab.ui" line="266"/>
         <source>Researched by Default</source>
         <extracomment>EditLocal:1219:102</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Pesquisado por padrão</translation>
     </message>
     <message>
         <location filename="abilitiestab.ui" line="311"/>
@@ -393,13 +393,13 @@ Some select Starforge code snippets and resources.
         <location filename="forcestab.ui" line="39"/>
         <source>Random Start Location</source>
         <extracomment>EditLocal:188:1111</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Localização Inicial Aleatória</translation>
     </message>
     <message>
         <location filename="forcestab.ui" line="32"/>
         <source>Shared Vision</source>
         <extracomment>RC3:allyfltr-24:25</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Visão Compartilhada</translation>
     </message>
     <message>
         <location filename="forcestab.ui" line="46"/>
@@ -417,7 +417,7 @@ Some select Starforge code snippets and resources.
         <location filename="forcestab.ui" line="60"/>
         <source>Custom Name</source>
         <extracomment>SEditENU:1216</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Nome Personalizado</translation>
     </message>
     <message>
         <location filename="forcestab.ui" line="160"/>
@@ -554,55 +554,55 @@ Some select Starforge code snippets and resources.
         <location filename="locationproperties.ui" line="116"/>
         <source>Name</source>
         <extracomment>EditLocal:175</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Nome</translation>
     </message>
     <message>
         <location filename="locationproperties.ui" line="135"/>
         <source>Apply Location to</source>
         <extracomment>EditLocal:175</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Aplicar a Localização</translation>
     </message>
     <message>
         <location filename="locationproperties.ui" line="144"/>
         <source>Mi&amp;d Air</source>
         <oldsource>Mid Air</oldsource>
         <extracomment>EditLocal:175:104</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Ar Me&amp;d</translation>
     </message>
     <message>
         <location filename="locationproperties.ui" line="151"/>
         <source>Low &amp;Air</source>
         <oldsource>Low Air</oldsource>
         <extracomment>EditLocal:175:103</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Ar Baixo</translation>
     </message>
     <message>
         <location filename="locationproperties.ui" line="158"/>
         <source>&amp;Low Elevation</source>
         <oldsource>Low Elevation</oldsource>
         <extracomment>EditLocal:175:100</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Elevação &amp;Baixa</translation>
     </message>
     <message>
         <location filename="locationproperties.ui" line="165"/>
         <source>&amp;Mid Elevation</source>
         <oldsource>Mid Elevation</oldsource>
         <extracomment>EditLocal:175:101</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Elevação &amp;Med</translation>
     </message>
     <message>
         <location filename="locationproperties.ui" line="172"/>
         <source>&amp;High Elevation</source>
         <oldsource>High Elevation</oldsource>
         <extracomment>EditLocal:175:102</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Elevação &amp;Alta</translation>
     </message>
     <message>
         <location filename="locationproperties.ui" line="179"/>
         <source>Hi&amp;gh Air</source>
         <oldsource>High Air</oldsource>
         <extracomment>EditLocal:175:105</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Ar Al&amp;to</translation>
     </message>
 </context>
 <context>
@@ -611,25 +611,25 @@ Some select Starforge code snippets and resources.
         <location filename="mainwindow.ui" line="51"/>
         <source>&amp;File</source>
         <extracomment>EditLocal:109</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Arquivo</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="55"/>
         <source>Recent File</source>
         <oldsource>&amp;Recent Files</oldsource>
         <extracomment>EditLocal:109:40334</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Arquivo Recente</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="79"/>
         <source>&amp;Edit</source>
         <extracomment>EditLocal:109</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Editar</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="94"/>
         <source>&amp;View</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Visualizar</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="98"/>
@@ -645,12 +645,12 @@ Some select Starforge code snippets and resources.
         <location filename="mainwindow.ui" line="129"/>
         <source>&amp;Layer</source>
         <extracomment>EditLocal:109</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Camada</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="143"/>
         <source>&amp;Scenario</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Cenário</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="160"/>
@@ -660,13 +660,13 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="mainwindow.ui" line="167"/>
         <source>&amp;Window</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Janela</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="179"/>
         <source>&amp;Help</source>
         <extracomment>gluAll:bnet119_optionsPanel_tabs_help</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>A&amp;juda</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="186"/>
@@ -677,13 +677,13 @@ Some select Starforge code snippets and resources.
         <location filename="mainwindow.ui" line="321"/>
         <source>&amp;Save</source>
         <extracomment>RC3:savegame-1</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Salvar</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="330"/>
         <source>Save &amp;As...</source>
         <extracomment>EditLocal:109:40018</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Salvar Co&amp;mo...</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="342"/>
@@ -704,25 +704,25 @@ Some select Starforge code snippets and resources.
         <location filename="mainwindow.ui" line="375"/>
         <source>E&amp;xit</source>
         <extracomment>RC3:gluMain-1</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Sai&amp;r</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="303"/>
         <source>&amp;New...</source>
         <extracomment>RC3:gluBattlenetToonRegistry-3</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Novo...</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="312"/>
         <source>&amp;Open...</source>
         <extracomment>EditLocal:109:57601</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Abrir...</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="450"/>
         <source>&amp;Properties...</source>
         <extracomment>EditLocal:109:40317</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Propriedades...</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="455"/>
@@ -738,7 +738,7 @@ Some select Starforge code snippets and resources.
         <location filename="mainwindow.ui" line="473"/>
         <source>Show &amp;Grid</source>
         <extracomment>EditLocal:109:40356</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar &amp;Grade</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="482"/>
@@ -817,28 +817,28 @@ Some select Starforge code snippets and resources.
         <source>&amp;Forces...</source>
         <oldsource>Forces</oldsource>
         <extracomment>EditLocal:109:40312</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>&amp;For\xE7as...</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="597"/>
         <source>&amp;Sounds...</source>
         <oldsource>Sounds</oldsource>
         <extracomment>EditLocal:109:40332</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Sons...</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="606"/>
         <source>&amp;Triggers...</source>
         <oldsource>Triggers</oldsource>
         <extracomment>EditLocal:109:40280</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Gatilhos...</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="615"/>
         <source>&amp;Mission Briefings...</source>
         <oldsource>Briefings</oldsource>
         <extracomment>EditLocal:109:40316</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Instruções de &amp;Missão...</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="624"/>
@@ -851,21 +851,21 @@ Some select Starforge code snippets and resources.
         <source>Unit and &amp;Hero Settings...</source>
         <oldsource>Unit and Hero Settings...</oldsource>
         <extracomment>EditLocal:109:40326</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Configurações de Unidade e &amp;Herói...</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="638"/>
         <source>&amp;Upgrade Settings...</source>
         <oldsource>Upgrade Settings...</oldsource>
         <extracomment>EditLocal:109:40327</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Configurações de At&amp;ualilização...</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="643"/>
         <source>Special &amp;Ability Settings...</source>
         <oldsource>Ability (Tech) Settings...</oldsource>
         <extracomment>EditLocal:109:40328</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Configurações de H&amp;abilidade Especial...</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="648"/>
@@ -877,14 +877,14 @@ Some select Starforge code snippets and resources.
         <location filename="mainwindow.ui" line="660"/>
         <source>&amp;Terrain</source>
         <extracomment>EditLocal:109:40300</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Terreno</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="675"/>
         <source>&amp;Doodad</source>
         <oldsource>&amp;Doodads</oldsource>
         <extracomment>EditLocal:109:40301</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Disfarce</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="690"/>
@@ -897,14 +897,14 @@ Some select Starforge code snippets and resources.
         <source>&amp;Unit</source>
         <oldsource>&amp;Units</oldsource>
         <extracomment>EditLocal:109:40302</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Unidade</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="720"/>
         <source>&amp;Location</source>
         <oldsource>&amp;Locations</oldsource>
         <extracomment>EditLocal:109:40304</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Localização</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="738"/>
@@ -915,7 +915,7 @@ Some select Starforge code snippets and resources.
         <location filename="mainwindow.ui" line="753"/>
         <source>&amp;Fog of War</source>
         <extracomment>EditLocal:109:40305</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Neblina De Guerra</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="761"/>
@@ -924,20 +924,21 @@ Some select Starforge code snippets and resources.
     </message>
     <message>
         <location filename="mainwindow.ui" line="770"/>
-        <source>&amp;About</source>
-        <translation type="unfinished"></translation>
+        <source>About...</source>
+        <oldsource>&amp;About</oldsource>
+        <translation>Sobre...</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="782"/>
         <location filename="mainwindow.cpp" line="655"/>
         <source>&amp;Play</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Jogar</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="847"/>
         <source>&amp;Cascade</source>
         <extracomment>EditLocal:109:57650</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Cascata</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="852"/>
@@ -949,7 +950,7 @@ Some select Starforge code snippets and resources.
         <source>&amp;Settings...</source>
         <oldsource>Settings...</oldsource>
         <extracomment>EditLocal:142:40237</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Configurações...</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="791"/>
@@ -975,25 +976,26 @@ Some select Starforge code snippets and resources.
         <location filename="mainwindow.ui" line="824"/>
         <source>&amp;New Map View</source>
         <extracomment>EditLocal:109:40198</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Visão do &amp;Novo Mapa</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="833"/>
         <source>Cl&amp;ose Map View</source>
         <oldsource>New Map View</oldsource>
         <extracomment>EditLocal:109:40199</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Fechar Visã&amp;o do Mapa</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="842"/>
         <source>Close Al&amp;l Map Views</source>
         <oldsource>Close Map View</oldsource>
         <extracomment>EditLocal:109:40200</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Fechar Todas as &amp;Visões de Mapas</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="861"/>
-        <source>Report an Issue</source>
+        <source>Report an Issue...</source>
+        <oldsource>Report an Issue</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1002,14 +1004,9 @@ Some select Starforge code snippets and resources.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="762"/>
-        <source>Player %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="mainwindow.cpp" line="659"/>
         <source>&amp;Pause</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Pausar</translation>
     </message>
 </context>
 <context>
@@ -1031,7 +1028,7 @@ Some select Starforge code snippets and resources.
         <location filename="minimap.cpp" line="18"/>
         <source>Minimap</source>
         <extracomment>EditLocal:10:148</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Mini Mapa</translation>
     </message>
 </context>
 <context>
@@ -1041,7 +1038,7 @@ Some select Starforge code snippets and resources.
         <source>New Scenario</source>
         <oldsource>New Map</oldsource>
         <extracomment>EditLocal:1200</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Cenário Novo</translation>
     </message>
     <message>
         <location filename="newmap.ui" line="24"/>
@@ -1079,21 +1076,21 @@ Other sizes may crash Starcraft.</source>
     <message>
         <location filename="playerstab.ui" line="50"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Nome</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="55"/>
         <location filename="playerstab.ui" line="96"/>
         <source>Colour</source>
         <extracomment>EditLocal:3:43</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Colorido</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="60"/>
         <location filename="playerstab.ui" line="176"/>
         <source>Race</source>
         <extracomment>EditLocal:3:44</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Raça</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="65"/>
@@ -1101,7 +1098,7 @@ Other sizes may crash Starcraft.</source>
         <source>Control</source>
         <oldsource>Controller</oldsource>
         <extracomment>EditLocal:3:45</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Controle</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="70"/>
@@ -1160,13 +1157,13 @@ Other sizes may crash Starcraft.</source>
         <location filename="playerstab.ui" line="215"/>
         <source>User Selectable</source>
         <extracomment>EditLocal:34:536</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Usuário Selecionável</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="257"/>
         <source>Inactive</source>
         <extracomment>EditLocal:10:147, gluAll:season_srank_description</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Inativo</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="270"/>
@@ -1199,7 +1196,7 @@ Other sizes may crash Starcraft.</source>
         <location filename="playerstab.ui" line="316"/>
         <source>Human</source>
         <extracomment>EditLocal:8:123</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Humano</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="326"/>
@@ -1258,7 +1255,7 @@ Other sizes may crash Starcraft.</source>
 <context>
     <name>QFileDialog</name>
     <message>
-        <location filename="OpenSave.cpp" line="20"/>
+        <location filename="OpenSave.cpp" line="22"/>
         <source>All Files (*)</source>
         <extracomment>DO NOT TRANSLATE</extracomment>
         <translation type="unfinished"></translation>
@@ -1340,17 +1337,19 @@ Please select a different directory.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="OpenSave.cpp" line="15"/>
-        <source>Vanilla Maps</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="OpenSave.cpp" line="16"/>
-        <source>Expansion Maps</source>
-        <translation type="unfinished"></translation>
+        <source>Starcraft Scenario (*.scm)</source>
+        <extracomment>SEditENU:195:3115</extracomment>
+        <translation>Cenário Starcraft (*.scm)</translation>
     </message>
     <message>
         <location filename="OpenSave.cpp" line="18"/>
+        <source>Brood War Scenario (*.scx)</source>
+        <extracomment>SEditENU:195:3116</extracomment>
+        <translation>Cenário Brood War (*.scx)</translation>
+    </message>
+    <message>
+        <location filename="OpenSave.cpp" line="20"/>
         <source>Replays</source>
         <extracomment>gluAll:gameCloudReplays</extracomment>
         <translation>Replays</translation>
@@ -1395,7 +1394,7 @@ Please select a different directory.</source>
         <location filename="strings.cpp" line="24"/>
         <source>Unused</source>
         <extracomment>EditLocal:29:458</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Não Usado</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="28"/>
@@ -1452,7 +1451,7 @@ gluAll:slotCOMPUTER</extracomment>
         <location filename="strings.cpp" line="47"/>
         <source>Human</source>
         <extracomment>EditLocal:8:123</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Humano</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="49"/>
@@ -1492,73 +1491,73 @@ EditLocal:8:125</extracomment>
         <location filename="strings.cpp" line="65"/>
         <source>Player 1</source>
         <extracomment>EditLocal:8:126</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Jogador 1</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="67"/>
         <source>Player 2</source>
         <extracomment>EditLocal:8:127</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Jogador 2</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="69"/>
         <source>Player 3</source>
         <extracomment>EditLocal:9:128</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Jogador 3</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="71"/>
         <source>Player 4</source>
         <extracomment>EditLocal:9:129</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Jogador 4</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="73"/>
         <source>Player 5</source>
         <extracomment>EditLocal:9:130</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Jogador 5</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="75"/>
         <source>Player 6</source>
         <extracomment>EditLocal:9:131</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Jogador 6</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="77"/>
         <source>Player 7</source>
         <extracomment>EditLocal:9:132</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Jogador 7</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="79"/>
         <source>Player 8</source>
         <extracomment>EditLocal:9:133</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Jogador 8</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="26"/>
         <source>User Selectable</source>
         <extracomment>EditLocal:34:536</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Usuário Selecionável</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="81"/>
         <source>Independent 1</source>
         <extracomment>EditLocal:9:134</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Independente 1</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="83"/>
         <source>Independent 2</source>
         <extracomment>EditLocal:9:135</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Independente 2</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="85"/>
         <source>Independent 3</source>
         <extracomment>EditLocal:9:136</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Independente 3</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="98"/>
@@ -1939,7 +1938,7 @@ SEditENU:190:3028, stat_txt:DDS_TWILIGHT_WATER</extracomment>
         <source>Space</source>
         <comment>Brush</comment>
         <extracomment>EditLocal:2:22</extracomment>
-        <translation type="unfinished">Espaço</translation>
+        <translation>Espaço</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="127"/>
@@ -1953,7 +1952,7 @@ SEditENU:190:3028, stat_txt:DDS_TWILIGHT_WATER</extracomment>
         <source>Dirt</source>
         <comment>BadJungle</comment>
         <extracomment>EditLocal:1:15, stat_txt:DDS_BAD_LODIRT</extracomment>
-        <translation type="unfinished">Terra</translation>
+        <translation>Terra</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="74"/>
@@ -1963,7 +1962,7 @@ SEditENU:190:3028, stat_txt:DDS_TWILIGHT_WATER</extracomment>
         <extracomment>EditLocal:33:526, stat_txt:DDS_TWILIGHT_MUD
 ----------
 EditLocal:33:527, stat_txt:DDS_TWILIGHT_MUD</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Lama</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="76"/>
@@ -2023,7 +2022,7 @@ EditLocal:2:16</extracomment>
         <source>Rusty Pit</source>
         <comment>Space</comment>
         <extracomment>EditLocal:14:222, stat_txt:DDS_PLAT_DDRUSTYPIT</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Cova Oxidada</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="107"/>
@@ -2051,14 +2050,14 @@ EditLocal:2:16</extracomment>
         <source>Solar Array</source>
         <comment>Space</comment>
         <extracomment>EditLocal:14:220, stat_txt:DDS_PLAT_DDSOLARPANEL</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Disposição Solar</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="115"/>
         <source>High Platform</source>
         <comment>Space</comment>
         <extracomment>EditLocal:2:21</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Plataforma Elevada</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="117"/>
@@ -2072,7 +2071,7 @@ EditLocal:2:16</extracomment>
         <source>Elevated Catwalk</source>
         <comment>Space</comment>
         <extracomment>EditLocal:16:241</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Caminho de Gato Elevado</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="131"/>
@@ -2086,7 +2085,7 @@ EditLocal:2:16</extracomment>
         <source>Substructure Plating</source>
         <comment>Installation</comment>
         <extracomment>EditLocal:11:174</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Blindagem da Subestrutura</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="135"/>
@@ -2100,7 +2099,7 @@ EditLocal:2:16</extracomment>
         <source>Roof</source>
         <comment>Installation</comment>
         <extracomment>EditLocal:11:173</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Telhado</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="139"/>
@@ -2114,14 +2113,14 @@ EditLocal:2:16</extracomment>
         <source>Bottomless Pit</source>
         <comment>Installation</comment>
         <extracomment>EditLocal:16:245</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Cova Sem Fundo</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="143"/>
         <source>Substructure Panels</source>
         <comment>Installation</comment>
         <extracomment>EditLocal:16:244</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Paineis da Subestrutura</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="144"/>
@@ -2140,21 +2139,21 @@ EditLocal:2:16</extracomment>
         <source>Magma</source>
         <comment>Ashworld</comment>
         <extracomment>EditLocal:15:231</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Magma</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="159"/>
         <source>Dirt</source>
         <comment>Ashworld</comment>
         <extracomment>EditLocal:15:232, stat_txt:DDS_ASH_DDLOWASH</extracomment>
-        <translation type="unfinished">Terra</translation>
+        <translation>Terra</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="161"/>
         <source>Lava</source>
         <comment>Ashworld</comment>
         <extracomment>EditLocal:15:233</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Larva</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="163"/>
@@ -2168,7 +2167,7 @@ EditLocal:2:16</extracomment>
         <source>Broken Rock</source>
         <comment>Ashworld</comment>
         <extracomment>EditLocal:15:239</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Pedra Quebrada</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="167"/>
@@ -2182,14 +2181,14 @@ EditLocal:2:16</extracomment>
         <source>High Lava</source>
         <comment>Ashworld</comment>
         <extracomment>EditLocal:15:236</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Lava Elevada</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="171"/>
         <source>High Shale</source>
         <comment>Ashworld</comment>
         <extracomment>EditLocal:15:237</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Xisto Elevado</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="179"/>
@@ -2217,14 +2216,14 @@ EditLocal:2:16</extracomment>
         <source>Raised Jungle</source>
         <comment>BadJungle</comment>
         <extracomment>EditLocal:12:190</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Selva Elevada</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="198"/>
         <source>Temple</source>
         <comment>BadJungle</comment>
         <extracomment>EditLocal:23:358</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Templo</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="202"/>
@@ -2245,14 +2244,14 @@ EditLocal:2:16</extracomment>
         <source>High Raised Jungle</source>
         <comment>BadJungle</comment>
         <extracomment>EditLocal:23:361</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Alta Selva Elevada</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="208"/>
         <source>High Temple</source>
         <comment>BadJungle</comment>
         <extracomment>EditLocal:23:362</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Alto Templo</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="216"/>
@@ -2266,56 +2265,56 @@ EditLocal:2:16</extracomment>
         <source>Tar</source>
         <comment>Desert</comment>
         <extracomment>SEditENU:188:3001, stat_txt:DDS_DESERT_WATER</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Piche</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="223"/>
         <source>Dirt</source>
         <comment>Desert</comment>
         <extracomment>SEditENU:188:3002, stat_txt:DDS_DESERT_HARDPAN</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Terra</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="225"/>
         <source>Dried Mud</source>
         <comment>Desert</comment>
         <extracomment>SEditENU:188:3003, stat_txt:DDS_DESERT_DRIEDMUD</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Barro Seco</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="227"/>
         <source>Sand Dunes</source>
         <comment>Desert</comment>
         <extracomment>SEditENU:188:3004, stat_txt:DDS_DESERT_SANDDUNES</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Dunas de Areia</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="229"/>
         <source>Rocky Ground</source>
         <comment>Desert</comment>
         <extracomment>SEditENU:188:3005, stat_txt:DDS_DESERT_ROCKYGROUND</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Solo Rochoso</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="231"/>
         <source>Crags</source>
         <comment>Desert</comment>
         <extracomment>SEditENU:188:3006, stat_txt:DDS_DESERT_RUINS</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Rochedo</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="233"/>
         <source>Sandy Sunken Pit</source>
         <comment>Desert</comment>
         <extracomment>SEditENU:188:3007, stat_txt:DDS_DESERT_SANDYSUNKEN</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Fossa de Areia Submersa</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="235"/>
         <source>Compound</source>
         <comment>Desert</comment>
         <extracomment>SEditENU:189:3008, stat_txt:DDS_DESERT_RESOURCE</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Composto</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="237"/>
@@ -2329,28 +2328,28 @@ EditLocal:2:16</extracomment>
         <source>High Sand Dunes</source>
         <comment>Desert</comment>
         <extracomment>SEditENU:189:3010, stat_txt:DDS_DESERT_HIGHSANDDUNES</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Dunas de Areia Elevadas</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="241"/>
         <source>High Crags</source>
         <comment>Desert</comment>
         <extracomment>SEditENU:189:3011, stat_txt:DDS_DESERT_HIGHRUINS</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Rochedo Elevado</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="243"/>
         <source>High Sandy Sunken Pit</source>
         <comment>Desert</comment>
         <extracomment>SEditENU:189:3012, stat_txt:DDS_DESERT_HIGHSANDSUNKEN</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Elevada Fossa de Areia</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="245"/>
         <source>High Compound</source>
         <comment>Desert</comment>
         <extracomment>SEditENU:189:3013, stat_txt:DDS_DESERT_HIGHRESOURCE</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Composto Elevado</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="253"/>
@@ -2364,168 +2363,168 @@ EditLocal:2:16</extracomment>
         <source>Ice</source>
         <comment>Brush</comment>
         <extracomment>SEditENU:189:3014, stat_txt:DDS_ICE_SUNKENICE</extracomment>
-        <translation type="unfinished">Gelo</translation>
+        <translation>Gelo</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="260"/>
         <source>Snow</source>
         <comment>Ice</comment>
         <extracomment>SEditENU:189:3015, stat_txt:DDS_ICE_SNOW</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Neve</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="262"/>
         <source>Moguls</source>
         <comment>Ice</comment>
         <extracomment>SEditENU:189:3016, stat_txt:DDS_ICE_MUD</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Moguls</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="264"/>
         <source>Dirt</source>
         <comment>Ice</comment>
         <extracomment>SEditENU:189:3017, stat_txt:DDS_ICE_ROUGHSNOW</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Terra</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="266"/>
         <source>Rocky Snow</source>
         <comment>Ice</comment>
         <extracomment>SEditENU:189:3018, stat_txt:DDS_ICE_ROCKYSNOW</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Neve Rochosa</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="268"/>
         <source>Grass</source>
         <comment>Ice</comment>
         <extracomment>SEditENU:189:3019, stat_txt:DDS_ICE_SNOWYRUINS</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Grama</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="272"/>
         <source>Outpost</source>
         <comment>Ice</comment>
         <extracomment>SEditENU:189:3021, stat_txt:DDS_ICE_OUTPOST</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Posto Avançado</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="274"/>
         <source>High Snow</source>
         <comment>Ice</comment>
         <extracomment>SEditENU:189:3022, stat_txt:DDS_ICE_HIGHSNOW</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Neve Elevada</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="276"/>
         <source>High Dirt</source>
         <comment>Ice</comment>
         <extracomment>SEditENU:189:3023, stat_txt:DDS_ICE_HIGHROUGHSNOW</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Terra Alta</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="278"/>
         <source>High Grass</source>
         <comment>Ice</comment>
         <extracomment>SEditENU:190:3024, stat_txt:DDS_ICE_HIGHSNOWYRUINS</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Grama Elevada</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="280"/>
         <source>High Water</source>
         <comment>Ice</comment>
         <extracomment>SEditENU:190:3025</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Água Elevada</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="282"/>
         <source>High Outpost</source>
         <comment>Ice</comment>
         <extracomment>SEditENU:190:3026, stat_txt:DDS_ICE_HIGHOUTPOST</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Posto Avançado Elevado</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="297"/>
         <source>Dirt</source>
         <comment>Twilight</comment>
         <extracomment>SEditENU:190:3029, stat_txt:DDS_TWILIGHT_DIRT</extracomment>
-        <translation type="unfinished">Terra</translation>
+        <translation>Terra</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="299"/>
         <source>Mud</source>
         <comment>Twilight</comment>
         <extracomment>SEditENU:190:3030, stat_txt:DDS_TWILIGHT_MUD</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Lama</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="301"/>
         <source>Crushed Rock</source>
         <comment>Twilight</comment>
         <extracomment>SEditENU:190:3031, stat_txt:DDS_TWILIGHT_CRACKEDICE</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Rocha Fissuradas</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="303"/>
         <source>Crevices</source>
         <comment>Twilight</comment>
         <extracomment>SEditENU:190:3032, stat_txt:DDS_TWILIGHT_CREVICE</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Fendas</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="305"/>
         <source>Flagstones</source>
         <comment>Twilight</comment>
         <extracomment>SEditENU:190:3033, stat_txt:DDS_TWILIGHT_ANCIENTRUINS</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Laje</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="307"/>
         <source>Sunken Ground</source>
         <comment>Twilight</comment>
         <extracomment>SEditENU:190:3034, stat_txt:DDS_TWILIGHT_SUNKENGROUND</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Terreno Submerso</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="309"/>
         <source>Basilica</source>
         <comment>Twilight</comment>
         <extracomment>SEditENU:190:3035, stat_txt:DDS_TWILIGHT_COMPOUND</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Basílica</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="311"/>
         <source>High Dirt</source>
         <comment>Twilight</comment>
         <extracomment>SEditENU:191:3040, stat_txt:DDS_TWILIGHT_HIGHDIRT</extracomment>
-        <translation type="unfinished">Terra Alta</translation>
+        <translation>Terra Alta</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="313"/>
         <source>High Crushed Rock</source>
         <comment>Twilight</comment>
         <extracomment>SEditENU:190:3036, stat_txt:DDS_TWILIGHT_HIGHCRACKEDICE</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Rochas Fissuras Elevadas</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="315"/>
         <source>High Flagstones</source>
         <comment>Twilight</comment>
         <extracomment>SEditENU:190:3037, stat_txt:DDS_TWILIGHT_HIGHANCIENTRUINS</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Lajes Elevadas</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="317"/>
         <source>High Sunken Ground</source>
         <comment>Twilight</comment>
         <extracomment>SEditENU:190:3038, stat_txt:DDS_TWILIGHT_HIGHSUNKENGROUND</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Terreno Submerso Elevado</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="319"/>
         <source>High Basilica</source>
         <comment>Twilight</comment>
         <extracomment>SEditENU:190:3039, stat_txt:DDS_TWILIGHT_HIGHCOMPOUND</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Basilica Elevada</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="290"/>
@@ -2562,13 +2561,13 @@ EditLocal:2:16</extracomment>
         <location filename="scenariodescription.ui" line="20"/>
         <source>Name</source>
         <extracomment>EditLocal:185</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Nome</translation>
     </message>
     <message>
         <location filename="scenariodescription.ui" line="87"/>
         <source>Description</source>
         <extracomment>EditLocal:185</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Descrição</translation>
     </message>
 </context>
 <context>
@@ -2588,7 +2587,7 @@ EditLocal:2:16</extracomment>
         <location filename="scenariosettings.ui" line="30"/>
         <source>Forces</source>
         <extracomment>EditLocal:188</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Forças</translation>
     </message>
     <message>
         <location filename="scenariosettings.ui" line="36"/>
@@ -2600,13 +2599,13 @@ EditLocal:2:16</extracomment>
         <location filename="scenariosettings.ui" line="42"/>
         <source>Upgrades</source>
         <extracomment>EditLocal:1218</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Atualizações</translation>
     </message>
     <message>
         <location filename="scenariosettings.ui" line="48"/>
         <source>Special Abilities</source>
         <extracomment>EditLocal:1219</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Habilidades Especiais</translation>
     </message>
 </context>
 <context>
@@ -2625,7 +2624,7 @@ EditLocal:2:16</extracomment>
         <location filename="spriteproperties.ui" line="35"/>
         <source>Owner</source>
         <extracomment>EditLocal:1214</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Proprietário</translation>
     </message>
     <message>
         <location filename="spriteproperties.ui" line="93"/>
@@ -2687,7 +2686,7 @@ EditLocal:2:16</extracomment>
         <location filename="unitproperties.ui" line="20"/>
         <source>Unit Properties</source>
         <extracomment>EditLocal:1214:1168</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Propriedades da Unidade</translation>
     </message>
     <message>
         <location filename="unitproperties.ui" line="28"/>
@@ -2698,7 +2697,7 @@ EditLocal:2:16</extracomment>
         <location filename="unitproperties.ui" line="38"/>
         <source>Owner</source>
         <extracomment>EditLocal:1214</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Proprietário</translation>
     </message>
     <message>
         <location filename="unitproperties.ui" line="75"/>
@@ -2714,73 +2713,73 @@ EditLocal:2:16</extracomment>
         <location filename="unitproperties.ui" line="107"/>
         <source>Initial State</source>
         <extracomment>EditLocal:1214</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Estado Inicial</translation>
     </message>
     <message>
         <location filename="unitproperties.ui" line="115"/>
         <source>Hit Point %</source>
         <extracomment>EditLocal:1214</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Ponto de Impacto %</translation>
     </message>
     <message>
         <location filename="unitproperties.ui" line="129"/>
         <source>Shield Point %</source>
         <oldsource>Shield %</oldsource>
         <extracomment>EditLocal:1214</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Ponto Protegido %</translation>
     </message>
     <message>
         <location filename="unitproperties.ui" line="143"/>
         <source>Energy %</source>
         <extracomment>EditLocal:1214</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Energia %</translation>
     </message>
     <message>
         <location filename="unitproperties.ui" line="157"/>
         <source>In Hangar</source>
         <oldsource>Hangar Count</oldsource>
         <extracomment>EditLocal:1214</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>No Hangar</translation>
     </message>
     <message>
         <location filename="unitproperties.ui" line="171"/>
         <source>Resources</source>
         <extracomment>EditLocal:1214</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Recursos</translation>
     </message>
     <message>
         <location filename="unitproperties.ui" line="189"/>
         <source>&amp;Cloaked</source>
         <oldsource>Cloaked</oldsource>
         <extracomment>EditLocal:1214:1111</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Camuflado</translation>
     </message>
     <message>
         <location filename="unitproperties.ui" line="196"/>
         <source>&amp;Burrowed</source>
         <oldsource>Burrowed</oldsource>
         <extracomment>EditLocal:1214:1161</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Enco&amp;vado</translation>
     </message>
     <message>
         <location filename="unitproperties.ui" line="203"/>
         <source>In &amp;Transit</source>
         <extracomment>EditLocal:1214:1162</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>No &amp;Trânsito</translation>
     </message>
     <message>
         <location filename="unitproperties.ui" line="210"/>
         <source>H&amp;allucinated</source>
         <oldsource>Hallucinated</oldsource>
         <extracomment>EditLocal:1214:1164</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>H&amp;alucinado</translation>
     </message>
     <message>
         <location filename="unitproperties.ui" line="217"/>
         <source>In&amp;vincible</source>
         <oldsource>Invincible</oldsource>
         <extracomment>EditLocal:1214:1163</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>In&amp;vencível</translation>
     </message>
 </context>
 <context>
@@ -2805,9 +2804,9 @@ EditLocal:2:16</extracomment>
     <message>
         <location filename="unitstab.ui" line="115"/>
         <location filename="unitstab.ui" line="159"/>
-        <source>Use Defaults</source>
-        <oldsource>Use Default</oldsource>
-        <translation type="unfinished"></translation>
+        <source>Use Default</source>
+        <oldsource>Use Defaults</oldsource>
+        <translation>Usar Padrão</translation>
     </message>
     <message>
         <location filename="unitstab.ui" line="130"/>
@@ -2818,13 +2817,13 @@ EditLocal:2:16</extracomment>
         <location filename="unitstab.ui" line="143"/>
         <source>Enable by Default</source>
         <extracomment>EditLocal:1217:1192</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Habilitado por Padrão</translation>
     </message>
     <message>
         <location filename="unitstab.ui" line="170"/>
         <source>Hit Points</source>
         <extracomment>EditLocal:1216:1000</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Pontos de vida</translation>
     </message>
     <message>
         <location filename="unitstab.ui" line="201"/>
@@ -2847,7 +2846,7 @@ EditLocal:2:16</extracomment>
         <location filename="unitstab.ui" line="264"/>
         <source>Ground Weapon</source>
         <extracomment>EditLocal:1216:1227</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Arma Terrestre</translation>
     </message>
     <message>
         <location filename="unitstab.ui" line="287"/>
@@ -2861,38 +2860,38 @@ EditLocal:2:16</extracomment>
         <location filename="unitstab.ui" line="375"/>
         <source>Bonus</source>
         <extracomment>EditLocal:1216</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Bônus</translation>
     </message>
     <message>
         <location filename="unitstab.ui" line="332"/>
         <source>Air Weapon</source>
         <extracomment>EditLocal:1216:1228</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Arma Aérea</translation>
     </message>
     <message>
         <location filename="unitstab.ui" line="415"/>
         <source>Time</source>
         <oldsource>Build Time</oldsource>
         <extracomment>EditLocal:1216</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Tempo</translation>
     </message>
     <message>
         <location filename="unitstab.ui" line="435"/>
         <source>Minerals</source>
         <extracomment>EditLocal:1216</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Minerais</translation>
     </message>
     <message>
         <location filename="unitstab.ui" line="455"/>
         <source>Gas</source>
         <extracomment>EditLocal:1216</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Gás</translation>
     </message>
     <message>
         <location filename="unitstab.ui" line="477"/>
         <source>Custom Name</source>
         <extracomment>SEditENU:1216</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Nome Personalizado</translation>
     </message>
 </context>
 <context>
@@ -2916,59 +2915,56 @@ EditLocal:2:16</extracomment>
     <message>
         <location filename="upgradestab.ui" line="97"/>
         <location filename="upgradestab.ui" line="179"/>
+        <location filename="upgradestab.ui" line="286"/>
+        <location filename="upgradestab.ui" line="357"/>
+        <location filename="upgradestab.ui" line="428"/>
         <source>Level</source>
-        <translation type="unfinished"></translation>
+        <extracomment>EditLocal:32:498</extracomment>
+        <translation>Nível</translation>
     </message>
     <message>
         <location filename="upgradestab.ui" line="102"/>
         <location filename="upgradestab.ui" line="199"/>
         <source>Max</source>
-        <translation type="unfinished"></translation>
+        <extracomment>EditLocal:32:499</extracomment>
+        <translation>Máx</translation>
+    </message>
+    <message>
+        <location filename="upgradestab.ui" line="170"/>
+        <location filename="upgradestab.ui" line="228"/>
+        <source>Use Default</source>
+        <translation>Usar Padrão</translation>
     </message>
     <message>
         <location filename="upgradestab.ui" line="379"/>
         <source>Time</source>
         <extracomment>EditLocal:1223</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Tempo</translation>
     </message>
     <message>
         <location filename="upgradestab.ui" line="112"/>
         <source>Default Level</source>
         <oldsource>Default Start</oldsource>
         <extracomment>EditLocal:1218</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Nível de padrão</translation>
     </message>
     <message>
         <location filename="upgradestab.ui" line="132"/>
         <source>Default Max</source>
         <extracomment>EditLocal:1218</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="upgradestab.ui" line="170"/>
-        <location filename="upgradestab.ui" line="228"/>
-        <source>Use Defaults</source>
-        <oldsource>Use Default</oldsource>
-        <translation type="unfinished"></translation>
+        <translation>padrão Máximo</translation>
     </message>
     <message>
         <location filename="upgradestab.ui" line="237"/>
         <source>Minerals</source>
         <extracomment>EditLocal:1223</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="upgradestab.ui" line="286"/>
-        <location filename="upgradestab.ui" line="357"/>
-        <location filename="upgradestab.ui" line="428"/>
-        <source>level</source>
-        <translation type="unfinished"></translation>
+        <translation>Minerais</translation>
     </message>
     <message>
         <location filename="upgradestab.ui" line="308"/>
         <source>Gas</source>
         <extracomment>EditLocal:1223</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Gás</translation>
     </message>
 </context>
 </TS>

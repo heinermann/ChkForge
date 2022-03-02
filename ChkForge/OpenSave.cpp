@@ -12,8 +12,10 @@
 
 namespace {
   static const QString allMaps = QObject::tr("All Starcraft Maps");
-  static const QString vanillaMaps = QObject::tr("Vanilla Maps");
-  static const QString expansionMaps = QObject::tr("Expansion Maps");
+  //: SEditENU:195:3115
+  static const QString vanillaMaps = QObject::tr("Starcraft Scenario (*.scm)");
+  //: SEditENU:195:3116
+  static const QString expansionMaps = QObject::tr("Brood War Scenario (*.scx)");
   //: gluAll:gameCloudReplays
   static const QString replays = QObject::tr("Replays");
   //: DO NOT TRANSLATE
@@ -21,8 +23,8 @@ namespace {
 
   static const QString file_filter =
     allMaps + " (*.scm *.scx *.rep);;" +
-    vanillaMaps + " (*.scm);;" +
-    expansionMaps + " (*.scx);;" +
+    vanillaMaps + ";;" +
+    expansionMaps + ";;" +
     replays + " (*.rep);;" +
     allFiles;
 }

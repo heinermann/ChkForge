@@ -11,8 +11,8 @@
     <message>
         <location filename="abilitiestab.ui" line="46"/>
         <location filename="abilitiestab.ui" line="168"/>
-        <source>Use Defaults</source>
-        <oldsource>Use Default</oldsource>
+        <source>Use Default</source>
+        <oldsource>Use Defaults</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -924,14 +924,15 @@ Some select Starforge code snippets and resources.
     </message>
     <message>
         <location filename="mainwindow.ui" line="770"/>
-        <source>&amp;About</source>
-        <translation type="unfinished"></translation>
+        <source>About...</source>
+        <oldsource>&amp;About</oldsource>
+        <translation>について...</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="782"/>
         <location filename="mainwindow.cpp" line="655"/>
         <source>&amp;Play</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">プレイ</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="847"/>
@@ -993,7 +994,8 @@ Some select Starforge code snippets and resources.
     </message>
     <message>
         <location filename="mainwindow.ui" line="861"/>
-        <source>Report an Issue</source>
+        <source>Report an Issue...</source>
+        <oldsource>Report an Issue</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1002,14 +1004,9 @@ Some select Starforge code snippets and resources.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="762"/>
-        <source>Player %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="mainwindow.cpp" line="659"/>
         <source>&amp;Pause</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ポーズ</translation>
     </message>
 </context>
 <context>
@@ -1258,7 +1255,7 @@ Other sizes may crash Starcraft.</source>
 <context>
     <name>QFileDialog</name>
     <message>
-        <location filename="OpenSave.cpp" line="20"/>
+        <location filename="OpenSave.cpp" line="22"/>
         <source>All Files (*)</source>
         <extracomment>DO NOT TRANSLATE</extracomment>
         <translation type="unfinished"></translation>
@@ -1340,17 +1337,19 @@ Please select a different directory.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="OpenSave.cpp" line="15"/>
-        <source>Vanilla Maps</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="OpenSave.cpp" line="16"/>
-        <source>Expansion Maps</source>
+        <source>Starcraft Scenario (*.scm)</source>
+        <extracomment>SEditENU:195:3115</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="OpenSave.cpp" line="18"/>
+        <source>Brood War Scenario (*.scx)</source>
+        <extracomment>SEditENU:195:3116</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="OpenSave.cpp" line="20"/>
         <source>Replays</source>
         <extracomment>gluAll:gameCloudReplays</extracomment>
         <translation>リプレイ</translation>
@@ -1452,7 +1451,7 @@ gluAll:slotCOMPUTER</extracomment>
         <location filename="strings.cpp" line="47"/>
         <source>Human</source>
         <extracomment>EditLocal:8:123</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>ヒューマン</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="49"/>
@@ -2294,7 +2293,7 @@ EditLocal:2:16</extracomment>
         <source>Rocky Ground</source>
         <comment>Desert</comment>
         <extracomment>SEditENU:188:3005, stat_txt:DDS_DESERT_ROCKYGROUND</extracomment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">砂利</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="231"/>
@@ -2322,7 +2321,7 @@ EditLocal:2:16</extracomment>
         <source>High Dirt</source>
         <comment>Desert</comment>
         <extracomment>SEditENU:189:3009, stat_txt:DDS_DESERT_HIGHDIRT</extracomment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">高台</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="239"/>
@@ -2399,7 +2398,7 @@ EditLocal:2:16</extracomment>
         <source>Grass</source>
         <comment>Ice</comment>
         <extracomment>SEditENU:189:3019, stat_txt:DDS_ICE_SNOWYRUINS</extracomment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">草原</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="272"/>
@@ -2420,14 +2419,14 @@ EditLocal:2:16</extracomment>
         <source>High Dirt</source>
         <comment>Ice</comment>
         <extracomment>SEditENU:189:3023, stat_txt:DDS_ICE_HIGHROUGHSNOW</extracomment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">高台</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="278"/>
         <source>High Grass</source>
         <comment>Ice</comment>
         <extracomment>SEditENU:190:3024, stat_txt:DDS_ICE_HIGHSNOWYRUINS</extracomment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">高原</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="280"/>
@@ -2455,7 +2454,7 @@ EditLocal:2:16</extracomment>
         <source>Mud</source>
         <comment>Twilight</comment>
         <extracomment>SEditENU:190:3030, stat_txt:DDS_TWILIGHT_MUD</extracomment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">泥地</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="301"/>
@@ -2497,7 +2496,7 @@ EditLocal:2:16</extracomment>
         <source>High Dirt</source>
         <comment>Twilight</comment>
         <extracomment>SEditENU:191:3040, stat_txt:DDS_TWILIGHT_HIGHDIRT</extracomment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">高台</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="313"/>
@@ -2805,8 +2804,8 @@ EditLocal:2:16</extracomment>
     <message>
         <location filename="unitstab.ui" line="115"/>
         <location filename="unitstab.ui" line="159"/>
-        <source>Use Defaults</source>
-        <oldsource>Use Default</oldsource>
+        <source>Use Default</source>
+        <oldsource>Use Defaults</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2824,7 +2823,7 @@ EditLocal:2:16</extracomment>
         <location filename="unitstab.ui" line="170"/>
         <source>Hit Points</source>
         <extracomment>EditLocal:1216:1000</extracomment>
-        <translation>HP</translation>
+        <translation>ヒットポイント</translation>
     </message>
     <message>
         <location filename="unitstab.ui" line="201"/>
@@ -2916,14 +2915,25 @@ EditLocal:2:16</extracomment>
     <message>
         <location filename="upgradestab.ui" line="97"/>
         <location filename="upgradestab.ui" line="179"/>
+        <location filename="upgradestab.ui" line="286"/>
+        <location filename="upgradestab.ui" line="357"/>
+        <location filename="upgradestab.ui" line="428"/>
         <source>Level</source>
+        <extracomment>EditLocal:32:498</extracomment>
         <translation>レベル</translation>
     </message>
     <message>
         <location filename="upgradestab.ui" line="102"/>
         <location filename="upgradestab.ui" line="199"/>
         <source>Max</source>
+        <extracomment>EditLocal:32:499</extracomment>
         <translation>最大値</translation>
+    </message>
+    <message>
+        <location filename="upgradestab.ui" line="170"/>
+        <location filename="upgradestab.ui" line="228"/>
+        <source>Use Default</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="upgradestab.ui" line="379"/>
@@ -2945,24 +2955,10 @@ EditLocal:2:16</extracomment>
         <translation>最大初期値</translation>
     </message>
     <message>
-        <location filename="upgradestab.ui" line="170"/>
-        <location filename="upgradestab.ui" line="228"/>
-        <source>Use Defaults</source>
-        <oldsource>Use Default</oldsource>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="upgradestab.ui" line="237"/>
         <source>Minerals</source>
         <extracomment>EditLocal:1223</extracomment>
         <translation>ミネラル</translation>
-    </message>
-    <message>
-        <location filename="upgradestab.ui" line="286"/>
-        <location filename="upgradestab.ui" line="357"/>
-        <location filename="upgradestab.ui" line="428"/>
-        <source>level</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="upgradestab.ui" line="308"/>

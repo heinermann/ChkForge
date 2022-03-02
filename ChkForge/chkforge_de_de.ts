@@ -11,9 +11,9 @@
     <message>
         <location filename="abilitiestab.ui" line="46"/>
         <location filename="abilitiestab.ui" line="168"/>
-        <source>Use Defaults</source>
-        <oldsource>Use Default</oldsource>
-        <translation type="unfinished"></translation>
+        <source>Use Default</source>
+        <oldsource>Use Defaults</oldsource>
+        <translation>Standard benutzen</translation>
     </message>
     <message>
         <location filename="abilitiestab.ui" line="58"/>
@@ -942,14 +942,15 @@ Some select Starforge code snippets and resources.
     </message>
     <message>
         <location filename="mainwindow.ui" line="770"/>
-        <source>&amp;About</source>
-        <translation type="unfinished"></translation>
+        <source>About...</source>
+        <oldsource>&amp;About</oldsource>
+        <translation>Über ...</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="782"/>
         <location filename="mainwindow.cpp" line="655"/>
         <source>&amp;Play</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Spielen</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="791"/>
@@ -1007,7 +1008,8 @@ Some select Starforge code snippets and resources.
     </message>
     <message>
         <location filename="mainwindow.ui" line="861"/>
-        <source>Report an Issue</source>
+        <source>Report an Issue...</source>
+        <oldsource>Report an Issue</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1023,14 +1025,9 @@ Some select Starforge code snippets and resources.
         <translation>&amp;Einstellungen ...</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="762"/>
-        <source>Player %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="mainwindow.cpp" line="659"/>
         <source>&amp;Pause</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Pause</translation>
     </message>
 </context>
 <context>
@@ -1279,7 +1276,7 @@ Other sizes may crash Starcraft.</source>
 <context>
     <name>QFileDialog</name>
     <message>
-        <location filename="OpenSave.cpp" line="20"/>
+        <location filename="OpenSave.cpp" line="22"/>
         <source>All Files (*)</source>
         <extracomment>DO NOT TRANSLATE</extracomment>
         <translation type="unfinished"></translation>
@@ -1361,17 +1358,19 @@ Please select a different directory.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="OpenSave.cpp" line="15"/>
-        <source>Vanilla Maps</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="OpenSave.cpp" line="16"/>
-        <source>Expansion Maps</source>
-        <translation type="unfinished"></translation>
+        <source>Starcraft Scenario (*.scm)</source>
+        <extracomment>SEditENU:195:3115</extracomment>
+        <translation>Starcraft-Szenario (*.scm)</translation>
     </message>
     <message>
         <location filename="OpenSave.cpp" line="18"/>
+        <source>Brood War Scenario (*.scx)</source>
+        <extracomment>SEditENU:195:3116</extracomment>
+        <translation>Brood War-Szenario (*.scx)</translation>
+    </message>
+    <message>
+        <location filename="OpenSave.cpp" line="20"/>
         <source>Replays</source>
         <extracomment>gluAll:gameCloudReplays</extracomment>
         <translation>Replays</translation>
@@ -2837,9 +2836,9 @@ EditLocal:2:16</extracomment>
     <message>
         <location filename="unitstab.ui" line="115"/>
         <location filename="unitstab.ui" line="159"/>
-        <source>Use Defaults</source>
-        <oldsource>Use Default</oldsource>
-        <translation type="unfinished"></translation>
+        <source>Use Default</source>
+        <oldsource>Use Defaults</oldsource>
+        <translation>Standard benutzen</translation>
     </message>
     <message>
         <location filename="unitstab.ui" line="130"/>
@@ -2851,7 +2850,8 @@ EditLocal:2:16</extracomment>
         <location filename="unitstab.ui" line="170"/>
         <source>Hit Points</source>
         <extracomment>EditLocal:1216:1000</extracomment>
-        <translation>Trefferpunkte</translation>
+        <translatorcomment>Source: PolyglotGamedev</translatorcomment>
+        <translation>Kraftpunkte</translation>
     </message>
     <message>
         <location filename="unitstab.ui" line="201"/>
@@ -2901,6 +2901,7 @@ EditLocal:2:16</extracomment>
         <source>Time</source>
         <oldsource>Build Time</oldsource>
         <extracomment>EditLocal:1216</extracomment>
+        <translatorcomment>Source: PolyglotGamedev</translatorcomment>
         <translation>Zeit</translation>
     </message>
     <message>
@@ -2943,7 +2944,11 @@ EditLocal:2:16</extracomment>
     <message>
         <location filename="upgradestab.ui" line="97"/>
         <location filename="upgradestab.ui" line="179"/>
+        <location filename="upgradestab.ui" line="286"/>
+        <location filename="upgradestab.ui" line="357"/>
+        <location filename="upgradestab.ui" line="428"/>
         <source>Level</source>
+        <extracomment>EditLocal:32:498</extracomment>
         <translatorcomment>EditLocal:32:498</translatorcomment>
         <translation>Level</translation>
     </message>
@@ -2951,6 +2956,7 @@ EditLocal:2:16</extracomment>
         <location filename="upgradestab.ui" line="102"/>
         <location filename="upgradestab.ui" line="199"/>
         <source>Max</source>
+        <extracomment>EditLocal:32:499</extracomment>
         <translatorcomment>EditLocal:32:499</translatorcomment>
         <translation>Max</translation>
     </message>
@@ -2970,22 +2976,15 @@ EditLocal:2:16</extracomment>
     <message>
         <location filename="upgradestab.ui" line="170"/>
         <location filename="upgradestab.ui" line="228"/>
-        <source>Use Defaults</source>
-        <oldsource>Use Default</oldsource>
-        <translation type="unfinished"></translation>
+        <source>Use Default</source>
+        <oldsource>Use Defaults</oldsource>
+        <translation>Standard benutzen</translation>
     </message>
     <message>
         <location filename="upgradestab.ui" line="237"/>
         <source>Minerals</source>
         <extracomment>EditLocal:1223</extracomment>
         <translation>Mineralien</translation>
-    </message>
-    <message>
-        <location filename="upgradestab.ui" line="286"/>
-        <location filename="upgradestab.ui" line="357"/>
-        <location filename="upgradestab.ui" line="428"/>
-        <source>level</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="upgradestab.ui" line="308"/>

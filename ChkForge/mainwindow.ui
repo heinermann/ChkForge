@@ -767,7 +767,7 @@ QSplitter::handle:vertical {
      <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/help-about.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/help-about.png</iconset>
    </property>
    <property name="text">
-    <string>&amp;About</string>
+    <string>About...</string>
    </property>
    <property name="menuRole">
     <enum>QAction::AboutRole</enum>
@@ -858,7 +858,7 @@ QSplitter::handle:vertical {
      <normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/tools-report-bug.png</normaloff>:/themes/oxygen-icons-png/oxygen/48x48/actions/tools-report-bug.png</iconset>
    </property>
    <property name="text">
-    <string>Report an Issue</string>
+    <string>Report an Issue...</string>
    </property>
   </action>
   <action name="action_tools_stackUnits">

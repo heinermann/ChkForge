@@ -11,9 +11,9 @@
     <message>
         <location filename="abilitiestab.ui" line="46"/>
         <location filename="abilitiestab.ui" line="168"/>
-        <source>Use Defaults</source>
-        <oldsource>Use Default</oldsource>
-        <translation></translation>
+        <source>Use Default</source>
+        <oldsource>Use Defaults</oldsource>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="abilitiestab.ui" line="58"/>
@@ -932,8 +932,9 @@ Some select Starforge code snippets and resources.
     </message>
     <message>
         <location filename="mainwindow.ui" line="770"/>
-        <source>&amp;About</source>
-        <translation></translation>
+        <source>About...</source>
+        <oldsource>&amp;About</oldsource>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="782"/>
@@ -1002,17 +1003,13 @@ Some select Starforge code snippets and resources.
     </message>
     <message>
         <location filename="mainwindow.ui" line="861"/>
-        <source>Report an Issue</source>
-        <translation></translation>
+        <source>Report an Issue...</source>
+        <oldsource>Report an Issue</oldsource>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="870"/>
         <source>Stack Units</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="mainwindow.cpp" line="762"/>
-        <source>Player %1</source>
         <translation></translation>
     </message>
     <message>
@@ -1267,7 +1264,7 @@ Other sizes may crash Starcraft.</source>
 <context>
     <name>QFileDialog</name>
     <message>
-        <location filename="OpenSave.cpp" line="20"/>
+        <location filename="OpenSave.cpp" line="22"/>
         <source>All Files (*)</source>
         <extracomment>DO NOT TRANSLATE</extracomment>
         <translation type="unfinished"></translation>
@@ -1349,17 +1346,19 @@ Please select a different directory.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="OpenSave.cpp" line="15"/>
-        <source>Vanilla Maps</source>
-        <translation></translation>
-    </message>
-    <message>
         <location filename="OpenSave.cpp" line="16"/>
-        <source>Expansion Maps</source>
-        <translation></translation>
+        <source>Starcraft Scenario (*.scm)</source>
+        <extracomment>SEditENU:195:3115</extracomment>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="OpenSave.cpp" line="18"/>
+        <source>Brood War Scenario (*.scx)</source>
+        <extracomment>SEditENU:195:3116</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="OpenSave.cpp" line="20"/>
         <source>Replays</source>
         <extracomment>gluAll:gameCloudReplays</extracomment>
         <translation></translation>
@@ -2805,9 +2804,9 @@ EditLocal:2:16</extracomment>
     <message>
         <location filename="unitstab.ui" line="115"/>
         <location filename="unitstab.ui" line="159"/>
-        <source>Use Defaults</source>
-        <oldsource>Use Default</oldsource>
-        <translation></translation>
+        <source>Use Default</source>
+        <oldsource>Use Defaults</oldsource>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="unitstab.ui" line="130"/>
@@ -2956,6 +2955,12 @@ EditLocal:2:16</extracomment>
         <translation></translation>
     </message>
     <message>
+        <location filename="upgradestab.ui" line="170"/>
+        <location filename="upgradestab.ui" line="228"/>
+        <source>Use Default</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="upgradestab.ui" line="379"/>
         <source>Time</source>
         <extracomment>EditLocal:1223</extracomment>
@@ -2972,13 +2977,6 @@ EditLocal:2:16</extracomment>
         <location filename="upgradestab.ui" line="132"/>
         <source>Default Max</source>
         <extracomment>EditLocal:1218</extracomment>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="upgradestab.ui" line="170"/>
-        <location filename="upgradestab.ui" line="228"/>
-        <source>Use Defaults</source>
-        <oldsource>Use Default</oldsource>
         <translation></translation>
     </message>
 </context>

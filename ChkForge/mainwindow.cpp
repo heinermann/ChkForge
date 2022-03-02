@@ -759,7 +759,7 @@ void MainWindow::selectPlayerIndex(int index) {
     statusBar_ui->lbl_player->setText(cmb_player->itemText(index));
   }
   else {
-    auto player_text = tr("Player %1").arg(index + 1);
+    auto player_text = ChkForge::getGenericPlayerName(index);
     cmb_player->addItem(black_ico, player_text);
     cmb_player->setCurrentIndex(12);
     statusBar_ui->player_color->setPixmap(black_ico.pixmap(16, 16));
