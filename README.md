@@ -30,6 +30,7 @@ Translations were sourced from the following:
 - Starcraft: Remastered
 - Starcraft 1.16.1
 - Starcraft JP
+- Korean Fan Translation (VIRUSGOD?)
 
 
 ## Development

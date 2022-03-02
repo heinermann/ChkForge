@@ -1340,7 +1340,7 @@ Please select a different directory.</source>
         <location filename="OpenSave.cpp" line="16"/>
         <source>Starcraft Scenario (*.scm)</source>
         <extracomment>SEditENU:195:3115</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>スタークラフト・シナリオ(*.scm)</translation>
     </message>
     <message>
         <location filename="OpenSave.cpp" line="18"/>
