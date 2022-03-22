@@ -20021,9 +20021,11 @@ struct game_load_functions : state_functions {
 		st.free_thingies.clear();
 		st.thingies.clear();
 
-		auto* cursor = create_thingy(get_sprite_type(SpriteTypes::SPRITEID_Cursor_Marker), {}, 0);
-		if (cursor) {
-			cursor->sprite->flags |= sprite_t::flag_hidden;
+		if (!st.is_editor_paused) {
+			auto* cursor = create_thingy(get_sprite_type(SpriteTypes::SPRITEID_Cursor_Marker), {}, 0);
+			if (cursor) {
+				cursor->sprite->flags |= sprite_t::flag_hidden;
+			}
 		}
 
 		st.last_error = 0;
