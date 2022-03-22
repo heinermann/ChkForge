@@ -11,17 +11,16 @@
 #include <QResource>
 
 namespace ChkForge::Icons {
-  std::vector<QIcon> cmdicons16;
   std::vector<QIcon> cmdicons32;
 
   const QIcon& getUnitIcon(int unit_type)
   {
-    return cmdicons16.at(unit_type);
+    return cmdicons32.at(unit_type);
   }
   
   const std::vector<QIcon>& getAllIcons()
   {
-    return cmdicons16;
+    return cmdicons32;
   }
 
   void init()
@@ -43,7 +42,6 @@ namespace ChkForge::Icons {
       bwgame::global_ui_st.draw_icon(i, img.bits(), img.bytesPerLine(), img.width(), img.height());
       QPixmap pixmap = QPixmap::fromImage(img);
       cmdicons32.emplace_back(pixmap);
-      cmdicons16.emplace_back(pixmap.scaled(QSize{ 16,16 }));
     }
   }
 
