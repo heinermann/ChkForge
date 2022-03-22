@@ -112,6 +112,9 @@ void UnitLayer::setPlacementUnitType(Sc::Unit::Type type)
       if (map->openbw_ui.ut_building(new_unit_type)) {
         map->openbw_ui.sprite_run_anim(&*placement_sprite, bwgame::iscript_anims::Built);
       }
+      else if (new_unit_type->turret_unit_type) {
+        map->openbw_ui.sprite_run_anim(&*placement_sprite, bwgame::iscript_anims::StarEditInit);
+      }
     }
   }
 }
