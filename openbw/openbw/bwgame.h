@@ -16292,7 +16292,7 @@ struct state_functions {
 		if (u_grounded_building(u)) bw_insert_list(st.visible_units, *u);
 		else bw_insert_list(st.hidden_units, *u);
 
-		if (unit_type->id < UnitTypes::Terran_Command_Center && unit_type->turret_unit_type) {
+		if (unit_type->id < UnitTypes::Terran_Command_Center && unit_type->turret_unit_type && !st.is_editor_paused) {
 			unit_t* su = get_new(unit_type->turret_unit_type);
 			if (!su) {
 				destroy_unit(u);
@@ -17191,6 +17191,11 @@ struct state_functions {
 		if (unit_type_spreads_creep(unit_type, true) || ut_requires_creep(unit_type)) {
 			spread_creep_completely(u, u->sprite->position);
 		}
+
+		if (u->unit_type->turret_unit_type || unit_is_trap_or_door(u)) {
+			sprite_run_anim(u->sprite, iscript_anims::StarEditInit);
+		}
+
 		return u;
 	}
 
