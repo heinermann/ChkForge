@@ -11,6 +11,9 @@
 #include <QEvent>
 #include <QKeyEvent>
 
+#include <MappingCoreLib/Sc.h>
+#include "terrain.h"
+
 #include "icons.h"
 
 ItemTree::ItemTree(QWidget *parent)
@@ -46,12 +49,30 @@ ItemTree::ItemTree(QWidget *parent)
 
 ItemTree::~ItemTree() {}
 
+void ItemTree::update_tileset(Sc::Terrain::Tileset tileset_id) {
+  ChkForge::Tileset* tileset = ChkForge::Tileset::fromId(tileset_id);
+
+  tilesetTreeItem->removeRows(0, tilesetTreeItem->rowCount());
+  tilesetTreeItem->setText(tileset->getName());
+
+  QList<QStandardItem*> brushRows;
+  for (auto& brush : tileset->getBrushes()) {
+    QStandardItem* item = createTreeItem(brush.getName());
+
+    item->setData(brush.getGroupId(), ROLE_ID);
+    item->setData(Category::CAT_TERRAIN, ROLE_CATEGORY);
+    item->setData(Category::CAT_TERRAIN << 16 | brush.getGroupId(), ROLE_SEARCHKEY);
+    item->setIcon(brush.getIcon());
+
+    brushRows.emplaceBack(item);
+  }
+  tilesetTreeItem->appendRows(brushRows);
+}
+
 QStandardItem* ItemTree::createTilesetTree()
 {
-  QStandardItem* top = createTreeItem("Tileset");
-  // TODO
-  //createTreeFromFile(top, "terrain.txt", CAT_TERRAIN);
-  return top;
+  this->tilesetTreeItem = createTreeItem("Tileset");
+  return this->tilesetTreeItem;
 }
 
 QStandardItem* ItemTree::createDoodadsTree()

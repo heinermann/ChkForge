@@ -75,17 +75,22 @@ bool MapContext::has_one_view() const
   return views.size() == 1;
 }
 
-QRect MapContext::map_dimensions()
+QRect MapContext::map_dimensions() const
 {
   return QRect{ 0, 0, tile_width(), tile_height() };
 }
-int MapContext::tile_width()
+int MapContext::tile_width() const
 {
   return chk->layers.getTileWidth();
 }
-int MapContext::tile_height()
+int MapContext::tile_height() const
 {
   return chk->layers.getTileHeight();
+}
+
+Sc::Terrain::Tileset MapContext::tileset() const
+{
+  return Sc::Terrain::Tileset(openbw_ui.game_st.tileset_index);
 }
 
 void MapContext::place_unit(Sc::Unit::Type unitType, int owner, int x, int y)

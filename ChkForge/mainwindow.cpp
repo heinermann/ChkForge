@@ -15,6 +15,8 @@
 #include "scenariosettings.h"
 #include "strings.h"
 
+#include <MappingCoreLib/Sc.h>
+
 #include <DockAreaWidget.h>
 #include <QLabel>
 #include <QMessageBox>
@@ -810,6 +812,8 @@ void MainWindow::onMdiSubWindowActivated(QMdiSubWindow* window)
   this->selectLayerIndex(map->getMap()->get_layer()->getLayerId());
 
   scmd_pluginManager.setTrackingMap(map->getMap());
+
+  this->itemTree->update_tileset(map->getMap()->tileset());
 }
 
 void MainWindow::mapMouseMoved(const QPoint& pos)

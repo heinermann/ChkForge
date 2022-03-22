@@ -9,6 +9,7 @@
 #include <filesystem>
 
 #include <MappingCoreLib/MapFile.h>
+#include <MappingCoreLib/Sc.h>
 
 #include "../openbw/openbw/ui/ui.h"
 #include "UnitFinder.h"
@@ -56,9 +57,11 @@ namespace ChkForge
     void remove_view(MapView* view);
     bool has_one_view() const;
 
-    QRect map_dimensions();
-    int tile_width();
-    int tile_height();
+    QRect map_dimensions() const;
+    int tile_width() const;
+    int tile_height() const;
+
+    Sc::Terrain::Tileset tileset() const;
 
     void place_unit(Sc::Unit::Type unitType, int owner, int x, int y);
     void apply_brush(const QRect& rect, int tileGroup, int clutter);

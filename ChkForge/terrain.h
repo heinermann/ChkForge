@@ -7,6 +7,7 @@
 
 #include <vector>
 #include <optional>
+#include <map>
 #include <random>
 
 namespace ChkForge {
@@ -19,13 +20,14 @@ namespace ChkForge {
 
       int getGroupId() const;
       const QString& getName() const;
-      const QIcon& getIcon();
+      const QIcon& getIcon() const;
 
     private:
       int tilesetId = -1;
       int groupId = -1;
       QString name;
-      std::optional<QIcon> icon = std::nullopt;
+
+      static std::map<int, std::map<int, QIcon>> icon_cache;
     };
 
     Tileset(int id, const QString& name, const QList<TileGroup>& brushes, int defaultBrushIndex);

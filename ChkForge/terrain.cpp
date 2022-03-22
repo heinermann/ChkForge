@@ -29,9 +29,10 @@ const QString& Tileset::TileGroup::getName() const
   return name;
 }
 
-const QIcon& Tileset::TileGroup::getIcon()
+std::map<int, std::map<int, QIcon>> Tileset::TileGroup::icon_cache;
+const QIcon& Tileset::TileGroup::getIcon() const
 {
-  if (!icon) {
+  if (!icon_cache[tilesetId].contains(groupId)) {
     const bwgame::tileset_image_data& tileset_img = bwgame::global_ui_st.all_tileset_img[tilesetId];
 
     QImage tile_img{ 32, 32, QImage::Format::Format_Indexed8 };
@@ -48,9 +49,9 @@ const QIcon& Tileset::TileGroup::getIcon()
     uint16_t draw_tile_index = bwgame::global_st.get_cv5(tilesetId).at(groupId).mega_tile_index[0];
     bwgame::draw_tile(tileset_img, draw_tile_index, tile_img.bits(), tile_img.bytesPerLine(), 0, 0, tile_img.width(), tile_img.height());
 
-    icon = QIcon(QPixmap::fromImage(tile_img));
+    icon_cache[tilesetId].emplace(groupId, QPixmap::fromImage(tile_img));
   }
-  return *icon;
+  return icon_cache[tilesetId][groupId];
 }
 
 Tileset::Tileset(int tilesetId, const QString& name, const QList<TileGroup>& brushes, int defaultBrushIndex)

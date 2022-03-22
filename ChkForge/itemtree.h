@@ -7,6 +7,8 @@
 
 #include <functional>
 
+#include <MappingCoreLib/Sc.h>
+
 #include "DockWidgetWrapper.h"
 
 namespace Ui {
@@ -33,6 +35,7 @@ public:
   };
 
   void set_item(Category category, int id);
+  void update_tileset(Sc::Terrain::Tileset tileset);
 
 private:
   std::unique_ptr<Ui::ItemTree> ui;
@@ -43,6 +46,8 @@ private:
 
   QStandardItemModel treeModel;
   QSortFilterProxyModel proxyModel;
+
+  QStandardItem* tilesetTreeItem = nullptr;
 
 private:
   QStandardItem* createTilesetTree();
