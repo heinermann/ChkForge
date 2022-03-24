@@ -15,6 +15,7 @@
 #include "terrain.h"
 
 #include "icons.h"
+#include "tree.h"
 
 ItemTree::ItemTree(QWidget *parent)
   : DockWidgetWrapper(tr("Item Tree"), parent)
@@ -57,11 +58,11 @@ void ItemTree::update_tileset(Sc::Terrain::Tileset tileset_id) {
 
   QList<QStandardItem*> brushRows;
   for (auto& brush : tileset->getBrushes()) {
-    QStandardItem* item = createTreeItem(brush.getName());
+    QStandardItem* item = ChkForge::Tree::createTreeItem(brush.getName());
 
-    item->setData(brush.getGroupId(), ROLE_ID);
-    item->setData(Category::CAT_TERRAIN, ROLE_CATEGORY);
-    item->setData(Category::CAT_TERRAIN << 16 | brush.getGroupId(), ROLE_SEARCHKEY);
+    item->setData(brush.getGroupId(), ChkForge::Tree::ROLE_ID);
+    item->setData(Category::CAT_TERRAIN, ChkForge::Tree::ROLE_CATEGORY);
+    item->setData(Category::CAT_TERRAIN << 16 | brush.getGroupId(), ChkForge::Tree::ROLE_SEARCHKEY);
     item->setIcon(brush.getIcon());
 
     brushRows.emplaceBack(item);
@@ -71,14 +72,14 @@ void ItemTree::update_tileset(Sc::Terrain::Tileset tileset_id) {
 
 QStandardItem* ItemTree::createTilesetTree()
 {
-  this->tilesetTreeItem = createTreeItem("Tileset");
+  this->tilesetTreeItem = ChkForge::Tree::createTreeItem("Tileset");
   return this->tilesetTreeItem;
 }
 
 QStandardItem* ItemTree::createDoodadsTree()
 {
   //: stat_txt:FIRST_UNIT_STRING-203
-  QStandardItem* top = createTreeItem(tr("Doodads"));
+  QStandardItem* top = ChkForge::Tree::createTreeItem(tr("Doodads"));
 
   return top;
 }
@@ -86,17 +87,17 @@ QStandardItem* ItemTree::createDoodadsTree()
 QStandardItem* ItemTree::createUnitsTree()
 {
   //: gluAll:scoreUNITS
-  QStandardItem* top = createTreeItem(tr("Units"));
-  createTreeFromFile(top, "units.txt", CAT_UNIT, [](QStandardItem* itm) {
-    itm->setIcon(ChkForge::Icons::getUnitIcon(itm->data(ROLE_ID).toInt()));
+  QStandardItem* top = ChkForge::Tree::createTreeItem(tr("Units"));
+  ChkForge::Tree::createTreeFromFile(top, "units.txt", CAT_UNIT, [](QStandardItem* itm) {
+    itm->setIcon(ChkForge::Icons::getUnitIcon(itm->data(ChkForge::Tree::ROLE_ID).toInt()));
   });
   return top;
 }
 
 QStandardItem* ItemTree::createSpritesTree()
 {
-  QStandardItem* top = createTreeItem(tr("Sprites"));
-  createTreeFromFile(top, "sprites.txt", CAT_SPRITE, [](QStandardItem* itm) {
+  QStandardItem* top = ChkForge::Tree::createTreeItem(tr("Sprites"));
+  ChkForge::Tree::createTreeFromFile(top, "sprites.txt", CAT_SPRITE, [](QStandardItem* itm) {
     itm->setIcon(QIcon(":/icons/sprite.png"));
     });
   return top;
@@ -104,81 +105,27 @@ QStandardItem* ItemTree::createSpritesTree()
 
 QStandardItem* ItemTree::createUnitSpritesTree()
 {
-  QStandardItem* top = createTreeItem(tr("Unit-Sprites"));
-  createTreeFromFile(top, "units.txt", CAT_UNITSPRITE, [](QStandardItem* itm) {
-    itm->setIcon(ChkForge::Icons::getUnitIcon(itm->data(ROLE_ID).toInt()));
+  QStandardItem* top = ChkForge::Tree::createTreeItem(tr("Unit-Sprites"));
+  ChkForge::Tree::createTreeFromFile(top, "units.txt", CAT_UNITSPRITE, [](QStandardItem* itm) {
+    itm->setIcon(ChkForge::Icons::getUnitIcon(itm->data(ChkForge::Tree::ROLE_ID).toInt()));
     });
   return top;
 }
 
 QStandardItem* ItemTree::createLocationsTree()
 {
-  QStandardItem* top = createTreeItem(tr("Locations"));
+  QStandardItem* top = ChkForge::Tree::createTreeItem(tr("Locations"));
 
   return top;
 }
 
 QStandardItem* ItemTree::createBrushesTree()
 {
-  QStandardItem* top = createTreeItem(tr("Custom Brushes"));
-  QStandardItem* clipboard = createTreeItem(tr("Clipboard"));
+  QStandardItem* top = ChkForge::Tree::createTreeItem(tr("Custom Brushes"));
+  QStandardItem* clipboard = ChkForge::Tree::createTreeItem(tr("Clipboard"));
   clipboard->setIcon(QIcon(":/themes/oxygen-icons-png/oxygen/16x16/actions/edit-paste.png"));
   top->appendRow(clipboard);
   return top;
-}
-
-void ItemTree::createTreeFromFile(QStandardItem* parent, const QString& resourceName, int category, const std::function<void(QStandardItem*)>& item_cb)
-{
-  QFile treeFile(":/Trees/" + resourceName);
-  if (!treeFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
-    QMessageBox::critical(this, tr("Error"), tr("Unable to load Trees/%1: %2").arg(resourceName).arg(treeFile.errorString()));
-  }
-  QTextStream contents(treeFile.readAll());
-  txtToTree(parent, contents, category, item_cb);
-}
-
-void ItemTree::txtToTree(QStandardItem *parent, QTextStream &txt, int category, const std::function<void(QStandardItem*)>& item_cb)
-{
-  static QRegularExpression VALUE_REGEX("\\s*(?<id>\\d+)\\s+(?<name>.*)\\s*");
-  static QRegularExpression START_CATEGORY_REGEX("\\s*#(?<group>.*)\\s*");
-  static QRegularExpression END_CATEGORY_REGEX("\\s*##\\s*");
-
-  while(!txt.atEnd()) {
-    QString line = txt.readLine();
-
-    auto endCategoryMatch = END_CATEGORY_REGEX.match(line);
-    if (endCategoryMatch.hasMatch()) return;
-
-    auto startCategoryMatch = START_CATEGORY_REGEX.match(line);
-    if (startCategoryMatch.hasMatch()) {
-      QStandardItem *newGroup = createTreeItem(startCategoryMatch.captured("group"));
-      txtToTree(newGroup, txt, category, item_cb);
-      parent->appendRow(newGroup);
-    }
-    else
-    {
-      auto valueMatch = VALUE_REGEX.match(line);
-      if (valueMatch.hasMatch())
-      {
-        QStandardItem* item = createTreeItem(valueMatch.captured("name"));
-        
-        int id = valueMatch.captured("id").toInt();
-        item->setData(id, ROLE_ID);
-        item->setData(category, ROLE_CATEGORY);
-        item->setData(category << 16 | id, ROLE_SEARCHKEY);
-
-        if (item_cb) item_cb(item);
-        parent->appendRow(item);
-      }
-    }
-  }
-}
-
-QStandardItem* ItemTree::createTreeItem(const QString& text)
-{
-  QStandardItem* item = new QStandardItem(text);
-  item->setEditable(false);
-  return item;
 }
 
 // TODO: find an item to select using `treeModel.match(...)` w/ ROLE_SEARCHKEY
@@ -191,9 +138,9 @@ void ItemTree::selectionChanged(const QItemSelection& selected, const QItemSelec
   }
   
   auto* selected_item = treeModel.itemFromIndex(proxyModel.mapToSource(selected.front().topLeft()));
-  auto category = selected_item->data(ROLE_CATEGORY);
+  auto category = selected_item->data(ChkForge::Tree::ROLE_CATEGORY);
   if (category.isValid()) {
-    emit itemTreeChanged(Category(category.toInt()), selected_item->data(ROLE_ID).toInt());
+    emit itemTreeChanged(Category(category.toInt()), selected_item->data(ChkForge::Tree::ROLE_ID).toInt());
   }
   // If it's not valid, then assume it's just a folder item that can be expanded or w/e
 }
@@ -201,7 +148,7 @@ void ItemTree::selectionChanged(const QItemSelection& selected, const QItemSelec
 void ItemTree::set_item(Category category, int id)
 {
   auto startIndex = treeModel.indexFromItem(treeModel.invisibleRootItem());
-  auto result = treeModel.match(startIndex, ROLE_SEARCHKEY, category << 16 | id, 1, Qt::MatchExactly | Qt::MatchRecursive);
+  auto result = treeModel.match(startIndex, ChkForge::Tree::ROLE_SEARCHKEY, category << 16 | id, 1, Qt::MatchExactly | Qt::MatchRecursive);
   if (!result.empty()) {
     ui->treeView->selectionModel()->select(proxyModel.mapFromSource(result.front()), QItemSelectionModel::Clear | QItemSelectionModel::SelectCurrent);
   }

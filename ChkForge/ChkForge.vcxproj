@@ -431,6 +431,7 @@
     <ClCompile Include="terrain.cpp" />
     <ClCompile Include="terrainbrush.cpp" />
     <ClCompile Include="tilepalette.cpp" />
+    <ClCompile Include="tree.cpp" />
     <ClCompile Include="tristategroupbox.cpp" />
     <ClCompile Include="unitstab.cpp" />
     <ClCompile Include="upgradestab.cpp" />
@@ -445,6 +446,7 @@
     <ClInclude Include="SCMDPlugin.h" />
     <ClInclude Include="SICStringList.h" />
     <ClInclude Include="TextDataMapper.h" />
+    <ClInclude Include="tree.h" />
     <ClInclude Include="Utils.h" />
     <QtMoc Include="abilitiestab.h" />
     <ClInclude Include="Action.h" />

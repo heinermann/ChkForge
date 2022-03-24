@@ -279,6 +279,9 @@
     <ClCompile Include="language.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="tree.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="layers.h">
@@ -351,6 +354,9 @@
       <Filter>Header Files\DataMappers</Filter>
     </ClInclude>
     <ClInclude Include="language.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tree.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
