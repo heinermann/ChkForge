@@ -1,6 +1,8 @@
 #pragma once
 #include <QObject>
 #include <QWidget>
+#include <QStandardItemModel>
+
 #include <memory>
 
 #include "scenariosettingstab.h"
@@ -18,5 +20,9 @@ public:
   void setTabFocus() override;
 
 private:
+  void init();
+
+private:
   std::unique_ptr<Ui::UnitsTab> ui;
+  QStandardItemModel unitTreeModel;
 };

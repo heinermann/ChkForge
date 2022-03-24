@@ -14,21 +14,37 @@
    <item row="0" column="0" rowspan="2">
     <layout class="QVBoxLayout" name="verticalLayout_11">
      <item>
-      <widget class="QTreeWidget" name="upgradeTree">
+      <widget class="QTreeView" name="upgradeTree">
        <property name="editTriggers">
         <set>QAbstractItemView::NoEditTriggers</set>
+       </property>
+       <property name="showDropIndicator" stdset="0">
+        <bool>false</bool>
        </property>
        <property name="selectionMode">
         <enum>QAbstractItemView::ExtendedSelection</enum>
        </property>
+       <property name="iconSize">
+        <size>
+         <width>16</width>
+         <height>16</height>
+        </size>
+       </property>
+       <property name="indentation">
+        <number>12</number>
+       </property>
+       <property name="rootIsDecorated">
+        <bool>false</bool>
+       </property>
+       <property name="uniformRowHeights">
+        <bool>true</bool>
+       </property>
        <attribute name="headerVisible">
         <bool>false</bool>
        </attribute>
-       <column>
-        <property name="text">
-         <string notr="true">1</string>
-        </property>
-       </column>
+       <attribute name="headerDefaultSectionSize">
+        <number>32</number>
+       </attribute>
       </widget>
      </item>
      <item>

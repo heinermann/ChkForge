@@ -7,7 +7,6 @@
 	9	Ship Weapons
 	16	U-238 Shells
 	17	Ion Thrusters
-	18	Burst Laser Upgrade
 	19	Titan Reactor
 	20	Ocular Implants
 	21	Moebius Reactor
@@ -56,6 +55,7 @@
 	49	Argus Talisman
 ##
 #Unused
+	18	Burst Laser Upgrade
 	45	Unused 45
 	46	Unused 46
 	48	Unused 48
