@@ -40,7 +40,7 @@
 	36	Pillar - Left
 	38	Single Strange Rock
 	39	Dual Strange Rock
-	45	Wierd Rocks
+	45	Weird Rocks
 	46	Small Rock Pillar
 	47	Large Sponge
 ##

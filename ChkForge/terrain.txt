@@ -44,7 +44,7 @@
 	2	Dirt
 	4	Lava
 	10	Shale
-	16	Brocken Rock
+	16	Broken Rock
 	6	High Dirt
 	8	High Lava
 	12	High Shale
