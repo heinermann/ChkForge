@@ -6737,7 +6737,7 @@ struct state_functions {
 				return;
 			}
 			if (!unit_can_be_infested(target)) {
-				// todo: erorr message
+				// todo: error message
 				order_done(u);
 				return;
 			}

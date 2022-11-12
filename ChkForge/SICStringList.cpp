@@ -88,7 +88,7 @@ int SCMDStringList::AddSCMD2String(const char* scmd2text, int SectionName, char 
 }
 
 
-int SCMDStringList::Dereference(__int16 stringindex, int SectionName, int unkown_arg) {
+int SCMDStringList::Dereference(__int16 stringindex, int SectionName, int unknown_arg) {
 	return 0;
 }
 

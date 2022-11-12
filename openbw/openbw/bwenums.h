@@ -191,9 +191,9 @@ enum struct UnitTypes : int {
 	Unused_Cave_In,
 	Unused_Cantina,
 	Unused_Mining_Platform,
-	Unused_Independant_Command_Center,
-	Special_Independant_Starport,
-	Unused_Independant_Jump_Gate,
+	Unused_Independent_Command_Center,
+	Special_Independent_Starport,
+	Unused_Independent_Jump_Gate,
 	Unused_Ruins,
 	Unused_Khaydarin_Crystal_Formation,
 	Resource_Vespene_Geyser,
@@ -334,7 +334,7 @@ enum struct WeaponTypes : int {
 	unk_90,
 	unk_91,
 	Platform_Laser_Battery,
-	Independant_Laser_Battery,
+	Independent_Laser_Battery,
 	unk_94,
 	unk_95,
 	Twin_Autocannons_Floor_Trap,
@@ -564,7 +564,7 @@ namespace GroupFlags
 		Men = 1 << 3,
 		Building = 1 << 4,
 		Factory = 1 << 5,
-		Independant = 1 << 6,
+		Independent = 1 << 6,
 		Neutral = 1 << 7
 	};
 }

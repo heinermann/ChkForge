@@ -12,7 +12,7 @@ public:
   virtual void blah_08() {};
   virtual int FindString_RawIndex(const char*);
 
-  // Retrives stringtable[stringID].
+  // Retrieves stringtable[stringID].
   // stringID == 0 : return blank string
   // No valid string at given stringID : return NULL
   // Else : return SCMD2String
@@ -24,7 +24,7 @@ public:
 
   // Delete 1 reference from given section to string. String with no reference are deleted automatically.
   // a3 is unknown or unused. Set it to 0
-  virtual int Dereference(__int16 stringindex, int SectionName, int unkown_arg);
+  virtual int Dereference(__int16 stringindex, int SectionName, int unknown_arg);
 
   // Dereference & Add in one function.
   virtual int DerefAndAddString(const char* Text, int oldStringIndex, int SectionName);
@@ -39,7 +39,7 @@ public:
   virtual void blah_34() {};
   virtual void blah_38() {};
 
-  // Backup string table temporarilly. Mainly used for trigger editor.
+  // Backup string table temporarily. Mainly used for trigger editor.
   // If anything goes wrong, you can call RestoreBackup to revert changes made to string table
   // If all goes right, call ClearBackup.
   virtual char BackupStrings();
