@@ -742,7 +742,7 @@ struct ui_functions: ui_util_functions {
 		}
 	}
 
-	bool unit_visble_on_minimap(unit_t* u) {
+	bool unit_visible_on_minimap(unit_t* u) {
 		if (u->owner < 8 && u->sprite->visibility_flags == 0) return false;
 		if (ut_turret(u)) return false;
 		if (unit_is_trap_or_door(u)) return false;
@@ -757,7 +757,7 @@ struct ui_functions: ui_util_functions {
 	}
 
 	void draw_unit_minimap(unit_t* u, uint8_t* data, size_t data_pitch, rect surface_rect) {
-	  if (!is_editor && !unit_visble_on_minimap(u)) return;
+	  if (!is_editor && !unit_visible_on_minimap(u)) return;
 	  int color = player_color(u->owner);
 	  size_t w = u->unit_type->placement_size.x / 32u;
 	  size_t h = u->unit_type->placement_size.y / 32u;

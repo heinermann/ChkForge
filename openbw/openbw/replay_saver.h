@@ -581,7 +581,7 @@ struct replay_saver_functions {
 		giw.put<uint32_t>(0); // game flags?
 		giw.put<uint16_t>((uint16_t)replay_saver_st.map_tile_width); // map width
 		giw.put<uint16_t>((uint16_t)replay_saver_st.map_tile_height); // map height
-		giw.put<uint8_t>(replay_saver_st.active_player_count); // active player acount
+		giw.put<uint8_t>(replay_saver_st.active_player_count); // active player count
 		giw.put<uint8_t>(replay_saver_st.slot_count); // slot count
 		giw.put<uint8_t>(replay_saver_st.game_speed); // game speed
 		giw.put<uint8_t>(0); // game state ?

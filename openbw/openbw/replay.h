@@ -131,7 +131,7 @@ struct replay_functions: action_functions {
 		gir.get<uint32_t>(); // game flags?
 		gir.get<uint16_t>(); // map width
 		gir.get<uint16_t>(); // map height
-		gir.get<uint8_t>(); // active player acount
+		gir.get<uint8_t>(); // active player count
 		gir.get<uint8_t>(); // slot count
 		gir.get<uint8_t>(); // game speed
 		gir.get<uint8_t>(); // game state ?
