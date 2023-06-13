@@ -1286,8 +1286,19 @@ struct state_functions {
 		return u_flying(target) ? unit_air_weapon(unit_attacking_unit(u)) : unit_ground_weapon(unit_attacking_unit(u));
 	}
 
+	template<class T, class... UType>
+	constexpr static bool unit_is_any_of(unit_type_autocast ut) {
+		return false;
+	}
+
+	template<class T, class... UType>
+	constexpr static bool unit_is_any_of(unit_type_autocast ut, T t, UType... args) {
+		return ut->id == t || unit_is_any_of(ut, args...);
+	}
+
 	bool unit_is_carrier(unit_type_autocast ut) const {
-		return unit_is(ut, UnitTypes::Protoss_Carrier) || unit_is(ut, UnitTypes::Hero_Gantrithor);
+		return unit_is_any_of(ut, UnitTypes::Protoss_Carrier, UnitTypes::Hero_Gantrithor);
+		//return unit_is(ut, UnitTypes::Protoss_Carrier) || unit_is(ut, UnitTypes::Hero_Gantrithor);
 	}
 
 	bool unit_is_reaver(unit_type_autocast ut) const {
@@ -19346,6 +19357,27 @@ struct state_functions {
 		case 55:
 		case 56:
 		case 57:
+		{
+			int alliance = a.extra_n;
+			if (alliance < 0 || alliance > 2) alliance = 0;
+			for (int p : trigger_players(owner, a.group_n)) {
+				st.alliances[owner][p] = alliance;
+			}
+
+			// This code snippet is update_alliance_units_g(owner);
+			// It's the same snippet inlined in openbw's action_set_alliances
+			for (unit_t* u : ptr(st.player_units[owner])) {
+				if (u->order_target.unit && u->order_type->targets_enemies) {
+					if (st.alliances[owner][u->order_target.unit->owner] && !unit_target_is_enemy(u, u->order_target.unit)) {
+						u->order_target.unit = nullptr;
+					}
+				}
+			}
+
+			//if (owner == g_LocalNationID) // ??
+			//  CUnitColor_update_g();	// This code not actually used in openbw's action_set_alliances, so not needed?
+			return true;
+		}
 		case 58:
 		case 59:
 		  break;
@@ -21222,7 +21254,7 @@ struct game_load_functions : state_functions {
 	void disable_thg2_unit(unit_t* unit) {
 	  if (unit_is_disabled(unit)) return;
 
-	  set_unit_disabled(unit);
+	  set_unit_disabled(unit);	// TODO: Remove this call
 	  sprite_run_anim(unit->sprite, iscript_anims::AlmostBuilt);
 	  u_set_status_flag(unit, unit_t::status_flag_no_collide);
 
