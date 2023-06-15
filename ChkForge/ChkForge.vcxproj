@@ -443,7 +443,6 @@
     <ClCompile Include="tristategroupbox.cpp" />
     <ClCompile Include="unitstab.cpp" />
     <ClCompile Include="upgradestab.cpp" />
-    <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="invertedtristategroupbox.h" />
@@ -455,7 +454,6 @@
     <ClInclude Include="SICStringList.h" />
     <ClInclude Include="TextDataMapper.h" />
     <ClInclude Include="tree.h" />
-    <ClInclude Include="Utils.h" />
     <QtMoc Include="abilitiestab.h" />
     <ClInclude Include="Action.h" />
     <QtMoc Include="unitstab.h" />

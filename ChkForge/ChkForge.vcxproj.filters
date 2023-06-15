@@ -255,9 +255,6 @@
     <ClCompile Include="OpenSave.cpp">
       <Filter>Source Files\ui</Filter>
     </ClCompile>
-    <ClCompile Include="Utils.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="SICStringList.cpp">
       <Filter>Source Files\SCMDraft</Filter>
     </ClCompile>
@@ -334,9 +331,6 @@
     </ClInclude>
     <ClInclude Include="OpenSave.h">
       <Filter>Header Files\ui</Filter>
-    </ClInclude>
-    <ClInclude Include="Utils.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SICStringList.h">
       <Filter>Header Files\SCMDraft</Filter>

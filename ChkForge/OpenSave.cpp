@@ -8,8 +8,6 @@
 
 #include <filesystem>
 
-#include "Utils.h"
-
 namespace {
   static const QString allMaps = QObject::tr("All Starcraft Maps");
   //: SEditENU:195:3115
@@ -34,12 +32,12 @@ namespace OpenSave {
     QString documents = QStandardPaths::standardLocations(QStandardPaths::StandardLocation::DocumentsLocation).first();
     QString result = QFileDialog::getOpenFileName(parent, QString(), documents + "/Starcraft/maps", file_filter);
     
-    return std::filesystem::path(toStdString(result));
+    return std::filesystem::path(result.toStdString());
   }
 
   std::filesystem::path getMapSaveFilename(const QString& dir, QWidget* parent) {
     QString result = QFileDialog::getSaveFileName(parent, QString(), dir, file_filter);
     
-    return std::filesystem::path(toStdString(result));
+    return std::filesystem::path(result.toStdString());
   }
 }

@@ -3,7 +3,6 @@
 #include <QLineEdit>
 
 #include "DataMapper.h"
-#include "Utils.h"
 
 namespace ChkForge {
   class TextDataMapper : public DataMapper<std::string> {
@@ -33,7 +32,7 @@ namespace ChkForge {
     QLineEdit* widget;
 
     void textEdited(const QString& text) {
-      std::string stdText = toStdString(text);
+      std::string stdText = text.toStdString();
       this->IterateSelectedIds([&](int id) {
         this->data[id] = stdText;
       });
