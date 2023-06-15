@@ -1286,9 +1286,9 @@ struct state_functions {
 		return u_flying(target) ? unit_air_weapon(unit_attacking_unit(u)) : unit_ground_weapon(unit_attacking_unit(u));
 	}
 
-	template<class T, class... UType>
-	constexpr static bool unit_is_any_of(unit_type_autocast ut) {
-		return false;
+	template<class T>
+	constexpr static bool unit_is_any_of(unit_type_autocast ut, T t) {
+		return ut->id == t;
 	}
 
 	template<class T, class... UType>
