@@ -76,6 +76,21 @@
     <QtMoc Include="ads\src\FloatingDragPreview.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="ads\src\AutoHideDockContainer.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="ads\src\AutoHideSideBar.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="ads\src\AutoHideTab.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="ads\src\PushButton.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="ads\src\ResizeHandle.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ads\src\ads_globals.cpp">
@@ -127,6 +142,21 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ads\src\IconProvider.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ads\src\AutoHideDockContainer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ads\src\AutoHideSideBar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ads\src\AutoHideTab.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ads\src\PushButton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ads\src\ResizeHandle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -20,6 +20,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ads\src\ads_globals.h" />
+    <QtMoc Include="ads\src\ResizeHandle.h" />
+    <QtMoc Include="ads\src\PushButton.h" />
+    <QtMoc Include="ads\src\AutoHideDockContainer.h" />
+    <QtMoc Include="ads\src\AutoHideSideBar.h" />
+    <QtMoc Include="ads\src\AutoHideTab.h" />
     <ClInclude Include="ads\src\DockComponentsFactory.h" />
     <ClInclude Include="ads\src\DockingStateReader.h" />
     <ClInclude Include="ads\src\IconProvider.h" />
@@ -40,6 +45,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ads\src\ads_globals.cpp" />
+    <ClCompile Include="ads\src\AutoHideDockContainer.cpp" />
+    <ClCompile Include="ads\src\AutoHideSideBar.cpp" />
+    <ClCompile Include="ads\src\AutoHideTab.cpp" />
     <ClCompile Include="ads\src\DockAreaTabBar.cpp" />
     <ClCompile Include="ads\src\DockAreaTitleBar.cpp" />
     <ClCompile Include="ads\src\DockAreaWidget.cpp" />
@@ -56,6 +64,8 @@
     <ClCompile Include="ads\src\FloatingDockContainer.cpp" />
     <ClCompile Include="ads\src\FloatingDragPreview.cpp" />
     <ClCompile Include="ads\src\IconProvider.cpp" />
+    <ClCompile Include="ads\src\PushButton.cpp" />
+    <ClCompile Include="ads\src\ResizeHandle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="ads\src\ads.qrc" />
@@ -118,43 +128,47 @@
     <ClCompile>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(ProjectDir)/ads/src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(ProjectDir)/ads/src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(ProjectDir)/ads/src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(ProjectDir)/ads/src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
-    <QtInstall>6.2.1_msvc2019_64</QtInstall>
+    <QtInstall>6.5.1_msvc_2019_64</QtInstall>
     <QtModules>core;gui;widgets</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="QtSettings">
-    <QtInstall>6.2.1_msvc2019_64</QtInstall>
+    <QtInstall>6.5.1_msvc_2019_64</QtInstall>
     <QtModules>core;gui;widgets</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
-    <QtInstall>6.2.1_msvc2019_64</QtInstall>
+    <QtInstall>6.5.1_msvc_2019_64</QtInstall>
     <QtModules>core;gui;widgets</QtModules>
     <QtBuildConfig>release</QtBuildConfig>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="QtSettings">
-    <QtInstall>6.1.0_msvc2019_64</QtInstall>
+    <QtInstall>6.5.1_msvc_2019_64</QtInstall>
     <QtModules>core;gui;widgets</QtModules>
     <QtBuildConfig>release</QtBuildConfig>
   </PropertyGroup>
