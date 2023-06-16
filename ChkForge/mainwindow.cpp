@@ -137,9 +137,9 @@ void MainWindow::createToolbars() {
     toolbars_ui->cmb_player->addItem(QIcon(pixmap), ChkForge::getGenericPlayerName(i));
   }
 
-  connect(toolbars_ui->cmb_layer, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &MainWindow::selectLayerIndex);
-  connect(toolbars_ui->cmb_player, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &MainWindow::selectPlayerIndex);
-  connect(toolbars_ui->spn_zoom, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), this, &MainWindow::zoomChanged);
+  connect(toolbars_ui->cmb_layer, &QComboBox::currentIndexChanged, this, &MainWindow::selectLayerIndex);
+  connect(toolbars_ui->cmb_player, &QComboBox::currentIndexChanged, this, &MainWindow::selectPlayerIndex);
+  connect(toolbars_ui->spn_zoom, &QSpinBox::valueChanged, this, &MainWindow::zoomChanged);
 }
 
 void MainWindow::createStatusBar()
@@ -218,8 +218,8 @@ void MainWindow::createToolWindows()
 void MainWindow::mapMenuActions()
 {
   // Map menu actions
-  connectTrigger(ui->action_view_toolwindows_showAll, std::bind(&MainWindow::toggleToolWindows, this, true));
-  connectTrigger(ui->action_view_toolwindows_closeAll, std::bind(&MainWindow::toggleToolWindows, this, false));
+  connectTrigger(ui->action_view_toolwindows_showAll, [=] { this->toggleToolWindows(true); });
+  connectTrigger(ui->action_view_toolwindows_closeAll, [=] { this->toggleToolWindows(false); });
 
   for (QAction* layerAction : layerOptions) {
     connect(layerAction, &QAction::triggered, this, &MainWindow::toggleLayer);
@@ -325,7 +325,7 @@ void MainWindow::addRecentFile(std::filesystem::path filename) {
   recent_files.removeDuplicates();
   recent_files = recent_files.mid(0, max_recent_files);
 
-  settings.setValue("recentFiles", QVariant{ recent_files });
+  settings.setValue("recentFiles", recent_files);
   resetRecentFileMenu();
 }
 

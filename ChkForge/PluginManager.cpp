@@ -35,8 +35,7 @@ std::vector<QAction*> PluginManager::addMenuOptions(QMenu* menu) {
       char menuString[256] = {};
       if (!plugin->PluginGetMenuString(section, menuString, sizeof(menuString))) continue;
 
-      auto runPluginFcn = std::bind(&PluginManager::runPlugin, this, plugin, section);
-      QAction* action = menu->addAction(menuString, runPluginFcn);
+      QAction* action = menu->addAction(menuString, [=] { this->runPlugin(plugin, section); });
       result.push_back(action);
     }
   }

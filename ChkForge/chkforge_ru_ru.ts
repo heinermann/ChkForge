@@ -1345,12 +1345,12 @@ Please select a different directory.</source>
         <translation>Повторы игр</translation>
     </message>
     <message>
-        <location filename="PluginManager.cpp" line="124"/>
+        <location filename="PluginManager.cpp" line="123"/>
         <source>Failed to load SCMDraft plugin: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="PluginManager.cpp" line="138"/>
+        <location filename="PluginManager.cpp" line="137"/>
         <source>Unable to resolve SCMDraft plugin exports: %1</source>
         <translation type="unfinished"></translation>
     </message>
