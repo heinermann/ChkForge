@@ -13,7 +13,7 @@
         <location filename="abilitiestab.ui" line="181"/>
         <source>Use Default</source>
         <oldsource>Use Defaults</oldsource>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">使用默认</translation>
     </message>
     <message>
         <location filename="abilitiestab.ui" line="71"/>
@@ -153,7 +153,7 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="appsettings.ui" line="26"/>
         <source>Paths</source>
-        <translation type="unfinished"></translation>
+        <translation>路径</translation>
     </message>
     <message>
         <location filename="appsettings.ui" line="32"/>
@@ -168,7 +168,7 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="appsettings.ui" line="85"/>
         <source>General Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">常规设置</translation>
     </message>
     <message>
         <location filename="appsettings.ui" line="91"/>
@@ -179,7 +179,7 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="appsettings.ui" line="101"/>
         <source>Theme</source>
-        <translation type="unfinished"></translation>
+        <translation>主题</translation>
     </message>
     <message>
         <location filename="appsettings.ui" line="108"/>
@@ -202,7 +202,7 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="charmap.cpp" line="26"/>
         <source>All</source>
-        <translation type="unfinished"></translation>
+        <translation>所有的</translation>
     </message>
     <message>
         <location filename="charmap.cpp" line="27"/>
@@ -373,7 +373,7 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="exportimage.ui" line="16"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>对话</translation>
     </message>
 </context>
 <context>
@@ -381,7 +381,7 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="exportsections.ui" line="16"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>对话</translation>
     </message>
 </context>
 <context>
@@ -389,7 +389,7 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="filemanager.ui" line="16"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>对话</translation>
     </message>
 </context>
 <context>
@@ -422,7 +422,7 @@ Some select Starforge code snippets and resources.
         <location filename="forcestab.ui" line="60"/>
         <source>Custom Name</source>
         <extracomment>SEditENU:1216</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>自定义名称</translation>
     </message>
     <message>
         <location filename="forcestab.ui" line="160"/>
@@ -528,17 +528,17 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="locationproperties.ui" line="22"/>
         <source>Left</source>
-        <translation>左侧</translation>
+        <translation type="unfinished">左</translation>
     </message>
     <message>
         <location filename="locationproperties.ui" line="42"/>
         <source>Top</source>
-        <translation>顶部</translation>
+        <translation type="unfinished">上部</translation>
     </message>
     <message>
         <location filename="locationproperties.ui" line="49"/>
         <source>Right</source>
-        <translation>右侧</translation>
+        <translation type="unfinished">右</translation>
     </message>
     <message>
         <location filename="locationproperties.ui" line="89"/>
@@ -2525,7 +2525,7 @@ EditLocal:2:16</extracomment>
     <message>
         <location filename="tree.cpp" line="62"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>错误</translation>
     </message>
     <message>
         <location filename="tree.cpp" line="62"/>
@@ -2567,7 +2567,7 @@ EditLocal:2:16</extracomment>
         <location filename="scenariodescription.ui" line="87"/>
         <source>Description</source>
         <extracomment>EditLocal:185</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>描述</translation>
     </message>
 </context>
 <context>
@@ -2806,7 +2806,7 @@ EditLocal:2:16</extracomment>
         <location filename="unitstab.ui" line="175"/>
         <source>Use Default</source>
         <oldsource>Use Defaults</oldsource>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">使用默认值</translation>
     </message>
     <message>
         <location filename="unitstab.ui" line="146"/>
@@ -2891,7 +2891,7 @@ EditLocal:2:16</extracomment>
         <location filename="unitstab.ui" line="493"/>
         <source>Custom Name</source>
         <extracomment>SEditENU:1216</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>自定义名称</translation>
     </message>
 </context>
 <context>
@@ -2933,7 +2933,7 @@ EditLocal:2:16</extracomment>
         <location filename="upgradestab.ui" line="186"/>
         <location filename="upgradestab.ui" line="244"/>
         <source>Use Default</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">使用默认值</translation>
     </message>
     <message>
         <location filename="upgradestab.ui" line="395"/>

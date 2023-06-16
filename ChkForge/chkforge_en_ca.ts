@@ -13,7 +13,7 @@
         <location filename="abilitiestab.ui" line="181"/>
         <source>Use Default</source>
         <oldsource>Use Defaults</oldsource>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="abilitiestab.ui" line="71"/>
@@ -182,7 +182,7 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="appsettings.ui" line="101"/>
         <source>Theme</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="appsettings.ui" line="108"/>
@@ -621,7 +621,7 @@ Some select Starforge code snippets and resources.
         <source>Recently Opened &amp;Files</source>
         <oldsource>Recent File</oldsource>
         <extracomment>EditLocal:109:40334</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="79"/>
@@ -929,7 +929,7 @@ Some select Starforge code snippets and resources.
         <location filename="mainwindow.ui" line="770"/>
         <source>About...</source>
         <oldsource>&amp;About</oldsource>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="782"/>
@@ -1000,7 +1000,7 @@ Some select Starforge code snippets and resources.
         <location filename="mainwindow.ui" line="861"/>
         <source>Report an Issue...</source>
         <oldsource>Report an Issue</oldsource>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="870"/>
@@ -1048,13 +1048,13 @@ Some select Starforge code snippets and resources.
         <location filename="newmap.ui" line="24"/>
         <source>Size</source>
         <extracomment>gluAll:infoPane_size</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="newmap.ui" line="117"/>
         <source>Tileset</source>
         <extracomment>gluAll:infoPane_tileset</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="newmap.ui" line="195"/>
@@ -1184,7 +1184,7 @@ Other sizes may crash Starcraft.</source>
         <source>Rescue Passive</source>
         <oldsource>Rescuable</oldsource>
         <extracomment>stat_txt:STR_ORDER_RESCUE_PASSIVE</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="293"/>
@@ -1344,13 +1344,13 @@ Please select a different directory.</source>
         <location filename="OpenSave.cpp" line="14"/>
         <source>Starcraft Scenario (*.scm)</source>
         <extracomment>SEditENU:195:3115</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="OpenSave.cpp" line="16"/>
         <source>Brood War Scenario (*.scx)</source>
         <extracomment>SEditENU:195:3116</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="OpenSave.cpp" line="18"/>
@@ -1422,7 +1422,7 @@ Please select a different directory.</source>
         <source>Rescue Passive</source>
         <oldsource>Rescuable</oldsource>
         <extracomment>stat_txt:STR_ORDER_RESCUE_PASSIVE</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="strings.cpp" line="43"/>
@@ -1944,7 +1944,7 @@ SEditENU:190:3028, stat_txt:DDS_TWILIGHT_WATER</extracomment>
         <source>Dirt</source>
         <comment>BadJungle</comment>
         <extracomment>EditLocal:1:15, stat_txt:DDS_BAD_LODIRT</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="75"/>
@@ -1954,7 +1954,7 @@ SEditENU:190:3028, stat_txt:DDS_TWILIGHT_WATER</extracomment>
         <extracomment>EditLocal:33:526, stat_txt:DDS_TWILIGHT_MUD
 ----------
 EditLocal:33:527, stat_txt:DDS_TWILIGHT_MUD</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="77"/>
@@ -1964,35 +1964,35 @@ EditLocal:33:527, stat_txt:DDS_TWILIGHT_MUD</extracomment>
         <extracomment>EditLocal:2:16, stat_txt:DDS_BAD_HIDIRT
 ----------
 EditLocal:2:16</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="81"/>
         <source>Grass</source>
         <comment>BadJungle</comment>
         <extracomment>EditLocal:2:17, stat_txt:DDS_BAD_LOGRASS</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="83"/>
         <source>High Grass</source>
         <comment>BadJungle</comment>
         <extracomment>EditLocal:23:356, stat_txt:DDS_BAD_HIGRASS</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="85"/>
         <source>Structure</source>
         <comment>BadJungle</comment>
         <extracomment>EditLocal:23:357, stat_txt:DDS_BAD_BLDG</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="87"/>
         <source>Asphalt</source>
         <comment>BadJungle</comment>
         <extracomment>EditLocal:11:168, stat_txt:DDS_BAD_CONCRETE</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="89"/>
@@ -2000,125 +2000,125 @@ EditLocal:2:16</extracomment>
         <source>Rocky Ground</source>
         <comment>BadJungle</comment>
         <extracomment>EditLocal:11:169, stat_txt:DDS_BAD_RUBBLE</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="104"/>
         <source>Low Platform</source>
         <comment>Space</comment>
         <extracomment>EditLocal:14:221, stat_txt:DDS_PLAT_DDPLATPIT</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="106"/>
         <source>Rusty Pit</source>
         <comment>Space</comment>
         <extracomment>EditLocal:14:222, stat_txt:DDS_PLAT_DDRUSTYPIT</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="108"/>
         <source>Platform</source>
         <comment>Space</comment>
         <extracomment>EditLocal:2:19, stat_txt:DDS_PLAT_DDLOWNBLD</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="110"/>
         <source>Dark Platform</source>
         <comment>Space</comment>
         <extracomment>EditLocal:23:363, stat_txt:DDS_PLAT_DDDARK</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="112"/>
         <source>Plating</source>
         <comment>Space</comment>
         <extracomment>EditLocal:2:18, stat_txt:DDS_PLAT_DDLOWBLD</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="114"/>
         <source>Solar Array</source>
         <comment>Space</comment>
         <extracomment>EditLocal:14:220, stat_txt:DDS_PLAT_DDSOLARPANEL</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="116"/>
         <source>High Platform</source>
         <comment>Space</comment>
         <extracomment>EditLocal:2:21</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="118"/>
         <source>High Plating</source>
         <comment>Space</comment>
         <extracomment>EditLocal:2:20, stat_txt:DDS_PLAT_DDHIGHBLD</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="120"/>
         <source>Elevated Catwalk</source>
         <comment>Space</comment>
         <extracomment>EditLocal:16:241</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="132"/>
         <source>Substructure</source>
         <comment>Installation</comment>
         <extracomment>EditLocal:11:171, stat_txt:DDS_INSTALL_DDDIRT</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="134"/>
         <source>Substructure Plating</source>
         <comment>Installation</comment>
         <extracomment>EditLocal:11:174</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="136"/>
         <source>Floor</source>
         <comment>Installation</comment>
         <extracomment>EditLocal:11:172, stat_txt:DDS_INSTALL_DDCLEAN</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="138"/>
         <source>Roof</source>
         <comment>Installation</comment>
         <extracomment>EditLocal:11:173</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="140"/>
         <source>Plating</source>
         <comment>Installation</comment>
         <extracomment>EditLocal:11:175, stat_txt:DDS_INSTALL_DDWALK</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="142"/>
         <source>Bottomless Pit</source>
         <comment>Installation</comment>
         <extracomment>EditLocal:16:245</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="144"/>
         <source>Substructure Panels</source>
         <comment>Installation</comment>
         <extracomment>EditLocal:16:244</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="145"/>
         <source>Buildable Substructure</source>
         <comment>Installation</comment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="153"/>
@@ -2131,56 +2131,56 @@ EditLocal:2:16</extracomment>
         <source>Magma</source>
         <comment>Ashworld</comment>
         <extracomment>EditLocal:15:231</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="160"/>
         <source>Dirt</source>
         <comment>Ashworld</comment>
         <extracomment>EditLocal:15:232, stat_txt:DDS_ASH_DDLOWASH</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="162"/>
         <source>Lava</source>
         <comment>Ashworld</comment>
         <extracomment>EditLocal:15:233</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="164"/>
         <source>Shale</source>
         <comment>Ashworld</comment>
         <extracomment>EditLocal:15:234, stat_txt:DDS_ASH_DDROCKS</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="166"/>
         <source>Broken Rock</source>
         <comment>Ashworld</comment>
         <extracomment>EditLocal:15:239</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="168"/>
         <source>High Dirt</source>
         <comment>Ashworld</comment>
         <extracomment>EditLocal:15:235, stat_txt:DDS_ASH_DDHIGHASH</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="170"/>
         <source>High Lava</source>
         <comment>Ashworld</comment>
         <extracomment>EditLocal:15:236</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="172"/>
         <source>High Shale</source>
         <comment>Ashworld</comment>
         <extracomment>EditLocal:15:237</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="180"/>
@@ -2201,49 +2201,49 @@ EditLocal:2:16</extracomment>
         <source>Ruins</source>
         <comment>BadJungle</comment>
         <extracomment>EditLocal:11:166, stat_txt:DDS_JUNG_RUINS</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="197"/>
         <source>Raised Jungle</source>
         <comment>BadJungle</comment>
         <extracomment>EditLocal:12:190</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="199"/>
         <source>Temple</source>
         <comment>BadJungle</comment>
         <extracomment>EditLocal:23:358</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="203"/>
         <source>High Jungle</source>
         <comment>BadJungle</comment>
         <extracomment>EditLocal:23:359, stat_txt:DDS_HIGH_JUNGLE</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="205"/>
         <source>High Ruins</source>
         <comment>BadJungle</comment>
         <extracomment>EditLocal:23:360, stat_txt:DDS_HIGH_RUINS</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="207"/>
         <source>High Raised Jungle</source>
         <comment>BadJungle</comment>
         <extracomment>EditLocal:23:361</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="209"/>
         <source>High Temple</source>
         <comment>BadJungle</comment>
         <extracomment>EditLocal:23:362</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="217"/>
@@ -2257,91 +2257,91 @@ EditLocal:2:16</extracomment>
         <source>Tar</source>
         <comment>Desert</comment>
         <extracomment>SEditENU:188:3001, stat_txt:DDS_DESERT_WATER</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="224"/>
         <source>Dirt</source>
         <comment>Desert</comment>
         <extracomment>SEditENU:188:3002, stat_txt:DDS_DESERT_HARDPAN</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="226"/>
         <source>Dried Mud</source>
         <comment>Desert</comment>
         <extracomment>SEditENU:188:3003, stat_txt:DDS_DESERT_DRIEDMUD</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="228"/>
         <source>Sand Dunes</source>
         <comment>Desert</comment>
         <extracomment>SEditENU:188:3004, stat_txt:DDS_DESERT_SANDDUNES</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="230"/>
         <source>Rocky Ground</source>
         <comment>Desert</comment>
         <extracomment>SEditENU:188:3005, stat_txt:DDS_DESERT_ROCKYGROUND</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="232"/>
         <source>Crags</source>
         <comment>Desert</comment>
         <extracomment>SEditENU:188:3006, stat_txt:DDS_DESERT_RUINS</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="234"/>
         <source>Sandy Sunken Pit</source>
         <comment>Desert</comment>
         <extracomment>SEditENU:188:3007, stat_txt:DDS_DESERT_SANDYSUNKEN</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="236"/>
         <source>Compound</source>
         <comment>Desert</comment>
         <extracomment>SEditENU:189:3008, stat_txt:DDS_DESERT_RESOURCE</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="238"/>
         <source>High Dirt</source>
         <comment>Desert</comment>
         <extracomment>SEditENU:189:3009, stat_txt:DDS_DESERT_HIGHDIRT</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="240"/>
         <source>High Sand Dunes</source>
         <comment>Desert</comment>
         <extracomment>SEditENU:189:3010, stat_txt:DDS_DESERT_HIGHSANDDUNES</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="242"/>
         <source>High Crags</source>
         <comment>Desert</comment>
         <extracomment>SEditENU:189:3011, stat_txt:DDS_DESERT_HIGHRUINS</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="244"/>
         <source>High Sandy Sunken Pit</source>
         <comment>Desert</comment>
         <extracomment>SEditENU:189:3012, stat_txt:DDS_DESERT_HIGHSANDSUNKEN</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="246"/>
         <source>High Compound</source>
         <comment>Desert</comment>
         <extracomment>SEditENU:189:3013, stat_txt:DDS_DESERT_HIGHRESOURCE</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="254"/>
@@ -2362,161 +2362,161 @@ EditLocal:2:16</extracomment>
         <source>Snow</source>
         <comment>Ice</comment>
         <extracomment>SEditENU:189:3015, stat_txt:DDS_ICE_SNOW</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="263"/>
         <source>Moguls</source>
         <comment>Ice</comment>
         <extracomment>SEditENU:189:3016, stat_txt:DDS_ICE_MUD</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="265"/>
         <source>Dirt</source>
         <comment>Ice</comment>
         <extracomment>SEditENU:189:3017, stat_txt:DDS_ICE_ROUGHSNOW</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="267"/>
         <source>Rocky Snow</source>
         <comment>Ice</comment>
         <extracomment>SEditENU:189:3018, stat_txt:DDS_ICE_ROCKYSNOW</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="269"/>
         <source>Grass</source>
         <comment>Ice</comment>
         <extracomment>SEditENU:189:3019, stat_txt:DDS_ICE_SNOWYRUINS</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="273"/>
         <source>Outpost</source>
         <comment>Ice</comment>
         <extracomment>SEditENU:189:3021, stat_txt:DDS_ICE_OUTPOST</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="275"/>
         <source>High Snow</source>
         <comment>Ice</comment>
         <extracomment>SEditENU:189:3022, stat_txt:DDS_ICE_HIGHSNOW</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="277"/>
         <source>High Dirt</source>
         <comment>Ice</comment>
         <extracomment>SEditENU:189:3023, stat_txt:DDS_ICE_HIGHROUGHSNOW</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="279"/>
         <source>High Grass</source>
         <comment>Ice</comment>
         <extracomment>SEditENU:190:3024, stat_txt:DDS_ICE_HIGHSNOWYRUINS</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="281"/>
         <source>High Water</source>
         <comment>Ice</comment>
         <extracomment>SEditENU:190:3025</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="283"/>
         <source>High Outpost</source>
         <comment>Ice</comment>
         <extracomment>SEditENU:190:3026, stat_txt:DDS_ICE_HIGHOUTPOST</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="298"/>
         <source>Dirt</source>
         <comment>Twilight</comment>
         <extracomment>SEditENU:190:3029, stat_txt:DDS_TWILIGHT_DIRT</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="300"/>
         <source>Mud</source>
         <comment>Twilight</comment>
         <extracomment>SEditENU:190:3030, stat_txt:DDS_TWILIGHT_MUD</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="302"/>
         <source>Crushed Rock</source>
         <comment>Twilight</comment>
         <extracomment>SEditENU:190:3031, stat_txt:DDS_TWILIGHT_CRACKEDICE</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="304"/>
         <source>Crevices</source>
         <comment>Twilight</comment>
         <extracomment>SEditENU:190:3032, stat_txt:DDS_TWILIGHT_CREVICE</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="306"/>
         <source>Flagstones</source>
         <comment>Twilight</comment>
         <extracomment>SEditENU:190:3033, stat_txt:DDS_TWILIGHT_ANCIENTRUINS</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="308"/>
         <source>Sunken Ground</source>
         <comment>Twilight</comment>
         <extracomment>SEditENU:190:3034, stat_txt:DDS_TWILIGHT_SUNKENGROUND</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="310"/>
         <source>Basilica</source>
         <comment>Twilight</comment>
         <extracomment>SEditENU:190:3035, stat_txt:DDS_TWILIGHT_COMPOUND</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="312"/>
         <source>High Dirt</source>
         <comment>Twilight</comment>
         <extracomment>SEditENU:191:3040, stat_txt:DDS_TWILIGHT_HIGHDIRT</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="314"/>
         <source>High Crushed Rock</source>
         <comment>Twilight</comment>
         <extracomment>SEditENU:190:3036, stat_txt:DDS_TWILIGHT_HIGHCRACKEDICE</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="316"/>
         <source>High Flagstones</source>
         <comment>Twilight</comment>
         <extracomment>SEditENU:190:3037, stat_txt:DDS_TWILIGHT_HIGHANCIENTRUINS</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="318"/>
         <source>High Sunken Ground</source>
         <comment>Twilight</comment>
         <extracomment>SEditENU:190:3038, stat_txt:DDS_TWILIGHT_HIGHSUNKENGROUND</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="320"/>
         <source>High Basilica</source>
         <comment>Twilight</comment>
         <extracomment>SEditENU:190:3039, stat_txt:DDS_TWILIGHT_HIGHCOMPOUND</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="291"/>
@@ -2537,12 +2537,12 @@ EditLocal:2:16</extracomment>
     <message>
         <location filename="tree.cpp" line="62"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="tree.cpp" line="62"/>
         <source>Unable to load Trees/%1: %2</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -2617,7 +2617,7 @@ EditLocal:2:16</extracomment>
         <location filename="scenariosettings.ui" line="48"/>
         <source>Special Abilities</source>
         <extracomment>EditLocal:1219</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -2703,7 +2703,7 @@ EditLocal:2:16</extracomment>
     <message>
         <location filename="unitproperties.ui" line="28"/>
         <source>Type</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="unitproperties.ui" line="38"/>
@@ -2777,14 +2777,14 @@ EditLocal:2:16</extracomment>
         <location filename="unitproperties.ui" line="203"/>
         <source>&amp;Lifted</source>
         <extracomment>EditLocal:1214:1162</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="unitproperties.ui" line="210"/>
         <source>H&amp;allucination</source>
         <oldsource>H&amp;allucinated</oldsource>
         <extracomment>EditLocal:1214:1164</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="unitproperties.ui" line="217"/>
@@ -2806,7 +2806,7 @@ EditLocal:2:16</extracomment>
         <location filename="unitstab.ui" line="175"/>
         <source>Use Default</source>
         <oldsource>Use Defaults</oldsource>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="unitstab.ui" line="146"/>
@@ -2923,7 +2923,7 @@ EditLocal:2:16</extracomment>
         <source>Level</source>
         <oldsource>level</oldsource>
         <extracomment>EditLocal:32:498</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="upgradestab.ui" line="324"/>
@@ -2958,7 +2958,7 @@ EditLocal:2:16</extracomment>
         <location filename="upgradestab.ui" line="186"/>
         <location filename="upgradestab.ui" line="244"/>
         <source>Use Default</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="upgradestab.ui" line="395"/>

@@ -153,7 +153,7 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="appsettings.ui" line="26"/>
         <source>Paths</source>
-        <translation type="unfinished"></translation>
+        <translation>Percorsi</translation>
     </message>
     <message>
         <location filename="appsettings.ui" line="32"/>
@@ -168,7 +168,7 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="appsettings.ui" line="85"/>
         <source>General Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Impostazioni generali</translation>
     </message>
     <message>
         <location filename="appsettings.ui" line="91"/>
@@ -202,7 +202,7 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="charmap.cpp" line="26"/>
         <source>All</source>
-        <translation type="unfinished"></translation>
+        <translation>Tutte</translation>
     </message>
     <message>
         <location filename="charmap.cpp" line="27"/>
@@ -528,22 +528,22 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="locationproperties.ui" line="22"/>
         <source>Left</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Sinistra</translation>
     </message>
     <message>
         <location filename="locationproperties.ui" line="42"/>
         <source>Top</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Sopra</translation>
     </message>
     <message>
         <location filename="locationproperties.ui" line="49"/>
         <source>Right</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Destra</translation>
     </message>
     <message>
         <location filename="locationproperties.ui" line="89"/>
         <source>Bottom</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Sotto</translation>
     </message>
     <message>
         <location filename="locationproperties.ui" line="116"/>
@@ -2527,7 +2527,7 @@ EditLocal:2:16</extracomment>
     <message>
         <location filename="tree.cpp" line="62"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Errore</translation>
     </message>
     <message>
         <location filename="tree.cpp" line="62"/>

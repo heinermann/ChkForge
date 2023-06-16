@@ -13,7 +13,7 @@
         <location filename="abilitiestab.ui" line="181"/>
         <source>Use Default</source>
         <oldsource>Use Defaults</oldsource>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">使用預設值</translation>
     </message>
     <message>
         <location filename="abilitiestab.ui" line="71"/>
@@ -153,7 +153,7 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="appsettings.ui" line="26"/>
         <source>Paths</source>
-        <translation type="unfinished"></translation>
+        <translation>路徑</translation>
     </message>
     <message>
         <location filename="appsettings.ui" line="32"/>
@@ -168,7 +168,7 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="appsettings.ui" line="85"/>
         <source>General Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">一般設定</translation>
     </message>
     <message>
         <location filename="appsettings.ui" line="91"/>
@@ -179,7 +179,7 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="appsettings.ui" line="101"/>
         <source>Theme</source>
-        <translation type="unfinished"></translation>
+        <translation>主題</translation>
     </message>
     <message>
         <location filename="appsettings.ui" line="108"/>
@@ -202,7 +202,7 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="charmap.cpp" line="26"/>
         <source>All</source>
-        <translation type="unfinished"></translation>
+        <translation>所有的</translation>
     </message>
     <message>
         <location filename="charmap.cpp" line="27"/>
@@ -528,22 +528,22 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="locationproperties.ui" line="22"/>
         <source>Left</source>
-        <translation>左</translation>
+        <translation type="unfinished">左邊</translation>
     </message>
     <message>
         <location filename="locationproperties.ui" line="42"/>
         <source>Top</source>
-        <translation>上</translation>
+        <translation type="unfinished">最上層</translation>
     </message>
     <message>
         <location filename="locationproperties.ui" line="49"/>
         <source>Right</source>
-        <translation>右</translation>
+        <translation type="unfinished">右邊</translation>
     </message>
     <message>
         <location filename="locationproperties.ui" line="89"/>
         <source>Bottom</source>
-        <translation>按鈕</translation>
+        <translation type="unfinished">底端</translation>
     </message>
     <message>
         <location filename="locationproperties.ui" line="116"/>
@@ -2525,7 +2525,7 @@ EditLocal:2:16</extracomment>
     <message>
         <location filename="tree.cpp" line="62"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>錯誤</translation>
     </message>
     <message>
         <location filename="tree.cpp" line="62"/>
@@ -2567,7 +2567,7 @@ EditLocal:2:16</extracomment>
         <location filename="scenariodescription.ui" line="87"/>
         <source>Description</source>
         <extracomment>EditLocal:185</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>描述</translation>
     </message>
 </context>
 <context>

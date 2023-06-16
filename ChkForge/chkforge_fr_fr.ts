@@ -153,7 +153,7 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="appsettings.ui" line="26"/>
         <source>Paths</source>
-        <translation type="unfinished"></translation>
+        <translation>Chemins d&apos;accès</translation>
     </message>
     <message>
         <location filename="appsettings.ui" line="32"/>
@@ -168,7 +168,7 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="appsettings.ui" line="85"/>
         <source>General Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Paramètres généraux</translation>
     </message>
     <message>
         <location filename="appsettings.ui" line="91"/>
@@ -179,7 +179,7 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="appsettings.ui" line="101"/>
         <source>Theme</source>
-        <translation type="unfinished"></translation>
+        <translation>Thème</translation>
     </message>
     <message>
         <location filename="appsettings.ui" line="108"/>
@@ -202,7 +202,7 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="charmap.cpp" line="26"/>
         <source>All</source>
-        <translation type="unfinished"></translation>
+        <translation>Toutes</translation>
     </message>
     <message>
         <location filename="charmap.cpp" line="27"/>
@@ -373,7 +373,7 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="exportimage.ui" line="16"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Dialogue</translation>
     </message>
 </context>
 <context>
@@ -381,7 +381,7 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="exportsections.ui" line="16"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Dialogue</translation>
     </message>
 </context>
 <context>
@@ -389,7 +389,7 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="filemanager.ui" line="16"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Dialogue</translation>
     </message>
 </context>
 <context>
@@ -422,7 +422,7 @@ Some select Starforge code snippets and resources.
         <location filename="forcestab.ui" line="60"/>
         <source>Custom Name</source>
         <extracomment>SEditENU:1216</extracomment>
-        <translation>Nom Personnalisé</translation>
+        <translation>Nom personnalisé</translation>
     </message>
     <message>
         <location filename="forcestab.ui" line="160"/>
@@ -533,7 +533,7 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="locationproperties.ui" line="42"/>
         <source>Top</source>
-        <translation>Haut</translation>
+        <translation type="unfinished">En haut</translation>
     </message>
     <message>
         <location filename="locationproperties.ui" line="49"/>
@@ -543,7 +543,7 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="locationproperties.ui" line="89"/>
         <source>Bottom</source>
-        <translation>Bas</translation>
+        <translation type="unfinished">En bas</translation>
     </message>
     <message>
         <location filename="locationproperties.ui" line="116"/>
@@ -2527,7 +2527,7 @@ EditLocal:2:16</extracomment>
     <message>
         <location filename="tree.cpp" line="62"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Erreur</translation>
     </message>
     <message>
         <location filename="tree.cpp" line="62"/>
@@ -2893,7 +2893,7 @@ EditLocal:2:16</extracomment>
         <location filename="unitstab.ui" line="493"/>
         <source>Custom Name</source>
         <extracomment>SEditENU:1216</extracomment>
-        <translation>Nom Personnalisé</translation>
+        <translation>Nom personnalisé</translation>
     </message>
 </context>
 <context>

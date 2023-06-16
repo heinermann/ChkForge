@@ -609,9 +609,6 @@
     <QtTranslation Include="chkforge_it_it.ts">
       <Filter>Translation Files</Filter>
     </QtTranslation>
-    <QtTranslation Include="chkforge_es_mx.ts">
-      <Filter>Translation Files</Filter>
-    </QtTranslation>
     <QtTranslation Include="chkforge_ja_jp.ts">
       <Filter>Translation Files</Filter>
     </QtTranslation>

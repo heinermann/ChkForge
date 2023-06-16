@@ -13,7 +13,7 @@
         <location filename="abilitiestab.ui" line="181"/>
         <source>Use Default</source>
         <oldsource>Use Defaults</oldsource>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">use o padrão</translation>
     </message>
     <message>
         <location filename="abilitiestab.ui" line="71"/>
@@ -153,7 +153,7 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="appsettings.ui" line="26"/>
         <source>Paths</source>
-        <translation type="unfinished"></translation>
+        <translation>Ścieżki</translation>
     </message>
     <message>
         <location filename="appsettings.ui" line="32"/>
@@ -179,7 +179,7 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="appsettings.ui" line="101"/>
         <source>Theme</source>
-        <translation type="unfinished"></translation>
+        <translation>Motyw</translation>
     </message>
     <message>
         <location filename="appsettings.ui" line="108"/>
@@ -202,7 +202,7 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="charmap.cpp" line="26"/>
         <source>All</source>
-        <translation type="unfinished"></translation>
+        <translation>Wszystkie</translation>
     </message>
     <message>
         <location filename="charmap.cpp" line="27"/>
@@ -373,7 +373,7 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="exportimage.ui" line="16"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Dialog</translation>
     </message>
 </context>
 <context>
@@ -381,7 +381,7 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="exportsections.ui" line="16"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Dialog</translation>
     </message>
 </context>
 <context>
@@ -389,7 +389,7 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="filemanager.ui" line="16"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Dialog</translation>
     </message>
 </context>
 <context>
@@ -422,7 +422,7 @@ Some select Starforge code snippets and resources.
         <location filename="forcestab.ui" line="60"/>
         <source>Custom Name</source>
         <extracomment>SEditENU:1216</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Niestandardowa nazwa</translation>
     </message>
     <message>
         <location filename="forcestab.ui" line="160"/>
@@ -515,7 +515,7 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="itemtree.cpp" line="125"/>
         <source>Clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">schowek</translation>
     </message>
 </context>
 <context>
@@ -528,22 +528,22 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="locationproperties.ui" line="22"/>
         <source>Left</source>
-        <translation>Do lewej</translation>
+        <translation type="unfinished">Lewo</translation>
     </message>
     <message>
         <location filename="locationproperties.ui" line="42"/>
         <source>Top</source>
-        <translation>Do góry</translation>
+        <translation type="unfinished">Góra</translation>
     </message>
     <message>
         <location filename="locationproperties.ui" line="49"/>
         <source>Right</source>
-        <translation>Do prawej</translation>
+        <translation type="unfinished">Prawo</translation>
     </message>
     <message>
         <location filename="locationproperties.ui" line="89"/>
         <source>Bottom</source>
-        <translation>Do dołu</translation>
+        <translation type="unfinished">Dół</translation>
     </message>
     <message>
         <location filename="locationproperties.ui" line="116"/>
@@ -2567,7 +2567,7 @@ EditLocal:2:16</extracomment>
         <location filename="scenariodescription.ui" line="87"/>
         <source>Description</source>
         <extracomment>EditLocal:185</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Opis</translation>
     </message>
 </context>
 <context>
@@ -2891,7 +2891,7 @@ EditLocal:2:16</extracomment>
         <location filename="unitstab.ui" line="493"/>
         <source>Custom Name</source>
         <extracomment>SEditENU:1216</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Niestandardowa nazwa</translation>
     </message>
 </context>
 <context>
