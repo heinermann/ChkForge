@@ -8,6 +8,7 @@
 #include <QDir>
 #include <QFontDatabase>
 #include <QTemporaryFile>
+#include <QStyleHints>
 
 #include "../openbw/bwglobal.h"
 #include "../openbw/bwglobal_ui.h"
@@ -104,6 +105,8 @@ int main(int argc, char *argv[])
   QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
   QApplication app(argc, argv);
+
+  app.setStyle("fusion");
 
   QFont appFont = app.font();
   appFont.setPixelSize(11);
