@@ -2,6 +2,7 @@
 
 #include <QDialog>
 #include <QSettings>
+#include <QLocale>
 #include <memory>
 
 namespace Ui {
@@ -16,8 +17,10 @@ public:
   explicit AppSettings(QWidget* parent, const QSettings &defaults);
   ~AppSettings();
 
-  QLocale language();
+  QLocale language;
   QString style;
+
+  static QLocale findSupportedLocale(QLocale target);
 
 private:
   std::unique_ptr<Ui::AppSettings> ui;
@@ -30,4 +33,5 @@ private:
 
 private slots:
   void on_cmb_theme_currentTextChanged(const QString& text);
+  void on_cmb_language_currentIndexChanged(int index);
 };

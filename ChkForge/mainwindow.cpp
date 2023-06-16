@@ -47,8 +47,8 @@ MainWindow::MainWindow(QWidget *parent)
   , toolbars_ui(std::make_unique<Ui::toolbars>())
   , scmd_pluginManager(this)
 {
-  QLocale lang = settings.value("language", QLocale()).toLocale();
-  ChkForge::SetLanguage(lang);
+  QLocale lang = settings.value("language", AppSettings::findSupportedLocale(QLocale())).toLocale();
+  ChkForge::SetLanguage(AppSettings::findSupportedLocale(lang));
 
   QApplication::setStyle(settings.value("theme", "fusion").toString());
 
@@ -404,7 +404,7 @@ void MainWindow::on_action_file_settings_triggered()
     // TODO: move this for previewing, revert back if not changed
 
     // Retranslate UI
-    QLocale language = settingsUI.language();
+    QLocale language = settingsUI.language;
     ChkForge::SetLanguage(language);
 
     ui->retranslateUi(this);
@@ -417,6 +417,7 @@ void MainWindow::on_action_file_settings_triggered()
   }
   else {
     // Restore settings on cancel
+    ChkForge::SetLanguage(settings.value("language", AppSettings::findSupportedLocale(QLocale())).toLocale());
     QApplication::setStyle(settings.value("theme", "fusion").toString());
   }
 

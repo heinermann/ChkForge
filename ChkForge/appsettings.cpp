@@ -16,6 +16,9 @@ AppSettings::AppSettings(QWidget* parent, const QSettings &defaultValues)
 {
   ui->setupUi(this);
 
+  style = defaults.value("theme", "fusion").toString();
+  language = defaults.value("language", findSupportedLocale(QLocale())).toLocale();
+
   populateLanguages();
   populateThemes();
   settingUp = false;
@@ -41,46 +44,51 @@ namespace {
   };
 }
 
+QLocale AppSettings::findSupportedLocale(QLocale target) {
+  const QLocale* result;
+
+  const auto locale_eq = [&](QLocale loc) { return loc.language() == target.language() && loc.country() == target.country(); };
+  const auto lang_eq = [&](QLocale loc) { return loc.language() == target.language(); };
+
+  result = std::ranges::find_if(SUPPORTED_LOCALES, locale_eq);
+  if (result != nullptr) return *result;
+
+  result = std::ranges::find_if(SUPPORTED_LOCALES, lang_eq);
+  if (result != nullptr) return *result;
+
+  return SUPPORTED_LOCALES[0];
+}
+
 void AppSettings::populateLanguages() {
-  QLocale app_lang = ChkForge::GetLanguage();
-  const QLocale* best_locale;
-
-  const auto locale_eq = [&](QLocale loc) {
-    return loc.language() == app_lang.language() && loc.country() == app_lang.country();
-  };
-  const auto lang_only_eq = [&](QLocale loc) {
-    return loc.language() == app_lang.language();
-  };
-
-  best_locale = std::ranges::find_if(SUPPORTED_LOCALES, locale_eq);
-  if (best_locale == nullptr) {
-    best_locale = std::ranges::find_if(SUPPORTED_LOCALES, lang_only_eq);
-    if (best_locale == nullptr) {
-      best_locale = &SUPPORTED_LOCALES[0];
-    }
-  }
+  QLocale best_locale = findSupportedLocale(language);
 
   for (auto& locale : SUPPORTED_LOCALES) {
     QString text = locale.nativeLanguageName();
     QIcon icon = QIcon(":/flag/" + QLocale::countryToCode(locale.country()));
 
     ui->cmb_language->addItem(icon, text, locale);
+    if (locale == best_locale) {
+      ui->cmb_language->setCurrentText(text);
+    }
   }
-
-  ui->cmb_language->setCurrentIndex(best_locale - SUPPORTED_LOCALES);
 }
 
 void AppSettings::populateThemes() {
   ui->cmb_theme->addItems(QStyleFactory::keys());
-  ui->cmb_theme->setCurrentText(defaults.value("theme", "fusion").toString());
-}
-
-QLocale AppSettings::language() {
-  return ui->cmb_language->currentData().toLocale();
+  ui->cmb_theme->setCurrentText(style);
 }
 
 void AppSettings::on_cmb_theme_currentTextChanged(const QString& text) {
   if (settingUp) return;
+  
   style = text;
-  QApplication::setStyle(text);
+  QApplication::setStyle(style);
+}
+
+void AppSettings::on_cmb_language_currentIndexChanged(int index) {
+  if (settingUp) return;
+  
+  language = ui->cmb_language->currentData().toLocale();
+  ChkForge::SetLanguage(language);
+  ui->retranslateUi(this);
 }
