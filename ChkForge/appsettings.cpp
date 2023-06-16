@@ -4,15 +4,21 @@
 #include "language.h"
 
 #include <QLocale>
+#include <QStyle>
+#include <QStyleFactory>
+#include <QSettings>
 #include <tuple>
 
-AppSettings::AppSettings(QWidget* parent)
+AppSettings::AppSettings(QWidget* parent, const QSettings &defaultValues)
   : QDialog(parent)
   , ui(std::make_unique<Ui::AppSettings>())
+  , defaults(defaultValues)
 {
   ui->setupUi(this);
 
   populateLanguages();
+  populateThemes();
+  settingUp = false;
 }
 
 AppSettings::~AppSettings() {}
@@ -64,6 +70,17 @@ void AppSettings::populateLanguages() {
   ui->cmb_language->setCurrentIndex(best_locale - SUPPORTED_LOCALES);
 }
 
+void AppSettings::populateThemes() {
+  ui->cmb_theme->addItems(QStyleFactory::keys());
+  ui->cmb_theme->setCurrentText(defaults.value("theme", "fusion").toString());
+}
+
 QLocale AppSettings::language() {
   return ui->cmb_language->currentData().toLocale();
+}
+
+void AppSettings::on_cmb_theme_currentTextChanged(const QString& text) {
+  if (settingUp) return;
+  style = text;
+  QApplication::setStyle(text);
 }

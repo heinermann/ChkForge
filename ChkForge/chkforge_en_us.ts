@@ -181,6 +181,11 @@ Some select Starforge code snippets and resources.
     </message>
     <message>
         <location filename="appsettings.ui" line="101"/>
+        <source>Theme</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="appsettings.ui" line="108"/>
         <source>Automatic Updates</source>
         <translation></translation>
     </message>
@@ -923,7 +928,7 @@ Some select Starforge code snippets and resources.
     </message>
     <message>
         <location filename="mainwindow.ui" line="782"/>
-        <location filename="mainwindow.cpp" line="656"/>
+        <location filename="mainwindow.cpp" line="669"/>
         <source>&amp;Play</source>
         <oldsource>&amp;Play/Pause</oldsource>
         <translation></translation>
@@ -998,7 +1003,7 @@ Some select Starforge code snippets and resources.
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="660"/>
+        <location filename="mainwindow.cpp" line="673"/>
         <source>&amp;Pause</source>
         <translation></translation>
     </message>
@@ -1258,43 +1263,43 @@ Other sizes may crash Starcraft.</source>
 <context>
     <name>QLineEdit</name>
     <message>
-        <location filename="mainwindow.cpp" line="86"/>
+        <location filename="mainwindow.cpp" line="89"/>
         <source>Cu&amp;t</source>
         <extracomment>DO NOT TRANSLATE</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="88"/>
+        <location filename="mainwindow.cpp" line="91"/>
         <source>&amp;Copy</source>
         <extracomment>DO NOT TRANSLATE</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="90"/>
+        <location filename="mainwindow.cpp" line="93"/>
         <source>&amp;Paste</source>
         <extracomment>DO NOT TRANSLATE</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="92"/>
+        <location filename="mainwindow.cpp" line="95"/>
         <source>&amp;Undo</source>
         <extracomment>DO NOT TRANSLATE</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="94"/>
+        <location filename="mainwindow.cpp" line="97"/>
         <source>&amp;Redo</source>
         <extracomment>DO NOT TRANSLATE</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="96"/>
+        <location filename="mainwindow.cpp" line="99"/>
         <source>Delete</source>
         <extracomment>DO NOT TRANSLATE</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="98"/>
+        <location filename="mainwindow.cpp" line="101"/>
         <source>Select All</source>
         <extracomment>DO NOT TRANSLATE</extracomment>
         <translation type="unfinished"></translation>
@@ -1303,12 +1308,12 @@ Other sizes may crash Starcraft.</source>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="main.cpp" line="66"/>
+        <location filename="main.cpp" line="68"/>
         <source>Failed to load font: %1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="main.cpp" line="82"/>
+        <location filename="main.cpp" line="84"/>
         <source>Failed to initialize OpenBW:
 %1
 
@@ -1316,12 +1321,12 @@ Please select a different directory.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="main.cpp" line="85"/>
+        <location filename="main.cpp" line="87"/>
         <source>Unknown error initializing OpenBW. Please select a different directory.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="main.cpp" line="95"/>
+        <location filename="main.cpp" line="97"/>
         <source>Find Starcraft Directory</source>
         <translation></translation>
     </message>
@@ -2538,7 +2543,7 @@ EditLocal:2:16</extracomment>
 <context>
     <name>QShortcut</name>
     <message>
-        <location filename="mainwindow.cpp" line="101"/>
+        <location filename="mainwindow.cpp" line="104"/>
         <source>Zoom</source>
         <extracomment>DO NOT TRANSLATE</extracomment>
         <translation type="unfinished"></translation>

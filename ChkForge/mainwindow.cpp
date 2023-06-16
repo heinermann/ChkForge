@@ -32,6 +32,7 @@
 #include <QMimeData>
 #include <QLineEdit>
 #include <QShortcut>
+#include <QStyle>
 
 #include <filesystem>
 
@@ -48,6 +49,8 @@ MainWindow::MainWindow(QWidget *parent)
 {
   QLocale lang = settings.value("language", QLocale()).toLocale();
   ChkForge::SetLanguage(lang);
+
+  QApplication::setStyle(settings.value("theme", "fusion").toString());
 
   ui->setupUi(this);
 
@@ -394,20 +397,30 @@ void MainWindow::on_action_file_saveMapImage_triggered()
 
 void MainWindow::on_action_file_settings_triggered()
 {
-  AppSettings settingsUI(this);
+  AppSettings settingsUI(this, settings);
+
   int result = settingsUI.exec();
-  if (result != QDialog::Accepted) return;
+  if (result == QDialog::Accepted) {
+    // TODO: move this for previewing, revert back if not changed
 
-  // Retranslate UI
-  QLocale language = settingsUI.language();
-  ChkForge::SetLanguage(language);
+    // Retranslate UI
+    QLocale language = settingsUI.language();
+    ChkForge::SetLanguage(language);
 
-  ui->retranslateUi(this);
-  toolbars_ui->retranslateUi(&toolbars_container);
-  statusBar_ui->retranslateUi(&statusBar_container);
-  applyTranslations();
+    ui->retranslateUi(this);
+    toolbars_ui->retranslateUi(&toolbars_container);
+    statusBar_ui->retranslateUi(&statusBar_container);
+    applyTranslations();
 
-  settings.setValue("language", language);
+    settings.setValue("language", language);
+    settings.setValue("theme", settingsUI.style);
+  }
+  else {
+    // Restore settings on cancel
+    QApplication::setStyle(settings.value("theme", "fusion").toString());
+  }
+
+  // Set based on settings value
 
   // TODO Apply other global settings from dialog here
 }
