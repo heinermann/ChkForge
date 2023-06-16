@@ -925,7 +925,7 @@ Some select Starforge code snippets and resources.
     </message>
     <message>
         <location filename="mainwindow.ui" line="782"/>
-        <location filename="mainwindow.cpp" line="669"/>
+        <location filename="mainwindow.cpp" line="670"/>
         <source>&amp;Play</source>
         <translation>플레이(&amp;P)</translation>
     </message>
@@ -999,7 +999,7 @@ Some select Starforge code snippets and resources.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="673"/>
+        <location filename="mainwindow.cpp" line="674"/>
         <source>&amp;Pause</source>
         <translation>일시 정지(&amp;P)</translation>
     </message>
