@@ -62,6 +62,8 @@ namespace ChkForge
     int tile_height() const;
 
     Sc::Terrain::Tileset tileset() const;
+    std::vector<std::pair<QString, int>> locations() const;
+    QString get_location_name(int id) const;
 
     void place_unit(Sc::Unit::Type unitType, int owner, int x, int y);
     void apply_brush(const QRect& rect, int tileGroup, int clutter);

@@ -56,7 +56,7 @@ void ItemTree::update_tileset(Sc::Terrain::Tileset tileset_id) {
   tilesetTreeItem->removeRows(0, tilesetTreeItem->rowCount());
   tilesetTreeItem->setText(tileset->getName());
 
-  QList<QStandardItem*> brushRows;
+  QList<QStandardItem*> rows;
   for (auto& brush : tileset->getBrushes()) {
     QStandardItem* item = ChkForge::Tree::createTreeItem(brush.getName());
 
@@ -65,9 +65,27 @@ void ItemTree::update_tileset(Sc::Terrain::Tileset tileset_id) {
     item->setData(Category::CAT_TERRAIN << 16 | brush.getGroupId(), ChkForge::Tree::ROLE_SEARCHKEY);
     item->setIcon(brush.getIcon());
 
-    brushRows.emplaceBack(item);
+    rows.emplaceBack(item);
   }
-  tilesetTreeItem->appendRows(brushRows);
+  tilesetTreeItem->appendRows(rows);
+}
+
+void ItemTree::update_locations(const std::vector<std::pair<QString, int>>& locations) {
+  locationsTreeItem->removeRows(0, locationsTreeItem->rowCount());
+
+  QList<QStandardItem*> rows;
+  for (auto [name, id] : locations) {
+    QStandardItem* item = ChkForge::Tree::createTreeItem(name);
+
+    //item->setEditable(true);  // TODO
+
+    item->setData(id, ChkForge::Tree::ROLE_ID);
+    item->setData(Category::CAT_LOCATION, ChkForge::Tree::ROLE_CATEGORY);
+    item->setData(Category::CAT_LOCATION << 16 | id, ChkForge::Tree::ROLE_SEARCHKEY);
+
+    rows.emplaceBack(item);
+  }
+  locationsTreeItem->appendRows(rows);
 }
 
 QStandardItem* ItemTree::createTilesetTree()
@@ -114,9 +132,8 @@ QStandardItem* ItemTree::createUnitSpritesTree()
 
 QStandardItem* ItemTree::createLocationsTree()
 {
-  QStandardItem* top = ChkForge::Tree::createTreeItem(tr("Locations"));
-
-  return top;
+  this->locationsTreeItem = ChkForge::Tree::createTreeItem(tr("Locations"));
+  return this->locationsTreeItem;
 }
 
 QStandardItem* ItemTree::createBrushesTree()

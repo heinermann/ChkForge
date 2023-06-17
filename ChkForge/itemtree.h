@@ -34,6 +34,7 @@ public:
 
   void set_item(Category category, int id);
   void update_tileset(Sc::Terrain::Tileset tileset);
+  void update_locations(const std::vector<std::pair<QString, int>>& locations);
 
 private:
   std::unique_ptr<Ui::ItemTree> ui;
@@ -42,6 +43,7 @@ private:
   QSortFilterProxyModel proxyModel;
 
   QStandardItem* tilesetTreeItem = nullptr;
+  QStandardItem* locationsTreeItem = nullptr;
 
 private:
   QStandardItem* createTilesetTree();

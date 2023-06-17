@@ -93,6 +93,31 @@ Sc::Terrain::Tileset MapContext::tileset() const
   return Sc::Terrain::Tileset(openbw_ui.game_st.tileset_index);
 }
 
+std::vector<std::pair<QString, int>> MapContext::locations() const {
+  std::vector<std::pair<QString, int>> result;
+
+  auto mrgn = chk->layers.mrgn;
+  for (size_t i = 0; i < mrgn->numLocations(); i++) {
+    // Note: 64 = Anywhere
+
+    auto location = mrgn->getLocation(i);
+    if (!location) continue;
+
+    result.emplace_back(get_location_name(i), i);
+  }
+
+  return result;
+}
+
+QString MapContext::get_location_name(int id) const {
+  auto name = chk->strings.getLocationName<RawString>(id);
+  if (name) {
+    return QString::fromStdString(*name);
+  }
+  return tr("Location %1").arg(id + 1);
+}
+
+
 void MapContext::place_unit(Sc::Unit::Type unitType, int owner, int x, int y)
 {
   auto unit = std::make_shared<Chk::Unit>();

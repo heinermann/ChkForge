@@ -26,30 +26,25 @@ void LocationLayer::paintOverlay(MapView* map, QWidget* obj, QPainter& painter)
     // Note: 64 = Anywhere
 
     auto location = mrgn->getLocation(i);
-    if (location) {
-      QRect rct = {
-        map->mapToViewPoint({int(location->left), int(location->top)}),
-        map->mapToViewPoint({int(location->right), int(location->bottom)}),
-      };
+    if (!location) continue;
 
-      // Skip if none of the location is within the view
-      if (!QRect({ 0, 0 }, map->getViewSize()).intersects(rct)) continue;
- 
-      painter.setPen(Qt::black);
-      painter.fillRect(rct, QColor{ 0, 0, 128, 64 });
-      painter.drawRect(rct);
+    QRect rct = {
+      map->mapToViewPoint({int(location->left), int(location->top)}),
+      map->mapToViewPoint({int(location->right), int(location->bottom)}),
+    };
 
-      auto name = chk->strings.getLocationName<RawString>(i);
-      QPoint textPos = map->mapToViewPoint({ int(location->left) + 4, int(location->top) + 20 });
-      
-      painter.setPen(QColor{ 16, 252, 24 });
-      if (name) {
-        painter.drawText(textPos, QString::fromStdString(*name));
-      }
-      else {
-        painter.drawText(textPos, QString("Location %1").arg(i + 1));
-      }
-    }
+    // Skip if none of the location is within the view
+    if (!QRect({ 0, 0 }, map->getViewSize()).intersects(rct)) continue;
+
+    painter.setPen(Qt::black);
+    painter.fillRect(rct, QColor{ 0, 0, 128, 64 });
+    painter.drawRect(rct);
+
+    QPoint textPos = map->mapToViewPoint({ int(location->left) + 4, int(location->top) + 20 });
+    QString name = map->getMap()->get_location_name(i);
+
+    painter.setPen(QColor{ 16, 252, 24 });
+    painter.drawText(textPos, name);
   }
 }
 void LocationLayer::paintGame(MapView* map, uint8_t* data, size_t data_pitch, bwgame::rect screen_rect)

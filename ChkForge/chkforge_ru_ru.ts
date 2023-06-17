@@ -367,6 +367,11 @@ Some select Starforge code snippets and resources.
         <source>Failed to read the Chk file (chk), not a valid map.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="MapContext.cpp" line="117"/>
+        <source>Location %1</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ExportImage</name>
@@ -471,7 +476,7 @@ Some select Starforge code snippets and resources.
 <context>
     <name>ItemTree</name>
     <message>
-        <location filename="itemtree.ui" line="48"/>
+        <location filename="itemtree.ui" line="51"/>
         <source>Search Filter</source>
         <translation type="unfinished"></translation>
     </message>
@@ -481,39 +486,39 @@ Some select Starforge code snippets and resources.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="itemtree.cpp" line="82"/>
+        <location filename="itemtree.cpp" line="100"/>
         <source>Doodads</source>
         <extracomment>stat_txt:FIRST_UNIT_STRING-203</extracomment>
         <translation>Объекты</translation>
     </message>
     <message>
-        <location filename="itemtree.cpp" line="90"/>
+        <location filename="itemtree.cpp" line="108"/>
         <source>Units</source>
         <extracomment>gluAll:scoreUNITS</extracomment>
         <translation>Боевые единицы</translation>
     </message>
     <message>
-        <location filename="itemtree.cpp" line="99"/>
+        <location filename="itemtree.cpp" line="117"/>
         <source>Sprites</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="itemtree.cpp" line="108"/>
+        <location filename="itemtree.cpp" line="126"/>
         <source>Unit-Sprites</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="itemtree.cpp" line="117"/>
+        <location filename="itemtree.cpp" line="135"/>
         <source>Locations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="itemtree.cpp" line="124"/>
+        <location filename="itemtree.cpp" line="141"/>
         <source>Custom Brushes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="itemtree.cpp" line="125"/>
+        <location filename="itemtree.cpp" line="142"/>
         <source>Clipboard</source>
         <translation type="unfinished">карма́н</translation>
     </message>
@@ -597,6 +602,11 @@ Some select Starforge code snippets and resources.
         <source>Hi&amp;gh Air</source>
         <oldsource>High Air</oldsource>
         <extracomment>EditLocal:175:105</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="locationproperties.ui" line="189"/>
+        <source>Usage</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

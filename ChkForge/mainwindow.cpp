@@ -828,6 +828,7 @@ void MainWindow::onMdiSubWindowActivated(QMdiSubWindow* window)
   scmd_pluginManager.setTrackingMap(map->getMap());
 
   this->itemTree->update_tileset(map->getMap()->tileset());
+  this->itemTree->update_locations(map->getMap()->locations());
 }
 
 void MainWindow::mapMouseMoved(const QPoint& pos)
@@ -899,6 +900,7 @@ void MainWindow::onItemTreeChanged(ItemTree::Category category, int id)
       break;
     case ItemTree::CAT_LOCATION:
       selectLayerIndex(ChkForge::Layer_t::LAYER_LOCATION);
+      // TODO select location by id here
       break;
     case ItemTree::CAT_BRUSH:
       selectLayerIndex(ChkForge::Layer_t::LAYER_SELECT);
