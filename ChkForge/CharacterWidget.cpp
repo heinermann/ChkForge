@@ -55,7 +55,7 @@ CharacterWidget::FontInfo* CharacterWidget::fontForChar(uint key) {
 }
 
 QChar::Category CharacterWidget::categoryForName(QString categoryName) {
-  static std::unordered_map<QString, QChar::Category> category_map = {
+  static const std::unordered_map<QString, QChar::Category> category_map = {
     { "Mn", QChar::Mark_NonSpacing },
     { "Mc", QChar::Mark_SpacingCombining },
     { "Me", QChar::Mark_Enclosing },
@@ -88,8 +88,8 @@ QChar::Category CharacterWidget::categoryForName(QString categoryName) {
     { "So", QChar::Symbol_Other }
   };
 
-  if (category_map.count(categoryName) != 0) {
-    return category_map[categoryName];
+  if (category_map.contains(categoryName)) {
+    return category_map.at(categoryName);
   }
   return QChar::Other_NotAssigned;
 }
@@ -169,9 +169,6 @@ void CharacterWidget::paintEvent(QPaintEvent* event)
       painter.drawPixmap(rct.topLeft(), *chr.cache);
     }
   }
-
-
-
 }
 
 void CharacterWidget::mousePressEvent(QMouseEvent* event)

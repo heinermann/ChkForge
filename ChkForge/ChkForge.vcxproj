@@ -602,6 +602,7 @@
     <QtUic Include="upgradestab.ui" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Wireframe.pal" />
     <QtRcc Include="..\country-icons.qrc" />
     <QtRcc Include="..\oxygen-subset.qrc" />
     <QtRcc Include="ChkForge.qrc">
@@ -616,6 +617,7 @@
       <InitFuncName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Icons</InitFuncName>
       <InitFuncName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Icons</InitFuncName>
     </QtRcc>
+    <None Include="Icons.pal" />
     <None Include="sprites.txt" />
     <None Include="techs.txt" />
     <None Include="terrain.txt" />
@@ -660,6 +662,9 @@
     <QtTranslation Include="chkforge_ru_ru.ts" />
     <QtTranslation Include="chkforge_zh_cn.ts" />
     <QtTranslation Include="chkforge_zh_tw.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="UnicodeData.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

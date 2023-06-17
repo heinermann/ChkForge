@@ -631,4 +631,17 @@
       <Filter>Translation Files</Filter>
     </QtTranslation>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons.pal">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Wireframe.pal">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="UnicodeData.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+  </ItemGroup>
 </Project>

@@ -2806,7 +2806,7 @@ EditLocal:2:16</extracomment>
         <location filename="unitstab.ui" line="175"/>
         <source>Use Default</source>
         <oldsource>Use Defaults</oldsource>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">使用預設值</translation>
     </message>
     <message>
         <location filename="unitstab.ui" line="146"/>
@@ -2933,7 +2933,7 @@ EditLocal:2:16</extracomment>
         <location filename="upgradestab.ui" line="186"/>
         <location filename="upgradestab.ui" line="244"/>
         <source>Use Default</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">使用預設值</translation>
     </message>
     <message>
         <location filename="upgradestab.ui" line="395"/>

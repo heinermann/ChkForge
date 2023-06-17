@@ -465,7 +465,7 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="importsections.ui" line="16"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">대화</translation>
     </message>
 </context>
 <context>
@@ -1244,7 +1244,7 @@ Other sizes may crash Starcraft.</source>
     <message>
         <location filename="previewpainter.ui" line="16"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">대화</translation>
     </message>
 </context>
 <context>
@@ -2547,7 +2547,7 @@ EditLocal:2:16</extracomment>
     <message>
         <location filename="savemap.ui" line="16"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">대화</translation>
     </message>
 </context>
 <context>
@@ -2648,7 +2648,7 @@ EditLocal:2:16</extracomment>
     <message>
         <location filename="stringmanager.ui" line="16"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">대화</translation>
     </message>
 </context>
 <context>

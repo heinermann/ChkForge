@@ -16,6 +16,7 @@
 #include <cmath>
 #include <functional>
 #include <optional>
+#include <variant>
 
 namespace bwgame {
 
@@ -935,9 +936,7 @@ struct state_functions {
 	}
 
 	bool unit_is_mineral_field(unit_type_autocast ut) const {
-		return ut->id == UnitTypes::Resource_Mineral_Field
-			|| ut->id == UnitTypes::Resource_Mineral_Field_Type_2
-			|| ut->id == UnitTypes::Resource_Mineral_Field_Type_3;
+		return unit_is_any_of(ut, UnitTypes::Resource_Mineral_Field, UnitTypes::Resource_Mineral_Field_Type_2, UnitTypes::Resource_Mineral_Field_Type_3);
 	}
 
 	void set_unit_resources(unit_t* u, int resources) {
@@ -1018,9 +1017,7 @@ struct state_functions {
 		auto damage = [&](unit_t* target) {
 			if (!ut_organic(target)) return;
 			if (ut_building(target)) return;
-			if (unit_is(target, UnitTypes::Zerg_Larva)) return;
-			if (unit_is(target, UnitTypes::Zerg_Egg)) return;
-			if (unit_is(target, UnitTypes::Zerg_Lurker_Egg)) return;
+			if (unit_is_any_of(target, UnitTypes::Zerg_Larva, UnitTypes::Zerg_Egg, UnitTypes::Zerg_Lurker_Egg)) return;
 			if (u_burrowed(target) && target != source_unit) return;
 			if (!u_loaded(target)) {
 				if (!unit_target_in_range(source_unit, target, 32)) return;
@@ -1206,7 +1203,7 @@ struct state_functions {
 				if (u->shield_points > max_shields) u->shield_points = max_shields;
 			}
 		}
-		if (unit_is(u, UnitTypes::Zerg_Zergling) || unit_is(u, UnitTypes::Hero_Devouring_One)) {
+		if (unit_is_any_of(u, UnitTypes::Zerg_Zergling, UnitTypes::Hero_Devouring_One)) {
 			if (u->ground_weapon_cooldown == 0) u->order_process_timer = 0;
 		}
 		if (u->is_being_healed) u->is_being_healed = false;
@@ -1298,49 +1295,47 @@ struct state_functions {
 
 	bool unit_is_carrier(unit_type_autocast ut) const {
 		return unit_is_any_of(ut, UnitTypes::Protoss_Carrier, UnitTypes::Hero_Gantrithor);
-		//return unit_is(ut, UnitTypes::Protoss_Carrier) || unit_is(ut, UnitTypes::Hero_Gantrithor);
 	}
 
 	bool unit_is_reaver(unit_type_autocast ut) const {
-		return unit_is(ut, UnitTypes::Protoss_Reaver) || unit_is(ut, UnitTypes::Hero_Warbringer);
+		return unit_is_any_of(ut, UnitTypes::Protoss_Reaver, UnitTypes::Hero_Warbringer);
 	}
 
 	bool unit_is_queen(unit_type_autocast ut) const {
-		return unit_is(ut, UnitTypes::Zerg_Queen) || unit_is(ut, UnitTypes::Hero_Matriarch);
+		return unit_is_any_of(ut, UnitTypes::Zerg_Queen, UnitTypes::Hero_Matriarch);
 	}
 
 	bool unit_is_hatchery(unit_type_autocast ut) const {
-		return unit_is(ut, UnitTypes::Zerg_Hatchery)
-			|| unit_is(ut, UnitTypes::Zerg_Lair)
-			|| unit_is(ut, UnitTypes::Zerg_Hive);
+		return unit_is_any_of(ut, UnitTypes::Zerg_Hatchery, UnitTypes::Zerg_Lair, UnitTypes::Zerg_Hive);
 	}
 
 	bool unit_is_marine(unit_type_autocast ut) const {
-		return unit_is(ut, UnitTypes::Terran_Marine) || unit_is(ut, UnitTypes::Hero_Jim_Raynor_Marine);
+		return unit_is_any_of(ut, UnitTypes::Terran_Marine, UnitTypes::Hero_Jim_Raynor_Marine);
 	}
 
 	bool unit_is_firebat(unit_type_autocast ut) const {
-		return unit_is(ut, UnitTypes::Terran_Firebat) || unit_is(ut, UnitTypes::Hero_Gui_Montag);
+		return unit_is_any_of(ut, UnitTypes::Terran_Firebat, UnitTypes::Hero_Gui_Montag);
 	}
 
 	bool unit_is_ghost(unit_type_autocast ut) const {
-		return unit_is(ut, UnitTypes::Terran_Ghost)
-			|| unit_is(ut, UnitTypes::Hero_Sarah_Kerrigan)
-			|| unit_is(ut, UnitTypes::Hero_Alexei_Stukov)
-			|| unit_is(ut, UnitTypes::Hero_Samir_Duran)
-			|| unit_is(ut, UnitTypes::Hero_Infested_Duran);
+		return unit_is_any_of(ut,
+			UnitTypes::Terran_Ghost,
+			UnitTypes::Hero_Sarah_Kerrigan,
+			UnitTypes::Hero_Alexei_Stukov,
+			UnitTypes::Hero_Samir_Duran,
+			UnitTypes::Hero_Infested_Duran);
 	}
 
 	bool unit_is_wraith(unit_type_autocast ut) const {
-		return unit_is(ut, UnitTypes::Terran_Wraith) || unit_is(ut, UnitTypes::Hero_Tom_Kazansky);
+		return unit_is_any_of(ut, UnitTypes::Terran_Wraith, UnitTypes::Hero_Tom_Kazansky);
 	}
 
 	bool unit_is_map_revealer(unit_type_autocast ut) const {
-		return unit_is(ut, UnitTypes::Spell_Scanner_Sweep) || unit_is(ut, UnitTypes::Special_Map_Revealer);
+		return unit_is_any_of(ut, UnitTypes::Spell_Scanner_Sweep, UnitTypes::Special_Map_Revealer);
 	}
 
 	bool unit_is_refinery(unit_type_autocast ut) const {
-		return unit_is(ut, UnitTypes::Terran_Refinery) || unit_is(ut, UnitTypes::Protoss_Assimilator) || unit_is(ut, UnitTypes::Zerg_Extractor);
+		return unit_is_any_of(ut, UnitTypes::Terran_Refinery, UnitTypes::Protoss_Assimilator, UnitTypes::Zerg_Extractor);
 	}
 
 	bool unit_is_non_flag_beacon(unit_type_autocast ut) const {
@@ -1352,11 +1347,11 @@ struct state_functions {
 	}
 
 	bool unit_is_scout(unit_type_autocast ut) const {
-		return unit_is(ut, UnitTypes::Protoss_Scout) || unit_is(ut, UnitTypes::Hero_Mojo) || unit_is(ut, UnitTypes::Hero_Artanis);
+		return unit_is_any_of(ut, UnitTypes::Protoss_Scout, UnitTypes::Hero_Mojo, UnitTypes::Hero_Artanis);
 	}
 
 	bool unit_is_vulture(unit_type_autocast ut) const {
-		return unit_is(ut, UnitTypes::Terran_Vulture) || unit_is(ut, UnitTypes::Hero_Jim_Raynor_Vulture);
+		return unit_is_any_of(ut, UnitTypes::Terran_Vulture, UnitTypes::Hero_Jim_Raynor_Vulture);
 	}
 
 	bool unit_is_nydus(unit_type_autocast ut) const {
@@ -1364,48 +1359,49 @@ struct state_functions {
 	}
 
 	bool unit_is_defiler(unit_type_autocast ut) const {
-		return unit_is(ut, UnitTypes::Zerg_Defiler) || unit_is(ut, UnitTypes::Hero_Unclean_One);
+		return unit_is_any_of(ut, UnitTypes::Zerg_Defiler, UnitTypes::Hero_Unclean_One);
 	}
 
 	bool unit_is_ultralisk(unit_type_autocast ut) const {
-		return unit_is(ut, UnitTypes::Zerg_Ultralisk) || unit_is(ut, UnitTypes::Hero_Torrasque);
+		return unit_is_any_of(ut, UnitTypes::Zerg_Ultralisk, UnitTypes::Hero_Torrasque);
 	}
 
 	bool unit_is_arbiter(unit_type_autocast ut) const {
-		return unit_is(ut, UnitTypes::Protoss_Arbiter) || unit_is(ut, UnitTypes::Hero_Danimoth);
+		return unit_is_any_of(ut, UnitTypes::Protoss_Arbiter, UnitTypes::Hero_Danimoth);
 	}
 
 	bool unit_is_egg(unit_type_autocast ut) const {
-		return unit_is(ut, UnitTypes::Zerg_Egg) || unit_is(ut, UnitTypes::Zerg_Cocoon) || unit_is(ut, UnitTypes::Zerg_Lurker_Egg);
+		return unit_is_any_of(ut, UnitTypes::Zerg_Egg, UnitTypes::Zerg_Cocoon, UnitTypes::Zerg_Lurker_Egg);
 	}
 
 	bool unit_is_goliath(unit_type_autocast ut) const {
-		return unit_is(ut, UnitTypes::Terran_Goliath) || unit_is(ut, UnitTypes::Hero_Alan_Schezar);
+		return unit_is_any_of(ut, UnitTypes::Terran_Goliath, UnitTypes::Hero_Alan_Schezar);
 	}
 
 	bool unit_is_critter(unit_type_autocast ut) const {
-		return unit_is(ut, UnitTypes::Critter_Rhynadon)
-			|| unit_is(ut, UnitTypes::Critter_Bengalaas)
-			|| unit_is(ut, UnitTypes::Critter_Ragnasaur)
-			|| unit_is(ut, UnitTypes::Critter_Scantid)
-			|| unit_is(ut, UnitTypes::Critter_Kakaru)
-			|| unit_is(ut, UnitTypes::Critter_Ursadon);
+		return unit_is_any_of(ut,
+			UnitTypes::Critter_Rhynadon,
+			UnitTypes::Critter_Bengalaas,
+			UnitTypes::Critter_Ragnasaur,
+			UnitTypes::Critter_Scantid,
+			UnitTypes::Critter_Kakaru,
+			UnitTypes::Critter_Ursadon);
 	}
 
 	bool unit_is_sieged_tank(unit_type_autocast ut) const {
-		return unit_is(ut, UnitTypes::Terran_Siege_Tank_Siege_Mode) || unit_is(ut, UnitTypes::Hero_Edmund_Duke_Siege_Mode);
+		return unit_is_any_of(ut, UnitTypes::Terran_Siege_Tank_Siege_Mode, UnitTypes::Hero_Edmund_Duke_Siege_Mode);
 	}
 
 	bool unit_is_unsieged_tank(unit_type_autocast ut) const {
-		return unit_is(ut, UnitTypes::Terran_Siege_Tank_Tank_Mode) || unit_is(ut, UnitTypes::Hero_Edmund_Duke_Tank_Mode);
+		return unit_is_any_of(ut, UnitTypes::Terran_Siege_Tank_Tank_Mode, UnitTypes::Hero_Edmund_Duke_Tank_Mode);
 	}
 
 	bool unit_is_normal_tank(unit_type_autocast ut) const {
-		return unit_is(ut, UnitTypes::Terran_Siege_Tank_Tank_Mode) || unit_is(ut, UnitTypes::Terran_Siege_Tank_Siege_Mode);
+		return unit_is_any_of(ut, UnitTypes::Terran_Siege_Tank_Tank_Mode, UnitTypes::Terran_Siege_Tank_Siege_Mode);
 	}
 
 	bool unit_is_hero_tank(unit_type_autocast ut) const {
-		return unit_is(ut, UnitTypes::Hero_Edmund_Duke_Tank_Mode) || unit_is(ut, UnitTypes::Hero_Edmund_Duke_Siege_Mode);
+		return unit_is_any_of(ut, UnitTypes::Hero_Edmund_Duke_Tank_Mode, UnitTypes::Hero_Edmund_Duke_Siege_Mode);
 	}
 
 	bool unit_is_tank(unit_type_autocast ut) const {
@@ -1417,17 +1413,23 @@ struct state_functions {
 	}
 
 	bool unit_is_door(unit_type_autocast ut) const {
-	  return ut->id == UnitTypes::Special_Upper_Level_Door || ut->id == UnitTypes::Special_Right_Upper_Level_Door ||
-		ut->id == UnitTypes::Special_Pit_Door || ut->id == UnitTypes::Special_Right_Pit_Door;
+	  return unit_is_any_of(ut,
+			UnitTypes::Special_Upper_Level_Door,
+			UnitTypes::Special_Right_Upper_Level_Door,
+			UnitTypes::Special_Pit_Door,
+			UnitTypes::Special_Right_Pit_Door);
 	}
 
 	bool unit_is_floor_trap(unit_type_autocast ut) const {
-	  return ut->id == UnitTypes::Special_Floor_Gun_Trap || ut->id == UnitTypes::Special_Floor_Missile_Trap;
+	  return unit_is_any_of(ut, UnitTypes::Special_Floor_Gun_Trap, UnitTypes::Special_Floor_Missile_Trap);
 	}
 
 	bool unit_is_wall_trap(unit_type_autocast ut) const {
-	  return ut->id == UnitTypes::Special_Right_Wall_Flame_Trap || ut->id == UnitTypes::Special_Right_Wall_Missile_Trap ||
-		ut->id == UnitTypes::Special_Wall_Flame_Trap || ut->id == UnitTypes::Special_Wall_Missile_Trap;
+	  return unit_is_any_of(ut,
+			UnitTypes::Special_Right_Wall_Flame_Trap,
+			UnitTypes::Special_Right_Wall_Missile_Trap,
+			UnitTypes::Special_Wall_Flame_Trap,
+			UnitTypes::Special_Wall_Missile_Trap);
 	}
 
 	bool unit_is_zerg_building(unit_type_autocast ut) const {
@@ -1435,7 +1437,7 @@ struct state_functions {
 	}
 
 	bool unit_is_fighter(unit_type_autocast ut) const {
-		return unit_is(ut, UnitTypes::Protoss_Interceptor) || unit_is(ut, UnitTypes::Protoss_Scarab);
+		return unit_is_any_of(ut, UnitTypes::Protoss_Interceptor, UnitTypes::Protoss_Scarab);
 	}
 
 	bool unit_is_undetected(const unit_t* u, int owner) const {
@@ -1579,6 +1581,7 @@ struct state_functions {
 		if (a.from.x > b.to.x) x = a.from.x - b.to.x;
 		else if (b.from.x > a.to.x) x = b.from.x - a.to.x;
 		else x = 0;
+
 		if (a.from.y > b.to.y) y = a.from.y - b.to.y;
 		else if (b.from.y > a.to.y) y = b.from.y - a.to.y;
 		else y = 0;
@@ -1589,6 +1592,7 @@ struct state_functions {
 	xy nearest_pos_in_rect(xy pos, rect area) const {
 		if (area.from.x > pos.x) pos.x = area.from.x;
 		else if (area.to.x < pos.x) pos.x = area.to.x;
+
 		if (area.from.y > pos.y) pos.y = area.from.y;
 		else if (area.to.y < pos.y) pos.y = area.to.y;
 		return pos;
@@ -1973,6 +1977,7 @@ struct state_functions {
 		tile_bb.from.y = unit_bb.from.y / 32u - 1;
 		tile_bb.to.x = unit_bb.to.x / 32u + 1;
 		tile_bb.to.y = unit_bb.to.y / 32u + 1;
+		// FIXME: This seems like a bug/typo, should it be `< 0` not `>= width`?
 		if (tile_bb.from.x >= game_st.map_tile_width) tile_bb.from.x = 0;
 		if (tile_bb.from.y >= game_st.map_tile_height) tile_bb.from.y = 0;
 		if (tile_bb.to.x >= game_st.map_tile_width) tile_bb.to.x = game_st.map_tile_width - 1;
@@ -2357,11 +2362,7 @@ struct state_functions {
 	bool cancel_building_unit(unit_t* u) {
 		if (unit_dying(u)) return false;
 		if (u_completed(u)) return false;
-		if (unit_is(u, UnitTypes::Zerg_Guardian)) return false;
-		if (unit_is(u, UnitTypes::Zerg_Lurker)) return false;
-		if (unit_is(u, UnitTypes::Zerg_Devourer)) return false;
-		if (unit_is(u, UnitTypes::Zerg_Mutalisk)) return false;
-		if (unit_is(u, UnitTypes::Zerg_Hydralisk)) return false;
+		if (unit_is_any_of(u, UnitTypes::Zerg_Guardian, UnitTypes::Zerg_Lurker, UnitTypes::Zerg_Devourer, UnitTypes::Zerg_Mutalisk, UnitTypes::Zerg_Hydralisk)) return false;
 		if (unit_is_nydus(u) && !u->building.nydus.exit) return false;
 		if (u_grounded_building(u)) {
 			if (unit_race(u) == race_t::zerg) {
@@ -2581,8 +2582,7 @@ struct state_functions {
 			if (is_addon && u_can_move(n)) continue;
 			if (u_flying(n)) continue;
 			if (u_grounded_building(n)) continue;
-			if (unit_is(n, UnitTypes::Spell_Dark_Swarm)) continue;
-			if (unit_is(n, UnitTypes::Spell_Disruption_Web)) continue;
+			if (unit_is_any_of(n, UnitTypes::Spell_Dark_Swarm, UnitTypes::Spell_Disruption_Web)) continue;
 			if (u && !check_undetected_units && unit_target_is_undetected(u, n)) continue;
 
 			for (size_t y = tile_pos.y; y != tile_pos.y + tile_size.y; ++y) {
@@ -3207,157 +3207,57 @@ struct state_functions {
 
 	void give_unit_to(unit_t* u, int new_owner) {
 		bool any_upgrades_granted = false;
-		auto grant_tech = [&](TechTypes id) {
-			if (!player_has_researched(new_owner, id)) st.tech_researched[new_owner][id] = true;
+
+		static const std::map<UnitTypes, std::vector<std::variant<TechTypes, UpgradeTypes>>> transferred_techs = {
+			{UnitTypes::Terran_Marine, { UpgradeTypes::U_238_Shells, TechTypes::Stim_Packs }},
+			{UnitTypes::Terran_Ghost, { UpgradeTypes::Ocular_Implants, UpgradeTypes::Moebius_Reactor, TechTypes::Lockdown, TechTypes::Personnel_Cloaking }},
+			{UnitTypes::Terran_Vulture, { UpgradeTypes::Ion_Thrusters, TechTypes::Spider_Mines }},
+			{UnitTypes::Terran_Goliath, { UpgradeTypes::Charon_Boosters }},
+			{UnitTypes::Terran_Siege_Tank_Tank_Mode, { TechTypes::Tank_Siege_Mode }},
+			{UnitTypes::Terran_Wraith, { UpgradeTypes::Apollo_Reactor, TechTypes::Cloaking_Field }},
+			{UnitTypes::Terran_Science_Vessel, { UpgradeTypes::Titan_Reactor, TechTypes::Defensive_Matrix, TechTypes::Irradiate, TechTypes::EMP_Shockwave }},
+			{UnitTypes::Terran_Battlecruiser, { UpgradeTypes::Colossus_Reactor, TechTypes::Yamato_Gun }},
+			{UnitTypes::Terran_Siege_Tank_Siege_Mode, { TechTypes::Tank_Siege_Mode }},
+			{UnitTypes::Terran_Firebat, { TechTypes::Stim_Packs }},
+			{UnitTypes::Terran_Medic, { UpgradeTypes::Caduceus_Reactor, TechTypes::Healing, TechTypes::Restoration, TechTypes::Optical_Flare }},
+			{UnitTypes::Zerg_Zergling, { UpgradeTypes::Metabolic_Boost, UpgradeTypes::Adrenal_Glands, TechTypes::Burrowing }},
+			{UnitTypes::Zerg_Hydralisk, { UpgradeTypes::Muscular_Augments, UpgradeTypes::Grooved_Spines, TechTypes::Burrowing, TechTypes::Lurker_Aspect }},
+			{UnitTypes::Zerg_Ultralisk, { UpgradeTypes::Anabolic_Synthesis, UpgradeTypes::Chitinous_Plating }},
+			{UnitTypes::Zerg_Drone, { TechTypes::Burrowing }},
+			{UnitTypes::Zerg_Overlord, { UpgradeTypes::Ventral_Sacs, UpgradeTypes::Antennae, UpgradeTypes::Pneumatized_Carapace }},
+			{UnitTypes::Zerg_Queen, { UpgradeTypes::Gamete_Meiosis, TechTypes::Infestation, TechTypes::Parasite, TechTypes::Spawn_Broodlings, TechTypes::Ensnare }},
+			{UnitTypes::Zerg_Defiler, { UpgradeTypes::Metasynaptic_Node, TechTypes::Burrowing, TechTypes::Dark_Swarm, TechTypes::Plague, TechTypes::Consume }},
+			{UnitTypes::Zerg_Infested_Terran, { TechTypes::Burrowing }},
+			{UnitTypes::Protoss_Corsair, { UpgradeTypes::Argus_Jewel, TechTypes::Disruption_Web }},
+			{UnitTypes::Protoss_Dark_Templar, { TechTypes::Dark_Archon_Meld }},
+			{UnitTypes::Protoss_Dark_Archon, { UpgradeTypes::Argus_Talisman, TechTypes::Mind_Control, TechTypes::Feedback, TechTypes::Maelstrom }},
+			{UnitTypes::Protoss_Zealot, { UpgradeTypes::Leg_Enhancements }},
+			{UnitTypes::Protoss_Dragoon, { UpgradeTypes::Singularity_Charge }},
+			{UnitTypes::Protoss_High_Templar, { UpgradeTypes::Khaydarin_Amulet, TechTypes::Archon_Warp, TechTypes::Psionic_Storm, TechTypes::Hallucination }},
+			{UnitTypes::Protoss_Shuttle, { UpgradeTypes::Gravitic_Drive }},
+			{UnitTypes::Protoss_Scout, { UpgradeTypes::Apial_Sensors, UpgradeTypes::Gravitic_Thrusters }},
+			{UnitTypes::Protoss_Arbiter, { UpgradeTypes::Khaydarin_Core, TechTypes::Recall, TechTypes::Stasis_Field }},
+			{UnitTypes::Protoss_Carrier, { UpgradeTypes::Carrier_Capacity }},
+			{UnitTypes::Protoss_Reaver, { UpgradeTypes::Scarab_Damage, UpgradeTypes::Reaver_Capacity }},
+			{UnitTypes::Protoss_Observer, { UpgradeTypes::Sensor_Array, UpgradeTypes::Gravitic_Boosters }},
+			{UnitTypes::Zerg_Lurker, { TechTypes::Lurker_Aspect }}
 		};
-		auto grant_upgrade = [&](UpgradeTypes id) {
-			int level = player_upgrade_level(u->owner, id);
-			if (player_upgrade_level(new_owner, id) < level) {
-				any_upgrades_granted = true;
-				st.upgrade_levels[new_owner][id] = level;
+
+		if (transferred_techs.contains(u->unit_type->id)) {
+			for (auto& id : transferred_techs.at(u->unit_type->id)) {
+				if (auto* tech = std::get_if<TechTypes>(&id)) {
+					if (!player_has_researched(new_owner, *tech)) st.tech_researched[new_owner][*tech] = true;
+				}
+				else if (auto* upg = std::get_if<UpgradeTypes>(&id)) {
+					int level = player_upgrade_level(u->owner, *upg);
+					if (player_upgrade_level(new_owner, *upg) < level) {
+						any_upgrades_granted = true;
+						st.upgrade_levels[new_owner][*upg] = level;
+					}
+				}
 			}
-		};
-		switch (u->unit_type->id) {
-		case UnitTypes::Terran_Marine:
-			grant_upgrade(UpgradeTypes::U_238_Shells);
-			grant_tech(TechTypes::Stim_Packs);
-			break;
-		case UnitTypes::Terran_Ghost:
-			grant_upgrade(UpgradeTypes::Ocular_Implants);
-			grant_upgrade(UpgradeTypes::Moebius_Reactor);
-			grant_tech(TechTypes::Lockdown);
-			grant_tech(TechTypes::Personnel_Cloaking);
-			break;
-		case UnitTypes::Terran_Vulture:
-			grant_upgrade(UpgradeTypes::Ion_Thrusters);
-			grant_tech(TechTypes::Spider_Mines);
-			break;
-		case UnitTypes::Terran_Goliath:
-			grant_upgrade(UpgradeTypes::Charon_Boosters);
-			break;
-		case UnitTypes::Terran_Siege_Tank_Tank_Mode:
-			grant_tech(TechTypes::Tank_Siege_Mode);
-			break;
-		case UnitTypes::Terran_Wraith:
-			grant_upgrade(UpgradeTypes::Apollo_Reactor);
-			grant_tech(TechTypes::Cloaking_Field);
-			break;
-		case UnitTypes::Terran_Science_Vessel:
-			grant_upgrade(UpgradeTypes::Titan_Reactor);
-			grant_tech(TechTypes::Defensive_Matrix);
-			grant_tech(TechTypes::Irradiate);
-			grant_tech(TechTypes::EMP_Shockwave);
-			break;
-		case UnitTypes::Terran_Battlecruiser:
-			grant_upgrade(UpgradeTypes::Colossus_Reactor);
-			grant_tech(TechTypes::Yamato_Gun);
-			break;
-		case UnitTypes::Terran_Siege_Tank_Siege_Mode:
-			grant_tech(TechTypes::Tank_Siege_Mode);
-			break;
-		case UnitTypes::Terran_Firebat:
-			grant_tech(TechTypes::Stim_Packs);
-			break;
-		case UnitTypes::Terran_Medic:
-			grant_upgrade(UpgradeTypes::Caduceus_Reactor);
-			grant_tech(TechTypes::Healing);
-			grant_tech(TechTypes::Restoration);
-			grant_tech(TechTypes::Optical_Flare);
-			break;
-		case UnitTypes::Zerg_Zergling:
-			grant_upgrade(UpgradeTypes::Metabolic_Boost);
-			grant_upgrade(UpgradeTypes::Adrenal_Glands);
-			grant_tech(TechTypes::Burrowing);
-			break;
-		case UnitTypes::Zerg_Hydralisk:
-			grant_upgrade(UpgradeTypes::Muscular_Augments);
-			grant_upgrade(UpgradeTypes::Grooved_Spines);
-			grant_tech(TechTypes::Burrowing);
-			grant_tech(TechTypes::Lurker_Aspect);
-			break;
-		case UnitTypes::Zerg_Ultralisk:
-			grant_upgrade(UpgradeTypes::Anabolic_Synthesis);
-			grant_upgrade(UpgradeTypes::Chitinous_Plating);
-			break;
-		case UnitTypes::Zerg_Drone:
-			grant_tech(TechTypes::Burrowing);
-			break;
-		case UnitTypes::Zerg_Overlord:
-			grant_upgrade(UpgradeTypes::Ventral_Sacs);
-			grant_upgrade(UpgradeTypes::Antennae);
-			grant_upgrade(UpgradeTypes::Pneumatized_Carapace);
-			break;
-		case UnitTypes::Zerg_Queen:
-			grant_upgrade(UpgradeTypes::Gamete_Meiosis);
-			grant_tech(TechTypes::Infestation);
-			grant_tech(TechTypes::Parasite);
-			grant_tech(TechTypes::Spawn_Broodlings);
-			grant_tech(TechTypes::Ensnare);
-			break;
-		case UnitTypes::Zerg_Defiler:
-			grant_upgrade(UpgradeTypes::Metasynaptic_Node);
-			grant_tech(TechTypes::Burrowing);
-			grant_tech(TechTypes::Dark_Swarm);
-			grant_tech(TechTypes::Plague);
-			grant_tech(TechTypes::Consume);
-			break;
-		case UnitTypes::Zerg_Infested_Terran:
-			grant_tech(TechTypes::Burrowing);
-			break;
-		case UnitTypes::Protoss_Corsair:
-			grant_upgrade(UpgradeTypes::Argus_Jewel);
-			grant_tech(TechTypes::Disruption_Web);
-			break;
-		case UnitTypes::Protoss_Dark_Templar:
-			grant_tech(TechTypes::Dark_Archon_Meld);
-			break;
-		case UnitTypes::Protoss_Dark_Archon:
-			grant_upgrade(UpgradeTypes::Argus_Talisman);
-			grant_tech(TechTypes::Mind_Control);
-			grant_tech(TechTypes::Feedback);
-			grant_tech(TechTypes::Maelstrom);
-			break;
-		case UnitTypes::Protoss_Zealot:
-			grant_upgrade(UpgradeTypes::Leg_Enhancements);
-			break;
-		case UnitTypes::Protoss_Dragoon:
-			grant_upgrade(UpgradeTypes::Singularity_Charge);
-			break;
-		case UnitTypes::Protoss_High_Templar:
-			grant_upgrade(UpgradeTypes::Khaydarin_Amulet);
-			grant_tech(TechTypes::Archon_Warp);
-			grant_tech(TechTypes::Psionic_Storm);
-			grant_tech(TechTypes::Hallucination);
-			break;
-		case UnitTypes::Protoss_Shuttle:
-			grant_upgrade(UpgradeTypes::Gravitic_Drive);
-			break;
-		case UnitTypes::Protoss_Scout:
-			grant_upgrade(UpgradeTypes::Apial_Sensors);
-			grant_upgrade(UpgradeTypes::Gravitic_Thrusters);
-			break;
-		case UnitTypes::Protoss_Arbiter:
-			grant_upgrade(UpgradeTypes::Khaydarin_Core);
-			grant_tech(TechTypes::Recall);
-			grant_tech(TechTypes::Stasis_Field);
-			break;
-		case UnitTypes::Protoss_Carrier:
-			grant_upgrade(UpgradeTypes::Carrier_Capacity);
-			break;
-		case UnitTypes::Protoss_Reaver:
-			grant_upgrade(UpgradeTypes::Scarab_Damage);
-			grant_upgrade(UpgradeTypes::Reaver_Capacity);
-			break;
-		case UnitTypes::Protoss_Observer:
-			grant_upgrade(UpgradeTypes::Sensor_Array);
-			grant_upgrade(UpgradeTypes::Gravitic_Boosters);
-			break;
-		case UnitTypes::Zerg_Lurker:
-			grant_tech(TechTypes::Lurker_Aspect);
-			break;
-		default:
-			break;
 		}
+
 		on_unit_deselect(u);
 		if (u_grounded_building(u)) {
 			if (!u->build_queue.empty() && u->build_queue.front()->id <= UnitTypes::Spell_Disruption_Web) {
@@ -3423,20 +3323,11 @@ struct state_functions {
 	}
 
 	bool unit_can_attach_addon(const unit_t* u, const unit_t* addon) const {
-		if (unit_is(addon, UnitTypes::Terran_Comsat_Station)) {
-			return unit_is(u, UnitTypes::Terran_Command_Center);
-		} else if (unit_is(addon, UnitTypes::Terran_Nuclear_Silo)) {
-			return unit_is(u, UnitTypes::Terran_Command_Center);
-		} else if (unit_is(addon, UnitTypes::Terran_Control_Tower)) {
-			return unit_is(u, UnitTypes::Terran_Starport);
-		} else if (unit_is(addon, UnitTypes::Terran_Covert_Ops)) {
-			return unit_is(u, UnitTypes::Terran_Science_Facility);
-		} else if (unit_is(addon, UnitTypes::Terran_Physics_Lab)) {
-			return unit_is(u, UnitTypes::Terran_Science_Facility);
-		} else if (unit_is(addon, UnitTypes::Terran_Machine_Shop)) {
-			return unit_is(u, UnitTypes::Terran_Factory);
-		}
-		return false;
+		return
+			(unit_is_any_of(addon, UnitTypes::Terran_Comsat_Station, UnitTypes::Terran_Nuclear_Silo) && unit_is(u, UnitTypes::Terran_Command_Center)) ||
+			(unit_is(addon, UnitTypes::Terran_Control_Tower) && unit_is(u, UnitTypes::Terran_Starport)) ||
+			(unit_is_any_of(addon, UnitTypes::Terran_Covert_Ops, UnitTypes::Terran_Physics_Lab) && unit_is(u, UnitTypes::Terran_Science_Facility)) ||
+			(unit_is(addon, UnitTypes::Terran_Machine_Shop) && unit_is(u, UnitTypes::Terran_Factory));
 	}
 
 	unit_t* find_connecting_addon(const unit_t* u) const {
@@ -8595,8 +8486,7 @@ struct state_functions {
 		if (u->flingy_movement_type != 2) uturn_rate /= 2u;
 		fp8 turn_rate = uturn_rate.as_signed();
 		fp8 turn = fp8::extend(desired_turn);
-		if (turn > turn_rate) turn = turn_rate;
-		else if (turn < -turn_rate) turn = -turn_rate;
+		turn = std::clamp(turn, -turn_rate, turn_rate);
 		return direction_t::truncate(turn);
 	}
 
@@ -11223,17 +11113,8 @@ struct state_functions {
 							xy best_pos = u->sprite->position;
 							int best_distance = 9999;
 							for (auto& v : vec) {
-								xy pos = u->sprite->position;
-								if (pos.x > v.to.x) {
-									pos.x = v.to.x;
-								} else if (pos.x < v.from.x) {
-									pos.x = v.from.x;
-								}
-								if (pos.y > v.to.y) {
-									pos.y = v.to.y;
-								} else if (pos.y < v.from.y) {
-									pos.y = v.from.y;
-								}
+								xy pos = u->sprite->position.clamp(v);
+
 								int distance = xy_length(pos - u->sprite->position);
 								if (distance < best_distance) {
 									best_distance = distance;
@@ -11302,12 +11183,10 @@ struct state_functions {
 					}
 					if (best_region) {
 						direction_t dir;
-						bool maybe_outside = false;
-						if (u->sprite->position.x + 32 < best_region->area.from.x) maybe_outside = true;
-						if (u->sprite->position.x - 32 >= best_region->area.to.x) maybe_outside = true;
-						if (u->sprite->position.y + 32 < best_region->area.from.y) maybe_outside = true;
-						if (u->sprite->position.y - 32 >= best_region->area.to.y) maybe_outside = true;
-						if (maybe_outside) {
+						if (u->sprite->position.x + 32 < best_region->area.from.x ||
+							u->sprite->position.x - 32 >= best_region->area.to.x ||
+							u->sprite->position.y + 32 < best_region->area.from.y ||
+							u->sprite->position.y - 32 >= best_region->area.to.y) {
 							// bug? seems like it should be best_region->center, not last_center_pos
 							dir = xy_direction(last_center_pos - u->sprite->position);
 							move_to = u->sprite->position + to_xy(direction_xy(dir, 64));
@@ -12406,14 +12285,10 @@ struct state_functions {
 
 	bool update_thingy_visibility(thingy_t* t, xy size) {
 		if (!t->sprite || s_flag(t->sprite, sprite_t::flag_hidden)) return false;
-		int tile_from_x = (t->sprite->position.x - size.x / 2) / 32;
-		int tile_from_y = (t->sprite->position.y - size.y / 2) / 32;
-		size_t tile_to_x = tile_from_x + (size.x + 31) / 32u;
-		size_t tile_to_y = tile_from_y + (size.y + 31) / 32u;
-		if (tile_from_x < 0) tile_from_x = 0;
-		if (tile_from_y < 0) tile_from_y = 0;
-		if (tile_to_x > game_st.map_tile_width) tile_to_x = game_st.map_tile_width;
-		if (tile_to_y > game_st.map_tile_height) tile_to_y = game_st.map_tile_height;
+		int tile_from_x = std::max(0, (t->sprite->position.x - size.x / 2) / 32);
+		int tile_from_y = std::max(0, (t->sprite->position.y - size.y / 2) / 32);
+		size_t tile_to_x = std::min(tile_from_x + (size.x + 31) / 32u, (unsigned)game_st.map_tile_width);
+		size_t tile_to_y = std::min(tile_from_y + (size.y + 31) / 32u, (unsigned)game_st.map_tile_height);
 
 		if ((size_t)tile_from_x == tile_to_x && (size_t)tile_from_y == tile_to_y) return false;
 
@@ -15797,16 +15672,16 @@ struct state_functions {
 	}
 
 	bool unit_is_factory(const unit_t* u) const {
-		return unit_is(u, UnitTypes::Terran_Command_Center)
-			|| unit_is(u, UnitTypes::Terran_Barracks)
-			|| unit_is(u, UnitTypes::Terran_Factory)
-			|| unit_is(u, UnitTypes::Terran_Starport)
-			|| unit_is(u, UnitTypes::Zerg_Infested_Command_Center)
-			|| unit_is_hatchery(u)
-			|| unit_is(u, UnitTypes::Protoss_Nexus)
-			|| unit_is(u, UnitTypes::Protoss_Gateway)
-			|| unit_is(u, UnitTypes::Protoss_Stargate)
-			|| unit_is(u, UnitTypes::Protoss_Robotics_Facility);
+		return unit_is_any_of(u, UnitTypes::Terran_Command_Center,
+			UnitTypes::Terran_Barracks,
+			UnitTypes::Terran_Factory,
+			UnitTypes::Terran_Starport,
+			UnitTypes::Zerg_Infested_Command_Center,
+			UnitTypes::Protoss_Nexus,
+			UnitTypes::Protoss_Gateway,
+			UnitTypes::Protoss_Stargate,
+			UnitTypes::Protoss_Robotics_Facility
+		) || unit_is_hatchery(u);
 	}
 
 	void set_unit_tiles_occupied(unit_type_autocast ut, xy position) {
@@ -16473,21 +16348,20 @@ struct state_functions {
 				return u_grounded_building(target) || ut_powerup(target);
 			}
 			if (unit_is(target, UnitTypes::Terran_Starport)) {
-				if (unit_is(u, UnitTypes::Terran_Wraith)) return true;
-				if (unit_is(u, UnitTypes::Terran_Dropship)) return true;
-				if (unit_is(u, UnitTypes::Terran_Science_Vessel)) return true;
-				if (unit_is(u, UnitTypes::Terran_Battlecruiser)) return true;
-				if (unit_is(u, UnitTypes::Terran_Valkyrie)) return true;
+				if (unit_is_any_of(u,
+					UnitTypes::Terran_Wraith,
+					UnitTypes::Terran_Dropship,
+					UnitTypes::Terran_Science_Vessel,
+					UnitTypes::Terran_Battlecruiser,
+					UnitTypes::Terran_Valkyrie)) {
+					return true;
+				}
 			}
-			if (unit_is(target, UnitTypes::Protoss_Robotics_Facility)) {
-				if (unit_is(u, UnitTypes::Protoss_Shuttle)) return true;
-				if (unit_is(u, UnitTypes::Protoss_Observer)) return true;
+			else if (unit_is(target, UnitTypes::Protoss_Robotics_Facility)) {
+				if (unit_is_any_of(u, UnitTypes::Protoss_Shuttle, UnitTypes::Protoss_Observer)) return true;
 			}
-			if (unit_is(target, UnitTypes::Protoss_Stargate)) {
-				if (unit_is(u, UnitTypes::Protoss_Scout)) return true;
-				if (unit_is(u, UnitTypes::Protoss_Carrier)) return true;
-				if (unit_is(u, UnitTypes::Protoss_Arbiter)) return true;
-				if (unit_is(u, UnitTypes::Protoss_Corsair)) return true;
+			else if (unit_is(target, UnitTypes::Protoss_Stargate)) {
+				if (unit_is_any_of(u, UnitTypes::Protoss_Scout, UnitTypes::Protoss_Carrier, UnitTypes::Protoss_Arbiter, UnitTypes::Protoss_Corsair)) return true;
 			}
 			return u_flying(u) == u_flying(target);
 		};
@@ -18622,143 +18496,107 @@ struct state_functions {
 	}
 
 	bool unit_can_use_tech(const unit_t* u, const TechTypes tech) const {
-		if (!u_completed(u)) return false;
-		if (u_hallucination(u)) return false;
-		if (unit_is_disabled(u)) return false;
+		if (!u_completed(u) || u_hallucination(u) || unit_is_disabled(u)) return false;
 		int owner = u->owner;
 		if (!player_tech_available(owner, tech)) return false;
 		switch (tech) {
 		case TechTypes::Stim_Packs:
 			if (!ut_hero(u) && !player_has_researched(owner, TechTypes::Stim_Packs)) return false;
-			if (!unit_is_marine(u) && !unit_is_firebat(u)) return false;
-			return true;
+			return unit_is_marine(u) || unit_is_firebat(u);
 		case TechTypes::Lockdown:
 			if (!ut_hero(u) && !player_has_researched(owner, TechTypes::Lockdown)) return false;
-			if (!unit_is_ghost(u)) return false;
-			return true;
+			return unit_is_ghost(u);
 		case TechTypes::Spider_Mines:
 			if (!ut_hero(u) && !player_has_researched(owner, TechTypes::Spider_Mines)) return false;
 			if (unit_spider_mine_count(u) == 0) return false;
-			if (!unit_is_vulture(u)) return false;
-			return true;
+			return unit_is_vulture(u);
 		case TechTypes::Scanner_Sweep:
-			if (!unit_is(u, UnitTypes::Terran_Comsat_Station)) return false;
-			return true;
+			return unit_is(u, UnitTypes::Terran_Comsat_Station);
 		case TechTypes::Tank_Siege_Mode:
 			if (!ut_hero(u) && !player_has_researched(owner, TechTypes::Tank_Siege_Mode)) return false;
-			if (!unit_is_tank(u)) return false;
-			return true;
+			return unit_is_tank(u);
 		case TechTypes::EMP_Shockwave:
 			if (!ut_hero(u) && !player_has_researched(owner, TechTypes::EMP_Shockwave)) return false;
-			if (!unit_is(u, UnitTypes::Terran_Science_Vessel) && !unit_is(u, UnitTypes::Hero_Magellan)) return false;
-			return true;
+			return unit_is_any_of(u, UnitTypes::Terran_Science_Vessel, UnitTypes::Hero_Magellan);
 		case TechTypes::Defensive_Matrix:
-			if (!unit_is(u, UnitTypes::Terran_Science_Vessel) && !unit_is(u, UnitTypes::Hero_Magellan)) return false;
-			return true;
+			return unit_is_any_of(u, UnitTypes::Terran_Science_Vessel, UnitTypes::Hero_Magellan);
 		case TechTypes::Irradiate:
 			if (!ut_hero(u) && !player_has_researched(owner, TechTypes::Irradiate)) return false;
-			if (!unit_is(u, UnitTypes::Terran_Science_Vessel) && !unit_is(u, UnitTypes::Hero_Magellan)) return false;
-			return true;
+			return unit_is_any_of(u, UnitTypes::Terran_Science_Vessel, UnitTypes::Hero_Magellan);
 		case TechTypes::Yamato_Gun:
 			if (!ut_hero(u) && !player_has_researched(owner, TechTypes::Yamato_Gun)) return false;
-			if (!unit_is(u, UnitTypes::Terran_Battlecruiser) && !unit_is(u, UnitTypes::Hero_Hyperion) && !unit_is(u, UnitTypes::Hero_Norad_II) && !unit_is(u, UnitTypes::Hero_Gerard_DuGalle)) return false;
-			return true;
+			return unit_is_any_of(u, UnitTypes::Terran_Battlecruiser, UnitTypes::Hero_Hyperion, UnitTypes::Hero_Norad_II, UnitTypes::Hero_Gerard_DuGalle);
 		case TechTypes::Cloaking_Field:
 			if (!ut_hero(u) && !player_has_researched(owner, TechTypes::Cloaking_Field)) return false;
-			if (!unit_is_wraith(u)) return false;
-			return true;
+			return unit_is_wraith(u);
 		case TechTypes::Personnel_Cloaking:
 			if (!ut_hero(u) && !player_has_researched(owner, TechTypes::Personnel_Cloaking)) return false;
-			if (!unit_is_ghost(u)) return false;
-			return true;
+			return unit_is_ghost(u);
 		case TechTypes::Restoration:
 			if (!player_has_researched(owner, TechTypes::Restoration)) return false;
-			if (!unit_is(u, UnitTypes::Terran_Medic)) return false;
-			return true;
+			return unit_is(u, UnitTypes::Terran_Medic);
 		case TechTypes::Healing:
-			if (!unit_is(u, UnitTypes::Terran_Medic)) return false;
-			return true;
+			return unit_is(u, UnitTypes::Terran_Medic);
 		case TechTypes::Burrowing:
 			if (!ut_hero(u) && !unit_is(u, UnitTypes::Zerg_Lurker) && !player_has_researched(owner, TechTypes::Burrowing)) return false;
-			if (!unit_is(u, UnitTypes::Zerg_Lurker) && !unit_is(u, UnitTypes::Zerg_Drone) && !unit_is(u, UnitTypes::Zerg_Infested_Terran) && !unit_is(u, UnitTypes::Zerg_Defiler) && !unit_is(u, UnitTypes::Zerg_Zergling) && !unit_is(u, UnitTypes::Zerg_Hydralisk) && !unit_is(u, UnitTypes::Hero_Unclean_One) && !unit_is(u, UnitTypes::Hero_Devouring_One) && !unit_is(u, UnitTypes::Hero_Hunter_Killer)) return false;
-			return true;
+			return unit_is_any_of(u, UnitTypes::Zerg_Lurker, UnitTypes::Zerg_Drone, UnitTypes::Zerg_Infested_Terran, UnitTypes::Zerg_Defiler, UnitTypes::Zerg_Zergling, UnitTypes::Zerg_Hydralisk, UnitTypes::Hero_Unclean_One, UnitTypes::Hero_Devouring_One, UnitTypes::Hero_Hunter_Killer);
 		case TechTypes::Infestation:
-			if (!unit_is_queen(u)) return false;
-			return true;
+			return unit_is_queen(u);
 		case TechTypes::Spawn_Broodlings:
 			if (!ut_hero(u) && !player_has_researched(owner, TechTypes::Spawn_Broodlings)) return false;
-			if (!unit_is_queen(u)) return false;
-			return true;
+			return unit_is_queen(u);
 		case TechTypes::Parasite:
-			if (!unit_is_queen(u)) return false;
-			return true;
+			return unit_is_queen(u);
 		case TechTypes::Dark_Swarm:
 			if (!unit_is_defiler(u)) return false;
-			if (u_burrowed(u)) return false;
-			return true;
+			return !u_burrowed(u);
 		case TechTypes::Plague:
 			if (!ut_hero(u) && !player_has_researched(owner, TechTypes::Plague)) return false;
 			if (!unit_is_defiler(u)) return false;
-			if (u_burrowed(u)) return false;
-			return true;
+			return !u_burrowed(u);
 		case TechTypes::Consume:
 			if (!ut_hero(u) && !player_has_researched(owner, TechTypes::Consume)) return false;
 			if (!unit_is_defiler(u) && !unit_is(u, UnitTypes::Hero_Infested_Duran) && !unit_is(u, UnitTypes::Hero_Infested_Kerrigan)) return false;
-			if (u_burrowed(u)) return false;
-			return true;
+			return !u_burrowed(u);
 		case TechTypes::Ensnare:
 			if (!ut_hero(u) && !player_has_researched(owner, TechTypes::Ensnare)) return false;
 			if (!unit_is_queen(u) && !unit_is(u, UnitTypes::Hero_Infested_Kerrigan)) return false;
-			if (u_burrowed(u)) return false;
-			return true;
+			return !u_burrowed(u);
 		case TechTypes::Psionic_Storm:
 			if (!ut_hero(u) && !player_has_researched(owner, TechTypes::Psionic_Storm)) return false;
-			if (!unit_is(u, UnitTypes::Protoss_High_Templar) && !unit_is(u, UnitTypes::Hero_Tassadar) && !unit_is(u, UnitTypes::Hero_Infested_Kerrigan)) return false;
-			return true;
+			return unit_is_any_of(u, UnitTypes::Protoss_High_Templar, UnitTypes::Hero_Tassadar, UnitTypes::Hero_Infested_Kerrigan);
 		case TechTypes::Hallucination:
 			if (!ut_hero(u) && !player_has_researched(owner, TechTypes::Hallucination)) return false;
-			if (!unit_is(u, UnitTypes::Protoss_High_Templar) && !unit_is(u, UnitTypes::Hero_Tassadar)) return false;
-			return true;
+			return unit_is_any_of(u, UnitTypes::Protoss_High_Templar, UnitTypes::Hero_Tassadar);
 		case TechTypes::Archon_Warp:
-			if (!unit_is(u, UnitTypes::Protoss_High_Templar)) return false;
-			return true;
+			return unit_is(u, UnitTypes::Protoss_High_Templar);
 		case TechTypes::Recall:
 			if (!ut_hero(u) && !player_has_researched(owner, TechTypes::Recall)) return false;
-			if (!unit_is_arbiter(u)) return false;
-			return true;
+			return unit_is_arbiter(u);
 		case TechTypes::Stasis_Field:
 			if (!ut_hero(u) && !player_has_researched(owner, TechTypes::Stasis_Field)) return false;
-			if (!unit_is_arbiter(u)) return false;
-			return true;
+			return unit_is_arbiter(u);
 		case TechTypes::Disruption_Web:
 			if (!ut_hero(u) && !player_has_researched(owner, TechTypes::Disruption_Web)) return false;
-			if (!unit_is(u, UnitTypes::Protoss_Corsair) && !unit_is(u, UnitTypes::Hero_Raszagal)) return false;
-			return true;
+			return unit_is_any_of(u, UnitTypes::Protoss_Corsair, UnitTypes::Hero_Raszagal);
 		case TechTypes::Dark_Archon_Meld:
-			if (!unit_is(u, UnitTypes::Protoss_Dark_Templar)) return false;
-			return true;
+			return unit_is(u, UnitTypes::Protoss_Dark_Templar);
 		case TechTypes::Mind_Control:
 			if (!player_has_researched(owner, TechTypes::Mind_Control)) return false;
-			if (!unit_is(u, UnitTypes::Protoss_Dark_Archon)) return false;
-			return true;
+			return unit_is(u, UnitTypes::Protoss_Dark_Archon);
 		case TechTypes::Feedback:
-			if (!unit_is(u, UnitTypes::Protoss_Dark_Archon)) return false;
-			return true;
+			return unit_is(u, UnitTypes::Protoss_Dark_Archon);
 		case TechTypes::Optical_Flare:
 			if (!unit_is(u, UnitTypes::Terran_Medic)) return false;
-			if (!player_has_researched(owner, TechTypes::Optical_Flare)) return false;
-			return true;
+			return player_has_researched(owner, TechTypes::Optical_Flare);
 		case TechTypes::Maelstrom:
 			if (!player_has_researched(owner, TechTypes::Maelstrom)) return false;
-			if (!unit_is(u, UnitTypes::Protoss_Dark_Archon)) return false;
-			return true;
+			return unit_is(u, UnitTypes::Protoss_Dark_Archon);
 		case TechTypes::Lurker_Aspect:
 			if (!player_has_researched(owner, TechTypes::Lurker_Aspect)) return false;
-			if (!unit_is(u, UnitTypes::Zerg_Hydralisk)) return false;
-			return true;
-		default:
-			return false;
+			return unit_is(u, UnitTypes::Zerg_Hydralisk);
 		}
+		return false;
 	}
 
 	auto trigger_players(int owner, int player) const {

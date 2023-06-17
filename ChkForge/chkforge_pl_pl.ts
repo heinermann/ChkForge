@@ -465,7 +465,7 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="importsections.ui" line="16"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dialog</translation>
     </message>
 </context>
 <context>
@@ -1244,7 +1244,7 @@ Other sizes may crash Starcraft.</source>
     <message>
         <location filename="previewpainter.ui" line="16"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dialog</translation>
     </message>
 </context>
 <context>
@@ -2547,7 +2547,7 @@ EditLocal:2:16</extracomment>
     <message>
         <location filename="savemap.ui" line="16"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dialog</translation>
     </message>
 </context>
 <context>
@@ -2648,7 +2648,7 @@ EditLocal:2:16</extracomment>
     <message>
         <location filename="stringmanager.ui" line="16"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dialog</translation>
     </message>
 </context>
 <context>
@@ -2806,7 +2806,7 @@ EditLocal:2:16</extracomment>
         <location filename="unitstab.ui" line="175"/>
         <source>Use Default</source>
         <oldsource>Use Defaults</oldsource>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">use o padrão</translation>
     </message>
     <message>
         <location filename="unitstab.ui" line="146"/>
@@ -2933,7 +2933,7 @@ EditLocal:2:16</extracomment>
         <location filename="upgradestab.ui" line="186"/>
         <location filename="upgradestab.ui" line="244"/>
         <source>Use Default</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">use o padrão</translation>
     </message>
     <message>
         <location filename="upgradestab.ui" line="395"/>

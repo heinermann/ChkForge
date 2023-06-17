@@ -13,6 +13,9 @@
 
 namespace bwgame {
 
+template<typename T>
+struct rect_t;
+
 template<typename utype>
 struct xy_t {
 	utype x {};
@@ -78,6 +81,13 @@ struct xy_t {
 		x *= v;
 		y *= v;
 		return *this;
+	}
+
+	xy_t clamp(const xy_t& min, const xy_t& max) const {
+		return { std::clamp(x, min.x, max.x), std::clamp(y, min.y, max.y) };
+	}
+	xy_t clamp(const rect_t<xy_t>& rct) const {
+		return clamp(rct.from, rct.to);
 	}
 };
 
