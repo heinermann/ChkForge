@@ -13032,9 +13032,13 @@ struct state_functions {
 	}
 
 	void next_frame() {
-		++st.current_frame;
+		if (!st.is_editor_paused) {
+			++st.current_frame;
+		}
 		process_frame();
-		process_triggers();
+		if (!st.is_editor_paused) {
+			process_triggers();
+		}
 	}
 
 	int lcg_rand(int source) {
