@@ -39,6 +39,7 @@
 #include "MapContext.h"
 #include "language.h"
 #include "OpenSave.h"
+#include "Utils.h"
 
 MainWindow::MainWindow(QWidget *parent)
   : QMainWindow(parent)
@@ -310,13 +311,13 @@ void MainWindow::initRecentFiles() {
 void MainWindow::resetRecentFileMenu() {
   ui->menu_recentFiles->clear();
   for (const QString& file : recent_files) {
-    ui->menu_recentFiles->addAction(file, this, &MainWindow::on_recent_file_triggered);
+    ui->menu_recentFiles->addAction(file, this, &MainWindow::on_recent_file_triggered)->setParent(ui->menu_recentFiles);
   }
 }
 
 void MainWindow::on_recent_file_triggered() {
   QAction* action = qobject_cast<QAction*>(sender());
-  open_map(action->text().toStdString());
+  open_map(toStdString(action->text()));
 }
 
 void MainWindow::addRecentFile(std::filesystem::path filename) {
@@ -986,7 +987,7 @@ void MainWindow::dropEvent(QDropEvent* event)
 
   for (auto& url : event->mimeData()->urls()) {
     if (isValidFormat(url.toLocalFile())) {
-      std::filesystem::path path = url.toLocalFile().toStdString();
+      std::filesystem::path path = toStdString(url.toLocalFile());
       if (open_map(path)) {
         event->acceptProposedAction();
       }

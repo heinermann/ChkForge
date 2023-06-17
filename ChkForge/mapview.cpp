@@ -464,6 +464,10 @@ QRect MapView::rectToMap(const QRect &pt)
   return QRect{ pointToMap(pt.topLeft()), pointToMap(pt.bottomRight()) };
 }
 
+QPoint MapView::mapToViewPoint(const QPoint& pt) {
+  return (pt - screen_position.topLeft()) * getViewScale();
+}
+
 QRect MapView::extendToRect(const QPoint& pt)
 {
   return QRect{ pt, pt };

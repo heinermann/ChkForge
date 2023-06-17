@@ -1,6 +1,8 @@
 #ifndef OPENBW_UI_MAIN_H
 #define OPENBW_UI_MAIN_H
 
+#include <algorithm>
+
 #include "common.h"
 #include "../bwgame.h"
 #include "../replay.h"
@@ -376,6 +378,7 @@ struct ui_functions: ui_util_functions {
 			draw_frame(frame, i_flag(image, image_t::flag_horizontally_flipped), dst, data_pitch, offset_x, offset_y, width, height, glow);
 		};
 
+		color_index = std::clamp(int(color_index), 0, 15);
 
 		// TODO: Other RLE
 		if (image->modifier == 0 || image->modifier == 1 || image->modifier == 14) {
@@ -752,8 +755,10 @@ struct ui_functions: ui_util_functions {
 	}
 
 	int player_color(int player_id) {
-	  std::clamp(player_id, 0, 11);
-	  return global_ui_st.img.player_minimap_colors.at(st.players[player_id].color);
+		player_id = std::clamp(player_id, 0, 11);
+		int color = std::clamp(st.players[player_id].color, 0, 15);
+		// TODO do extended colours
+	  return global_ui_st.img.player_minimap_colors.at(color);
 	}
 
 	void draw_unit_minimap(unit_t* u, uint8_t* data, size_t data_pitch, rect surface_rect) {

@@ -6,13 +6,23 @@ using namespace ChkForge;
 
 bool GameTestLayer::mouseEvent(MapView* map, QMouseEvent* e)
 {
-  // TODO right click orders
+  bool shift_pressed = e->modifiers() & Qt::ShiftModifier;
+
+  switch (e->type())
+  {
+  case QEvent::MouseButtonPress:
+    if (e->button() == Qt::RightButton) {
+      QPoint target = map->pointToMap(e->pos());
+      // TODO right click action
+      return true;
+    }
+    break;
+  }
   return this->thingyMouseEvent(map, e);
 }
 
 void GameTestLayer::showContextMenu(QWidget* owner, const QPoint& position)
 {
-  // TODO Maybe instead of context menu, do right click orders here
 }
 
 void GameTestLayer::paintOverlay(MapView* map, QWidget* obj, QPainter& painter)
@@ -22,6 +32,7 @@ void GameTestLayer::paintOverlay(MapView* map, QWidget* obj, QPainter& painter)
 
 void GameTestLayer::paintGame(MapView* map, uint8_t* data, size_t data_pitch, bwgame::rect screen_rect)
 {
+  // TODO cursor?
 }
 
 void GameTestLayer::reset()

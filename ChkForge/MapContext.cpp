@@ -122,8 +122,9 @@ void MapContext::place_unit(Sc::Unit::Type unitType, int owner, int x, int y)
 
   chk->layers.addUnit(unit);
 
+  placeOpenBwUnit(unit);
   // see also create_initial_unit
-  openbw_ui.create_completed_unit(openbw_ui.get_unit_type(static_cast<bwgame::UnitTypes>(unitType)), bwgame::xy{ x, y }, owner);
+  //openbw_ui.create_completed_unit(openbw_ui.get_unit_type(static_cast<bwgame::UnitTypes>(unitType)), bwgame::xy{ x, y }, owner);
 }
 
 void MapContext::apply_brush(const QRect& rect, int tileGroup, int clutter)
@@ -225,8 +226,7 @@ std::string MapContext::mapname()
 
 QRgb MapContext::player_color(int player_num)
 {
-  std::clamp(player_num, 0, 11);
-  int color_index = bwgame::global_ui_st.img.player_minimap_colors.at(openbw_ui.st.players[player_num].color);
+  int color_index = openbw_ui.player_color(player_num);
 
   auto color = openbw_ui.palette_colors[color_index];
   return qRgb(color.r, color.g, color.b);
@@ -248,15 +248,11 @@ bwgame::xy MapContext::toBw(const QPoint& pt) {
 
 void MapContext::set_layer(Layer_t layer_index)
 {
-  if (current_layer->getLayerId() == layer_index || is_testing()) return;
+  if (current_layer->getLayerId() == layer_index) return;
 
   current_layer->layerChanged(false);
-  override_layer(layer_index);
-  current_layer->layerChanged(true);
-}
-
-void MapContext::override_layer(Layer_t layer_index) {
   current_layer = layer_map.at(layer_index);
+  current_layer->layerChanged(true);
 }
 
 std::shared_ptr<Layer> MapContext::get_layer()
@@ -298,7 +294,7 @@ void MapContext::start_playback() {
   game_paused = false;
 
   last_edit_layer = Layer_t(get_layer()->getLayerId());
-  override_layer(Layer_t::LAYER_GAME_TEST);
+  set_layer(Layer_t::LAYER_GAME_TEST);
 
   // Resync map to game
   chkdraft_to_openbw();
@@ -310,8 +306,7 @@ void MapContext::stop_playback() {
   editor_state = TestState::Editing;
   game_paused = false;
 
-  current_layer->layerChanged(false);
-  override_layer(last_edit_layer);
+  set_layer(last_edit_layer);
 
   // Resync map to game
   chkdraft_to_openbw();

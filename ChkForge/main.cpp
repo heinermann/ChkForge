@@ -16,6 +16,7 @@
 #include "../openbw/openbw/ui/common.h"
 
 #include "icons.h"
+#include "Utils.h"
 
 #include <CommanderLib/Logger.h>
 
@@ -46,7 +47,7 @@ namespace bwgame {
 }
 
 bool init_bwgame(const QString& starcraft_dir) {
-  std::string install_dir = starcraft_dir.toStdString();
+  std::string install_dir = toStdString(starcraft_dir);
 
   try {
     auto load_data_file = bwgame::data_loading::data_files_directory(install_dir);

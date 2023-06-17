@@ -89,8 +89,6 @@ namespace ChkForge
     bwgame::xy toBw(const QPoint& pt);
 
     void set_layer(Layer_t layer_index);
-    // Change layer without cleanup
-    void override_layer(Layer_t layer_index);
     std::shared_ptr<Layer> get_layer();
 
     void set_player(int player_id);

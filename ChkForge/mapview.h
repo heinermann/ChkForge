@@ -54,6 +54,8 @@ public:
   QPoint pointToMap(const QPoint &pt);
   QRect rectToMap(const QRect &pt);
 
+  QPoint mapToViewPoint(const QPoint& pt);
+
   QRect extendToRect(const QPoint &pt);
 
   std::shared_ptr<ChkForge::MapContext> getMap();
