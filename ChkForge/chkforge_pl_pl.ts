@@ -486,39 +486,39 @@ Some select Starforge code snippets and resources.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="itemtree.cpp" line="100"/>
+        <location filename="itemtree.cpp" line="101"/>
         <source>Doodads</source>
         <extracomment>stat_txt:FIRST_UNIT_STRING-203</extracomment>
         <translation>Dekoracje</translation>
     </message>
     <message>
-        <location filename="itemtree.cpp" line="108"/>
+        <location filename="itemtree.cpp" line="109"/>
         <source>Units</source>
         <extracomment>gluAll:scoreUNITS</extracomment>
         <translation>Jednostki</translation>
     </message>
     <message>
-        <location filename="itemtree.cpp" line="117"/>
+        <location filename="itemtree.cpp" line="118"/>
         <source>Sprites</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="itemtree.cpp" line="126"/>
+        <location filename="itemtree.cpp" line="127"/>
         <source>Unit-Sprites</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="itemtree.cpp" line="135"/>
+        <location filename="itemtree.cpp" line="136"/>
         <source>Locations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="itemtree.cpp" line="141"/>
+        <location filename="itemtree.cpp" line="142"/>
         <source>Custom Brushes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="itemtree.cpp" line="142"/>
+        <location filename="itemtree.cpp" line="143"/>
         <source>Clipboard</source>
         <translation type="unfinished">schowek</translation>
     </message>

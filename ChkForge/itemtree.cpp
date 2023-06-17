@@ -77,7 +77,7 @@ void ItemTree::update_locations(const std::vector<std::pair<QString, int>>& loca
   for (auto [name, id] : locations) {
     QStandardItem* item = ChkForge::Tree::createTreeItem(name);
 
-    //item->setEditable(true);  // TODO
+    item->setEditable(true);
 
     item->setData(id, ChkForge::Tree::ROLE_ID);
     item->setData(Category::CAT_LOCATION, ChkForge::Tree::ROLE_CATEGORY);
@@ -149,12 +149,24 @@ QStandardItem* ItemTree::createBrushesTree()
 
 void ItemTree::selectionChanged(const QItemSelection& selected, const QItemSelection& deselected)
 {
+  static bool is_changing = false;
+  if (is_changing) return;
+
   if (selected.isEmpty()) {
     emit itemTreeChanged(CAT_NONE, 0);
     return;
   }
   
-  auto* selected_item = treeModel.itemFromIndex(proxyModel.mapToSource(selected.front().topLeft()));
+  for (auto& idx : selected.indexes()) {
+    if (idx.data(ChkForge::Tree::ROLE_CATEGORY) != Category::CAT_LOCATION) {
+      is_changing = true;
+      ui->treeView->selectionModel()->select(ui->treeView->currentIndex(), QItemSelectionModel::SelectionFlag::ClearAndSelect);
+      is_changing = false;
+      break;
+    }
+  }
+
+  auto* selected_item = treeModel.itemFromIndex(proxyModel.mapToSource(ui->treeView->currentIndex()));
   auto category = selected_item->data(ChkForge::Tree::ROLE_CATEGORY);
   if (category.isValid()) {
     emit itemTreeChanged(Category(category.toInt()), selected_item->data(ChkForge::Tree::ROLE_ID).toInt());
