@@ -37,9 +37,9 @@ Translations were sourced from the following:
 ### Developer Setup
 1. Install [Visual Studio Community 2019](https://visualstudio.microsoft.com/vs/older-downloads/).
 2. Install [Qt for Open Source Development](https://www.qt.io/download-open-source).
-  1. Use the Qt Online Installer to install the following:
-    - Qt 6.5.1 - MSVC 2019 64-bit
-    - Qt Creator (any version)
+    1. Use the Qt Online Installer to install the following:
+        - Qt 6.5.1 - MSVC 2019 64-bit
+        - Qt Creator (any version)
 3. Install [Qt Visual Studio Tools](https://marketplace.visualstudio.com/items?itemName=TheQtCompany.QtVisualStudioTools2019) in Visual Studio (the application) under *Extensions* -> *Manage Extensions*.
 4. In Visual Studio, go to *Tools* -> *Options...* -> *Qt* -> *Versions* and add a qt version called `6.5.1_msvc_2019_64` pointing to your `Qt/6.5.1/msvc2019_64` directory.
 5. `git clone --recurse-submodules git@github.com:heinermann/ChkForge.git`
@@ -50,9 +50,9 @@ Translations were sourced from the following:
 - `MapView` is the window that *shows* a `MapContext`. There can be more than one `MapView` with the same map context.
 - `MainWindow` is self explanatory.
 - Different UI components are separated as follows:
-  - Tool Windows (minimap, item tree, etc)
-  - Property Dialogs (unit, sprite, location properties w/ enter key)
-  - Other Dialogs (New Map, Unit Settings, etc)
+    - Tool Windows (minimap, item tree, etc)
+    - Property Dialogs (unit, sprite, location properties w/ enter key)
+    - Other Dialogs (New Map, Unit Settings, etc)
 - ChkDraft classes are used for chk manipulation, but in general we should only be doing things through `MapContext` to also reflect those changes in OpenBW.
 - OpenBW classes are just a mess of header files.
 
