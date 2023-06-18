@@ -489,39 +489,39 @@ Some select Starforge code snippets and resources.
         <translation></translation>
     </message>
     <message>
-        <location filename="itemtree.cpp" line="101"/>
+        <location filename="itemtree.cpp" line="100"/>
         <source>Doodads</source>
         <extracomment>stat_txt:FIRST_UNIT_STRING-203</extracomment>
         <translation></translation>
     </message>
     <message>
-        <location filename="itemtree.cpp" line="109"/>
+        <location filename="itemtree.cpp" line="108"/>
         <source>Units</source>
         <extracomment>gluAll:scoreUNITS</extracomment>
         <translation></translation>
     </message>
     <message>
-        <location filename="itemtree.cpp" line="118"/>
+        <location filename="itemtree.cpp" line="117"/>
         <source>Sprites</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="itemtree.cpp" line="127"/>
+        <location filename="itemtree.cpp" line="126"/>
         <source>Unit-Sprites</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="itemtree.cpp" line="136"/>
+        <location filename="itemtree.cpp" line="135"/>
         <source>Locations</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="itemtree.cpp" line="142"/>
+        <location filename="itemtree.cpp" line="141"/>
         <source>Custom Brushes</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="itemtree.cpp" line="143"/>
+        <location filename="itemtree.cpp" line="142"/>
         <source>Clipboard</source>
         <translation></translation>
     </message>

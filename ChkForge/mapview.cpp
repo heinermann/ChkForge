@@ -228,6 +228,7 @@ bool MapView::mouseEventFilter(QObject* obj, QEvent* e)
       }
       return true;
     }
+    break;
   }
   return false;
 }

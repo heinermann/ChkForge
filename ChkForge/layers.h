@@ -6,6 +6,7 @@
 
 #include <vector>
 #include <optional>
+#include <unordered_set>
 
 #include <MappingCoreLib/Sc.h>
 #include "../openbw/openbw/bwgame.h"
@@ -204,6 +205,8 @@ namespace ChkForge {
 
     virtual void layerChanged(bool isEntering) override;
   private:
+    std::unordered_set<int> selected_locations;
+    int last_location_candidate = 0;
   };
 
   class FogLayer : public Layer {

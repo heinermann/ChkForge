@@ -314,7 +314,7 @@ void MapContext::placeUnit(int x, int y, Sc::Unit::Type type, int player)
 
 void MapContext::start_playback() {
   if (is_testing()) return;
-  
+
   editor_state = TestState::Testing;
   game_paused = false;
 
