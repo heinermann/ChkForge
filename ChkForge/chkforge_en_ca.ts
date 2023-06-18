@@ -1026,12 +1026,12 @@ Some select Starforge code snippets and resources.
 <context>
     <name>MapView</name>
     <message>
-        <location filename="mapview.cpp" line="58"/>
+        <location filename="mapview.cpp" line="59"/>
         <source>Do you want to save changes to &quot;%1&quot; before closing?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mapview.cpp" line="60"/>
+        <location filename="mapview.cpp" line="61"/>
         <source>Unsaved changes...</source>
         <translation></translation>
     </message>

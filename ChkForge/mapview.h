@@ -10,6 +10,7 @@
 #include <QMdiSubwindow>
 
 #include "itemtree.h"
+#include "Utils.h"
 
 namespace ChkForge {
   class MapContext;
@@ -49,12 +50,13 @@ public:
   void updateSurface();
 
   void setViewScalePercent(double value);
-  double getViewScale();
+  double getViewScale() const;
 
-  QPoint pointToMap(const QPoint &pt);
-  QRect rectToMap(const QRect &pt);
+  QPoint pointToMap(const QPoint &pt) const;
+  QRect rectToMap(const QRect &pt) const;
 
-  QPoint mapToViewPoint(const QPoint& pt);
+  QPoint mapToViewPoint(const QPoint& pt) const;
+  QRect mapToViewRect(const QRect& rct) const;
 
   QRect extendToRect(const QPoint &pt);
 

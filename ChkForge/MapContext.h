@@ -84,12 +84,6 @@ namespace ChkForge
 
     QRgb player_color(int player_num);
 
-    QRect toQt(const bwgame::rect& rect);
-    QPoint toQt(const bwgame::xy& pt);
-
-    bwgame::rect toBw(const QRect& rect);
-    bwgame::xy toBw(const QPoint& pt);
-
     void set_layer(Layer_t layer_index);
     std::shared_ptr<Layer> get_layer();
 

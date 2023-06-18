@@ -19,6 +19,7 @@
 #include "../openbw/openbw/bwgame.h"
 
 #include "MapContext.h"
+#include "Utils.h"
 
 MapView::MapView(std::shared_ptr<ChkForge::MapContext> mapContext, QWidget *parent)
   : QMdiSubWindow(parent)
@@ -123,7 +124,7 @@ void MapView::move_minimap(const QPoint& pos)
 {
   auto mm_size = minimap_size();
 
-  auto clamped_pos = QPoint{ std::clamp(pos.x(), 0, mm_size.width() - 1), std::clamp(pos.y(), 0, mm_size.height() - 1) };
+  QPoint clamped_pos = ChkForge::pt{ pos }.clamped({ 0, 0, mm_size.width() - 1, mm_size.height() - 1 });
 
   int x = clamped_pos.x() * map_tile_size().width() / mm_size.width();
   int y = clamped_pos.y() * map_tile_size().height() / mm_size.height();
@@ -153,7 +154,7 @@ void MapView::setViewScalePercent(double value)
   resizeSurface(ui->surface->size());
 }
 
-double MapView::getViewScale() {
+double MapView::getViewScale() const {
   return this->view_scale_percent / 100.0;
 }
 
@@ -320,9 +321,9 @@ void MapView::paint_surface(QWidget* obj, QPaintEvent* paintEvent)
   painter.begin(obj);
   painter.fillRect(obj->rect(), QColorConstants::Black);
   
-  map->openbw_ui.draw_game(this->buffer.bits(), this->buffer.bytesPerLine(), map->toBw(screen_position));
+  map->openbw_ui.draw_game(this->buffer.bits(), this->buffer.bytesPerLine(), ChkForge::rect{ screen_position });
   
-  map->get_layer()->paintGame(this, buffer.bits(), buffer.bytesPerLine(), map->toBw(screen_position));
+  map->get_layer()->paintGame(this, buffer.bits(), buffer.bytesPerLine(), ChkForge::rect{ screen_position });
 
   pix_buffer.convertFromImage(this->buffer);
   painter.drawPixmap(obj->rect(), pix_buffer);
@@ -388,12 +389,11 @@ void MapView::resizeSurface(QSize newSize)
 
 void MapView::select_units(bool double_clicked, bool shift, bool ctrl, const QRect &selection)
 {
-  QRect normalized = selection.normalized();
-  QRect translated = QRect{ pointToMap(normalized.topLeft()), pointToMap(normalized.bottomRight()) };
+  QRect translated = rectToMap(selection.normalized());
   
   if (!shift) map->openbw_ui.current_selection_clear();
 
-  auto units_to_select = map->find_units(map->toBw(translated));
+  auto units_to_select = map->find_units(ChkForge::rect{ translated });
   for (bwgame::unit_t* u : units_to_select) {
     map->openbw_ui.current_selection_add(u);
   }
@@ -405,7 +405,7 @@ void MapView::select_unit_at(bool double_clicked, bool shift, bool ctrl, const Q
 {
   QPoint mapPt = pointToMap(position);
   //bwgame::unit_t* u = map->openbw_ui.select_get_unit_at(map->toBw(mapPt));
-  bwgame::xy bwPt = map->toBw(mapPt);
+  bwgame::xy bwPt = ChkForge::pt{ mapPt };
   bwgame::unit_t* u = nullptr;
   for (bwgame::unit_t* found : map->find_units({ bwPt, bwPt })) {
     u = found;
@@ -427,7 +427,7 @@ void MapView::select_unit_at(bool double_clicked, bool shift, bool ctrl, const Q
       return a->unit_type == b->unit_type;
     };
 
-    for (bwgame::unit_t* u2 : map->find_units(map->toBw(screen_position))) {
+    for (bwgame::unit_t* u2 : map->find_units(ChkForge::rect{ screen_position })) {
       if (u2->owner != u->owner) continue;
       if (!is_same_type(u, u2)) continue;
       map->openbw_ui.current_selection_add(u2);
@@ -455,18 +455,22 @@ void MapView::updateTitle()
   setWindowTitle(QString::fromStdString(map->filename()) + (map->is_unsaved() ? " *" : ""));
 }
 
-QPoint MapView::pointToMap(const QPoint &pt)
+QPoint MapView::pointToMap(const QPoint &pt) const
 {
   return screen_position.topLeft() + pt / getViewScale();
 }
 
-QRect MapView::rectToMap(const QRect &pt)
+QRect MapView::rectToMap(const QRect &pt) const
 {
   return QRect{ pointToMap(pt.topLeft()), pointToMap(pt.bottomRight()) };
 }
 
-QPoint MapView::mapToViewPoint(const QPoint& pt) {
+QPoint MapView::mapToViewPoint(const QPoint& pt) const {
   return (pt - screen_position.topLeft()) * getViewScale();
+}
+
+QRect MapView::mapToViewRect(const QRect& rct) const {
+  return QRect(mapToViewPoint(rct.topLeft()), mapToViewPoint(rct.bottomRight()));
 }
 
 QRect MapView::extendToRect(const QPoint& pt)

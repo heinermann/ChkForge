@@ -2,6 +2,8 @@
 #include "mapview.h"
 #include "MapContext.h"
 
+#include "Utils.h"
+
 using namespace ChkForge;
 
 bool UnitLayer::mouseEvent(MapView* map, QMouseEvent* e)
@@ -11,7 +13,7 @@ bool UnitLayer::mouseEvent(MapView* map, QMouseEvent* e)
     bool ctrl_pressed = e->modifiers() & Qt::ControlModifier;
 
     place_pos = e->pos();
-    place_pos_bw = map->getMap()->toBw(map->pointToMap(place_pos));
+    place_pos_bw = pt{ map->pointToMap(place_pos) };
 
     placement_sprite->position = place_pos_bw;
 

@@ -3,6 +3,8 @@
 #include "mapview.h"
 #include "MapContext.h"
 
+#include "Utils.h"
+
 #include <boost/geometry.hpp>
 #include <boost/geometry/index/rtree.hpp>
 #include <boost/geometry/geometries/box.hpp>
@@ -10,12 +12,9 @@
 #include <QPainter>
 
 using namespace ChkForge;
-namespace bg = boost::geometry;
 namespace bgi = boost::geometry::index;
 
-using LocPoint = bg::model::point<int, 2, bg::cs::cartesian>;
-using LocRect = bg::model::box<LocPoint>;
-using LocMap = std::pair<LocRect, int>; // mapping to location id int
+using LocMap = std::pair<BoostRect, int>; // mapping to location id int
 
 bool LocationLayer::mouseEvent(MapView* map, QMouseEvent* e)
 {
@@ -38,13 +37,13 @@ bool LocationLayer::mouseEvent(MapView* map, QMouseEvent* e)
         auto location = mrgn->getLocation(i);
         if (!location) continue;
 
-        location_data.emplace_back(LocRect{ {int(location->left), int(location->top)}, {int(location->right), int(location->bottom)} }, i);
+        location_data.emplace_back(rect{ location }, i);
       }
 
       bgi::rtree<LocMap, bgi::linear<256>> rtree{ location_data };
 
       std::vector<LocMap> results;
-      rtree.query(bgi::intersects(LocPoint{ map_pos.x(), map_pos.y() }), std::back_inserter(results));
+      rtree.query(bgi::intersects(BoostPt{ pt{ map_pos } }), std::back_inserter(results));
 
       if (!results.empty()) {
         auto [_, idx] = results.front();
@@ -62,9 +61,11 @@ bool LocationLayer::mouseEvent(MapView* map, QMouseEvent* e)
   }
   return false;
 }
+
 void LocationLayer::showContextMenu(QWidget* owner, const QPoint& position)
 {
 }
+
 void LocationLayer::paintOverlay(MapView* map, QWidget* obj, QPainter& painter)
 {
   QFont font = QFont();
@@ -79,24 +80,23 @@ void LocationLayer::paintOverlay(MapView* map, QWidget* obj, QPainter& painter)
     auto location = mrgn->getLocation(i);
     if (!location) continue;
 
-    QRect rct = {
-      map->mapToViewPoint({int(location->left), int(location->top)}),
-      map->mapToViewPoint({int(location->right), int(location->bottom)}),
-    };
+    QRect rct = map->mapToViewRect(rect{ location });
 
     // Skip if none of the location is within the view
     if (!QRect({ 0, 0 }, map->getViewSize()).intersects(rct)) continue;
 
+    painter.fillRect(rct, QColor{ 0, 0, 128, 64 });
+
     if (this->selected_locations.contains(i)) {
-      painter.setPen(QPen(Qt::white, 3));
+      painter.setPen(QPen(Qt::white, 2));
+      rct -= {1, 1, 1, 1};  // margins
     }
     else {
-      painter.setPen(QPen(Qt::black, 2));
+      painter.setPen(QPen(Qt::black, 1));
     }
-    painter.fillRect(rct, QColor{ 0, 0, 128, 64 });
     painter.drawRect(rct);
 
-    QPoint textPos = map->mapToViewPoint({ int(location->left) + 4, int(location->top) + 20 });
+    QPoint textPos = map->mapToViewPoint(rect{ location }.topLeft() + pt{ 4, 20 });
     QString name = map->getMap()->get_location_name(i);
 
     painter.setPen(QColor{ 16, 252, 24 });
