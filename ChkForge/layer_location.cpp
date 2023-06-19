@@ -56,16 +56,27 @@ bool LocationLayer::mouseEvent(MapView* view, QMouseEvent* e)
   case QEvent::MouseButtonRelease:
     if (mouseEvent->button() == Qt::LeftButton && location_drag) {
       if (rect{ *location_drag }.distance() < 4) {
+
+        // Clear location cycle candidate if we click somewhere else
+        if (pt{ map_pos - last_location_pt }.distance() > 4) {
+          last_location_candidate = 0;
+        }
+        last_location_pt = map_pos;
+
+        // Query the rtree to get all the locations, sort by smallest first
         std::vector<LocMap> results;
         rtree.query(bgi::intersects(BoostPt{ pt{ map_pos } }), std::back_inserter(results));
+        std::ranges::sort(results, [](auto& a, auto& b) { return boost::geometry::area(a.first) < boost::geometry::area(b.first); });
         
+        // Get only the location IDs from the results
         auto tmp_select = results | std::views::values;
         std::vector<int> tmp_out{ tmp_select.begin(), tmp_select.end() };
 
+        // Select the result
         // FIXME some jank to avoid destroying intellisense
         if (tmp_out.empty()) {
-          last_location_candidate = 0;
           selectLocations({});
+          last_location_candidate = 0;
         }
         else {
           selectLocations({ tmp_out.at(last_location_candidate % tmp_out.size()) });

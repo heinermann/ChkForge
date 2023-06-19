@@ -225,6 +225,7 @@ namespace ChkForge {
 
     std::unordered_set<int> selected_locations;
     int last_location_candidate = 0;
+    QPoint last_location_pt;
 
     boost::geometry::index::rtree<LocMap, boost::geometry::index::linear<256>> rtree;
     std::unordered_map<int, LocMap> location_data;

@@ -50,6 +50,9 @@ namespace ChkForge {
     pt operator -(const pt& other) const { return pt(*this) -= other; }
 
     pt clamped(rect rct) const;
+    int distance() const {
+      return std::sqrt(x() * x() + y() * y());
+    }
   };
 
   struct rect : std::tuple<int, int, int, int> {
@@ -75,9 +78,8 @@ namespace ChkForge {
     operator bwgame::rect() const { return { topLeft(), bottomRight() }; }
 
     // Distance from topLeft to bottomRight
-    int distance() {
-      auto [x, y] = bottomRight() - topLeft();
-      return std::sqrt(x * x + y * y);
+    int distance() const {
+      return (bottomRight() - topLeft()).distance();
     }
   };
 }
