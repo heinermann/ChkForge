@@ -12,12 +12,10 @@
 #include <MappingCoreLib/Chk.h>
 
 #include <QPainter>
+#include <ranges>
 
 using namespace ChkForge;
 namespace bgi = boost::geometry::index;
-
-using LocMap = std::pair<BoostRect, int>; // mapping to location id int
-
 
 /*
 1. Move rtree to class level.
@@ -31,46 +29,67 @@ using LocMap = std::pair<BoostRect, int>; // mapping to location id int
 7. ItemTree cross-interaction.
 */
 
-bool LocationLayer::mouseEvent(MapView* map, QMouseEvent* e)
+bool LocationLayer::mouseEvent(MapView* view, QMouseEvent* e)
 {
   QMouseEvent* mouseEvent = reinterpret_cast<QMouseEvent*>(e);
 
   bool double_clicked = mouseEvent->flags() & Qt::MouseEventCreatedDoubleClick;
   bool shift_pressed = mouseEvent->modifiers() & Qt::ShiftModifier;
   bool ctrl_pressed = mouseEvent->modifiers() & Qt::ControlModifier;
-  QPoint map_pos = map->pointToMap(mouseEvent->pos());
+  QPoint map_pos = view->pointToMap(mouseEvent->pos());
 
   switch (e->type())
   {
   case QEvent::MouseButtonPress:
-    if (mouseEvent->button() == Qt::LeftButton) {
-      std::vector<LocMap> location_data;
-
-      auto chk = map->getMap()->chk;
-      auto mrgn = chk->layers.mrgn;
-      for (size_t i = 0; i < mrgn->numLocations(); i++) {
-        auto location = mrgn->getLocation(i);
-        if (!location) continue;
-
-        location_data.emplace_back(rect{ location }, i);
-      }
-
-      bgi::rtree<LocMap, bgi::linear<256>> rtree{ location_data };
-
-      std::vector<LocMap> results;
-      rtree.query(bgi::intersects(BoostPt{ pt{ map_pos } }), std::back_inserter(results));
-
-      if (!results.empty()) {
-        auto [_, idx] = results.front();
-        selectLocations({ idx });
-      }
+    if (e->button() == Qt::LeftButton && !double_clicked) {
+      location_drag = view->extendToRect(e->pos());
+      return true;
     }
     break;
   case QEvent::MouseButtonDblClick:
+    if (e->button() == Qt::LeftButton) {
+      location_drag = std::nullopt;
+      view->setCursor(Qt::ArrowCursor);
+      return true;
+    }
     break;
   case QEvent::MouseButtonRelease:
+    if (mouseEvent->button() == Qt::LeftButton && location_drag) {
+      if (rect{ *location_drag }.distance() < 4) {
+        std::vector<LocMap> results;
+        rtree.query(bgi::intersects(BoostPt{ pt{ map_pos } }), std::back_inserter(results));
+        
+        auto tmp_select = results | std::views::values;
+        std::vector<int> tmp_out{ tmp_select.begin(), tmp_select.end() };
+
+        // FIXME some jank to avoid destroying intellisense
+        if (tmp_out.empty()) {
+          last_location_candidate = 0;
+          selectLocations({});
+        }
+        else {
+          selectLocations({ tmp_out.at(last_location_candidate % tmp_out.size()) });
+          last_location_candidate++;
+        }
+      }
+      else {
+        // TODO create location from unused here
+      }
+
+      location_drag = std::nullopt;
+      view->setCursor(Qt::ArrowCursor);
+      return true;
+    }
     break;
   case QEvent::MouseMove:
+    if (e->buttons() & Qt::LeftButton) {
+      if (!location_drag) {
+        location_drag = view->extendToRect(e->pos());
+      }
+      location_drag->setBottomRight(e->pos());
+      view->setCursor(Qt::CrossCursor);
+      return true;
+    }
     break;
   }
   return false;
@@ -99,33 +118,38 @@ void LocationLayer::paintLocationName(QPainter& painter, const QPoint& pos, cons
 }
 
 // Note: 64 = Anywhere
-void LocationLayer::paintLocation(MapView* map, QPainter& painter, int locationId) {
-  Chk::LocationPtr location = map->getMap()->get_location(locationId);
+void LocationLayer::paintLocation(MapView* view, QPainter& painter, int locationId) {
+  Chk::LocationPtr location = map->get_location(locationId);
   if (!location) return;
 
-  QRect locationRect = map->mapToViewRect(rect{ location });
-  QRect viewRect = { { 0, 0 }, map->getViewSize() };
+  QRect locationRect = view->mapToViewRect(rect{ location });
+  QRect viewRect = { { 0, 0 }, view->getViewSize() };
   if (!viewRect.intersects(locationRect)) return;
 
   paintLocationRect(painter, locationRect, this->selected_locations.contains(locationId));
-  paintLocationName(painter, locationRect.topLeft(), map->getMap()->get_location_name(locationId));
+  paintLocationName(painter, locationRect.topLeft(), map->get_location_name(locationId));
 }
 
-void LocationLayer::paintOverlay(MapView* map, QWidget* obj, QPainter& painter)
+void LocationLayer::paintOverlay(MapView* view, QWidget* obj, QPainter& painter)
 {
   QFont font = QFont();
-  font.setPixelSize(16 * map->getViewScale());
+  font.setPixelSize(16 * view->getViewScale());
   painter.setFont(font);
 
-  for (size_t i = 0; i < map->getMap()->num_locations(); i++) {
+  for (size_t i = 0; i < map->num_locations(); i++) {
     if (!this->selected_locations.contains(i)) {
-      paintLocation(map, painter, i);
+      paintLocation(view, painter, i);
     }
   }
 
   // Draw selected location on top of unselected ones
   for (int idx : this->selected_locations) {
-    paintLocation(map, painter, idx);
+    paintLocation(view, painter, idx);
+  }
+
+  if (location_drag && rect{ *location_drag }.distance() >= 4) {
+    painter.setPen(QPen(Qt::red, 3));
+    painter.drawRect(*location_drag);
   }
 }
 void LocationLayer::paintGame(MapView* map, uint8_t* data, size_t data_pitch, bwgame::rect screen_rect)
@@ -133,15 +157,46 @@ void LocationLayer::paintGame(MapView* map, uint8_t* data, size_t data_pitch, bw
 }
 void LocationLayer::reset()
 {
+  this->selected_locations.clear();
+  this->rtree.clear();
+  this->location_data.clear();
 }
 void LocationLayer::logicUpdate()
 {
 }
 void LocationLayer::layerChanged(bool isEntering)
 {
+  reset();
+  if (isEntering) {
+    for (int i = 0; i < map->num_locations(); i++) {
+      auto loc_data = getLocationData(i);
+      if (loc_data) {
+        this->location_data[i] = *loc_data;
+        this->rtree.insert(*loc_data);
+      }
+    }
+  }
+}
+
+void LocationLayer::locationUpdated(int id) {
+  if (this->location_data.contains(id)) {
+    this->rtree.remove(this->location_data.at(id));
+  }
+
+  auto loc_data = getLocationData(id);
+  if (loc_data) {
+    this->location_data[id] = *loc_data;
+    this->rtree.insert(*loc_data);
+  }
+}
+
+std::optional<LocMap> LocationLayer::getLocationData(int id) const {
+  auto location = map->get_location(id);
+  if (!location) return std::nullopt;
+  return LocMap(BoostRect(rect{ location }), id);
 }
 
 void LocationLayer::selectLocations(const std::vector<int>& locations) {
   this->selected_locations.clear();
-  this->selected_locations.insert(locations.begin(), locations.end());
+  this->selected_locations.insert(std::begin(locations), std::end(locations));
 }

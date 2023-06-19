@@ -7,9 +7,16 @@
 #include <vector>
 #include <optional>
 #include <unordered_set>
+#include <unordered_map>
+#include <ranges>
 
+#include "Utils.h"
 #include <MappingCoreLib/Chk.h>
 #include "../openbw/openbw/bwgame.h"
+
+#include <boost/geometry.hpp>
+#include <boost/geometry/index/rtree.hpp>
+#include <boost/geometry/geometries/box.hpp>
 
 class MapView;
 
@@ -190,6 +197,8 @@ namespace ChkForge {
     bwgame::xy place_pos_bw;
   };
 
+  using LocMap = std::pair<BoostRect, int>; // mapping to location id int
+
   class LocationLayer : public Layer {
   public:
     LocationLayer(MapContext* map) : Layer(map, Layer_t::LAYER_LOCATION) {}
@@ -206,13 +215,21 @@ namespace ChkForge {
     virtual void layerChanged(bool isEntering) override;
 
     void selectLocations(const std::vector<int>& locations);
+
+    void locationUpdated(int id);
   private:
     void paintLocation(MapView* map, QPainter& painter, int locationId);
     void paintLocationRect(QPainter& painter, QRect rct, bool selected);
     void paintLocationName(QPainter& painter, const QPoint& pos, const QString& name);
+    std::optional<LocMap> getLocationData(int id) const;
 
     std::unordered_set<int> selected_locations;
     int last_location_candidate = 0;
+
+    boost::geometry::index::rtree<LocMap, boost::geometry::index::linear<256>> rtree;
+    std::unordered_map<int, LocMap> location_data;
+
+    std::optional<QRect> location_drag;
   };
 
   class FogLayer : public Layer {

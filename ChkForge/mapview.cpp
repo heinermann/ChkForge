@@ -176,7 +176,6 @@ bool MapView::mouseEventFilter(QObject* obj, QEvent* e)
       this->is_dragging_screen = true;
       setCursor(Qt::ClosedHandCursor);
       this->last_drag_position = mouseEvent->pos();
-      this->drag_screen_pos = getScreenPos() + mouseEvent->pos();
       return true;
     }
     break;

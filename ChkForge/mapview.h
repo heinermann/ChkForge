@@ -74,7 +74,6 @@ private:
   bool is_dragging_screen = false;
   QPoint last_drag_position{};
   std::optional<QRect> drag_select = std::nullopt;
-  QPoint drag_screen_pos{};
 
   QRect screen_position{0, 0, 640, 480};
 

@@ -146,7 +146,6 @@ QStandardItem* ItemTree::createBrushesTree()
 }
 
 // TODO: find an item to select using `treeModel.match(...)` w/ ROLE_SEARCHKEY
-// TODO: multiselect locations
 void ItemTree::selectionChanged(const QItemSelection& selected, const QItemSelection& deselected)
 {
   static bool is_changing = false;

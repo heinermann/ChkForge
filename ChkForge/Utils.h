@@ -73,5 +73,11 @@ namespace ChkForge {
     operator BoostRect() const { return { topLeft(), bottomRight() }; }
     operator QRect() const { return { topLeft(), bottomRight() }; }
     operator bwgame::rect() const { return { topLeft(), bottomRight() }; }
+
+    // Distance from topLeft to bottomRight
+    int distance() {
+      auto [x, y] = bottomRight() - topLeft();
+      return std::sqrt(x * x + y * y);
+    }
   };
 }

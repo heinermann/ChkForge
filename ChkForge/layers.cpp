@@ -52,7 +52,7 @@ bool ThingyPlacer::thingyMouseEvent(MapView* map, QMouseEvent* e)
       break;
     case QEvent::MouseButtonRelease:
       if (e->button() == Qt::LeftButton && this->drag_select) {
-        if (std::abs(drag_select->width()) < 2 && std::abs(drag_select->height()) < 2) {
+        if (rect{ *drag_select }.distance() < 4) {
           map->select_unit_at(false, shift_pressed, ctrl_pressed, e->pos());
         }
         else {
@@ -71,6 +71,7 @@ bool ThingyPlacer::thingyMouseEvent(MapView* map, QMouseEvent* e)
         map->setCursor(Qt::CrossCursor);
         return true;
       }
+      break;
     }
   }
   return false;
