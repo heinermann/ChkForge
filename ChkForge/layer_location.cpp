@@ -17,15 +17,11 @@
 using namespace ChkForge;
 namespace bgi = boost::geometry::index;
 
+
 /*
-1. Move rtree to class level.
-  - Track previous location state as location index to LocMap.
-  - Replace rtree entries by removing the old location and adding the new location.
-2. Click in the same spot to switch to a different overlapping location.
 3. Properties dialog.
 4. Mouse drag to move location position.
 5. Mouse resize edge of location (shift + ctrl modifiers too).
-6. Draw order based on which locations overlap others, prioritize not overlapping the location name area.
 7. ItemTree cross-interaction.
 */
 
@@ -147,9 +143,13 @@ void LocationLayer::paintOverlay(MapView* view, QWidget* obj, QPainter& painter)
   font.setPixelSize(16 * view->getViewScale());
   painter.setFont(font);
 
-  for (size_t i = 0; i < map->num_locations(); i++) {
-    if (!this->selected_locations.contains(i)) {
-      paintLocation(view, painter, i);
+  // Get locations from largest to smallest to paint them in that order
+  std::vector<LocMap> locations{ rtree.begin(), rtree.end() };
+  std::ranges::sort(locations, [](auto& a, auto& b) { return boost::geometry::area(a.first) > boost::geometry::area(b.first); });
+
+  for (auto [_, idx] : locations) {
+    if (!this->selected_locations.contains(idx)) {
+      paintLocation(view, painter, idx);
     }
   }
 
