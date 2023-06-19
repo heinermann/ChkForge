@@ -4,6 +4,7 @@
 #include <QStandardItemModel>
 #include <QSortFilterProxyModel>
 #include <QTimer>
+#include <vector>
 
 #include <MappingCoreLib/Sc.h>
 
@@ -60,7 +61,7 @@ private:
   void itemClicked(const QModelIndex& index);
 
 signals:
-  void itemTreeChanged(Category category, int id);
+  void itemTreeChanged(Category category, const std::vector<int>& id);
 };
 
 #endif // ITEMTREE_H

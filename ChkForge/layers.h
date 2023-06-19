@@ -8,7 +8,7 @@
 #include <optional>
 #include <unordered_set>
 
-#include <MappingCoreLib/Sc.h>
+#include <MappingCoreLib/Chk.h>
 #include "../openbw/openbw/bwgame.h"
 
 class MapView;
@@ -204,7 +204,13 @@ namespace ChkForge {
     virtual void logicUpdate() override;
 
     virtual void layerChanged(bool isEntering) override;
+
+    void selectLocations(const std::vector<int>& locations);
   private:
+    void paintLocation(MapView* map, QPainter& painter, int locationId);
+    void paintLocationRect(QPainter& painter, QRect rct, bool selected);
+    void paintLocationName(QPainter& painter, const QPoint& pos, const QString& name);
+
     std::unordered_set<int> selected_locations;
     int last_location_candidate = 0;
   };

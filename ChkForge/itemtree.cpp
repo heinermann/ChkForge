@@ -146,30 +146,37 @@ QStandardItem* ItemTree::createBrushesTree()
 }
 
 // TODO: find an item to select using `treeModel.match(...)` w/ ROLE_SEARCHKEY
-
+// TODO: multiselect locations
 void ItemTree::selectionChanged(const QItemSelection& selected, const QItemSelection& deselected)
 {
   static bool is_changing = false;
   if (is_changing) return;
 
-  if (selected.isEmpty()) {
-    emit itemTreeChanged(CAT_NONE, 0);
+  QModelIndexList currentSelection = ui->treeView->selectionModel()->selectedIndexes();
+
+  if (currentSelection.isEmpty()) {
+    emit itemTreeChanged(CAT_NONE, {});
     return;
   }
-  
-  for (auto& idx : selected.indexes()) {
+
+  std::vector<int> selected_values;
+  for (auto& idx : currentSelection) {
+    selected_values.emplace_back(idx.data(ChkForge::Tree::ROLE_ID).toInt());
+    
     if (idx.data(ChkForge::Tree::ROLE_CATEGORY) != Category::CAT_LOCATION) {
       is_changing = true;
       ui->treeView->selectionModel()->select(ui->treeView->currentIndex(), QItemSelectionModel::SelectionFlag::ClearAndSelect);
       is_changing = false;
+      
+      selected_values.clear();
+      selected_values.emplace_back(idx.data(ChkForge::Tree::ROLE_ID).toInt());
       break;
     }
   }
-
-  auto* selected_item = treeModel.itemFromIndex(proxyModel.mapToSource(ui->treeView->currentIndex()));
-  auto category = selected_item->data(ChkForge::Tree::ROLE_CATEGORY);
+  
+  auto category = ui->treeView->currentIndex().data(ChkForge::Tree::ROLE_CATEGORY);
   if (category.isValid()) {
-    emit itemTreeChanged(Category(category.toInt()), selected_item->data(ChkForge::Tree::ROLE_ID).toInt());
+    emit itemTreeChanged(Category(category.toInt()), selected_values);
   }
   // If it's not valid, then assume it's just a folder item that can be expanded or w/e
 }

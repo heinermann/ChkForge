@@ -117,6 +117,14 @@ QString MapContext::get_location_name(int id) const {
   return tr("Location %1").arg(id + 1);
 }
 
+Chk::LocationPtr MapContext::get_location(int id) const {
+  return chk->layers.mrgn->getLocation(id);
+}
+
+int MapContext::num_locations() const {
+  return chk->layers.mrgn->numLocations();
+}
+
 
 void MapContext::place_unit(Sc::Unit::Type unitType, int owner, int x, int y)
 {
@@ -290,6 +298,9 @@ void MapContext::set_layer_sprite_type(Sc::Sprite::Type type)
 void MapContext::set_layer_sprite_unit_type(Sc::Unit::Type type)
 {
   layer_sprite->setPlacementUnitType(type);
+}
+void MapContext::set_layer_location_index(const std::vector<int>& locations) {
+  layer_location->selectLocations(locations);
 }
 
 void MapContext::placeUnit(int x, int y, Sc::Unit::Type type, int player)

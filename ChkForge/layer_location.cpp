@@ -9,12 +9,27 @@
 #include <boost/geometry/index/rtree.hpp>
 #include <boost/geometry/geometries/box.hpp>
 
+#include <MappingCoreLib/Chk.h>
+
 #include <QPainter>
 
 using namespace ChkForge;
 namespace bgi = boost::geometry::index;
 
 using LocMap = std::pair<BoostRect, int>; // mapping to location id int
+
+
+/*
+1. Move rtree to class level.
+  - Track previous location state as location index to LocMap.
+  - Replace rtree entries by removing the old location and adding the new location.
+2. Click in the same spot to switch to a different overlapping location.
+3. Properties dialog.
+4. Mouse drag to move location position.
+5. Mouse resize edge of location (shift + ctrl modifiers too).
+6. Draw order based on which locations overlap others, prioritize not overlapping the location name area.
+7. ItemTree cross-interaction.
+*/
 
 bool LocationLayer::mouseEvent(MapView* map, QMouseEvent* e)
 {
@@ -47,8 +62,7 @@ bool LocationLayer::mouseEvent(MapView* map, QMouseEvent* e)
 
       if (!results.empty()) {
         auto [_, idx] = results.front();
-        this->selected_locations.clear();
-        this->selected_locations.insert(idx);
+        selectLocations({ idx });
       }
     }
     break;
@@ -66,41 +80,52 @@ void LocationLayer::showContextMenu(QWidget* owner, const QPoint& position)
 {
 }
 
+void LocationLayer::paintLocationRect(QPainter& painter, QRect rct, bool selected) {
+  painter.fillRect(rct, QColor{ 0, 0, 128, 64 });
+  if (selected) {
+    painter.setPen(QPen(Qt::white, 2));
+    rct -= {1, 1, 1, 1};  // margins inward
+  }
+  else {
+    painter.setPen(QPen(Qt::black, 1));
+  }
+  painter.drawRect(rct);
+}
+
+void LocationLayer::paintLocationName(QPainter& painter, const QPoint& pos, const QString& name) {
+  QPoint textPos = pos + pt{ 4, 20 };
+  painter.setPen(QColor{ 16, 252, 24 });
+  painter.drawText(textPos, name);
+}
+
+// Note: 64 = Anywhere
+void LocationLayer::paintLocation(MapView* map, QPainter& painter, int locationId) {
+  Chk::LocationPtr location = map->getMap()->get_location(locationId);
+  if (!location) return;
+
+  QRect locationRect = map->mapToViewRect(rect{ location });
+  QRect viewRect = { { 0, 0 }, map->getViewSize() };
+  if (!viewRect.intersects(locationRect)) return;
+
+  paintLocationRect(painter, locationRect, this->selected_locations.contains(locationId));
+  paintLocationName(painter, locationRect.topLeft(), map->getMap()->get_location_name(locationId));
+}
+
 void LocationLayer::paintOverlay(MapView* map, QWidget* obj, QPainter& painter)
 {
   QFont font = QFont();
   font.setPixelSize(16 * map->getViewScale());
   painter.setFont(font);
 
-  auto chk = map->getMap()->chk;
-  auto mrgn = chk->layers.mrgn;
-  for (size_t i = 0; i < mrgn->numLocations(); i++) {
-    // Note: 64 = Anywhere
-
-    auto location = mrgn->getLocation(i);
-    if (!location) continue;
-
-    QRect rct = map->mapToViewRect(rect{ location });
-
-    // Skip if none of the location is within the view
-    if (!QRect({ 0, 0 }, map->getViewSize()).intersects(rct)) continue;
-
-    painter.fillRect(rct, QColor{ 0, 0, 128, 64 });
-
-    if (this->selected_locations.contains(i)) {
-      painter.setPen(QPen(Qt::white, 2));
-      rct -= {1, 1, 1, 1};  // margins
+  for (size_t i = 0; i < map->getMap()->num_locations(); i++) {
+    if (!this->selected_locations.contains(i)) {
+      paintLocation(map, painter, i);
     }
-    else {
-      painter.setPen(QPen(Qt::black, 1));
-    }
-    painter.drawRect(rct);
+  }
 
-    QPoint textPos = map->mapToViewPoint(rect{ location }.topLeft() + pt{ 4, 20 });
-    QString name = map->getMap()->get_location_name(i);
-
-    painter.setPen(QColor{ 16, 252, 24 });
-    painter.drawText(textPos, name);
+  // Draw selected location on top of unselected ones
+  for (int idx : this->selected_locations) {
+    paintLocation(map, painter, idx);
   }
 }
 void LocationLayer::paintGame(MapView* map, uint8_t* data, size_t data_pitch, bwgame::rect screen_rect)
@@ -114,4 +139,9 @@ void LocationLayer::logicUpdate()
 }
 void LocationLayer::layerChanged(bool isEntering)
 {
+}
+
+void LocationLayer::selectLocations(const std::vector<int>& locations) {
+  this->selected_locations.clear();
+  this->selected_locations.insert(locations.begin(), locations.end());
 }

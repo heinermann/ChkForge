@@ -64,6 +64,8 @@ namespace ChkForge
     Sc::Terrain::Tileset tileset() const;
     std::vector<std::pair<QString, int>> locations() const;
     QString get_location_name(int id) const;
+    Chk::LocationPtr get_location(int id) const;
+    int num_locations() const;
 
     void place_unit(Sc::Unit::Type unitType, int owner, int x, int y);
     void apply_brush(const QRect& rect, int tileGroup, int clutter);
@@ -92,6 +94,7 @@ namespace ChkForge
     void set_layer_unit_type(Sc::Unit::Type type);
     void set_layer_sprite_type(Sc::Sprite::Type type);
     void set_layer_sprite_unit_type(Sc::Unit::Type type);
+    void set_layer_location_index(const std::vector<int>& locations);
 
     void placeUnit(int x, int y, Sc::Unit::Type type, int player);
 

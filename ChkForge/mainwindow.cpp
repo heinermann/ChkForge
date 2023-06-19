@@ -872,10 +872,11 @@ void MainWindow::zoomChanged(int value)
   is_changing_zoom = false;
 }
 
-void MainWindow::onItemTreeChanged(ItemTree::Category category, int id)
+void MainWindow::onItemTreeChanged(ItemTree::Category category, const std::vector<int> &ids)
 {
   auto map = currentMap();
-  if (map == nullptr) return;
+  // TODO empty to clear selected unit etc?
+  if (map == nullptr || ids.empty()) return;
 
   switch (category) {
     case ItemTree::CAT_NONE:
@@ -888,19 +889,19 @@ void MainWindow::onItemTreeChanged(ItemTree::Category category, int id)
       break;
     case ItemTree::CAT_UNIT:
       selectLayerIndex(ChkForge::Layer_t::LAYER_UNIT);
-      map->set_layer_unit_type(Sc::Unit::Type(id));
+      map->set_layer_unit_type(Sc::Unit::Type(ids.front()));
       break;
     case ItemTree::CAT_SPRITE:
       selectLayerIndex(ChkForge::Layer_t::LAYER_SPRITE);
-      map->set_layer_sprite_type(Sc::Sprite::Type(id));
+      map->set_layer_sprite_type(Sc::Sprite::Type(ids.front()));
       break;
     case ItemTree::CAT_UNITSPRITE:
       selectLayerIndex(ChkForge::Layer_t::LAYER_SPRITE);
-      map->set_layer_sprite_unit_type(Sc::Unit::Type(id));
+      map->set_layer_sprite_unit_type(Sc::Unit::Type(ids.front()));
       break;
     case ItemTree::CAT_LOCATION:
       selectLayerIndex(ChkForge::Layer_t::LAYER_LOCATION);
-      // TODO select location by id here
+      map->set_layer_location_index(ids);
       break;
     case ItemTree::CAT_BRUSH:
       selectLayerIndex(ChkForge::Layer_t::LAYER_SELECT);
