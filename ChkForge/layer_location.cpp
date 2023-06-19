@@ -19,10 +19,29 @@ namespace bgi = boost::geometry::index;
 
 
 /*
-3. Properties dialog.
-4. Mouse drag to move location position.
-5. Mouse resize edge of location (shift + ctrl modifiers too).
-7. ItemTree cross-interaction.
+1. Properties dialog.
+2. Mouse drag to move location position.
+3. Mouse resize edge of location (shift + ctrl modifiers too).
+4. ItemTree cross-interaction.
+5. Arrow keys (+modifiers) to move/resize selected locations.
+
+Mouse resize modifiers:
+  None: Align to grid
+  Shift: Align to pixel
+  Ctrl: Align to unit boundary
+  Ctrl+Shift: Align to terrain
+
+Mouse move modifiers:
+  None: Align to grid
+  Shift: Align to pixel
+  Ctrl: Align to center of unit
+  Ctrl+Shift: Align location edge to terrain?
+
+Arrow key modifiers:
+  None: Align to grid
+  Shift: Align to pixel
+  Ctrl: Resize mode (grid)
+  Ctrl+Shift: Resize mode (pixel)
 */
 
 bool LocationLayer::mouseEvent(MapView* view, QMouseEvent* e)
@@ -75,6 +94,10 @@ bool LocationLayer::mouseEvent(MapView* view, QMouseEvent* e)
           last_location_candidate = 0;
         }
         else {
+          int location_idx = tmp_out.at(last_location_candidate % tmp_out.size());
+          if (this->selected_locations.contains(location_idx)) {
+            last_location_candidate++;
+          }
           selectLocations({ tmp_out.at(last_location_candidate % tmp_out.size()) });
           last_location_candidate++;
         }
