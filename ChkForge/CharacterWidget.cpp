@@ -107,11 +107,11 @@ void CharacterWidget::setFont(const QFont& font)
 
   // Init charlist
   charlist.clear();
-  for (uint key = 1; key < 0x110000; ++key) {
+  for (char32_t key = 1; key < 0x110000; ++key) {
     auto fnt = fontForChar(key);
     if (fnt == nullptr) continue;
 
-    charlist.emplace_back(CharData{ key, QString::fromUcs4(&key, 1), fnt, std::nullopt });
+    charlist.emplace_back(CharData{ key, QString::fromUcs4(&key), fnt, std::nullopt });
   }
 
   // end
@@ -174,7 +174,8 @@ void CharacterWidget::paintEvent(QPaintEvent* event)
 void CharacterWidget::mousePressEvent(QMouseEvent* event)
 {
   if (event->button() == Qt::LeftButton) {
-    lastIndex = (event->y() / squareSize) * columns + event->x() / squareSize;
+    auto pos = event->pos() / squareSize;
+    lastIndex = pos.y() * columns + pos.x();
     if (lastIndex >= 0 && lastIndex < charlist.size()) {
       emit characterSelected(charlist[lastIndex].str);
       QGuiApplication::clipboard()->setText(charlist[lastIndex].str);
@@ -188,7 +189,7 @@ void CharacterWidget::mousePressEvent(QMouseEvent* event)
 
 void CharacterWidget::mouseMoveEvent(QMouseEvent* event)
 {
-  QPoint widgetPosition = mapFromGlobal(event->globalPos());
+  QPoint widgetPosition = mapFromGlobal(event->globalPosition().toPoint());
   uint index = (widgetPosition.y() / squareSize) * columns + widgetPosition.x() / squareSize;
   if (index >= charlist.size()) {
     QToolTip::hideText();
@@ -210,7 +211,7 @@ void CharacterWidget::mouseMoveEvent(QMouseEvent* event)
   if (!description.desc2.isEmpty())
     text += QString("<br>") + description.desc2;
 
-  QToolTip::showText(event->globalPos(), text, this);
+  QToolTip::showText(event->globalPosition().toPoint(), text, this);
 }
 
 void CharacterWidget::calculateSquareSize()

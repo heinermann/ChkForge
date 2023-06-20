@@ -88,7 +88,7 @@ int SCMDStringList::Dereference(__int16 stringindex, int SectionName, int unknow
 
 
 int SCMDStringList::DerefAndAddString(const char* Text, int oldStringIndex, int SectionName) {
-	Dereference(oldStringIndex, SectionName, 0);
+	Dereference(short(oldStringIndex), SectionName, 0);
 	return AddSCMD2String(Text, SectionName, 1);
 }
 

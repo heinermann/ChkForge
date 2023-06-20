@@ -104,7 +104,6 @@ int main(int argc, char *argv[])
 {
   QCoreApplication::setApplicationName("ChkForge");
   QCoreApplication::setOrganizationName("StareditMemes");
-  QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
   QApplication app(argc, argv);
 

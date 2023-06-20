@@ -209,20 +209,20 @@ bool MapView::mouseEventFilter(QObject* obj, QEvent* e)
 
         if (mouseEvent->pos().x() < 0) {
           this->last_drag_position += x_view_offset;
-          QCursor::setPos(mouseEvent->globalPos() + x_view_offset);
+          QCursor::setPos(mouseEvent->globalPosition().toPoint() + x_view_offset);
         }
         else if (mouseEvent->pos().x() >= ui->surface->width()) {
           this->last_drag_position -= x_view_offset;
-          QCursor::setPos(mouseEvent->globalPos() - x_view_offset);
+          QCursor::setPos(mouseEvent->globalPosition().toPoint() - x_view_offset);
         }
 
         if (mouseEvent->pos().y() < 0) {
           this->last_drag_position += y_view_offset;
-          QCursor::setPos(mouseEvent->globalPos() + y_view_offset);
+          QCursor::setPos(mouseEvent->globalPosition().toPoint() + y_view_offset);
         }
         else if (mouseEvent->pos().y() >= ui->surface->height()) {
           this->last_drag_position -= y_view_offset;
-          QCursor::setPos(mouseEvent->globalPos() - y_view_offset);
+          QCursor::setPos(mouseEvent->globalPosition().toPoint() - y_view_offset);
         }
 
       }

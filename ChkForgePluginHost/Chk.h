@@ -14,7 +14,7 @@ namespace Chk {
   constexpr size_t TotalOriginalLocations = 64;
   constexpr size_t TotalLocations = 255;
 
-  __declspec(align(1)) struct Location
+  struct Location
   {
     u32 left;
     u32 top;
@@ -23,5 +23,6 @@ namespace Chk {
     u16 stringId;
     u16 elevationFlags;
   };
+  static_assert(sizeof(Location) == 20);
 
 }

@@ -84,7 +84,7 @@ void PluginManager::toChunkData(CChunkData* data, ChkSection* section) {
 }
 
 void PluginManager::fromChunkData(CChunkData* data, ChkSection* section) {
-  Chk::SectionHeader hdr{ section->getName(), data->ChunkSize };
+  Chk::SectionHeader hdr{ section->getName(), Chk::SectionSize(data->ChunkSize) };
 
   std::stringstream ss;
   ss.write(reinterpret_cast<char*>(data->ChunkData), data->ChunkSize);
