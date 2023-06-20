@@ -504,7 +504,7 @@ namespace bwgame {
 
 
 	const sound_type_t* get_sound_type(Sounds id) const {
-	  if ((size_t)id >= (size_t)Sounds::None) error("invalid sound id %d", (size_t)id);
+	  if ((size_t)id >= (size_t)Sounds::None) error("invalid sound id %ull", (size_t)id);
 	  return &sound_types.vec[(size_t)id];
 	}
 
@@ -519,35 +519,39 @@ namespace bwgame {
 	a_vector<sound_channel> sound_channels;
 
 	void set_volume(int volume) {
-	  if (volume < 0) volume = 0;
-	  else if (volume > 100) volume = 100;
-	  global_volume = volume;
+	  global_volume = std::clamp(volume, 0, 100);
+		int i = 0;
 	  for (auto& c : sound_channels) {
-		if (c.playing) {
-		  native_sound::set_volume(&c - sound_channels.data(), (128 - 4) * (c.volume * global_volume / 100) / 100);
-		}
+			if (c.playing) {
+				native_sound::set_volume(i, (128 - 4) * (c.volume * global_volume / 100) / 100);
+			}
+			i++;
 	  }
 	}
 
 	sound_channel* get_sound_channel(int priority) {
 	  sound_channel* r = nullptr;
+		int i = 0;
 	  for (auto& c : sound_channels) {
-		if (c.playing) {
-		  if (!native_sound::is_playing(&c - sound_channels.data())) {
-			c.playing = false;
-			r = &c;
-		  }
+			if (c.playing) {
+				if (!native_sound::is_playing(i)) {
+					c.playing = false;
+					r = &c;
+				}
+			}
+			else {
+				r = &c;
+			}
+			i++;
 		}
-		else r = &c;
-	  }
-	  if (r) return r;
-	  int best_prio = priority;
-	  for (auto& c : sound_channels) {
-		if (c.flags & 0x20) continue;
-		if (c.priority < best_prio) {
-		  best_prio = c.priority;
-		  r = &c;
-		}
+		if (r) return r;
+		int best_prio = priority;
+		for (auto& c : sound_channels) {
+			if (c.flags & 0x20) continue;
+			if (c.priority < best_prio) {
+				best_prio = c.priority;
+				r = &c;
+			}
 	  }
 	  return r;
 	}

@@ -129,7 +129,7 @@
       <AdditionalIncludeDirectories>$(SolutionDir)/CascLib/CascLib/src;$(SolutionDir)/StormLib/StormLib/src;$(SolutionDir)/ads/ads/src;$(SolutionDir)/Chkdraft/Chkdraft;$(SolutionDir)/boost-geometry;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>release\</AssemblerListingLocation>
       <DebugInformationFormat>None</DebugInformationFormat>
-      <DisableSpecificWarnings>4100;4267;4244;4834;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4100;4267;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <ExceptionHandling>Sync</ExceptionHandling>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <ObjectFileName>release\</ObjectFileName>
@@ -199,7 +199,7 @@
       <AdditionalIncludeDirectories>$(SolutionDir)/CascLib/CascLib/src;$(SolutionDir)/StormLib/StormLib/src;$(SolutionDir)/ads/ads/src;$(SolutionDir)/Chkdraft/Chkdraft;$(SolutionDir)/boost-geometry;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>release\</AssemblerListingLocation>
       <DebugInformationFormat>None</DebugInformationFormat>
-      <DisableSpecificWarnings>4100;4267;4244;4834;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4100;4267;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <ExceptionHandling>Sync</ExceptionHandling>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <ObjectFileName>release\</ObjectFileName>
@@ -269,7 +269,7 @@
       <AdditionalIncludeDirectories>$(SolutionDir)/CascLib/CascLib/src;$(SolutionDir)/StormLib/StormLib/src;$(SolutionDir)/ads/ads/src;$(SolutionDir)/Chkdraft/Chkdraft;$(SolutionDir)/boost-geometry;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>debug\</AssemblerListingLocation>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <DisableSpecificWarnings>4100;4267;4244;4834;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4100;4267;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <ExceptionHandling>Sync</ExceptionHandling>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <ObjectFileName>debug\</ObjectFileName>
@@ -329,7 +329,7 @@
       <AdditionalIncludeDirectories>$(SolutionDir)/CascLib/CascLib/src;$(SolutionDir)/StormLib/StormLib/src;$(SolutionDir)/ads/ads/src;$(SolutionDir)/Chkdraft/Chkdraft;$(SolutionDir)/boost-geometry;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>debug\</AssemblerListingLocation>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <DisableSpecificWarnings>4100;4267;4244;4834;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4100;4267;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <ExceptionHandling>Sync</ExceptionHandling>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <ObjectFileName>debug\</ObjectFileName>

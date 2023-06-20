@@ -17,6 +17,7 @@
 #include <functional>
 #include <optional>
 #include <variant>
+#include <cassert>
 
 namespace bwgame {
 
@@ -18700,7 +18701,7 @@ struct state_functions {
 	int trigger_opponent_count(int owner, int player) const {
 		int r = 0;
 		for (int p : trigger_players(owner, player)) {
-			r += range_size(trigger_players(p, 26));
+			r += int(range_size(trigger_players(p, 26)));
 		}
 		return r;
 	}
@@ -19410,8 +19411,11 @@ struct state_functions {
 		unit_area.from.y = std::max(pos.y / 32 - unit_type->placement_size.y / 32 / 2, 0);
 		unit_area.to.x = std::min(unit_area.from.x + unit_type->placement_size.x / 32, game_st.map_tile_width);
 		unit_area.to.y = std::min(unit_area.from.y + unit_type->placement_size.y / 32, game_st.map_tile_height);
-		st.tiles.at(unit_area.from.y * game_st.map_tile_width + unit_area.from.x);
-		if (unit_area.from != unit_area.to) st.tiles.at((unit_area.to.y - 1) * game_st.map_tile_width + unit_area.to.x - 1);
+
+		// Works as assertions
+		(void)st.tiles.at(unit_area.from.y * game_st.map_tile_width + unit_area.from.x);
+		if (unit_area.from != unit_area.to) (void)st.tiles.at((unit_area.to.y - 1) * game_st.map_tile_width + unit_area.to.x - 1);
+
 		for (size_t y = unit_area.from.y; y != unit_area.to.y; ++y) {
 			for (size_t x = unit_area.from.x; x != unit_area.to.x; ++x) {
 				if (!tile_can_have_creep({x, y})) continue;
