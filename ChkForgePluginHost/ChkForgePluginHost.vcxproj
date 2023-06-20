@@ -90,6 +90,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PluginManager.cpp" />
+    <ClCompile Include="SCMDPlugin.cpp" />
+    <ClCompile Include="SICStringList.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Chk.h" />
+    <ClInclude Include="PluginManager.h" />
+    <ClInclude Include="SCMDPlugin.h" />
+    <ClInclude Include="SICStringList.h" />
+    <ClInclude Include="win32.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

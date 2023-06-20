@@ -10,8 +10,6 @@
 #include <filesystem>
 #include <sstream>
 
-#include <Windows.h>
-
 #include "MapContext.h"
 
 PluginLib::PluginLib(std::shared_ptr<QLibrary> lib, QFunctionPointer initPlugin, QFunctionPointer runPlugin, QFunctionPointer pluginGetMenuString, QFunctionPointer getPluginVersion)

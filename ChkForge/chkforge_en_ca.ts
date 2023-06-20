@@ -2535,12 +2535,12 @@ EditLocal:2:16</extracomment>
         <translation></translation>
     </message>
     <message>
-        <location filename="PluginManager.cpp" line="123"/>
+        <location filename="PluginManager.cpp" line="121"/>
         <source>Failed to load SCMDraft plugin: %1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="PluginManager.cpp" line="137"/>
+        <location filename="PluginManager.cpp" line="135"/>
         <source>Unable to resolve SCMDraft plugin exports: %1</source>
         <translation></translation>
     </message>

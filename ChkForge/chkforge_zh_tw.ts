@@ -1360,12 +1360,12 @@ Please select a different directory.</source>
         <translation>戰鬥錄影</translation>
     </message>
     <message>
-        <location filename="PluginManager.cpp" line="123"/>
+        <location filename="PluginManager.cpp" line="121"/>
         <source>Failed to load SCMDraft plugin: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="PluginManager.cpp" line="137"/>
+        <location filename="PluginManager.cpp" line="135"/>
         <source>Unable to resolve SCMDraft plugin exports: %1</source>
         <translation type="unfinished"></translation>
     </message>
