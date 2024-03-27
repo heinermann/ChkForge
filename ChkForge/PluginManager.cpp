@@ -43,20 +43,20 @@ std::vector<QAction*> PluginManager::addMenuOptions(QMenu* menu) {
 void PluginManager::runPlugin(std::shared_ptr<PluginLib> plugin, DWORD section) {
   CChunkData trig, mbrf, swnm, uprp, upus;
 
-  toChunkData(&trig, map->triggers.trig.get());
-  toChunkData(&mbrf, map->triggers.mbrf.get());
-  toChunkData(&swnm, map->triggers.swnm.get());
-  toChunkData(&uprp, map->triggers.uprp.get());
-  toChunkData(&upus, map->triggers.upus.get());
+  toChunkData(&trig, Chk::SectionName::TRIG);
+  toChunkData(&mbrf, Chk::SectionName::MBRF);
+  toChunkData(&swnm, Chk::SectionName::SWNM);
+  toChunkData(&uprp, Chk::SectionName::UPRP);
+  toChunkData(&upus, Chk::SectionName::UPUS);
 
   setupEngineData();
 
   if (plugin->RunPlugin(&engine_data, section, &trig, &mbrf, &swnm, &uprp, &upus)) {
-    fromChunkData(&trig, map->triggers.trig.get());
-    fromChunkData(&mbrf, map->triggers.mbrf.get());
-    fromChunkData(&swnm, map->triggers.swnm.get());
-    fromChunkData(&uprp, map->triggers.uprp.get());
-    fromChunkData(&upus, map->triggers.upus.get());
+    fromChunkData(&trig, Chk::SectionName::TRIG);
+    fromChunkData(&mbrf, Chk::SectionName::MBRF);
+    fromChunkData(&swnm, Chk::SectionName::SWNM);
+    fromChunkData(&uprp, Chk::SectionName::UPRP);
+    fromChunkData(&upus, Chk::SectionName::UPUS);
 
     mapContext->set_unsaved();
   }
@@ -73,23 +73,23 @@ void PluginManager::setupEngineData() {
   engine_data.UnitNames = unitNames;
 }
 
-void PluginManager::toChunkData(CChunkData* data, ChkSection* section) {
+void PluginManager::toChunkData(CChunkData* data, Chk::SectionName sectionName) {
   std::stringstream ss;
-  section->write(ss);
+  map->writeSection(ss, sectionName, false);
 
-  data->ChunkSize = section->getSize();
+  data->ChunkSize = ss.tellp();
   data->ChunkData = reinterpret_cast<BYTE*>(SCMDAllocRam(data->ChunkSize));
   
   ss.read(reinterpret_cast<char*>(data->ChunkData), data->ChunkSize);
 }
 
-void PluginManager::fromChunkData(CChunkData* data, ChkSection* section) {
-  Chk::SectionHeader hdr{ section->getName(), Chk::SectionSize(data->ChunkSize) };
+void PluginManager::fromChunkData(CChunkData* data, Chk::SectionName sectionName) {
+  Chk::SectionHeader hdr{ sectionName, Chk::SectionSize(data->ChunkSize) };
 
   std::stringstream ss;
   ss.write(reinterpret_cast<char*>(data->ChunkData), data->ChunkSize);
 
-  section->read(hdr, ss);
+  map->read(ss, sectionName, data->ChunkSize);
 }
 
 void PluginManager::loadPlugins() {
@@ -162,22 +162,21 @@ void PluginManager::setTrackingMap(std::shared_ptr<ChkForge::MapContext> mapCont
 
 void PluginManager::populateEngineMapData() {
   for (int i = 0; i < Chk::TotalForces; ++i) {
-    forceNameIds[i] = map->players.getForceStringId(Chk::Force(i));
+    forceNameIds[i] = map->getForceNameStringId(Chk::Force(i));
   }
 
   for (int i = 0; i < Sc::Unit::TotalTypes; ++i) {
     Sc::Unit::Type unit = Sc::Unit::Type(i);
-    unitNameIds[i] = map->strings.getUnitNameStringId(unit);
-    unitNameStrings[i] = *map->strings.getUnitName<RawString>(unit);
+    unitNameIds[i] = map->getUnitNameStringId(unit);
+    unitNameStrings[i] = *map->getUnitName<RawString>(unit);
     unitNames[i] = Sc::Unit::defaultDisplayNames[i].c_str();
   }
 
   for (int i = 0; i < Chk::TotalLocations; ++i) {
     locations[i].Data = Chk::Location{};
 
-    if (i < map->layers.numLocations()) {
-      auto loc_ptr = map->layers.getLocation(i + 1);
-      if (loc_ptr) locations[i].Data = *loc_ptr;
+    if (i < map->numLocations()) {
+      locations[i].Data = map->getLocation(i+1);
     }
     locations[i].Exists = !locations[i].Data.isBlank();
   }

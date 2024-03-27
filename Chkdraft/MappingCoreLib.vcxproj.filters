@@ -42,9 +42,6 @@
     <ClInclude Include="Chkdraft\MappingCoreLib\sha256.h">
       <Filter>Header Files\%2a</Filter>
     </ClInclude>
-    <ClInclude Include="Chkdraft\MappingCoreLib\StringBuffer.h">
-      <Filter>Header Files\%2a</Filter>
-    </ClInclude>
     <ClInclude Include="Chkdraft\MappingCoreLib\Chk.h">
       <Filter>Header Files\StarCraft</Filter>
     </ClInclude>
@@ -63,9 +60,6 @@
     <ClInclude Include="Chkdraft\MappingCoreLib\Scenario.h">
       <Filter>Header Files\StarCraft</Filter>
     </ClInclude>
-    <ClInclude Include="Chkdraft\MappingCoreLib\Sections.h">
-      <Filter>Header Files\StarCraft</Filter>
-    </ClInclude>
     <ClInclude Include="Chkdraft\MappingCoreLib\TextTrigCompiler.h">
       <Filter>Header Files\StarCraft</Filter>
     </ClInclude>
@@ -80,6 +74,9 @@
     </ClInclude>
     <ClInclude Include="Chkdraft\MappingCoreLib\SystemIO.h">
       <Filter>Header Files\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Chkdraft\MappingCoreLib\CascArchive.h">
+      <Filter>Header Files\StarCraft</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -107,9 +104,6 @@
     <ClCompile Include="Chkdraft\MappingCoreLib\Scenario.cpp">
       <Filter>Source Files\StarCraft</Filter>
     </ClCompile>
-    <ClCompile Include="Chkdraft\MappingCoreLib\Sections.cpp">
-      <Filter>Source Files\StarCraft</Filter>
-    </ClCompile>
     <ClCompile Include="Chkdraft\MappingCoreLib\TextTrigCompiler.cpp">
       <Filter>Source Files\StarCraft</Filter>
     </ClCompile>
@@ -124,6 +118,9 @@
     </ClCompile>
     <ClCompile Include="Chkdraft\MappingCoreLib\SystemIO.cpp">
       <Filter>Source Files\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Chkdraft\MappingCoreLib\CascArchive.cpp">
+      <Filter>Source Files\StarCraft</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

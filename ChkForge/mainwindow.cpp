@@ -616,11 +616,11 @@ void MainWindow::on_action_scenario_description_triggered()
   ScenarioDescription scenarioDlg(this);
   RawString name, desc;
   name = desc = map->chk->getFileName();
-  if (map->chk->strings.getScenarioNameStringId() != 0) {
-    name = *map->chk->strings.getScenarioName<RawString>();
+  if (map->chk->getScenarioNameStringId() != 0) {
+    name = *map->chk->getScenarioName<RawString>();
   }
-  if (map->chk->strings.getScenarioDescriptionStringId() != 0) {
-    desc = *map->chk->strings.getScenarioDescription<RawString>();
+  if (map->chk->getScenarioDescriptionStringId() != 0) {
+    desc = *map->chk->getScenarioDescription<RawString>();
   }
 
   scenarioDlg.name = QString::fromUtf8(name.data(), name.size());
@@ -629,8 +629,8 @@ void MainWindow::on_action_scenario_description_triggered()
   int result = scenarioDlg.exec();
   if (result != QDialog::Accepted) return;
 
-  map->chk->strings.setScenarioName(RawString(scenarioDlg.name.toUtf8()));
-  map->chk->strings.setScenarioDescription(RawString(scenarioDlg.description.toUtf8()));
+  map->chk->setScenarioName(RawString(scenarioDlg.name.toUtf8()));
+  map->chk->setScenarioDescription(RawString(scenarioDlg.description.toUtf8()));
 }
 
 void MainWindow::on_action_layer_options_triggered()

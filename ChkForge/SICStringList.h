@@ -54,6 +54,6 @@ public:
 
 private:
   std::shared_ptr<MapFile> current_map_file = nullptr;
-  Strings::StringBackup current_map_string_backup = { nullptr };
-  std::unordered_map<int,RawStringPtr> string_keeper;
+  std::vector<std::optional<ScStr>> current_map_string_backup {};
+  std::unordered_map<int,ScStr> string_keeper;
 };

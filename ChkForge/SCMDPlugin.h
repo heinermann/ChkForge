@@ -1,5 +1,6 @@
 #pragma once
 
+#include <Windows.h>
 #include "SICStringList.h"
 
 void* __cdecl SCMDAllocRam(DWORD Size);

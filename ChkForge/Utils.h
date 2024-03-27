@@ -63,7 +63,6 @@ namespace ChkForge {
     rect(const QRect& other) : backed_t{ other.left(), other.top(), other.right(), other.bottom() } {}
     rect(const bwgame::rect& other) : backed_t{ other.from.x, other.from.y, other.to.x, other.to.y } {}
     rect(const Chk::Location& other) : backed_t{ other.left, other.top, other.right, other.bottom } {}
-    rect(const Chk::LocationPtr& other) : rect{ *other } {}
 
     constexpr int left() const { return std::get<0>(*this); }
     constexpr int top() const { return std::get<1>(*this); }

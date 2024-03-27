@@ -6,7 +6,7 @@ Some code snippets from Starforge are used (i.e. terrain).
 ## Libraries & Technologies Used
 - [Qt](https://www.qt.io/) for GUI and other utilities.
 - [Qt-Advanced-Docking-System](https://github.com/githubuser0xFFFF/Qt-Advanced-Docking-System) for better docking UI.
-- [MappingCoreLib](https://github.com/jjf28/Chkdraft/tree/master/MappingCoreLib) (ChkDraft) and its dependencies for map/chk management.
+- [MappingCoreLib](https://github.com/TheNitesWhoSay/Chkdraft/tree/master/MappingCoreLib) (ChkDraft) and its dependencies for map/chk management.
 - [OpenBW](https://github.com/OpenBW/openbw) for rendering and simulation.
 - [StormLib](https://github.com/ladislav-zezula/StormLib) for MPQ management.
 - [CascLib](https://github.com/ladislav-zezula/CascLib) for Casc loading.

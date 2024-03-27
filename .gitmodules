@@ -3,7 +3,7 @@
 	url = git@github.com:ladislav-zezula/StormLib.git
 [submodule "Chkdraft/Chkdraft"]
 	path = Chkdraft/Chkdraft
-	url = git@github.com:jjf28/Chkdraft.git
+	url = git@github.com:TheNitesWhoSay/Chkdraft.git
 [submodule "CascLib/CascLib"]
 	path = CascLib/CascLib
 	url = git@github.com:ladislav-zezula/CascLib.git
