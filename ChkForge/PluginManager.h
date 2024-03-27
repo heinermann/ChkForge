@@ -38,8 +38,8 @@ private:
   bool initPlugin(std::shared_ptr<PluginLib> plugin);
 
   void runPlugin(std::shared_ptr<PluginLib> plugin, DWORD section);
-  void toChunkData(CChunkData* data, ChkSection* section);
-  void fromChunkData(CChunkData* data, ChkSection* section);
+  void toChunkData(CChunkData* data, Chk::SectionName sectionName);
+  void fromChunkData(CChunkData* data, Chk::SectionName sectionName);
 
   void setupEngineData();
   void populateEngineMapData();

@@ -81,11 +81,11 @@ QRect MapContext::map_dimensions() const
 }
 int MapContext::tile_width() const
 {
-  return chk->layers.getTileWidth();
+  return chk->dimensions.tileWidth;
 }
 int MapContext::tile_height() const
 {
-  return chk->layers.getTileHeight();
+  return chk->dimensions.tileHeight;
 }
 
 Sc::Terrain::Tileset MapContext::tileset() const
@@ -96,13 +96,8 @@ Sc::Terrain::Tileset MapContext::tileset() const
 std::vector<std::pair<QString, int>> MapContext::locations() const {
   std::vector<std::pair<QString, int>> result;
 
-  auto mrgn = chk->layers.mrgn;
-  for (size_t i = 0; i < mrgn->numLocations(); i++) {
+  for (size_t i = 0; i < chk->numLocations(); i++) {
     // Note: 64 = Anywhere
-
-    auto location = mrgn->getLocation(i);
-    if (!location) continue;
-
     result.emplace_back(get_location_name(i), i);
   }
 
@@ -110,50 +105,50 @@ std::vector<std::pair<QString, int>> MapContext::locations() const {
 }
 
 QString MapContext::get_location_name(int id) const {
-  auto name = chk->strings.getLocationName<RawString>(id);
+  auto name = chk->getLocationName<RawString>(id);
   if (name) {
     return QString::fromStdString(*name);
   }
   return tr("Location %1").arg(id + 1);
 }
 
-Chk::LocationPtr MapContext::get_location(int id) const {
-  return chk->layers.mrgn->getLocation(id);
+Chk::Location& MapContext::get_location(int id) const {
+  return chk->getLocation(id);
 }
 
 int MapContext::num_locations() const {
-  return chk->layers.mrgn->numLocations();
+  return chk->numLocations();
 }
 
 
 void MapContext::place_unit(Sc::Unit::Type unitType, int owner, int x, int y)
 {
-  auto unit = std::make_shared<Chk::Unit>();
+  Chk::Unit unit {};
 
-  unit->classId = 0;
-  unit->relationClassId = 0;
-  unit->relationFlags = 0;
+  unit.classId = 0;
+  unit.relationClassId = 0;
+  unit.relationFlags = 0;
 
-  unit->type = unitType;
-  unit->owner = owner;
-  unit->xc = x;
-  unit->yc = y;
+  unit.type = unitType;
+  unit.owner = owner;
+  unit.xc = x;
+  unit.yc = y;
 
-  unit->hitpointPercent = 100;
-  unit->shieldPercent = 100;
-  unit->energyPercent = 100;
-  unit->hangerAmount = 0;
-  unit->resourceAmount = 0;
-  unit->validFieldFlags = 0xFFFF;
+  unit.hitpointPercent = 100;
+  unit.shieldPercent = 100;
+  unit.energyPercent = 100;
+  unit.hangerAmount = 0;
+  unit.resourceAmount = 0;
+  unit.validFieldFlags = 0xFFFF;
 
-  unit->stateFlags = 0;
-  unit->validStateFlags = 0xFFFF;
+  unit.stateFlags = 0;
+  unit.validStateFlags = 0xFFFF;
 
-  unit->unused = 0;
+  unit.unused = 0;
 
   // TODO: Undo
 
-  chk->layers.addUnit(unit);
+  chk->addUnit(unit);
 
   placeOpenBwUnit(unit);
   // see also create_initial_unit
@@ -165,7 +160,7 @@ void MapContext::apply_brush(const QRect& rect, int tileGroup, int clutter)
   // Source: Modified from Starforge: Ultimate
   QRect clip = rect.intersected(map_dimensions());
 
-  Tileset* tileset = Tileset::fromId(chk->layers.getTileset());
+  Tileset* tileset = Tileset::fromId(chk->tileset);
 
   // TODO: undo
   for (int y = clip.top(); y <= clip.bottom(); ++y) {
@@ -174,25 +169,25 @@ void MapContext::apply_brush(const QRect& rect, int tileGroup, int clutter)
 
         if (x == clip.right() - 1 && x < tile_width() - 1 && tileGroup > 1)
         {
-          int next_tile = chk->layers.getTile(x + 1, y);
+          int next_tile = chk->getTile(x + 1, y);
           if (next_tile / 16 == tileGroup + 1) {
-            chk->layers.setTile(x, y, next_tile - 16);
+            chk->setTile(x, y, next_tile - 16);
             continue;
           }
         }
 
-        chk->layers.setTile(x, y, tileset->randomTile(tileGroup, clutter));
+        chk->setTile(x, y, tileset->randomTile(tileGroup, clutter));
       }
       else {
         if (x == clip.x() && x > 0) {
-          int prev_tile = chk->layers.getTile(x - 1, y);
+          int prev_tile = chk->getTile(x - 1, y);
           if (prev_tile / 16 != tileGroup) {
-            chk->layers.setTile(x, y, tileset->randomTile(tileGroup + 1, clutter));
+            chk->setTile(x, y, tileset->randomTile(tileGroup + 1, clutter));
             continue;
           }
         }
 
-        chk->layers.setTile(x, y, chk->layers.getTile(x - 1, y) + 16);
+        chk->setTile(x, y, chk->getTile(x - 1, y) + 16);
       }
 
     }
@@ -250,11 +245,8 @@ std::string MapContext::filepath()
 
 std::string MapContext::mapname()
 {
-  auto str = chk->strings.getScenarioName<RawString>();
-  if (str) {
-    return *str.get();
-  }
-  return "";
+  auto str = chk->getScenarioName<RawString>();
+  return str ? str.value() : std::string("");
 }
 
 QRgb MapContext::player_color(int player_num)

@@ -120,8 +120,8 @@
 **[OpenBW](https://github.com/OpenBW/openbw)** for game rendering and playing.
 - [tscmoo](https://github.com/tscmoo)
 
-**[ChkDraft](https://github.com/jjf28/Chkdraft)** for map editor management.
-- [jjf28](https://github.com/jjf28)
+**[ChkDraft](https://github.com/TheNitesWhoSay/Chkdraft)** for map editor management.
+- [TheNitesWhoSay](https://github.com/TheNitesWhoSay)
 
 **[StormLib](https://github.com/ladislav-zezula/StormLib)** and [CascLib](https://github.com/ladislav-zezula/CascLib) for archive management.
 - [Ladislav Zezula](https://github.com/ladislav-zezula)
@@ -368,7 +368,7 @@ Some select Starforge code snippets and resources.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MapContext.cpp" line="117"/>
+        <location filename="MapContext.cpp" line="112"/>
         <source>Location %1</source>
         <translation type="unfinished"></translation>
     </message>

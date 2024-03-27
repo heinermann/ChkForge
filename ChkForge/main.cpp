@@ -18,7 +18,7 @@
 #include "icons.h"
 #include "Utils.h"
 
-#include <CommanderLib/Logger.h>
+#include "../Chkdraft/CrossCutLib/Logger.h"
 
 Logger logger;
 

@@ -38,19 +38,19 @@ void MapContext::chkdraft_to_openbw()
   game_load_funcs.load_map_data(reinterpret_cast<unsigned char*>(data.data()), data.size(), {}, !openbw_ui.is_editor, unit_created_cb);
 }
 
-int MapContext::placeOpenBwUnit(Chk::UnitPtr unit) {
+int MapContext::placeOpenBwUnit(const Chk::Unit& unit) {
 
-  int type = unit->type;
-  int owner = unit->owner;
+  int type = unit.type;
+  int owner = unit.owner;
 
   if (type >= Sc::Unit::TotalTypes) return -1;
   if (owner >= Sc::Player::Total) owner = 0;
 
   const bwgame::unit_type_t* obw_unit_type = openbw_ui.get_unit_type(bwgame::UnitTypes(type));
 
-  bwgame::unit_t* new_unit = openbw_ui.create_editor_unit(obw_unit_type, { unit->xc, unit->yc }, owner);
+  bwgame::unit_t* new_unit = openbw_ui.create_editor_unit(obw_unit_type, { unit.xc, unit.yc }, owner);
   if (new_unit == nullptr) {
-    bwgame::warn("Failed to create unit type %d at (%d, %d)", type, unit->xc, unit->yc);
+    bwgame::warn("Failed to create unit type %d at (%d, %d)", type, unit.xc, unit.yc);
     return -1;
   }
 

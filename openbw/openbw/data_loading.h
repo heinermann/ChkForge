@@ -499,7 +499,8 @@ struct mpq_file {
 	  mpq.open(filename);
 	}
 	void operator()(a_vector<uint8_t>& dst, a_string filename) {
-	  mpq.getFile(filename, dst);
+	  if (auto file = mpq.getFile(filename))
+	    dst.swap(file.value());
 	}
 };
 

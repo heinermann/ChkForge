@@ -149,9 +149,10 @@ void LocationLayer::paintLocationName(QPainter& painter, const QPoint& pos, cons
 
 // Note: 64 = Anywhere
 void LocationLayer::paintLocation(MapView* view, QPainter& painter, int locationId) {
-  Chk::LocationPtr location = map->get_location(locationId);
-  if (!location) return;
+  if (locationId < 0 || locationId >= map->num_locations())
+    return;
 
+  auto location = map->get_location(locationId);
   QRect locationRect = view->mapToViewRect(rect{ location });
   QRect viewRect = { { 0, 0 }, view->getViewSize() };
   if (!viewRect.intersects(locationRect)) return;
@@ -225,9 +226,9 @@ void LocationLayer::locationUpdated(int id) {
 }
 
 std::optional<LocMap> LocationLayer::getLocationData(int id) const {
-  auto location = map->get_location(id);
-  if (!location) return std::nullopt;
-  return LocMap(BoostRect(rect{ location }), id);
+  if(id < 0 || id >= map->num_locations())
+    return std::nullopt;
+  return LocMap(BoostRect(rect{ map->get_location(id) }), id);
 }
 
 void LocationLayer::selectLocations(const std::vector<int>& locations) {

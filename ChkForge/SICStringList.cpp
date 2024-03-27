@@ -8,26 +8,25 @@
 
 void SCMDStringList::setTrackingMap(std::shared_ptr<MapFile> map) {
 	current_map_file = map;
-	current_map_string_backup = { nullptr };
+	current_map_string_backup = {};
 	string_keeper.clear();
 }
 
 
 int SCMDStringList::FindString_RawIndex(const char* str) {
   RawString target = RawString(str);
-  return current_map_file->strings.findString(target);
+  return current_map_file->findString(target);
 }
 
 
 const char* SCMDStringList::GetString(int strid) {
 	if (string_keeper.count(strid) != 0) {
-		return string_keeper.at(strid)->c_str();
+		return string_keeper.at(strid).str;
 	}
 
-	auto str = current_map_file->strings.getString<RawString>(strid);
+	auto str = current_map_file->getString<RawString>(strid);
 	if (str) {
-		string_keeper.emplace(strid, str);
-		return str->c_str();
+		return string_keeper.emplace(strid, Chk::ScStr{str->c_str()}).first->second.str;
 	}
 	return "";
 }
@@ -84,7 +83,7 @@ std::string ConvertString_SCMD2ToRaw(const char* scmd2text) {
 
 int SCMDStringList::AddSCMD2String(const char* scmd2text, int SectionName, char AlwaysCreate) {
 	std::string newString = ConvertString_SCMD2ToRaw(scmd2text);
-	return current_map_file->strings.addString(RawString(newString));
+	return current_map_file->addString(RawString(newString));
 }
 
 
@@ -102,36 +101,31 @@ int SCMDStringList::DerefAndAddString(const char* Text, int oldStringIndex, int 
 char SCMDStringList::SetSCMD2Text(const char* scmd2text, int stringID) {
 	std::string newString = ConvertString_SCMD2ToRaw(scmd2text);
 	string_keeper.erase(stringID);
-	current_map_file->strings.replaceString(stringID, RawString(newString));
+	current_map_file->replaceString(stringID, RawString(newString));
 	return 1;
 }
 
 
 int SCMDStringList::GetTotalStringNum() {
-	return current_map_file->strings.getCapacity();
+	return current_map_file->getCapacity();
 }
 
 
 char SCMDStringList::BackupStrings() {
-	auto backup = current_map_file->strings.backup();
-	if (backup.strBackup == nullptr) return 0;
-	
-	current_map_string_backup = backup;
+	current_map_string_backup = current_map_file->strings;
 	return 1;
 }
 
 
 char SCMDStringList::RestoreBackup() {
-	if (current_map_string_backup.strBackup == nullptr) return 0;
-
-	current_map_file->strings.restore(current_map_string_backup);
+	current_map_file->strings = current_map_string_backup;
 	string_keeper.clear();
 	return 1;
 }
 
 
 char SCMDStringList::ClearBackup() {
-	current_map_string_backup = { nullptr };
+	current_map_string_backup = {};
 	return 1;
 }
 

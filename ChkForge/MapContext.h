@@ -64,7 +64,7 @@ namespace ChkForge
     Sc::Terrain::Tileset tileset() const;
     std::vector<std::pair<QString, int>> locations() const;
     QString get_location_name(int id) const;
-    Chk::LocationPtr get_location(int id) const;
+    Chk::Location& get_location(int id) const;
     int num_locations() const;
 
     void place_unit(Sc::Unit::Type unitType, int owner, int x, int y);
@@ -98,7 +98,7 @@ namespace ChkForge
 
     void placeUnit(int x, int y, Sc::Unit::Type type, int player);
 
-    int placeOpenBwUnit(Chk::UnitPtr unit);
+    int placeOpenBwUnit(const Chk::Unit& unit);
     void removeOpenBwUnit(int index);
 
     void start_playback();

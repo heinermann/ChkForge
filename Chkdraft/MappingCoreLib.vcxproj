@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClInclude Include="Chkdraft\MappingCoreLib\ArchiveFile.h" />
     <ClInclude Include="Chkdraft\MappingCoreLib\Basics.h" />
+    <ClInclude Include="Chkdraft\MappingCoreLib\CascArchive.h" />
     <ClInclude Include="Chkdraft\MappingCoreLib\Chk.h" />
     <ClInclude Include="Chkdraft\MappingCoreLib\EscapeStrings.h" />
     <ClInclude Include="Chkdraft\MappingCoreLib\FileBrowser.h" />
@@ -29,9 +30,7 @@
     <ClInclude Include="Chkdraft\MappingCoreLib\MpqFile.h" />
     <ClInclude Include="Chkdraft\MappingCoreLib\Sc.h" />
     <ClInclude Include="Chkdraft\MappingCoreLib\Scenario.h" />
-    <ClInclude Include="Chkdraft\MappingCoreLib\Sections.h" />
     <ClInclude Include="Chkdraft\MappingCoreLib\sha256.h" />
-    <ClInclude Include="Chkdraft\MappingCoreLib\StringBuffer.h" />
     <ClInclude Include="Chkdraft\MappingCoreLib\SystemIO.h" />
     <ClInclude Include="Chkdraft\MappingCoreLib\TextTrigCompiler.h" />
     <ClInclude Include="Chkdraft\MappingCoreLib\TextTrigGenerator.h" />
@@ -39,6 +38,7 @@
   <ItemGroup>
     <ClCompile Include="Chkdraft\MappingCoreLib\ArchiveFile.cpp" />
     <ClCompile Include="Chkdraft\MappingCoreLib\Basics.cpp" />
+    <ClCompile Include="Chkdraft\MappingCoreLib\CascArchive.cpp" />
     <ClCompile Include="Chkdraft\MappingCoreLib\Chk.cpp" />
     <ClCompile Include="Chkdraft\MappingCoreLib\EscapeStrings.cpp" />
     <ClCompile Include="Chkdraft\MappingCoreLib\FileBrowser.cpp" />
@@ -46,20 +46,19 @@
     <ClCompile Include="Chkdraft\MappingCoreLib\MpqFile.cpp" />
     <ClCompile Include="Chkdraft\MappingCoreLib\Sc.cpp" />
     <ClCompile Include="Chkdraft\MappingCoreLib\Scenario.cpp" />
-    <ClCompile Include="Chkdraft\MappingCoreLib\Sections.cpp" />
     <ClCompile Include="Chkdraft\MappingCoreLib\sha256.cpp" />
     <ClCompile Include="Chkdraft\MappingCoreLib\SystemIO.cpp" />
     <ClCompile Include="Chkdraft\MappingCoreLib\TextTrigCompiler.cpp" />
     <ClCompile Include="Chkdraft\MappingCoreLib\TextTrigGenerator.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Chkdraft\CommanderLib\CommanderLib.vcxproj">
-      <Project>{e56cb8f1-772d-4266-8239-14322a96f274}</Project>
+    <ProjectReference Include="Chkdraft\CrossCutLib\CrossCutLib.vcxproj">
+      <Project>{6c146ac6-2ec2-45c5-82cd-4fbcdf1cbc9d}</Project>
     </ProjectReference>
     <ProjectReference Include="Chkdraft\IcuLib\common.vcxproj">
       <Project>{73c0a65b-d1f2-4de1-b3a6-15dad2c23f3d}</Project>
     </ProjectReference>
-    <ProjectReference Include="Chkdraft\StormLib\StormLib_vs15.vcxproj">
+    <ProjectReference Include="Chkdraft\StormLib\StormLib_vs22.vcxproj">
       <Project>{78424708-1f6e-4d4b-920c-fb6d26847055}</Project>
     </ProjectReference>
   </ItemGroup>
@@ -131,7 +130,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NOMINMAX;STORMLIB_NO_AUTO_LINK;_CRT_SECURE_NO_WARNINGS;UNICODE;_UNICODE;U_STATIC_IMPLEMENTATION;WIN64;WIN32;CHKD_DEBUG;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NOMINMAX;STORMLIB_NO_AUTO_LINK;CASCLIB_NO_AUTO_LINK_LIBRARY;_CRT_SECURE_NO_WARNINGS;UNICODE;_UNICODE;U_STATIC_IMPLEMENTATION;WIN64;WIN32;CHKD_DEBUG;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalIncludeDirectories>Chkdraft/IcuLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -147,7 +146,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NOMINMAX;STORMLIB_NO_AUTO_LINK;_CRT_SECURE_NO_WARNINGS;UNICODE;_UNICODE;U_STATIC_IMPLEMENTATION;WIN64;WIN32;CHKD_DEBUG;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NOMINMAX;STORMLIB_NO_AUTO_LINK;CASCLIB_NO_AUTO_LINK_LIBRARY;_CRT_SECURE_NO_WARNINGS;UNICODE;_UNICODE;U_STATIC_IMPLEMENTATION;WIN64;WIN32;CHKD_DEBUG;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalIncludeDirectories>Chkdraft/IcuLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -165,7 +164,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NOMINMAX;STORMLIB_NO_AUTO_LINK;_CRT_SECURE_NO_WARNINGS;UNICODE;_UNICODE;U_STATIC_IMPLEMENTATION;WIN64;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NOMINMAX;STORMLIB_NO_AUTO_LINK;CASCLIB_NO_AUTO_LINK_LIBRARY;_CRT_SECURE_NO_WARNINGS;UNICODE;_UNICODE;U_STATIC_IMPLEMENTATION;WIN64;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalIncludeDirectories>Chkdraft/IcuLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -185,7 +184,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NOMINMAX;STORMLIB_NO_AUTO_LINK;_CRT_SECURE_NO_WARNINGS;UNICODE;_UNICODE;U_STATIC_IMPLEMENTATION;WIN64;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NOMINMAX;STORMLIB_NO_AUTO_LINK;CASCLIB_NO_AUTO_LINK_LIBRARY;_CRT_SECURE_NO_WARNINGS;UNICODE;_UNICODE;U_STATIC_IMPLEMENTATION;WIN64;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalIncludeDirectories>Chkdraft/IcuLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>

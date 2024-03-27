@@ -42,78 +42,94 @@ void ScenarioSettings::syncUiWithData() {
 }
 
 void ScenarioSettings::readFromMap(const std::shared_ptr<MapFile> map) {
-  settings.side = map->players.side->get();
-  settings.colr = map->players.colr->get();
-  settings.forc = map->players.forc->get();
-  settings.ownr = map->players.ownr->get();
-  settings.iown = map->players.iown->get();
+  for (size_t i=0; i<Sc::Player::Total; ++i)
+    settings.side.playerRaces[i] = map->playerRaces[i];
 
-  settings.unis = map->properties.unis->get();
-  settings.unix = map->properties.unix->get();
-  settings.puni = map->properties.puni->get();
-  settings.upgs = map->properties.upgs->get();
-  settings.upgx = map->properties.upgx->get();
-  settings.upgr = map->properties.upgr->get();
-  settings.pupx = map->properties.pupx->get();
-  settings.tecs = map->properties.tecs->get();
-  settings.tecx = map->properties.tecx->get();
-  settings.ptec = map->properties.ptec->get();
-  settings.ptex = map->properties.ptex->get();
+  for (size_t i=0; i<Sc::Player::TotalSlots; ++i)
+    settings.colr.playerColor[i] = map->playerColors[i];
+
+  settings.forc = map->forces;
+
+  for (size_t i=0; i<Sc::Player::Total; ++i)
+  {
+    settings.ownr.slotType[i] = map->slotTypes[i];
+    settings.iown.slotType[i] = map->iownSlotTypes[i];
+  }
+
+  settings.unis = map->origUnitSettings;
+  settings.unix = map->unitSettings;
+  settings.puni = map->unitAvailability;
+  settings.upgs = map->origUpgradeCosts;
+  settings.upgx = map->upgradeCosts;
+  settings.upgr = map->origUpgradeLeveling;
+  settings.pupx = map->upgradeLeveling;
+  settings.tecs = map->origTechnologyCosts;
+  settings.tecx = map->techCosts;
+  settings.ptec = map->origTechnologyAvailability;
+  settings.ptex = map->techAvailability;
 
   // TODO: Chk::Scope::Game is broken
   for (unsigned i = 0; i < Chk::TotalForces; ++i) {
     Chk::Force force = Chk::Force(i);
-    bool useCustomForceName = map->strings.getForceNameStringId(force) != Chk::StringId::NoString;
+    bool useCustomForceName = map->getForceNameStringId(force) != Chk::StringId::NoString;
 
     settings.useCustomForceNames[i] = useCustomForceName;
     if (useCustomForceName)
-      settings.forceNames[i] = *map->strings.getForceName<RawString>(force);
+      settings.forceNames[i] = *map->getForceName<RawString>(force);
   }
 
   for (unsigned i = 0; i < Sc::Unit::TotalTypes; ++i) {
     Sc::Unit::Type unitType = Sc::Unit::Type(i);
-    bool useDefaultUnitName = map->strings.getUnitNameStringId(unitType) == Chk::StringId::NoString;
+    bool useDefaultUnitName = map->getUnitNameStringId(unitType) == Chk::StringId::NoString;
 
     settings.useDefaultUnitNames[i] = useDefaultUnitName;
     if (!useDefaultUnitName)
-      settings.unitNames[i] = *map->strings.getUnitName<RawString>(unitType);
+      settings.unitNames[i] = *map->getUnitName<RawString>(unitType);
   }
   syncUiWithData();
 }
 
 void ScenarioSettings::writeToMap(std::shared_ptr<MapFile> map) const {
-  map->players.side->get() = settings.side;
-  map->players.colr->get() = settings.colr;
-  map->players.forc->get() = settings.forc;
-  map->players.ownr->get() = settings.ownr;
-  map->players.iown->get() = settings.iown;
+  for (size_t i=0; i<Sc::Player::Total; ++i)
+    map->playerRaces[i] = settings.side.playerRaces[i];
 
-  map->properties.unis->get() = settings.unis;
-  map->properties.unix->get() = settings.unix;
-  map->properties.puni->get() = settings.puni;
-  map->properties.upgs->get() = settings.upgs;
-  map->properties.upgx->get() = settings.upgx;
-  map->properties.upgr->get() = settings.upgr;
-  map->properties.pupx->get() = settings.pupx;
-  map->properties.tecs->get() = settings.tecs;
-  map->properties.tecx->get() = settings.tecx;
-  map->properties.ptec->get() = settings.ptec;
-  map->properties.ptex->get() = settings.ptex;
+  for (size_t i=0; i<Sc::Player::TotalSlots; ++i)
+    map->playerColors[i] = settings.colr.playerColor[i];
+
+  map->forces = settings.forc;
+
+  for (size_t i=0; i<Sc::Player::Total; ++i)
+  {
+    map->slotTypes[i] = settings.ownr.slotType[i];
+    map->iownSlotTypes[i] = settings.iown.slotType[i];
+  }
+
+  map->origUnitSettings = settings.unis;
+  map->unitSettings = settings.unix;
+  map->unitAvailability = settings.puni;
+  map->origUpgradeCosts = settings.upgs;
+  map->upgradeCosts = settings.upgx;
+  map->origUpgradeLeveling = settings.upgr;
+  map->upgradeLeveling = settings.pupx;
+  map->origTechnologyCosts = settings.tecs;
+  map->techCosts = settings.tecx;
+  map->origTechnologyAvailability = settings.ptec;
+  map->techAvailability = settings.ptex;
 
   for (unsigned i = 0; i < Chk::TotalForces; ++i) {
     Chk::Force force = Chk::Force(i);
     if (settings.useCustomForceNames[i])
-      map->strings.setForceName(force, RawString(settings.forceNames[i]));
+      map->setForceName(force, RawString(settings.forceNames[i]));
     else
-      map->strings.setForceNameStringId(force, Chk::StringId::NoString);
+      map->setForceNameStringId(force, Chk::StringId::NoString);
   }
 
   for (unsigned i = 0; i < Sc::Unit::TotalTypes; ++i) {
     Sc::Unit::Type unitType = Sc::Unit::Type(i);
     if (settings.useDefaultUnitNames[i])
-      map->strings.setUnitNameStringId(unitType, Chk::StringId::NoString);
+      map->setUnitNameStringId(unitType, Chk::StringId::NoString);
     else
-      map->strings.setUnitName(unitType, RawString(settings.unitNames[i]));
+      map->setUnitName(unitType, RawString(settings.unitNames[i]));
   }
 }
 
