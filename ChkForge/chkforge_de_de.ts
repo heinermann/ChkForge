@@ -47,7 +47,8 @@
         <location filename="abilitiestab.ui" line="160"/>
         <location filename="abilitiestab.ui" line="329"/>
         <source>Availability</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation>Vorhandensein</translation>
     </message>
     <message>
         <location filename="abilitiestab.ui" line="199"/>
@@ -517,7 +518,8 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="itemtree.cpp" line="135"/>
         <source>Locations</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation>Regionen</translation>
     </message>
     <message>
         <location filename="itemtree.cpp" line="141"/>
@@ -527,7 +529,8 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="itemtree.cpp" line="142"/>
         <source>Clipboard</source>
-        <translation type="unfinished">Zwischenablage</translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation>Zwischenablage</translation>
     </message>
 </context>
 <context>
@@ -622,7 +625,8 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="locationproperties.ui" line="189"/>
         <source>Usage</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation>Verwendung</translation>
     </message>
 </context>
 <context>
@@ -1088,7 +1092,8 @@ Other sizes may crash Starcraft.</source>
     <message>
         <location filename="newmap.ui" line="195"/>
         <source>Clutter</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation type="unfinished">Unordnung</translation>
     </message>
 </context>
 <context>
@@ -1414,7 +1419,8 @@ Please select a different directory.</source>
     <message>
         <location filename="strings.cpp" line="22"/>
         <source>Other</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation type="unfinished">Andere</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="24"/>
@@ -2395,6 +2401,7 @@ EditLocal:2:16</extracomment>
         <source>Moguls</source>
         <comment>Ice</comment>
         <extracomment>SEditENU:189:3016, stat_txt:DDS_ICE_MUD</extracomment>
+        <translatorcomment>correction: Schneewehe?</translatorcomment>
         <translation>Schneehügel</translation>
     </message>
     <message>
@@ -2696,7 +2703,8 @@ EditLocal:2:16</extracomment>
     <message>
         <location filename="terrainbrush.ui" line="150"/>
         <source>Rect</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation type="unfinished">Rechteck</translation>
     </message>
     <message>
         <location filename="terrainbrush.ui" line="169"/>
@@ -2706,7 +2714,8 @@ EditLocal:2:16</extracomment>
     <message>
         <location filename="terrainbrush.ui" line="183"/>
         <source>Clutter</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation type="unfinished">Unordnung</translation>
     </message>
     <message>
         <location filename="terrainbrush.cpp" line="5"/>
@@ -2828,7 +2837,7 @@ EditLocal:2:16</extracomment>
         <location filename="unitstab.ui" line="62"/>
         <location filename="unitstab.ui" line="110"/>
         <source>Availability</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vorhandensein</translation>
     </message>
     <message>
         <location filename="unitstab.ui" line="159"/>

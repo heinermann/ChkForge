@@ -43,7 +43,8 @@
         <location filename="abilitiestab.ui" line="160"/>
         <location filename="abilitiestab.ui" line="329"/>
         <source>Availability</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation>Disponibilità</translation>
     </message>
     <message>
         <location filename="abilitiestab.ui" line="199"/>
@@ -510,7 +511,8 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="itemtree.cpp" line="135"/>
         <source>Locations</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation>Luoghi</translation>
     </message>
     <message>
         <location filename="itemtree.cpp" line="141"/>
@@ -520,7 +522,8 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="itemtree.cpp" line="142"/>
         <source>Clipboard</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation>Appunti</translation>
     </message>
 </context>
 <context>
@@ -1067,7 +1070,8 @@ Other sizes may crash Starcraft.</source>
     <message>
         <location filename="newmap.ui" line="195"/>
         <source>Clutter</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation type="unfinished">Disordine</translation>
     </message>
 </context>
 <context>
@@ -2302,6 +2306,7 @@ EditLocal:2:16</extracomment>
         <source>Crags</source>
         <comment>Desert</comment>
         <extracomment>SEditENU:188:3006, stat_txt:DDS_DESERT_RUINS</extracomment>
+        <translatorcomment>inaccurate?</translatorcomment>
         <translation>Picchi</translation>
     </message>
     <message>
@@ -2316,7 +2321,8 @@ EditLocal:2:16</extracomment>
         <source>Compound</source>
         <comment>Desert</comment>
         <extracomment>SEditENU:189:3008, stat_txt:DDS_DESERT_RESOURCE</extracomment>
-        <translation>Composto</translation>
+        <translatorcomment>wiktionary (corrected from Composto)</translatorcomment>
+        <translation type="unfinished">Complesso</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="238"/>
@@ -2379,7 +2385,8 @@ EditLocal:2:16</extracomment>
         <source>Moguls</source>
         <comment>Ice</comment>
         <extracomment>SEditENU:189:3016, stat_txt:DDS_ICE_MUD</extracomment>
-        <translation>Gobbe</translation>
+        <translatorcomment>wiktionary, originally Gobbe</translatorcomment>
+        <translation type="unfinished">Cumulo di neve</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="265"/>
@@ -2673,7 +2680,8 @@ EditLocal:2:16</extracomment>
     <message>
         <location filename="terrainbrush.ui" line="150"/>
         <source>Rect</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation type="unfinished">Rettangolo</translation>
     </message>
     <message>
         <location filename="terrainbrush.ui" line="169"/>
@@ -2683,7 +2691,8 @@ EditLocal:2:16</extracomment>
     <message>
         <location filename="terrainbrush.ui" line="183"/>
         <source>Clutter</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation type="unfinished">Disordine</translation>
     </message>
     <message>
         <location filename="terrainbrush.cpp" line="5"/>
@@ -2805,7 +2814,7 @@ EditLocal:2:16</extracomment>
         <location filename="unitstab.ui" line="62"/>
         <location filename="unitstab.ui" line="110"/>
         <source>Availability</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Disponibilità</translation>
     </message>
     <message>
         <location filename="unitstab.ui" line="105"/>

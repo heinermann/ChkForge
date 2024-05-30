@@ -610,7 +610,7 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="locationproperties.ui" line="189"/>
         <source>Usage</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>

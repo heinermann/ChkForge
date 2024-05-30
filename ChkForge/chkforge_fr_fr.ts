@@ -43,7 +43,8 @@
         <location filename="abilitiestab.ui" line="160"/>
         <location filename="abilitiestab.ui" line="329"/>
         <source>Availability</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation>Disponibilité</translation>
     </message>
     <message>
         <location filename="abilitiestab.ui" line="199"/>
@@ -470,7 +471,7 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="importsections.ui" line="16"/>
         <source>Dialog</source>
-        <translation type="unfinished">Dialogue</translation>
+        <translation>Dialogue</translation>
     </message>
 </context>
 <context>
@@ -510,7 +511,8 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="itemtree.cpp" line="135"/>
         <source>Locations</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation>Zones</translation>
     </message>
     <message>
         <location filename="itemtree.cpp" line="141"/>
@@ -520,7 +522,8 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="itemtree.cpp" line="142"/>
         <source>Clipboard</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation>Presse-papiers</translation>
     </message>
 </context>
 <context>
@@ -607,7 +610,8 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="locationproperties.ui" line="189"/>
         <source>Usage</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation>Usage</translation>
     </message>
 </context>
 <context>
@@ -1067,7 +1071,8 @@ Other sizes may crash Starcraft.</source>
     <message>
         <location filename="newmap.ui" line="195"/>
         <source>Clutter</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation type="unfinished">Encombrement</translation>
     </message>
 </context>
 <context>
@@ -2316,7 +2321,8 @@ EditLocal:2:16</extracomment>
         <source>Compound</source>
         <comment>Desert</comment>
         <extracomment>SEditENU:189:3008, stat_txt:DDS_DESERT_RESOURCE</extracomment>
-        <translation>Composé</translation>
+        <translatorcomment>wiktionary (corrected from Composé)</translatorcomment>
+        <translation type="unfinished">Complexe</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="238"/>
@@ -2477,7 +2483,8 @@ EditLocal:2:16</extracomment>
         <source>Flagstones</source>
         <comment>Twilight</comment>
         <extracomment>SEditENU:190:3033, stat_txt:DDS_TWILIGHT_ANCIENTRUINS</extracomment>
-        <translation>Ruines</translation>
+        <translatorcomment>wiktionary, originally Ruines</translatorcomment>
+        <translation type="unfinished">Dalles</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="308"/>
@@ -2673,7 +2680,8 @@ EditLocal:2:16</extracomment>
     <message>
         <location filename="terrainbrush.ui" line="150"/>
         <source>Rect</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation type="unfinished">Rectangle</translation>
     </message>
     <message>
         <location filename="terrainbrush.ui" line="169"/>
@@ -2683,7 +2691,8 @@ EditLocal:2:16</extracomment>
     <message>
         <location filename="terrainbrush.ui" line="183"/>
         <source>Clutter</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation type="unfinished">Encombrement</translation>
     </message>
     <message>
         <location filename="terrainbrush.cpp" line="5"/>
@@ -2805,7 +2814,7 @@ EditLocal:2:16</extracomment>
         <location filename="unitstab.ui" line="62"/>
         <location filename="unitstab.ui" line="110"/>
         <source>Availability</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Disponibilité</translation>
     </message>
     <message>
         <location filename="unitstab.ui" line="105"/>

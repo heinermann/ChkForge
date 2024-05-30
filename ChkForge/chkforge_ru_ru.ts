@@ -37,13 +37,15 @@
         <location filename="abilitiestab.ui" line="137"/>
         <source>Energy</source>
         <extracomment>EditLocal:1223</extracomment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation>эне́ргия</translation>
     </message>
     <message>
         <location filename="abilitiestab.ui" line="160"/>
         <location filename="abilitiestab.ui" line="329"/>
         <source>Availability</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation>нали́чие</translation>
     </message>
     <message>
         <location filename="abilitiestab.ui" line="199"/>
@@ -378,7 +380,8 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="exportimage.ui" line="16"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation>диало́г</translation>
     </message>
 </context>
 <context>
@@ -386,7 +389,8 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="exportsections.ui" line="16"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation>диало́г</translation>
     </message>
 </context>
 <context>
@@ -394,7 +398,8 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="filemanager.ui" line="16"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation>диало́г</translation>
     </message>
 </context>
 <context>
@@ -470,7 +475,8 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="importsections.ui" line="16"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation>диало́г</translation>
     </message>
 </context>
 <context>
@@ -500,7 +506,8 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="itemtree.cpp" line="117"/>
         <source>Sprites</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation>спра́йты</translation>
     </message>
     <message>
         <location filename="itemtree.cpp" line="126"/>
@@ -520,7 +527,8 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="itemtree.cpp" line="142"/>
         <source>Clipboard</source>
-        <translation type="unfinished">карма́н</translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation>карма́н</translation>
     </message>
 </context>
 <context>
@@ -607,7 +615,8 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="locationproperties.ui" line="189"/>
         <source>Usage</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation type="unfinished">примене́ние</translation>
     </message>
 </context>
 <context>
@@ -1067,7 +1076,8 @@ Other sizes may crash Starcraft.</source>
     <message>
         <location filename="newmap.ui" line="195"/>
         <source>Clutter</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation type="unfinished">беспорядок</translation>
     </message>
 </context>
 <context>
@@ -1095,7 +1105,7 @@ Other sizes may crash Starcraft.</source>
         <location filename="playerstab.ui" line="176"/>
         <source>Race</source>
         <extracomment>EditLocal:3:44</extracomment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Pа́са</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="65"/>
@@ -1103,7 +1113,8 @@ Other sizes may crash Starcraft.</source>
         <source>Control</source>
         <oldsource>Controller</oldsource>
         <extracomment>EditLocal:3:45</extracomment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation type="unfinished">власть</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="70"/>
@@ -1254,7 +1265,8 @@ Other sizes may crash Starcraft.</source>
     <message>
         <location filename="previewpainter.ui" line="16"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation type="unfinished">диало́г</translation>
     </message>
 </context>
 <context>
@@ -2000,7 +2012,8 @@ EditLocal:2:16</extracomment>
         <source>Asphalt</source>
         <comment>BadJungle</comment>
         <extracomment>EditLocal:11:168, stat_txt:DDS_BAD_CONCRETE</extracomment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation type="unfinished">aсфа́льт</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="89"/>
@@ -2139,7 +2152,8 @@ EditLocal:2:16</extracomment>
         <source>Magma</source>
         <comment>Ashworld</comment>
         <extracomment>EditLocal:15:231</extracomment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation type="unfinished">ма́гма</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="160"/>
@@ -2153,14 +2167,16 @@ EditLocal:2:16</extracomment>
         <source>Lava</source>
         <comment>Ashworld</comment>
         <extracomment>EditLocal:15:233</extracomment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation type="unfinished">ла́ва</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="164"/>
         <source>Shale</source>
         <comment>Ashworld</comment>
         <extracomment>EditLocal:15:234, stat_txt:DDS_ASH_DDROCKS</extracomment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation type="unfinished">сла́нец</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="166"/>
@@ -2223,7 +2239,8 @@ EditLocal:2:16</extracomment>
         <source>Temple</source>
         <comment>BadJungle</comment>
         <extracomment>EditLocal:23:358</extracomment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation type="unfinished">храм</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="203"/>
@@ -2300,7 +2317,8 @@ EditLocal:2:16</extracomment>
         <source>Crags</source>
         <comment>Desert</comment>
         <extracomment>SEditENU:188:3006, stat_txt:DDS_DESERT_RUINS</extracomment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation type="unfinished">ска́лы</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="234"/>
@@ -2314,7 +2332,8 @@ EditLocal:2:16</extracomment>
         <source>Compound</source>
         <comment>Desert</comment>
         <extracomment>SEditENU:189:3008, stat_txt:DDS_DESERT_RESOURCE</extracomment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation type="unfinished">ко́мплекс</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="238"/>
@@ -2377,7 +2396,8 @@ EditLocal:2:16</extracomment>
         <source>Moguls</source>
         <comment>Ice</comment>
         <extracomment>SEditENU:189:3016, stat_txt:DDS_ICE_MUD</extracomment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation type="unfinished">сугроб</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="265"/>
@@ -2468,7 +2488,8 @@ EditLocal:2:16</extracomment>
         <source>Crevices</source>
         <comment>Twilight</comment>
         <extracomment>SEditENU:190:3032, stat_txt:DDS_TWILIGHT_CREVICE</extracomment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation type="unfinished">тре́щины</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="306"/>
@@ -2557,7 +2578,8 @@ EditLocal:2:16</extracomment>
     <message>
         <location filename="savemap.ui" line="16"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation type="unfinished">диало́г</translation>
     </message>
 </context>
 <context>
@@ -2609,7 +2631,8 @@ EditLocal:2:16</extracomment>
         <location filename="scenariosettings.ui" line="42"/>
         <source>Upgrades</source>
         <extracomment>EditLocal:1218</extracomment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation type="unfinished">апгре́йды</translation>
     </message>
     <message>
         <location filename="scenariosettings.ui" line="48"/>
@@ -2634,7 +2657,8 @@ EditLocal:2:16</extracomment>
         <location filename="spriteproperties.ui" line="35"/>
         <source>Owner</source>
         <extracomment>EditLocal:1214</extracomment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation type="unfinished">хозяин</translation>
     </message>
     <message>
         <location filename="spriteproperties.ui" line="93"/>
@@ -2658,7 +2682,8 @@ EditLocal:2:16</extracomment>
     <message>
         <location filename="stringmanager.ui" line="16"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation type="unfinished">диало́г</translation>
     </message>
 </context>
 <context>
@@ -2671,7 +2696,8 @@ EditLocal:2:16</extracomment>
     <message>
         <location filename="terrainbrush.ui" line="150"/>
         <source>Rect</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation type="unfinished">прямоугольник</translation>
     </message>
     <message>
         <location filename="terrainbrush.ui" line="169"/>
@@ -2681,7 +2707,8 @@ EditLocal:2:16</extracomment>
     <message>
         <location filename="terrainbrush.ui" line="183"/>
         <source>Clutter</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation type="unfinished">беспорядок</translation>
     </message>
     <message>
         <location filename="terrainbrush.cpp" line="5"/>
@@ -2707,7 +2734,8 @@ EditLocal:2:16</extracomment>
         <location filename="unitproperties.ui" line="38"/>
         <source>Owner</source>
         <extracomment>EditLocal:1214</extracomment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation type="unfinished">хозяин</translation>
     </message>
     <message>
         <location filename="unitproperties.ui" line="75"/>
@@ -2742,7 +2770,7 @@ EditLocal:2:16</extracomment>
         <location filename="unitproperties.ui" line="143"/>
         <source>Energy %</source>
         <extracomment>EditLocal:1214</extracomment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">эне́ргия %</translation>
     </message>
     <message>
         <location filename="unitproperties.ui" line="157"/>
@@ -2789,7 +2817,8 @@ EditLocal:2:16</extracomment>
         <source>In&amp;vincible</source>
         <oldsource>Invincible</oldsource>
         <extracomment>EditLocal:1214:1163</extracomment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation type="unfinished">непобедимый(&amp;V)</translation>
     </message>
 </context>
 <context>
@@ -2803,7 +2832,7 @@ EditLocal:2:16</extracomment>
         <location filename="unitstab.ui" line="62"/>
         <location filename="unitstab.ui" line="110"/>
         <source>Availability</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">нали́чие</translation>
     </message>
     <message>
         <location filename="unitstab.ui" line="105"/>

@@ -37,13 +37,15 @@
         <location filename="abilitiestab.ui" line="137"/>
         <source>Energy</source>
         <extracomment>EditLocal:1223</extracomment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation type="unfinished">能量</translation>
     </message>
     <message>
         <location filename="abilitiestab.ui" line="160"/>
         <location filename="abilitiestab.ui" line="329"/>
         <source>Availability</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation>可及性</translation>
     </message>
     <message>
         <location filename="abilitiestab.ui" line="199"/>
@@ -470,7 +472,7 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="importsections.ui" line="16"/>
         <source>Dialog</source>
-        <translation type="unfinished">对话</translation>
+        <translation>对话</translation>
     </message>
 </context>
 <context>
@@ -520,7 +522,8 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="itemtree.cpp" line="142"/>
         <source>Clipboard</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation>剪贴板</translation>
     </message>
 </context>
 <context>
@@ -607,7 +610,8 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="locationproperties.ui" line="189"/>
         <source>Usage</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation>用法</translation>
     </message>
 </context>
 <context>
@@ -1067,7 +1071,8 @@ Other sizes may crash Starcraft.</source>
     <message>
         <location filename="newmap.ui" line="195"/>
         <source>Clutter</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation type="unfinished">杂乱</translation>
     </message>
 </context>
 <context>
@@ -1095,7 +1100,8 @@ Other sizes may crash Starcraft.</source>
         <location filename="playerstab.ui" line="176"/>
         <source>Race</source>
         <extracomment>EditLocal:3:44</extracomment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation type="unfinished">种族</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="65"/>
@@ -1103,7 +1109,8 @@ Other sizes may crash Starcraft.</source>
         <source>Control</source>
         <oldsource>Controller</oldsource>
         <extracomment>EditLocal:3:45</extracomment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation type="unfinished">监督</translation>
     </message>
     <message>
         <location filename="playerstab.ui" line="70"/>
@@ -2000,7 +2007,8 @@ EditLocal:2:16</extracomment>
         <source>Asphalt</source>
         <comment>BadJungle</comment>
         <extracomment>EditLocal:11:168, stat_txt:DDS_BAD_CONCRETE</extracomment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation type="unfinished">柏油</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="89"/>
@@ -2043,7 +2051,8 @@ EditLocal:2:16</extracomment>
         <source>Plating</source>
         <comment>Space</comment>
         <extracomment>EditLocal:2:18, stat_txt:DDS_PLAT_DDLOWBLD</extracomment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation type="unfinished">镀层</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="114"/>
@@ -2106,7 +2115,8 @@ EditLocal:2:16</extracomment>
         <source>Plating</source>
         <comment>Installation</comment>
         <extracomment>EditLocal:11:175, stat_txt:DDS_INSTALL_DDWALK</extracomment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation type="unfinished">镀层</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="142"/>
@@ -2139,7 +2149,8 @@ EditLocal:2:16</extracomment>
         <source>Magma</source>
         <comment>Ashworld</comment>
         <extracomment>EditLocal:15:231</extracomment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation type="unfinished">岩浆</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="160"/>
@@ -2153,14 +2164,16 @@ EditLocal:2:16</extracomment>
         <source>Lava</source>
         <comment>Ashworld</comment>
         <extracomment>EditLocal:15:233</extracomment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation type="unfinished">熔岩</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="164"/>
         <source>Shale</source>
         <comment>Ashworld</comment>
         <extracomment>EditLocal:15:234, stat_txt:DDS_ASH_DDROCKS</extracomment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation type="unfinished">页岩</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="166"/>
@@ -2223,7 +2236,8 @@ EditLocal:2:16</extracomment>
         <source>Temple</source>
         <comment>BadJungle</comment>
         <extracomment>EditLocal:23:358</extracomment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation type="unfinished">寺庙</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="203"/>
@@ -2377,7 +2391,8 @@ EditLocal:2:16</extracomment>
         <source>Moguls</source>
         <comment>Ice</comment>
         <extracomment>SEditENU:189:3016, stat_txt:DDS_ICE_MUD</extracomment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation type="unfinished">雪堆</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="265"/>
@@ -2609,7 +2624,8 @@ EditLocal:2:16</extracomment>
         <location filename="scenariosettings.ui" line="42"/>
         <source>Upgrades</source>
         <extracomment>EditLocal:1218</extracomment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation type="unfinished">升级</translation>
     </message>
     <message>
         <location filename="scenariosettings.ui" line="48"/>
@@ -2634,7 +2650,8 @@ EditLocal:2:16</extracomment>
         <location filename="spriteproperties.ui" line="35"/>
         <source>Owner</source>
         <extracomment>EditLocal:1214</extracomment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation type="unfinished">所有者</translation>
     </message>
     <message>
         <location filename="spriteproperties.ui" line="93"/>
@@ -2671,7 +2688,8 @@ EditLocal:2:16</extracomment>
     <message>
         <location filename="terrainbrush.ui" line="150"/>
         <source>Rect</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation type="unfinished">长方形</translation>
     </message>
     <message>
         <location filename="terrainbrush.ui" line="169"/>
@@ -2681,7 +2699,8 @@ EditLocal:2:16</extracomment>
     <message>
         <location filename="terrainbrush.ui" line="183"/>
         <source>Clutter</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation type="unfinished">杂乱</translation>
     </message>
     <message>
         <location filename="terrainbrush.cpp" line="5"/>
@@ -2707,7 +2726,8 @@ EditLocal:2:16</extracomment>
         <location filename="unitproperties.ui" line="38"/>
         <source>Owner</source>
         <extracomment>EditLocal:1214</extracomment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation type="unfinished">所有者</translation>
     </message>
     <message>
         <location filename="unitproperties.ui" line="75"/>
@@ -2789,7 +2809,8 @@ EditLocal:2:16</extracomment>
         <source>In&amp;vincible</source>
         <oldsource>Invincible</oldsource>
         <extracomment>EditLocal:1214:1163</extracomment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation type="unfinished">无敌(&amp;V)</translation>
     </message>
 </context>
 <context>
@@ -2803,7 +2824,7 @@ EditLocal:2:16</extracomment>
         <location filename="unitstab.ui" line="62"/>
         <location filename="unitstab.ui" line="110"/>
         <source>Availability</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">可及性</translation>
     </message>
     <message>
         <location filename="unitstab.ui" line="105"/>
@@ -2870,7 +2891,8 @@ EditLocal:2:16</extracomment>
         <location filename="unitstab.ui" line="391"/>
         <source>Bonus</source>
         <extracomment>EditLocal:1216</extracomment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation type="unfinished">额外收获</translation>
     </message>
     <message>
         <location filename="unitstab.ui" line="348"/>

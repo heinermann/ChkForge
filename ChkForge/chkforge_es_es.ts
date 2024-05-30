@@ -43,7 +43,8 @@
         <location filename="abilitiestab.ui" line="160"/>
         <location filename="abilitiestab.ui" line="329"/>
         <source>Availability</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation>Disponibilidad</translation>
     </message>
     <message>
         <location filename="abilitiestab.ui" line="199"/>
@@ -470,7 +471,7 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="importsections.ui" line="16"/>
         <source>Dialog</source>
-        <translation type="unfinished">Diálogo</translation>
+        <translation>Diálogo</translation>
     </message>
 </context>
 <context>
@@ -510,7 +511,8 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="itemtree.cpp" line="135"/>
         <source>Locations</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary, probably should be something else?</translatorcomment>
+        <translation>Posiciones</translation>
     </message>
     <message>
         <location filename="itemtree.cpp" line="141"/>
@@ -520,7 +522,8 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="itemtree.cpp" line="142"/>
         <source>Clipboard</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation>Portapapeles</translation>
     </message>
 </context>
 <context>
@@ -1033,6 +1036,7 @@ Some select Starforge code snippets and resources.
         <location filename="minimap.cpp" line="18"/>
         <source>Minimap</source>
         <extracomment>EditLocal:10:148</extracomment>
+        <translatorcomment>wiktionary</translatorcomment>
         <translation>Minimapa</translation>
     </message>
 </context>
@@ -1067,7 +1071,8 @@ Other sizes may crash Starcraft.</source>
     <message>
         <location filename="newmap.ui" line="195"/>
         <source>Clutter</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation type="unfinished">Desorden</translation>
     </message>
 </context>
 <context>
@@ -1393,7 +1398,8 @@ Please select a different directory.</source>
     <message>
         <location filename="strings.cpp" line="22"/>
         <source>Other</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation type="unfinished">Otro</translation>
     </message>
     <message>
         <location filename="strings.cpp" line="24"/>
@@ -2636,6 +2642,7 @@ EditLocal:2:16</extracomment>
         <location filename="spriteproperties.ui" line="35"/>
         <source>Owner</source>
         <extracomment>EditLocal:1214</extracomment>
+        <translatorcomment>inaccurate?</translatorcomment>
         <translation>Propietario</translation>
     </message>
     <message>
@@ -2673,7 +2680,8 @@ EditLocal:2:16</extracomment>
     <message>
         <location filename="terrainbrush.ui" line="150"/>
         <source>Rect</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation type="unfinished">Rectángulo</translation>
     </message>
     <message>
         <location filename="terrainbrush.ui" line="169"/>
@@ -2683,7 +2691,8 @@ EditLocal:2:16</extracomment>
     <message>
         <location filename="terrainbrush.ui" line="183"/>
         <source>Clutter</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation type="unfinished">Desorden</translation>
     </message>
     <message>
         <location filename="terrainbrush.cpp" line="5"/>
@@ -2805,7 +2814,7 @@ EditLocal:2:16</extracomment>
         <location filename="unitstab.ui" line="62"/>
         <location filename="unitstab.ui" line="110"/>
         <source>Availability</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Disponibilidad</translation>
     </message>
     <message>
         <location filename="unitstab.ui" line="105"/>

@@ -43,7 +43,8 @@
         <location filename="abilitiestab.ui" line="160"/>
         <location filename="abilitiestab.ui" line="329"/>
         <source>Availability</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation>供給</translation>
     </message>
     <message>
         <location filename="abilitiestab.ui" line="199"/>
@@ -500,7 +501,8 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="itemtree.cpp" line="117"/>
         <source>Sprites</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation>スプライト</translation>
     </message>
     <message>
         <location filename="itemtree.cpp" line="126"/>
@@ -510,7 +512,8 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="itemtree.cpp" line="135"/>
         <source>Locations</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>from MainWindow</translatorcomment>
+        <translation>ロケーション</translation>
     </message>
     <message>
         <location filename="itemtree.cpp" line="141"/>
@@ -520,7 +523,8 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="itemtree.cpp" line="142"/>
         <source>Clipboard</source>
-        <translation type="unfinished">クリップボード</translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation>クリップボード</translation>
     </message>
 </context>
 <context>
@@ -607,7 +611,8 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="locationproperties.ui" line="189"/>
         <source>Usage</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation>使い方</translation>
     </message>
 </context>
 <context>
@@ -1033,6 +1038,7 @@ Some select Starforge code snippets and resources.
         <location filename="minimap.cpp" line="18"/>
         <source>Minimap</source>
         <extracomment>EditLocal:10:148</extracomment>
+        <translatorcomment>wiktionary</translatorcomment>
         <translation>ミニマップ</translation>
     </message>
 </context>
@@ -2370,7 +2376,8 @@ EditLocal:2:16</extracomment>
         <source>Snow</source>
         <comment>Ice</comment>
         <extracomment>SEditENU:189:3015, stat_txt:DDS_ICE_SNOW</extracomment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation type="unfinished">雪</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="263"/>
@@ -2475,7 +2482,8 @@ EditLocal:2:16</extracomment>
         <source>Flagstones</source>
         <comment>Twilight</comment>
         <extracomment>SEditENU:190:3033, stat_txt:DDS_TWILIGHT_ANCIENTRUINS</extracomment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation type="unfinished">組石</translation>
     </message>
     <message>
         <location filename="terrain.cpp" line="308"/>
@@ -2671,7 +2679,8 @@ EditLocal:2:16</extracomment>
     <message>
         <location filename="terrainbrush.ui" line="150"/>
         <source>Rect</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation type="unfinished">矩形</translation>
     </message>
     <message>
         <location filename="terrainbrush.ui" line="169"/>
@@ -2803,7 +2812,7 @@ EditLocal:2:16</extracomment>
         <location filename="unitstab.ui" line="62"/>
         <location filename="unitstab.ui" line="110"/>
         <source>Availability</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">供給</translation>
     </message>
     <message>
         <location filename="unitstab.ui" line="105"/>

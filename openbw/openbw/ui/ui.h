@@ -33,15 +33,16 @@ struct ui_util_functions: replay_functions {
   }
 
   bool unit_can_be_selected(const unit_t* u) const {
-    if (unit_is(u, UnitTypes::Terran_Nuclear_Missile)) return false;
-    if (unit_is(u, UnitTypes::Protoss_Scarab)) return false;
-    if (unit_is(u, UnitTypes::Spell_Disruption_Web)) return false;
-    if (unit_is(u, UnitTypes::Spell_Dark_Swarm)) return false;
-    if (unit_is(u, UnitTypes::Special_Upper_Level_Door)) return false;
-    if (unit_is(u, UnitTypes::Special_Right_Upper_Level_Door)) return false;
-    if (unit_is(u, UnitTypes::Special_Pit_Door)) return false;
-    if (unit_is(u, UnitTypes::Special_Right_Pit_Door)) return false;
-    return true;
+    return !unit_is_any_of(u,
+      UnitTypes::Terran_Nuclear_Missile,
+      UnitTypes::Protoss_Scarab,
+      UnitTypes::Spell_Disruption_Web,
+      UnitTypes::Spell_Dark_Swarm,
+      UnitTypes::Special_Upper_Level_Door,
+      UnitTypes::Special_Right_Upper_Level_Door,
+      UnitTypes::Special_Pit_Door,
+      UnitTypes::Special_Right_Pit_Door
+    );
   }
 
   bool image_has_data_at(const image_t* image, xy pos) const {

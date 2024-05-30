@@ -43,7 +43,8 @@
         <location filename="abilitiestab.ui" line="160"/>
         <location filename="abilitiestab.ui" line="329"/>
         <source>Availability</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation>가용도</translation>
     </message>
     <message>
         <location filename="abilitiestab.ui" line="199"/>
@@ -470,7 +471,7 @@ Some select Starforge code snippets and resources.
     <message>
         <location filename="importsections.ui" line="16"/>
         <source>Dialog</source>
-        <translation type="unfinished">대화</translation>
+        <translation>대화</translation>
     </message>
 </context>
 <context>
@@ -1033,6 +1034,7 @@ Some select Starforge code snippets and resources.
         <location filename="minimap.cpp" line="18"/>
         <source>Minimap</source>
         <extracomment>EditLocal:10:148</extracomment>
+        <translatorcomment>wiktionary</translatorcomment>
         <translation>미니맵</translation>
     </message>
 </context>
@@ -2671,7 +2673,8 @@ EditLocal:2:16</extracomment>
     <message>
         <location filename="terrainbrush.ui" line="150"/>
         <source>Rect</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>wiktionary</translatorcomment>
+        <translation type="unfinished">직사각형</translation>
     </message>
     <message>
         <location filename="terrainbrush.ui" line="169"/>
@@ -2789,7 +2792,7 @@ EditLocal:2:16</extracomment>
         <source>In&amp;vincible</source>
         <oldsource>Invincible</oldsource>
         <extracomment>EditLocal:1214:1163</extracomment>
-        <translation type="unfinished">무적</translation>
+        <translation type="unfinished">무적(&amp;V)</translation>
     </message>
 </context>
 <context>
@@ -2803,7 +2806,7 @@ EditLocal:2:16</extracomment>
         <location filename="unitstab.ui" line="62"/>
         <location filename="unitstab.ui" line="110"/>
         <source>Availability</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">가용도</translation>
     </message>
     <message>
         <location filename="unitstab.ui" line="105"/>
